@@ -29,19 +29,4 @@ public class ReleaseInfo extends AbstractJsonMapping {
         return releaseDate;
     }
 
-
-    public void setCertification(String certification) {
-        this.certification = certification;
-    }
-
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
 }

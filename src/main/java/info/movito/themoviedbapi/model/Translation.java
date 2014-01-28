@@ -26,16 +26,6 @@ public class Translation extends NamedElement {
     }
 
 
-    public void setEnglishName(String englishName) {
-        this.englishName = englishName;
-    }
-
-
-    public void setIsoCode(String isoCode) {
-        this.isoCode = isoCode;
-    }
-
-
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.SIMPLE_STYLE);

@@ -23,14 +23,4 @@ public class ProductionCountry extends AbstractJsonMapping {
     public String getName() {
         return name;
     }
-
-
-    public void setIsoCode(String isoCode) {
-        this.isoCode = isoCode;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

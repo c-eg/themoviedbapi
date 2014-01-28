@@ -13,9 +13,4 @@ public class MovieListCreationStatus extends StatusCode {
     public String getListId() {
         return listId;
     }
-
-
-    public void setListId(String listId) {
-        this.listId = listId;
-    }
 }
