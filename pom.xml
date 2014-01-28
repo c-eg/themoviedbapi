@@ -14,7 +14,7 @@
     <name>TMDB-API</name>
     <description>API Wrapper for the TheMovieDb.org. Based on https://github.com/Omertron/api-themoviedb</description>
 
-    <url>https://github.com/holgerbrandl/api-themoviedb/network</url>
+    <url>https://github.com/holgerbrandl/themoviedbapi</url>
 
     <inceptionYear>2014</inceptionYear>
 

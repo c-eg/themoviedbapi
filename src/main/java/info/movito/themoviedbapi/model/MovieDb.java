@@ -80,8 +80,8 @@ public class MovieDb extends IdElement {
     @JsonProperty("alternative_titles")
     private MoviesAlternativeTitles alternativeTitles;
 
-    @JsonProperty("casts")
-    private Credits casts;
+    @JsonProperty("credits")
+    private Credits credits;
 
     @JsonProperty("images")
     private MovieImages images;
@@ -224,12 +224,12 @@ public class MovieDb extends IdElement {
 
 
     public List<PersonCast> getCast() {
-        return casts.getCast();
+        return credits.getCast();
     }
 
 
     public List<PersonCrew> getCrew() {
-        return casts.getCrew();
+        return credits.getCrew();
     }
 
 
@@ -273,8 +273,8 @@ public class MovieDb extends IdElement {
     }
 
 
-    public Credits getCasts() {
-        return casts;
+    public Credits getCredits() {
+        return credits;
     }
 
 
