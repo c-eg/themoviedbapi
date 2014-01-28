@@ -182,8 +182,7 @@ public class TmdbApi {
 
 
     public static void main(String[] args) {
-//        TmdbApi tmdbApi = new TmdbApi("<apikey>");
-        TmdbApi tmdbApi = new TmdbApi("fab1f8f37443c129d3c0ba3b427d65cf");
+        TmdbApi tmdbApi = new TmdbApi("<apikey>");
 
         TmdbMovies movies = tmdbApi.getMovies();
         MovieDb movie = movies.getMovie(5353, "en");
