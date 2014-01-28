@@ -7,6 +7,13 @@ This API provides a java-wrapper around the json api provided by [TheMovieDB.org
 
 
 
+Api Coverage
+------------
+
+The wrapper implements all methods as detailed out in the [tmdb api doc](http://docs.themoviedb.apiary.io/#search).
+
+However, as the api is subject to constant change, feel welcome to point out missing bits, and we'll add them asap.
+
 Usage Example
 -------------
 

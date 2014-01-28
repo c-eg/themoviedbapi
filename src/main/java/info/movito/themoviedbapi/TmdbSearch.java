@@ -7,6 +7,7 @@ import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.Person;
+import info.movito.themoviedbapi.model.tv.TvSeries;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
 
@@ -63,6 +64,41 @@ public class TmdbSearch extends AbstractApiElement {
 
 
     /**
+     * Search Movies This is a good starting point to start finding movies on TMDb.
+     *
+     * @param query
+     * @param language     The language to include. Can be blank/null.
+     * @param page         The page of results to return. 0 to get the default (first page)
+     */
+    public List<TvSeries> searchTv(String query, String language, Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbTV.TMDB_METHOD_TV);
+
+        if (StringUtils.isBlank(query)) {
+            throw new RuntimeException("query must not be blank");
+        }
+
+        apiUrl.addParam(PARAM_QUERY, query);
+
+        // optional parameters
+
+        if (StringUtils.isNotBlank(language)) {
+            apiUrl.addParam(PARAM_LANGUAGE, language);
+        }
+
+        if (page != null && page > 0) {
+            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
+        }
+
+        return mapJsonResult(apiUrl, SeriesResults.class).getResults();
+    }
+
+
+    public static class SeriesResults extends ResultsPage<TvSeries> {
+
+    }
+
+
+    /**
      * Search for collections by name.
      *
      * @param query
@@ -97,7 +133,7 @@ public class TmdbSearch extends AbstractApiElement {
      * @param includeAdult
      * @param page
      */
-    public List<Person> searchPeople(String query, boolean includeAdult, Integer page) {
+    public List<Person> searchPerson(String query, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbPeople.TMDB_METHOD_PERSON);
 
         apiUrl.addParam(PARAM_QUERY, query);
@@ -149,7 +185,7 @@ public class TmdbSearch extends AbstractApiElement {
      * @param companyName
      * @param page
      */
-    public List<Company> searchCompanies(String companyName, Integer page) {
+    public List<Company> searchCompany(String companyName, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company");
         apiUrl.addParam(PARAM_QUERY, companyName);
 
