@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -30,6 +31,12 @@ public class AbstractTmdbApiTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
         String apiKey = System.getenv("apikey");
+
+        if (StringUtils.isBlank(apiKey)) {
+            String g = "Missing api key: To run test you need to provide the key as environment variable named 'apikey'";
+            throw new RuntimeException(g);
+        }
+
         tmdb = new TmdbApi(apiKey);
     }
 
