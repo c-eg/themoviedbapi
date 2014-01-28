@@ -17,14 +17,14 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetMovieInfo() {
-        MovieDb result = tmdb.getMovies().getMovieInfo(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH);
+        MovieDb result = tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH);
         assertEquals("Incorrect movie information", "Blade Runner", result.getOriginalTitle());
     }
 
 
     @Test
     public void testGetMovieInfoWithAppendedMethods() {
-        MovieDb result = tmdb.getMovies().getMovieInfo(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH, TmdbMovies.MovieMethod.values());
+        MovieDb result = tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH, TmdbMovies.MovieMethod.values());
         assertEquals("Incorrect movie information", "Blade Runner", result.getOriginalTitle());
     }
 
@@ -34,11 +34,11 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         String country = "";
 
 
-        List<AlternativeTitle> result = tmdb.getMovies().getMovieAlternativeTitles(ID_MOVIE_BLADE_RUNNER, country);
+        List<AlternativeTitle> result = tmdb.getMovies().getAlternativeTitles(ID_MOVIE_BLADE_RUNNER, country);
         assertTrue("No alternative titles found", result.size() > 0);
 
         country = "US";
-        result = tmdb.getMovies().getMovieAlternativeTitles(ID_MOVIE_BLADE_RUNNER, country);
+        result = tmdb.getMovies().getAlternativeTitles(ID_MOVIE_BLADE_RUNNER, country);
         assertTrue("No alternative titles found", result.size() > 0);
 
     }
@@ -79,42 +79,42 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetMovieKeywords() {
-        List<Keyword> result = tmdb.getMovies().getMovieKeywords(ID_MOVIE_BLADE_RUNNER);
+        List<Keyword> result = tmdb.getMovies().getKeywords(ID_MOVIE_BLADE_RUNNER);
         assertFalse("No keywords found", result.isEmpty());
     }
 
 
     @Test
     public void testMovieKeywordsWithHits() {
-        List<Keyword> result = tmdb.getMovies().getMovieKeywords(550);
+        List<Keyword> result = tmdb.getMovies().getKeywords(550);
         assertFalse("No keywords found", result.isEmpty());
     }
 
 
     @Test
     public void testGetMovieReleaseInfo() {
-        List<ReleaseInfo> result = tmdb.getMovies().getMovieReleaseInfo(ID_MOVIE_BLADE_RUNNER, "");
+        List<ReleaseInfo> result = tmdb.getMovies().getReleaseInfo(ID_MOVIE_BLADE_RUNNER, "");
         assertFalse("Release information missing", result.isEmpty());
     }
 
 
     @Test
     public void testGetMovieTrailers() {
-        List<Trailer> result = tmdb.getMovies().getMovieTrailers(ID_MOVIE_BLADE_RUNNER, "");
+        List<Trailer> result = tmdb.getMovies().getTrailers(ID_MOVIE_BLADE_RUNNER, "");
         assertFalse("Movie trailers missing", result.isEmpty());
     }
 
 
     @Test
     public void testGetMovieTranslations() {
-        List<Translation> result = tmdb.getMovies().getMovieTranslations(ID_MOVIE_BLADE_RUNNER);
+        List<Translation> result = tmdb.getMovies().getTranslations(ID_MOVIE_BLADE_RUNNER);
         assertFalse("No translations found", result.isEmpty());
     }
 
 
     @Test
     public void testCreateImageUrl() {
-        MovieDb movie = tmdb.getMovies().getMovieInfo(ID_MOVIE_BLADE_RUNNER, "");
+        MovieDb movie = tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, "");
         String result = Utils.createImageUrl(tmdb, movie.getPosterPath(), "original").toString();
         assertTrue("Error compiling image URL", !result.isEmpty());
     }
@@ -174,7 +174,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
         //noinspection LoopStatementThatDoesntLoop
         for (MovieDb movie : movieList) {
-            ChangesItems result = tmdb.getMovies().getMovieChanges(movie.getId(), startDate, endDate);
+            ChangesItems result = tmdb.getMovies().getChanges(movie.getId(), startDate, endDate);
 
             assertTrue("No changes found", result.getChangedItems().size() > 0);
             break;

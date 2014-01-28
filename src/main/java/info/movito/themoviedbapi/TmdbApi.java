@@ -186,7 +186,7 @@ public class TmdbApi {
         TmdbApi tmdbApi = new TmdbApi("fab1f8f37443c129d3c0ba3b427d65cf");
 
         TmdbMovies movies = tmdbApi.getMovies();
-        MovieDb movie = movies.getMovieInfo(5353, "en");
+        MovieDb movie = movies.getMovie(5353, "en");
 
         TmdbConfiguration configuration = tmdbApi.getConfiguration();
 

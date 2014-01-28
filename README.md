@@ -12,7 +12,7 @@ Usage Example
 
 ```
 TmdbMovies movies = new TmdbApi("<apikey>").getMovies();
-MovieDb movie = movies.getMovieInfo(5353, "en");
+MovieDb movie = movies.getMovie(5353, "en");
 ```
 
 Project Logging
@@ -26,7 +26,7 @@ To use the logging in your own project you should add one of their adapters [bin
 Project Usage
 -------------
 
-The library is used by [Movito](http://www.movito.info) to interact with tmdb services, but built in a generic way.
+The library was developed for [Movito](http://www.movito.info) to interact with tmdb services.  '
 
 
 Acknowledgements

@@ -45,7 +45,7 @@ public class TmdbMovies extends AbstractApiElement {
      * @param movieId
      * @param language
      */
-    public MovieDb getMovieInfo(int movieId, String language, MovieMethod... appendToResponse) {
+    public MovieDb getMovie(int movieId, String language, MovieMethod... appendToResponse) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId);
 
         if (StringUtils.isNotBlank(language)) {
@@ -64,7 +64,7 @@ public class TmdbMovies extends AbstractApiElement {
      * @param movieId
      * @param country
      */
-    public List<AlternativeTitle> getMovieAlternativeTitles(int movieId, String country) {
+    public List<AlternativeTitle> getAlternativeTitles(int movieId, String country) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "alternative_titles");
 
         if (StringUtils.isNotBlank(country)) {
@@ -107,7 +107,7 @@ public class TmdbMovies extends AbstractApiElement {
      *
      * @param movieId
      */
-    public List<Keyword> getMovieKeywords(int movieId) {
+    public List<Keyword> getKeywords(int movieId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "keywords");
 
 
@@ -128,7 +128,7 @@ public class TmdbMovies extends AbstractApiElement {
      * @param movieId
      * @param language
      */
-    public List<ReleaseInfo> getMovieReleaseInfo(int movieId, String language) {
+    public List<ReleaseInfo> getReleaseInfo(int movieId, String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "releases");
 
 
@@ -160,7 +160,7 @@ public class TmdbMovies extends AbstractApiElement {
      * @param movieId
      * @param language
      */
-    public List<Trailer> getMovieTrailers(int movieId, String language) {
+    public List<Trailer> getTrailers(int movieId, String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "trailers");
 
         if (StringUtils.isNotBlank(language)) {
@@ -176,7 +176,7 @@ public class TmdbMovies extends AbstractApiElement {
      *
      * @param movieId
      */
-    public List<Translation> getMovieTranslations(int movieId) {
+    public List<Translation> getTranslations(int movieId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "translations");
 
         return mapJsonResult(apiUrl, MovieTranslations.class).getTranslations();
@@ -226,7 +226,7 @@ public class TmdbMovies extends AbstractApiElement {
      * @param startDate the start date of the changes, optional
      * @param endDate   the end date of the changes, optional
      */
-    public ChangesItems getMovieChanges(int movieId, String startDate, String endDate) {
+    public ChangesItems getChanges(int movieId, String startDate, String endDate) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "changes");
 
         if (StringUtils.isNotBlank(startDate)) {
