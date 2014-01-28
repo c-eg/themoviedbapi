@@ -41,7 +41,14 @@ public class TvSeason extends AbstractTvElement {
     }
 
 
+    public void setEpisodes(List<TvEpisode> episodes) {
+        this.episodes = episodes;
+    }
+
+
     public List<TvEpisode> getEpisodes() {
+
+
         return episodes;
     }
 
