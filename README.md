@@ -1,4 +1,4 @@
-The Movie DB API
+TheMovieDB API
 ================
 
 Author: Holger Brandl
@@ -7,12 +7,12 @@ This library provides a java-wrapper around the json API provided by [TheMovieDB
 
 
 
-Api Coverage
+API Coverage
 ------------
 
-The wrapper implements all methods as detailed out in the [tmdb api doc](http://docs.themoviedb.apiary.io/#search).
+The wrapper implements all methods as detailed out in the [tmdb api doc](http://docs.themoviedb.apiary.io/).
 
-However, as the TMDB API is subject to constant change, feel welcome to point out missing bits, and we'll add them asap.
+However, as the TheMovieDB API is subject to constant change, feel welcome to point out missing bits, and we'll add them asap.
 
 Usage Example
 -------------
