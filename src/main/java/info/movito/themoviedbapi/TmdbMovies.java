@@ -282,7 +282,6 @@ public class TmdbMovies extends AbstractApiElement {
      * <p/>
      * This is a curated list that will normally contain 100 movies. The default response will return 20 movies.
      * <p/>
-     * TODO: Implement more than 20 movies
      *
      * @param language
      * @param page
@@ -307,7 +306,6 @@ public class TmdbMovies extends AbstractApiElement {
      * <p/>
      * This list is updated daily. The default response will return 20 movies.
      * <p/>
-     * TODO: Implement more than 20 movies
      *
      * @param language
      * @param page
@@ -332,7 +330,6 @@ public class TmdbMovies extends AbstractApiElement {
      * <p/>
      * The default response will return 20 movies.
      * <p/>
-     * TODO: Implement more than 20 movies
      *
      * @param language
      * @param page
