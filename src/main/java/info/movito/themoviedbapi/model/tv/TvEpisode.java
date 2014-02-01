@@ -56,4 +56,34 @@ public class TvEpisode extends AbstractTvElement {
     public int getVoteCount() {
         return voteCount;
     }
+
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+
+    public void setAirDate(String airDate) {
+        this.airDate = airDate;
+    }
+
+
+    public void setEpisodeNumber(int episodeNumber) {
+        this.episodeNumber = episodeNumber;
+    }
+
+
+    public void setStillPath(String stillPath) {
+        this.stillPath = stillPath;
+    }
+
+
+    public void setVoteAverage(float voteAverage) {
+        this.voteAverage = voteAverage;
+    }
+
+
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+    }
 }
