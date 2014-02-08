@@ -219,57 +219,57 @@ public class MovieDb extends IdElement {
 
 
     public List<AlternativeTitle> getAlternativeTitles() {
-        return alternativeTitles.getTitles();
+        return alternativeTitles != null ? alternativeTitles.getTitles() : null;
     }
 
 
     public List<PersonCast> getCast() {
-        return credits.getCast();
+        return credits != null ? credits.getCast() : null;
     }
 
 
     public List<PersonCrew> getCrew() {
-        return credits.getCrew();
+        return credits != null ? credits.getCrew() : null;
     }
 
 
     public List<Artwork> getImages() {
-        return images.getAll();
+        return images != null ? images.getAll() : null;
     }
 
 
     public List<Keyword> getKeywords() {
-        return keywords.getResults();
+        return keywords != null ? keywords.getResults() : null;
     }
 
 
     public List<ReleaseInfo> getReleases() {
-        return releases.getCountries();
+        return releases != null ? releases.getCountries() : null;
     }
 
 
     public List<Trailer> getTrailers() {
-        return trailers.getAll();
+        return trailers != null ? trailers.getAll() : null;
     }
 
 
     public List<Translation> getTranslations() {
-        return translations.getTranslations();
+        return translations != null ? translations.getTranslations() : null;
     }
 
 
     public List<MovieDb> getSimilarMovies() {
-        return similarMovies.getResults();
+        return similarMovies != null ? similarMovies.getResults() : null;
     }
 
 
     public List<MovieList> getLists() {
-        return lists.getResults();
+        return lists != null ? lists.getResults() : null;
     }
 
 
     public List<Reviews> getReviews() {
-        return reviews.getResults();
+        return reviews != null ? reviews.getResults() : null;
     }
 
 
