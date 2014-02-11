@@ -21,7 +21,7 @@ public abstract class AbstractApiElement {
     public static final String PARAM_API_KEY = "api_key";
 
 
-    private static ObjectMapper mapper = new ObjectMapper();
+    protected static final ObjectMapper jsonMapper = new ObjectMapper();
 
     protected final TmdbApi tmdbApi;
 
@@ -47,7 +47,7 @@ public abstract class AbstractApiElement {
         String webpage = tmdbApi.requestWebPage(apiUrl, jsonBody, requestMethod);
 
         try {
-            return mapper.readValue(webpage, someClass);
+            return jsonMapper.readValue(webpage, someClass);
         } catch (IOException ex) {
             logger.warn("Failed to get company movies: {}", ex.getMessage());
             throw new MovieDbException(MovieDbException.MovieDbExceptionType.MAPPING_FAILED, webpage, ex);

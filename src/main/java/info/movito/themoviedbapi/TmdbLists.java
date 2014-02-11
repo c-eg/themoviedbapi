@@ -49,7 +49,7 @@ public class TmdbLists extends AbstractApiElement {
         body.put("name", StringUtils.trimToEmpty(name));
         body.put("description", StringUtils.trimToEmpty(description));
 
-        String jsonBody = Utils.convertToJson(body);
+        String jsonBody = Utils.convertToJson(jsonMapper, body);
 
 
         return mapJsonResult(apiUrl, MovieListCreationStatus.class, jsonBody).getListId();
@@ -95,7 +95,7 @@ public class TmdbLists extends AbstractApiElement {
 
         apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionId);
 
-        String jsonBody = Utils.convertToJson(Collections.singletonMap("media_id", movieId + ""));
+        String jsonBody = Utils.convertToJson(jsonMapper, Collections.singletonMap("media_id", movieId + ""));
 
         return mapJsonResult(apiUrl, StatusCode.class, jsonBody);
     }

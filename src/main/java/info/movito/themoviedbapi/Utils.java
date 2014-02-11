@@ -131,7 +131,7 @@ public class Utils {
     /**
      * Use Jackson to convert Map to json string.
      */
-    public static String convertToJson(Map<String, ?> map) {
+    public static String convertToJson(ObjectMapper jsonMapper, Map<String, ?> map) {
         try {
             return new ObjectMapper().writeValueAsString(map);
         } catch (JsonProcessingException jpe) {

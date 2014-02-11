@@ -118,7 +118,7 @@ public class TmdbAccount extends AbstractApiElement {
             throw new MovieDbException(MovieDbException.MovieDbExceptionType.UNKNOWN_CAUSE, "rating out of range");
         }
 
-        String jsonBody = Utils.convertToJson(Collections.singletonMap("value", rating));
+        String jsonBody = Utils.convertToJson(jsonMapper, Collections.singletonMap("value", rating));
 
         return mapJsonResult(apiUrl, StatusCode.class, jsonBody).getStatusCode() == 12;
     }
@@ -132,7 +132,7 @@ public class TmdbAccount extends AbstractApiElement {
         HashMap<String, Object> body = new HashMap<String, Object>();
         body.put("movie_id", movieId);
         body.put("favorite", isFavorite);
-        String jsonBody = Utils.convertToJson(body);
+        String jsonBody = Utils.convertToJson(jsonMapper, body);
 
         return mapJsonResult(apiUrl, StatusCode.class, jsonBody);
     }
@@ -162,7 +162,7 @@ public class TmdbAccount extends AbstractApiElement {
         HashMap<String, Object> body = new HashMap<String, Object>();
         body.put("movie_id", movieId);
         body.put("movie_watchlist", add);
-        String jsonBody = Utils.convertToJson(body);
+        String jsonBody = Utils.convertToJson(jsonMapper, body);
 
         return mapJsonResult(apiUrl, StatusCode.class, jsonBody);
     }
