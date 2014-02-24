@@ -2,8 +2,8 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.Company;
-import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieList;
+import info.movito.themoviedbapi.model.core.MovieResults;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.Person;
@@ -34,7 +34,7 @@ public class TmdbSearch extends AbstractApiElement {
      * @param includeAdult true or false to include adult titles in the search
      * @param page         The page of results to return. 0 to get the default (first page)
      */
-    public List<MovieDb> searchMovie(String query, Integer searchYear, String language, boolean includeAdult, Integer page) {
+    public MovieResults searchMovie(String query, Integer searchYear, String language, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbMovies.TMDB_METHOD_MOVIE);
 
         if (StringUtils.isBlank(query)) {
@@ -59,7 +59,7 @@ public class TmdbSearch extends AbstractApiElement {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, TmdbMovies.MovieResults.class).getResults();
+        return mapJsonResult(apiUrl, MovieResults.class);
     }
 
 
@@ -67,8 +67,8 @@ public class TmdbSearch extends AbstractApiElement {
      * Search Movies This is a good starting point to start finding movies on TMDb.
      *
      * @param query
-     * @param language     The language to include. Can be blank/null.
-     * @param page         The page of results to return. 0 to get the default (first page)
+     * @param language The language to include. Can be blank/null.
+     * @param page     The page of results to return. 0 to get the default (first page)
      */
     public List<TvSeries> searchTv(String query, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbTV.TMDB_METHOD_TV);

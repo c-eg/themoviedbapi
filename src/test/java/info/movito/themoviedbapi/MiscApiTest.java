@@ -52,7 +52,7 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         Discover discover = new Discover();
         discover.year(2013).language(LANGUAGE_ENGLISH);
 
-        List<MovieDb> result = tmdb.getDiscover().getDiscover(discover);
+        List<MovieDb> result = tmdb.getDiscover().getDiscover(discover).getResults();
         assertFalse("No movies discovered", result.isEmpty());
     }
 
@@ -134,7 +134,7 @@ public class MiscApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetGenreMovies() {
-        List<MovieDb> result = tmdb.getGenre().getGenreMovies(ID_GENRE_ACTION, LANGUAGE_DEFAULT, 0, Boolean.TRUE);
+        List<MovieDb> result = tmdb.getGenre().getGenreMovies(ID_GENRE_ACTION, LANGUAGE_DEFAULT, 0, Boolean.TRUE).getResults();
 
         assertTrue("No genre movies found", !result.isEmpty());
     }

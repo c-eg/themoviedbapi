@@ -1,8 +1,8 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.config.Account;
+import info.movito.themoviedbapi.model.core.MovieResults;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.core.StatusCode;
 import info.movito.themoviedbapi.tools.ApiUrl;
@@ -70,19 +70,19 @@ public class TmdbAccount extends AbstractApiElement {
     }
 
 
-    public List<MovieDb> getFavoriteMovies(String sessionId, int accountId) {
+    public MovieResults getFavoriteMovies(String sessionId, int accountId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite_movies");
         apiUrl.addParam(PARAM_SESSION, sessionId);
 
-        return mapJsonResult(apiUrl, TmdbMovies.MovieResults.class).getResults();
+        return mapJsonResult(apiUrl, MovieResults.class);
     }
 
 
-    public List<MovieDb> getRatedMovies(String sessionId, int accountId) {
+    public MovieResults getRatedMovies(String sessionId, int accountId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated_movies");
         apiUrl.addParam(PARAM_SESSION, sessionId);
 
-        return mapJsonResult(apiUrl, TmdbMovies.MovieResults.class).getResults();
+        return mapJsonResult(apiUrl, MovieResults.class);
     }
 
 
@@ -91,11 +91,11 @@ public class TmdbAccount extends AbstractApiElement {
      *
      * @return The watchlist of the user
      */
-    public List<MovieDb> getWatchList(String sessionId, int accountId) {
+    public MovieResults getWatchList(String sessionId, int accountId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "movie_watchlist");
         apiUrl.addParam(PARAM_SESSION, sessionId);
 
-        return mapJsonResult(apiUrl, TmdbMovies.MovieResults.class).getResults();
+        return mapJsonResult(apiUrl, MovieResults.class);
     }
 
 

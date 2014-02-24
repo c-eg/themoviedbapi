@@ -2,7 +2,7 @@ package info.movito.themoviedbapi.model.tv;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.Genre;
-import info.movito.themoviedbapi.model.people.PersonPeople;
+import info.movito.themoviedbapi.model.people.Person;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class TvSeries extends AbstractTvElement {
 
     @JsonProperty("created_by")
-    private List<PersonPeople> createdBy;
+    private List<Person> createdBy;
 
     @JsonProperty("episode_run_time")
     private List<Integer> episodeRuntime;
@@ -78,7 +78,7 @@ public class TvSeries extends AbstractTvElement {
     private String status;
 
 
-    public List<PersonPeople> getCreatedBy() {
+    public List<Person> getCreatedBy() {
         return createdBy;
     }
 

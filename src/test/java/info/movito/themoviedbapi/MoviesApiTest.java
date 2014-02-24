@@ -122,28 +122,28 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetNowPlayingMovies() {
-        List<MovieDb> result = tmdb.getMovies().getNowPlayingMovies(LANGUAGE_DEFAULT, 0);
+        List<MovieDb> result = tmdb.getMovies().getNowPlayingMovies(LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No now playing movies found", !result.isEmpty());
     }
 
 
     @Test
     public void testGetPopularMovieList() {
-        List<MovieDb> result = tmdb.getMovies().getPopularMovieList(LANGUAGE_DEFAULT, 0);
+        List<MovieDb> result = tmdb.getMovies().getPopularMovieList(LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No popular movies found", !result.isEmpty());
     }
 
 
     @Test
     public void testGetTopRatedMovies() {
-        List<MovieDb> results = tmdb.getMovies().getTopRatedMovies(LANGUAGE_DEFAULT, 0);
+        List<MovieDb> results = tmdb.getMovies().getTopRatedMovies(LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No top rated movies found", !results.isEmpty());
     }
 
 
     @Test
     public void testGetSimilarMovies() {
-        List<MovieDb> result = tmdb.getMovies().getSimilarMovies(ID_MOVIE_BLADE_RUNNER, LANGUAGE_DEFAULT, 0);
+        List<MovieDb> result = tmdb.getMovies().getSimilarMovies(ID_MOVIE_BLADE_RUNNER, LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No similar movies found", !result.isEmpty());
     }
 
@@ -159,7 +159,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
     @Test
     public void testGetUpcoming() throws Exception {
 
-        List<MovieDb> result = tmdb.getMovies().getUpcoming(LANGUAGE_DEFAULT, 0);
+        List<MovieDb> result = tmdb.getMovies().getUpcoming(LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No upcoming movies found", !result.isEmpty());
     }
 
@@ -170,7 +170,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         String endDate = null;
 
         // Get some popular movies
-        List<MovieDb> movieList = tmdb.getMovies().getPopularMovieList(LANGUAGE_DEFAULT, 0);
+        List<MovieDb> movieList = tmdb.getMovies().getPopularMovieList(LANGUAGE_DEFAULT, 0).getResults();
 
         //noinspection LoopStatementThatDoesntLoop
         for (MovieDb movie : movieList) {

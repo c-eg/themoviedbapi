@@ -1,10 +1,8 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Discover;
-import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.core.MovieResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
-
-import java.util.List;
 
 
 public class TmdbDiscover extends AbstractApiElement {
@@ -23,6 +21,7 @@ public class TmdbDiscover extends AbstractApiElement {
      * <p/>
      * You can alternatively create a "discover" object and pass it to this method to cut out the requirement for all of these
      * parameters
+     *
      *
      * @param page                 Minimum value is 1
      * @param language             ISO 639-1 code.
@@ -45,9 +44,9 @@ public class TmdbDiscover extends AbstractApiElement {
      *                             can be comma separated to indicate an 'AND' query.
      * @return
      */
-    public List<MovieDb> getDiscover(int page, String language, String sortBy, boolean includeAdult, int year,
-                                     int primaryReleaseYear, int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
-                                     String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies) {
+    public MovieResults getDiscover(int page, String language, String sortBy, boolean includeAdult, int year,
+                                    int primaryReleaseYear, int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
+                                    String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies) {
 
         Discover discover = new Discover();
         discover.page(page)
@@ -72,16 +71,17 @@ public class TmdbDiscover extends AbstractApiElement {
     /**
      * Discover movies by different types of data like average rating, number of votes, genres and certifications.
      *
+     *
      * @param discover A discover object containing the search criteria required
      * @return
      */
-    public List<MovieDb> getDiscover(Discover discover) {
+    public MovieResults getDiscover(Discover discover) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, "movie");
 
         for (Object key : discover.getParams().keySet()) {
             apiUrl.addParam((String) key, discover.getParams().get(key));
         }
 
-        return mapJsonResult(apiUrl, TmdbMovies.MovieResults.class).getResults();
+        return mapJsonResult(apiUrl, MovieResults.class);
     }
 }

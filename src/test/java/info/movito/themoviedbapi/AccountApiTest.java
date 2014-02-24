@@ -45,18 +45,18 @@ public class AccountApiTest extends AbstractTmdbApiTest {
         // make sure it's empty (because it's just a test account
         TmdbAccount account = tmdb.getAccount();
 
-        Assert.assertTrue(account.getWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).isEmpty());
+        Assert.assertTrue(account.getWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
 
         // add a movie
         account.addToWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550);
 
-        List<MovieDb> watchList = account.getWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS);
+        List<MovieDb> watchList = account.getWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults();
         assertTrue(watchList.size() == 1);
 
         // clean up again
         account.removeFromWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550);
 
-        Assert.assertTrue(account.getWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).isEmpty());
+        Assert.assertTrue(account.getWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
     }
 
 
@@ -65,18 +65,18 @@ public class AccountApiTest extends AbstractTmdbApiTest {
         // make sure it's empty (because it's just a test account
         TmdbAccount account = tmdb.getAccount();
 
-        Assert.assertTrue(account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).isEmpty());
+        Assert.assertTrue(account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
 
         // add a movie
         account.changeFavoriteStatus(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550, true);
 
-        List<MovieDb> watchList = account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS);
+        List<MovieDb> watchList = account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults();
         assertTrue(watchList.size() == 1);
 
         // clean up again
         account.changeFavoriteStatus(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550, false);
 
-        Assert.assertTrue(account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).isEmpty());
+        Assert.assertTrue(account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
     }
 
 
@@ -93,7 +93,7 @@ public class AccountApiTest extends AbstractTmdbApiTest {
         // get all rated movies
         Thread.sleep(2000);
 
-        List<MovieDb> ratedMovies = tmdb.getAccount().getRatedMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS);
+        List<MovieDb> ratedMovies = tmdb.getAccount().getRatedMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults();
         assertTrue(ratedMovies.size() > 0);
 
         // make sure that we find the movie and it is rated correctly

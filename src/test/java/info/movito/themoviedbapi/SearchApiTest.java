@@ -19,18 +19,18 @@ public class SearchApiTest extends AbstractTmdbApiTest {
     @Test
     public void testSearchMovie() {
         // Try a movie with less than 1 page of results
-        TmdbSearch seach = tmdb.getSearch();
+        TmdbSearch search = tmdb.getSearch();
 
-        List<MovieDb> movieList = seach.searchMovie("Blade Runner", 0, "", true, 0);
+        List<MovieDb> movieList = search.searchMovie("Blade Runner", 0, "", true, 0).getResults();
 //        List<MovieDb> movieList = tmdb.searchMovie("Blade Runner", "", true);
         assertTrue("No movies found, should be at least 1", movieList.size() > 0);
 
-        // Try a russian langugage movie
-        movieList = tmdb.getSearch().searchMovie("О чём говорят мужчины", 0, LANGUAGE_RUSSIAN, true, 0);
+        // Try a russian language movie
+        movieList = tmdb.getSearch().searchMovie("О чём говорят мужчины", 0, LANGUAGE_RUSSIAN, true, 0).getResults();
         assertTrue("No 'RU' movies found, should be at least 1", movieList.size() > 0);
 
         // Try a movie with more than 20 results
-        movieList = tmdb.getSearch().searchMovie("Star Wars", 0, LANGUAGE_ENGLISH, false, 0);
+        movieList = tmdb.getSearch().searchMovie("Star Wars", 0, LANGUAGE_ENGLISH, false, 0).getResults();
         assertTrue("Not enough movies found, should be over 15, found " + movieList.size(), movieList.size() >= 15);
     }
 

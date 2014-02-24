@@ -16,7 +16,7 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void getSeries() {
-        TvSeries result = tmdb.getTvSeries().getSeries(BREAKING_BAD_SERIES_ID, LANGUAGE_ENGLISH);
+        TvSeries result = tmdb.getTvSeries().getSeries(BREAKING_BAD_SERIES_ID, LANGUAGE_ENGLISH, TmdbTV.TvMethod.credits, TmdbTV.TvMethod.external_ids);
 
         assertNotNull("No results found", result);
         Assert.assertTrue("No results found", result.getNetworks().size() == 1);
