@@ -46,6 +46,26 @@ public class TvSeason extends AbstractTvElement {
     }
 
 
+    public void setAirDate(String airDate) {
+        this.airDate = airDate;
+    }
+
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+
+    public void setSeasonNumber(int seasonNumber) {
+        this.seasonNumber = seasonNumber;
+    }
+
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+
     public List<TvEpisode> getEpisodes() {
 
 
