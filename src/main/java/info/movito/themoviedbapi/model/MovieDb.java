@@ -3,6 +3,7 @@ package info.movito.themoviedbapi.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.model.core.IdElement;
+import info.movito.themoviedbapi.model.core.MovieKeywords;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.movie.MovieTrailers;
@@ -86,8 +87,9 @@ public class MovieDb extends IdElement {
     @JsonProperty("images")
     private MovieImages images;
 
+    // note: it seems to be a flaw in their api, because a paged result would be more consistent
     @JsonProperty("keywords")
-    private ResultsPage<Keyword> keywords;
+    private MovieKeywords keywords;
 
     @JsonProperty("releases")
     private TmdbMovies.ReleaseInfoResults releases;
@@ -239,7 +241,7 @@ public class MovieDb extends IdElement {
 
 
     public List<Keyword> getKeywords() {
-        return keywords != null ? keywords.getResults() : null;
+        return keywords != null ? keywords.getKeywords() : null;
     }
 
 

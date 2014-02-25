@@ -92,6 +92,17 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
 
     @Test
+    public void testMovieKeywordsAppendedMethod() {
+//        List<Keyword> result = tmdb.getMovies().getKeywords(10191);
+
+        MovieDb movie = tmdb.getMovies().getMovie(10191, "fr", TmdbMovies.MovieMethod.keywords);
+        List<Keyword> result = movie.getKeywords();
+        assertFalse("No keywords found", result.isEmpty());
+        assertEquals(7, result.size());
+    }
+
+
+    @Test
     public void testGetMovieReleaseInfo() {
         List<ReleaseInfo> result = tmdb.getMovies().getReleaseInfo(ID_MOVIE_BLADE_RUNNER, "");
         assertFalse("Release information missing", result.isEmpty());
