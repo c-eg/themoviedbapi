@@ -19,7 +19,7 @@ public class MovieDbException extends RuntimeException {
         /*
          * The movie id was not found
          */
-        MOVIE_ID_NOT_FOUND,
+        INVALID_ID,
         /*
          * Mapping failed from target to internal objects
          */
@@ -46,20 +46,19 @@ public class MovieDbException extends RuntimeException {
 
 
     private final MovieDbExceptionType exceptionType;
-    private final String response;
+    private final String description;
 
 
-    public MovieDbException(final MovieDbExceptionType exceptionType, final String response) {
-        super();
+    public MovieDbException(final MovieDbExceptionType exceptionType, final String description) {
         this.exceptionType = exceptionType;
-        this.response = response;
+        this.description = description;
     }
 
 
-    public MovieDbException(final MovieDbExceptionType exceptionType, final String response, final Throwable cause) {
+    public MovieDbException(final MovieDbExceptionType exceptionType, final String description, final Throwable cause) {
         super(cause);
         this.exceptionType = exceptionType;
-        this.response = response;
+        this.description = description;
     }
 
 
@@ -68,7 +67,16 @@ public class MovieDbException extends RuntimeException {
     }
 
 
-    public String getResponse() {
-        return response;
+    public String getDescription() {
+        return description;
+    }
+
+
+    @Override
+    public String toString() {
+        return "MovieDbException{" +
+                "type=" + exceptionType +
+                ", description='" + description + '\'' +
+                "}\n " + super.toString();
     }
 }

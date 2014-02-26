@@ -4,6 +4,7 @@ import info.movito.themoviedbapi.model.*;
 import info.movito.themoviedbapi.model.changes.ChangesItems;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.Person;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -189,6 +190,17 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
             assertTrue("No changes found", result.getChangedItems().size() > 0);
             break;
+        }
+    }
+
+
+    @Test
+    public void testInvalidID() {
+        try {
+            tmdb.getMovies().getMovie(199392, "fr", TmdbMovies.MovieMethod.values());
+            Assert.fail("exception should have been thrown");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
