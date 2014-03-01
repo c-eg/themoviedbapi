@@ -64,4 +64,11 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
         Assert.assertEquals("episode titles does not match", "4339518", episode.getExternalIds().getTvdbId());
     }
 
+//    @Test
+//    public void testHomelandCast() {
+//        TvEpisode episode = tmdb.getTvEpisodes().getEpisode(1407, 3, 7, LANGUAGE_ENGLISH, TmdbTvEpisodes.EpisodeMethod.values());
+//        Credits credits = tmdb.getTvEpisodes().getCredits(1407, 3, 7, LANGUAGE_ENGLISH);
+//
+//        System.err.println(episode);
+//    }
 }

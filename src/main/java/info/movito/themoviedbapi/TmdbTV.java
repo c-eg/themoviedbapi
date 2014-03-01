@@ -9,6 +9,8 @@ public class TmdbTV extends AbstractApiElement {
 
     public static final String TMDB_METHOD_TV = "tv";
 
+    public static final String TMDB_METHOD_TV_CREDITS = "credits";
+
 
     public static enum TvMethod {credits, external_ids, images}
 
