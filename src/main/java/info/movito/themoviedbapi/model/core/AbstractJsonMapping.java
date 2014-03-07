@@ -31,7 +31,7 @@ public abstract class AbstractJsonMapping implements Serializable {
         sb.append("Unknown property: '").append(key);
         sb.append("' value: '").append(value).append("'");
 
-        getLogger(this.getClass()).warn(sb.toString());
+        getLogger(this.getClass()).trace(sb.toString());
     }
 
 
