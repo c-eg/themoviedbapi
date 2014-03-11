@@ -20,7 +20,7 @@ public class ApiUrl {
     /*
      * TmdbApi API Base URL
      */
-    private static final String TMDB_API_BASE = "http://api.themoviedb.org/3/";
+    private static final String TMDB_API_BASE = "https://api.themoviedb.org/3/";
 
     private static final String APPEND_TO_RESPONSE = "append_to_response";
 
