@@ -4,9 +4,11 @@ import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.Company;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieList;
+import info.movito.themoviedbapi.model.core.MovieResults;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.tv.TvSeries;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -15,6 +17,18 @@ import static org.junit.Assert.*;
 
 
 public class SearchApiTest extends AbstractTmdbApiTest {
+
+    // fails currently but this is a known bug in tmdb http://www.themoviedb.org/talk/531e1f739251417a4a000bab
+    @Test
+    public void testQueryEscape() {
+        TmdbSearch search = tmdb.getSearch();
+
+        MovieResults movieResults = search.searchMovie("What Ever Happened to Baby Jane?", null, null, false, null);
+
+        Assert.assertTrue(movieResults.getResults().size() == 2);
+        Assert.assertEquals(10242, movieResults.getResults().get(0).getId());
+    }
+
 
     @Test
     public void testSearchMovie() {
