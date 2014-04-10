@@ -4,7 +4,6 @@ import info.movito.themoviedbapi.model.JobDepartment;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.config.TmdbConfiguration;
 import info.movito.themoviedbapi.tools.*;
-import info.movito.themoviedbapi.tools.MovieDbException.MovieDbExceptionType;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;

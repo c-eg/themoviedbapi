@@ -4,6 +4,7 @@ import info.movito.themoviedbapi.model.config.TokenAuthorisation;
 import info.movito.themoviedbapi.model.config.TokenSession;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 
 
 public class TmdbAuthentication extends AbstractApiElement {
@@ -45,7 +46,7 @@ public class TmdbAuthentication extends AbstractApiElement {
 
         if (!token.getSuccess()) {
             logger.warn("Authorisation token was not successful!");
-            throw new MovieDbException(MovieDbException.MovieDbExceptionType.AUTHORISATION_FAILURE, "Authorisation token was not successful!");
+            throw new MovieDbException(MovieDbExceptionType.AUTHORISATION_FAILURE, "Authorisation token was not successful!");
         }
 
         apiUrl.addParam(PARAM_TOKEN, token.getRequestToken());

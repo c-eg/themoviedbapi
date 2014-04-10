@@ -7,6 +7,7 @@ import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.core.StatusCode;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;
@@ -115,7 +116,7 @@ public class TmdbAccount extends AbstractApiElement {
         apiUrl.addParam(PARAM_SESSION, sessionId);
 
         if (rating < 0 || rating > 10) {
-            throw new MovieDbException(MovieDbException.MovieDbExceptionType.UNKNOWN_CAUSE, "rating out of range");
+            throw new MovieDbException(MovieDbExceptionType.UNKNOWN_CAUSE, "rating out of range");
         }
 
         String jsonBody = Utils.convertToJson(jsonMapper, Collections.singletonMap("value", rating));

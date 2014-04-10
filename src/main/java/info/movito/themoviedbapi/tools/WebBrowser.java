@@ -82,7 +82,7 @@ public final class WebBrowser implements UrlReader {
         try {
             return request(new URL(url), null, RequestMethod.GET);
         } catch (MalformedURLException ex) {
-            throw new MovieDbException(MovieDbException.MovieDbExceptionType.INVALID_URL, null, ex);
+            throw new MovieDbException(MovieDbExceptionType.INVALID_URL, null, ex);
         }
     }
 
@@ -103,7 +103,7 @@ public final class WebBrowser implements UrlReader {
 
             return cnx;
         } catch (IOException ex) {
-            throw new MovieDbException(MovieDbException.MovieDbExceptionType.INVALID_URL, null, ex);
+            throw new MovieDbException(MovieDbExceptionType.INVALID_URL, null, ex);
         }
     }
 
@@ -144,7 +144,14 @@ public final class WebBrowser implements UrlReader {
 
                 // http://stackoverflow.com/questions/4633048/httpurlconnection-reading-response-content-on-403-error
                 if (cnx.getResponseCode() >= 400) {
+                    // for some strange reason the error stream is sometimes null
+                    // see http://stackoverflow.com/questions/6070350/errorstream-in-httpurlconnection
+                    if (cnx.getErrorStream() == null) {
+                        throw new MovieDbException(MovieDbExceptionType.ERR_STREAM_NULL, url.toString());
+                    }
+
                     in = new BufferedReader(new InputStreamReader(cnx.getErrorStream(), getCharset(cnx)));
+
                 } else {
                     in = new BufferedReader(new InputStreamReader(cnx.getInputStream(), getCharset(cnx)));
                 }
@@ -164,7 +171,7 @@ public final class WebBrowser implements UrlReader {
             }
             return content.toString();
         } catch (IOException ex) {
-            throw new MovieDbException(MovieDbException.MovieDbExceptionType.CONNECTION_ERROR, null, ex);
+            throw new MovieDbException(MovieDbExceptionType.CONNECTION_ERROR, null, ex);
         } finally {
             if (content != null) {
                 try {

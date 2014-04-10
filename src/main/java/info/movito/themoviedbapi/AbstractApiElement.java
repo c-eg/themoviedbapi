@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import info.movito.themoviedbapi.model.core.StatusCode;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 import info.movito.themoviedbapi.tools.RequestMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,13 +52,13 @@ public abstract class AbstractApiElement {
             // check if was error status
             StatusCode status = jsonMapper.readValue(webpage, StatusCode.class);
             if (status.getStatusCode() == 6) {
-                throw new MovieDbException(MovieDbException.MovieDbExceptionType.INVALID_ID, status.getStatusMessage());
+                throw new MovieDbException(MovieDbExceptionType.INVALID_ID, status.getStatusMessage());
             }
 
             return jsonMapper.readValue(webpage, someClass);
         } catch (IOException ex) {
             logger.warn("Failed to map json data: {}", ex.getMessage());
-            throw new MovieDbException(MovieDbException.MovieDbExceptionType.MAPPING_FAILED, webpage, ex);
+            throw new MovieDbException(MovieDbExceptionType.MAPPING_FAILED, webpage, ex);
         }
     }
 }

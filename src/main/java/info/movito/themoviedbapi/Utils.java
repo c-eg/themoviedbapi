@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.config.TmdbConfiguration;
 import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.LoggerFactory;
 
@@ -108,7 +109,7 @@ public class Utils {
 
         TmdbConfiguration configuration = tmdb.getConfiguration();
         if (!configuration.isValidSize(requiredSize)) {
-            throw new MovieDbException(MovieDbException.MovieDbExceptionType.INVALID_IMAGE, requiredSize);
+            throw new MovieDbException(MovieDbExceptionType.INVALID_IMAGE, requiredSize);
         }
 
         StringBuilder sb = new StringBuilder(configuration.getBaseUrl());
@@ -118,7 +119,7 @@ public class Utils {
             return (new URL(sb.toString()));
         } catch (MalformedURLException ex) {
             LoggerFactory.getLogger(Utils.class).warn("Failed to create image URL: {}", ex.getMessage());
-            throw new MovieDbException(MovieDbException.MovieDbExceptionType.INVALID_URL, sb.toString(), ex);
+            throw new MovieDbException(MovieDbExceptionType.INVALID_URL, sb.toString(), ex);
         }
     }
 
