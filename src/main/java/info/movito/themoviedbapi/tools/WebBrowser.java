@@ -144,7 +144,11 @@ public final class WebBrowser implements UrlReader {
 
                 // http://stackoverflow.com/questions/4633048/httpurlconnection-reading-response-content-on-403-error
                 if (cnx.getResponseCode() >= 400) {
-                    in = new BufferedReader(new InputStreamReader(cnx.getErrorStream(), getCharset(cnx)));
+                    if (cnx.getErrorStream() != null) {
+                        in = new BufferedReader(new InputStreamReader(cnx.getErrorStream(), getCharset(cnx)));
+                    } else {
+                        return null;
+                    }
                 } else {
                     in = new BufferedReader(new InputStreamReader(cnx.getInputStream(), getCharset(cnx)));
                 }
