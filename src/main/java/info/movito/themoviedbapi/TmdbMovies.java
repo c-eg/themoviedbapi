@@ -195,7 +195,7 @@ public class TmdbMovies extends AbstractApiElement {
      * @param page
      */
     public MovieResults getSimilarMovies(int movieId, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "similar_movies");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "similar");
 
         if (StringUtils.isNotBlank(language)) {
             apiUrl.addParam(PARAM_LANGUAGE, language);
