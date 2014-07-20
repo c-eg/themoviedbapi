@@ -18,6 +18,10 @@ public class MovieImages extends IdElement {
     @JsonProperty("profiles")
     private List<Artwork> profiles;
 
+    // needed for episode backdrops
+    @JsonProperty("stills")
+    private List<Artwork> stills;
+
 
     public List<Artwork> getBackdrops() {
         return backdrops;
@@ -34,6 +38,11 @@ public class MovieImages extends IdElement {
     }
 
 
+    public List<Artwork> getStills() {
+        return stills;
+    }
+
+
     public void setBackdrops(List<Artwork> backdrops) {
         this.backdrops = backdrops;
     }
@@ -46,6 +55,11 @@ public class MovieImages extends IdElement {
 
     public void setProfiles(List<Artwork> profiles) {
         this.profiles = profiles;
+    }
+
+
+    public void setStills(List<Artwork> stills) {
+        this.stills = stills;
     }
 
 
