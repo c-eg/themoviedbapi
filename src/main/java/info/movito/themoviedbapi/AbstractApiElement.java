@@ -48,6 +48,8 @@ public abstract class AbstractApiElement {
     public <T> T mapJsonResult(ApiUrl apiUrl, Class<T> someClass, String jsonBody, RequestMethod requestMethod) {
         String webpage = tmdbApi.requestWebPage(apiUrl, jsonBody, requestMethod);
 
+//        System.out.println(webpage);
+
         try {
             // check if was error status
             StatusCode status = jsonMapper.readValue(webpage, StatusCode.class);

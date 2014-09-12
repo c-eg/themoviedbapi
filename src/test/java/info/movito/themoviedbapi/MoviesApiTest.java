@@ -27,6 +27,8 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
     public void testGetMovieInfoWithAppendedMethods() {
         MovieDb result = tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH, TmdbMovies.MovieMethod.values());
         assertEquals("Incorrect movie information", "Blade Runner", result.getOriginalTitle());
+        assertTrue("no videos", result.getVideos().size() > 0);
+
     }
 
 
@@ -110,9 +112,16 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
     }
 
 
+//    @Test
+//    public void testGetMovieTrailers() {
+//        List<Trailer> result = tmdb.getMovies().getTrailers(ID_MOVIE_BLADE_RUNNER, "");
+//        assertFalse("Movie trailers missing", result.isEmpty());
+//    }
+
     @Test
-    public void testGetMovieTrailers() {
-        List<Trailer> result = tmdb.getMovies().getTrailers(ID_MOVIE_BLADE_RUNNER, "");
+    public void testGetMovieVideos() {
+        List<Video> result = tmdb.getMovies().getVideos(ID_MOVIE_BLADE_RUNNER, "");
+        System.err.println(result);
         assertFalse("Movie trailers missing", result.isEmpty());
     }
 

@@ -6,9 +6,6 @@ import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.MovieKeywords;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
-import info.movito.themoviedbapi.model.movie.MovieTrailers;
-import info.movito.themoviedbapi.model.movie.MovieTranslations;
-import info.movito.themoviedbapi.model.movie.MoviesAlternativeTitles;
 import info.movito.themoviedbapi.model.people.PersonCast;
 import info.movito.themoviedbapi.model.people.PersonCrew;
 
@@ -94,8 +91,8 @@ public class MovieDb extends IdElement {
     @JsonProperty("releases")
     private TmdbMovies.ReleaseInfoResults releases;
 
-    @JsonProperty("trailers")
-    private MovieTrailers trailers;
+    @JsonProperty("videos")
+    private Video.Results videos;
 
     @JsonProperty("translations")
     private MovieTranslations translations;
@@ -250,8 +247,8 @@ public class MovieDb extends IdElement {
     }
 
 
-    public List<Trailer> getTrailers() {
-        return trailers != null ? trailers.getAll() : null;
+    public List<Video> getVideos() {
+        return videos != null ? videos.getVideos() : null;
     }
 
 

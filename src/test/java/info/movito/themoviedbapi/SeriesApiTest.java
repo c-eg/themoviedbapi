@@ -71,4 +71,13 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
         Assert.assertFalse(episode.getImages().getStills().isEmpty());
 
     }
+
+
+    @Test
+    public void testGetMovieTrailers() {
+        //todo implement me
+//        List<Trailer> result = tmdb.getTvSeries().getSeries(46648, "", TmdbTV.TvMethod.values()).getTrailers();
+//        assertFalse("Movie trailers missing", result.isEmpty());
+    }
+
 }

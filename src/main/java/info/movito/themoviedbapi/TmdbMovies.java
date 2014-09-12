@@ -6,9 +6,6 @@ import info.movito.themoviedbapi.model.changes.ChangesItems;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.MovieResults;
 import info.movito.themoviedbapi.model.keywords.Keyword;
-import info.movito.themoviedbapi.model.movie.MovieTrailers;
-import info.movito.themoviedbapi.model.movie.MovieTranslations;
-import info.movito.themoviedbapi.model.movie.MoviesAlternativeTitles;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
 
@@ -27,7 +24,10 @@ public class TmdbMovies extends AbstractApiElement {
     // account_states and rating are not included as it wouldn't work anyway because of missing session id
     // --> inject session id into tmdb-instance?
     public static enum MovieMethod {
-        alternative_titles, credits, images, keywords, releases, trailers, translations, similar_movies,
+        alternative_titles, credits, images, keywords, releases,
+        @Deprecated trailers,
+        videos, // replacement for trailers
+        translations, similar_movies,
         reviews, lists, changes, latest, upcoming, now_playing, popular, top_rated,
     }
 
@@ -153,21 +153,21 @@ public class TmdbMovies extends AbstractApiElement {
 
 
     /**
-     * This method is used to retrieve all of the trailers for a particular movie.
+     * This method is used to retrieve all of the videos for a particular movie.
      * <p/>
      * Supported sites are YouTube and QuickTime.
      *
      * @param movieId
      * @param language
      */
-    public List<Trailer> getTrailers(int movieId, String language) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "trailers");
+    public List<Video> getVideos(int movieId, String language) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.videos);
 
         if (StringUtils.isNotBlank(language)) {
             apiUrl.addParam(PARAM_LANGUAGE, language);
         }
 
-        return mapJsonResult(apiUrl, MovieTrailers.class).getAll();
+        return mapJsonResult(apiUrl, Video.Results.class).getVideos();
     }
 
 

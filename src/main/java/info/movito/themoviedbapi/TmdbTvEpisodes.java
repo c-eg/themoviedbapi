@@ -12,7 +12,7 @@ public class TmdbTvEpisodes extends AbstractApiElement {
     public static final String TMDB_METHOD_TV_EPISODE = "episode";
 
 
-    public static enum EpisodeMethod {credits, external_ids, images}
+    public static enum EpisodeMethod {credits, external_ids, images, videos}
 
 
     TmdbTvEpisodes(TmdbApi tmdbApi) {
