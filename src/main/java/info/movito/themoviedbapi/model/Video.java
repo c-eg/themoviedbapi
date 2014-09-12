@@ -18,6 +18,9 @@ public class Video extends NamedStringIdElement {
     @JsonProperty("site")
     private String site;
 
+    @JsonProperty("key")
+    private String key;
+
     @JsonProperty("size")
     private Integer size;
 
@@ -49,6 +52,11 @@ public class Video extends NamedStringIdElement {
 
     public Integer getSize() {
         return size;
+    }
+
+
+    public String getKey() {
+        return key;
     }
 
 
