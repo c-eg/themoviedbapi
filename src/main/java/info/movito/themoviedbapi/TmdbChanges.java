@@ -4,7 +4,7 @@ import info.movito.themoviedbapi.tools.MovieDbException;
 import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 
 
-public class TmdbChanges extends AbstractApiElement {
+public class TmdbChanges extends AbstractTmdbApi {
 
     TmdbChanges(TmdbApi tmdbApi) {
         super(tmdbApi);

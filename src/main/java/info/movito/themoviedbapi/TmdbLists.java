@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 
-public class TmdbLists extends AbstractApiElement {
+public class TmdbLists extends AbstractTmdbApi {
 
 
     public static final String TMDB_METHOD_LIST = "list";

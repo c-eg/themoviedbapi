@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 
-public class TmdbReviews extends AbstractApiElement {
+public class TmdbReviews extends AbstractTmdbApi {
 
     TmdbReviews(TmdbApi tmdbApi) {
         super(tmdbApi);

@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class TmdbAccount extends AbstractApiElement {
+public class TmdbAccount extends AbstractTmdbApi {
 
     public static final String PARAM_SESSION = "session_id";
     public static final String TMDB_METHOD_ACCOUNT = "account";

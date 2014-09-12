@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 
-public class TmdbSearch extends AbstractApiElement {
+public class TmdbSearch extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_SEARCH = "search";
     private static final String PARAM_QUERY = "query";
@@ -177,8 +177,8 @@ public class TmdbSearch extends AbstractApiElement {
     /**
      * Search Companies.
      * <p/>
-     * You can use this method to search for production companies that are part of TMDb. The company IDs will map to those returned
-     * on movie calls.
+     * You can use this method to search for production companies that are part of TMDb. The company IDs will map to
+     * those returned on movie calls.
      * <p/>
      * http://help.themoviedb.org/kb/api/search-companies
      *

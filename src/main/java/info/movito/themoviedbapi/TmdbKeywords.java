@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 
-public class TmdbKeywords extends AbstractApiElement {
+public class TmdbKeywords extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_KEYWORD = "keyword";
 

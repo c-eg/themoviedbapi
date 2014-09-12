@@ -14,7 +14,7 @@ import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 import java.util.List;
 
 
-public class TmdbPeople extends AbstractApiElement {
+public class TmdbPeople extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_PERSON = "person";
 

@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 
-public abstract class AbstractApiElement {
+public abstract class AbstractTmdbApi {
 
     public static final String PARAM_YEAR = "year";
     public static final String PARAM_PAGE = "page";
@@ -30,7 +30,7 @@ public abstract class AbstractApiElement {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
-    AbstractApiElement(TmdbApi tmdbApi) {
+    AbstractTmdbApi(TmdbApi tmdbApi) {
         this.tmdbApi = tmdbApi;
     }
 

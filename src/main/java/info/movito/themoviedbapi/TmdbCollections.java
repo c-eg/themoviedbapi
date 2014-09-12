@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 
-public class TmdbCollections extends AbstractApiElement {
+public class TmdbCollections extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_COLLECTION = "collection";
 

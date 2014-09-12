@@ -12,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 
-public class TmdbMovies extends AbstractApiElement {
+public class TmdbMovies extends AbstractTmdbApi {
 
     // API Methods
     public static final String TMDB_METHOD_MOVIE = "movie";

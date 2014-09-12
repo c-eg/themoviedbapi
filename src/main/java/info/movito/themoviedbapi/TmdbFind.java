@@ -5,7 +5,7 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
 
 
-public class TmdbFind extends AbstractApiElement {
+public class TmdbFind extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_FIND = "find";
 

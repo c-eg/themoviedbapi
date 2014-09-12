@@ -8,7 +8,7 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import java.util.List;
 
 
-public class TmdbJobs extends AbstractApiElement {
+public class TmdbJobs extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_JOB = "job";
 

@@ -1,6 +1,6 @@
 package info.movito.themoviedbapi.model;
 
-import info.movito.themoviedbapi.AbstractApiElement;
+import info.movito.themoviedbapi.AbstractTmdbApi;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
@@ -51,7 +51,7 @@ public class Discover {
      */
     public Discover page(Integer page) {
         if (page != null && page > 0) {
-            params.put(AbstractApiElement.PARAM_PAGE, String.valueOf(page));
+            params.put(AbstractTmdbApi.PARAM_PAGE, String.valueOf(page));
         }
         return this;
     }
@@ -65,20 +65,15 @@ public class Discover {
      */
     public Discover language(String language) {
         if (StringUtils.isNotBlank(language)) {
-            params.put(AbstractApiElement.PARAM_LANGUAGE, language);
+            params.put(AbstractTmdbApi.PARAM_LANGUAGE, language);
         }
         return this;
     }
 
 
     /**
-     * Available options are <br>
-     * vote_average.desc<br>
-     * vote_average.asc<br>
-     * release_date.desc<br>
-     * release_date.asc<br>
-     * popularity.desc<br>
-     * popularity.asc
+     * Available options are <br> vote_average.desc<br> vote_average.asc<br> release_date.desc<br> release_date.asc<br>
+     * popularity.desc<br> popularity.asc
      *
      * @param sortBy
      * @return
@@ -98,7 +93,7 @@ public class Discover {
      * @return
      */
     public Discover includeAdult(boolean includeAdult) {
-        params.put(AbstractApiElement.PARAM_ADULT, String.valueOf(includeAdult));
+        params.put(AbstractTmdbApi.PARAM_ADULT, String.valueOf(includeAdult));
         return this;
     }
 
@@ -111,7 +106,7 @@ public class Discover {
      */
     public Discover year(int year) {
         if (checkYear(year)) {
-            params.put(AbstractApiElement.PARAM_YEAR, String.valueOf(year));
+            params.put(AbstractTmdbApi.PARAM_YEAR, String.valueOf(year));
         }
         return this;
     }

@@ -6,13 +6,18 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
 
 
-public class TmdbTvEpisodes extends AbstractApiElement {
+public class TmdbTvEpisodes extends AbstractTmdbApi {
 
 
     public static final String TMDB_METHOD_TV_EPISODE = "episode";
 
 
-    public static enum EpisodeMethod {credits, external_ids, images, videos}
+    public static enum EpisodeMethod {
+        // base method shared by all tv apis
+        credits, external_ids, images, videos
+        // specific method for episodes
+        // ...tbd
+    }
 
 
     TmdbTvEpisodes(TmdbApi tmdbApi) {
@@ -34,7 +39,7 @@ public class TmdbTvEpisodes extends AbstractApiElement {
 
 
     public Credits getCredits(int seriesId, int seasonNumber, int episodeNumber, String language) {
-        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, seriesId, TmdbTvSeasons.TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, TmdbTV.TMDB_METHOD_TV_CREDITS);
+        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, seriesId, TmdbTvSeasons.TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, EpisodeMethod.credits);
 
         if (StringUtils.isNotBlank(language)) {
             apiUrl.addParam(PARAM_LANGUAGE, language);

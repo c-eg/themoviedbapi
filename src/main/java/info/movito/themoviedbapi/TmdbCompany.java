@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 
-public class TmdbCompany extends AbstractApiElement {
+public class TmdbCompany extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_COMPANY = "company";
 
@@ -34,7 +34,8 @@ public class TmdbCompany extends AbstractApiElement {
     /**
      * This method is used to retrieve the movies associated with a company.
      * <p/>
-     * These movies are returned in order of most recently released to oldest. The default response will return 20 movies per page.
+     * These movies are returned in order of most recently released to oldest. The default response will return 20
+     * movies per page.
      * <p/>
      * TODO: Implement more than 20 movies
      *

@@ -7,7 +7,7 @@ import info.movito.themoviedbapi.tools.MovieDbException;
 import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 
 
-public class TmdbAuthentication extends AbstractApiElement {
+public class TmdbAuthentication extends AbstractTmdbApi {
 
     public static final String PARAM_TOKEN = "request_token";
     public static final String TMDB_METHOD_AUTH = "authentication";
@@ -60,10 +60,11 @@ public class TmdbAuthentication extends AbstractApiElement {
      * <p/>
      * A guest session can be used to rate movies without having a registered TMDb user account.
      * <p/>
-     * You should only generate a single guest session per user (or device) as you will be able to attach the ratings to a TMDb user
-     * account in the future.
+     * You should only generate a single guest session per user (or device) as you will be able to attach the ratings to
+     * a TMDb user account in the future.
      * <p/>
-     * There are also IP limits in place so you should always make sure it's the end user doing the guest session actions.
+     * There are also IP limits in place so you should always make sure it's the end user doing the guest session
+     * actions.
      * <p/>
      * If a guest session is not used for the first time within 24 hours, it will be automatically discarded.
      */

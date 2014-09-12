@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 
-public class TmdbGenre extends AbstractApiElement {
+public class TmdbGenre extends AbstractTmdbApi {
 
     public static final String PARAM_INCLUDE_ALL_MOVIES = "include_all_movies";
     public static final String TMDB_METHOD_GENRE = "genre";

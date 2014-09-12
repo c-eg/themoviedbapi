@@ -51,7 +51,7 @@ public class TmdbApi {
     public String requestWebPage(ApiUrl apiUrl, String jsonBody, RequestMethod requestMethod) {
 
         assert StringUtils.isNotBlank(apiKey);
-        apiUrl.addParam(AbstractApiElement.PARAM_API_KEY, getApiKey());
+        apiUrl.addParam(AbstractTmdbApi.PARAM_API_KEY, getApiKey());
 
         // inject language
 //        if (isNotBlank(language)) {

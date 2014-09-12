@@ -4,7 +4,7 @@ import info.movito.themoviedbapi.model.config.ConfigResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
 
-class TmdbConfig extends AbstractApiElement {
+class TmdbConfig extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_CONFIGURATION = "configuration";
 

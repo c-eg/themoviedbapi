@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.ExternalIds;
 import info.movito.themoviedbapi.model.MovieImages;
+import info.movito.themoviedbapi.model.Video;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
+
+import java.util.List;
 
 
 public class AbstractTvElement extends NamedIdElement {
@@ -21,6 +24,9 @@ public class AbstractTvElement extends NamedIdElement {
     @JsonProperty("images")
     private MovieImages images;
 
+    @JsonProperty("videos")
+    private Video.Results videos;
+
 
     public Credits getCredits() {
         return credits;
@@ -34,5 +40,10 @@ public class AbstractTvElement extends NamedIdElement {
 
     public MovieImages getImages() {
         return images;
+    }
+
+
+    public List<Video> getVideos() {
+        return videos != null ? videos.getVideos() : null;
     }
 }
