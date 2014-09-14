@@ -89,12 +89,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, SeriesResults.class).getResults();
-    }
-
-
-    public static class SeriesResults extends ResultsPage<TvSeries> {
-
+        return mapJsonResult(apiUrl, TvResults.class).getResults();
     }
 
 

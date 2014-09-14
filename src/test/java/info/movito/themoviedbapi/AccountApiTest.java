@@ -4,6 +4,7 @@ import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.config.Account;
 import info.movito.themoviedbapi.model.core.StatusCode;
+import info.movito.themoviedbapi.model.tv.TvSeries;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -45,18 +46,26 @@ public class AccountApiTest extends AbstractTmdbApiTest {
         // make sure it's empty (because it's just a test account
         TmdbAccount account = tmdb.getAccount();
 
-        Assert.assertTrue(account.getWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
+        Assert.assertTrue(account.getWatchListMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
+        Assert.assertTrue(account.getWatchListSeries(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
 
         // add a movie
-        account.addToWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550);
+        account.addToWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550, TmdbAccount.MediaType.MOVIE);
 
-        List<MovieDb> watchList = account.getWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults();
-        assertTrue(watchList.size() == 1);
+        // add a tv series
+        account.addToWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 1396, TmdbAccount.MediaType.TV);
+
+        List<MovieDb> watchlistMovies = account.getWatchListMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults();
+        assertTrue(watchlistMovies.size() == 1);
+
+        List<TvSeries> watchlistSeries = account.getWatchListSeries(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults();
+        assertTrue(watchlistSeries.size() == 1);
 
         // clean up again
-        account.removeFromWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550);
+        account.removeFromWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 1396, TmdbAccount.MediaType.TV);
+        account.removeFromWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550, TmdbAccount.MediaType.MOVIE);
 
-        Assert.assertTrue(account.getWatchList(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
+        Assert.assertTrue(account.getWatchListMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
     }
 
 
@@ -68,13 +77,13 @@ public class AccountApiTest extends AbstractTmdbApiTest {
         Assert.assertTrue(account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
 
         // add a movie
-        account.changeFavoriteStatus(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550, true);
+        account.changeFavoriteStatus(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550, TmdbAccount.MediaType.MOVIE, true);
 
-        List<MovieDb> watchList = account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults();
-        assertTrue(watchList.size() == 1);
+        List<MovieDb> favoriteMovies = account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults();
+        assertTrue(favoriteMovies.size() == 1);
 
         // clean up again
-        account.changeFavoriteStatus(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550, false);
+        account.changeFavoriteStatus(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS, 550, TmdbAccount.MediaType.MOVIE, false);
 
         Assert.assertTrue(account.getFavoriteMovies(SESSION_ID_APITESTS, ACCOUNT_ID_APITESTS).getResults().isEmpty());
     }

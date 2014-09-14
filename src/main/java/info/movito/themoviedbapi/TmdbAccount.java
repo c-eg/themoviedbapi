@@ -71,12 +71,6 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
 
-    public MovieResults getFavoriteMovies(String sessionId, int accountId) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite_movies");
-        apiUrl.addParam(PARAM_SESSION, sessionId);
-
-        return mapJsonResult(apiUrl, MovieResults.class);
-    }
 
 
     public MovieResults getRatedMovies(String sessionId, int accountId) {
@@ -87,17 +81,6 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
 
-    /**
-     * Get the list of movies on an accounts watchlist.
-     *
-     * @return The watchlist of the user
-     */
-    public MovieResults getWatchList(String sessionId, int accountId) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "movie_watchlist");
-        apiUrl.addParam(PARAM_SESSION, sessionId);
-
-        return mapJsonResult(apiUrl, MovieResults.class);
-    }
 
 
     /**
@@ -125,47 +108,106 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
 
-    public StatusCode changeFavoriteStatus(String sessionId, int accountId, Integer movieId, boolean isFavorite) {
+    public MovieResults getFavoriteMovies(String sessionId, int accountId) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies");
+        apiUrl.addParam(PARAM_SESSION, sessionId);
+
+        return mapJsonResult(apiUrl, MovieResults.class);
+    }
+
+
+    public TvResults getFavoriteSeries(String sessionId, int accountId) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv");
+        apiUrl.addParam(PARAM_SESSION, sessionId);
+
+        return mapJsonResult(apiUrl, TvResults.class);
+    }
+
+
+    public StatusCode changeFavoriteStatus(String sessionId, int accountId, Integer movieId, MediaType mediaType, boolean isFavorite) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite");
 
         apiUrl.addParam(PARAM_SESSION, sessionId);
 
         HashMap<String, Object> body = new HashMap<String, Object>();
-        body.put("movie_id", movieId);
+
+        body.put("media_type", mediaType.toString());
+        body.put("media_id", movieId);
         body.put("favorite", isFavorite);
+
         String jsonBody = Utils.convertToJson(jsonMapper, body);
 
         return mapJsonResult(apiUrl, StatusCode.class, jsonBody);
+    }
+
+
+    /**
+     * Get the list of movies on an accounts watchlist.
+     *
+     * @return The watchlist of the user
+     */
+    public MovieResults getWatchListMovies(String sessionId, int accountId) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/movies");
+        apiUrl.addParam(PARAM_SESSION, sessionId);
+
+        return mapJsonResult(apiUrl, MovieResults.class);
+    }
+
+
+    public TvResults getWatchListSeries(String sessionId, int accountId) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/tv");
+        apiUrl.addParam(PARAM_SESSION, sessionId);
+
+        return mapJsonResult(apiUrl, TvResults.class);
     }
 
 
     /**
      * Add a movie to an account's watch list.
      */
-    public StatusCode addToWatchList(String sessionId, int accountId, Integer movieId) {
-        return modifyWatchList(sessionId, accountId, movieId, true);
+    public StatusCode addToWatchList(String sessionId, int accountId, Integer movieId, MediaType mediaType) {
+        return modifyWatchList(sessionId, accountId, movieId, true, mediaType);
     }
 
 
     /**
      * Remove a movie from an account's watch list.
      */
-    public StatusCode removeFromWatchList(String sessionId, int accountId, Integer movieId) {
-        return modifyWatchList(sessionId, accountId, movieId, false);
+    public StatusCode removeFromWatchList(String sessionId, int accountId, Integer movieId, MediaType mediaType) {
+        return modifyWatchList(sessionId, accountId, movieId, false, mediaType);
     }
 
 
-    private StatusCode modifyWatchList(String sessionId, int accountId, Integer movieId, boolean add) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "movie_watchlist");
+    private StatusCode modifyWatchList(String sessionId, int accountId, Integer movieId, boolean isWatched, MediaType mediaType) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
 
         apiUrl.addParam(PARAM_SESSION, sessionId);
 
         HashMap<String, Object> body = new HashMap<String, Object>();
-        body.put("movie_id", movieId);
-        body.put("movie_watchlist", add);
+
+        body.put("media_type", mediaType.toString());
+        body.put("media_id", movieId);
+        body.put("watchlist", isWatched);
+
         String jsonBody = Utils.convertToJson(jsonMapper, body);
 
         return mapJsonResult(apiUrl, StatusCode.class, jsonBody);
     }
 
+
+    /**
+     * needed to tell tmdb api about what type of id is provided. E.g. see http://docs.themoviedb.apiary.io/reference/account/accountidwatchlist
+     */
+    // note http://stackoverflow.com/questions/8143995/should-java-member-enum-types-be-capitalized
+    static enum MediaType {
+        MOVIE, TV;
+
+
+        @Override
+        public String toString() {
+            return super.toString().toLowerCase();
+        }
+
+
+    }
 }
