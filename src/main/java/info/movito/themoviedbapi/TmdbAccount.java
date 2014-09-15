@@ -41,13 +41,13 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the lists that the movie belongs to
      *
-     * @param listId
+     * @param movieId
      * @param sessionId
      * @param language
      * @param page
      */
-    public List<MovieList> getUsersLists(int listId, String sessionId, String language, Integer page, String... appendToResponse) {
-        ApiUrl apiUrl = new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, listId, "lists");
+    public List<MovieList> getUsersLists(int movieId, String sessionId, String language, Integer page, String... appendToResponse) {
+        ApiUrl apiUrl = new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "lists");
 
         apiUrl.addParam(PARAM_SESSION, sessionId);
 
