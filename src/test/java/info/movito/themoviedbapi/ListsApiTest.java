@@ -22,9 +22,6 @@ public class ListsApiTest extends AbstractTmdbApiTest {
         TmdbLists listApi = tmdb.getLists();
         TmdbAccount accountApi = tmdb.getAccount();
 
-        List<MovieList> lists = accountApi.getLists(SESSION_ID, null, null);
-
-
         String listName = "Test List";
         String listDesc = "blaMovieList bla bla";
 
@@ -47,7 +44,7 @@ public class ListsApiTest extends AbstractTmdbApiTest {
 
 
         // list all lists to see if ours is there as well
-//        List<MovieList> lists = accountApi.getLists(SESSION_ID, null, null);
+        List<MovieList> lists = accountApi.getLists(SESSION_ID, null, null);
 
 
         // might not be true because of other test lists
