@@ -3,6 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.ListItemStatus;
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.MovieListCreationStatus;
+import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.core.StatusCode;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestMethod;
@@ -41,9 +42,10 @@ public class TmdbLists extends AbstractTmdbApi {
      *
      * @return The list id
      */
-    public String createList(String sessionId, String name, String description) {
-        ApiUrl apiUrl = new ApiUrl("list");
-        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionId);
+    public String createList(SessionToken sessionToken, String name, String description) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST);
+
+        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
 
         HashMap<String, String> body = new HashMap<String, String>();
         body.put("name", StringUtils.trimToEmpty(name));
@@ -75,8 +77,8 @@ public class TmdbLists extends AbstractTmdbApi {
      *
      * @return true if the movie is on the list
      */
-    public StatusCode addMovieToList(String sessionId, String listId, Integer movieId) {
-        return modifyMovieList(sessionId, listId, movieId, "add_item");
+    public StatusCode addMovieToList(SessionToken sessionToken, String listId, Integer movieId) {
+        return modifyMovieList(sessionToken, listId, movieId, "add_item");
     }
 
 
@@ -85,15 +87,15 @@ public class TmdbLists extends AbstractTmdbApi {
      *
      * @return true if the movie is on the list
      */
-    public StatusCode removeMovieFromList(String sessionId, String listId, Integer movieId) {
-        return modifyMovieList(sessionId, listId, movieId, "remove_item");
+    public StatusCode removeMovieFromList(SessionToken sessionToken, String listId, Integer movieId) {
+        return modifyMovieList(sessionToken, listId, movieId, "remove_item");
     }
 
 
-    private StatusCode modifyMovieList(String sessionId, String listId, Integer movieId, String operation) {
+    private StatusCode modifyMovieList(SessionToken sessionToken, String listId, Integer movieId, String operation) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, operation);
 
-        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionId);
+        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
 
         String jsonBody = Utils.convertToJson(jsonMapper, Collections.singletonMap("media_id", movieId + ""));
 
@@ -104,10 +106,10 @@ public class TmdbLists extends AbstractTmdbApi {
     /**
      * This method lets users delete a list that they created. A valid session id is required.
      */
-    public StatusCode deleteMovieList(String sessionId, String listId) {
+    public StatusCode deleteMovieList(SessionToken sessionToken, String listId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId);
 
-        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionId);
+        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
 
         return mapJsonResult(apiUrl, StatusCode.class, null, RequestMethod.DELETE);
     }

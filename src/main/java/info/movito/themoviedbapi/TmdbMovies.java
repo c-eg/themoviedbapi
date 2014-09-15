@@ -5,6 +5,7 @@ import info.movito.themoviedbapi.model.*;
 import info.movito.themoviedbapi.model.changes.ChangesItems;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.MovieResults;
+import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
@@ -207,6 +208,32 @@ public class TmdbMovies extends AbstractTmdbApi {
 
         return mapJsonResult(apiUrl, MovieResults.class);
     }
+
+
+    /**
+     * Get the lists that the movie belongs to
+     *
+     * @param movieId
+     * @param sessionToken
+     * @param language
+     * @param page
+     */
+    public List<MovieList> getListsContaining(int movieId, SessionToken sessionToken, String language, Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "lists");
+
+        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
+
+        if (StringUtils.isNotBlank(language)) {
+            apiUrl.addParam(PARAM_LANGUAGE, language);
+        }
+
+        if (page != null && page > 0) {
+            apiUrl.addParam(PARAM_PAGE, page);
+        }
+
+        return mapJsonResult(apiUrl, TmdbAccount.MovieListResults.class).getResults();
+    }
+
 
 
     /**

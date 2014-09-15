@@ -77,6 +77,10 @@ public class ApiUrl {
     }
 
 
+    public void addParam(String name, Object value) {
+        addParam(name, value.toString());
+    }
+
     public void addParam(String name, String value) {
         if (params.containsKey(name)) {
             throw new RuntimeException("paramater '" + name + "' already defined");

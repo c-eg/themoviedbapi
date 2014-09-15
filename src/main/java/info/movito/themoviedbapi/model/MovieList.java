@@ -18,8 +18,7 @@ public class MovieList extends NamedStringIdElement {
 
     @JsonProperty("item_count")
     private int itemCount;
-    @JsonProperty("iso_639_1")
-    private String language;
+
 
     @JsonProperty("poster_path")
     private String posterPath;
@@ -27,7 +26,7 @@ public class MovieList extends NamedStringIdElement {
     private String listType;
 
 
-    @JsonProperty("items")
+    @JsonProperty("results")
     private List<MovieDb> items;
 
 
@@ -43,11 +42,6 @@ public class MovieList extends NamedStringIdElement {
 
     public int getItemCount() {
         return itemCount;
-    }
-
-
-    public String getLanguage() {
-        return language;
     }
 
 
@@ -73,11 +67,6 @@ public class MovieList extends NamedStringIdElement {
 
     public void setItemCount(int itemCount) {
         this.itemCount = itemCount;
-    }
-
-
-    public void setLanguage(String language) {
-        this.language = language;
     }
 
 

@@ -11,10 +11,6 @@ import java.util.List;
 @JsonRootName("video")
 public class Video extends NamedStringIdElement {
 
-    // todo consider to move this field up into NamedIdElement
-    @JsonProperty("iso_639_1")
-    private String isoCode;
-
     @JsonProperty("site")
     private String site;
 
@@ -37,11 +33,6 @@ public class Video extends NamedStringIdElement {
         public List<Video> getVideos() {
             return videos;
         }
-    }
-
-
-    public String getIsoCode() {
-        return isoCode;
     }
 
 
