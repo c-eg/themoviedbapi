@@ -188,7 +188,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * needed to tell tmdb api about what type of id is provided. E.g. see http://docs.themoviedb.apiary.io/reference/account/accountidwatchlist
      */
     // note http://stackoverflow.com/questions/8143995/should-java-member-enum-types-be-capitalized
-    static enum MediaType {
+    public static enum MediaType {
         MOVIE, TV;
 
 
