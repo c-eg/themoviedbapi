@@ -10,11 +10,24 @@ import org.junit.Test;
 import java.util.List;
 import java.util.Random;
 
-import static info.movito.themoviedbapi.AccountApiTest.SESSION_ID;
+import static info.movito.themoviedbapi.AccountApiTest.APITESTS_ACCOUNT;
+import static info.movito.themoviedbapi.AccountApiTest.APITESTS_TOKEN;
 import static org.junit.Assert.*;
 
 
 public class ListsApiTest extends AbstractTmdbApiTest {
+
+    @Test
+    public void getList() {
+
+        TmdbLists listsApi = tmdb.getLists();
+
+//        http://www.themoviedb.org/list/5414325f0e0a26199b001989
+        MovieList list = listsApi.getList("5414325f0e0a26199b001989");
+        Assert.assertTrue(list.getItemCount() > 20);
+        Assert.assertTrue(list.getItems().size() > 20);
+    }
+
 
     @Test
     public void listManagement() {
@@ -27,12 +40,12 @@ public class ListsApiTest extends AbstractTmdbApiTest {
 
 
         // create a list
-        final String listId = listApi.createList(SESSION_ID, listName, listDesc);
+        final String listId = listApi.createList(APITESTS_TOKEN, listName, listDesc);
 
         Assert.assertTrue(listId != null && listId.length() > 10);
 
         // ... and add a movie
-        listApi.addMovieToList(SESSION_ID, listId, ID_MOVIE_BLADE_RUNNER);
+        listApi.addMovieToList(APITESTS_TOKEN, listId, ID_MOVIE_BLADE_RUNNER);
 
 
         // check if the list is there and contains blade runner
@@ -44,7 +57,7 @@ public class ListsApiTest extends AbstractTmdbApiTest {
 
 
         // list all lists to see if ours is there as well
-        List<MovieList> lists = accountApi.getLists(SESSION_ID, null, null);
+        List<MovieList> lists = accountApi.getLists(APITESTS_TOKEN, APITESTS_ACCOUNT, null, null);
 
 
         // might not be true because of other test lists
@@ -63,7 +76,7 @@ public class ListsApiTest extends AbstractTmdbApiTest {
 
 
         // get rid of it
-        listApi.deleteMovieList(SESSION_ID, listId);
+        listApi.deleteMovieList(APITESTS_TOKEN, listId);
 
         Assert.assertNull(listApi.getList(listId));
     }
@@ -87,20 +100,20 @@ public class ListsApiTest extends AbstractTmdbApiTest {
 
         // create the list
         TmdbLists tmdbLists = tmdb.getLists();
-        String listId = tmdbLists.createList(SESSION_ID, name, "api testing only");
+        String listId = tmdbLists.createList(APITESTS_TOKEN, name, "api testing only");
 
         // add a movie, and test that it is on the list now
-        tmdbLists.addMovieToList(SESSION_ID, listId, movieID);
+        tmdbLists.addMovieToList(APITESTS_TOKEN, listId, movieID);
         MovieList list = tmdbLists.getList(listId);
         Assert.assertEquals(list.getItemCount(), 1);
         assertEquals(list.getItems().get(0).getId(), (int) movieID);
 
         // now remove the movie
-        tmdbLists.removeMovieFromList(SESSION_ID, listId, movieID);
+        tmdbLists.removeMovieFromList(APITESTS_TOKEN, listId, movieID);
         Assert.assertEquals(tmdbLists.getList(listId).getItemCount(), 0);
 
         // delete the test list
-        StatusCode statusCode = tmdbLists.deleteMovieList(SESSION_ID, listId);
+        StatusCode statusCode = tmdbLists.deleteMovieList(APITESTS_TOKEN, listId);
         assertEquals(statusCode.getStatusCode(), 13);
     }
 

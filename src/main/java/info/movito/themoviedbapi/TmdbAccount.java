@@ -42,8 +42,8 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the lists that as user has created.
      */
-    public List<MovieList> getLists(SessionToken sessionToken, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TmdbAccount.TMDB_METHOD_ACCOUNT, "lists");
+    public List<MovieList> getLists(SessionToken sessionToken, int accountId, String language, Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TmdbAccount.TMDB_METHOD_ACCOUNT, accountId, "lists");
 
         apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
 
@@ -113,7 +113,23 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
 
-    public StatusCode changeFavoriteStatus(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType, boolean isFavorite) {
+    /**
+     * Remove a movie from an account's favorites list.
+     */
+    public StatusCode addFavorite(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
+        return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, true);
+    }
+
+
+    /**
+     * Remove a movie from an account's favorites list.
+     */
+    public StatusCode removeFavorite(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
+        return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, false);
+    }
+
+
+    private StatusCode changeFavoriteStatus(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType, boolean isFavorite) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -155,7 +171,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Add a movie to an account's watch list.
      */
     public StatusCode addToWatchList(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
-        return modifyWatchList(sessionToken, accountId, movieId, true, mediaType);
+        return modifyWatchList(sessionToken, accountId, movieId, mediaType, true);
     }
 
 
@@ -163,11 +179,11 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Remove a movie from an account's watch list.
      */
     public StatusCode removeFromWatchList(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
-        return modifyWatchList(sessionToken, accountId, movieId, false, mediaType);
+        return modifyWatchList(sessionToken, accountId, movieId, mediaType, false);
     }
 
 
-    private StatusCode modifyWatchList(SessionToken sessionToken, int accountId, Integer movieId, boolean isWatched, MediaType mediaType) {
+    private StatusCode modifyWatchList(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType, boolean isWatched) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);

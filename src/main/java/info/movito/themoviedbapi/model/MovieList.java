@@ -26,7 +26,8 @@ public class MovieList extends NamedStringIdElement {
     private String listType;
 
 
-    @JsonProperty("results")
+    //used for /list
+    @JsonProperty("items")
     private List<MovieDb> items;
 
 
