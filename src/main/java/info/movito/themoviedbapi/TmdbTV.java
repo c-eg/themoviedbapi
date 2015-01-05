@@ -80,7 +80,7 @@ public class TmdbTV extends AbstractTmdbApi {
 
         return mapJsonResult(apiUrl, TvResults.class).getResults();
     }
-    public List<TvSeries> getInTheAir(String language,Integer page) {
+    public List<TvSeries> getOnTheAir(String language,Integer page) {
         ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV,TmdbTV.TMDB_METHOD_ONTHEAIR);
 
         if (StringUtils.isNotBlank(language)) {
