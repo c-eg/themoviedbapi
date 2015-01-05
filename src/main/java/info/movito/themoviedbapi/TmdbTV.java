@@ -12,9 +12,13 @@ import org.apache.commons.lang3.StringUtils;
 public class TmdbTV extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_TV = "tv";
-	private static final Object TMDB_METHOD_POPULAR = "popular";
-	private static final Object TMDB_METHOD_CREDITS = "credits";
-
+	private static final String TMDB_METHOD_POPULAR = "popular";
+	private static final String TMDB_METHOD_CREDITS = "credits";
+	private static final String  TMDB_METHOD_ONTHEAIR = "on_the_air";
+	private static final String  TMDB_METHOD_AIRINGTODAY = "airing_today";
+	private static final String  TMDB_METHOD_TOPRATED = "top_rated";
+	
+			
     public static enum TvMethod {credits, external_ids, images, videos}
 
 
@@ -52,6 +56,45 @@ public class TmdbTV extends AbstractTmdbApi {
     
     public List<TvSeries> getPopular(String language,Integer page) {
         ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV,TmdbTV.TMDB_METHOD_POPULAR);
+
+        if (StringUtils.isNotBlank(language)) {
+            apiUrl.addParam(PARAM_LANGUAGE, language);
+        }
+
+        if (page != null && page > 0) {
+            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
+        }
+
+        return mapJsonResult(apiUrl, TvResults.class).getResults();
+    }
+    public List<TvSeries> getAiringToday(String language,Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV,TmdbTV.TMDB_METHOD_AIRINGTODAY);
+
+        if (StringUtils.isNotBlank(language)) {
+            apiUrl.addParam(PARAM_LANGUAGE, language);
+        }
+
+        if (page != null && page > 0) {
+            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
+        }
+
+        return mapJsonResult(apiUrl, TvResults.class).getResults();
+    }
+    public List<TvSeries> getInTheAir(String language,Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV,TmdbTV.TMDB_METHOD_ONTHEAIR);
+
+        if (StringUtils.isNotBlank(language)) {
+            apiUrl.addParam(PARAM_LANGUAGE, language);
+        }
+
+        if (page != null && page > 0) {
+            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
+        }
+
+        return mapJsonResult(apiUrl, TvResults.class).getResults();
+    }
+    public List<TvSeries> getTopRated(String language,Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV,TmdbTV.TMDB_METHOD_TOPRATED);
 
         if (StringUtils.isNotBlank(language)) {
             apiUrl.addParam(PARAM_LANGUAGE, language);
