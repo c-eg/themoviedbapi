@@ -1,8 +1,7 @@
 package info.movito.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import com.google.common.base.MoreObjects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,6 +36,6 @@ public abstract class AbstractJsonMapping implements Serializable {
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.SIMPLE_STYLE);
+        return MoreObjects.toStringHelper(this).toString();
     }
 }
