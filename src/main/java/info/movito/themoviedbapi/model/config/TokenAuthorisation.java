@@ -15,6 +15,12 @@ public class TokenAuthorisation {
     @JsonProperty("success")
     private Boolean success;
 
+    @JsonProperty("status_message")
+    private String status_message;
+
+    @JsonProperty("status_code")
+    private int status_code;
+
 
     public String getExpires() {
         return expires;
@@ -25,8 +31,15 @@ public class TokenAuthorisation {
         return requestToken;
     }
 
+    public String getStatusMessage() {
+    	return status_message;
+    }
 
+    public int getStatusCode() {
+    	return status_code;
+    }
+    
     public Boolean getSuccess() {
-        return success;
+        return success == null ? false : success;
     }
 }
