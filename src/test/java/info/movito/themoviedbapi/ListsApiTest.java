@@ -4,6 +4,8 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.core.StatusCode;
+import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,13 +38,16 @@ public class ListsApiTest extends AbstractTmdbApiTest {
         TmdbAccount accountApi = tmdb.getAccount();
 
         String listName = "Test List";
-        String listDesc = "blaMovieList bla bla";
+        String listDesc = "test movie list";
+
+
+        // in case the test previously failed we need to delete the list manually
 
 
         // create a list
         final String listId = listApi.createList(APITESTS_TOKEN, listName, listDesc);
 
-        Assert.assertTrue(listId != null && listId.length() > 10);
+        Assert.assertTrue("invalid list id", listId != null && listId.length() > 10);
 
         // ... and add a movie
         listApi.addMovieToList(APITESTS_TOKEN, listId, ID_MOVIE_BLADE_RUNNER);
@@ -52,7 +57,7 @@ public class ListsApiTest extends AbstractTmdbApiTest {
         MovieList result = tmdb.getLists().getList(listId);
 
         assertNotNull("List not found", result);
-        assertFalse("List not found", result.getItems().size() == 1);
+        assertTrue("List not found", result.getItems().size() == 1);
         assertEquals(ID_MOVIE_BLADE_RUNNER, result.getItems().get(0).getId());
 
 
@@ -78,7 +83,12 @@ public class ListsApiTest extends AbstractTmdbApiTest {
         // get rid of it
         listApi.deleteMovieList(APITESTS_TOKEN, listId);
 
-        Assert.assertNull(listApi.getList(listId));
+        try {
+            listApi.getList(listId);
+            Assert.fail();
+        } catch (MovieDbException ex) {
+            Assert.assertTrue(ex.getExceptionType() == MovieDbExceptionType.INVALID_ID);
+        }
     }
 
 
@@ -114,7 +124,7 @@ public class ListsApiTest extends AbstractTmdbApiTest {
 
         // delete the test list
         StatusCode statusCode = tmdbLists.deleteMovieList(APITESTS_TOKEN, listId);
-        assertEquals(statusCode.getStatusCode(), 13);
+        assertEquals(statusCode.getStatusCode(), (Integer) 13);
     }
 
 

@@ -82,7 +82,7 @@ public final class WebBrowser implements UrlReader {
         try {
             return request(new URL(url), null, RequestMethod.GET);
         } catch (MalformedURLException ex) {
-            throw new MovieDbException(MovieDbExceptionType.INVALID_URL, null, ex);
+            throw new MovieDbException(ex, null, MovieDbExceptionType.INVALID_URL);
         }
     }
 
@@ -103,7 +103,7 @@ public final class WebBrowser implements UrlReader {
 
             return cnx;
         } catch (IOException ex) {
-            throw new MovieDbException(MovieDbExceptionType.INVALID_URL, null, ex);
+            throw new MovieDbException(ex, null, MovieDbExceptionType.INVALID_URL);
         }
     }
 
@@ -171,7 +171,7 @@ public final class WebBrowser implements UrlReader {
             }
             return content.toString();
         } catch (IOException ex) {
-            throw new MovieDbException(MovieDbExceptionType.CONNECTION_ERROR, null, ex);
+            throw new MovieDbException(ex, null, MovieDbExceptionType.CONNECTION_ERROR);
         } finally {
             if (content != null) {
                 try {
