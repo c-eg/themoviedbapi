@@ -56,7 +56,9 @@ public abstract class AbstractTmdbApi {
             if (status.getStatusCode() == 6) {
                 throw new MovieDbException(MovieDbExceptionType.INVALID_ID, status.getStatusMessage());
             }
-
+            if(status.getStatusCode() == 7)  {
+                throw new MovieDbException(MovieDbExceptionType.INVALID_APIKEY, status.getStatusMessage());
+            }
             return jsonMapper.readValue(webpage, someClass);
         } catch (IOException ex) {
             logger.warn("Failed to map json data: {}", ex.getMessage());

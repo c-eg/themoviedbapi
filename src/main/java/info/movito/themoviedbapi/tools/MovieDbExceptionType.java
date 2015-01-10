@@ -21,6 +21,10 @@ public enum MovieDbExceptionType {
      */
     INVALID_ID,
     /*
+     * We don't have a valid API key
+     */
+    INVALID_APIKEY,
+    /*
      * Mapping failed from target to internal objects
      */
     MAPPING_FAILED,
