@@ -3,21 +3,31 @@ package info.movito.themoviedbapi.tools;
 public class MovieDbException extends RuntimeException {
 
 
+    private final Integer statusCode;
     private final MovieDbExceptionType exceptionType;
     private final String description;
 
 
-    public MovieDbException(final MovieDbExceptionType exceptionType, final String description) {
-        this.exceptionType = exceptionType;
-        this.description = description;
+    public MovieDbException(MovieDbExceptionType exceptionType, final String description) {
+        this(exceptionType, description, null);
     }
 
+    public MovieDbException(MovieDbExceptionType exceptionType, final String description, Integer statusCode) {
+        this(null, exceptionType, statusCode, description);
+    }
 
-    public MovieDbException(final MovieDbExceptionType exceptionType, final String description, final Throwable cause) {
+    public MovieDbException(final Throwable cause, final String description, MovieDbExceptionType exceptionType) {
+        this(cause, exceptionType, null, description);
+    }
+
+    public MovieDbException(Throwable cause, MovieDbExceptionType exceptionType, Integer statusCode, String description) {
         super(cause);
+
         this.exceptionType = exceptionType;
+        this.statusCode = statusCode;
         this.description = description;
     }
+
 
 
     public MovieDbExceptionType getExceptionType() {
@@ -33,8 +43,9 @@ public class MovieDbException extends RuntimeException {
     @Override
     public String toString() {
         return "MovieDbException{" +
-                "type=" + exceptionType +
+                "statusCode=" + statusCode +
+                ", exceptionType=" + exceptionType +
                 ", description='" + description + '\'' +
-                "}\n " + super.toString();
+                '}';
     }
 }

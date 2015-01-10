@@ -119,7 +119,7 @@ public class Utils {
             return (new URL(sb.toString()));
         } catch (MalformedURLException ex) {
             LoggerFactory.getLogger(Utils.class).warn("Failed to create image URL: {}", ex.getMessage());
-            throw new MovieDbException(MovieDbExceptionType.INVALID_URL, sb.toString(), ex);
+            throw new MovieDbException(ex, sb.toString(), MovieDbExceptionType.INVALID_URL);
         }
     }
 

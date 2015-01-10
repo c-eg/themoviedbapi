@@ -42,7 +42,7 @@ public class TmdbApi {
         try {
             tmdbConfig = new TmdbConfig(this).getConfig().getTmdbConfiguration();
         } catch (Throwable ex) {
-            throw new MovieDbException(MovieDbExceptionType.MAPPING_FAILED, "Failed to read configuration", ex);
+            throw new MovieDbException(ex, "Failed to read configuration", MovieDbExceptionType.MAPPING_FAILED);
         }
     }
 

@@ -53,16 +53,11 @@ public abstract class AbstractTmdbApi {
         try {
             // check if was error status
             StatusCode status = jsonMapper.readValue(webpage, StatusCode.class);
-            if (status.getStatusCode() == 6) {
-                throw new MovieDbException(MovieDbExceptionType.INVALID_ID, status.getStatusMessage());
-            }
-            if(status.getStatusCode() == 7)  {
-                throw new MovieDbException(MovieDbExceptionType.INVALID_APIKEY, status.getStatusMessage());
-            }
+            status.process();
             return jsonMapper.readValue(webpage, someClass);
         } catch (IOException ex) {
             logger.warn("Failed to map json data: {}", ex.getMessage());
-            throw new MovieDbException(MovieDbExceptionType.MAPPING_FAILED, webpage, ex);
+            throw new MovieDbException(ex, webpage, MovieDbExceptionType.MAPPING_FAILED);
         }
     }
 }
