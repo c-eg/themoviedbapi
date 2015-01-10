@@ -42,8 +42,10 @@ public class StatusCode extends AbstractJsonMapping {
         }
 
         switch (getStatusCode()) {
-            case 6:
-                throw new MovieDbException(MovieDbExceptionType.INVALID_ID, getStatusMessage(), getStatusCode());
+	        case 6:
+	            throw new MovieDbException(MovieDbExceptionType.INVALID_ID, getStatusMessage(), getStatusCode());
+	        case 7:
+	        	throw new MovieDbException(MovieDbExceptionType.INVALID_APIKEY, getStatusMessage(), getStatusCode());
             case 30:
                 throw new MovieDbException(MovieDbExceptionType.AUTHORISATION_FAILURE, getStatusMessage(), getStatusCode());
             default:
