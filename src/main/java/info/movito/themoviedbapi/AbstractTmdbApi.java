@@ -54,7 +54,6 @@ public abstract class AbstractTmdbApi {
             // check if was error status
             StatusCode status = jsonMapper.readValue(webpage, StatusCode.class);
             status.process();
-
             return jsonMapper.readValue(webpage, someClass);
         } catch (IOException ex) {
             logger.warn("Failed to map json data: {}", ex.getMessage());
