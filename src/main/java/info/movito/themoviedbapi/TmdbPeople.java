@@ -9,7 +9,6 @@ import info.movito.themoviedbapi.model.people.PersonCredits;
 import info.movito.themoviedbapi.model.people.PersonPeople;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
-import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 
 import java.util.List;
 
@@ -83,7 +82,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      * @param endDate
      */
     public void getPersonChanges(int personId, String startDate, String endDate) {
-        throw new MovieDbException(MovieDbExceptionType.METHOD_NOT_YET_IMPLEMENTED, "Not implemented yet");
+        throw new MovieDbException("Not implemented yet");
     }
 
 

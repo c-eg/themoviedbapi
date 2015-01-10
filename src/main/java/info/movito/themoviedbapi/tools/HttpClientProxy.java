@@ -29,11 +29,11 @@ public class HttpClientProxy implements UrlReader {
                 httpGet.addHeader("accept", "application/json");
                 return httpClient.requestContent(httpGet);
             } catch (URISyntaxException ex) {
-                throw new MovieDbException(ex, null, MovieDbExceptionType.CONNECTION_ERROR);
+                throw new MovieDbException(url.toString(), ex);
             } catch (IOException ex) {
-                throw new MovieDbException(ex, null, MovieDbExceptionType.CONNECTION_ERROR);
+                throw new MovieDbException(url.toString(), ex);
             } catch (RuntimeException ex) {
-                throw new MovieDbException(ex, "Service Unavailable", MovieDbExceptionType.HTTP_503_ERROR);
+                throw new MovieDbException(url.toString(), ex);
             }
         }
 

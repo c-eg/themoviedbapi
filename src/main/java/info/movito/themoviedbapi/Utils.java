@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.config.TmdbConfiguration;
 import info.movito.themoviedbapi.tools.MovieDbException;
-import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -109,7 +107,7 @@ public class Utils {
 
         TmdbConfiguration configuration = tmdb.getConfiguration();
         if (!configuration.isValidSize(requiredSize)) {
-            throw new MovieDbException(MovieDbExceptionType.INVALID_IMAGE, requiredSize);
+            throw new MovieDbException("Invalid size: " + requiredSize);
         }
 
         StringBuilder sb = new StringBuilder(configuration.getBaseUrl());
@@ -118,8 +116,7 @@ public class Utils {
         try {
             return (new URL(sb.toString()));
         } catch (MalformedURLException ex) {
-            LoggerFactory.getLogger(Utils.class).warn("Failed to create image URL: {}", ex.getMessage());
-            throw new MovieDbException(ex, sb.toString(), MovieDbExceptionType.INVALID_URL);
+            throw new MovieDbException(sb.toString(), ex);
         }
     }
 
@@ -132,6 +129,7 @@ public class Utils {
     /**
      * Use Jackson to convert Map to json string.
      */
+    // fixme why is the argument not used??
     public static String convertToJson(ObjectMapper jsonMapper, Map<String, ?> map) {
         try {
             return new ObjectMapper().writeValueAsString(map);

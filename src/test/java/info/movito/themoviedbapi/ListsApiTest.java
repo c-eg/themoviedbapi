@@ -3,9 +3,8 @@ package info.movito.themoviedbapi;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import info.movito.themoviedbapi.model.MovieList;
-import info.movito.themoviedbapi.model.core.StatusCode;
-import info.movito.themoviedbapi.tools.MovieDbException;
-import info.movito.themoviedbapi.tools.MovieDbExceptionType;
+import info.movito.themoviedbapi.model.core.ResponseStatus;
+import info.movito.themoviedbapi.model.core.ResponseStatusException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -38,8 +37,7 @@ public class ListsApiTest extends AbstractTmdbApiTest {
         TmdbAccount accountApi = tmdb.getAccount();
 
         String listName = "Test List";
-        String listDesc = "test movie list";
-
+        String listDesc = "my favorite movies";
 
         // in case the test previously failed we need to delete the list manually
 
@@ -86,8 +84,8 @@ public class ListsApiTest extends AbstractTmdbApiTest {
         try {
             listApi.getList(listId);
             Assert.fail();
-        } catch (MovieDbException ex) {
-            Assert.assertTrue(ex.getExceptionType() == MovieDbExceptionType.INVALID_ID);
+        } catch (ResponseStatusException rse) {
+            Assert.assertEquals(6, rse.getResponseStatus().getStatusCode().intValue());
         }
     }
 
@@ -123,8 +121,8 @@ public class ListsApiTest extends AbstractTmdbApiTest {
         Assert.assertEquals(tmdbLists.getList(listId).getItemCount(), 0);
 
         // delete the test list
-        StatusCode statusCode = tmdbLists.deleteMovieList(APITESTS_TOKEN, listId);
-        assertEquals(statusCode.getStatusCode(), (Integer) 13);
+        ResponseStatus responseStatus = tmdbLists.deleteMovieList(APITESTS_TOKEN, listId);
+        assertEquals(responseStatus.getStatusCode(), (Integer) 13);
     }
 
 

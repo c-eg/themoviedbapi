@@ -3,12 +3,11 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.config.Account;
 import info.movito.themoviedbapi.model.core.MovieResults;
+import info.movito.themoviedbapi.model.core.ResponseStatus;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
-import info.movito.themoviedbapi.model.core.StatusCode;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
-import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;
@@ -88,12 +87,12 @@ public class TmdbAccount extends AbstractTmdbApi {
         apiUrl.addParam(PARAM_SESSION, sessionToken);
 
         if (rating < 0 || rating > 10) {
-            throw new MovieDbException(MovieDbExceptionType.UNKNOWN_CAUSE, "rating out of range");
+            throw new MovieDbException("rating out of range");
         }
 
         String jsonBody = Utils.convertToJson(jsonMapper, Collections.singletonMap("value", rating));
 
-        return mapJsonResult(apiUrl, StatusCode.class, jsonBody).getStatusCode() == 12;
+        return mapJsonResult(apiUrl, ResponseStatus.class, jsonBody).getStatusCode() == 12;
     }
 
 
@@ -116,7 +115,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Remove a movie from an account's favorites list.
      */
-    public StatusCode addFavorite(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
+    public ResponseStatus addFavorite(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
         return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, true);
     }
 
@@ -124,12 +123,12 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Remove a movie from an account's favorites list.
      */
-    public StatusCode removeFavorite(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
+    public ResponseStatus removeFavorite(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
         return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, false);
     }
 
 
-    private StatusCode changeFavoriteStatus(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType, boolean isFavorite) {
+    private ResponseStatus changeFavoriteStatus(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType, boolean isFavorite) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -142,7 +141,7 @@ public class TmdbAccount extends AbstractTmdbApi {
 
         String jsonBody = Utils.convertToJson(jsonMapper, body);
 
-        return mapJsonResult(apiUrl, StatusCode.class, jsonBody);
+        return mapJsonResult(apiUrl, ResponseStatus.class, jsonBody);
     }
 
 
@@ -170,7 +169,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Add a movie to an account's watch list.
      */
-    public StatusCode addToWatchList(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
+    public ResponseStatus addToWatchList(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
         return modifyWatchList(sessionToken, accountId, movieId, mediaType, true);
     }
 
@@ -178,12 +177,12 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Remove a movie from an account's watch list.
      */
-    public StatusCode removeFromWatchList(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
+    public ResponseStatus removeFromWatchList(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType) {
         return modifyWatchList(sessionToken, accountId, movieId, mediaType, false);
     }
 
 
-    private StatusCode modifyWatchList(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType, boolean isWatched) {
+    private ResponseStatus modifyWatchList(SessionToken sessionToken, int accountId, Integer movieId, MediaType mediaType, boolean isWatched) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -196,7 +195,7 @@ public class TmdbAccount extends AbstractTmdbApi {
 
         String jsonBody = Utils.convertToJson(jsonMapper, body);
 
-        return mapJsonResult(apiUrl, StatusCode.class, jsonBody);
+        return mapJsonResult(apiUrl, ResponseStatus.class, jsonBody);
     }
 
 

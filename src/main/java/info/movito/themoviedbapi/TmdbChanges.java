@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.tools.MovieDbException;
-import info.movito.themoviedbapi.tools.MovieDbExceptionType;
 
 
 public class TmdbChanges extends AbstractTmdbApi {
@@ -12,11 +11,11 @@ public class TmdbChanges extends AbstractTmdbApi {
 
 
     public void getMovieChangesList(int page, String startDate, String endDate) {
-        throw new MovieDbException(MovieDbExceptionType.UNKNOWN_CAUSE, "Not implemented yet");
+        throw new MovieDbException("Not implemented yet");
     }
 
 
     public void getPersonChangesList(int page, String startDate, String endDate) {
-        throw new MovieDbException(MovieDbExceptionType.UNKNOWN_CAUSE, "Not implemented yet");
+        throw new MovieDbException("Not implemented yet");
     }
 }

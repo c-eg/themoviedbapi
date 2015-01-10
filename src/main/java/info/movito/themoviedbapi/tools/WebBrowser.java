@@ -82,7 +82,7 @@ public final class WebBrowser implements UrlReader {
         try {
             return request(new URL(url), null, RequestMethod.GET);
         } catch (MalformedURLException ex) {
-            throw new MovieDbException(ex, null, MovieDbExceptionType.INVALID_URL);
+            throw new MovieDbException(url, ex);
         }
     }
 
@@ -103,7 +103,7 @@ public final class WebBrowser implements UrlReader {
 
             return cnx;
         } catch (IOException ex) {
-            throw new MovieDbException(ex, null, MovieDbExceptionType.INVALID_URL);
+            throw new MovieDbException(url.toString(), ex);
         }
     }
 
@@ -147,7 +147,7 @@ public final class WebBrowser implements UrlReader {
                     // for some strange reason the error stream is sometimes null
                     // see http://stackoverflow.com/questions/6070350/errorstream-in-httpurlconnection
                     if (cnx.getErrorStream() == null) {
-                        throw new MovieDbException(MovieDbExceptionType.ERR_STREAM_NULL, url.toString());
+                        throw new MovieDbException("error stream was null");
                     }
 
                     in = new BufferedReader(new InputStreamReader(cnx.getErrorStream(), getCharset(cnx)));
@@ -165,13 +165,14 @@ public final class WebBrowser implements UrlReader {
                     in.close();
                 }
 
-                if (cnx instanceof HttpURLConnection) {
-                    ((HttpURLConnection) cnx).disconnect();
+                if (cnx != null) {
+                    cnx.disconnect();
                 }
             }
             return content.toString();
         } catch (IOException ex) {
-            throw new MovieDbException(ex, null, MovieDbExceptionType.CONNECTION_ERROR);
+            throw new MovieDbException(url.toString(), ex);
+
         } finally {
             if (content != null) {
                 try {
