@@ -55,6 +55,10 @@ public class TmdbTV extends AbstractTmdbApi {
     }
     
     public List<TvSeries> getPopular(String language,Integer page) {
+    	return getPopularPage(language,page).getResults();
+    }
+    
+    public TvResults getPopularPage(String language,Integer page) {
         ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV,TmdbTV.TMDB_METHOD_POPULAR);
 
         if (StringUtils.isNotBlank(language)) {
@@ -65,9 +69,14 @@ public class TmdbTV extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, TvResults.class).getResults();
+        return mapJsonResult(apiUrl, TvResults.class);
     }
+    
     public List<TvSeries> getAiringToday(String language,Integer page) {
+    	return getAiringTodayPage(language,page).getResults();
+    }
+    
+	public TvResults getAiringTodayPage(String language,Integer page) {
         ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV,TmdbTV.TMDB_METHOD_AIRINGTODAY);
 
         if (StringUtils.isNotBlank(language)) {
@@ -78,9 +87,13 @@ public class TmdbTV extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, TvResults.class).getResults();
+        return mapJsonResult(apiUrl, TvResults.class);
     }
+	
     public List<TvSeries> getOnTheAir(String language,Integer page) {
+    	return getAiringTodayPage(language,page).getResults();
+    }
+    public TvResults getOnTheAirPage(String language,Integer page) {
         ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV,TmdbTV.TMDB_METHOD_ONTHEAIR);
 
         if (StringUtils.isNotBlank(language)) {
@@ -91,9 +104,14 @@ public class TmdbTV extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, TvResults.class).getResults();
+        return mapJsonResult(apiUrl, TvResults.class);
     }
+    
     public List<TvSeries> getTopRated(String language,Integer page) {
+    	return getTopRatedPage(language,page).getResults();
+    }
+    
+	public TvResults getTopRatedPage(String language,Integer page) {
         ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV,TmdbTV.TMDB_METHOD_TOPRATED);
 
         if (StringUtils.isNotBlank(language)) {
@@ -104,6 +122,6 @@ public class TmdbTV extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, TvResults.class).getResults();
+        return mapJsonResult(apiUrl, TvResults.class);
     }
 }

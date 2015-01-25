@@ -70,7 +70,13 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param language The language to include. Can be blank/null.
      * @param page     The page of results to return. 0 to get the default (first page)
      */
+    
     public List<TvSeries> searchTv(String query, String language, Integer page) {
+    	return searchTvPage(query,language,page).getResults();
+    }
+    
+    public TvResults searchTvPage(String query, String language, Integer page) {
+    	
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbTV.TMDB_METHOD_TV);
 
         if (StringUtils.isBlank(query)) {
@@ -89,7 +95,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, TvResults.class).getResults();
+        return mapJsonResult(apiUrl, TvResults.class);
     }
 
 
