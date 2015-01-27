@@ -135,6 +135,10 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param page
      */
     public List<Person> searchPerson(String query, boolean includeAdult, Integer page) {
+    	return searchPersonPage(query,includeAdult,page).getResults();
+    }
+    
+    public TmdbPeople.PersonResults searchPersonPage(String query, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbPeople.TMDB_METHOD_PERSON);
 
         apiUrl.addParam(PARAM_QUERY, query);
@@ -145,7 +149,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, page);
         }
 
-        return mapJsonResult(apiUrl, TmdbPeople.PersonResults.class).getResults();
+        return mapJsonResult(apiUrl, TmdbPeople.PersonResults.class);
     }
 
 
