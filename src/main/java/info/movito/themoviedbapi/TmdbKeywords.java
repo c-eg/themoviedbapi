@@ -3,7 +3,6 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
 
 
 public class TmdbKeywords extends AbstractTmdbApi {
@@ -40,9 +39,7 @@ public class TmdbKeywords extends AbstractTmdbApi {
     public KeywordResultsPage getKeywordMovies(String keywordId, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_KEYWORD, keywordId, "movies");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
 

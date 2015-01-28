@@ -2,7 +2,6 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.FindResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
 
 
 public class TmdbFind extends AbstractTmdbApi {
@@ -25,10 +24,7 @@ public class TmdbFind extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_FIND, id);
 
         apiUrl.addParam("external_source", externalSource.toString());
-
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, FindResults.class);
     }

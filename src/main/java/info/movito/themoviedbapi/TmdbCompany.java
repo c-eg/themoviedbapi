@@ -4,7 +4,6 @@ import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.Company;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
 
 
 public class TmdbCompany extends AbstractTmdbApi {
@@ -43,13 +42,8 @@ public class TmdbCompany extends AbstractTmdbApi {
     public CollectionResultsPage getCompanyMovies(int companyId, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COMPANY, companyId, "movies");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
-
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addLanguage(language);
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, CollectionResultsPage.class);
     }

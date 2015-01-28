@@ -3,7 +3,8 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.Reviews;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
+
+import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 
 
 public class TmdbReviews extends AbstractTmdbApi {
@@ -14,11 +15,9 @@ public class TmdbReviews extends AbstractTmdbApi {
 
 
     public ReviewResultsPage getReviews(int movieId, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "reviews");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "reviews");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
 

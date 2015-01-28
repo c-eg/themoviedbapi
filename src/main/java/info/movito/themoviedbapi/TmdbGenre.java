@@ -5,7 +5,6 @@ import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -31,9 +30,7 @@ public class TmdbGenre extends AbstractTmdbApi {
     public List<Genre> getGenreList(String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "list");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, Genres.class).genres;
     }
@@ -61,13 +58,9 @@ public class TmdbGenre extends AbstractTmdbApi {
     public MovieResultsPage getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, genreId, "movies");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
         apiUrl.addParam(PARAM_INCLUDE_ALL_MOVIES, includeAllMovies);
 

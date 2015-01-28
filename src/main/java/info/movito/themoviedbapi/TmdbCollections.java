@@ -1,13 +1,14 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
-import info.movito.themoviedbapi.model.ArtworkType;
 import info.movito.themoviedbapi.model.CollectionInfo;
 import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
+
+import static info.movito.themoviedbapi.model.ArtworkType.BACKDROP;
+import static info.movito.themoviedbapi.model.ArtworkType.POSTER;
 
 
 public class TmdbCollections extends AbstractTmdbApi {
@@ -31,9 +32,7 @@ public class TmdbCollections extends AbstractTmdbApi {
     public CollectionInfo getCollectionInfo(int collectionId, String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, CollectionInfo.class);
     }
@@ -48,10 +47,8 @@ public class TmdbCollections extends AbstractTmdbApi {
     public List<Artwork> getCollectionImages(int collectionId, String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId, "images");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        return mapJsonResult(apiUrl, MovieImages.class).getAll(ArtworkType.POSTER, ArtworkType.BACKDROP);
+        return mapJsonResult(apiUrl, MovieImages.class).getAll(POSTER, BACKDROP);
     }
 }

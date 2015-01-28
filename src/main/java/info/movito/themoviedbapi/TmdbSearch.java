@@ -6,7 +6,13 @@ import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
+
+import static info.movito.themoviedbapi.TmdbCollections.TMDB_METHOD_COLLECTION;
+import static info.movito.themoviedbapi.TmdbLists.TMDB_METHOD_LIST;
+import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
+import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 
 public class TmdbSearch extends AbstractTmdbApi {
@@ -30,9 +36,9 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param page         The page of results to return. 0 to get the default (first page)
      */
     public MovieResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbMovies.TMDB_METHOD_MOVIE);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MOVIE);
 
-        if (StringUtils.isBlank(query)) {
+        if (isBlank(query)) {
             throw new RuntimeException("query must not be blank");
         }
 
@@ -44,15 +50,11 @@ public class TmdbSearch extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_YEAR, Integer.toString(searchYear));
         }
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         apiUrl.addParam(PARAM_ADULT, Boolean.toString(includeAdult));
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
@@ -65,9 +67,9 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param page     The page of results to return. 0 to get the default (first page)
      */
     public TvResultsPage searchTv(String query, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbTV.TMDB_METHOD_TV);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV);
 
-        if (StringUtils.isBlank(query)) {
+        if (isBlank(query)) {
             throw new RuntimeException("query must not be blank");
         }
 
@@ -75,13 +77,9 @@ public class TmdbSearch extends AbstractTmdbApi {
 
         // optional parameters
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
@@ -94,19 +92,15 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param page
      */
     public CollectionResultsPage searchCollection(String query, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbCollections.TMDB_METHOD_COLLECTION);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_COLLECTION);
 
-        if (StringUtils.isNotBlank(query)) {
+        if (isNotBlank(query)) {
             apiUrl.addParam(PARAM_QUERY, query);
         }
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, CollectionResultsPage.class);
     }
@@ -140,19 +134,15 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param page
      */
     public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbLists.TMDB_METHOD_LIST);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_LIST);
 
-        if (StringUtils.isNotBlank(query)) {
+        if (isNotBlank(query)) {
             apiUrl.addParam(PARAM_QUERY, query);
         }
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TmdbAccount.MovieListResultsPage.class);
     }
@@ -186,13 +176,11 @@ public class TmdbSearch extends AbstractTmdbApi {
     public KeywordResultsPage searchKeyword(String query, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword");
 
-        if (StringUtils.isNotBlank(query)) {
+        if (isNotBlank(query)) {
             apiUrl.addParam(PARAM_QUERY, query);
         }
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, KeywordResultsPage.class);
     }

@@ -2,7 +2,9 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.tv.TvSeason;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
+
+import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
+import static info.movito.themoviedbapi.Utils.asStringArray;
 
 
 public class TmdbTvSeasons extends AbstractTmdbApi {
@@ -24,13 +26,11 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
 
 
     public TvSeason getSeason(int seriesId, int seasonNumber, String language, SeasonMethod... appendToResponse) {
-        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        apiUrl.appendToResponse(Utils.asStringArray(appendToResponse));
+        apiUrl.appendToResponse(asStringArray(appendToResponse));
 
         return mapJsonResult(apiUrl, TvSeason.class);
     }

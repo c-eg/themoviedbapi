@@ -3,7 +3,8 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
+
+import static info.movito.themoviedbapi.Utils.asStringArray;
 
 
 public class TmdbTV extends AbstractTmdbApi {
@@ -33,81 +34,61 @@ public class TmdbTV extends AbstractTmdbApi {
     public TvSeries getSeries(int seriesId, String language, TvMethod... appendToResponse) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        apiUrl.appendToResponse(Utils.asStringArray(appendToResponse));
+        apiUrl.appendToResponse(asStringArray(appendToResponse));
 
         return mapJsonResult(apiUrl, TvSeries.class);
     }
 
 
     public Credits getCredits(int seriesId, String language) {
-        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, seriesId, TmdbTV.TMDB_METHOD_CREDITS);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_CREDITS);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
         return mapJsonResult(apiUrl, Credits.class);
     }
 
 
     public TvResultsPage getPopular(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, TmdbTV.TMDB_METHOD_POPULAR);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_POPULAR);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
 
     public TvResultsPage getAiringToday(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, TmdbTV.TMDB_METHOD_AIRINGTODAY);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_AIRINGTODAY);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
 
     public TvResultsPage getOnTheAir(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, TmdbTV.TMDB_METHOD_ONTHEAIR);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_ONTHEAIR);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
 
     public TvResultsPage getTopRated(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, TmdbTV.TMDB_METHOD_TOPRATED);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_TOPRATED);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
