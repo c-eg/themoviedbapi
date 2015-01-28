@@ -3,6 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.config.Account;
+import info.movito.themoviedbapi.model.core.AccountID;
 import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import org.junit.Assert;
@@ -18,7 +19,7 @@ public class AccountApiTest extends AbstractTmdbApiTest {
 
 
     // protected fields to ensure usage just for testing
-    static final int APITESTS_ACCOUNT = 6065849;
+    static final AccountID APITESTS_ACCOUNT = new AccountID(6065849);
     static final SessionToken APITESTS_TOKEN = new SessionToken("76c5c544e9c1f51d7569989d95a8d10cfb5164e5");
 
 
