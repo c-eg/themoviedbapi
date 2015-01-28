@@ -109,9 +109,7 @@ public class TmdbPeople extends AbstractTmdbApi {
     public List<Person> getPersonPopular(Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "popular");
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, PersonResults.class).getResults();
     }

@@ -22,9 +22,7 @@ public class TmdbReviews extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_LANGUAGE, language);
         }
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, ReviewResults.class).getResults();
     }

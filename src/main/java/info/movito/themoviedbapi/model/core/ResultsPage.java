@@ -2,10 +2,11 @@ package info.movito.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Iterator;
 import java.util.List;
 
 
-public class ResultsPage<T> extends AbstractJsonMapping {
+public class ResultsPage<T> extends AbstractJsonMapping implements Iterable<T> {
 
     @JsonProperty("results")
     private List<T> results;
@@ -19,9 +20,30 @@ public class ResultsPage<T> extends AbstractJsonMapping {
     @JsonProperty("total_results")
     private int totalResults;
 
-    @JsonProperty("dates")
-    private ResultDates dates = new ResultDates();
+    // needed?
+//    @JsonProperty("dates")
+//    private ResultDates dates = new ResultDates();
 
+
+    @Override
+    public Iterator<T> iterator() {
+        return results.iterator();
+    }
+
+
+//    public static class PagedList<T> extends ArrayList<T>{
+//        final ResultsPage<T> pagingResults;
+//
+//        PagedList(ResultsPage<T> pagingResults) {
+//            this.pagingResults = pagingResults;
+//            addAll(pagingResults.results);
+//        }
+//
+//
+//        public ResultsPage<T> getResultPage() {
+//            return pagingResults;
+//        }
+//    }
 
     public List<T> getResults() {
         return results;
@@ -58,12 +80,12 @@ public class ResultsPage<T> extends AbstractJsonMapping {
     }
 
 
-    public ResultDates getDates() {
-        return dates;
-    }
-
-
-    public void setDates(ResultDates dates) {
-        this.dates = dates;
-    }
+//    public ResultDates getDates() {
+//        return dates;
+//    }
+//
+//
+//    public void setDates(ResultDates dates) {
+//        this.dates = dates;
+//    }
 }

@@ -135,9 +135,7 @@ public class TmdbSearch extends AbstractTmdbApi {
 
         apiUrl.addParam(PARAM_ADULT, includeAdult);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TmdbPeople.PersonResults.class).getResults();
     }
@@ -184,9 +182,7 @@ public class TmdbSearch extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company");
         apiUrl.addParam(PARAM_QUERY, companyName);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, CompanyResults.class).getResults();
     }

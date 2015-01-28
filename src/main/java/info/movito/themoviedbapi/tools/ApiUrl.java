@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.tools;
 
+import info.movito.themoviedbapi.AbstractTmdbApi;
 import org.apache.commons.lang3.StringUtils;
 
 import java.net.URL;
@@ -134,5 +135,12 @@ public class ApiUrl {
         }
 
         addParam(APPEND_TO_RESPONSE, StringUtils.join(appendToResponse, ","));
+    }
+
+
+    public void addPage(Integer page) {
+        if (page != null && page > 0) {
+            addParam(AbstractTmdbApi.PARAM_PAGE, page);
+        }
     }
 }

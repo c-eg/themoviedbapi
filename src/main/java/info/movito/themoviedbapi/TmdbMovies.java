@@ -202,9 +202,7 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_LANGUAGE, language);
         }
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, MovieResults.class);
     }
@@ -227,13 +225,10 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_LANGUAGE, language);
         }
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TmdbAccount.MovieListResults.class).getResults();
     }
-
 
 
     /**
@@ -294,9 +289,7 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_LANGUAGE, language);
         }
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
 
         return mapJsonResult(apiUrl, MovieResults.class);
@@ -320,9 +313,7 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_LANGUAGE, language);
         }
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, MovieResults.class);
     }
@@ -344,9 +335,7 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_LANGUAGE, language);
         }
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, MovieResults.class);
     }
@@ -368,9 +357,7 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_LANGUAGE, language);
         }
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
 
         return mapJsonResult(apiUrl, MovieResults.class);
