@@ -5,8 +5,6 @@ import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
-
 
 public class TmdbReviews extends AbstractTmdbApi {
 
@@ -15,7 +13,7 @@ public class TmdbReviews extends AbstractTmdbApi {
     }
 
 
-    public List<Reviews> getReviews(int movieId, String language, Integer page) {
+    public ReviewResultsPage getReviews(int movieId, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "reviews");
 
         if (StringUtils.isNotBlank(language)) {
@@ -24,11 +22,11 @@ public class TmdbReviews extends AbstractTmdbApi {
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, ReviewResults.class).getResults();
+        return mapJsonResult(apiUrl, ReviewResultsPage.class);
     }
 
 
-    private static class ReviewResults extends ResultsPage<Reviews> {
+    public static class ReviewResultsPage extends ResultsPage<Reviews> {
 
     }
 

@@ -2,7 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.config.Account;
-import info.movito.themoviedbapi.model.core.MovieResults;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ResponseStatus;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
@@ -12,7 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class TmdbAccount extends AbstractTmdbApi {
@@ -41,7 +40,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the lists that as user has created.
      */
-    public List<MovieList> getLists(SessionToken sessionToken, int accountId, String language, Integer page) {
+    public MovieListResultsPage getLists(SessionToken sessionToken, int accountId, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TmdbAccount.TMDB_METHOD_ACCOUNT, accountId, "lists");
 
         apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
@@ -54,20 +53,20 @@ public class TmdbAccount extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, page);
         }
 
-        return mapJsonResult(apiUrl, TmdbAccount.MovieListResults.class).getResults();
+        return mapJsonResult(apiUrl, MovieListResultsPage.class);
     }
 
 
-    static class MovieListResults extends ResultsPage<MovieList> {
+    public static class MovieListResultsPage extends ResultsPage<MovieList> {
 
     }
 
 
-    public MovieResults getRatedMovies(SessionToken sessionToken, int accountId) {
+    public MovieResultsPage getRatedMovies(SessionToken sessionToken, int accountId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated_movies");
         apiUrl.addParam(PARAM_SESSION, sessionToken);
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
 
@@ -96,19 +95,19 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
 
-    public MovieResults getFavoriteMovies(SessionToken sessionToken, int accountId) {
+    public MovieResultsPage getFavoriteMovies(SessionToken sessionToken, int accountId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies");
         apiUrl.addParam(PARAM_SESSION, sessionToken);
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
 
-    public TvResults getFavoriteSeries(SessionToken sessionToken, int accountId) {
+    public TvResultsPage getFavoriteSeries(SessionToken sessionToken, int accountId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv");
         apiUrl.addParam(PARAM_SESSION, sessionToken);
 
-        return mapJsonResult(apiUrl, TvResults.class);
+        return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
 
@@ -150,19 +149,21 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @return The watchlist of the user
      */
-    public MovieResults getWatchListMovies(SessionToken sessionToken, int accountId) {
+    public MovieResultsPage getWatchListMovies(SessionToken sessionToken, int accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/movies");
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPage(page);
+
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
 
-    public TvResults getWatchListSeries(SessionToken sessionToken, int accountId) {
+    public TvResultsPage getWatchListSeries(SessionToken sessionToken, int accountId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/tv");
         apiUrl.addParam(PARAM_SESSION, sessionToken);
 
-        return mapJsonResult(apiUrl, TvResults.class);
+        return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
 

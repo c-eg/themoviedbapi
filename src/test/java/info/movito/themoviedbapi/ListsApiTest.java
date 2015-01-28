@@ -60,7 +60,7 @@ public class ListsApiTest extends AbstractTmdbApiTest {
 
 
         // list all lists to see if ours is there as well
-        List<MovieList> lists = accountApi.getLists(APITESTS_TOKEN, APITESTS_ACCOUNT, null, null);
+        List<MovieList> lists = accountApi.getLists(APITESTS_TOKEN, APITESTS_ACCOUNT, null, null).getResults();
 
 
         // might not be true because of other test lists

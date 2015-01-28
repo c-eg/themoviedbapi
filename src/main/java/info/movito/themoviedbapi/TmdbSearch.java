@@ -2,16 +2,11 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.Company;
-import info.movito.themoviedbapi.model.MovieList;
-import info.movito.themoviedbapi.model.core.MovieResults;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
-import info.movito.themoviedbapi.model.people.Person;
-import info.movito.themoviedbapi.model.tv.TvSeries;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.List;
 
 
 public class TmdbSearch extends AbstractTmdbApi {
@@ -34,7 +29,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param includeAdult true or false to include adult titles in the search
      * @param page         The page of results to return. 0 to get the default (first page)
      */
-    public MovieResults searchMovie(String query, Integer searchYear, String language, boolean includeAdult, Integer page) {
+    public MovieResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbMovies.TMDB_METHOD_MOVIE);
 
         if (StringUtils.isBlank(query)) {
@@ -59,18 +54,17 @@ public class TmdbSearch extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
 
     /**
      * Search Movies This is a good starting point to start finding movies on TMDb.
-     *
-     * @param query
+     *  @param query
      * @param language The language to include. Can be blank/null.
      * @param page     The page of results to return. 0 to get the default (first page)
      */
-    public List<TvSeries> searchTv(String query, String language, Integer page) {
+    public TvResultsPage searchTv(String query, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbTV.TMDB_METHOD_TV);
 
         if (StringUtils.isBlank(query)) {
@@ -89,18 +83,17 @@ public class TmdbSearch extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, TvResults.class).getResults();
+        return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
 
     /**
      * Search for collections by name.
-     *
-     * @param query
+     *  @param query
      * @param language
      * @param page
      */
-    public List<Collection> searchCollection(String query, String language, Integer page) {
+    public CollectionResultsPage searchCollection(String query, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbCollections.TMDB_METHOD_COLLECTION);
 
         if (StringUtils.isNotBlank(query)) {
@@ -115,7 +108,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, CollectionResults.class).getResults();
+        return mapJsonResult(apiUrl, CollectionResultsPage.class);
     }
 
 
@@ -123,12 +116,11 @@ public class TmdbSearch extends AbstractTmdbApi {
      * This is a good starting point to start finding people on TMDb.
      * <p/>
      * The idea is to be a quick and light method so you can iterate through people quickly.
-     *
-     * @param query
+     *  @param query
      * @param includeAdult
      * @param page
      */
-    public List<Person> searchPerson(String query, boolean includeAdult, Integer page) {
+    public TmdbPeople.PersonResultsPage searchPerson(String query, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbPeople.TMDB_METHOD_PERSON);
 
         apiUrl.addParam(PARAM_QUERY, query);
@@ -137,18 +129,17 @@ public class TmdbSearch extends AbstractTmdbApi {
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, TmdbPeople.PersonResults.class).getResults();
+        return mapJsonResult(apiUrl, TmdbPeople.PersonResultsPage.class);
     }
 
 
     /**
      * Search for lists by name and description.
-     *
-     * @param query
+     *  @param query
      * @param language
      * @param page
      */
-    public List<MovieList> searchList(String query, String language, Integer page) {
+    public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbLists.TMDB_METHOD_LIST);
 
         if (StringUtils.isNotBlank(query)) {
@@ -163,7 +154,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, TmdbAccount.MovieListResults.class).getResults();
+        return mapJsonResult(apiUrl, TmdbAccount.MovieListResultsPage.class);
     }
 
 
@@ -174,27 +165,25 @@ public class TmdbSearch extends AbstractTmdbApi {
      * those returned on movie calls.
      * <p/>
      * http://help.themoviedb.org/kb/api/search-companies
-     *
-     * @param companyName
+     *  @param companyName
      * @param page
      */
-    public List<Company> searchCompany(String companyName, Integer page) {
+    public CompanyResultsPage searchCompany(String companyName, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company");
         apiUrl.addParam(PARAM_QUERY, companyName);
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, CompanyResults.class).getResults();
+        return mapJsonResult(apiUrl, CompanyResultsPage.class);
     }
 
 
     /**
      * Search for keywords by name
-     *
-     * @param query
+     *  @param query
      * @param page
      */
-    public List<Keyword> searchKeyword(String query, Integer page) {
+    public KeywordResultsPage searchKeyword(String query, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword");
 
         if (StringUtils.isNotBlank(query)) {
@@ -205,21 +194,21 @@ public class TmdbSearch extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, Integer.toString(page));
         }
 
-        return mapJsonResult(apiUrl, KeywordResults.class).getResults();
+        return mapJsonResult(apiUrl, KeywordResultsPage.class);
     }
 
 
-    static class KeywordResults extends ResultsPage<Keyword> {
-
-    }
-
-
-    static class CompanyResults extends ResultsPage<Company> {
+    static class KeywordResultsPage extends ResultsPage<Keyword> {
 
     }
 
 
-    private static class CollectionResults extends ResultsPage<Collection> {
+    static class CompanyResultsPage extends ResultsPage<Company> {
+
+    }
+
+
+    public static class CollectionResultsPage extends ResultsPage<Collection> {
 
     }
 

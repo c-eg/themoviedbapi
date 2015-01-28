@@ -3,7 +3,7 @@ package info.movito.themoviedbapi;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
-import info.movito.themoviedbapi.model.core.MovieResults;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
 
@@ -58,7 +58,7 @@ public class TmdbGenre extends AbstractTmdbApi {
      * @param language
      * @param page
      */
-    public MovieResults getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies) {
+    public MovieResultsPage getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, genreId, "movies");
 
         if (StringUtils.isNotBlank(language)) {
@@ -71,6 +71,6 @@ public class TmdbGenre extends AbstractTmdbApi {
 
         apiUrl.addParam(PARAM_INCLUDE_ALL_MOVIES, includeAllMovies);
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 }

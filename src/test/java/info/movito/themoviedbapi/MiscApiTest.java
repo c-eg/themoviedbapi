@@ -101,7 +101,7 @@ public class MiscApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetKeywordMovies() throws Exception {
-        List<Keyword> result = tmdb.getKeywords().getKeywordMovies(ID_KEYWORD, LANGUAGE_DEFAULT, 0);
+        List<Keyword> result = tmdb.getKeywords().getKeywordMovies(ID_KEYWORD, LANGUAGE_DEFAULT, 0).getResults();
         assertFalse("No keyword movies found", result.isEmpty());
     }
 
@@ -113,7 +113,7 @@ public class MiscApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetReviews() throws Exception {
-        List<Reviews> result = tmdb.getReviews().getReviews(ID_MOVIE_THE_AVENGERS, LANGUAGE_DEFAULT, 0);
+        List<Reviews> result = tmdb.getReviews().getReviews(ID_MOVIE_THE_AVENGERS, LANGUAGE_DEFAULT, 0).getResults();
 
         assertFalse("No reviews found", result.isEmpty());
     }

@@ -23,7 +23,7 @@ public class CompanyApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetCompanyMovies() {
-        List<Collection> result = tmdb.getCompany().getCompanyMovies(ID_COMPANY, LANGUAGE_DEFAULT, 0);
+        List<Collection> result = tmdb.getCompany().getCompanyMovies(ID_COMPANY, LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No company movies found", !result.isEmpty());
     }
 

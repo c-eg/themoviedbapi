@@ -6,8 +6,6 @@ import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
-
 
 public class TmdbCompany extends AbstractTmdbApi {
 
@@ -38,12 +36,11 @@ public class TmdbCompany extends AbstractTmdbApi {
      * movies per page.
      * <p/>
      * TODO: Implement more than 20 movies
-     *
-     * @param companyId
+     *  @param companyId
      * @param language
      * @param page
      */
-    public List<Collection> getCompanyMovies(int companyId, String language, Integer page) {
+    public CollectionResultsPage getCompanyMovies(int companyId, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COMPANY, companyId, "movies");
 
         if (StringUtils.isNotBlank(language)) {
@@ -54,11 +51,11 @@ public class TmdbCompany extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_PAGE, page);
         }
 
-        return mapJsonResult(apiUrl, CollectionResults.class).getResults();
+        return mapJsonResult(apiUrl, CollectionResultsPage.class);
     }
 
 
-    private static class CollectionResults extends ResultsPage<Collection> {
+    public static class CollectionResultsPage extends ResultsPage<Collection> {
 
     }
 }
