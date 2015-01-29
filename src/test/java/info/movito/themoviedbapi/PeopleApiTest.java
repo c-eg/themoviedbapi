@@ -59,7 +59,7 @@ public class PeopleApiTest extends AbstractTmdbApiTest {
     public void testGetPersonPopular_int() throws Exception {
 
         int page = 0;
-        List<Person> result = tmdb.getPeople().getPersonPopular(page);
+        List<Person> result = tmdb.getPeople().getPersonPopular(page).getResults();
         assertFalse("No popular people", result.isEmpty());
     }
 

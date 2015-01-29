@@ -3,9 +3,8 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.Reviews;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
+import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 
 
 public class TmdbReviews extends AbstractTmdbApi {
@@ -15,22 +14,18 @@ public class TmdbReviews extends AbstractTmdbApi {
     }
 
 
-    public List<Reviews> getReviews(int movieId, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "reviews");
+    public ReviewResultsPage getReviews(int movieId, String language, Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "reviews");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, ReviewResults.class).getResults();
+        return mapJsonResult(apiUrl, ReviewResultsPage.class);
     }
 
 
-    private static class ReviewResults extends ResultsPage<Reviews> {
+    public static class ReviewResultsPage extends ResultsPage<Reviews> {
 
     }
 

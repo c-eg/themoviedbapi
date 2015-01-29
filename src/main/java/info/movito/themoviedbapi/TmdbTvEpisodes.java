@@ -3,7 +3,11 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.tv.TvEpisode;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import org.apache.commons.lang3.StringUtils;
+
+import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
+import static info.movito.themoviedbapi.TmdbTvEpisodes.EpisodeMethod.credits;
+import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
+import static info.movito.themoviedbapi.Utils.asStringArray;
 
 
 public class TmdbTvEpisodes extends AbstractTmdbApi {
@@ -26,24 +30,20 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
 
 
     public TvEpisode getEpisode(int seriesId, int seasonNumber, int episodeNumber, String language, EpisodeMethod... appendToResponse) {
-        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, seriesId, TmdbTvSeasons.TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        apiUrl.appendToResponse(Utils.asStringArray(appendToResponse));
+        apiUrl.appendToResponse(asStringArray(appendToResponse));
 
         return mapJsonResult(apiUrl, TvEpisode.class);
     }
 
 
     public Credits getCredits(int seriesId, int seasonNumber, int episodeNumber, String language) {
-        ApiUrl apiUrl = new ApiUrl(TmdbTV.TMDB_METHOD_TV, seriesId, TmdbTvSeasons.TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, EpisodeMethod.credits);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, credits);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, Credits.class);
     }

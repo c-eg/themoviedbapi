@@ -91,33 +91,19 @@ public class TmdbPeople extends AbstractTmdbApi {
      * <p/>
      * This list refreshes every day.
      *
-     * @return
-     */
-    public List<Person> getPersonPopular() {
-        return getPersonPopular(0);
-    }
-
-
-    /**
-     * Get the list of popular people on The Movie Database.
-     * <p/>
-     * This list refreshes every day.
-     *
      * @param page
      * @return
      */
-    public List<Person> getPersonPopular(Integer page) {
+    public PersonResultsPage getPersonPopular(Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "popular");
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, PersonResults.class).getResults();
+        return mapJsonResult(apiUrl, PersonResultsPage.class);
     }
 
 
-    public static class PersonResults extends ResultsPage<Person> {
+    static class PersonResultsPage extends ResultsPage<Person> {
 
     }
 

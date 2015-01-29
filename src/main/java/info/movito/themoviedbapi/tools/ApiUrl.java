@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.tools;
 
+import info.movito.themoviedbapi.AbstractTmdbApi;
 import org.apache.commons.lang3.StringUtils;
 
 import java.net.URL;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 
 /**
@@ -81,6 +84,7 @@ public class ApiUrl {
         addParam(name, value.toString());
     }
 
+
     public void addParam(String name, String value) {
         if (params.containsKey(name)) {
             throw new RuntimeException("paramater '" + name + "' already defined");
@@ -123,7 +127,6 @@ public class ApiUrl {
 
 
     /**
-     * <p/>
      * Convenience wrapper around addArgument
      *
      * @param appendToResponse Comma separated, any movie method
@@ -134,5 +137,19 @@ public class ApiUrl {
         }
 
         addParam(APPEND_TO_RESPONSE, StringUtils.join(appendToResponse, ","));
+    }
+
+
+    public void addPage(Integer page) {
+        if (page != null && page > 0) {
+            addParam(AbstractTmdbApi.PARAM_PAGE, page);
+        }
+    }
+
+
+    public void addLanguage(String language) {
+        if (isNotBlank(language)) {
+            addParam(AbstractTmdbApi.PARAM_LANGUAGE, language);
+        }
     }
 }

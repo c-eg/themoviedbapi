@@ -3,6 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.config.Account;
+import info.movito.themoviedbapi.model.core.AccountID;
 import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import org.junit.Assert;
@@ -18,7 +19,7 @@ public class AccountApiTest extends AbstractTmdbApiTest {
 
 
     // protected fields to ensure usage just for testing
-    static final int APITESTS_ACCOUNT = 6065849;
+    static final AccountID APITESTS_ACCOUNT = new AccountID(6065849);
     static final SessionToken APITESTS_TOKEN = new SessionToken("76c5c544e9c1f51d7569989d95a8d10cfb5164e5");
 
 
@@ -28,13 +29,15 @@ public class AccountApiTest extends AbstractTmdbApiTest {
 
         // Make sure properties are extracted correctly
         assertEquals(account.getUserName(), "apitests");
-        assertEquals(account.getId(), APITESTS_ACCOUNT);
+        assertEquals(account.getId() + "", APITESTS_ACCOUNT.toString());
     }
 
 
     @Test
     public void testGetMovieLists() throws Exception {
-        List<MovieList> result = tmdb.getMovies().getListsContaining(ID_MOVIE_BLADE_RUNNER, APITESTS_TOKEN, LANGUAGE_ENGLISH, 0);
+        TmdbMovies tmdbMovies = tmdb.getMovies();
+        List<MovieList> result = tmdbMovies.getListsContaining(ID_MOVIE_BLADE_RUNNER,
+                APITESTS_TOKEN, LANGUAGE_ENGLISH, 0).getResults();
 
         assertNotNull("No results found", result);
         assertTrue("No results found", result.size() > 0);
@@ -46,8 +49,8 @@ public class AccountApiTest extends AbstractTmdbApiTest {
         // make sure it's empty (because it's just a test account
         TmdbAccount account = tmdb.getAccount();
 
-        Assert.assertTrue(account.getWatchListMovies(APITESTS_TOKEN, APITESTS_ACCOUNT).getResults().isEmpty());
-        Assert.assertTrue(account.getWatchListSeries(APITESTS_TOKEN, APITESTS_ACCOUNT).getResults().isEmpty());
+        Assert.assertTrue(account.getWatchListMovies(APITESTS_TOKEN, APITESTS_ACCOUNT, null).getResults().isEmpty());
+        Assert.assertTrue(account.getWatchListSeries(APITESTS_TOKEN, APITESTS_ACCOUNT, null).getResults().isEmpty());
 
         // add a movie
         account.addToWatchList(APITESTS_TOKEN, APITESTS_ACCOUNT, 550, TmdbAccount.MediaType.MOVIE);
@@ -55,17 +58,17 @@ public class AccountApiTest extends AbstractTmdbApiTest {
         // add a tv series
         account.addToWatchList(APITESTS_TOKEN, APITESTS_ACCOUNT, 1396, TmdbAccount.MediaType.TV);
 
-        List<MovieDb> watchlistMovies = account.getWatchListMovies(APITESTS_TOKEN, APITESTS_ACCOUNT).getResults();
+        List<MovieDb> watchlistMovies = account.getWatchListMovies(APITESTS_TOKEN, APITESTS_ACCOUNT, null).getResults();
         assertTrue(watchlistMovies.size() == 1);
 
-        List<TvSeries> watchlistSeries = account.getWatchListSeries(APITESTS_TOKEN, APITESTS_ACCOUNT).getResults();
+        List<TvSeries> watchlistSeries = account.getWatchListSeries(APITESTS_TOKEN, APITESTS_ACCOUNT, null).getResults();
         assertTrue(watchlistSeries.size() == 1);
 
         // clean up again
         account.removeFromWatchList(APITESTS_TOKEN, APITESTS_ACCOUNT, 1396, TmdbAccount.MediaType.TV);
         account.removeFromWatchList(APITESTS_TOKEN, APITESTS_ACCOUNT, 550, TmdbAccount.MediaType.MOVIE);
 
-        Assert.assertTrue(account.getWatchListMovies(APITESTS_TOKEN, APITESTS_ACCOUNT).getResults().isEmpty());
+        Assert.assertTrue(account.getWatchListMovies(APITESTS_TOKEN, APITESTS_ACCOUNT, null).getResults().isEmpty());
     }
 
 
@@ -102,7 +105,7 @@ public class AccountApiTest extends AbstractTmdbApiTest {
         // get all rated movies
         Thread.sleep(2000);
 
-        List<MovieDb> ratedMovies = tmdb.getAccount().getRatedMovies(APITESTS_TOKEN, APITESTS_ACCOUNT).getResults();
+        List<MovieDb> ratedMovies = tmdb.getAccount().getRatedMovies(APITESTS_TOKEN, APITESTS_ACCOUNT, null).getResults();
         assertTrue(ratedMovies.size() > 0);
 
         // make sure that we find the movie and it is rated correctly
@@ -119,7 +122,7 @@ public class AccountApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void listUserLists() {
-        List<MovieList> lists = tmdb.getAccount().getLists(APITESTS_TOKEN, APITESTS_ACCOUNT, null, null);
+        List<MovieList> lists = tmdb.getAccount().getLists(APITESTS_TOKEN, APITESTS_ACCOUNT, null, null).getResults();
 
         Assert.assertNotNull(lists);
 

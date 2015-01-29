@@ -4,7 +4,7 @@ import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.Company;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieList;
-import info.movito.themoviedbapi.model.core.MovieResults;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.tv.TvSeries;
@@ -23,10 +23,10 @@ public class SearchApiTest extends AbstractTmdbApiTest {
     public void testQueryEscape() {
         TmdbSearch search = tmdb.getSearch();
 
-        MovieResults movieResults = search.searchMovie("What Ever Happened to Baby Jane?", null, null, false, null);
+        MovieResultsPage movieResultsPage = search.searchMovie("What Ever Happened to Baby Jane?", null, null, false, null);
 
-        Assert.assertTrue(movieResults.getResults().size() == 2);
-        Assert.assertEquals(10242, movieResults.getResults().get(0).getId());
+        Assert.assertTrue(movieResultsPage.getResults().size() == 2);
+        Assert.assertEquals(10242, movieResultsPage.getResults().get(0).getId());
     }
 
 
@@ -50,7 +50,7 @@ public class SearchApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testSearchTv() {
-        List<TvSeries> result = tmdb.getSearch().searchTv("Breaking Bad", null, null);
+        List<TvSeries> result = tmdb.getSearch().searchTv("Breaking Bad", null, null).getResults();
         assertEquals("No series found", 1, result.size());
         assertEquals("Wrong series found", "Breaking Bad", result.get(0).getName());
         assertEquals("Wrong series found", 1396, result.get(0).getId());
@@ -59,7 +59,7 @@ public class SearchApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testSearchCollection() throws Exception {
-        List<Collection> result = tmdb.getSearch().searchCollection("batman", LANGUAGE_DEFAULT, 0);
+        List<Collection> result = tmdb.getSearch().searchCollection("batman", LANGUAGE_DEFAULT, 0).getResults();
 
         assertFalse("No collections found", result == null);
         assertTrue("No collections found", result.size() > 0);
@@ -70,14 +70,14 @@ public class SearchApiTest extends AbstractTmdbApiTest {
     public void testSearchPeople() {
         String personName = "Bruce Willis";
         boolean includeAdult = false;
-        List<Person> result = tmdb.getSearch().searchPerson(personName, includeAdult, 0);
+        List<Person> result = tmdb.getSearch().searchPerson(personName, includeAdult, 0).getResults();
         assertTrue("Couldn't find the person", result.size() > 0);
     }
 
 
     @Test
     public void testSearchList() throws Exception {
-        List<MovieList> results = tmdb.getSearch().searchList("watch", LANGUAGE_DEFAULT, 0);
+        List<MovieList> results = tmdb.getSearch().searchList("watch", LANGUAGE_DEFAULT, 0).getResults();
 
         assertFalse("No lists found", results == null);
         assertTrue("No lists found", results.size() > 0);
@@ -86,14 +86,14 @@ public class SearchApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testSearchCompanies() {
-        List<Company> result = tmdb.getSearch().searchCompany(COMPANY_NAME, 0);
+        List<Company> result = tmdb.getSearch().searchCompany(COMPANY_NAME, 0).getResults();
         assertTrue("No company information found", !result.isEmpty());
     }
 
 
     @Test
     public void testSearchKeyword() throws Exception {
-        List<Keyword> results = tmdb.getSearch().searchKeyword("action", 0);
+        List<Keyword> results = tmdb.getSearch().searchKeyword("action", 0).getResults();
 
         assertFalse("No keywords found", results == null);
         assertTrue("No keywords found", results.size() > 0);

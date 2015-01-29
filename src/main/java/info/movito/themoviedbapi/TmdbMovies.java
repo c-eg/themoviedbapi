@@ -4,13 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.*;
 import info.movito.themoviedbapi.model.changes.ChangesItems;
 import info.movito.themoviedbapi.model.core.IdElement;
-import info.movito.themoviedbapi.model.core.MovieResults;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
+
+import static info.movito.themoviedbapi.TmdbAccount.PARAM_SESSION;
+import static info.movito.themoviedbapi.TmdbMovies.MovieMethod.videos;
+import static info.movito.themoviedbapi.Utils.asStringArray;
 
 
 public class TmdbMovies extends AbstractTmdbApi {
@@ -49,11 +53,9 @@ public class TmdbMovies extends AbstractTmdbApi {
     public MovieDb getMovie(int movieId, String language, MovieMethod... appendToResponse) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        apiUrl.appendToResponse(Utils.asStringArray(appendToResponse));
+        apiUrl.appendToResponse(asStringArray(appendToResponse));
 
         return mapJsonResult(apiUrl, MovieDb.class);
     }
@@ -93,9 +95,7 @@ public class TmdbMovies extends AbstractTmdbApi {
     public MovieImages getImages(int movieId, String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "images");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, MovieImages.class);
     }
@@ -133,9 +133,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "releases");
 
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, ReleaseInfoResults.class).countries;
     }
@@ -162,11 +160,9 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      */
     public List<Video> getVideos(int movieId, String language) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.videos);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, videos);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, Video.Results.class).getVideos();
     }
@@ -195,45 +191,35 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      * @param page
      */
-    public MovieResults getSimilarMovies(int movieId, String language, Integer page) {
+    public MovieResultsPage getSimilarMovies(int movieId, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "similar");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
 
     /**
      * Get the lists that the movie belongs to
-     *
-     * @param movieId
+     *  @param movieId
      * @param sessionToken
      * @param language
      * @param page
      */
-    public List<MovieList> getListsContaining(int movieId, SessionToken sessionToken, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "lists");
+    public TmdbAccount.MovieListResultsPage getListsContaining(int movieId, SessionToken sessionToken, String language, Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "lists");
 
-        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
+        apiUrl.addParam(PARAM_SESSION, sessionToken);
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, TmdbAccount.MovieListResults.class).getResults();
+        return mapJsonResult(apiUrl, TmdbAccount.MovieListResultsPage.class);
     }
-
 
 
     /**
@@ -287,19 +273,15 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p/>
      * The maximum number of items this list will include is 100.
      */
-    public MovieResults getUpcoming(String language, Integer page) {
+    public MovieResultsPage getUpcoming(String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "upcoming");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
 
     }
 
@@ -313,18 +295,14 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      * @param page
      */
-    public MovieResults getNowPlayingMovies(String language, Integer page) {
+    public MovieResultsPage getNowPlayingMovies(String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "now-playing");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
 
@@ -337,18 +315,14 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      * @param page
      */
-    public MovieResults getPopularMovieList(String language, Integer page) {
+    public MovieResultsPage getPopularMovieList(String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "popular");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
 
@@ -361,19 +335,15 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      * @param page
      */
-    public MovieResults getTopRatedMovies(String language, Integer page) {
+    public MovieResultsPage getTopRatedMovies(String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "top-rated");
 
-        if (StringUtils.isNotBlank(language)) {
-            apiUrl.addParam(PARAM_LANGUAGE, language);
-        }
+        apiUrl.addLanguage(language);
 
-        if (page != null && page > 0) {
-            apiUrl.addParam(PARAM_PAGE, page);
-        }
+        apiUrl.addPage(page);
 
 
-        return mapJsonResult(apiUrl, MovieResults.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
 
