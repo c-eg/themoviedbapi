@@ -103,7 +103,7 @@ public class TmdbPeople extends AbstractTmdbApi {
     }
 
 
-    static class PersonResultsPage extends ResultsPage<Person> {
+    public static class PersonResultsPage extends ResultsPage<Person> {
 
     }
 
