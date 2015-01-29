@@ -48,8 +48,6 @@ public class TmdbTV extends AbstractTmdbApi {
         apiUrl.addLanguage(language);
         return mapJsonResult(apiUrl, Credits.class);
     }
-
-
     public TvResultsPage getPopular(String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_POPULAR);
 
