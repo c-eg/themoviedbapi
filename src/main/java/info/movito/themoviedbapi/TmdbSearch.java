@@ -114,6 +114,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param includeAdult
      * @param page
      */
+
     public TmdbPeople.PersonResultsPage searchPerson(String query, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbPeople.TMDB_METHOD_PERSON);
 
