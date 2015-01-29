@@ -45,6 +45,7 @@ public class ResultsPage<T> extends AbstractJsonMapping implements Iterable<T> {
 //        }
 //    }
 
+
     public List<T> getResults() {
         return results;
     }

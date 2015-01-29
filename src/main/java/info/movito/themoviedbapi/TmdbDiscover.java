@@ -46,8 +46,8 @@ public class TmdbDiscover extends AbstractTmdbApi {
      * @return
      */
     public MovieResultsPage getDiscover(int page, String language, String sortBy, boolean includeAdult, int year,
-                                    int primaryReleaseYear, int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
-                                    String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies) {
+                                        int primaryReleaseYear, int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
+                                        String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies) {
 
         Discover discover = new Discover();
         discover.page(page)

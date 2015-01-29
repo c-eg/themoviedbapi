@@ -1,4 +1,3 @@
-
 package info.movito.themoviedbapi.model.people;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

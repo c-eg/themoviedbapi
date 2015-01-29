@@ -13,9 +13,11 @@ public class ResponseStatusException extends MovieDbException {
         this.responseStatus = responseStatus;
     }
 
+
     public ResponseStatus getResponseStatus() {
         return responseStatus;
     }
+
 
     @Override
     public String toString() {

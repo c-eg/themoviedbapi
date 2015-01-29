@@ -62,7 +62,8 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * Search Movies This is a good starting point to start finding movies on TMDb.
-     *  @param query
+     *
+     * @param query
      * @param language The language to include. Can be blank/null.
      * @param page     The page of results to return. 0 to get the default (first page)
      */
@@ -87,7 +88,8 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * Search for collections by name.
-     *  @param query
+     *
+     * @param query
      * @param language
      * @param page
      */
@@ -110,7 +112,8 @@ public class TmdbSearch extends AbstractTmdbApi {
      * This is a good starting point to start finding people on TMDb.
      * <p/>
      * The idea is to be a quick and light method so you can iterate through people quickly.
-     *  @param query
+     *
+     * @param query
      * @param includeAdult
      * @param page
      */
@@ -130,7 +133,8 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * Search for lists by name and description.
-     *  @param query
+     *
+     * @param query
      * @param language
      * @param page
      */
@@ -156,7 +160,8 @@ public class TmdbSearch extends AbstractTmdbApi {
      * those returned on movie calls.
      * <p/>
      * http://help.themoviedb.org/kb/api/search-companies
-     *  @param companyName
+     *
+     * @param companyName
      * @param page
      */
     public CompanyResultsPage searchCompany(String companyName, Integer page) {
@@ -171,7 +176,8 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * Search for keywords by name
-     *  @param query
+     *
+     * @param query
      * @param page
      */
     public KeywordResultsPage searchKeyword(String query, Integer page) {

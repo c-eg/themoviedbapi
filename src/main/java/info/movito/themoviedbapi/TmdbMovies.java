@@ -204,7 +204,8 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * Get the lists that the movie belongs to
-     *  @param movieId
+     *
+     * @param movieId
      * @param sessionToken
      * @param language
      * @param page

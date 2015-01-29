@@ -24,7 +24,8 @@ public class TokenAuthorisation {
     public String getRequestToken() {
         return requestToken;
     }
-    
+
+
     public Boolean getSuccess() {
         return success == null ? false : success;
     }

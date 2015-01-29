@@ -16,13 +16,16 @@ public class ResponseStatus extends AbstractJsonMapping {
     @JsonProperty("status_message")
     private String statusMessage;
 
+
     public ResponseStatus() {
     }
+
 
     public ResponseStatus(Integer statusCode, String statusMessage) {
         this.statusCode = statusCode;
         this.statusMessage = statusMessage;
     }
+
 
     public Integer getStatusCode() {
         return statusCode;

@@ -10,6 +10,7 @@ public class MovieDbException extends RuntimeException {
         super(message);
     }
 
+
     public MovieDbException(String message, Throwable cause) {
         super(message, cause);
     }

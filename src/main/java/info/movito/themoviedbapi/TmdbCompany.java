@@ -35,7 +35,8 @@ public class TmdbCompany extends AbstractTmdbApi {
      * movies per page.
      * <p/>
      * TODO: Implement more than 20 movies
-     *  @param companyId
+     *
+     * @param companyId
      * @param language
      * @param page
      */

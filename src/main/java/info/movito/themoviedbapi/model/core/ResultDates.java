@@ -1,4 +1,3 @@
-
 package info.movito.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
