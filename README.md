@@ -127,7 +127,7 @@ project you should add one of their adapters [bindings](http://www.slf4j.org/man
 Notes & Acknowledgements
 -------------------------
 
-The library was developed for [Movito](http://www.movito.info) to interact with tmdb services.  '
+The library was developed for [Movito](http://www.movito.info) to interact with tmdb services.
 
 
 This library has been inspired by [api-themoviedb](https://github.com/Omertron/api-themoviedb) but has been rewritten to provide a more open license, a more clean API and to expose more features of the TMDB json api.
