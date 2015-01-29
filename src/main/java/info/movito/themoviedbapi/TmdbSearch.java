@@ -186,12 +186,12 @@ public class TmdbSearch extends AbstractTmdbApi {
     }
 
 
-    static class KeywordResultsPage extends ResultsPage<Keyword> {
+    public static class KeywordResultsPage extends ResultsPage<Keyword> {
 
     }
 
 
-    static class CompanyResultsPage extends ResultsPage<Company> {
+    public static class CompanyResultsPage extends ResultsPage<Company> {
 
     }
 
