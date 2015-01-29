@@ -3,7 +3,7 @@ TheMovieDB API
 
 Author: Holger Brandl
 
-This library provides a java-wrapper around the json API provided by [TheMovieDB.org API](http://api.themoviedb.org/), which is  an open database for movie and film content.
+This library provides a java-wrapper around the [json API](http://api.themoviedb.org/) provided by [TMdB](http://themoviedb.org), which is  an open database for movie and film content.
 
 
 
