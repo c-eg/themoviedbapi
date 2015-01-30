@@ -1,7 +1,7 @@
 TheMovieDB API
 ================
 
-This library provides a java-wrapper around the [json API](http://api.themoviedb.org/) provided by
+This library provides a java-wrapper around the [JSON API](http://api.themoviedb.org/) provided by
 [TMdB](http://themoviedb.org), which is an open database for movie and film content.
 
 
@@ -54,12 +54,13 @@ Project Logging
 ---------------
 
 This project uses [SLF4J](http://www.slf4j.org) to abstract the logging in the project. To use the logging in your own
-project you should add one of their adapters [bindings](http://www.slf4j.org/manual.html).
+project you should add one of the provided [adapter bindings](http://www.slf4j.org/manual.html).
 
 
 
 Notes & Acknowledgements
 -------------------------
 
-The library was developed for [Movito](http://www.movito.info) to interact with tmdb services.b) but has been rewritten
-to provide a more open license, a more clean API and to expose more features of the TMDB json api.
+The library was developed for [Movito](http://www.movito.info) to interact with tmdb services. This library has been
+inspired by [api-themoviedb](https://github.com/Omertron/api-themoviedb) but has been rewritten to provide a more open
+license, a more clean API and to expose more features of the TMDB json api.
