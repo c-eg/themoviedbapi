@@ -2,11 +2,14 @@ package info.movito.themoviedbapi;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import info.movito.themoviedbapi.model.config.TmdbTimezones;
 import info.movito.themoviedbapi.model.core.ResponseStatus;
 import info.movito.themoviedbapi.model.core.ResponseStatusException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
 import info.movito.themoviedbapi.tools.RequestMethod;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,9 +63,12 @@ public abstract class AbstractTmdbApi {
 //        System.out.println(webpage);
 
         try {
+            if(someClass.equals(TmdbTimezones.class)) {
+            	return (T) new TmdbTimezones(webpage);
+            }
+
             // check if was error responseStatus
             ResponseStatus responseStatus = jsonMapper.readValue(webpage, ResponseStatus.class);
-
             // work around the problem that there's no status code for suspected spam names yet
             String suspectedSpam = "Unable to create list because: Description is suspected to be spam.";
             if (webpage.contains(suspectedSpam)) {
@@ -74,7 +80,6 @@ public abstract class AbstractTmdbApi {
             if (statusCode != null && !SUCCESS_STATUS_CODES.contains(statusCode)) {
                 throw new ResponseStatusException(responseStatus);
             }
-
 
             return jsonMapper.readValue(webpage, someClass);
         } catch (IOException ex) {
