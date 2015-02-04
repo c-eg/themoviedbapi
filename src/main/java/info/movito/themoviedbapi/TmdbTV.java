@@ -61,13 +61,16 @@ public class TmdbTV extends AbstractTmdbApi {
     }
 
 
-    public TvResultsPage getAiringToday(String language, Integer page) {
+    public TvResultsPage getAiringToday(String language, Integer page,String timezone) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_AIRINGTODAY);
 
         apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
-
+        
+        if(timezone!=null)
+        	apiUrl.addParam("timezone", timezone);
+        
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
