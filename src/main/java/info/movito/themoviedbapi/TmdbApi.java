@@ -2,10 +2,9 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.JobDepartment;
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.config.TmdbConfiguration;
-import info.movito.themoviedbapi.model.config.TmdbTimezones;
 import info.movito.themoviedbapi.tools.*;
-
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -21,8 +20,7 @@ public class TmdbApi {
     private String apiKey;
 
     private TmdbConfiguration tmdbConfig;
-    private TmdbTimezones     tmdbTimezones;
-    
+
     /**
      * Reader implementation that is used to fetch all websites
      */
@@ -44,9 +42,8 @@ public class TmdbApi {
 
         try {
             tmdbConfig = new TmdbConfig(this).getConfig().getTmdbConfiguration();
-            tmdbTimezones = new TmdbConfig(this).getTimezones();
         } catch (Throwable ex) {
-            throw new MovieDbException("Failed to read configuration/timezones", ex);
+            throw new MovieDbException("Failed to read configuration", ex);
         }
     }
 
@@ -88,10 +85,11 @@ public class TmdbApi {
         return tmdbConfig;
     }
 
-    public TmdbTimezones getTimezones() {
-    	return tmdbTimezones;
+
+    public List<Timezone> getTimezones() {
+        return new TmdbTimezones(this).getTimezones();
     }
-    
+
     //
     // accessors for the different parts of the api
     //

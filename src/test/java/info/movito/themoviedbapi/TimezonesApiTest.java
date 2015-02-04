@@ -1,28 +1,24 @@
 package info.movito.themoviedbapi;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Iterator;
-import java.util.TimeZone;
-
-import info.movito.themoviedbapi.model.config.TmdbTimezones;
-import info.movito.themoviedbapi.model.config.TokenAuthorisation;
-
-import java.util.TimeZone;
-
+import info.movito.themoviedbapi.model.config.Timezone;
 import org.junit.Test;
 
+import java.util.List;
+import java.util.TimeZone;
+
+import static org.junit.Assert.assertFalse;
+
 public class TimezonesApiTest extends AbstractTmdbApiTest {
+
     @Test
     public void testGetAuthorisationToken() throws Exception {
+        List<Timezone> tz = tmdb.getTimezones();
 
-        TmdbTimezones tz = tmdb.getTimezones();
-        assertFalse("Timezones are null", tz == null);
-
-        for(String id : tz) {
-        	TimeZone t = TimeZone.getTimeZone(id);
-            assertFalse("Timezone '"+id+"' is unknown", t == null);
+        for (Timezone id : tz) {
+            TimeZone t = TimeZone.getTimeZone(id.getName());
+            assertFalse("Timezone '" + id + "' is unknown", t == null);
         }
+
+
     }
 }

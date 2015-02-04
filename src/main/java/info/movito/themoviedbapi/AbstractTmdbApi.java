@@ -2,14 +2,11 @@ package info.movito.themoviedbapi;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import info.movito.themoviedbapi.model.config.TmdbTimezones;
 import info.movito.themoviedbapi.model.core.ResponseStatus;
 import info.movito.themoviedbapi.model.core.ResponseStatusException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
 import info.movito.themoviedbapi.tools.RequestMethod;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,9 +60,9 @@ public abstract class AbstractTmdbApi {
 //        System.out.println(webpage);
 
         try {
-            if(someClass.equals(TmdbTimezones.class)) {
-            	return (T) new TmdbTimezones(webpage);
-            }
+//            if(someClass.equals(TmdbTimezones.class)) {
+//            	return (T) new TimezoneJsonMapper(webpage);
+//            }
 
             // check if was error responseStatus
             ResponseStatus responseStatus = jsonMapper.readValue(webpage, ResponseStatus.class);

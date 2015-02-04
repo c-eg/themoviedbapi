@@ -1,5 +1,8 @@
 package info.movito.themoviedbapi;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.tv.TvEpisode;
 import info.movito.themoviedbapi.model.tv.TvSeason;
 import info.movito.themoviedbapi.model.tv.TvSeries;
@@ -70,6 +73,20 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
         TvEpisode episode = tmdb.getTvEpisodes().getEpisode(1407, 1, 1, LANGUAGE_ENGLISH, TmdbTvEpisodes.EpisodeMethod.values());
         Assert.assertFalse(episode.getImages().getStills().isEmpty());
 
+    }
+
+
+    @Test
+    public void testAiringToday() {
+        Timezone ca = Iterables.find(tmdb.getTimezones(), new Predicate<Timezone>() {
+            @Override
+            public boolean apply(Timezone input) {
+                return input.getName().equals("US");
+            }
+        });
+
+        TvResultsPage en = tmdb.getTvSeries().getAiringToday("en", null, ca);
+        Assert.assertFalse(en.getResults().isEmpty());
     }
 
 

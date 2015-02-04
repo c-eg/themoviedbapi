@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Credits;
+import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
@@ -61,15 +62,16 @@ public class TmdbTV extends AbstractTmdbApi {
     }
 
 
-    public TvResultsPage getAiringToday(String language, Integer page,String timezone) {
+    public TvResultsPage getAiringToday(String language, Integer page, Timezone timezone) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_AIRINGTODAY);
 
         apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
-        
-        if(timezone!=null)
-        	apiUrl.addParam("timezone", timezone);
+
+        if (timezone != null) {
+            apiUrl.addParam("timezone", timezone);
+        }
         
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
