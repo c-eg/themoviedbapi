@@ -8,19 +8,20 @@ import java.util.List;
 public class Timezone extends AbstractJsonMapping {
 
     private String name;
-    private List<String> countries;
+    private String country;
 
 
-    public Timezone(String name, List<String> countries) {
+    public Timezone(String name, String country) {
         this.name = name;
-        this.countries = countries;
+        this.country = country;
     }
 
 
-    public Collection<String> getCountries() {
-        return countries;
-    }
 
+	public String getCountry() {
+        return country;
+    }
+    
 
     public String getName() {
         return name;

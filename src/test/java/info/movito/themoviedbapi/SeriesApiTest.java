@@ -78,13 +78,15 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testAiringToday() {
-        Timezone ca = Iterables.find(tmdb.getTimezones(), new Predicate<Timezone>() {
+    	// Try t find the first (off possibly many timezones) listed
+    	// for 'US'
+    	
+    	Timezone ca = Iterables.find(tmdb.getTimezones(), new Predicate<Timezone>() {
             @Override
             public boolean apply(Timezone input) {
-                return input.getName().equals("US");
+                return input.getCountry().equals("US");
             }
         });
-
         TvResultsPage en = tmdb.getTvSeries().getAiringToday("en", null, ca);
         Assert.assertFalse(en.getResults().isEmpty());
     }
