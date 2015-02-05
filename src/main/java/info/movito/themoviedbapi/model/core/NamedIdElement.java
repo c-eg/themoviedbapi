@@ -18,4 +18,10 @@ public class NamedIdElement extends IdElement {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    @Override
+    public String toString() {
+        return getName() + " [" + getId() + "]";
+    }
 }
