@@ -78,7 +78,7 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testAiringToday() {
-    	// Try t find the first (off possibly many timezones) listed
+    	// Try to find the first (of possibly many timezones) listed
     	// for 'US'
     	
     	Timezone ca = Iterables.find(tmdb.getTimezones(), new Predicate<Timezone>() {
