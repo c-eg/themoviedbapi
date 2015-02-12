@@ -42,7 +42,14 @@ public class AbstractTvElement extends NamedIdElement {
         return images;
     }
 
-
+    public void setExternalIds(ExternalIds e) {
+    	externalIds = e;
+    }
+    
+    public void setCredits(Credits c) {
+    	credits = c;
+    }
+    
     public List<Video> getVideos() {
         return videos != null ? videos.getVideos() : null;
     }
