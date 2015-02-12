@@ -280,4 +280,9 @@ public class MovieDb extends IdElement {
     public float getUserRating() {
         return userRating;
     }
+    
+    @Override
+    public String toString()  {
+        return title + " - " + releaseDate;
+    }
 }
