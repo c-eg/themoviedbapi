@@ -176,4 +176,13 @@ public class TvSeries extends AbstractTvElement {
     public String getStatus() {
         return status;
     }
+
+
+	public void setNetworks(List<Network> networks ) {
+		this.networks = networks;
+	}
+
+	public void setOverview(String overview) {
+		this.overview = overview;
+	}
 }
