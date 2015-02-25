@@ -1,10 +1,9 @@
 package info.movito.themoviedbapi.model.config;
 
-import java.util.HashMap;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import info.movito.themoviedbapi.model.core.NamedIdElement;
+
+import java.util.HashMap;
 
 
 public class Account extends NamedIdElement {
@@ -16,7 +15,7 @@ public class Account extends NamedIdElement {
     private boolean includeAdult;
 
     @JsonProperty("avatar")
-    private HashMap<String,HashMap<String,String>> avatar = null;
+    private HashMap<String, HashMap<String, String>> avatar;
     
     public boolean isIncludeAdult() {
         return includeAdult;
@@ -36,11 +35,12 @@ public class Account extends NamedIdElement {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    
+
     public String getGravatarHash() {
-    	
-    	if(this.avatar != null && avatar.get("gravatar")!=null)
-    		return avatar.get("gravatar").get("hash");
-    	return null;
+        if (avatar != null && avatar.get("gravatar") != null) {
+            return avatar.get("gravatar").get("hash");
+        }
+
+        return null;
     }
 }

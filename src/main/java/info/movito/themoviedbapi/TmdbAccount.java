@@ -212,9 +212,4 @@ public class TmdbAccount extends AbstractTmdbApi {
 
 
     }
-
-
-	public Account getAccount(String sessionId) {
-		return getAccount(new SessionToken(sessionId));
-	}
 }
