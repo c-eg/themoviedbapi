@@ -9,6 +9,8 @@ This library provides a java-wrapper around the [JSON API](http://api.themoviedb
 Setup
 -----
 
+[ ![Download](https://api.bintray.com/packages/movito/movito-utils/tmdb-api/images/download.svg) ](https://bintray.com/movito/movito-utils/tmdb-api/_latestVersion)
+
 Just add it as dependency to your project. It's available via [jcenter](https://bintray.com/bintray/jcenter)
 
 ```
