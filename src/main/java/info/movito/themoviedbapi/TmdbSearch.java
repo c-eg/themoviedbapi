@@ -2,11 +2,11 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.Company;
+import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
-
 import static info.movito.themoviedbapi.TmdbCollections.TMDB_METHOD_COLLECTION;
 import static info.movito.themoviedbapi.TmdbLists.TMDB_METHOD_LIST;
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
@@ -19,6 +19,8 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_SEARCH = "search";
     private static final String PARAM_QUERY = "query";
+	
+    public static final Object TMDB_METHOD_MULTI = "multi";
 
 
     public TmdbSearch(TmdbApi tmdbApi) {
@@ -61,7 +63,7 @@ public class TmdbSearch extends AbstractTmdbApi {
 
 
     /**
-     * Search Movies This is a good starting point to start finding movies on TMDb.
+     * Search for TV shows by title.
      *
      * @param query
      * @param language The language to include. Can be blank/null.
@@ -192,6 +194,33 @@ public class TmdbSearch extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, KeywordResultsPage.class);
     }
 
+    /**
+     * Search the movie, tv show and person collections with a single query.
+     * <p>Each mapped result is the same response you would get from each independent search.</p>
+     * @param query
+     * @param language
+     * @param page
+     * @return ResultsPage of Multi.
+     * @see Multi
+     */
+    public MultiListResultsPage searchMulti(String query, String language, Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MULTI);
+
+        if (isBlank(query)) {
+            throw new RuntimeException("query must not be blank");
+        }
+
+        apiUrl.addParam(PARAM_QUERY, query);
+
+        // optional parameters
+
+        apiUrl.addLanguage(language);
+
+        apiUrl.addPage(page);
+
+        return mapJsonResult(apiUrl, MultiListResultsPage.class);
+    }
+
 
     public static class KeywordResultsPage extends ResultsPage<Keyword> {
 
@@ -204,6 +233,10 @@ public class TmdbSearch extends AbstractTmdbApi {
 
 
     public static class CollectionResultsPage extends ResultsPage<Collection> {
+
+    }
+
+    public static class MultiListResultsPage extends ResultsPage<Multi> {
 
     }
 

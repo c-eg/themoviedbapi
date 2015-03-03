@@ -12,7 +12,7 @@ import info.movito.themoviedbapi.model.people.PersonCrew;
 import java.util.List;
 
 
-public class MovieDb extends IdElement {
+public class MovieDb extends IdElement implements Multi {
 
     @JsonProperty("title")
     private String title;
@@ -284,5 +284,10 @@ public class MovieDb extends IdElement {
     @Override
     public String toString()  {
         return title + " - " + releaseDate;
+    }
+
+    @Override
+    public MediaType getMediaType() {
+        return MediaType.MOVIE;
     }
 }
