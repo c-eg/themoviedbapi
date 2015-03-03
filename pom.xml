@@ -8,7 +8,7 @@
 
     <groupId>info.movito</groupId>
     <artifactId>themoviedbapi</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
 
     <packaging>jar</packaging>
     <name>TMDB-API</name>
@@ -16,7 +16,7 @@
 
     <url>https://github.com/holgerbrandl/themoviedbapi</url>
 
-    <inceptionYear>2014</inceptionYear>
+    <inceptionYear>2015</inceptionYear>
 
 
     <properties>

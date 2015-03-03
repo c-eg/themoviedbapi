@@ -42,8 +42,10 @@ public class TmdbApi {
 
         try {
             tmdbConfig = new TmdbConfig(this).getConfig().getTmdbConfiguration();
+        } catch(MovieDbException ex) { 
+        	throw ex;
         } catch (Throwable ex) {
-            throw new MovieDbException("Failed to read configuration", ex);
+        	throw new MovieDbException("Failed to read configuration", ex);
         }
     }
 
