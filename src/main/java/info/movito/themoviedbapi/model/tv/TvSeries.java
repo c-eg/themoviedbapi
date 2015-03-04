@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi.model.tv;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.people.Person;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * @author Holger Brandl
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class TvSeries extends AbstractTvElement implements Multi {
 
     @JsonProperty("created_by")

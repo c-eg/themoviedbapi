@@ -1,13 +1,15 @@
 package info.movito.themoviedbapi.model.people;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import info.movito.themoviedbapi.model.Multi;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class PersonPeople extends Person {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+public class PersonPeople extends Person implements Multi {
 
     // todo initializers should all go away
 
@@ -224,5 +226,10 @@ public class PersonPeople extends Person {
 
     public void setPopularity(float popularity) {
         this.popularity = popularity;
+    }
+
+    @Override
+    public MediaType getMediaType() {
+        return MediaType.PERSON;
     }
 }

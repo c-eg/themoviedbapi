@@ -1,12 +1,11 @@
 package info.movito.themoviedbapi.model.people;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
 import org.apache.commons.lang3.StringUtils;
 
 
-public class Person extends NamedIdElement implements Multi {
+public class Person extends NamedIdElement {
 
 
     @JsonProperty("cast_id")
@@ -38,8 +37,4 @@ public class Person extends NamedIdElement implements Multi {
         this.profilePath = StringUtils.trimToEmpty(profilePath);
     }
 
-    @Override
-    public MediaType getMediaType() {
-        return MediaType.PERSON;
-    }
 }
