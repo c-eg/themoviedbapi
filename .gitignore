@@ -7,3 +7,9 @@
 
 /target/
 /nbactions.xml
+
+.classpath
+.project
+.idea/
+.settings/
+*.iml

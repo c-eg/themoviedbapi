@@ -1,10 +1,8 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.Collection;
-import info.movito.themoviedbapi.model.Company;
-import info.movito.themoviedbapi.model.MovieDb;
-import info.movito.themoviedbapi.model.MovieList;
+import info.movito.themoviedbapi.model.*;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.tv.TvSeries;
@@ -97,6 +95,14 @@ public class SearchApiTest extends AbstractTmdbApiTest {
 
         assertFalse("No keywords found", results == null);
         assertTrue("No keywords found", results.size() > 0);
+    }
+
+    @Test
+    public void testSearchMulti() throws Exception {
+        List<Multi> results = tmdb.getSearch().searchMulti("dexter", null, null).getResults();
+
+        assertFalse("No movie, person or tvseries found", results == null);
+        assertTrue("No movie, person or tvseries found", results.size() > 0);
     }
 
 

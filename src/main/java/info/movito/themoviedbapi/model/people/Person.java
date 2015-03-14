@@ -36,4 +36,5 @@ public class Person extends NamedIdElement {
     public void setProfilePath(String profilePath) {
         this.profilePath = StringUtils.trimToEmpty(profilePath);
     }
+
 }
