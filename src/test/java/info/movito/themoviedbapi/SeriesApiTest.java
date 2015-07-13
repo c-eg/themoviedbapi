@@ -63,7 +63,7 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
         assertNotNull("No results found", episode);
         Assert.assertTrue("episode number does not match", episode.getEpisodeNumber() == 3);
         Assert.assertEquals("episode titles does not match", "Hazard Pay", episode.getName());
-        Assert.assertEquals("episode titles does not match", 7, episode.getCredits().getCast().size());
+        Assert.assertEquals("episode titles does not match", 8, episode.getCredits().getCast().size());
         Assert.assertEquals("episode titles does not match", "4339518", episode.getExternalIds().getTvdbId());
     }
 

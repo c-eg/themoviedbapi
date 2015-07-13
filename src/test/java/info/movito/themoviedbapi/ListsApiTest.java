@@ -36,8 +36,14 @@ public class ListsApiTest extends AbstractTmdbApiTest {
         TmdbLists listApi = tmdb.getLists();
         TmdbAccount accountApi = tmdb.getAccount();
 
+        TmdbAccount.MovieListResultsPage movieLists = tmdb.getAccount().getLists(APITESTS_TOKEN, APITESTS_ACCOUNT, null, null);
+        for (MovieList movieList : movieLists) {
+            listApi.deleteMovieList(APITESTS_TOKEN, movieList.getId());
+        }
+
         String listName = "Test List";
-        String listDesc = "my favorite movies";
+//        String listDesc = "my favorite movies";
+        String listDesc = "my coolest movies";
 
         // in case the test previously failed we need to delete the list manually
 
@@ -85,7 +91,8 @@ public class ListsApiTest extends AbstractTmdbApiTest {
             listApi.getList(listId);
             Assert.fail();
         } catch (ResponseStatusException rse) {
-            Assert.assertEquals(6, rse.getResponseStatus().getStatusCode().intValue());
+            // https://www.themoviedb.org/documentation/api/status-codes
+            Assert.assertEquals(34, rse.getResponseStatus().getStatusCode().intValue());
         }
     }
 
