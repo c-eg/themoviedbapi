@@ -49,6 +49,6 @@ public class ResponseStatus extends AbstractJsonMapping {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this).toString();
+        return MoreObjects.toStringHelper(this).add("code", getStatusCode()).add("message", getStatusMessage()).toString();
     }
 }
