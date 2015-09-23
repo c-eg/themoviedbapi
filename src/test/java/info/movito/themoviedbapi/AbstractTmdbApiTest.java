@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi;
 
 import org.apache.commons.lang3.StringUtils;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
@@ -28,6 +29,11 @@ public class AbstractTmdbApiTest {
     protected static final String LANGUAGE_ENGLISH = "en";
     protected static final String LANGUAGE_RUSSIAN = "ru";
 
+
+    @After
+    public void avoidRequestCountLimit() throws InterruptedException {
+        Thread.sleep(1000);
+    }
 
     @BeforeClass
     public static void setUpClass() throws Exception {

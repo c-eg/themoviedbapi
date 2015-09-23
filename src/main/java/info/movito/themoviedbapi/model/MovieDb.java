@@ -63,9 +63,10 @@ public class MovieDb extends IdElement implements Multi {
 
     @JsonProperty("tagline")
     private String tagline;
-    @JsonProperty("rating")
 
+    @JsonProperty("rating")
     private float userRating;
+
     @JsonProperty("vote_average")
     private float voteAverage;
     @JsonProperty("vote_count")

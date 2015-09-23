@@ -5,11 +5,13 @@ import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.config.Account;
 import info.movito.themoviedbapi.model.core.AccountID;
 import info.movito.themoviedbapi.model.core.SessionToken;
+import info.movito.themoviedbapi.model.tv.TvEpisode;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 import static org.junit.Assert.*;
@@ -94,7 +96,6 @@ public class AccountApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testMovieRating() throws Exception {
-
         Integer movieID = 68724;
         Integer rating = new Random().nextInt(10) + 1;
 
@@ -117,6 +118,61 @@ public class AccountApiTest extends AbstractTmdbApiTest {
             }
         }
         assertTrue(foundMovie);
+    }
+
+
+    @Test
+    public void testSeriesRating() throws Exception {
+        Integer seriesId = 57243; // dr who
+        Integer rating = new Random().nextInt(10) + 1;
+
+        boolean wasPosted = tmdb.getAccount().postTvSeriesRating(APITESTS_TOKEN, seriesId, rating);
+
+        assertTrue(wasPosted);
+
+        // get all rated movies
+        Thread.sleep(1000);
+
+        List<TvSeries> ratedSeries = tmdb.getAccount().getRatedTvSeries(APITESTS_TOKEN, APITESTS_ACCOUNT, null).getResults();
+        assertTrue(ratedSeries.size() > 0);
+
+        // make sure that we find the movie and it is rated correctly
+        boolean foundSeries = false;
+        for (TvSeries series : ratedSeries) {
+            if (series.getId() == seriesId) {
+                assertEquals(series.getUserRating(), (float) rating, 0);
+                foundSeries = true;
+            }
+        }
+        assertTrue(foundSeries);
+    }
+
+
+    @Test
+    public void testEpisodeRating() throws Exception {
+        // https://www.themoviedb.org/tv/57243-doctor-who/season/7/episode/8
+        Integer seriesId = 57243; // dr who
+        Integer seasonNr = 7; // dr who
+        Integer episodeNr = 8; // dr who
+
+        Integer rating = new Random().nextInt(10) + 1;
+
+        boolean wasPosted = tmdb.getAccount().postTvExpisodeRating(APITESTS_TOKEN, seriesId, seasonNr, episodeNr, rating);
+
+        assertTrue(wasPosted);
+
+        List<TvEpisode> ratedEpisodes = tmdb.getAccount().getRatedEpisodes(APITESTS_TOKEN, APITESTS_ACCOUNT, null).getResults();
+        assertTrue(ratedEpisodes.size() > 0);
+
+        // make sure that we find the movie and it is rated correctly
+        boolean foundSeries = false;
+        for (TvEpisode episode : ratedEpisodes) {
+            if (Objects.equals(episode.getSeriesId(), seriesId)) {
+                assertEquals(episode.getUserRating(), (float) rating, 0);
+                foundSeries = true;
+            }
+        }
+        assertTrue(foundSeries);
     }
 
 

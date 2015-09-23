@@ -71,6 +71,9 @@ public class TvSeries extends AbstractTvElement implements Multi {
     @JsonProperty("seasons")
     private List<TvSeason> seasons;
 
+    @JsonProperty("rating")
+    private float userRating;
+
     @JsonProperty("vote_average")
     private float voteAverage;
 
@@ -163,6 +166,11 @@ public class TvSeries extends AbstractTvElement implements Multi {
 
     public void setSeasons(List<TvSeason> seasons) {
         this.seasons = seasons;
+    }
+
+
+    public float getUserRating() {
+        return userRating;
     }
 
 

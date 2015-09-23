@@ -9,6 +9,10 @@ import info.movito.themoviedbapi.tools.MovieDbException;
 import java.util.Collections;
 import java.util.HashMap;
 
+import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
+import static info.movito.themoviedbapi.TmdbTvEpisodes.TMDB_METHOD_TV_EPISODE;
+import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
+
 
 public class TmdbAccount extends AbstractTmdbApi {
 
@@ -53,13 +57,35 @@ public class TmdbAccount extends AbstractTmdbApi {
 
 
     public MovieResultsPage getRatedMovies(SessionToken sessionToken, AccountID accountId, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated_movies");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/movies");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
         apiUrl.addPage(page);
 
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
+    }
+
+
+    public TvResultsPage getRatedTvSeries(SessionToken sessionToken, AccountID accountId, Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv");
+
+        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPage(page);
+
+
+        return mapJsonResult(apiUrl, TvResultsPage.class);
+    }
+
+
+    public TvEpisodesResultsPage getRatedEpisodes(SessionToken sessionToken, AccountID accountId, Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv/episodes");
+
+        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPage(page);
+
+
+        return mapJsonResult(apiUrl, TvEpisodesResultsPage.class);
     }
 
 
@@ -74,8 +100,28 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @throws com.fasterxml.jackson.core.JsonProcessingException
      */
     public boolean postMovieRating(SessionToken sessionToken, Integer movieId, Integer rating) {
-        ApiUrl apiUrl = new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "rating");
+        return postRatingInternal(sessionToken, rating, new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "rating"));
+    }
 
+
+    public boolean postTvSeriesRating(SessionToken sessionToken, Integer movieId, Integer rating) {
+        return postRatingInternal(sessionToken, rating, new ApiUrl(TmdbTV.TMDB_METHOD_TV, movieId, "rating"));
+    }
+
+
+    public boolean postTvExpisodeRating(SessionToken sessionToken, Integer seriesId, Integer seasonNumber, Integer episodeNumber, Integer rating) {
+        ApiUrl apiUrl = new ApiUrl(
+                TMDB_METHOD_TV, seriesId,
+                TMDB_METHOD_TV_SEASON, seasonNumber,
+                TMDB_METHOD_TV_EPISODE, episodeNumber,
+                "rating"
+        );
+
+        return postRatingInternal(sessionToken, rating, apiUrl);
+    }
+
+
+    private boolean postRatingInternal(SessionToken sessionToken, Integer rating, ApiUrl apiUrl) {
         apiUrl.addParam(PARAM_SESSION, sessionToken);
 
         if (rating < 0 || rating > 10) {
