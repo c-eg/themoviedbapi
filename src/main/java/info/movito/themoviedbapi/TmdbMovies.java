@@ -316,7 +316,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      * @param page
      */
-    public MovieResultsPage getPopularMovieList(String language, Integer page) {
+    public MovieResultsPage getPopularMovies(String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "popular");
 
         apiUrl.addLanguage(language);

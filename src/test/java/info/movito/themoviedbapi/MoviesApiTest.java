@@ -150,7 +150,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetPopularMovieList() {
-        List<MovieDb> result = tmdb.getMovies().getPopularMovieList(LANGUAGE_DEFAULT, 0).getResults();
+        List<MovieDb> result = tmdb.getMovies().getPopularMovies(LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No popular movies found", !result.isEmpty());
     }
 
@@ -191,7 +191,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         String endDate = null;
 
         // Get some popular movies
-        List<MovieDb> movieList = tmdb.getMovies().getPopularMovieList(LANGUAGE_DEFAULT, 0).getResults();
+        List<MovieDb> movieList = tmdb.getMovies().getPopularMovies(LANGUAGE_DEFAULT, 0).getResults();
 
         //noinspection LoopStatementThatDoesntLoop
         for (MovieDb movie : movieList) {
