@@ -21,7 +21,7 @@ public class ResultPageHelper {
         List<ResultsPage<K>> pages = new ArrayList<ResultsPage<K>>();
         pages.add(firstPage);
 
-        for (int pageNumber = 1; pageNumber < firstPage.getTotalPages(); pageNumber++) {
+        for (int pageNumber = 2; pageNumber < firstPage.getTotalPages(); pageNumber++) {
             pages.add(rrp.get(pageNumber));
         }
 
