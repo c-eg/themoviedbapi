@@ -93,6 +93,14 @@ public class Utils {
     }
 
 
+    static void sleep(final int timeMs) {
+        try {
+            Thread.sleep(timeMs);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * Generate the full image URL from the size and image path
      *

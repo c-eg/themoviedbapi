@@ -30,6 +30,9 @@ public class AbstractTmdbApiTest {
     protected static final String LANGUAGE_RUSSIAN = "ru";
 
 
+    private static String apiKey;
+
+
     @After
     public void avoidRequestCountLimit() throws InterruptedException {
         Thread.sleep(1000);
@@ -37,7 +40,7 @@ public class AbstractTmdbApiTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        String apiKey = System.getenv("apikey");
+        apiKey = System.getenv("apikey");
 
         if (StringUtils.isBlank(apiKey)) {
             String g = "Missing api key: To run test you need to provide the key as environment variable named 'apikey' " +
@@ -47,6 +50,11 @@ public class AbstractTmdbApiTest {
         }
 
         tmdb = new TmdbApi(apiKey);
+    }
+
+
+    public static String getApiKey() {
+        return apiKey;
     }
 
 

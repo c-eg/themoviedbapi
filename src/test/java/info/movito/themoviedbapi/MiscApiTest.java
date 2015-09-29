@@ -2,8 +2,11 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.*;
 import info.movito.themoviedbapi.model.config.TmdbConfiguration;
+import info.movito.themoviedbapi.model.core.ResponseStatusException;
 import info.movito.themoviedbapi.model.keywords.Keyword;
+import info.movito.themoviedbapi.tools.WebBrowser;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -25,6 +28,47 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         assertTrue("No backdrop sizes", tmdbConfig.getBackdropSizes().size() > 0);
         assertTrue("No poster sizes", tmdbConfig.getPosterSizes().size() > 0);
         assertTrue("No profile sizes", tmdbConfig.getProfileSizes().size() > 0);
+    }
+
+
+    //
+    // Request Limit Handling
+    //
+
+
+    @Test
+    public void limitPush() {
+        for (int i = 0; i < 50; i++) {
+            try {
+                tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH);
+            } catch (Exception e) {
+                Assert.fail();
+            }
+        }
+    }
+
+
+    @Test
+    public void limitPushWithoutAutoRety() {
+        // wait before and after to
+//        Utils.sleep(10000);
+
+        TmdbApi tmdb = new TmdbApi(getApiKey(), new WebBrowser(), false);
+
+
+        for (int i = 0; i < 50; i++) {
+            try {
+                tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH);
+            } catch (ResponseStatusException e) {
+                Assert.assertEquals(25, e.getResponseStatus().getStatusCode().intValue());
+                return;
+            }
+        }
+
+
+        Assert.fail("failed to throw response status because of api limit");
+
+//        Utils.sleep(10000);
     }
 
 

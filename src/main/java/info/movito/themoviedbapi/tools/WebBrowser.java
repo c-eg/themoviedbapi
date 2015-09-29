@@ -142,6 +142,13 @@ public final class WebBrowser implements UrlReader {
 
                 readHeader(cnx);
 
+//                System.out.println("---" + new Date());
+//                System.out.println("X-RateLimit-Remaining:" + cnx.getHeaderField("X-RateLimit-Remaining"));
+//                System.out.println("X-RateLimit-Limit:" + cnx.getHeaderField("X-RateLimit-Limit"));
+//                System.out.println("X-RateLimit-Reset:" + cnx.getHeaderField("X-RateLimit-Reset"));
+//                System.out.println("Retry-After:" + cnx.getHeaderField("Retry-After"));
+
+
                 // http://stackoverflow.com/questions/4633048/httpurlconnection-reading-response-content-on-403-error
                 if (cnx.getResponseCode() >= 400) {
                     // for some strange reason the error stream is sometimes null
@@ -169,6 +176,12 @@ public final class WebBrowser implements UrlReader {
                     cnx.disconnect();
                 }
             }
+
+            // if we hit the request limit, throw special exception that indicates the required waiting period
+            if (cnx.getHeaderField("Retry-After") != null) {
+                throw new RequestCountLimitException(content.toString(), Integer.parseInt(cnx.getHeaderField("Retry-After")));
+            }
+
             return content.toString();
         } catch (IOException ex) {
             throw new MovieDbException(url.toString(), ex);

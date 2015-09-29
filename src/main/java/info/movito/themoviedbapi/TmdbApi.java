@@ -26,31 +26,48 @@ public class TmdbApi {
      */
     private UrlReader urlReader;
 
+    /**
+     * Automatically retry after indicated amount of seconds if we hit the request limit.
+     * See http://docs.themoviedb.apiary.io/introduction/request-rate-limiting for details
+     */
+    private boolean autoRetry = true;
+
 
     /**
      * The language used for all language supporting requests to tmdb.
      */
 //    private String language;
     public TmdbApi(String apiKey) {
-        this(apiKey, new WebBrowser());
+        this(apiKey, new WebBrowser(), true);
     }
 
 
-    public TmdbApi(String apiKey, UrlReader urlReader) {
+    public TmdbApi(String apiKey, UrlReader urlReader, boolean autoRetry) {
         this.urlReader = urlReader;
         this.apiKey = apiKey;
+        this.autoRetry = autoRetry;
 
         try {
             tmdbConfig = new TmdbConfig(this).getConfig().getTmdbConfiguration();
-        } catch(MovieDbException ex) { 
-        	throw ex;
+        } catch (MovieDbException ex) {
+            throw ex;
         } catch (Throwable ex) {
-        	throw new MovieDbException("Failed to read configuration", ex);
+            throw new MovieDbException("Failed to read configuration", ex);
         }
     }
 
 
-    // not json body can be null
+    /**
+     * Uses the instance's api key to request information from api.tmdb.org.
+     * <p/>
+     * Depending on the <code>autoRetry</code> setting this method will stall and internally recurse until the request was  successfully
+     * processed.
+     *
+     * @param apiUrl        The url to be requested
+     * @param jsonBody      can be null
+     * @param requestMethod
+     * @return
+     */
     public String requestWebPage(ApiUrl apiUrl, String jsonBody, RequestMethod requestMethod) {
 
         assert StringUtils.isNotBlank(apiKey);
@@ -61,7 +78,24 @@ public class TmdbApi {
 //            apiUrl.addParam(AbstractApiElement.PARAM_LANGUAGE, language);
 //        }
 
-        return urlReader.request(apiUrl.buildUrl(), jsonBody, requestMethod);
+
+        return requestWebPageInternal(apiUrl, jsonBody, requestMethod);
+    }
+
+
+    private String requestWebPageInternal(ApiUrl apiUrl, String jsonBody, RequestMethod requestMethod) {
+        try {
+            return urlReader.request(apiUrl.buildUrl(), jsonBody, requestMethod);
+
+        } catch (RequestCountLimitException rcle) {
+            if (autoRetry) {
+                Utils.sleep(rcle.getRetryAfter() * 1000);
+                return requestWebPageInternal(apiUrl, jsonBody, requestMethod);
+            } else {
+                // just return the orignal json response if autoRetry is disabled. This will cause a ResponseStatusException.
+                return rcle.getMessage();
+            }
+        }
     }
 
 
@@ -187,15 +221,15 @@ public class TmdbApi {
     }
 
 
+    /**
+     * Usage example
+     */
     public static void main(String[] args) {
         String apiKey = System.getenv("apikey");
         TmdbApi tmdbApi = new TmdbApi(apiKey);
 
         TmdbMovies movies = tmdbApi.getMovies();
         MovieDb movie = movies.getMovie(5353, "en");
-
-        TmdbConfiguration configuration = tmdbApi.getConfiguration();
-
     }
 
 }
