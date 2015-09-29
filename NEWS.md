@@ -2,6 +2,10 @@ See
 [releases](https://github.com/holgerbrandl/themoviedbapi/releases)
 for downloads and details
 
+v1.3
+---
+- Implemented automatic rate-limit handling
+
 v1.2
 ---
 - Implemented rating support for TV Shows
