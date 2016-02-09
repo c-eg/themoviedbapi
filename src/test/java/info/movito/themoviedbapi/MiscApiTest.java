@@ -11,6 +11,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -91,10 +92,22 @@ public class MiscApiTest extends AbstractTmdbApiTest {
 
 
     @Test
-    public void testGetDiscover_Discover() throws Exception {
+    public void testDiscoverByYear() throws Exception {
 
         Discover discover = new Discover();
         discover.year(2013).language(LANGUAGE_ENGLISH);
+
+        List<MovieDb> result = tmdb.getDiscover().getDiscover(discover).getResults();
+        assertFalse("No movies discovered", result.isEmpty());
+    }
+
+
+    @Test
+    public void testDiscoverByKeyword() throws Exception {
+        Keyword keyword = tmdb.getKeywords().getKeyword(ID_KEYWORD);
+
+        Discover discover = new Discover();
+        discover.withKeywords(Collections.singletonList(keyword), false).language(LANGUAGE_ENGLISH);
 
         List<MovieDb> result = tmdb.getDiscover().getDiscover(discover).getResults();
         assertFalse("No movies discovered", result.isEmpty());
@@ -145,7 +158,7 @@ public class MiscApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetKeywordMovies() throws Exception {
-        List<Keyword> result = tmdb.getKeywords().getKeywordMovies(ID_KEYWORD, LANGUAGE_DEFAULT, 0).getResults();
+        List<MovieDb> result = tmdb.getKeywords().getKeywordMovies(ID_KEYWORD, LANGUAGE_DEFAULT, 0).getResults();
         assertFalse("No keyword movies found", result.isEmpty());
     }
 

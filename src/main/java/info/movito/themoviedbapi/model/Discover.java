@@ -1,9 +1,15 @@
 package info.movito.themoviedbapi.model;
 
+import com.google.common.base.Function;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Iterables;
 import info.movito.themoviedbapi.AbstractTmdbApi;
+import info.movito.themoviedbapi.model.core.IdElement;
+import info.movito.themoviedbapi.model.keywords.Keyword;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -20,7 +26,10 @@ public class Discover {
     private static final String PARAM_PRIMARY_RELEASE_YEAR = "primary_release_year";
     private static final String PARAM_VOTE_COUNT_GTE = "vote_count.gte";
     private static final String PARAM_VOTE_AVERAGE_GTE = "vote_average.gte";
+
     private static final String PARAM_WITH_GENRES = "with_genres";
+    private static final String PARAM_WITH_KEYWORKDS = "with_keywordss";
+
     private static final String PARAM_RELEASE_DATE_GTE = "release_date.gte";
     private static final String PARAM_RELEASE_DATE_LTE = "release_date.lte";
     private static final String PARAM_CERTIFICATION_COUNTRY = "certification_country";
@@ -166,12 +175,41 @@ public class Discover {
      * @param withGenres
      * @return
      */
+    @Deprecated
     public Discover withGenres(String withGenres) {
         if (StringUtils.isNotBlank(withGenres)) {
             params.put(PARAM_WITH_GENRES, withGenres);
         }
         return this;
     }
+
+
+    /**
+     * Only include movies with the specified keywords.
+     * <p/>
+     * Expected value is an integer (the id of a keyword). Multiple values can be specified. Comma separated indicates an 'AND' query, while a pipe (|) separated value indicates an 'OR'.
+     * <p/>
+     * Multiple values can be specified.
+     *
+     * @param keywords
+     * @return
+     */
+    public Discover withKeywords(List<Keyword> keywords, boolean orQuery) {
+        String query = Joiner.on(orQuery ? "|" : ",").join(Iterables.transform(keywords, toID));
+        assert StringUtils.isNotBlank(query);
+
+        params.put(PARAM_WITH_KEYWORKDS, query);
+
+        return this;
+    }
+
+
+    Function<IdElement, Integer> toID = new Function<IdElement, Integer>() {
+        @Override
+        public Integer apply(IdElement input) {
+            return input.getId();
+        }
+    };
 
 
     /**
