@@ -13,15 +13,23 @@ import java.util.List;
  */
 public class ResultPageHelper {
 
+    public static final int MAX_PAGES_DEFAULT = 50;
+
 
     // small utility to get all pages
     public static <K> List<K> getAll(ResultPageProvider<K> rrp) {
+        return getAll(rrp, MAX_PAGES_DEFAULT);
+    }
+
+
+    public static <K> List<K> getAll(ResultPageProvider<K> rrp, int maxPages) {
+
         ResultsPage<K> firstPage = rrp.get(1);
 
         List<ResultsPage<K>> pages = new ArrayList<ResultsPage<K>>();
         pages.add(firstPage);
 
-        for (int pageNumber = 2; pageNumber < firstPage.getTotalPages(); pageNumber++) {
+        for (int pageNumber = 2; pageNumber < Math.min(firstPage.getTotalPages(), maxPages); pageNumber++) {
             pages.add(rrp.get(pageNumber));
         }
 
