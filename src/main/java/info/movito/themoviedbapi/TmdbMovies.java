@@ -297,7 +297,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param page
      */
     public MovieResultsPage getNowPlayingMovies(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "now-playing");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "now_playing");
 
         apiUrl.addLanguage(language);
 
