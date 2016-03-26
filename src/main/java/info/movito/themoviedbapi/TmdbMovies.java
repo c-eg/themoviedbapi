@@ -337,7 +337,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param page
      */
     public MovieResultsPage getTopRatedMovies(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "top-rated");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "top_rated");
 
         apiUrl.addLanguage(language);
 
