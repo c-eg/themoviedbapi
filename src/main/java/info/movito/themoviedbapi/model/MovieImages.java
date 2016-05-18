@@ -65,30 +65,25 @@ public class MovieImages extends IdElement {
     /**
      * Convenience wrapper to return a list of all the artwork with their types.
      */
-    public List<Artwork> getAll(ArtworkType... artworkList) {
+    public List<Artwork> getAll(ArtworkType... artworkTypes) {
         List<Artwork> artwork = new ArrayList<Artwork>();
-        List<ArtworkType> types;
+        List<ArtworkType> types = Arrays.asList(artworkTypes.length > 0 ? artworkTypes : ArtworkType.values());
 
-        if (artworkList.length > 0) {
-            types = new ArrayList<ArtworkType>(Arrays.asList(artworkList));
-        } else {
-            types = new ArrayList<ArtworkType>(Arrays.asList(ArtworkType.values()));
-        }
 
         // Add all the posters to the list
-        if (types.contains(ArtworkType.POSTER)) {
+        if (types.contains(ArtworkType.POSTER) && posters != null) {
             updateArtworkType(posters, ArtworkType.POSTER);
             artwork.addAll(posters);
         }
 
         // Add all the backdrops to the list
-        if (types.contains(ArtworkType.BACKDROP)) {
+        if (types.contains(ArtworkType.BACKDROP) && backdrops != null) {
             updateArtworkType(backdrops, ArtworkType.BACKDROP);
             artwork.addAll(backdrops);
         }
 
         // Add all the backdrops to the list
-        if (types.contains(ArtworkType.PROFILE)) {
+        if (types.contains(ArtworkType.PROFILE) && profiles != null) {
             updateArtworkType(profiles, ArtworkType.PROFILE);
             artwork.addAll(profiles);
         }

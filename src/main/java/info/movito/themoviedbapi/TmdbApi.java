@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi;
 
+import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.JobDepartment;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.config.Timezone;
@@ -8,6 +9,8 @@ import info.movito.themoviedbapi.tools.*;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
+
+import static info.movito.themoviedbapi.TmdbMovies.MovieMethod.*;
 
 
 /**
@@ -229,7 +232,11 @@ public class TmdbApi {
         TmdbApi tmdbApi = new TmdbApi(apiKey);
 
         TmdbMovies movies = tmdbApi.getMovies();
-        MovieDb movie = movies.getMovie(5353, "en");
+//        List<MovieDb> en = movies.getTopRatedMovies("en", 0).getResults();
+//        List<MovieDb> en2 = movies.getNowPlayingMovies("en", 0).getResults();
+        MovieDb movie = movies.getMovie(293660, "en", credits, videos, releases, images, similar_movies, reviews);
+        List<Artwork> images = movie.getImages();
+        System.out.println(movie);
     }
 
 }

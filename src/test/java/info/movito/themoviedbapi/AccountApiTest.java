@@ -160,6 +160,7 @@ public class AccountApiTest extends AbstractTmdbApiTest {
         boolean wasPosted = tmdb.getAccount().postTvExpisodeRating(APITESTS_TOKEN, seriesId, seasonNr, episodeNr, rating);
 
         assertTrue(wasPosted);
+        Thread.sleep(1000);   // test fails without because there seems to be some delay
 
         List<TvEpisode> ratedEpisodes = tmdb.getAccount().getRatedEpisodes(APITESTS_TOKEN, APITESTS_ACCOUNT, null).getResults();
         assertTrue(ratedEpisodes.size() > 0);

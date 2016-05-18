@@ -234,8 +234,8 @@ public class MovieDb extends IdElement implements Multi {
     }
 
 
-    public List<Artwork> getImages() {
-        return images != null ? images.getAll() : null;
+    public List<Artwork> getImages(ArtworkType... artworkTypes) {
+        return images != null ? images.getAll(artworkTypes) : null;
     }
 
 
@@ -282,11 +282,13 @@ public class MovieDb extends IdElement implements Multi {
     public float getUserRating() {
         return userRating;
     }
-    
+
+
     @Override
-    public String toString()  {
+    public String toString() {
         return title + " - " + releaseDate;
     }
+
 
     @Override
     public MediaType getMediaType() {
