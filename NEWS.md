@@ -2,6 +2,11 @@ See
 [releases](https://github.com/holgerbrandl/themoviedbapi/releases)
 for downloads and details
 
+v1.5
+---
+
+**TBD**
+
 v1.4
 ---
 - Fixed: Now playing
