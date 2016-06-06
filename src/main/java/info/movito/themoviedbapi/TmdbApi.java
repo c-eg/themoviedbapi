@@ -234,7 +234,7 @@ public class TmdbApi {
         TmdbMovies movies = tmdbApi.getMovies();
 //        List<MovieDb> en = movies.getTopRatedMovies("en", 0).getResults();
 //        List<MovieDb> en2 = movies.getNowPlayingMovies("en", 0).getResults();
-        MovieDb movie = movies.getMovie(293660, "en", credits, videos, releases, images, similar_movies, reviews);
+        MovieDb movie = movies.getMovie(293660, "en", credits, videos, releases, images, similar, reviews);
         List<Artwork> images = movie.getImages();
         System.out.println(movie);
     }

@@ -32,7 +32,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         alternative_titles, credits, images, keywords, releases,
         @Deprecated trailers,
         videos, // replacement for trailers
-        translations, similar_movies,
+        translations, similar,
         reviews, lists, changes, latest, upcoming, now_playing, popular, top_rated,
     }
 
@@ -68,7 +68,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param country
      */
     public List<AlternativeTitle> getAlternativeTitles(int movieId, String country) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "alternative_titles");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.alternative_titles);
 
         if (StringUtils.isNotBlank(country)) {
             apiUrl.addParam(PARAM_COUNTRY, country);
@@ -80,7 +80,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
 
     public Credits getCredits(int movieId) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "credits");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.credits);
 
         return mapJsonResult(apiUrl, Credits.class);
     }
@@ -93,7 +93,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      */
     public MovieImages getImages(int movieId, String language) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "images");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.images);
 
         apiUrl.addLanguage(language);
 
@@ -109,7 +109,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param movieId
      */
     public List<Keyword> getKeywords(int movieId) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "keywords");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.keywords);
 
 
         return mapJsonResult(apiUrl, KeywordResults.class).results;
@@ -130,7 +130,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      */
     public List<ReleaseInfo> getReleaseInfo(int movieId, String language) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "releases");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.releases);
 
 
         apiUrl.addLanguage(language);
@@ -174,7 +174,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param movieId
      */
     public List<Translation> getTranslations(int movieId) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "translations");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.translations);
 
         return mapJsonResult(apiUrl, MovieTranslations.class).getTranslations();
     }
@@ -192,7 +192,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param page
      */
     public MovieResultsPage getSimilarMovies(int movieId, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "similar");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.similar);
 
         apiUrl.addLanguage(language);
 
@@ -211,7 +211,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param page
      */
     public TmdbAccount.MovieListResultsPage getListsContaining(int movieId, SessionToken sessionToken, String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "lists");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.lists);
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
 
@@ -241,7 +241,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param endDate   the end date of the changes, optional
      */
     public ChangesItems getChanges(int movieId, String startDate, String endDate) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "changes");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.changes);
 
         if (StringUtils.isNotBlank(startDate)) {
             apiUrl.addParam(PARAM_START_DATE, startDate);
@@ -260,7 +260,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * This method is used to retrieve the newest movie that was added to TMDb.
      */
     public MovieDb getLatestMovie() {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "latest");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.latest);
 
 
         return mapJsonResult(apiUrl, MovieDb.class);
@@ -275,7 +275,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * The maximum number of items this list will include is 100.
      */
     public MovieResultsPage getUpcoming(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "upcoming");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.upcoming);
 
         apiUrl.addLanguage(language);
 
@@ -297,7 +297,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param page
      */
     public MovieResultsPage getNowPlayingMovies(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "now_playing");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.now_playing);
 
         apiUrl.addLanguage(language);
 
@@ -317,7 +317,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param page
      */
     public MovieResultsPage getPopularMovies(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "popular");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.popular);
 
         apiUrl.addLanguage(language);
 
@@ -337,7 +337,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param page
      */
     public MovieResultsPage getTopRatedMovies(String language, Integer page) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "top_rated");
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.top_rated);
 
         apiUrl.addLanguage(language);
 
