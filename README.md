@@ -17,7 +17,7 @@ Just add it as dependency to your project. It's available via [jcenter](https://
 <dependency>
     <groupId>info.movito</groupId>
     <artifactId>themoviedbapi</artifactId>
-    <version>1.3</version>
+    <version>1.4</version>
 </dependency>
 ```
 Read the [Set me up](https://bintray.com/bintray/jcenter) section first, if you haven't addded jcenter as a repository to your pom.xml yet.
@@ -30,7 +30,7 @@ repositories {
 }
 
 dependencies{
-    compile group: 'info.movito', name: 'themoviedbapi', version:'1.3'
+    compile group: 'info.movito', name: 'themoviedbapi', version:'1.4'
 }
 ```
 
