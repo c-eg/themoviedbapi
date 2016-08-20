@@ -48,6 +48,9 @@ public class MovieDb extends IdElement implements Multi {
     @JsonProperty("imdb_id")
     private String imdbID;
 
+    @JsonProperty("original_language")
+    private String originalLanguage;
+
     @JsonProperty("production_companies")
     private List<ProductionCompany> productionCompanies;
     @JsonProperty("production_countries")
@@ -166,6 +169,10 @@ public class MovieDb extends IdElement implements Multi {
 
     public String getImdbID() {
         return imdbID;
+    }
+
+    public String getOriginalLanguage() {
+        return originalLanguage;
     }
 
 
