@@ -212,4 +212,21 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testGetCredits() {
+
+        TmdbMovies tmdbMovies = tmdb.getMovies();
+        // default response does not return movie credits
+        MovieDb movieDb = tmdbMovies.getMovie(293660, "en");
+        assertNull("No credits info returned", movieDb.getCredits());
+        // call API requesting for credits
+        // Request URL be like https://api.themoviedb.org/3/movie/293660?append_to_response=credits&language=en
+        movieDb = tmdbMovies.getMovie(293660, "en", TmdbMovies.MovieMethod.credits);
+        Credits result = movieDb.getCredits();
+        assertNotNull("credits info returned", result);
+        assertNotNull("credits info-cast found", result.getCast());
+        assertNotNull("credits info-crew found", result.getCrew());
+    }
+
 }
