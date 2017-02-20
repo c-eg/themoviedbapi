@@ -52,6 +52,40 @@ The wrapper implements all major parts of the JSON API as detailed out in the [T
 However, as the latter is subject to constant change, feel welcome to point out missing bits by submitting a ticket.
 Or even better, just send us a pull request!
 
+Most common question: Why does `getSomething()` returns null?
+---------------
+
+Every API element has a number of query flags that need to be set in order to pull a particular piece of information.
+
+#### Example1: Make `getCast()` to return cast and not `null` 
+
+```
+TmdbMovies movies = tmdbApi.getMovies();
+movies.getMovie(293660, "en", MovieMethod.credits)
+```
+
+#### Example 3: Get image urls, videos and similar movies
+```
+TmdbMovies movies = tmdbApi.getMovies();
+movies.getMovie(78, "en", MovieMethod.credits, MovieMethod.images, MovieMethod.similar)
+```
+
+
+#### Example 3: Get all info about a sesaon
+ 
+Instead of individual item we can also simply provide all method values.
+
+```
+TmdbTvSeasons tvSeasons = tmdb.getTvSeasons();
+TvSeason result = tvSeasons.getSeason(seriesId, seasonNumber, "en", SeasonMethod.values());
+```
+
+See the corresponding `*Method` enums or the REST API-documentation for possible values.
+
+This concept is part of the underlying (REST API)[(http://api.themoviedb.org/)], our wrapper justs mimicks the scheme.
+
+
+
 Project Logging
 ---------------
 
