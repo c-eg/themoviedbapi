@@ -101,7 +101,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         MovieDb movie = tmdb.getMovies().getMovie(10191, "fr", TmdbMovies.MovieMethod.keywords);
         List<Keyword> result = movie.getKeywords();
         assertFalse("No keywords found", result.isEmpty());
-        assertEquals(8, result.size());
+        assertEquals(19, result.size());
     }
 
 
@@ -152,6 +152,9 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
     public void testGetPopularMovieList() {
         List<MovieDb> result = tmdb.getMovies().getPopularMovies(LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No popular movies found", !result.isEmpty());
+        assertNotNull(result.get(0).getOriginalTitle());
+//        assertNotNull(result.get(0).getImdbID());
+
     }
 
 
