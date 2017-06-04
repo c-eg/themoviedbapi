@@ -1,6 +1,8 @@
 TheMovieDB API
 ================
 
+[![Build Status](https://travis-ci.org/holgerbrandl/themoviedbapi.svg?branch=master)](https://travis-ci.org/holgerbrandl/themoviedbapi)
+
 This library provides a java-wrapper around the [JSON API](http://api.themoviedb.org/) provided by
 [TMdB](http://themoviedb.org), which is an open database for movie and film content.
 
