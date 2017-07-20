@@ -38,6 +38,11 @@ public class AbstractTmdbApiTest {
         Thread.sleep(1000);
     }
 
+    // https://stackoverflow.com/questions/9338428/using-secret-api-keys-on-travis-ci
+    // gem install --user travis  # or sudo  gem install travis
+    // cd /Users/holger/projects/movieorganizer/other_project_sources/themoviedbapi
+    // travis encrypt apikey=TEST_ACCOUNT_APIKEY -r holgerbrandl/themoviedbapi --add
+
     @BeforeClass
     public static void setUpClass() throws Exception {
         apiKey = System.getenv("apikey");
