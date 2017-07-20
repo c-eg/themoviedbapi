@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.Multi;
+import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.people.Person;
 
 import java.util.List;
@@ -70,6 +71,9 @@ public class TvSeries extends AbstractTvElement implements Multi {
 
     @JsonProperty("seasons")
     private List<TvSeason> seasons;
+    
+    @JsonProperty("recommendations")
+    private ResultsPage<TvSeries> recommendations;
 
     @JsonProperty("rating")
     private float userRating;
@@ -158,9 +162,12 @@ public class TvSeries extends AbstractTvElement implements Multi {
         return numberOfSeasons;
     }
 
-
     public List<TvSeason> getSeasons() {
         return seasons;
+    }
+    
+    public ResultsPage<TvSeries> getRecommendations(){
+    	return recommendations;
     }
 
 
