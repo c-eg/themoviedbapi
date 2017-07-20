@@ -2,10 +2,16 @@ See
 [releases](https://github.com/holgerbrandl/themoviedbapi/releases)
 for downloads and details
 
+v1.6
+---
+
+* Added "Recommendations" to TV series.
+
+
 v1.5
 ---
 
-**TBD**
+* fixed original language field
 
 v1.4
 ---
