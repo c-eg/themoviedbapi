@@ -7,6 +7,7 @@ import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
+
 import static info.movito.themoviedbapi.TmdbCollections.TMDB_METHOD_COLLECTION;
 import static info.movito.themoviedbapi.TmdbLists.TMDB_METHOD_LIST;
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
@@ -141,6 +142,9 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param page
      */
     public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) {
+        System.err.println("This method is part of the API but seems currently not available. " +
+                "See https://www.themoviedb.org/talk/593409e3c3a36859ef01eddb#597124f8c3a3681608008424");
+        
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_LIST);
 
         if (isNotBlank(query)) {

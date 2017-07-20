@@ -2,11 +2,11 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.*;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -74,6 +74,9 @@ public class SearchApiTest extends AbstractTmdbApiTest {
 
 
     @Test
+    @Ignore
+    // Why ignored? Part of api but somehow not yet implemented.
+    // See https://www.themoviedb.org/talk/593409e3c3a36859ef01eddb#597124f8c3a3681608008424
     public void testSearchList() throws Exception {
         List<MovieList> results = tmdb.getSearch().searchList("watch", LANGUAGE_DEFAULT, 0).getResults();
 
