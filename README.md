@@ -84,7 +84,7 @@ TvSeason result = tvSeasons.getSeason(seriesId, seasonNumber, "en", SeasonMethod
 
 See the corresponding `*Method` enums or the REST API-documentation for possible values.
 
-This concept is part of the underlying (REST API)[(http://api.themoviedb.org/)], our wrapper justs mimicks the scheme.
+This concept is part of the underlying [REST API](http://api.themoviedb.org/), our wrapper justs mimicks the scheme.
 
 
 
