@@ -28,7 +28,7 @@ public class Discover {
     private static final String PARAM_VOTE_AVERAGE_GTE = "vote_average.gte";
 
     private static final String PARAM_WITH_GENRES = "with_genres";
-    private static final String PARAM_WITH_KEYWORKDS = "with_keywordss";
+    private static final String PARAM_WITH_KEYWORKDS = "with_keywords";
 
     private static final String PARAM_RELEASE_DATE_GTE = "release_date.gte";
     private static final String PARAM_RELEASE_DATE_LTE = "release_date.lte";
