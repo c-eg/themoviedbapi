@@ -143,7 +143,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetNowPlayingMovies() {
-        List<MovieDb> result = tmdb.getMovies().getNowPlayingMovies(LANGUAGE_DEFAULT, 0).getResults();
+        List<MovieDb> result = tmdb.getMovies().getNowPlayingMovies(LANGUAGE_DEFAULT, 0, null).getResults();
         assertTrue("No now playing movies found", !result.isEmpty());
     }
 
@@ -183,7 +183,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
     @Test
     public void testGetUpcoming() throws Exception {
 
-        List<MovieDb> result = tmdb.getMovies().getUpcoming(LANGUAGE_DEFAULT, 0).getResults();
+        List<MovieDb> result = tmdb.getMovies().getUpcoming("en-US", 1, null).getResults();
         assertTrue("No upcoming movies found", !result.isEmpty());
     }
 

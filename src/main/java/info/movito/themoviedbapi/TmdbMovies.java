@@ -15,6 +15,7 @@ import java.util.List;
 import static info.movito.themoviedbapi.TmdbAccount.PARAM_SESSION;
 import static info.movito.themoviedbapi.TmdbMovies.MovieMethod.videos;
 import static info.movito.themoviedbapi.Utils.asStringArray;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 
 public class TmdbMovies extends AbstractTmdbApi {
@@ -24,6 +25,7 @@ public class TmdbMovies extends AbstractTmdbApi {
     private static final String PARAM_START_DATE = "start_date";
     private static final String PARAM_END_DATE = "end_date";
     private static final String PARAM_COUNTRY = "country";
+    private static final String PARAM_REGION = "region";
 
 
     // account_states and rating are not included as it wouldn't work anyway because of missing session id
@@ -273,14 +275,19 @@ public class TmdbMovies extends AbstractTmdbApi {
      * This list refreshes every day.
      * <p/>
      * The maximum number of items this list will include is 100.
+     *
+     * See https://developers.themoviedb.org/3/movies/get-upcoming
      */
-    public MovieResultsPage getUpcoming(String language, Integer page) {
+    public MovieResultsPage getUpcoming(String language, Integer page, String region) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.upcoming);
 
         apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
 
+        if (isNotBlank(region)) {
+            apiUrl.addParam(PARAM_REGION, region);
+        }
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
 
@@ -296,12 +303,16 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      * @param page
      */
-    public MovieResultsPage getNowPlayingMovies(String language, Integer page) {
+    public MovieResultsPage getNowPlayingMovies(String language, Integer page, String region) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.now_playing);
 
         apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
+
+        if (isNotBlank(region)) {
+            apiUrl.addParam(PARAM_REGION, region);
+        }
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
