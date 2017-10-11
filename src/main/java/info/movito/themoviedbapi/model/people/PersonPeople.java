@@ -45,6 +45,8 @@ public class PersonPeople extends Person implements Multi {
     private String imdbId;
     @JsonProperty("popularity")
     private float popularity = 0.0f;
+    @JsonProperty("gender")
+    private int gender;
 
 
     /**
@@ -158,6 +160,9 @@ public class PersonPeople extends Person implements Multi {
         return popularity;
     }
 
+    public int getGender() {
+        return gender;
+    }
 
     public void setCharacter(String character) {
         this.character = character;
@@ -226,6 +231,10 @@ public class PersonPeople extends Person implements Multi {
 
     public void setPopularity(float popularity) {
         this.popularity = popularity;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 
     @Override
