@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Credits;
+import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import info.movito.themoviedbapi.tools.ApiUrl;
@@ -97,5 +98,13 @@ public class TmdbTV extends AbstractTmdbApi {
         apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
+    }
+
+    public MovieImages getImages(int seriesId, String language) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TvMethod.images);
+
+        apiUrl.addLanguage(language);
+
+        return mapJsonResult(apiUrl, MovieImages.class);
     }
 }
