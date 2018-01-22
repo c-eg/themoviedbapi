@@ -26,7 +26,7 @@ public class PeopleApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetPersonCredits() {
-        PersonCredits result = tmdb.getPeople().getCombinedPersonCredits(74568);
+        PersonCredits result = tmdb.getPeople().getCombinedPersonCredits(ID_PERSON_BRUCE_WILLIS);
         assertTrue("No cast information", result.getCast().size() > 0);
     }
 
