@@ -2,6 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.people.Person;
+import info.movito.themoviedbapi.model.people.PersonCredit;
 import info.movito.themoviedbapi.model.people.PersonCredits;
 import info.movito.themoviedbapi.model.people.PersonPeople;
 import org.apache.commons.lang3.StringUtils;
@@ -25,7 +26,7 @@ public class PeopleApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetPersonCredits() {
-        PersonCredits result = tmdb.getPeople().getPersonCredits(ID_PERSON_BRUCE_WILLIS);
+        PersonCredits result = tmdb.getPeople().getCombinedPersonCredits(74568);
         assertTrue("No cast information", result.getCast().size() > 0);
     }
 
