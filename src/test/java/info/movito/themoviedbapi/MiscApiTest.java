@@ -50,7 +50,7 @@ public class MiscApiTest extends AbstractTmdbApiTest {
 
 
     @Test
-    public void limitPushWithoutAutoRety() {
+    public void limitPushWithoutAutoRetry() {
         // wait before and after to
 //        Utils.sleep(10000);
 
