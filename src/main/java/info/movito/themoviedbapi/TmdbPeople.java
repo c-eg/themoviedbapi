@@ -47,8 +47,8 @@ public class TmdbPeople extends AbstractTmdbApi {
      *
      * @param personId
      */
-    public PersonCredits getPersonCredits(int personId) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "credits");
+    public PersonCredits getCombinedPersonCredits(int personId) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "combined_credits");
 
         return mapJsonResult(apiUrl, PersonCredits.class);
     }

@@ -8,25 +8,59 @@ public class PersonCredit extends IdElement {
 
     // note:  id here refers to a movie not a cast or crew
 
+    @JsonProperty("original_language")
+    private String language;
+    @JsonProperty("episode_count")
+    private int episodeCount;
+    @JsonProperty("overview")
+    private String overview;
     @JsonProperty("character")
     private String character;
     @JsonProperty("original_title")
     private String movieOriginalTitle;
+    @JsonProperty("original_name")
+    private String seriesOriginalTitle;
+    @JsonProperty("first_air_date")
+    private String firstAirDate;
     @JsonProperty("poster_path")
     private String posterPath;
     @JsonProperty("release_date")
     private String releaseDate;
     @JsonProperty("title")
     private String movieTitle;
+    @JsonProperty("name")
+    private String name;
     @JsonProperty("department")
     private String department;
-    @JsonProperty("job")
-    private String job;
     @JsonProperty("adult")
     private String adult;
+    @JsonProperty("media_type")
+    private String mediaType;
+    @JsonProperty("vote_average")
+    private Float voteAvg;
+    @JsonProperty("backdrop_path")
+    private String backdropPath;
+
 
     private PersonType personType = PersonType.PERSON;
 
+    public String getBackdropPath() { return backdropPath; }
+
+    public Float getVoteAvg() { return voteAvg; }
+
+    public String getFirstAirDate() { return firstAirDate; }
+
+    public String getSeriesName() { return name; }
+
+    public int getEpisodeCount() { return episodeCount; }
+
+    public String getOverview() { return overview; }
+
+    public String getLanguage() { return language; }
+
+    public String getMediaType() { return mediaType; }
+
+    public String getSeriesOriginalTitle() { return seriesOriginalTitle; }
 
     public String getCharacter() {
         return character;
@@ -38,13 +72,8 @@ public class PersonCredit extends IdElement {
     }
 
 
-    public String getJob() {
-        return job;
-    }
-
-
     // convenience wrapper to make api more clear
-    public int getMovieId() {
+    public int getMediaId() {
         return getId();
     }
 
