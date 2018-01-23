@@ -102,7 +102,7 @@ public class MovieDb extends IdElement implements Multi {
     @JsonProperty("translations")
     private MovieTranslations translations;
 
-    @JsonProperty("similar_movies")
+    @JsonProperty("similar")
     private ResultsPage<MovieDb> similarMovies;
 
     @JsonProperty("reviews")
