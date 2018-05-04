@@ -9,6 +9,7 @@ import info.movito.themoviedbapi.model.tv.TvSeries;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 
@@ -23,6 +24,17 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
 
         assertNotNull("No results found", result);
         Assert.assertTrue("No results found", result.getNetworks().size() == 1);
+    }
+
+    @Test
+    public void getSeriesGenres() {
+        Integer MR_ROBOT_ID = 62560;
+        TvSeries result = tmdb.getTvSeries().getSeries(MR_ROBOT_ID, LANGUAGE_ENGLISH);
+
+        assertEquals("Unexpected genre count for mr robot", 2, result.getGenres().size());
+
+//       TvResultsPage popular = tmdb.getTvSeries().getPopular(LANGUAGE_ENGLISH, 1);
+//       System.out.println(popular);
     }
 
 
