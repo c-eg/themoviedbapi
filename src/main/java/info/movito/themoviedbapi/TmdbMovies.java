@@ -31,7 +31,7 @@ public class TmdbMovies extends AbstractTmdbApi {
     // account_states and rating are not included as it wouldn't work anyway because of missing session id
     // --> inject session id into tmdb-instance?
     public static enum MovieMethod {
-        alternative_titles, credits, images, keywords, releases,
+        alternative_titles, credits, images, keywords, releases, release_dates,
         @Deprecated trailers,
         videos, // replacement for trailers
         translations, similar,
@@ -132,23 +132,23 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param language
      */
     public List<ReleaseInfo> getReleaseInfo(int movieId, String language) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.releases);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.release_dates);
 
 
         apiUrl.addLanguage(language);
 
-        return mapJsonResult(apiUrl, ReleaseInfoResults.class).countries;
+        return mapJsonResult(apiUrl, ReleaseInfoResults.class).results;
     }
 
 
     public static class ReleaseInfoResults extends IdElement {
 
-        @JsonProperty("countries")
-        private List<ReleaseInfo> countries;
+        @JsonProperty("results")
+        private List<ReleaseInfo> results;
 
 
-        public List<ReleaseInfo> getCountries() {
-            return countries;
+        public List<ReleaseInfo> getResults() {
+            return results;
         }
     }
 
