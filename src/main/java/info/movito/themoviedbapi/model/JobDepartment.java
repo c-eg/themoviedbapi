@@ -11,7 +11,7 @@ public class JobDepartment extends AbstractJsonMapping {
     @JsonProperty("department")
     private String department;
 
-    @JsonProperty("job_list")
+    @JsonProperty("jobs")
     private List<String> jobs;
 
 
