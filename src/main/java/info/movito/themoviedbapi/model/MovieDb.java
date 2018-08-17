@@ -93,7 +93,7 @@ public class MovieDb extends IdElement implements Multi {
     @JsonProperty("keywords")
     private MovieKeywords keywords;
 
-    @JsonProperty("releases")
+    @JsonProperty("release_dates")
     private TmdbMovies.ReleaseInfoResults releases;
 
     @JsonProperty("videos")
@@ -252,7 +252,7 @@ public class MovieDb extends IdElement implements Multi {
 
 
     public List<ReleaseInfo> getReleases() {
-        return releases != null ? releases.getResults() : null;
+        return releases.getResults() != null ? releases.getResults() : null;
     }
 
 
