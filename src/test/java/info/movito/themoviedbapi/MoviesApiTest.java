@@ -28,7 +28,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         MovieDb result = tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH, TmdbMovies.MovieMethod.values());
         assertEquals("Incorrect movie information", "Blade Runner", result.getOriginalTitle());
         assertTrue("no videos", result.getVideos().size() > 0);
-
+        assertNotNull(result.getReleases());
     }
 
 
