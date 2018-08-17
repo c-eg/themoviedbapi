@@ -1,6 +1,18 @@
 See
 [releases](https://github.com/holgerbrandl/themoviedbapi/releases)
 for downloads and details
+    
+v1.8
+----
+
+
+* Added `gender` to PersonPeople,
+* Added `getImages` method to TmdbTV
+* Added support for different release types (fixes #83)
+* Fixed job department json mapping
+* Increased bytecode compatibility to 1.7
+
+Thanks to @kliqkliq, @serv-inc and @JoeyPriceless for contributing these changes.
 
 v1.7
 ----
