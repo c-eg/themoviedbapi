@@ -17,6 +17,7 @@ public class Company extends NamedIdElement {
     private String logoPath;
 
     @JsonProperty("parent_company")
+    // tbd is this field still supported? We need an example for info.movito.themoviedbapi.CompanyApiTest.testGetCompanyInfo
     private Company parentCompany;
 
 
