@@ -37,4 +37,13 @@ public class Person extends NamedIdElement {
         this.profilePath = StringUtils.trimToEmpty(profilePath);
     }
 
+
+    public void setCastId( int castId ) {
+        this.castId = castId;
+    }
+
+
+    public void setCreditId( String creditId ) {
+        this.creditId = creditId;
+    }
 }

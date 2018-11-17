@@ -208,4 +208,94 @@ public class TvSeries extends AbstractTvElement implements Multi {
     public MediaType getMediaType() {
         return MediaType.TV_SERIES;
     }
+
+
+    public void setCreatedBy( List<Person> createdBy ) {
+        this.createdBy = createdBy;
+    }
+
+
+    public void setEpisodeRuntime( List<Integer> episodeRuntime ) {
+        this.episodeRuntime = episodeRuntime;
+    }
+
+
+    public void setFirstAirDate( String firstAirDate ) {
+        this.firstAirDate = firstAirDate;
+    }
+
+
+    public void setLastAirDate( String lastAirDate ) {
+        this.lastAirDate = lastAirDate;
+    }
+
+
+    public void setGenres( List<Genre> genres ) {
+        this.genres = genres;
+    }
+
+
+    public void setHomepage( String homepage ) {
+        this.homepage = homepage;
+    }
+
+
+    public void setOriginalName( String originalName ) {
+        this.originalName = originalName;
+    }
+
+
+    public void setOriginCountry( List<String> originCountry ) {
+        this.originCountry = originCountry;
+    }
+
+
+    public void setPopularity( float popularity ) {
+        this.popularity = popularity;
+    }
+
+
+    public void setBackdropPath( String backdropPath ) {
+        this.backdropPath = backdropPath;
+    }
+
+
+    public void setPosterPath( String posterPath ) {
+        this.posterPath = posterPath;
+    }
+
+
+    public void setNumberOfEpisodes( int numberOfEpisodes ) {
+        this.numberOfEpisodes = numberOfEpisodes;
+    }
+
+
+    public void setNumberOfSeasons( int numberOfSeasons ) {
+        this.numberOfSeasons = numberOfSeasons;
+    }
+
+
+    public void setRecommendations( ResultsPage<TvSeries> recommendations ) {
+        this.recommendations = recommendations;
+    }
+
+
+    public void setUserRating( float userRating ) {
+        this.userRating = userRating;
+    }
+
+
+    public void setVoteAverage( float voteAverage ) {
+        this.voteAverage = voteAverage;
+    }
+
+
+    public void setVoteCount( int voteCount ) {
+        this.voteCount = voteCount;
+    }
+
+
+    public void setStatus( String status ) {
+        this.status = status;
+    }
 }

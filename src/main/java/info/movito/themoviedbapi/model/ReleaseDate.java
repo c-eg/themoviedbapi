@@ -36,4 +36,23 @@ public class ReleaseDate extends AbstractJsonMapping {
     }
 
 
+    public void setLanguage( String language ) {
+        this.language = language;
+    }
+
+    public void setCertification( String certification ) {
+        this.certification = certification;
+    }
+
+    public void setReleaseDate( String releaseDate ) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setNote( String note ) {
+        this.note = note;
+    }
+
+    public void setType( String type ) {
+        this.type = type;
+    }
 }

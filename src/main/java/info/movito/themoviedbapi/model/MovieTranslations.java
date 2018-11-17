@@ -15,4 +15,9 @@ public class MovieTranslations extends IdElement {
     public List<Translation> getTranslations() {
         return translations;
     }
+
+
+    public void setTranslations( List<Translation> translations ) {
+        this.translations = translations;
+    }
 }

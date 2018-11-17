@@ -22,4 +22,14 @@ public class PersonCredits extends AbstractJsonMapping {
     public List<PersonCredit> getCrew() {
         return crew;
     }
+
+
+    public void setCast( List<PersonCredit> cast ) {
+        this.cast = cast;
+    }
+
+
+    public void setCrew( List<PersonCredit> crew ) {
+        this.crew = crew;
+    }
 }
