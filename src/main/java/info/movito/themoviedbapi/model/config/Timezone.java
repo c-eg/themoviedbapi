@@ -20,7 +20,7 @@ public class Timezone extends AbstractJsonMapping {
     }
 
     public void setCountry( String country ) {
-        this.country = p_country;
+        this.country = country;
     }
 
     public String getName() {
