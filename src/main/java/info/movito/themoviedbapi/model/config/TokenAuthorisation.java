@@ -20,13 +20,23 @@ public class TokenAuthorisation {
         return expires;
     }
 
+    public void setExpires( String expires ) {
+        this.expires = expires;
+    }
 
     public String getRequestToken() {
         return requestToken;
     }
 
+    public void setRequestToken( String requestToken ) {
+        this.requestToken = requestToken;
+    }
 
     public Boolean getSuccess() {
         return success == null ? false : success;
+    }
+
+    public void setSuccess( Boolean success ) {
+        this.success = success;
     }
 }

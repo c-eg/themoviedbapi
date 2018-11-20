@@ -106,4 +106,89 @@ public class PersonCredit extends IdElement {
     public String getAdult() {
         return adult;
     }
+
+
+    public void setLanguage( String language ) {
+        this.language = language;
+    }
+
+
+    public void setEpisodeCount( int episodeCount ) {
+        this.episodeCount = episodeCount;
+    }
+
+
+    public void setOverview( String overview ) {
+        this.overview = overview;
+    }
+
+
+    public void setCharacter( String character ) {
+        this.character = character;
+    }
+
+
+    public void setMovieOriginalTitle( String movieOriginalTitle ) {
+        this.movieOriginalTitle = movieOriginalTitle;
+    }
+
+
+    public void setSeriesOriginalTitle( String seriesOriginalTitle ) {
+        this.seriesOriginalTitle = seriesOriginalTitle;
+    }
+
+
+    public void setFirstAirDate( String firstAirDate ) {
+        this.firstAirDate = firstAirDate;
+    }
+
+
+    public void setPosterPath( String posterPath ) {
+        this.posterPath = posterPath;
+    }
+
+
+    public void setReleaseDate( String releaseDate ) {
+        this.releaseDate = releaseDate;
+    }
+
+
+    public void setMovieTitle( String movieTitle ) {
+        this.movieTitle = movieTitle;
+    }
+
+
+    public void setName( String name ) {
+        this.name = name;
+    }
+
+
+    public void setDepartment( String department ) {
+        this.department = department;
+    }
+
+
+    public void setAdult( String adult ) {
+        this.adult = adult;
+    }
+
+
+    public void setMediaType( String mediaType ) {
+        this.mediaType = mediaType;
+    }
+
+
+    public void setVoteAvg( Float voteAvg ) {
+        this.voteAvg = voteAvg;
+    }
+
+
+    public void setBackdropPath( String backdropPath ) {
+        this.backdropPath = backdropPath;
+    }
+
+
+    public void setPersonType( PersonType personType ) {
+        this.personType = personType;
+    }
 }

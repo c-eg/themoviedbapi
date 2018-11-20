@@ -113,4 +113,19 @@ public class TvEpisode extends AbstractTvElement {
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
     }
+
+
+    public void setSeriesId( int seriesId ) {
+        this.seriesId = seriesId;
+    }
+
+
+    public void setSeasonNumber( Integer seasonNumber ) {
+        this.seasonNumber = seasonNumber;
+    }
+
+
+    public void setUserRating( float userRating ) {
+        this.userRating = userRating;
+    }
 }

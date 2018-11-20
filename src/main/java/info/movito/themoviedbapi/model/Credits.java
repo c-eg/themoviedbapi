@@ -50,4 +50,19 @@ public class Credits extends IdElement {
 
         return involved;
     }
+
+
+    public void setCrew( List<PersonCrew> crew ) {
+        this.crew = crew;
+    }
+
+
+    public void setCast( List<PersonCast> cast ) {
+        this.cast = cast;
+    }
+
+
+    public void setGuestStars( List<PersonCast> guestStars ) {
+        this.guestStars = guestStars;
+    }
 }
