@@ -2,6 +2,13 @@ See
 [releases](https://github.com/holgerbrandl/themoviedbapi/releases)
 for downloads and details
     
+v1.9
+----
+
+* Added set functions to all model classes.
+* Added support for release types on appendToResponse
+* Misc bug-fixes
+
 v1.8
 ----
 

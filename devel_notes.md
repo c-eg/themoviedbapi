@@ -11,7 +11,7 @@ mvn  source:jar install -Dmaven.test.skip=true
 ```
 
 4. Create new version on bintray, upload files (pom, jar, src-jar) from
-`/Users/holger/.m2/repository/info/movito/themoviedbapi` to path
+`~/.m2/repository/info/movito/themoviedbapi` to path
 info/movito/themoviedbapi/1.3
 
 5. Reupdate news.md and pom.xml for next iteration
