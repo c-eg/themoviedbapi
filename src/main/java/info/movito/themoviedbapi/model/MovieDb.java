@@ -252,7 +252,7 @@ public class MovieDb extends IdElement implements Multi {
 
 
     public List<ReleaseInfo> getReleases() {
-        return releases.getResults() != null ? releases.getResults() : null;
+        return releases != null ? releases.getResults() : null;
     }
 
 
