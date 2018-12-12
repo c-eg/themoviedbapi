@@ -14,13 +14,14 @@ public class TmdbTV extends AbstractTmdbApi {
     public static final String TMDB_METHOD_TV = "tv";
     public static final String TMDB_METHOD_POPULAR = "popular";
     public static final String TMDB_METHOD_CREDITS = "credits";
+    public static final String TMDB_METHOD_CONTENT_RATING = "content_rating";
     public static final String TMDB_METHOD_ONTHEAIR = "on_the_air";
     public static final String TMDB_METHOD_AIRINGTODAY = "airing_today";
     public static final String TMDB_METHOD_TOPRATED = "top_rated";
     public static final String TMDB_METHOD_RECOMMENDATIONS = "recommendations";
 
 
-    public static enum TvMethod {credits, external_ids, images, videos, recommendations}
+    public static enum TvMethod {credits, external_ids, images, videos, recommendations, content_ratings}
 
 
     TmdbTV(TmdbApi tmdbApi) {

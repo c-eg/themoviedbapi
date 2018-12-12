@@ -2,6 +2,7 @@ package info.movito.themoviedbapi.model.tv;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import info.movito.themoviedbapi.model.ContentRating;
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.core.ResultsPage;
@@ -87,6 +88,8 @@ public class TvSeries extends AbstractTvElement implements Multi {
     @JsonProperty("status")
     private String status;
 
+    @JsonProperty("content_ratings")
+    private ContentRating.Results contentRatings;
 
     public List<Person> getCreatedBy() {
         return createdBy;
@@ -297,5 +300,14 @@ public class TvSeries extends AbstractTvElement implements Multi {
 
     public void setStatus( String status ) {
         this.status = status;
+    }
+
+
+    public List<ContentRating> getContentRatings() {
+        return contentRatings.getContentRatings();
+    }
+
+    public void setContentRatings(ContentRating.Results contentRatings) {
+        this.contentRatings = contentRatings;
     }
 }
