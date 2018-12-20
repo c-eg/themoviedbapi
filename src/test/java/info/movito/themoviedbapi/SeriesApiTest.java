@@ -3,6 +3,7 @@ package info.movito.themoviedbapi;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import info.movito.themoviedbapi.model.config.Timezone;
+import info.movito.themoviedbapi.model.core.MovieKeywords;
 import info.movito.themoviedbapi.model.tv.TvEpisode;
 import info.movito.themoviedbapi.model.tv.TvSeason;
 import info.movito.themoviedbapi.model.tv.TvSeries;
@@ -32,6 +33,17 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
         TvSeries result = tmdb.getTvSeries().getSeries(MR_ROBOT_ID, LANGUAGE_ENGLISH);
 
         assertEquals("Unexpected genre count for mr robot", 2, result.getGenres().size());
+
+//       TvResultsPage popular = tmdb.getTvSeries().getPopular(LANGUAGE_ENGLISH, 1);
+//       System.out.println(popular);
+    }
+
+    @Test
+    public void getSeriesKeywords() {
+        Integer MR_ROBOT_ID = 62560;
+        MovieKeywords result = tmdb.getTvSeries().getKeywords(MR_ROBOT_ID, LANGUAGE_ENGLISH);
+
+        assertEquals("Unexpected genre count for mr robot", 8, result.getKeywords().size());
 
 //       TvResultsPage popular = tmdb.getTvSeries().getPopular(LANGUAGE_ENGLISH, 1);
 //       System.out.println(popular);

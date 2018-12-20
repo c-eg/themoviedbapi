@@ -37,6 +37,11 @@ public class PeopleApiTest extends AbstractTmdbApiTest {
         assertTrue("No cast information", result.size() > 0);
     }
 
+    @Test
+    public void testGetPersonKnownFor() {
+        PersonPeople result = tmdb.getPeople().getPersonInfo(ID_PERSON_BRUCE_WILLIS);
+        assertEquals("Acting", result.getKnownForDepartment());
+    }
 
     @Test
     public void testGetPersonLatest() throws Exception {
