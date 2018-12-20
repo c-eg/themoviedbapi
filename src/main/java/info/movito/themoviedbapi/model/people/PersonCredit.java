@@ -38,8 +38,12 @@ public class PersonCredit extends IdElement {
     private String mediaType;
     @JsonProperty("vote_average")
     private Float voteAvg;
+    @JsonProperty("vote_count")
+    private int voteCount;
     @JsonProperty("backdrop_path")
     private String backdropPath;
+    @JsonProperty("popularity")
+    private Float popularity;
 
 
     private PersonType personType = PersonType.PERSON;
@@ -105,5 +109,13 @@ public class PersonCredit extends IdElement {
 
     public String getAdult() {
         return adult;
+    }
+    
+    public float getPopularity() {
+    	return popularity;
+    }
+    
+    public int getVoteCount() {
+    	return voteCount;
     }
 }
