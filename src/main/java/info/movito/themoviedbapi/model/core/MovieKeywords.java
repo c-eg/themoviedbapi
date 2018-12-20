@@ -17,4 +17,8 @@ public class MovieKeywords extends AbstractJsonMapping {
     public List<Keyword> getKeywords() {
         return keywords;
     }
+
+    public void setKeywords( List<Keyword> keywords ) {
+        this.keywords = keywords;
+    }
 }

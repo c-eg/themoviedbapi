@@ -62,4 +62,14 @@ public class AbstractTvElement extends NamedIdElement {
     public List<Video> getVideos() {
         return videos != null ? videos.getVideos() : null;
     }
+
+
+    public void setImages( MovieImages images ) {
+        this.images = images;
+    }
+
+
+    public void setVideos( Video.Results videos ) {
+        this.videos = videos;
+    }
 }

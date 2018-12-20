@@ -45,4 +45,29 @@ public class ExternalIds extends IdElement {
     public String getTvrageId() {
         return tvrageId;
     }
+
+
+    public void setImdbId( String imdbId ) {
+        this.imdbId = imdbId;
+    }
+
+
+    public void setFreeBaseId( String freeBaseId ) {
+        this.freeBaseId = freeBaseId;
+    }
+
+
+    public void setFreebaseMid( String freebaseMid ) {
+        this.freebaseMid = freebaseMid;
+    }
+
+
+    public void setTvdbId( String tvdbId ) {
+        this.tvdbId = tvdbId;
+    }
+
+
+    public void setTvrageId( String tvrageId ) {
+        this.tvrageId = tvrageId;
+    }
 }

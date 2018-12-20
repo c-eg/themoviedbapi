@@ -252,7 +252,7 @@ public class MovieDb extends IdElement implements Multi {
 
 
     public List<ReleaseInfo> getReleases() {
-        return releases.getResults() != null ? releases.getResults() : null;
+        return releases != null ? releases.getResults() : null;
     }
 
 
@@ -300,5 +300,175 @@ public class MovieDb extends IdElement implements Multi {
     @Override
     public MediaType getMediaType() {
         return MediaType.MOVIE;
+    }
+
+
+    public void setTitle( String title ) {
+        this.title = title;
+    }
+
+
+    public void setOriginalTitle( String originalTitle ) {
+        this.originalTitle = originalTitle;
+    }
+
+
+    public void setPopularity( float popularity ) {
+        this.popularity = popularity;
+    }
+
+
+    public void setBackdropPath( String backdropPath ) {
+        this.backdropPath = backdropPath;
+    }
+
+
+    public void setPosterPath( String posterPath ) {
+        this.posterPath = posterPath;
+    }
+
+
+    public void setReleaseDate( String releaseDate ) {
+        this.releaseDate = releaseDate;
+    }
+
+
+    public void setAdult( boolean adult ) {
+        this.adult = adult;
+    }
+
+
+    public void setBelongsToCollection( Collection belongsToCollection ) {
+        this.belongsToCollection = belongsToCollection;
+    }
+
+
+    public void setBudget( long budget ) {
+        this.budget = budget;
+    }
+
+
+    public void setGenres( List<Genre> genres ) {
+        this.genres = genres;
+    }
+
+
+    public void setHomepage( String homepage ) {
+        this.homepage = homepage;
+    }
+
+
+    public void setOverview( String overview ) {
+        this.overview = overview;
+    }
+
+
+    public void setImdbID( String imdbID ) {
+        this.imdbID = imdbID;
+    }
+
+
+    public void setOriginalLanguage( String originalLanguage ) {
+        this.originalLanguage = originalLanguage;
+    }
+
+
+    public void setProductionCompanies( List<ProductionCompany> productionCompanies ) {
+        this.productionCompanies = productionCompanies;
+    }
+
+
+    public void setProductionCountries( List<ProductionCountry> productionCountries ) {
+        this.productionCountries = productionCountries;
+    }
+
+
+    public void setRevenue( long revenue ) {
+        this.revenue = revenue;
+    }
+
+
+    public void setRuntime( int runtime ) {
+        this.runtime = runtime;
+    }
+
+
+    public void setSpokenLanguages( List<Language> spokenLanguages ) {
+        this.spokenLanguages = spokenLanguages;
+    }
+
+
+    public void setTagline( String tagline ) {
+        this.tagline = tagline;
+    }
+
+
+    public void setUserRating( float userRating ) {
+        this.userRating = userRating;
+    }
+
+
+    public void setVoteAverage( float voteAverage ) {
+        this.voteAverage = voteAverage;
+    }
+
+
+    public void setVoteCount( int voteCount ) {
+        this.voteCount = voteCount;
+    }
+
+
+    public void setStatus( String status ) {
+        this.status = status;
+    }
+
+
+    public void setAlternativeTitles( MoviesAlternativeTitles alternativeTitles ) {
+        this.alternativeTitles = alternativeTitles;
+    }
+
+
+    public void setCredits( Credits credits ) {
+        this.credits = credits;
+    }
+
+
+    public void setImages( MovieImages images ) {
+        this.images = images;
+    }
+
+
+    public void setKeywords( MovieKeywords keywords ) {
+        this.keywords = keywords;
+    }
+
+
+    public void setReleases( TmdbMovies.ReleaseInfoResults releases ) {
+        this.releases = releases;
+    }
+
+
+    public void setVideos( Video.Results videos ) {
+        this.videos = videos;
+    }
+
+
+    public void setTranslations( MovieTranslations translations ) {
+        this.translations = translations;
+    }
+
+
+    public void setSimilarMovies( ResultsPage<MovieDb> similarMovies ) {
+        this.similarMovies = similarMovies;
+    }
+
+
+    public void setReviews( ResultsPage<Reviews> reviews ) {
+        this.reviews = reviews;
+    }
+
+
+    public void setLists( ResultsPage<MovieList> lists ) {
+        this.lists = lists;
     }
 }
