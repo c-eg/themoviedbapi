@@ -43,7 +43,7 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
         Integer MR_ROBOT_ID = 62560;
         MovieKeywords result = tmdb.getTvSeries().getKeywords(MR_ROBOT_ID, LANGUAGE_ENGLISH);
 
-        assertEquals("Unexpected genre count for mr robot", 8, result.getKeywords().size());
+        assertEquals("Unexpected keyword count for mr robot", 8, result.getKeywords().size());
 
 //       TvResultsPage popular = tmdb.getTvSeries().getPopular(LANGUAGE_ENGLISH, 1);
 //       System.out.println(popular);
