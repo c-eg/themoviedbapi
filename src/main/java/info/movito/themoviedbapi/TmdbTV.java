@@ -24,7 +24,9 @@ public class TmdbTV extends AbstractTmdbApi {
     public static final String TMDB_METHOD_KEYWORDS = "keywords";
 
 
-    public static enum TvMethod {credits, external_ids, images, videos, recommendations, keywords, content_rating}
+
+    public static enum TvMethod {credits, external_ids, images, videos, recommendations, keywords, content_ratings}
+
 
 
     TmdbTV(TmdbApi tmdbApi) {

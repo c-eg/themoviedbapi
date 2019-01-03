@@ -7,6 +7,8 @@ import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.Video;
 import info.movito.themoviedbapi.model.core.MovieKeywords;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
+import info.movito.themoviedbapi.model.core.TvKeywords;
+import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 
 import java.util.List;
@@ -28,9 +30,9 @@ public class AbstractTvElement extends NamedIdElement {
 
     @JsonProperty("videos")
     private Video.Results videos;
-
+    
     @JsonProperty("keywords")
-    private MovieKeywords keywords;
+    private TvKeywords keywords;
 
     public Credits getCredits() {
         return credits;
@@ -71,7 +73,7 @@ public class AbstractTvElement extends NamedIdElement {
         return keywords != null ? keywords.getKeywords() : null;
     }
 
-    public void setKeywords(MovieKeywords keywords) {
+    public void setKeywords(TvKeywords keywords) {
         this.keywords = keywords;
     }
 }
