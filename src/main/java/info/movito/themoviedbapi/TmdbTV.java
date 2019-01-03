@@ -3,6 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.config.Timezone;
+import info.movito.themoviedbapi.model.core.MovieKeywords;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
@@ -19,9 +20,12 @@ public class TmdbTV extends AbstractTmdbApi {
     public static final String TMDB_METHOD_AIRINGTODAY = "airing_today";
     public static final String TMDB_METHOD_TOPRATED = "top_rated";
     public static final String TMDB_METHOD_RECOMMENDATIONS = "recommendations";
+    public static final String TMDB_METHOD_KEYWORDS = "keywords";
 
 
-    public static enum TvMethod {credits, external_ids, images, videos, recommendations, keywords, content_rating}
+
+    public static enum TvMethod {credits, external_ids, images, videos, recommendations, keywords, content_ratings}
+
 
 
     TmdbTV(TmdbApi tmdbApi) {
@@ -107,5 +111,13 @@ public class TmdbTV extends AbstractTmdbApi {
         apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, MovieImages.class);
+    }
+
+    public MovieKeywords getKeywords(int seriesId, String language) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_KEYWORDS);
+
+        apiUrl.addLanguage(language);
+
+        return mapJsonResult(apiUrl, MovieKeywords.class);
     }
 }

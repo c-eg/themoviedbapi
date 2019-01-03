@@ -243,6 +243,10 @@ public class PersonPeople extends Person implements Multi {
         this.gender = gender;
     }
 
+    public void setKnownForDepartment(String knownForDepartment) {
+        this.knownForDepartment = knownForDepartment;
+    }
+
     @Override
     public MediaType getMediaType() {
         return MediaType.PERSON;

@@ -37,6 +37,33 @@ public class PeopleApiTest extends AbstractTmdbApiTest {
         assertTrue("No cast information", result.size() > 0);
     }
 
+    @Test
+    public void testGetPersonKnownFor() {
+        PersonPeople result = tmdb.getPeople().getPersonInfo(ID_PERSON_BRUCE_WILLIS);
+        assertEquals("Acting", result.getKnownForDepartment());
+    }
+
+    @Test
+    public void testGetPersonCreditPopularity() {
+        PersonCredits result = tmdb.getPeople().getCombinedPersonCredits(ID_PERSON_BRUCE_WILLIS);
+        for (PersonCredit credit : result.getCast()) {
+            if (credit.getId() == ID_MOVIE_DIE_HARD) {
+                assertNotNull(credit.getPopularity());
+                break;
+            }
+        }
+    }
+
+    @Test
+    public void testGetPersonCreditVoteCount() {
+        PersonCredits result = tmdb.getPeople().getCombinedPersonCredits(ID_PERSON_BRUCE_WILLIS);
+        for (PersonCredit credit : result.getCast()) {
+            if (credit.getId() == ID_MOVIE_DIE_HARD) {
+                assertNotNull(credit.getVoteCount());
+                break;
+            }
+        }
+    }
 
     @Test
     public void testGetPersonLatest() throws Exception {

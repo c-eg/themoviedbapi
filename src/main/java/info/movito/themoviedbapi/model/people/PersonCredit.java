@@ -106,17 +106,16 @@ public class PersonCredit extends IdElement {
         return releaseDate;
     }
 
-
-    public String getAdult() {
-        return adult;
-    }
-    
     public float getPopularity() {
     	return popularity;
     }
     
     public int getVoteCount() {
         return voteCount;
+    }
+
+    public String getAdult() {
+        return adult;
     }
 
     public void setVoteCount(int voteCount) {
@@ -205,8 +204,8 @@ public class PersonCredit extends IdElement {
     public void setBackdropPath( String backdropPath ) {
         this.backdropPath = backdropPath;
     }
-
-
+     
+    
     public void setPersonType( PersonType personType ) {
         this.personType = personType;
     }
