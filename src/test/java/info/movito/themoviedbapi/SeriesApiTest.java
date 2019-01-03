@@ -114,7 +114,7 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
     @Test
     public void getContentRatings() {
         Integer MR_ROBOT_ID = 62560;
-        TvSeries result = tmdb.getTvSeries().getSeries(MR_ROBOT_ID, LANGUAGE_ENGLISH, TmdbTV.TvMethod.content_ratings);
+        TvSeries result = tmdb.getTvSeries().getSeries(MR_ROBOT_ID, LANGUAGE_ENGLISH, TmdbTV.TvMethod.content_rating);
 
         assertEquals("Unexpected content ratings count for mr robot", 5, result.getContentRatings().size());
     }

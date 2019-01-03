@@ -7,6 +7,7 @@ import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.Video;
 import info.movito.themoviedbapi.model.core.MovieKeywords;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
+import info.movito.themoviedbapi.model.core.TvKeywords;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.keywords.KeywordMovie;
 
@@ -31,7 +32,7 @@ public class AbstractTvElement extends NamedIdElement {
     private Video.Results videos;
     
     @JsonProperty("keywords")
-    private MovieKeywords keywords;
+    private TvKeywords keywords;
 
     public List<Keyword> getKeywords() {
         return keywords != null ? keywords.getKeywords() : null;
