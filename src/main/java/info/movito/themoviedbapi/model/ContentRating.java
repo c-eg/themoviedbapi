@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import info.movito.themoviedbapi.model.core.IdElement;
 
+import java.io.Serializable;
 import java.util.List;
 
 @JsonRootName("content_ratings")
-public class ContentRating {
+public class ContentRating implements Serializable {
 
     @JsonProperty("iso_3166_1")
     private String locale;
