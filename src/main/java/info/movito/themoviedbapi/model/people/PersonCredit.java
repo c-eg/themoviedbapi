@@ -38,10 +38,10 @@ public class PersonCredit extends IdElement {
     private String mediaType;
     @JsonProperty("vote_average")
     private Float voteAvg;
-    @JsonProperty("backdrop_path")
-    private String backdropPath;
     @JsonProperty("vote_count")
     private int voteCount;
+    @JsonProperty("backdrop_path")
+    private String backdropPath;
     @JsonProperty("popularity")
     private Float popularity;
 
@@ -118,7 +118,14 @@ public class PersonCredit extends IdElement {
         return adult;
     }
 
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+    }
 
+    public void setPopularity(float popularity) {
+        this.popularity = popularity;
+    }
+    
     public void setLanguage( String language ) {
         this.language = language;
     }
@@ -197,16 +204,6 @@ public class PersonCredit extends IdElement {
     public void setBackdropPath( String backdropPath ) {
         this.backdropPath = backdropPath;
     }
-
-
-    public void setPopularity(float popularity) {
-        this.popularity = popularity;
-    }
-
-
-    public void setVoteCount(int voteCount) {
-        this.voteCount = voteCount;
-    }   
      
     
     public void setPersonType( PersonType personType ) {

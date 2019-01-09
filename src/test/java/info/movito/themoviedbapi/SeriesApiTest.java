@@ -1,17 +1,19 @@
 package info.movito.themoviedbapi;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import info.movito.themoviedbapi.model.config.Timezone;
-import info.movito.themoviedbapi.model.core.MovieKeywords;
-import info.movito.themoviedbapi.model.tv.TvEpisode;
-import info.movito.themoviedbapi.model.tv.TvSeason;
-import info.movito.themoviedbapi.model.tv.TvSeries;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+
+import info.movito.themoviedbapi.model.config.Timezone;
+import info.movito.themoviedbapi.model.core.TvKeywords;
+import info.movito.themoviedbapi.model.tv.TvEpisode;
+import info.movito.themoviedbapi.model.tv.TvSeason;
+import info.movito.themoviedbapi.model.tv.TvSeries;
 
 
 public class SeriesApiTest extends AbstractTmdbApiTest {
@@ -41,7 +43,7 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
     @Test
     public void getSeriesKeywords() {
         Integer MR_ROBOT_ID = 62560;
-        MovieKeywords result = tmdb.getTvSeries().getKeywords(MR_ROBOT_ID, LANGUAGE_ENGLISH);
+        TvKeywords result = tmdb.getTvSeries().getKeywords(MR_ROBOT_ID, LANGUAGE_ENGLISH);
 
         assertEquals("Unexpected keyword count for mr robot", 8, result.getKeywords().size());
 
