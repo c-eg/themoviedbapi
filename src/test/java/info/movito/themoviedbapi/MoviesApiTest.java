@@ -12,9 +12,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-
 public class MoviesApiTest extends AbstractTmdbApiTest {
-
 
     @Test
     public void testGetMovieInfo() {
@@ -22,20 +20,23 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         assertEquals("Incorrect movie information", "Blade Runner", result.getOriginalTitle());
     }
 
-
     @Test
     public void testGetMovieInfoWithAppendedMethods() {
         MovieDb result = tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH, TmdbMovies.MovieMethod.values());
+        ProductionCompany productionCompany = result.getProductionCompanies().get(0);
+
         assertEquals("Incorrect movie information", "Blade Runner", result.getOriginalTitle());
         assertTrue("no videos", result.getVideos().size() > 0);
         assertNotNull(result.getReleases());
+        assertFalse(result.getProductionCompanies().isEmpty());
+        assertNotNull(productionCompany.getLogoPath());
+        assertNotNull(productionCompany.getOriginCountry());
+        assertNotNull(productionCompany.getName());
     }
-
 
     @Test
     public void testGetMovieAlternativeTitles() {
         String country = "";
-
 
         List<AlternativeTitle> result = tmdb.getMovies().getAlternativeTitles(ID_MOVIE_BLADE_RUNNER, country);
         assertTrue("No alternative titles found", result.size() > 0);
@@ -45,7 +46,6 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         assertTrue("No alternative titles found", result.size() > 0);
 
     }
-
 
     @Test
     public void testGetMovieCasts() {
@@ -71,7 +71,6 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         assertTrue("Couldn't find " + name2, foundName2);
     }
 
-
     @Test
     public void testGetMovieImages() {
         String language = "";
@@ -79,20 +78,17 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         assertFalse("No artwork found", result.getPosters().isEmpty());
     }
 
-
     @Test
     public void testGetMovieKeywords() {
         List<Keyword> result = tmdb.getMovies().getKeywords(ID_MOVIE_BLADE_RUNNER);
         assertFalse("No keywords found", result.isEmpty());
     }
 
-
     @Test
     public void testMovieKeywordsWithHits() {
         List<Keyword> result = tmdb.getMovies().getKeywords(550);
         assertFalse("No keywords found", result.isEmpty());
     }
-
 
     @Test
     public void testMovieKeywordsAppendedMethod() {
@@ -103,7 +99,6 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         assertFalse("No keywords found", result.isEmpty());
         assertEquals(19, result.size());
     }
-
 
     @Test
     public void testGetMovieReleaseInfo() {
@@ -125,13 +120,17 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         assertFalse("Movie trailers missing", result.isEmpty());
     }
 
-
     @Test
     public void testGetMovieTranslations() {
         List<Translation> result = tmdb.getMovies().getTranslations(ID_MOVIE_BLADE_RUNNER);
-        assertFalse("No translations found", result.isEmpty());
-    }
+        Data translationData = result.get(0).getData();
 
+        assertFalse("No translations found", result.isEmpty());
+        assertNotNull(translationData);
+        assertNotNull(translationData.getTitle() );
+        assertNotNull(translationData.getOverview());
+        assertNotNull(translationData.getHomepage());
+    }
 
     @Test
     public void testCreateImageUrl() {
@@ -140,13 +139,11 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         assertTrue("Error compiling image URL", !result.isEmpty());
     }
 
-
     @Test
     public void testGetNowPlayingMovies() {
         List<MovieDb> result = tmdb.getMovies().getNowPlayingMovies(LANGUAGE_DEFAULT, 0, null).getResults();
         assertTrue("No now playing movies found", !result.isEmpty());
     }
-
 
     @Test
     public void testGetPopularMovieList() {
@@ -157,20 +154,17 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
     }
 
-
     @Test
     public void testGetTopRatedMovies() {
         List<MovieDb> results = tmdb.getMovies().getTopRatedMovies(LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No top rated movies found", !results.isEmpty());
     }
 
-
     @Test
     public void testGetSimilarMovies() {
         List<MovieDb> result = tmdb.getMovies().getSimilarMovies(ID_MOVIE_BLADE_RUNNER, LANGUAGE_DEFAULT, 0).getResults();
         assertTrue("No similar movies found", !result.isEmpty());
     }
-
 
     @Test
     public void testGetLatestMovie() {
@@ -179,14 +173,12 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         assertTrue("No latest movie found", result.getId() > 0);
     }
 
-
     @Test
     public void testGetUpcoming() throws Exception {
 
         List<MovieDb> result = tmdb.getMovies().getUpcoming("en-US", 1, null).getResults();
         assertTrue("No upcoming movies found", !result.isEmpty());
     }
-
 
     @Ignore("Do not test this until it is fixed")
     public void testGetMovieChanges() throws Exception {
@@ -204,7 +196,6 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
             break;
         }
     }
-
 
     @Test
     public void testInvalidID() {

@@ -16,6 +16,9 @@ public class Translation extends NamedElement {
     private String englishName;
 
 
+    private Data data;
+
+
     public String getEnglishName() {
         return englishName;
     }
@@ -33,6 +36,16 @@ public class Translation extends NamedElement {
 
     public void setEnglishName( String englishName ) {
         this.englishName = englishName;
+    }
+
+
+    public Data getData() {
+        return data;
+    }
+
+
+    public void setData(Data data) {
+        this.data = data;
     }
 
 
