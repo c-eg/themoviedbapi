@@ -17,6 +17,7 @@ public class MovieDb extends IdElement implements Multi {
 
     @JsonProperty("title")
     private String title;
+
     @JsonProperty("original_title")
     private String originalTitle;
 
@@ -25,19 +26,25 @@ public class MovieDb extends IdElement implements Multi {
 
     @JsonProperty("backdrop_path")
     private String backdropPath;
+
     @JsonProperty("poster_path")
     private String posterPath;
 
     @JsonProperty("release_date")
     private String releaseDate;
+
     @JsonProperty("adult")
     private boolean adult;
+
     @JsonProperty("belongs_to_collection")
     private Collection belongsToCollection;
+
     @JsonProperty("budget")
     private long budget;
+
     @JsonProperty("genres")
     private List<Genre> genres;
+
     @JsonProperty("homepage")
     private String homepage;
 
@@ -53,11 +60,13 @@ public class MovieDb extends IdElement implements Multi {
 
     @JsonProperty("production_companies")
     private List<ProductionCompany> productionCompanies;
+
     @JsonProperty("production_countries")
     private List<ProductionCountry> productionCountries;
 
     @JsonProperty("revenue")
     private long revenue;
+
     @JsonProperty("runtime")
     private int runtime;
 
@@ -72,6 +81,7 @@ public class MovieDb extends IdElement implements Multi {
 
     @JsonProperty("vote_average")
     private float voteAverage;
+
     @JsonProperty("vote_count")
     private int voteCount;
 
@@ -79,7 +89,6 @@ public class MovieDb extends IdElement implements Multi {
     private String status;
 
     // Appendable responses
-
     @JsonProperty("alternative_titles")
     private MoviesAlternativeTitles alternativeTitles;
 
@@ -104,6 +113,9 @@ public class MovieDb extends IdElement implements Multi {
 
     @JsonProperty("similar")
     private ResultsPage<MovieDb> similarMovies;
+
+    @JsonProperty("recommendations")
+    private ResultsPage<MovieDb> recommendedMovies;
 
     @JsonProperty("reviews")
     private ResultsPage<Reviews> reviews;
@@ -270,6 +282,9 @@ public class MovieDb extends IdElement implements Multi {
         return similarMovies != null ? similarMovies.getResults() : null;
     }
 
+    public List<MovieDb> getRecommendations() {
+        return recommendedMovies != null ? recommendedMovies.getResults() : null;
+    }
 
     public List<MovieList> getLists() {
         return lists != null ? lists.getResults() : null;
