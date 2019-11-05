@@ -34,7 +34,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         alternative_titles, credits, images, keywords, releases, release_dates,
         @Deprecated trailers,
         videos, // replacement for trailers
-        translations, similar,
+        translations, similar, recommendations,
         reviews, lists, changes, latest, upcoming, now_playing, popular, top_rated,
     }
 
@@ -195,6 +195,27 @@ public class TmdbMovies extends AbstractTmdbApi {
      */
     public MovieResultsPage getSimilarMovies(int movieId, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.similar);
+
+        apiUrl.addLanguage(language);
+
+        apiUrl.addPage(page);
+
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
+    }
+
+    /**
+     * The recomendations movies method will let you retrieve the reccomended movies for a particular movie.
+     * <p/>
+     * This data is created dynamically but with the help of TMDb internal algorithm.
+     * <p/>
+     * The data is much better with movies that are more popular
+     *
+     * @param movieId
+     * @param language
+     * @param page
+     */
+    public MovieResultsPage getRecommendedMovies(int movieId, String language, Integer page) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.recommendations);
 
         apiUrl.addLanguage(language);
 
