@@ -19,7 +19,7 @@ Just add it as dependency to your project. It's available via [jcenter](https://
 <dependency>
     <groupId>info.movito</groupId>
     <artifactId>themoviedbapi</artifactId>
-    <version>1.9</version>
+    <version>1.10</version>
 </dependency>
 ```
 Read the [Set me up](https://bintray.com/bintray/jcenter) section first, if you haven't addded jcenter as a repository to your pom.xml yet.
@@ -32,7 +32,7 @@ repositories {
 }
 
 dependencies{
-    compile group: 'info.movito', name: 'themoviedbapi', version:'1.9'
+    compile group: 'info.movito', name: 'themoviedbapi', version:'1.10'
 }
 ```
 
@@ -50,7 +50,7 @@ TmdbMovies movies = new TmdbApi("<apikey>").getMovies();
 MovieDb movie = movies.getMovie(5353, "en");
 ```
 
-The wrapper implements all major parts of the JSON API as detailed out in the [TMdB API documentation]((http://api.themoviedb.org/)).
+The wrapper implements all major parts of the JSON API as detailed out in the [TMdB API documentation](http://api.themoviedb.org/).
 However, as the latter is subject to constant change, feel welcome to point out missing bits by submitting a ticket.
 Or even better, just send us a pull request!
 
