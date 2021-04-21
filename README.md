@@ -1,7 +1,7 @@
 TheMovieDB API
 ================
 
-[ ![Download](https://img.shields.io/github/v/release/holgerbrandl/kalasim) ](https://github.com/holgerbrandl/kalasim/releases)
+[ ![Download](https://img.shields.io/github/v/release/holgerbrandl/themoviedbapi) ](https://github.com/holgerbrandl/themoviedbapi/releases)
 
 This library provides a java-wrapper around the [JSON API](http://api.themoviedb.org/) provided by
 [TMdB](http://themoviedb.org), which is an open database for movie and film content.
@@ -11,13 +11,13 @@ This library provides a java-wrapper around the [JSON API](http://api.themoviedb
 Setup
 -----
 
-
+> **Starting with v1.12 the library is hosted on maven-central. This required a change of the group-id from info.movito to com.github.holgerbrandl**
 
 Just add it as dependency to your project. It's available via [Maven Central](https://search.maven.org/)
 
 ```
 <dependency>
-    <groupId>info.movito</groupId>
+    <groupId>com.github.holgerbrandl</groupId>
     <artifactId>themoviedbapi</artifactId>
     <version>1.12</version>
 </dependency>
@@ -27,10 +27,9 @@ Or just add it via gradle when developing for Android:
 
 ```
 dependencies{
-    compile group: 'info.movito', name: 'themoviedbapi', version:'1.12'
+    compile group: 'com.github.holgerbrandl', name: 'themoviedbapi', version:'1.12'
 }
 ```
-
 
 Usage
 -----

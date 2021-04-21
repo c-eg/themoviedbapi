@@ -44,7 +44,7 @@ git push origin --tags
 ./gradlew publishToMavenLocal
 
 #./gradlew publishToSonatype closeSonatypeStagingRepository
-./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
+    ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
 ```
 
 
