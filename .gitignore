@@ -14,3 +14,10 @@
 .settings/
 *.iml
 /bin/
+
+# sonatype credentials
+local.properties
+*.gpg
+
+build
+.gradle

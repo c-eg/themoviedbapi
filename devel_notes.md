@@ -1,23 +1,50 @@
-How to relase a new version of themoviedbpi?
----------------------------
+## How to do a release?
 
-1. Update NEWS.md and pom.xml
-2. Release on github
+1. Make sure to increase version number in [build.gradle.kts](../build.gradle.kts)
 
-3. Install locally into repository including sources
+2. Document [changes](../CHANGES.md)
 
+3. Do the release
+```bash
+# adjust to te path of your working copy
+export TMDB_HOME=/d/projects/misc/private/themoviedbapi
+
+cd $TMDB_HOME
+
+# run tests
+./gradlew check
+
+
+trim() { while read -r line; do echo "$line"; done; }
+tmdb_version='v'$(grep '^version' ${TMDB_HOME}/build.gradle | cut -f2 -d' ' | tr -d "'" | trim)
+
+echo "new version is $tmdb_version !"
+
+
+if [[ $tmdb_version == *"-SNAPSHOT" ]]; then
+  echo "ERROR: Won't publish snapshot build $tmdb_version!" 1>&2
+  exit 1
+fi
+
+#kscript src/test/kotlin/org/kalasim/misc/PatchVersion.kts "${tmdb_version:1}"
+
+git status
+git commit -am "${tmdb_version} release"
+#git diff --exit-code  || echo "There are uncomitted changes"
+
+git tag "${tmdb_version}"
+
+git push origin 
+git push origin --tags
+
+
+### Build and publish the binary release to maven central
+./gradlew install
+./gradlew publishMavenPublicationToMavenLocal
+
+#./gradlew publishToSonatype closeSonatypeStagingRepository
+./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
 ```
-mvn  source:jar install -Dmaven.test.skip=true
-```
 
-4. Create new version on bintray, upload files (pom, jar, src-jar) from
-`~/.m2/repository/info/movito/themoviedbapi` to path
-info/movito/themoviedbapi/1.3
-
-5. Reupdate news.md and pom.xml for next iteration
-
-
-* https://bintray.com/docs/usermanual/uploads/uploads_includingyourpackagesinjcenter.html
-* https://bintray.com/movito/movito-utils/tmdb-api
 
 

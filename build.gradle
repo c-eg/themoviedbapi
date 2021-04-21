@@ -1,0 +1,122 @@
+plugins {
+    id "java-library"
+    id "maven-publish"
+    id "signing"
+    id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
+}
+
+//apply plugin: 'application'
+//apply plugin: 'java'
+//apply plugin: 'maven-publish'
+//apply plugin: 'io.codearte.nexus-staging'
+
+// not neeeded but does not work without
+//mainClassName = "foo.Bar" // not needed but does not work without
+
+
+repositories {
+    mavenCentral()
+//    mavenLocal()
+}
+
+
+dependencies {
+    implementation 'org.slf4j:jcl-over-slf4j:1.7.7'
+
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.10.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.10.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.0'
+
+    implementation 'com.google.guava:guava:30.0-jre'
+
+    // Logging
+    implementation 'org.slf4j:slf4j-api:1.7.7'
+    implementation 'org.apache.commons:commons-lang3:3.3.2'
+    implementation 'commons-codec:commons-codec:1.10'
+
+    // http tools
+    api 'org.yamj:api-common:1.1'
+
+    // testing
+    testImplementation 'junit:junit:4.13.1'
+}
+
+
+//http://stackoverflow.com/questions/34377367/why-is-gradle-install-replacing-my-version-with-unspecified
+group 'com.github.holgerbrandl'
+version '1.12'
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from(components.java)
+
+            pom {
+//                name = PUBLISH_ARTIFACT_ID
+                description = 'A java-wrapper around the JSON API provided by TMdB, which is an open database for movie and film content.'
+                url = 'https://github.com/holgerbrandl/themoviedbapi'
+
+                licenses {
+                    license {
+                        name = 'BSD'
+                        url = 'https://github.com/holgerbrandl/themoviedbapi/blob/master/LICENCE.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'holgerbrandl'
+                        name = 'Holger Brandl'
+                        email = 'holgerbrandl@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:github.com/holgerbrandl/themoviedbapi.git'
+                    developerConnection = 'scm:git:ssh://github.com/holgerbrandl/themoviedbapi.git'
+                    url = 'https://github.com/holgerbrandl/themoviedbapi.git'
+                }
+
+//            withXml {
+//                def dependenciesNode = asNode().appendNode('dependencies')
+//
+//                //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+//                configurations.compile.allDependencies.each {
+//                    def dependencyNode = dependenciesNode.appendNode('dependency')
+//                    dependencyNode.appendNode('groupId', it.group)
+//                    dependencyNode.appendNode('artifactId', it.name)
+//                    dependencyNode.appendNode('version', it.version)
+//                }
+//            }
+
+                withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+
+                    project.configurations.implementation.allDependencies.each {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', it.group)
+                        dependencyNode.appendNode('artifactId', it.name)
+                        dependencyNode.appendNode('version', it.version)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+nexusPublishing {
+    repositories {
+        sonatype {
+//            nexusUrl = uri("https://your-server.com/staging")
+            snapshotRepositoryUrl = uri(project.properties["sonatypeStagingProfileId"])
+            username = project.properties["ossrhUsername"]
+            password = project.properties["ossrhPassword"]
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
