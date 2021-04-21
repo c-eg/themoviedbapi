@@ -19,9 +19,6 @@ public abstract class AbstractJsonMapping implements Serializable {
 
     /**
      * Handle unknown properties and print a message
-     *
-     * @param key
-     * @param value
      */
     @JsonAnySetter
     public void handleUnknown(String key, Object value) {

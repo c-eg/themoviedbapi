@@ -32,7 +32,6 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search Movies This is a good starting point to start finding movies on TMDb.
      *
-     * @param query
      * @param searchYear   Limit the search to the provided year. Zero (0) will get all years
      * @param language     The language to include. Can be blank/null.
      * @param includeAdult true or false to include adult titles in the search
@@ -66,7 +65,6 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search for TV shows by title.
      *
-     * @param query
      * @param language The language to include. Can be blank/null.
      * @param page     The page of results to return. 0 to get the default (first page)
      */
@@ -91,10 +89,6 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * Search for collections by name.
-     *
-     * @param query
-     * @param language
-     * @param page
      */
     public CollectionResultsPage searchCollection(String query, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_COLLECTION);
@@ -113,12 +107,8 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * This is a good starting point to start finding people on TMDb.
-     * <p/>
+     * 
      * The idea is to be a quick and light method so you can iterate through people quickly.
-     *
-     * @param query
-     * @param includeAdult
-     * @param page
      */
 
     public TmdbPeople.PersonResultsPage searchPerson(String query, boolean includeAdult, Integer page) {
@@ -136,10 +126,6 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * Search for lists by name and description.
-     *
-     * @param query
-     * @param language
-     * @param page
      */
     public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) {
         System.err.println("This method is part of the API but seems currently not available. " +
@@ -161,14 +147,11 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * Search Companies.
-     * <p/>
+     * 
      * You can use this method to search for production companies that are part of TMDb. The company IDs will map to
      * those returned on movie calls.
-     * <p/>
+     * 
      * http://help.themoviedb.org/kb/api/search-companies
-     *
-     * @param companyName
-     * @param page
      */
     public CompanyResultsPage searchCompany(String companyName, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company");
@@ -182,9 +165,6 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * Search for keywords by name
-     *
-     * @param query
-     * @param page
      */
     public KeywordResultsPage searchKeyword(String query, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword");
@@ -201,12 +181,7 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search the movie, tv show and person collections with a single query.
      * <p>Each mapped result is the same response you would get from each independent search.</p>
-     *
-     * @param query
-     * @param language
-     * @param page
      * @return ResultsPage of Multi.
-     * @see Multi
      */
     public MultiListResultsPage searchMulti(String query, String language, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MULTI);

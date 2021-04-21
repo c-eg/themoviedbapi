@@ -23,11 +23,8 @@ public class TmdbCollections extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve all of the basic information about a movie collection.
-     * <p/>
+     * 
      * You can get the ID needed for this method by making a getMovieInfo request for the belongs_to_collection.
-     *
-     * @param collectionId
-     * @param language
      */
     public CollectionInfo getCollectionInfo(int collectionId, String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId);
@@ -40,9 +37,6 @@ public class TmdbCollections extends AbstractTmdbApi {
 
     /**
      * Get all of the images for a particular collection by collection id.
-     *
-     * @param collectionId
-     * @param language
      */
     public List<Artwork> getCollectionImages(int collectionId, String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId, "images");

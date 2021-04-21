@@ -34,9 +34,6 @@ public class TmdbTV extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve all of the basic series information.
-     *
-     * @param seriesId
-     * @param language
      */
     public TvSeries getSeries(int seriesId, String language, TvMethod... appendToResponse) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId);

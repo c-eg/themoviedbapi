@@ -22,10 +22,8 @@ public class TmdbGenre extends AbstractTmdbApi {
 
     /**
      * You can use this method to retrieve the list of genres used on TMDb.
-     * <p/>
+     * 
      * These IDs will correspond to those found in movie calls.
-     *
-     * @param language
      */
     public List<Genre> getGenreList(String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "list");
@@ -46,14 +44,10 @@ public class TmdbGenre extends AbstractTmdbApi {
 
     /**
      * Get a list of movies per genre.
-     * <p/>
+     * 
      * It is important to understand that only movies with more than 10 votes get listed.
-     * <p/>
+     * 
      * This prevents movies from 1 10/10 rating from being listed first and for the first 5 pages.
-     *
-     * @param genreId
-     * @param language
-     * @param page
      */
     public MovieResultsPage getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, genreId, "movies");

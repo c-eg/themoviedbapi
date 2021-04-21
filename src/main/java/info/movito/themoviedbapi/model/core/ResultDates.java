@@ -41,9 +41,6 @@ public class ResultDates extends AbstractJsonMapping {
 
     /**
      * Handle unknown properties and print a message
-     *
-     * @param key
-     * @param value
      */
     @JsonAnySetter
     public void handleUnknown(String key, Object value) {

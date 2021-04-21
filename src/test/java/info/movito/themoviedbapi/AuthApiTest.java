@@ -24,7 +24,7 @@ public class AuthApiTest extends AbstractTmdbApiTest {
 
     /**
      * Test of getSessionToken method, of class TmdbApi.
-     * <p/>
+     * 
      * TODO: Cannot be tested without a HTTP authorisation: http://help.themoviedb.org/kb/api/user-authentication
      */
     public void testGetSessionToken() throws Exception {

@@ -1,5 +1,6 @@
 plugins {
     id "java-library"
+    id "application"
     id "maven-publish"
     id "signing"
     id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
@@ -41,6 +42,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+javadoc.options.addStringOption('Xdoclint:none', '-quiet')
+
 
 //http://stackoverflow.com/questions/34377367/why-is-gradle-install-replacing-my-version-with-unspecified
 group 'com.github.holgerbrandl'
@@ -53,7 +61,7 @@ publishing {
             from(components.java)
 
             pom {
-//                name = PUBLISH_ARTIFACT_ID
+                name = "themoviedbapi"
                 description = 'A java-wrapper around the JSON API provided by TMdB, which is an open database for movie and film content.'
                 url = 'https://github.com/holgerbrandl/themoviedbapi'
 
@@ -64,6 +72,13 @@ publishing {
                     }
                 }
 
+
+                scm {
+                    connection = 'scm:git:github.com/holgerbrandl/themoviedbapi.git'
+                    url = 'https://github.com/holgerbrandl/themoviedbapi.git'
+                }
+
+
                 developers {
                     developer {
                         id = 'holgerbrandl'
@@ -71,35 +86,17 @@ publishing {
                         email = 'holgerbrandl@gmail.com'
                     }
                 }
-
-                scm {
-                    connection = 'scm:git:github.com/holgerbrandl/themoviedbapi.git'
-                    developerConnection = 'scm:git:ssh://github.com/holgerbrandl/themoviedbapi.git'
-                    url = 'https://github.com/holgerbrandl/themoviedbapi.git'
-                }
-
-//            withXml {
-//                def dependenciesNode = asNode().appendNode('dependencies')
 //
-//                //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-//                configurations.compile.allDependencies.each {
-//                    def dependencyNode = dependenciesNode.appendNode('dependency')
-//                    dependencyNode.appendNode('groupId', it.group)
-//                    dependencyNode.appendNode('artifactId', it.name)
-//                    dependencyNode.appendNode('version', it.version)
+//                withXml {
+//                    def dependenciesNode = asNode().appendNode('dependencies')
+//
+//                    project.configurations.implementation.allDependencies.each {
+//                        def dependencyNode = dependenciesNode.appendNode('dependency')
+//                        dependencyNode.appendNode('groupId', it.group)
+//                        dependencyNode.appendNode('artifactId', it.name)
+//                        dependencyNode.appendNode('version', it.version)
+//                    }
 //                }
-//            }
-
-                withXml {
-                    def dependenciesNode = asNode().appendNode('dependencies')
-
-                    project.configurations.implementation.allDependencies.each {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', it.group)
-                        dependencyNode.appendNode('artifactId', it.name)
-                        dependencyNode.appendNode('version', it.version)
-                    }
-                }
             }
         }
     }

@@ -91,13 +91,8 @@ public class TmdbAccount extends AbstractTmdbApi {
 
     /**
      * This method lets users rate a movie.
-     * <p/>
+     * <p>
      * A valid session id is required.
-     *
-     * @param sessionToken
-     * @param movieId
-     * @param rating
-     * @throws com.fasterxml.jackson.core.JsonProcessingException
      */
     public boolean postMovieRating(SessionToken sessionToken, Integer movieId, Integer rating) {
         return postRatingInternal(sessionToken, rating, new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "rating"));

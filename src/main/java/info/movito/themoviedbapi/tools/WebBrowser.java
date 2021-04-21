@@ -38,11 +38,6 @@ public final class WebBrowser implements UrlReader {
 
     /**
      * Set the proxy information
-     *
-     * @param host
-     * @param port
-     * @param username
-     * @param password
      */
     public void setProxy(String host, String port, String username, String password) {
 
@@ -55,9 +50,6 @@ public final class WebBrowser implements UrlReader {
 
     /**
      * Set the connection and read time out values
-     *
-     * @param connect
-     * @param read
      */
     public void setTimeout(int connect, int read) {
 

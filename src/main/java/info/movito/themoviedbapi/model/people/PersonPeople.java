@@ -53,12 +53,6 @@ public class PersonPeople extends Person implements Multi {
 
     /**
      * Add a crew member
-     *
-     * @param id
-     * @param name
-     * @param profilePath
-     * @param department
-     * @param job
      */
     public void addCrew(int id, String name, String profilePath, String department, String job) {
         setPersonType(PersonType.CREW);
@@ -74,12 +68,6 @@ public class PersonPeople extends Person implements Multi {
 
     /**
      * Add a cast member
-     *
-     * @param id
-     * @param name
-     * @param profilePath
-     * @param character
-     * @param order
      */
     public void addCast(int id, String name, String profilePath, String character, int order) {
         setPersonType(PersonType.CAST);

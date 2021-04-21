@@ -106,9 +106,6 @@ public class ApiUrl {
 
     /**
      * Add argument
-     *
-     * @param key
-     * @param value
      */
     public void addParam(String key, int value) {
         addParam(key, Integer.toString(value));
@@ -117,9 +114,6 @@ public class ApiUrl {
 
     /**
      * Add argument
-     *
-     * @param key
-     * @param value
      */
     public void addParam(String key, boolean value) {
         addParam(key, Boolean.toString(value));

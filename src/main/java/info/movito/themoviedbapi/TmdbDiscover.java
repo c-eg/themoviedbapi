@@ -18,7 +18,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
 
     /**
      * Discover movies by different types of data like average rating, number of votes, genres and certifications.
-     * <p/>
+     * 
      * You can alternatively create a "discover" object and pass it to this method to cut out the requirement for all of
      * these parameters
      *

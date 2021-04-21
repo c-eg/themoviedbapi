@@ -73,10 +73,6 @@ public class Utils {
 
     /**
      * Compare the Levenshtein Distance between the two strings
-     *
-     * @param title1
-     * @param title2
-     * @param distance
      */
     private static boolean compareDistance(String title1, String title2, int distance) {
         return (StringUtils.getLevenshteinDistance(title1, title2) <= distance);
@@ -103,10 +99,6 @@ public class Utils {
 
     /**
      * Generate the full image URL from the size and image path
-     *
-     * @param tmdb
-     * @param imagePath
-     * @param requiredSize
      */
     public static URL createImageUrl(TmdbApi tmdb, String imagePath, String requiredSize) {
         if (StringUtils.isBlank(imagePath)) {

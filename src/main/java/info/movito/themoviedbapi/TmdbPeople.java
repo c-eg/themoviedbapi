@@ -25,10 +25,8 @@ public class TmdbPeople extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve all of the basic person information.
-     * <p/>
+     * 
      * It will return the single highest rated profile image.
-     *
-     * @param personId
      */
     public PersonPeople getPersonInfo(int personId, String... appendToResponse) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId);
@@ -42,10 +40,8 @@ public class TmdbPeople extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve all of the cast & crew information for the person.
-     * <p/>
+     * 
      * It will return the single highest rated poster for each movie record.
-     *
-     * @param personId
      */
     public PersonCredits getCombinedPersonCredits(int personId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "combined_credits");
@@ -56,8 +52,6 @@ public class TmdbPeople extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve all of the profile images for a person.
-     *
-     * @param personId
      */
     public List<Artwork> getPersonImages(int personId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "images");
@@ -68,18 +62,14 @@ public class TmdbPeople extends AbstractTmdbApi {
 
     /**
      * Get the changes for a specific person id.
-     * <p/>
+     * 
      * Changes are grouped by key, and ordered by date in descending order.
-     * <p/>
+     * 
      * By default, only the last 24 hours of changes are returned.
-     * <p/>
+     * 
      * The maximum number of days that can be returned in a single request is 14.
-     * <p/>
+     * 
      * The language is present on fields that are translatable.
-     *
-     * @param personId
-     * @param startDate
-     * @param endDate
      */
     public void getPersonChanges(int personId, String startDate, String endDate) {
         throw new MovieDbException("Not implemented yet");
@@ -88,11 +78,8 @@ public class TmdbPeople extends AbstractTmdbApi {
 
     /**
      * Get the list of popular people on The Movie Database.
-     * <p/>
+     * 
      * This list refreshes every day.
-     *
-     * @param page
-     * @return
      */
     public PersonResultsPage getPersonPopular(Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "popular");

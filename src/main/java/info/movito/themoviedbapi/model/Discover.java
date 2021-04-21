@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * Generate a discover object for use in the MovieDbApi
- * <p/>
+ * 
  * This allows you to just add the search components you are concerned with
  *
  * @author stuart.boston
@@ -42,7 +42,7 @@ public class Discover {
 
     /**
      * Get the parameters
-     * <p/>
+     * 
      * This will be used to construct the URL in the API
      *
      * @return
@@ -54,9 +54,6 @@ public class Discover {
 
     /**
      * Minimum value is 1 if included.
-     *
-     * @param page
-     * @return
      */
     public Discover page(Integer page) {
         if (page != null && page > 0) {
@@ -68,9 +65,6 @@ public class Discover {
 
     /**
      * ISO 639-1 code
-     *
-     * @param language
-     * @return
      */
     public Discover language(String language) {
         if (StringUtils.isNotBlank(language)) {
@@ -82,10 +76,6 @@ public class Discover {
 
     /**
      * Available options are <br> vote_average.desc<br> vote_average.asc<br> release_date.desc<br> release_date.asc<br>
-     * popularity.desc<br> popularity.asc
-     *
-     * @param sortBy
-     * @return
      */
     public Discover sortBy(String sortBy) {
         if (StringUtils.isNotBlank(sortBy)) {
@@ -97,9 +87,6 @@ public class Discover {
 
     /**
      * Toggle the inclusion of adult titles
-     *
-     * @param includeAdult
-     * @return
      */
     public Discover includeAdult(boolean includeAdult) {
         params.put(AbstractTmdbApi.PARAM_ADULT, String.valueOf(includeAdult));
@@ -109,9 +96,6 @@ public class Discover {
 
     /**
      * Filter the results release dates to matches that include this value.
-     *
-     * @param year
-     * @return
      */
     public Discover year(int year) {
         if (checkYear(year)) {
@@ -123,9 +107,6 @@ public class Discover {
 
     /**
      * Filter the results so that only the primary release date year has this value
-     *
-     * @param primaryReleaseYear
-     * @return
      */
     public Discover primaryReleaseYear(int primaryReleaseYear) {
         if (checkYear(primaryReleaseYear)) {
@@ -137,9 +118,6 @@ public class Discover {
 
     /**
      * Only include movies that are equal to, or have a vote count higher than this value
-     *
-     * @param voteCountGte
-     * @return
      */
     public Discover voteCountGte(int voteCountGte) {
         if (voteCountGte > 0) {
@@ -151,9 +129,6 @@ public class Discover {
 
     /**
      * Only include movies that are equal to, or have a higher average rating than this value
-     *
-     * @param voteAverageGte
-     * @return
      */
     public Discover voteAverageGte(float voteAverageGte) {
         if (voteAverageGte > 0) {
@@ -165,15 +140,12 @@ public class Discover {
 
     /**
      * Only include movies with the specified genres.
-     * <p/>
+     * 
      * Expected value is an integer (the id of a genre).
-     * <p/>
+     * 
      * Multiple values can be specified.
-     * <p/>
+     * 
      * Comma separated indicates an 'AND' query, while a pipe (|) separated value indicates an 'OR'
-     *
-     * @param withGenres
-     * @return
      */
     @Deprecated
     public Discover withGenres(String withGenres) {
@@ -186,13 +158,10 @@ public class Discover {
 
     /**
      * Only include movies with the specified keywords.
-     * <p/>
+     * 
      * Expected value is an integer (the id of a keyword). Multiple values can be specified. Comma separated indicates an 'AND' query, while a pipe (|) separated value indicates an 'OR'.
-     * <p/>
+     * 
      * Multiple values can be specified.
-     *
-     * @param keywords
-     * @return
      */
     public Discover withKeywords(List<Keyword> keywords, boolean orQuery) {
         String query = Joiner.on(orQuery ? "|" : ",").join(Iterables.transform(keywords, toID));
@@ -214,11 +183,8 @@ public class Discover {
 
     /**
      * The minimum release to include.
-     * <p/>
+     * 
      * Expected format is YYYY-MM-DD.
-     *
-     * @param releaseDateGte
-     * @return
      */
     public Discover releaseDateGte(String releaseDateGte) {
         if (StringUtils.isNotBlank(releaseDateGte)) {
@@ -230,11 +196,8 @@ public class Discover {
 
     /**
      * The maximum release to include.
-     * <p/>
+     * 
      * Expected format is YYYY-MM-DD.
-     *
-     * @param releaseDateLte
-     * @return
      */
     public Discover releaseDateLte(String releaseDateLte) {
         if (StringUtils.isNotBlank(releaseDateLte)) {
@@ -246,13 +209,10 @@ public class Discover {
 
     /**
      * Only include movies with certifications for a specific country.
-     * <p/>
+     * 
      * When this value is specified, 'certificationLte' is required.
-     * <p/>
+     * 
      * A ISO 3166-1 is expected
-     *
-     * @param certificationCountry
-     * @return
      */
     public Discover certificationCountry(String certificationCountry) {
         if (StringUtils.isNotBlank(certificationCountry)) {
@@ -264,11 +224,8 @@ public class Discover {
 
     /**
      * Only include movies with this certification and lower.
-     * <p/>
+     * 
      * Expected value is a valid certification for the specified 'certificationCountry'.
-     *
-     * @param certificationLte
-     * @return
      */
     public Discover certificationLte(String certificationLte) {
         if (StringUtils.isNotBlank(certificationLte)) {
@@ -280,13 +237,10 @@ public class Discover {
 
     /**
      * Filter movies to include a specific company.
-     * <p/>
+     * 
      * Expected value is an integer (the id of a company).
-     * <p/>
+     * 
      * They can be comma separated to indicate an 'AND' query
-     *
-     * @param withCompanies
-     * @return
      */
     public Discover withCompanies(String withCompanies) {
         if (StringUtils.isNotBlank(withCompanies)) {
@@ -298,9 +252,6 @@ public class Discover {
 
     /**
      * check the year is between the min and max
-     *
-     * @param year
-     * @return
      */
     private boolean checkYear(int year) {
         return (year >= YEAR_MIN && year <= YEAR_MAX);

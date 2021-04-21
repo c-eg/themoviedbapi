@@ -27,7 +27,6 @@ public class TmdbLists extends AbstractTmdbApi {
     /**
      * Get a list by its ID
      *
-     * @param listId
      * @return The list and its items
      */
     public MovieList getList(String listId) {

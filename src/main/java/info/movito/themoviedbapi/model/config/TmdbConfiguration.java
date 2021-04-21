@@ -87,8 +87,6 @@ public class TmdbConfiguration extends AbstractJsonMapping {
 
     /**
      * Copy the data from the passed object to this one
-     *
-     * @param config
      */
     public void clone(TmdbConfiguration config) {
         backdropSizes = config.getBackdropSizes();
@@ -101,8 +99,6 @@ public class TmdbConfiguration extends AbstractJsonMapping {
 
     /**
      * Check that the poster size is valid
-     *
-     * @param posterSize
      */
     public boolean isValidPosterSize(String posterSize) {
         if (StringUtils.isBlank(posterSize) || posterSizes.isEmpty()) {
@@ -114,8 +110,6 @@ public class TmdbConfiguration extends AbstractJsonMapping {
 
     /**
      * Check that the backdrop size is valid
-     *
-     * @param backdropSize
      */
     public boolean isValidBackdropSize(String backdropSize) {
         if (StringUtils.isBlank(backdropSize) || backdropSizes.isEmpty()) {
@@ -127,8 +121,6 @@ public class TmdbConfiguration extends AbstractJsonMapping {
 
     /**
      * Check that the profile size is valid
-     *
-     * @param profileSize
      */
     public boolean isValidProfileSize(String profileSize) {
         if (StringUtils.isBlank(profileSize) || profileSizes.isEmpty()) {
@@ -140,8 +132,6 @@ public class TmdbConfiguration extends AbstractJsonMapping {
 
     /**
      * Check that the logo size is valid
-     *
-     * @param logoSize
      */
     public boolean isValidLogoSize(String logoSize) {
         if (StringUtils.isBlank(logoSize) || logoSizes.isEmpty()) {
@@ -153,8 +143,6 @@ public class TmdbConfiguration extends AbstractJsonMapping {
 
     /**
      * Check to see if the size is valid for any of the images types
-     *
-     * @param sizeToCheck
      */
     public boolean isValidSize(String sizeToCheck) {
         return (isValidPosterSize(sizeToCheck)

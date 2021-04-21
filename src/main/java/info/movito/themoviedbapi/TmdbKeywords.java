@@ -18,9 +18,6 @@ public class TmdbKeywords extends AbstractTmdbApi {
 
     /**
      * Get the basic information for a specific keyword id.
-     *
-     * @param keywordId
-     * @return
      */
     public Keyword getKeyword(String keywordId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_KEYWORD, keywordId);

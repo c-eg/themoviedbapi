@@ -62,14 +62,12 @@ public class TmdbApi {
 
     /**
      * Uses the instance's api key to request information from api.tmdb.org.
-     * <p/>
+     * 
      * Depending on the <code>autoRetry</code> setting this method will stall and internally recurse until the request was  successfully
      * processed.
      *
      * @param apiUrl        The url to be requested
      * @param jsonBody      can be null
-     * @param requestMethod
-     * @return
      */
     public String requestWebPage(ApiUrl apiUrl, String jsonBody, RequestMethod requestMethod) {
 
