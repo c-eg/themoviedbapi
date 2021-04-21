@@ -1,7 +1,7 @@
 TheMovieDB API
 ================
 
-[![Build Status](https://travis-ci.org/holgerbrandl/themoviedbapi.svg?branch=master)](https://travis-ci.org/holgerbrandl/themoviedbapi)
+[ ![Download](https://img.shields.io/github/v/release/holgerbrandl/kalasim) ](https://github.com/holgerbrandl/kalasim/releases)
 
 This library provides a java-wrapper around the [JSON API](http://api.themoviedb.org/) provided by
 [TMdB](http://themoviedb.org), which is an open database for movie and film content.
@@ -11,28 +11,23 @@ This library provides a java-wrapper around the [JSON API](http://api.themoviedb
 Setup
 -----
 
-[ ![Download](https://api.bintray.com/packages/holgerbrandl/movito-utils/themoviedbapi/images/download.svg) ](https://bintray.com/holgerbrandl/movito-utils/themoviedbapi/_latestVersion)
 
-Just add it as dependency to your project. It's available via [jcenter](https://bintray.com/bintray/jcenter)
+
+Just add it as dependency to your project. It's available via [Maven Central](https://search.maven.org/)
 
 ```
 <dependency>
     <groupId>info.movito</groupId>
     <artifactId>themoviedbapi</artifactId>
-    <version>1.10</version>
+    <version>1.12</version>
 </dependency>
 ```
-Read the [Set me up](https://bintray.com/bintray/jcenter) section first, if you haven't addded jcenter as a repository to your pom.xml yet.
 
 Or just add it via gradle when developing for Android:
 
 ```
-repositories {
-    jcenter()
-}
-
 dependencies{
-    compile group: 'info.movito', name: 'themoviedbapi', version:'1.10'
+    compile group: 'info.movito', name: 'themoviedbapi', version:'1.12'
 }
 ```
 
