@@ -24,12 +24,12 @@ public class PersonCredits extends AbstractJsonMapping {
     }
 
 
-    public void setCast( List<PersonCredit> cast ) {
+    public void setCast(List<PersonCredit> cast) {
         this.cast = cast;
     }
 
 
-    public void setCrew( List<PersonCredit> crew ) {
+    public void setCrew(List<PersonCredit> crew) {
         this.crew = crew;
     }
 }

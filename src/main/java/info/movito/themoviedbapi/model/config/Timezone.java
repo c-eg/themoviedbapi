@@ -2,9 +2,6 @@ package info.movito.themoviedbapi.model.config;
 
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
-import java.util.Collection;
-import java.util.List;
-
 public class Timezone extends AbstractJsonMapping {
 
     private String name;
@@ -15,11 +12,11 @@ public class Timezone extends AbstractJsonMapping {
         this.country = country;
     }
 
-	  public String getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry( String country ) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
@@ -27,7 +24,7 @@ public class Timezone extends AbstractJsonMapping {
         return name;
     }
 
-    public void setName( String name ) {
+    public void setName(String name) {
         this.name = name;
     }
 

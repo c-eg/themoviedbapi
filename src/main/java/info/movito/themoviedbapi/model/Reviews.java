@@ -30,17 +30,17 @@ public class Reviews extends StringIdElement {
     }
 
 
-    public void setAuthor( String author ) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
 
-    public void setContent( String content ) {
+    public void setContent(String content) {
         this.content = content;
     }
 
 
-    public void setUrl( String url ) {
+    public void setUrl(String url) {
         this.url = url;
     }
 }

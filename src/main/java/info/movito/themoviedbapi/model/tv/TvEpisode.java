@@ -84,7 +84,6 @@ public class TvEpisode extends AbstractTvElement {
     }
 
 
-
     public void setOverview(String overview) {
         this.overview = overview;
     }
@@ -115,17 +114,17 @@ public class TvEpisode extends AbstractTvElement {
     }
 
 
-    public void setSeriesId( int seriesId ) {
+    public void setSeriesId(int seriesId) {
         this.seriesId = seriesId;
     }
 
 
-    public void setSeasonNumber( Integer seasonNumber ) {
+    public void setSeasonNumber(Integer seasonNumber) {
         this.seasonNumber = seasonNumber;
     }
 
 
-    public void setUserRating( float userRating ) {
+    public void setUserRating(float userRating) {
         this.userRating = userRating;
     }
 }

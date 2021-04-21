@@ -1,7 +1,5 @@
 package info.movito.themoviedbapi;
 
-import static info.movito.themoviedbapi.Utils.asStringArray;
-
 import info.movito.themoviedbapi.model.ContentRating;
 import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.MovieImages;
@@ -9,6 +7,8 @@ import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.core.TvKeywords;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import info.movito.themoviedbapi.tools.ApiUrl;
+
+import static info.movito.themoviedbapi.Utils.asStringArray;
 
 
 public class TmdbTV extends AbstractTmdbApi {
@@ -24,9 +24,7 @@ public class TmdbTV extends AbstractTmdbApi {
     public static final String TMDB_METHOD_KEYWORDS = "keywords";
 
 
-
     public static enum TvMethod {credits, external_ids, images, videos, recommendations, keywords, content_ratings}
-
 
 
     TmdbTV(TmdbApi tmdbApi) {
@@ -80,7 +78,7 @@ public class TmdbTV extends AbstractTmdbApi {
         if (timezone != null) {
             apiUrl.addParam("timezone", timezone);
         }
-        
+
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
@@ -121,12 +119,12 @@ public class TmdbTV extends AbstractTmdbApi {
 
         return mapJsonResult(apiUrl, TvKeywords.class);
     }
-    
+
     public ContentRating.Results getContentRating(int seriesId, String language) {
-    	ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_CONTENT_RATING);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_CONTENT_RATING);
 
         apiUrl.addLanguage(language);
-        
+
         return mapJsonResult(apiUrl, ContentRating.Results.class);
     }
 }

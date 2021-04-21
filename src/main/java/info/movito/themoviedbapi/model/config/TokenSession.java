@@ -24,7 +24,7 @@ public class TokenSession {
         return sessionId;
     }
 
-    public void setSessionId( String sessionId ) {
+    public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
 
@@ -32,7 +32,7 @@ public class TokenSession {
         return success;
     }
 
-    public void setSuccess( Boolean success ) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 
@@ -40,7 +40,7 @@ public class TokenSession {
         return statusCode;
     }
 
-    public void setStatusCode( String statusCode ) {
+    public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
     }
 
@@ -48,7 +48,7 @@ public class TokenSession {
         return statusMessage;
     }
 
-    public void setStatusMessage( String statusMessage ) {
+    public void setStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
     }
 
@@ -56,7 +56,7 @@ public class TokenSession {
         return guestSessionId;
     }
 
-    public void setGuestSessionId( String guestSessionId ) {
+    public void setGuestSessionId(String guestSessionId) {
         this.guestSessionId = guestSessionId;
     }
 
@@ -64,7 +64,7 @@ public class TokenSession {
         return expiresAt;
     }
 
-    public void setExpiresAt( String expiresAt ) {
+    public void setExpiresAt(String expiresAt) {
         this.expiresAt = expiresAt;
     }
 }

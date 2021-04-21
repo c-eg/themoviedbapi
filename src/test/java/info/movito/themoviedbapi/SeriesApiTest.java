@@ -1,19 +1,17 @@
 package info.movito.themoviedbapi;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.core.TvKeywords;
 import info.movito.themoviedbapi.model.tv.TvEpisode;
 import info.movito.themoviedbapi.model.tv.TvSeason;
 import info.movito.themoviedbapi.model.tv.TvSeries;
+import org.junit.Assert;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public class SeriesApiTest extends AbstractTmdbApiTest {
@@ -104,10 +102,10 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testAiringToday() {
-    	// Try to find the first (of possibly many timezones) listed
-    	// for 'US'
-    	
-    	Timezone ca = Iterables.find(tmdb.getTimezones(), new Predicate<Timezone>() {
+        // Try to find the first (of possibly many timezones) listed
+        // for 'US'
+
+        Timezone ca = Iterables.find(tmdb.getTimezones(), new Predicate<Timezone>() {
             @Override
             public boolean apply(Timezone input) {
                 return input.getCountry().equals("US");

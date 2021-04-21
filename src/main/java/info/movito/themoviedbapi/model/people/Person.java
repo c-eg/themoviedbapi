@@ -38,12 +38,12 @@ public class Person extends NamedIdElement {
     }
 
 
-    public void setCastId( int castId ) {
+    public void setCastId(int castId) {
         this.castId = castId;
     }
 
 
-    public void setCreditId( String creditId ) {
+    public void setCreditId(String creditId) {
         this.creditId = creditId;
     }
 }

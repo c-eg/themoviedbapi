@@ -35,17 +35,17 @@ public class FindResults extends AbstractJsonMapping {
     }
 
 
-    public void setMovieResults( List<MovieDb> movieResults ) {
+    public void setMovieResults(List<MovieDb> movieResults) {
         this.movieResults = movieResults;
     }
 
 
-    public void setPersonResults( List<Person> personResults ) {
+    public void setPersonResults(List<Person> personResults) {
         this.personResults = personResults;
     }
 
 
-    public void setTvResults( List<TvSeries> tvResults ) {
+    public void setTvResults(List<TvSeries> tvResults) {
         this.tvResults = tvResults;
     }
 }

@@ -18,13 +18,15 @@ public class ReleaseInfo extends AbstractJsonMapping {
         return country;
     }
 
-    public List<ReleaseDate> getReleaseDates() { return releaseDates; }
+    public List<ReleaseDate> getReleaseDates() {
+        return releaseDates;
+    }
 
-    public void setCountry( String country ) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
-    public void setReleaseDates( List<ReleaseDate> releaseDates ) {
+    public void setReleaseDates(List<ReleaseDate> releaseDates) {
         this.releaseDates = releaseDates;
     }
 }

@@ -56,22 +56,22 @@ public class Video extends NamedStringIdElement {
     }
 
 
-    public void setSite( String site ) {
+    public void setSite(String site) {
         this.site = site;
     }
 
 
-    public void setKey( String key ) {
+    public void setKey(String key) {
         this.key = key;
     }
 
 
-    public void setSize( Integer size ) {
+    public void setSize(Integer size) {
         this.size = size;
     }
 
 
-    public void setType( String type ) {
+    public void setType(String type) {
         this.type = type;
     }
 }

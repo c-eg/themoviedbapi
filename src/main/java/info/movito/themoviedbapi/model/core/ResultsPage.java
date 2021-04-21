@@ -66,12 +66,12 @@ public class ResultsPage<T> extends AbstractJsonMapping implements Iterable<T> {
     }
 
 
-    public void setResults( List<T> results ) {
+    public void setResults(List<T> results) {
         this.results = results;
     }
 
 
-    public void setPage( int page) {
+    public void setPage(int page) {
         this.page = page;
     }
 

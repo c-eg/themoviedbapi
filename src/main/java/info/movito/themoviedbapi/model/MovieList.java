@@ -96,7 +96,7 @@ public class MovieList extends NamedStringIdElement {
     }
 
 
-    public void setCreatedBy( String createdBy ) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 }

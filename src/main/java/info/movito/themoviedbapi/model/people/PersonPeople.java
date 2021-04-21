@@ -165,9 +165,9 @@ public class PersonPeople extends Person implements Multi {
     public int getGender() {
         return gender;
     }
-    
+
     public String getKnownForDepartment() {
-    	return knownForDepartment;
+        return knownForDepartment;
     }
 
     public void setCharacter(String character) {

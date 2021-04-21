@@ -48,23 +48,41 @@ public class PersonCredit extends IdElement {
 
     private PersonType personType = PersonType.PERSON;
 
-    public String getBackdropPath() { return backdropPath; }
+    public String getBackdropPath() {
+        return backdropPath;
+    }
 
-    public Float getVoteAvg() { return voteAvg; }
+    public Float getVoteAvg() {
+        return voteAvg;
+    }
 
-    public String getFirstAirDate() { return firstAirDate; }
+    public String getFirstAirDate() {
+        return firstAirDate;
+    }
 
-    public String getSeriesName() { return name; }
+    public String getSeriesName() {
+        return name;
+    }
 
-    public int getEpisodeCount() { return episodeCount; }
+    public int getEpisodeCount() {
+        return episodeCount;
+    }
 
-    public String getOverview() { return overview; }
+    public String getOverview() {
+        return overview;
+    }
 
-    public String getLanguage() { return language; }
+    public String getLanguage() {
+        return language;
+    }
 
-    public String getMediaType() { return mediaType; }
+    public String getMediaType() {
+        return mediaType;
+    }
 
-    public String getSeriesOriginalTitle() { return seriesOriginalTitle; }
+    public String getSeriesOriginalTitle() {
+        return seriesOriginalTitle;
+    }
 
     public String getCharacter() {
         return character;
@@ -107,9 +125,9 @@ public class PersonCredit extends IdElement {
     }
 
     public float getPopularity() {
-    	return popularity;
+        return popularity;
     }
-    
+
     public int getVoteCount() {
         return voteCount;
     }
@@ -125,88 +143,88 @@ public class PersonCredit extends IdElement {
     public void setPopularity(float popularity) {
         this.popularity = popularity;
     }
-    
-    public void setLanguage( String language ) {
+
+    public void setLanguage(String language) {
         this.language = language;
     }
 
 
-    public void setEpisodeCount( int episodeCount ) {
+    public void setEpisodeCount(int episodeCount) {
         this.episodeCount = episodeCount;
     }
 
 
-    public void setOverview( String overview ) {
+    public void setOverview(String overview) {
         this.overview = overview;
     }
 
 
-    public void setCharacter( String character ) {
+    public void setCharacter(String character) {
         this.character = character;
     }
 
 
-    public void setMovieOriginalTitle( String movieOriginalTitle ) {
+    public void setMovieOriginalTitle(String movieOriginalTitle) {
         this.movieOriginalTitle = movieOriginalTitle;
     }
 
 
-    public void setSeriesOriginalTitle( String seriesOriginalTitle ) {
+    public void setSeriesOriginalTitle(String seriesOriginalTitle) {
         this.seriesOriginalTitle = seriesOriginalTitle;
     }
 
 
-    public void setFirstAirDate( String firstAirDate ) {
+    public void setFirstAirDate(String firstAirDate) {
         this.firstAirDate = firstAirDate;
     }
 
 
-    public void setPosterPath( String posterPath ) {
+    public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
     }
 
 
-    public void setReleaseDate( String releaseDate ) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
 
-    public void setMovieTitle( String movieTitle ) {
+    public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
 
 
-    public void setName( String name ) {
+    public void setName(String name) {
         this.name = name;
     }
 
 
-    public void setDepartment( String department ) {
+    public void setDepartment(String department) {
         this.department = department;
     }
 
 
-    public void setAdult( String adult ) {
+    public void setAdult(String adult) {
         this.adult = adult;
     }
 
 
-    public void setMediaType( String mediaType ) {
+    public void setMediaType(String mediaType) {
         this.mediaType = mediaType;
     }
 
 
-    public void setVoteAvg( Float voteAvg ) {
+    public void setVoteAvg(Float voteAvg) {
         this.voteAvg = voteAvg;
     }
 
 
-    public void setBackdropPath( String backdropPath ) {
+    public void setBackdropPath(String backdropPath) {
         this.backdropPath = backdropPath;
     }
-     
-    
-    public void setPersonType( PersonType personType ) {
+
+
+    public void setPersonType(PersonType personType) {
         this.personType = personType;
     }
 }

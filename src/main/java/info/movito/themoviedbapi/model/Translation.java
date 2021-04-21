@@ -29,12 +29,12 @@ public class Translation extends NamedElement {
     }
 
 
-    public void setIsoCode( String isoCode ) {
+    public void setIsoCode(String isoCode) {
         this.isoCode = isoCode;
     }
 
 
-    public void setEnglishName( String englishName ) {
+    public void setEnglishName(String englishName) {
         this.englishName = englishName;
     }
 

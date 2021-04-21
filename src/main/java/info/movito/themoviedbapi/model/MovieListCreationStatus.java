@@ -15,7 +15,7 @@ public class MovieListCreationStatus extends ResponseStatus {
     }
 
 
-    public void setListId( String listId ) {
+    public void setListId(String listId) {
         this.listId = listId;
     }
 }

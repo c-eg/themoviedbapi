@@ -12,9 +12,10 @@ import info.movito.themoviedbapi.model.tv.TvSeries;
  * {@link info.movito.themoviedbapi.model.MovieDb}, {@link info.movito.themoviedbapi.model.people.Person} and
  * {@link info.movito.themoviedbapi.model.tv.TvSeries} implement this interface.</p>
  * <p>Each of them returns corresponding {@link MediaType}</p>
+ *
  * @see info.movito.themoviedbapi.TmdbSearch#searchMulti(String, String, Integer)
  */
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="media_type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "media_type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = MovieDb.class, name = "movie"),
         @JsonSubTypes.Type(value = PersonPeople.class, name = "person"),

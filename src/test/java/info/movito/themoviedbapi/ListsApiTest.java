@@ -151,5 +151,4 @@ public class ListsApiTest extends AbstractTmdbApiTest {
     }
 
 
-
 }

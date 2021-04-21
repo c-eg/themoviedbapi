@@ -20,7 +20,7 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     public static final String TMDB_METHOD_SEARCH = "search";
     private static final String PARAM_QUERY = "query";
-	
+
     public static final Object TMDB_METHOD_MULTI = "multi";
 
 
@@ -144,7 +144,7 @@ public class TmdbSearch extends AbstractTmdbApi {
     public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) {
         System.err.println("This method is part of the API but seems currently not available. " +
                 "See https://www.themoviedb.org/talk/593409e3c3a36859ef01eddb#597124f8c3a3681608008424");
-        
+
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_LIST);
 
         if (isNotBlank(query)) {
@@ -201,6 +201,7 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search the movie, tv show and person collections with a single query.
      * <p>Each mapped result is the same response you would get from each independent search.</p>
+     *
      * @param query
      * @param language
      * @param page

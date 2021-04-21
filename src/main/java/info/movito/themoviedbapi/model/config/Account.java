@@ -16,7 +16,7 @@ public class Account extends NamedIdElement {
 
     @JsonProperty("avatar")
     private HashMap<String, HashMap<String, String>> avatar;
-    
+
     public boolean isIncludeAdult() {
         return includeAdult;
     }

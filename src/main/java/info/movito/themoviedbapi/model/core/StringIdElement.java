@@ -21,7 +21,7 @@ public class StringIdElement extends AbstractJsonMapping implements Serializable
     }
 
 
-    public void setId( String id ) {
+    public void setId(String id) {
         this.id = id;
     }
 

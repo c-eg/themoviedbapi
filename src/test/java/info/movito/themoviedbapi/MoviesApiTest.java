@@ -127,7 +127,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
         assertFalse("No translations found", result.isEmpty());
         assertNotNull(translationData);
-        assertNotNull(translationData.getTitle() );
+        assertNotNull(translationData.getTitle());
         assertNotNull(translationData.getOverview());
         assertNotNull(translationData.getHomepage());
     }

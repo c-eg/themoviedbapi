@@ -52,17 +52,17 @@ public class Credits extends IdElement {
     }
 
 
-    public void setCrew( List<PersonCrew> crew ) {
+    public void setCrew(List<PersonCrew> crew) {
         this.crew = crew;
     }
 
 
-    public void setCast( List<PersonCast> cast ) {
+    public void setCast(List<PersonCast> cast) {
         this.cast = cast;
     }
 
 
-    public void setGuestStars( List<PersonCast> guestStars ) {
+    public void setGuestStars(List<PersonCast> guestStars) {
         this.guestStars = guestStars;
     }
 }

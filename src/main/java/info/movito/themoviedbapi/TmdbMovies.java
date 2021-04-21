@@ -296,7 +296,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * This list refreshes every day.
      * <p/>
      * The maximum number of items this list will include is 100.
-     *
+     * <p>
      * See https://developers.themoviedb.org/3/movies/get-upcoming
      */
     public MovieResultsPage getUpcoming(String language, Integer page, String region) {

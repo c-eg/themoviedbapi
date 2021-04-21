@@ -20,7 +20,7 @@ public class TokenAuthorisation {
         return expires;
     }
 
-    public void setExpires( String expires ) {
+    public void setExpires(String expires) {
         this.expires = expires;
     }
 
@@ -28,7 +28,7 @@ public class TokenAuthorisation {
         return requestToken;
     }
 
-    public void setRequestToken( String requestToken ) {
+    public void setRequestToken(String requestToken) {
         this.requestToken = requestToken;
     }
 
@@ -36,7 +36,7 @@ public class TokenAuthorisation {
         return success == null ? false : success;
     }
 
-    public void setSuccess( Boolean success ) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 }
