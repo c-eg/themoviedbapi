@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi;
 
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import info.movito.themoviedbapi.model.core.ResponseStatus;
 import info.movito.themoviedbapi.model.core.ResponseStatusException;
@@ -24,7 +25,7 @@ public abstract class AbstractTmdbApi {
     public static final String PARAM_ADULT = "include_adult";
     public static final String PARAM_API_KEY = "api_key";
 
-    protected static final ObjectMapper jsonMapper = new ObjectMapper();
+    protected static final ObjectMapper jsonMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     protected final TmdbApi tmdbApi;
 
