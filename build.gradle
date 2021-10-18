@@ -54,7 +54,6 @@ javadoc.options.addStringOption('Xdoclint:none', '-quiet')
 group 'com.github.holgerbrandl'
 version '1.12'
 
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -103,7 +102,7 @@ publishing {
 }
 
 
-nexusPublishing {
+if (project.hasProperty('ossrhUsername')) nexusPublishing {
     repositories {
         sonatype {
 //            nexusUrl = uri("https://your-server.com/staging")
@@ -114,6 +113,6 @@ nexusPublishing {
     }
 }
 
-signing {
+if (project.hasProperty('signing.keyId')) signing {
     sign publishing.publications.mavenJava
 }
