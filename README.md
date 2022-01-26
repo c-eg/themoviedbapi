@@ -2,6 +2,8 @@ TheMovieDB API
 ================
 
 [ ![Download](https://img.shields.io/github/v/release/holgerbrandl/themoviedbapi) ](https://github.com/holgerbrandl/themoviedbapi/releases)
+[![BSD 3 License](http://img.shields.io/badge/license-BSD_3_Clause-green.svg)](https://opensource.org/licenses/BSD-3-Clause)
+
 
 This library provides a java-wrapper around the [JSON API](http://api.themoviedb.org/) provided by
 [TMdB](http://themoviedb.org), which is an open database for movie and film content.
