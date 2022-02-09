@@ -25,4 +25,4 @@ jobs:
       - name: Build and test with Gradle
         # https://stackoverflow.com/questions/50104666/gradle-difference-between-test-and-check
         # https://stackoverflow.com/questions/50104666/gradle-difference-between-test-and-check
-        run: ./gradlew clean check --stacktrace --info
+        run: ./gradlew clean check -x test --stacktrace --info
