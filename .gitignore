@@ -22,3 +22,6 @@ local.properties
 build
 .gradle
 !/gradle/wrapper/gradle-wrapper.jar
+
+### VS Code ###
+.vscode/

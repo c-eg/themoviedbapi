@@ -154,7 +154,11 @@ public class Utils {
         // guava would be more convenient here (just use transformer)
         String[] asArray = new String[appendToResponse.length];
         for (int i = 0; i < appendToResponse.length; i++) {
-            asArray[i] = appendToResponse[i].toString();
+            if (appendToResponse[i].toString().equals("watch_providers")) {
+                asArray[i] = "watch/providers";
+            } else {
+                asArray[i] = appendToResponse[i].toString();
+            }
         }
 
         return asArray;

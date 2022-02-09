@@ -1,19 +1,21 @@
 package info.movito.themoviedbapi;
 
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collection;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import info.movito.themoviedbapi.model.core.ResponseStatus;
 import info.movito.themoviedbapi.model.core.ResponseStatusException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
 import info.movito.themoviedbapi.tools.RequestMethod;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
 
 
 public abstract class AbstractTmdbApi {
@@ -81,6 +83,7 @@ public abstract class AbstractTmdbApi {
 
             return jsonMapper.readValue(webpage, someClass);
         } catch (IOException ex) {
+            // ex.printStackTrace();
             throw new MovieDbException("mapping failed:\n" + webpage);
         }
     }
