@@ -19,5 +19,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build and test with Gradle
-        # https://stackoverflow.com/questions/50104666/gradle-difference-between-test-and-check
+        env:
+         GITHUB_ACTOR: ${{ github.actor }}
+         GITHUB_TOKEN: ${{ github.token }}
         run: ./gradlew clean publish -x test --stacktrace --info
