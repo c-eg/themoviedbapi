@@ -3,10 +3,9 @@ name: build
 # https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/adding-a-workflow-status-badge
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -24,4 +23,4 @@ jobs:
       - name: Build and test with Gradle
         # https://stackoverflow.com/questions/50104666/gradle-difference-between-test-and-check
         # https://stackoverflow.com/questions/50104666/gradle-difference-between-test-and-check
-        run: ./gradlew clean check --stacktrace --info
+        run: ./gradlew clean check -x test --stacktrace --info

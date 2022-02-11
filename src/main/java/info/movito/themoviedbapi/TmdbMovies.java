@@ -36,6 +36,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         videos, // replacement for trailers
         translations, similar, recommendations,
         reviews, lists, changes, latest, upcoming, now_playing, popular, top_rated,
+        watch_providers
     }
 
 

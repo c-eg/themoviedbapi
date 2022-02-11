@@ -123,6 +123,8 @@ public class MovieDb extends IdElement implements Multi {
     @JsonProperty("lists")
     private ResultsPage<MovieList> lists;
 
+    @JsonProperty("watch/providers")
+    private WatchProviders watchProviders;
 
     public String getBackdropPath() {
         return backdropPath;
@@ -305,6 +307,13 @@ public class MovieDb extends IdElement implements Multi {
         return userRating;
     }
 
+    public WatchProviders getWatchProviders() {
+        return this.watchProviders;
+    }
+
+    public void setWatchProviders(final WatchProviders watchProviders) {
+        this.watchProviders = watchProviders;
+    }
 
     @Override
     public String toString() {

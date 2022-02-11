@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi.tools;
 
-import info.movito.themoviedbapi.AbstractTmdbApi;
-import org.apache.commons.lang3.StringUtils;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 import java.net.URL;
 import java.net.URLEncoder;
@@ -10,8 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import info.movito.themoviedbapi.AbstractTmdbApi;
 
 /**
  * Tmdb Api URL Builder
@@ -19,6 +21,8 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @author Holger Brandl
  */
 public class ApiUrl {
+
+    private static final Logger logger = LoggerFactory.getLogger(ApiUrl.class);
 
     /*
      * TmdbApi API Base URL
@@ -72,7 +76,9 @@ public class ApiUrl {
                 }
             }
 
-            return new URL(urlBuilder.toString());
+            final String spec = urlBuilder.toString();
+            // logger.info("Building URL for {}", spec);
+            return new URL(spec);
 
         } catch (Throwable e) {
             throw new RuntimeException(e);
