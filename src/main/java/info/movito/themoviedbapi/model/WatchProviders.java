@@ -21,7 +21,7 @@ public class WatchProviders extends AbstractJsonMapping {
     // }
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-    static class Provider extends AbstractJsonMapping {
+    public static class Provider extends AbstractJsonMapping {
         private String providerName;
         private Long providerId;
         private Long displayPriority;
@@ -66,10 +66,10 @@ public class WatchProviders extends AbstractJsonMapping {
     }
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-    static class Results extends AbstractJsonMapping {
+    public static class Results extends AbstractJsonMapping {
 
         @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-        static class US {
+        public static class US {
 
             private String link;
             private List<Provider> flatrateProviders;
