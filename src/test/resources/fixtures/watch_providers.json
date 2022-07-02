@@ -1,0 +1,1782 @@
+{
+  "id": 526896,
+  "results": {
+    "AR": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=AR",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/lJT7r1nprk1Z8t1ywiIa8h9d3rc.jpg",
+          "provider_id": 167,
+          "provider_name": "Claro video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "AT": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=AT",
+      "flatrate": [
+        {
+          "display_priority": 41,
+          "logo_path": "/5OtaT8STJ8ZMkKt994C5XxrEAaP.jpg",
+          "provider_id": 622,
+          "provider_name": "UPC TV"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 15,
+          "logo_path": "/2PTFxgrswnEuK0szl87iSd8Yszz.jpg",
+          "provider_id": 20,
+          "provider_name": "maxdome Store"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 15,
+          "logo_path": "/2PTFxgrswnEuK0szl87iSd8Yszz.jpg",
+          "provider_id": 20,
+          "provider_name": "maxdome Store"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "AU": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=AU",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 13,
+          "logo_path": "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 31,
+          "logo_path": "/zXDDsD9M5vO7lqoqlBQCOcZtKBS.jpg",
+          "provider_id": 429,
+          "provider_name": "Telstra TV"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 13,
+          "logo_path": "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "BE": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=BE",
+      "rent": [
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 12,
+          "logo_path": "/vjsvYNPgq6BpUoubXR1wNkokoBb.jpg",
+          "provider_id": 313,
+          "provider_name": "Yelo Play"
+        }
+      ]
+    },
+    "BO": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=BO",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ]
+    },
+    "BR": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=BR",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 25,
+          "logo_path": "/cQQYtdaCg7vDo28JPru4v8Ypi8x.jpg",
+          "provider_id": 484,
+          "provider_name": "NOW"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "CA": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=CA",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 12,
+          "logo_path": "/sN8B7EweqmOmWm5ALdOAxCquuv1.jpg",
+          "provider_id": 140,
+          "provider_name": "Cineplex"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 12,
+          "logo_path": "/sN8B7EweqmOmWm5ALdOAxCquuv1.jpg",
+          "provider_id": 140,
+          "provider_name": "Cineplex"
+        },
+        {
+          "display_priority": 13,
+          "logo_path": "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "CH": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=CH",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/2LS6g6iE5DiAIDiZTAK8mbQQTuE.jpg",
+          "provider_id": 150,
+          "provider_name": "SwissCom"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/jmyYN1124dDIzqMysLekixy3AzF.jpg",
+          "provider_id": 164,
+          "provider_name": "Hollystar"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 41,
+          "logo_path": "/5OtaT8STJ8ZMkKt994C5XxrEAaP.jpg",
+          "provider_id": 622,
+          "provider_name": "UPC TV"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 3,
+          "logo_path": "/2LS6g6iE5DiAIDiZTAK8mbQQTuE.jpg",
+          "provider_id": 150,
+          "provider_name": "SwissCom"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/jmyYN1124dDIzqMysLekixy3AzF.jpg",
+          "provider_id": 164,
+          "provider_name": "Hollystar"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "CL": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=CL",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "CO": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=CO",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ]
+    },
+    "CR": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=CR",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "DE": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=DE",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 15,
+          "logo_path": "/2PTFxgrswnEuK0szl87iSd8Yszz.jpg",
+          "provider_id": 20,
+          "provider_name": "maxdome Store"
+        },
+        {
+          "display_priority": 28,
+          "logo_path": "/uULoezj2skPc6amfwru72UPjYXV.jpg",
+          "provider_id": 178,
+          "provider_name": "MagentaTV"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 15,
+          "logo_path": "/2PTFxgrswnEuK0szl87iSd8Yszz.jpg",
+          "provider_id": 20,
+          "provider_name": "maxdome Store"
+        },
+        {
+          "display_priority": 28,
+          "logo_path": "/uULoezj2skPc6amfwru72UPjYXV.jpg",
+          "provider_id": 178,
+          "provider_name": "MagentaTV"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "DK": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=DK",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 22,
+          "logo_path": "/dNcz2AZHPEgt4BIKJe56r4visuK.jpg",
+          "provider_id": 426,
+          "provider_name": "SF Anytime"
+        },
+        {
+          "display_priority": 25,
+          "logo_path": "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+          "provider_id": 76,
+          "provider_name": "Viaplay"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "EC": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=EC",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ]
+    },
+    "ES": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=ES",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "FI": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=FI",
+      "buy": [
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 21,
+          "logo_path": "/3QsJbibv5dFW2IYuXbTjxDmGGRZ.jpg",
+          "provider_id": 423,
+          "provider_name": "Blockbuster"
+        },
+        {
+          "display_priority": 22,
+          "logo_path": "/dNcz2AZHPEgt4BIKJe56r4visuK.jpg",
+          "provider_id": 426,
+          "provider_name": "SF Anytime"
+        },
+        {
+          "display_priority": 25,
+          "logo_path": "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+          "provider_id": 76,
+          "provider_name": "Viaplay"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "GB": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=GB",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 63,
+          "logo_path": "/o6li3XZrBKXSqyNRS39UQEfPTCH.jpg",
+          "provider_id": 594,
+          "provider_name": "Virgin TV Go"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 13,
+          "logo_path": "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "GT": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=GT",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "HN": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=HN",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "ID": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=ID",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 16,
+          "logo_path": "/45eTLxznKGY9xq50NBWjN4adVng.jpg",
+          "provider_id": 159,
+          "provider_name": "Catchplay"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "IE": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=IE",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "IN": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=IN",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 13,
+          "logo_path": "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 2,
+          "logo_path": "/ajbCmwvZ8HiePHZaOVEgm9MzyuA.jpg",
+          "provider_id": 232,
+          "provider_name": "Zee5"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 13,
+          "logo_path": "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ]
+    },
+    "IS": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=IS",
+      "buy": [
+        {
+          "display_priority": 25,
+          "logo_path": "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+          "provider_id": 76,
+          "provider_name": "Viaplay"
+        }
+      ]
+    },
+    "IT": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=IT",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/j9iLCZMMgXP3jaYPkxCicx5Zmx3.jpg",
+          "provider_id": 359,
+          "provider_name": "Mediaset Play"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 13,
+          "logo_path": "/ftxHS1anAWTYgtDtIDv8VLXoepH.jpg",
+          "provider_id": 109,
+          "provider_name": "Timvision"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "JP": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=JP",
+      "buy": [
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 4,
+          "logo_path": "/9pS9Y3xkCLJnti9pi1AyrD5KbZe.jpg",
+          "provider_id": 84,
+          "provider_name": "U-NEXT"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "KR": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=KR",
+      "rent": [
+        {
+          "display_priority": 3,
+          "logo_path": "/2ioan5BX5L9tz4fIGU93blTeFhv.jpg",
+          "provider_id": 356,
+          "provider_name": "wavve"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 3,
+          "logo_path": "/2ioan5BX5L9tz4fIGU93blTeFhv.jpg",
+          "provider_id": 356,
+          "provider_name": "wavve"
+        }
+      ]
+    },
+    "MX": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=MX",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/lJT7r1nprk1Z8t1ywiIa8h9d3rc.jpg",
+          "provider_id": 167,
+          "provider_name": "Claro video"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 33,
+          "logo_path": "/qJxuBkjkXWYmuTKk7hxvbmqvrNc.jpg",
+          "provider_id": 558,
+          "provider_name": "Cinépolis KLIC"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 10,
+          "logo_path": "/lJT7r1nprk1Z8t1ywiIa8h9d3rc.jpg",
+          "provider_id": 167,
+          "provider_name": "Claro video"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "MY": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=MY",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "NL": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=NL",
+      "rent": [
+        {
+          "display_priority": 7,
+          "logo_path": "/llmnYOyknekZsXtkCaazKjhTLvG.jpg",
+          "provider_id": 71,
+          "provider_name": "Pathé Thuis"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 49,
+          "logo_path": "/jWKX6kO7JqQbqVnu9QtEO6FC85n.jpg",
+          "provider_id": 697,
+          "provider_name": "meJane"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 35,
+          "logo_path": "/bVClgB5bpaTRM3sVPlboaxkFD0U.jpg",
+          "provider_id": 563,
+          "provider_name": "KPN"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 7,
+          "logo_path": "/llmnYOyknekZsXtkCaazKjhTLvG.jpg",
+          "provider_id": 71,
+          "provider_name": "Pathé Thuis"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "NO": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=NO",
+      "buy": [
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 21,
+          "logo_path": "/3QsJbibv5dFW2IYuXbTjxDmGGRZ.jpg",
+          "provider_id": 423,
+          "provider_name": "Blockbuster"
+        },
+        {
+          "display_priority": 22,
+          "logo_path": "/dNcz2AZHPEgt4BIKJe56r4visuK.jpg",
+          "provider_id": 426,
+          "provider_name": "SF Anytime"
+        },
+        {
+          "display_priority": 23,
+          "logo_path": "/5nECaP8nhtrzZfx7oG0yoFMfqiA.jpg",
+          "provider_id": 431,
+          "provider_name": "SumoTV"
+        },
+        {
+          "display_priority": 25,
+          "logo_path": "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+          "provider_id": 76,
+          "provider_name": "Viaplay"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "NZ": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=NZ",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "PE": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=PE",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ]
+    },
+    "PH": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=PH",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "PT": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=PT",
+      "rent": [
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ]
+    },
+    "PY": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=PY",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ]
+    },
+    "SE": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=SE",
+      "buy": [
+        {
+          "display_priority": 8,
+          "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 21,
+          "logo_path": "/3QsJbibv5dFW2IYuXbTjxDmGGRZ.jpg",
+          "provider_id": 423,
+          "provider_name": "Blockbuster"
+        },
+        {
+          "display_priority": 22,
+          "logo_path": "/dNcz2AZHPEgt4BIKJe56r4visuK.jpg",
+          "provider_id": 426,
+          "provider_name": "SF Anytime"
+        },
+        {
+          "display_priority": 25,
+          "logo_path": "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+          "provider_id": 76,
+          "provider_name": "Viaplay"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        }
+      ]
+    },
+    "SG": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=SG",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "TH": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=TH",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "TW": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=TW",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ]
+    },
+    "US": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=US",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 13,
+          "logo_path": "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 37,
+          "logo_path": "/21dEscfO8n1tL35k4DANixhffsR.jpg",
+          "provider_id": 7,
+          "provider_name": "Vudu"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 50,
+          "logo_path": "/gbyLHzl4eYP0oP9oJZ2oKbpkhND.jpg",
+          "provider_id": 279,
+          "provider_name": "Redbox"
+        },
+        {
+          "display_priority": 54,
+          "logo_path": "/xL9SUR63qrEjFZAhtsipskeAMR7.jpg",
+          "provider_id": 358,
+          "provider_name": "DIRECTV"
+        },
+        {
+          "display_priority": 134,
+          "logo_path": "/kJlVJLgbNPvKDYC0YMp3yA2OKq2.jpg",
+          "provider_id": 352,
+          "provider_name": "AMC on Demand"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        },
+        {
+          "display_priority": 37,
+          "logo_path": "/21dEscfO8n1tL35k4DANixhffsR.jpg",
+          "provider_id": 7,
+          "provider_name": "Vudu"
+        },
+        {
+          "display_priority": 48,
+          "logo_path": "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 50,
+          "logo_path": "/gbyLHzl4eYP0oP9oJZ2oKbpkhND.jpg",
+          "provider_id": 279,
+          "provider_name": "Redbox"
+        },
+        {
+          "display_priority": 54,
+          "logo_path": "/xL9SUR63qrEjFZAhtsipskeAMR7.jpg",
+          "provider_id": 358,
+          "provider_name": "DIRECTV"
+        },
+        {
+          "display_priority": 134,
+          "logo_path": "/kJlVJLgbNPvKDYC0YMp3yA2OKq2.jpg",
+          "provider_id": 352,
+          "provider_name": "AMC on Demand"
+        },
+        {
+          "display_priority": 168,
+          "logo_path": "/79mRAYq40lcYiXkQm6N7YErSSHd.jpg",
+          "provider_id": 486,
+          "provider_name": "Spectrum On Demand"
+        }
+      ]
+    },
+    "VE": {
+      "link": "https://www.themoviedb.org/movie/526896-morbius/watch?locale=VE",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    }
+  }
+}
