@@ -9,6 +9,7 @@ import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.PersonCast;
 import info.movito.themoviedbapi.model.people.PersonCrew;
+import info.movito.themoviedbapi.model.providers.ProviderResults;
 
 import java.util.List;
 
@@ -122,6 +123,9 @@ public class MovieDb extends IdElement implements Multi {
 
     @JsonProperty("lists")
     private ResultsPage<MovieList> lists;
+
+    @JsonProperty("watch/providers")
+    private ProviderResults watchProviders;
 
 
     public String getBackdropPath() {
@@ -305,6 +309,9 @@ public class MovieDb extends IdElement implements Multi {
         return userRating;
     }
 
+    public ProviderResults getWatchProviders() {
+        return watchProviders;
+    }
 
     @Override
     public String toString() {
@@ -485,5 +492,9 @@ public class MovieDb extends IdElement implements Multi {
 
     public void setLists(ResultsPage<MovieList> lists) {
         this.lists = lists;
+    }
+
+    public void setWatchProviders(ProviderResults watchProviders) {
+        this.watchProviders = watchProviders;
     }
 }
