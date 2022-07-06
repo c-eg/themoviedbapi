@@ -7,6 +7,7 @@ import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.keywords.Keyword;
+import info.movito.themoviedbapi.model.providers.ProviderResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import org.apache.commons.lang3.StringUtils;
 
@@ -36,6 +37,24 @@ public class TmdbMovies extends AbstractTmdbApi {
         videos, // replacement for trailers
         translations, similar, recommendations,
         reviews, lists, changes, latest, upcoming, now_playing, popular, top_rated,
+        watch_providers("watch/providers");
+
+        private String name;
+
+        MovieMethod() {}
+
+        MovieMethod(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            if (name != null) {
+                return name;
+            }
+
+            return super.toString();
+        }
     }
 
 
@@ -46,7 +65,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve all of the basic movie information.
-     * 
+     *
      * It will return the single highest rated poster and backdrop.
      */
     public MovieDb getMovie(int movieId, String language, MovieMethod... appendToResponse) {
@@ -96,7 +115,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve all of the keywords that have been added to a particular movie.
-     * 
+     *
      * Currently, only English keywords exist.
      */
     public List<Keyword> getKeywords(int movieId) {
@@ -141,7 +160,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve all of the videos for a particular movie.
-     * 
+     *
      * Supported sites are YouTube and QuickTime.
      */
     public List<Video> getVideos(int movieId, String language) {
@@ -165,9 +184,9 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * The similar movies method will let you retrieve the similar movies for a particular movie.
-     * 
+     *
      * This data is created dynamically but with the help of users votes on TMDb.
-     * 
+     *
      * The data is much better with movies that have more keywords
      */
     public MovieResultsPage getSimilarMovies(int movieId, String language, Integer page) {
@@ -182,9 +201,9 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * The recomendations movies method will let you retrieve the reccomended movies for a particular movie.
-     * 
+     *
      * This data is created dynamically but with the help of TMDb internal algorithm.
-     * 
+     *
      * The data is much better with movies that are more popular
      */
     public MovieResultsPage getRecommendedMovies(int movieId, String language, Integer page) {
@@ -216,15 +235,15 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * Get the changes for a specific movie id.
-     * 
+     *
      * Changes are grouped by key, and ordered by date in descending order.
-     * 
+     *
      * By default, only the last 24 hours of changes are returned.
-     * 
+     *
      * The maximum number of days that can be returned in a single request is 14.
-     * 
+     *
      * The language is present on fields that are translatable.
-     * 
+     *
      * TODO: DOES NOT WORK AT THE MOMENT. This is due to the "value" item changing type in the ChangeItem
      *
      * @param startDate the start date of the changes, optional
@@ -245,6 +264,24 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     }
 
+    /**
+     * Powered by our partnership with JustWatch, you can query this method to get a list of the availabilities per country by provider.
+     * <p>
+     * This is not going to return full deep links, but rather, it's just enough information to display what's available where.
+     * <p>
+     * You can link to the provided TMDB URL to help support TMDB and provide the actual deep links to the content.
+     *
+     * See: <a href="https://developers.themoviedb.org/3/movies/get-movie-watch-providers">API Docs</a>
+     *
+     * @param movieId The MovieId to retrieve watch providers for
+     * @return Complete set of watch providers by country
+     */
+    public ProviderResults getWatchProviders(int movieId) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.watch_providers);
+
+        return mapJsonResult(apiUrl, ProviderResults.class);
+    }
+
 
     /**
      * This method is used to retrieve the newest movie that was added to TMDb.
@@ -259,9 +296,9 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * Get the list of upcoming movies.
-     * 
+     *
      * This list refreshes every day.
-     * 
+     *
      * The maximum number of items this list will include is 100.
      * <p>
      * See https://developers.themoviedb.org/3/movies/get-upcoming
@@ -284,7 +321,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve the movies currently in theatres.
-     * 
+     *
      * This is a curated list that will normally contain 100 movies. The default response will return 20 movies.
      */
     public MovieResultsPage getNowPlayingMovies(String language, Integer page, String region) {
@@ -304,7 +341,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve the daily movie popularity list.
-     * 
+     *
      * This list is updated daily. The default response will return 20 movies.
      */
     public MovieResultsPage getPopularMovies(String language, Integer page) {
@@ -320,7 +357,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * This method is used to retrieve the top rated movies that have over 10 votes on TMDb.
-     * 
+     *
      * The default response will return 20 movies.
      */
     public MovieResultsPage getTopRatedMovies(String language, Integer page) {

@@ -4,13 +4,24 @@ import info.movito.themoviedbapi.model.*;
 import info.movito.themoviedbapi.model.changes.ChangesItems;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.Person;
+import info.movito.themoviedbapi.model.providers.ProviderResults;
+import info.movito.themoviedbapi.model.providers.WatchProviders;
+import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.RequestMethod;
+import info.movito.themoviedbapi.tools.UrlReader;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.List;
 
+import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 
 public class MoviesApiTest extends AbstractTmdbApiTest {
 
@@ -195,6 +206,48 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
             assertTrue("No changes found", result.getChangedItems().size() > 0);
             break;
         }
+    }
+
+    @Test
+    public void testGetWatchProviders() throws IOException {
+        UrlReader mockUrlReader = mock(UrlReader.class);
+
+        String configResponse = TestUtils.getFixture("fixtures/config_response.json");
+        String mockResponse = TestUtils.getFixture("fixtures/watch_providers.json");
+
+        ApiUrl configApiUrl = new ApiUrl("configuration");
+        configApiUrl.addParam("api_key", getApiKey());
+
+        doReturn(configResponse)
+                .when(mockUrlReader)
+                .request(
+                        argThat(url -> url.getPath().equals(new ApiUrl("configuration").buildUrl().getPath())),
+                        eq(null),
+                        eq(RequestMethod.GET));
+
+        TmdbApi testTmdb = new TmdbApi("dummy_api", mockUrlReader, true);
+
+        int movieId = 1234;
+        ApiUrl expected = new ApiUrl(TMDB_METHOD_MOVIE, movieId, TmdbMovies.MovieMethod.watch_providers);
+        doReturn(mockResponse)
+                .when(mockUrlReader)
+                .request(
+                        argThat(url -> url.getPath().equals(expected.buildUrl().getPath())),
+                        eq(null),
+                        eq(RequestMethod.GET));
+
+        ProviderResults results = testTmdb.getMovies()
+                .getWatchProviders(movieId);
+
+        assertTrue(true);
+        assertEquals(41, results.getResults().size());
+
+        WatchProviders gbProvider = results.getProvidersForCountry("GB");
+        assertNotNull(gbProvider);
+        assertEquals(8, gbProvider.getRentProviders().size());
+        assertEquals(6, gbProvider.getBuyProviders().size());
+        assertEquals(1, gbProvider.getFlatrateProviders().size());
+        assertEquals("Virgin TV Go", gbProvider.getFlatrateProviders().get(0).getProviderName());
     }
 
     @Test
