@@ -15,7 +15,7 @@ public class TmdbGenre extends AbstractTmdbApi {
     public static final String TMDB_METHOD_GENRE = "genre";
 
 
-    TmdbGenre(TmdbApi tmdbApi) {
+    public TmdbGenre(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
 
