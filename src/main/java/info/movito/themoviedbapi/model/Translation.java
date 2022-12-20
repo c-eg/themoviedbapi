@@ -23,13 +23,22 @@ public class Translation extends NamedElement {
     private Data data;
 
 
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+
     public String getEnglishName() {
         return englishName;
     }
 
 
-    public String getCountryCode() {
-        return countryCode;
+    /**
+     * @deprecated use {@code getLanguageCode} as iso_3166_1 (country iso code) was added.
+     */
+    @Deprecated
+    public String getIsoCode() {
+        return getLanguageCode();
     }
 
 
@@ -40,6 +49,14 @@ public class Translation extends NamedElement {
 
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
+    }
+
+    /**
+     * @deprecated use {@code setLanguageCode} as iso_3166_1 (country iso code) was added.
+     */
+    @Deprecated
+    public void setIsoCode(String isoCode) {
+        setLanguageCode(isoCode);
     }
 
 

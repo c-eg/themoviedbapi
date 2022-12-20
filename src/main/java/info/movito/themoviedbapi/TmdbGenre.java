@@ -24,9 +24,37 @@ public class TmdbGenre extends AbstractTmdbApi {
      * You can use this method to retrieve the list of genres used on TMDb.
      * 
      * These IDs will correspond to those found in movie calls.
+     * @deprecated use {@code getMovieGenreList} as TV shows Genres was added.
      */
+    @Deprecated
     public List<Genre> getGenreList(String language) {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "list");
+        return getMovieGenreList(language);
+    }
+
+
+    /**
+     * You can use this method to retrieve the list of of official genres for
+     * movies used on TMDb.
+     *
+     * These IDs will correspond to those found in movie calls.
+     */
+    public List<Genre> getMovieGenreList(String language) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "movie", "list");
+
+        apiUrl.addLanguage(language);
+
+        return mapJsonResult(apiUrl, Genres.class).genres;
+    }
+
+
+    /**
+     * You can use this method to retrieve the list of of official genres for
+     * TV shows used on TMDb.
+     *
+     * These IDs will correspond to those found in TV shows calls.
+     */
+    public List<Genre> getTvGenreList(String language) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "tv", "list");
 
         apiUrl.addLanguage(language);
 
