@@ -8,8 +8,12 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Translation extends NamedElement {
 
+    @JsonProperty("iso_3166_1")
+    private String countryCode;
+
+
     @JsonProperty("iso_639_1")
-    private String isoCode;
+    private String languageCode;
 
 
     @JsonProperty("english_name")
@@ -24,13 +28,23 @@ public class Translation extends NamedElement {
     }
 
 
-    public String getIsoCode() {
-        return isoCode;
+    public String getCountryCode() {
+        return countryCode;
     }
 
 
-    public void setIsoCode(String isoCode) {
-        this.isoCode = isoCode;
+    public String getLanguageCode() {
+        return languageCode;
+    }
+
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+
+    public void setLanguageCode(String languageCode) {
+        this.languageCode = languageCode;
     }
 
 
