@@ -8,8 +8,12 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Translation extends NamedElement {
 
+    @JsonProperty("iso_3166_1")
+    private String countryCode;
+
+
     @JsonProperty("iso_639_1")
-    private String isoCode;
+    private String languageCode;
 
 
     @JsonProperty("english_name")
@@ -19,18 +23,45 @@ public class Translation extends NamedElement {
     private Data data;
 
 
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+
     public String getEnglishName() {
         return englishName;
     }
 
 
+    /**
+     * @deprecated use {@code getLanguageCode} as iso_3166_1 (country iso code) was added.
+     */
+    @Deprecated
     public String getIsoCode() {
-        return isoCode;
+        return getLanguageCode();
     }
 
 
+    public String getLanguageCode() {
+        return languageCode;
+    }
+
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    /**
+     * @deprecated use {@code setLanguageCode} as iso_3166_1 (country iso code) was added.
+     */
+    @Deprecated
     public void setIsoCode(String isoCode) {
-        this.isoCode = isoCode;
+        setLanguageCode(isoCode);
+    }
+
+
+    public void setLanguageCode(String languageCode) {
+        this.languageCode = languageCode;
     }
 
 

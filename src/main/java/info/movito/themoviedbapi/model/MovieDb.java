@@ -127,6 +127,9 @@ public class MovieDb extends IdElement implements Multi {
     @JsonProperty("watch/providers")
     private ProviderResults watchProviders;
 
+    @JsonProperty("external_ids")
+    private ExternalIds externalIds;
+
 
     public String getBackdropPath() {
         return backdropPath;
@@ -313,6 +316,10 @@ public class MovieDb extends IdElement implements Multi {
         return watchProviders;
     }
 
+    public ExternalIds getExternalIds() {
+        return externalIds;
+    }
+
     @Override
     public String toString() {
         return title + " - " + releaseDate;
@@ -496,5 +503,9 @@ public class MovieDb extends IdElement implements Multi {
 
     public void setWatchProviders(ProviderResults watchProviders) {
         this.watchProviders = watchProviders;
+    }
+
+    public void setExternalIds(ExternalIds externalIds) {
+        this.externalIds = externalIds;
     }
 }

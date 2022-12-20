@@ -21,6 +21,15 @@ public class ExternalIds extends IdElement {
     @JsonProperty("tvrage_id")
     private String tvrageId;
 
+    @JsonProperty("facebook_id")
+    private String facebookId;
+
+    @JsonProperty("instagram_id")
+    private String instagramId;
+
+    @JsonProperty("twitter_id")
+    private String twitterId;
+
 
     public String getImdbId() {
         return imdbId;
@@ -47,6 +56,21 @@ public class ExternalIds extends IdElement {
     }
 
 
+    public String getFacebookId() {
+        return facebookId;
+    }
+
+
+    public String getInstagramId() {
+        return instagramId;
+    }
+
+
+    public String getTwitterId() {
+        return twitterId;
+    }
+
+
     public void setImdbId(String imdbId) {
         this.imdbId = imdbId;
     }
@@ -70,4 +94,20 @@ public class ExternalIds extends IdElement {
     public void setTvrageId(String tvrageId) {
         this.tvrageId = tvrageId;
     }
+
+
+    public void setFacebookId(String facebookId) {
+        this.facebookId = facebookId;
+    }
+
+
+    public void setInstagramId(String instagramId) {
+        this.instagramId = instagramId;
+    }
+
+
+    public void setTwitterId(String twitterId) {
+        this.twitterId = twitterId;
+    }
+
 }

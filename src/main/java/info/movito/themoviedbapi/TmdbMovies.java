@@ -37,7 +37,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         videos, // replacement for trailers
         translations, similar, recommendations,
         reviews, lists, changes, latest, upcoming, now_playing, popular, top_rated,
-        watch_providers("watch/providers");
+        watch_providers("watch/providers"), external_ids;
 
         private String name;
 
@@ -280,6 +280,16 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.watch_providers);
 
         return mapJsonResult(apiUrl, ProviderResults.class);
+    }
+
+
+    /**
+     * This method is used to retrieve the external ids for a movie.
+     */
+    public ExternalIds getExternalIds(int movieId) {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.external_ids);
+
+        return mapJsonResult(apiUrl, ExternalIds.class);
     }
 
 
