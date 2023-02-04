@@ -90,7 +90,13 @@ Project Logging
 This project uses [SLF4J](http://www.slf4j.org) to abstract the logging in the project. To use the logging in your own
 project you should add one of the provided [adapter bindings](http://www.slf4j.org/manual.html).
 
+Prooguard / R8 rules
+--------------------
+Model classes are placed under `info.movito.themoviedbapi.model` package. Add this to `proguard-rules.pro` so that, these classes can survive minification.
 
+```
+-keep class info.movito.themoviedbapi.model.** { *; }
+```
 
 Notes & Acknowledgements
 -------------------------
