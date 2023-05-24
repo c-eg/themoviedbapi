@@ -7,7 +7,6 @@
 3. Do the release
 ```bash
 # adjust to te path of your working copy
-export TMDB_HOME=/d/projects/misc/private/themoviedbapi
 export TMDB_HOME=/d/private/projects/themoviedbapi
 
 cd $TMDB_HOME
@@ -45,7 +44,7 @@ git push origin --tags
 ./gradlew publishToMavenLocal
 
 #./gradlew publishToSonatype closeSonatypeStagingRepository
-    ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
+./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
 ```
 
 

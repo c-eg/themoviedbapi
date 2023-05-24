@@ -18,7 +18,7 @@ import java.util.Map;
 public class Utils {
 
     /**
-     * Compare the MovieDB object with a title & year
+     * Compare the MovieDB object with a title and year
      *
      * @param moviedb The moviedb object to compare too
      * @param title   The title of the movie to compare
@@ -31,7 +31,7 @@ public class Utils {
 
 
     /**
-     * Compare the MovieDB object with a title & year
+     * Compare the MovieDB object with a title and year
      *
      * @param moviedb     The moviedb object to compare too
      * @param title       The title of the movie to compare

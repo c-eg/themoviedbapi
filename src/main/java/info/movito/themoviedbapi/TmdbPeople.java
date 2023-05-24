@@ -39,7 +39,7 @@ public class TmdbPeople extends AbstractTmdbApi {
 
 
     /**
-     * This method is used to retrieve all of the cast & crew information for the person.
+     * This method is used to retrieve all of the cast &amp; crew information for the person.
      * 
      * It will return the single highest rated poster for each movie record.
      */
