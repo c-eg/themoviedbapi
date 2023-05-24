@@ -48,7 +48,7 @@ public class SearchApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testSearchTv() {
-        List<TvSeries> result = tmdb.getSearch().searchTv("Breaking Bad", null, null).getResults();
+        List<TvSeries> result = tmdb.getSearch().searchTv("Breaking Bad", null, null, true, 0).getResults();
         assertEquals("No series found", 1, result.size());
         assertEquals("Wrong series found", "Breaking Bad", result.get(0).getName());
         assertEquals("Wrong series found", 1396, result.get(0).getId());
@@ -57,7 +57,7 @@ public class SearchApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testSearchCollection() throws Exception {
-        List<Collection> result = tmdb.getSearch().searchCollection("batman", LANGUAGE_DEFAULT, 0).getResults();
+        List<Collection> result = tmdb.getSearch().searchCollection("batman", LANGUAGE_DEFAULT, true, 0).getResults();
 
         assertFalse("No collections found", result == null);
         assertTrue("No collections found", result.size() > 0);

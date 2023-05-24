@@ -32,10 +32,11 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search Movies This is a good starting point to start finding movies on TMDb.
      *
-     * @param searchYear   Limit the search to the provided year. Zero (0) will get all years
+     * @param query        The query to search for.
+     * @param searchYear   Limit the search to the provided year. Zero (0) will get all years.
      * @param language     The language to include. Can be blank/null.
-     * @param includeAdult true or false to include adult titles in the search
-     * @param page         The page of results to return. 0 to get the default (first page)
+     * @param includeAdult Whether to include adult titles in the search.
+     * @param page         The page of results to return. 0 to get the default (first page).
      */
     public MovieResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MOVIE);
@@ -65,10 +66,13 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search for TV shows by title.
      *
-     * @param language The language to include. Can be blank/null.
-     * @param page     The page of results to return. 0 to get the default (first page)
+     * @param query        The query to search for.
+     * @param searchYear   Limit the search to the provided year. Zero (0) will get all years.
+     * @param language     The language to include. Can be blank/null.
+     * @param includeAdult Whether to include adult titles in the search.
+     * @param page         The page of results to return. 0 to get the default (first page).
      */
-    public TvResultsPage searchTv(String query, String language, Integer page) {
+    public TvResultsPage searchTv(String query, Integer searchYear, String language, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV);
 
         if (isBlank(query)) {
@@ -79,7 +83,13 @@ public class TmdbSearch extends AbstractTmdbApi {
 
         // optional parameters
 
+        if (searchYear != null && searchYear > 0) {
+            apiUrl.addParam(PARAM_YEAR, Integer.toString(searchYear));
+        }
+
         apiUrl.addLanguage(language);
+
+        apiUrl.addParam(PARAM_ADULT, Boolean.toString(includeAdult));
 
         apiUrl.addPage(page);
 
@@ -89,8 +99,13 @@ public class TmdbSearch extends AbstractTmdbApi {
 
     /**
      * Search for collections by name.
+     *
+     * @param query        The query to search for.
+     * @param language     The language to include. Can be blank/null.
+     * @param includeAdult Whether to include adult titles in the search.
+     * @param page         The page of results to return. 0 to get the default (first page).
      */
-    public CollectionResultsPage searchCollection(String query, String language, Integer page) {
+    public CollectionResultsPage searchCollection(String query, String language, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_COLLECTION);
 
         if (isNotBlank(query)) {
@@ -98,6 +113,8 @@ public class TmdbSearch extends AbstractTmdbApi {
         }
 
         apiUrl.addLanguage(language);
+
+        apiUrl.addParam(PARAM_ADULT, Boolean.toString(includeAdult));
 
         apiUrl.addPage(page);
 
