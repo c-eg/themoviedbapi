@@ -2,6 +2,28 @@ See
 [releases](https://github.com/holgerbrandl/themoviedbapi/releases)
 for downloads and details
     
+v1.14
+-----
+
+* modernized build
+* updated to tmdb api changes
+* various bug fixes
+
+v1.13
+-----
+ 
+* bug fixes and api adjustments
+
+v1.12
+-----
+
+* moved to maven-central
+
+v1.11
+-----
+
+* various bug fixes
+
 v1.10
 -----
 
