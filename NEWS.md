@@ -2,6 +2,11 @@ See
 [releases](https://github.com/holgerbrandl/themoviedbapi/releases)
 for downloads and details
     
+v1.15
+-----
+
+* bug fix [#138](https://github.com/holgerbrandl/themoviedbapi/pull/138)
+
 v1.14
 -----
 
