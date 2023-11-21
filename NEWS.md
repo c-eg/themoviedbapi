@@ -1,7 +1,15 @@
 See
-[releases](https://github.com/holgerbrandl/themoviedbapi/releases)
+[releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
-    
+
+
+
+v1.15.1
+-----
+
+* bug fix with module-info
+* update gradle & dependencies
+
 v1.15
 -----
 
