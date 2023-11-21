@@ -22,7 +22,7 @@ jobs:
           server-password: MAVEN_PASSWORD
 
       - name: Publish package
-        run: mvn --batch-mode deploy
+        run: ./gradlew publishToMavenLocal
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
