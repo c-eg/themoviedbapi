@@ -1,7 +1,7 @@
 TheMovieDB API
 ================
 
-[ ![Download](https://img.shields.io/github/v/release/holgerbrandl/themoviedbapi) ](https://github.com/holgerbrandl/themoviedbapi/releases)
+[![Download](https://img.shields.io/github/v/release/c-eg/themoviedbapi) ](https://github.com/holgerbrandl/themoviedbapi/releases)
 [![BSD 3 License](http://img.shields.io/badge/license-BSD_3_Clause-green.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 
@@ -13,23 +13,20 @@ This library provides a java-wrapper around the [JSON API](http://api.themoviedb
 Setup
 -----
 
-> **Starting with v1.12 the library is hosted on maven-central. This required a change of the group-id from info.movito to com.github.holgerbrandl**
+> **Starting with v1.15.1 the library has changed ownership. This required a change of the group-id from com.github.holgerbrandl to uk.co.conoregan**
 
-Just add it as dependency to your project. It's available via [Maven Central](https://search.maven.org/)
+It's available via [Maven Central](https://central.sonatype.com/artifact/uk.co.conoregan/themoviedbapi). Just add it as dependency to your project.
 
 ```
 <dependency>
-    <groupId>com.github.holgerbrandl</groupId>
+    <groupId>uk.co.conoregan</groupId>
     <artifactId>themoviedbapi</artifactId>
-    <version>1.12</version>
+    <version>1.15.1</version>
 </dependency>
 ```
-
-Or just add it via gradle when developing for Android:
-
 ```
-dependencies{
-    compile group: 'com.github.holgerbrandl', name: 'themoviedbapi', version:'1.12'
+dependencies {
+    implementation 'uk.co.conoregan:themoviedbapi:1.15.1'
 }
 ```
 
@@ -104,3 +101,5 @@ Notes & Acknowledgements
 The library was developed for [Movito](http://www.movito.info) to interact with tmdb services. This library has been
 inspired by [api-themoviedb](https://github.com/Omertron/api-themoviedb) but has been rewritten to provide a more open
 license, a more clean API and to expose more features of the TMDB json api.
+
+The library was created by [Holger Brandl](https://github.com/holgerbrandl) and was transferred to [Conor Egan](https://github.com/c-eg) on the 20th November 2023.

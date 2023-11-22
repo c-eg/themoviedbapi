@@ -1,6 +1,8 @@
 plugins {
     id "java-library"
     id 'maven-publish'
+    id 'signing'
+    id 'io.github.gradle-nexus.publish-plugin' version "1.3.0"
 }
 
 repositories {
@@ -31,18 +33,49 @@ dependencies {
 group 'uk.co.conoregan'
 version '1.15.1'
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
-
 java {
     withJavadocJar()
     withSourcesJar()
 }
 
-javadoc.options.addStringOption('Xdoclint:none', '-quiet')
-
 publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from(components.java)
+
+            pom {
+                name = "themoviedbapi"
+                description = 'A java-wrapper around the JSON API provided by TMdB, which is an open database for movie and film content.'
+                url = 'https://github.com/c-eg/themoviedbapi'
+
+                licenses {
+                    license {
+                        name = 'BSD'
+                        url = 'https://github.com/c-eg/themoviedbapi/blob/master/LICENCE.txt'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:github.com/c-eg/themoviedbapi.git'
+                    url = 'https://github.com/c-eg/themoviedbapi.git'
+                }
+
+                developers {
+                    developer {
+                        id = 'holgerbrandl'
+                        name = 'Holger Brandl'
+                        email = 'holgerbrandl@gmail.com'
+                    }
+
+                    developer {
+                        id = 'c-eg'
+                        name = 'Conor Egan'
+                        email = '17conoregan@gmail.com'
+                    }
+                }
+            }
+        }
+    }
     repositories {
         maven {
             name = "OSSRH"
@@ -54,3 +87,25 @@ publishing {
         }
     }
 }
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign publishing.publications.mavenJava
+    sign configurations.archives
+}
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+javadoc.options.addStringOption('Xdoclint:none', '-quiet')
+

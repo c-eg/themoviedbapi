@@ -1,51 +1,44 @@
+# Developer Notes
 ## How to do a release?
 
-1. Make sure to increase version number in [build.gradle.kts](../build.gradle.kts)
+1. Make sure to increase version number in [build.gradle](build.gradle)
 
-2. Document [changes](../CHANGES.md)
+2. Document updates in [NEWS.md](NEWS.md)
 
-3. Do the release
-```bash
-# adjust to te path of your working copy
-export TMDB_HOME=/d/private/projects/themoviedbapi
+3. Do the release on GitHub
 
-cd $TMDB_HOME
-
-# run tests
-./gradlew check
-
-
-trim() { while read -r line; do echo "$line"; done; }
-tmdb_version='v'$(grep '^version' ${TMDB_HOME}/build.gradle | cut -f2 -d' ' | tr -d "'" | trim)
-
-echo "new version is $tmdb_version !"
-
-
-if [[ $tmdb_version == *"-SNAPSHOT" ]]; then
-  echo "ERROR: Won't publish snapshot build $tmdb_version!" 1>&2
-  exit 1
-fi
-
-#kscript src/test/kotlin/org/kalasim/misc/PatchVersion.kts "${tmdb_version:1}"
-
-git status
-git commit -am "${tmdb_version} release"
-#git diff --exit-code  || echo "There are uncomitted changes"
-
-git tag "${tmdb_version}"
-
-git push origin 
-git push origin --tags
-
-
-### Build and publish the binary release to maven central
-./gradlew install
-
-./gradlew publishToMavenLocal
-
-#./gradlew publishToSonatype closeSonatypeStagingRepository
-./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
+4. Make sure the following Gradle properties are set
+```
+signing.keyId=
+signing.password=
+signing.secretKeyRingFile=/secring.gpg
 ```
 
+5. Publish
+```bash
+gradle publish
+```
 
+5. Close and Release on sonatype
+   1. Go to: [Sonatype](https://s01.oss.sonatype.org/#stagingRepositories)
+   2. Click on the staging repository
+   3. Click on Close
+   4. After checks, you can release
+   5. Click on Release
 
+## Generating a new signing key
+1. Generate the key
+```bash
+gpg --gen-key
+gpg --list-keys --keyid-format short
+```
+
+2. Then register the key on a keyserver
+```bash
+gpg --keyserver keyserver.ubuntu.com --send-keys <keyId>
+```
+
+3. Then export it and move it to project base dir (.gitignore will ignore it)
+```bash
+gpg --export-secret-keys -o secring.gpg
+```
