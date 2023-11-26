@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
     id 'signing'
     id 'io.github.gradle-nexus.publish-plugin' version "1.3.0"
+    id 'checkstyle'
 }
 
 repositories {
@@ -36,6 +37,23 @@ version '1.15.1'
 java {
     withJavadocJar()
     withSourcesJar()
+}
+
+checkstyle {
+    toolVersion '10.12.5'
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+
+checkstyleMain {
+    source ='src/main/java'
+}
+checkstyleTest {
+    source ='src/test/java'
+}
+tasks.withType(Checkstyle).configureEach {
+    reports {
+        html.required = true
+    }
 }
 
 publishing {
