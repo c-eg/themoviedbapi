@@ -5,25 +5,29 @@ import info.movito.themoviedbapi.model.config.TokenSession;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
 
-
+/**
+ * The movie database api for authentication. See the
+ * <a href="https://developer.themoviedb.org/reference/authentication-how-do-i-generate-a-session-id">documentation</a> for more info.
+ */
 public class TmdbAuthentication extends AbstractTmdbApi {
-
     public static final String PARAM_REQUEST_TOKEN = "request_token";
+
     public static final String TMDB_METHOD_AUTH = "authentication";
 
-
+    /**
+     * Create a new TmdbAuthentication instance to call the authentication related TMDb API methods.
+     */
     TmdbAuthentication(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
 
-
     /**
      * This method is used to generate a valid request token for user based authentication.
-     * 
+     *
      * A request token is required in order to request a session id.
-     * 
+     *
      * You can generate any number of request tokens but they will expire after 60 minutes.
-     * 
+     *
      * As soon as a valid session id has been created the token will be destroyed.
      */
 
@@ -33,10 +37,9 @@ public class TmdbAuthentication extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, TokenAuthorisation.class);
     }
 
-
     /**
      * This method is used to generate a session id for user based authentication.
-     * 
+     *
      * A session id is required in order to use any of the write methods.
      */
     public TokenSession getSessionToken(TokenAuthorisation token) {
@@ -51,7 +54,6 @@ public class TmdbAuthentication extends AbstractTmdbApi {
 
         return mapJsonResult(apiUrl, TokenSession.class);
     }
-
 
     /**
      * Try to validate TokenAuthorisation with username and password.
@@ -71,15 +73,14 @@ public class TmdbAuthentication extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, TokenAuthorisation.class);
     }
 
-
     /**
      * Does all the necessary username/password authentication
      * stuff in one go
-     * 
+     *
      * Generates a new valid TokenAuthorisation
-     * 
+     *
      * Validates the Token via username/password
-     * 
+     *
      * requests a new session id with the validated TokenAuthorisation
      * and returns a new TokenSession which one may want to transform
      * into SessionToken for APO calls that require a authorized user.
@@ -97,24 +98,23 @@ public class TmdbAuthentication extends AbstractTmdbApi {
         TokenAuthorisation loginToken = getLoginToken(authToken, username, password);
 
         if (!loginToken.getSuccess()) {
-            throw new MovieDbException("User authentication failed:" + loginToken.toString());
+            throw new MovieDbException("User authentication failed:" + loginToken);
         }
 
         return getSessionToken(loginToken);
     }
 
-
     /**
      * This method is used to generate a guest session id.
-     * 
+     *
      * A guest session can be used to rate movies without having a registered TMDb user account.
-     * 
+     *
      * You should only generate a single guest session per user (or device) as you will be able to attach the ratings to
      * a TMDb user account in the future.
-     * 
+     *
      * There are also IP limits in place so you should always make sure it's the end user doing the guest session
      * actions.
-     * 
+     *
      * If a guest session is not used for the first time within 24 hours, it will be automatically discarded.
      */
     public TokenSession getGuestSessionToken() {

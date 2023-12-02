@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TvKeywords extends AbstractJsonMapping {
-
-
     @JsonProperty("results")
     private List<Keyword> results = new ArrayList<Keyword>();
-
 
     public List<Keyword> getKeywords() {
         return results;

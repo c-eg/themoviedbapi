@@ -2,35 +2,36 @@ package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.people.PersonPeople;
 import info.movito.themoviedbapi.model.tv.TvSeries;
-
 
 /**
  * Interface that is needed for /search/multi request
  * <p>
- * {@link info.movito.themoviedbapi.model.MovieDb}, {@link info.movito.themoviedbapi.model.people.Person} and
- * {@link info.movito.themoviedbapi.model.tv.TvSeries} implement this interface.</p>
+ * {@link MovieDb}, {@link Person} and {@link TvSeries} implement this interface.</p>
  * <p>Each of them returns corresponding {@link MediaType}</p>
  *
  * @see info.movito.themoviedbapi.TmdbSearch#searchMulti(String, String, Integer)
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "media_type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "media_type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = MovieDb.class, name = "movie"),
-        @JsonSubTypes.Type(value = PersonPeople.class, name = "person"),
-        @JsonSubTypes.Type(value = TvSeries.class, name = "tv")})
+    @JsonSubTypes.Type(value = MovieDb.class, name = "movie"),
+    @JsonSubTypes.Type(value = PersonPeople.class, name = "person"),
+    @JsonSubTypes.Type(value = TvSeries.class, name = "tv")})
 public interface Multi {
-
-    public enum MediaType {
-        MOVIE,
-        PERSON,
-        TV_SERIES;
-    }
+    /**
+     * Used to determine type Multi object without {@code instanceof()} or {@code getClass}.
+     */
+    MediaType getMediaType();
 
     /**
-     * Used to determine type Multi object without {@code instanceof()} or {@code getClass}
+     * The type of media.
      */
-    public MediaType getMediaType();
+    enum MediaType {
+        MOVIE,
+        PERSON,
+        TV_SERIES
+    }
 }
 

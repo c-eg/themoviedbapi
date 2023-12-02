@@ -4,9 +4,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Data {
-
     private String title;
+
     private String overview;
+
     private String homepage;
 
     public String getTitle() {

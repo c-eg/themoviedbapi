@@ -1,6 +1,10 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.*;
+import info.movito.themoviedbapi.model.Discover;
+import info.movito.themoviedbapi.model.Genre;
+import info.movito.themoviedbapi.model.JobDepartment;
+import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.Reviews;
 import info.movito.themoviedbapi.model.config.TmdbConfiguration;
 import info.movito.themoviedbapi.model.core.ResponseStatusException;
 import info.movito.themoviedbapi.model.keywords.Keyword;
@@ -14,11 +18,13 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class MiscApiTest extends AbstractTmdbApiTest {
-
 
     @Test
     public void testConfiguration() throws IOException {
@@ -31,23 +37,21 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         assertTrue("No profile sizes", tmdbConfig.getProfileSizes().size() > 0);
     }
 
-
     //
     // Request Limit Handling
     //
-
 
     @Test
     public void limitPush() {
         for (int i = 0; i < 50; i++) {
             try {
                 tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH);
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 Assert.fail();
             }
         }
     }
-
 
     @Test
     public void limitPushWithoutAutoRetry() {
@@ -56,27 +60,24 @@ public class MiscApiTest extends AbstractTmdbApiTest {
 
         TmdbApi tmdb = new TmdbApi(getApiKey(), new WebBrowser(), false);
 
-
         for (int i = 0; i < 50; i++) {
             try {
                 tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH);
-            } catch (ResponseStatusException e) {
+            }
+            catch (ResponseStatusException e) {
                 Assert.assertEquals(25, e.getResponseStatus().getStatusCode().intValue());
                 return;
             }
         }
-
 
         Assert.fail("failed to throw response status because of api limit");
 
         Utils.sleep(10000);
     }
 
-
     //
     // JOBS
     //
-
 
     @Test
     public void testGetJobs() throws Exception {
@@ -85,11 +86,9 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         assertFalse("No jobs found", result.isEmpty());
     }
 
-
     //
     // DISCOVER
     //
-
 
     @Test
     public void testDiscoverByYear() throws Exception {
@@ -100,7 +99,6 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         List<MovieDb> result = tmdb.getDiscover().getDiscover(discover).getResults();
         assertFalse("No movies discovered", result.isEmpty());
     }
-
 
     @Test
     public void testDiscoverByKeyword() throws Exception {
@@ -113,11 +111,9 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         assertFalse("No movies discovered", result.isEmpty());
     }
 
-
     //
     // CHANGES
     //
-
 
     @Ignore("Not ready yet")
     public void testGetMovieChangesList() throws Exception {
@@ -130,7 +126,6 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         fail("The test case is a prototype.");
     }
 
-
     @Ignore("Not ready yet")
     public void testGetPersonChangesList() throws Exception {
 
@@ -142,11 +137,9 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         fail("The test case is a prototype.");
     }
 
-
     //
     // KEYWORDS
     //
-
 
     @Test
     public void testGetKeyword() throws Exception {
@@ -155,18 +148,15 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         assertEquals("fight", result.getName());
     }
 
-
     @Test
     public void testGetKeywordMovies() throws Exception {
         List<MovieDb> result = tmdb.getKeywords().getKeywordMovies(ID_KEYWORD, LANGUAGE_DEFAULT, 0).getResults();
         assertFalse("No keyword movies found", result.isEmpty());
     }
 
-
     //
     // REVIEWS
     //
-
 
     @Test
     public void testGetReviews() throws Exception {
@@ -175,24 +165,22 @@ public class MiscApiTest extends AbstractTmdbApiTest {
         assertFalse("No reviews found", result.isEmpty());
     }
 
-
     //
     // GENRE
     //
-
 
     @Test
     public void testGetGenreList() {
         List<Genre> result = tmdb.getGenre().getGenreList(LANGUAGE_DEFAULT);
 
-        assertTrue("No genres found", !result.isEmpty());
+        assertFalse("No genres found", result.isEmpty());
     }
-
 
     @Test
     public void testGetGenreMovies() {
-        List<MovieDb> result = tmdb.getGenre().getGenreMovies(ID_GENRE_ACTION, LANGUAGE_DEFAULT, 0, Boolean.TRUE).getResults();
+        List<MovieDb> result =
+            tmdb.getGenre().getGenreMovies(ID_GENRE_ACTION, LANGUAGE_DEFAULT, 0, Boolean.TRUE).getResults();
 
-        assertTrue("No genre movies found", !result.isEmpty());
+        assertFalse("No genre movies found", result.isEmpty());
     }
 }

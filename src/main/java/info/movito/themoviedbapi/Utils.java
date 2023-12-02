@@ -9,16 +9,17 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
-
-public class Utils {
+/**
+ * Utility class.
+ */
+public final class Utils {
+    private Utils() {
+    }
 
     /**
-     * Compare the MovieDB object with a title and year
+     * Compare the MovieDB object with a title and year.
      *
      * @param moviedb The moviedb object to compare too
      * @param title   The title of the movie to compare
@@ -29,9 +30,8 @@ public class Utils {
         return compareMovies(moviedb, title, year, 0);
     }
 
-
     /**
-     * Compare the MovieDB object with a title and year
+     * Compare the MovieDB object with a title and year.
      *
      * @param moviedb     The moviedb object to compare too
      * @param title       The title of the movie to compare
@@ -70,35 +70,31 @@ public class Utils {
         return Boolean.FALSE;
     }
 
-
     /**
-     * Compare the Levenshtein Distance between the two strings
+     * Compare the Levenshtein Distance between the two strings.
      */
     private static boolean compareDistance(String title1, String title2, int distance) {
         return (StringUtils.getLevenshteinDistance(title1, title2) <= distance);
     }
 
-
     /**
-     * Check the year is not blank or UNKNOWN
-     *
-     * @param year
+     * Check the year is not blank or UNKNOWN.
      */
     private static boolean isValidYear(String year) {
         return (StringUtils.isNotBlank(year) && !year.equals("UNKNOWN"));
     }
 
-
     static void sleep(final int timeMs) {
         try {
             Thread.sleep(timeMs);
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
     /**
-     * Generate the full image URL from the size and image path
+     * Generate the full image URL from the size and image path.
      */
     public static URL createImageUrl(TmdbApi tmdb, String imagePath, String requiredSize) {
         if (StringUtils.isBlank(imagePath)) {
@@ -115,16 +111,11 @@ public class Utils {
         sb.append(imagePath);
         try {
             return (new URL(sb.toString()));
-        } catch (MalformedURLException ex) {
+        }
+        catch (MalformedURLException ex) {
             throw new MovieDbException(sb.toString(), ex);
         }
     }
-
-
-    public static <T> List<T> nullAsEmpty(List<T> items) {
-        return items == null ? new ArrayList<T>() : items;
-    }
-
 
     /**
      * Use Jackson to convert Map to json string.
@@ -133,23 +124,19 @@ public class Utils {
     public static String convertToJson(ObjectMapper jsonMapper, Map<String, ?> map) {
         try {
             return new ObjectMapper().writeValueAsString(map);
-        } catch (JsonProcessingException jpe) {
+        }
+        catch (JsonProcessingException jpe) {
             throw new RuntimeException("json conversion failed", jpe);
         }
-
     }
 
-
-    public static <T> List<T> copyIterator(Iterator<T> iter) {
-        List<T> copy = new ArrayList<T>();
-        while (iter.hasNext())
-            copy.add(iter.next());
-        return copy;
-    }
-
-
+    /**
+     * Convert an array of objects to an array of strings.
+     */
     public static String[] asStringArray(Object[] appendToResponse) {
-        if (appendToResponse == null || appendToResponse.length == 0) return null;
+        if (appendToResponse == null || appendToResponse.length == 0) {
+            return null;
+        }
 
         // guava would be more convenient here (just use transformer)
         String[] asArray = new String[appendToResponse.length];
@@ -159,10 +146,4 @@ public class Utils {
 
         return asArray;
     }
-
-
-    public static Integer parseInteger(String valueOrNull) {
-        return valueOrNull == null ? null : Integer.parseInt(valueOrNull);
-    }
-
 }

@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeFalse;
 
@@ -26,7 +26,7 @@ public class LoginApiTest extends AbstractTmdbApiTest {
         String userName = System.getenv("username");
         String userPassword = System.getenv("password");
         assumeFalse("test skipped. set env variables 'username' and 'password' to test login",
-                StringUtils.isBlank(userName) || StringUtils.isBlank(userPassword));
+            StringUtils.isBlank(userName) || StringUtils.isBlank(userPassword));
     }
 
     @Test
@@ -36,11 +36,11 @@ public class LoginApiTest extends AbstractTmdbApiTest {
         String userPassword = System.getenv("password");
         TokenAuthorisation token_in = tmdb.getAuthentication().getAuthorisationToken();
 
-        assertFalse("Token_in is null", token_in == null);
+        assertNotNull("Token_in is null", token_in);
         assertTrue("Token_in is not valid", token_in.getSuccess());
 
         TokenAuthorisation token_out = tmdb.getAuthentication().getLoginToken(token_in, userName, userPassword);
-        assertFalse("Token_out is null", token_out == null);
+        assertNotNull("Token_out is null", token_out);
         assertTrue("Token_out is not valid", token_out.getSuccess());
     }
 
@@ -50,7 +50,7 @@ public class LoginApiTest extends AbstractTmdbApiTest {
         String userPassword = System.getenv("password");
 
         TokenSession token_session = tmdb.getAuthentication().getSessionLogin(userName, userPassword);
-        assertFalse("Token session is null", token_session == null);
+        assertNotNull("Token session is null", token_session);
         assertTrue("Token_session is not valid:", token_session.getSuccess());
     }
 
@@ -60,7 +60,7 @@ public class LoginApiTest extends AbstractTmdbApiTest {
         String userPassword = "wrongpw";
 
         TokenSession token_session = tmdb.getAuthentication().getSessionLogin(userName, userPassword);
-        assertFalse("Token session is null", token_session == null);
+        assertNotNull("Token session is null", token_session);
         assertTrue("Token_session is not valid:", token_session.getSuccess());
     }
 }

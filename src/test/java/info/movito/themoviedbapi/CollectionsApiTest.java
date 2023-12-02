@@ -8,9 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 
-
 public class CollectionsApiTest extends AbstractTmdbApiTest {
-
 
     @Test
     public void testGetCollectionInfo() {
@@ -18,7 +16,6 @@ public class CollectionsApiTest extends AbstractTmdbApiTest {
 
         assertFalse("No collection information", result.getParts().isEmpty());
     }
-
 
     @Test
     public void testGetCollectionImages() throws Exception {

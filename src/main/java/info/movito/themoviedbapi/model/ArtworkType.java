@@ -1,14 +1,21 @@
 package info.movito.themoviedbapi.model;
 
 /**
- * ArtworkType enum List of the artwork types that are available
+ * ArtworkType enum List of the artwork types that are available.
  */
 public enum ArtworkType {
-
-    // Poster artwork
+    /**
+     * Poster artwork.
+     */
     POSTER,
-    // Fanart/backdrop
+
+    /**
+     * Fanart/backdrop artwork.
+     */
     BACKDROP,
-    // PersonPeople image
+
+    /**
+     * PersonPeople image.
+     */
     PROFILE
 }

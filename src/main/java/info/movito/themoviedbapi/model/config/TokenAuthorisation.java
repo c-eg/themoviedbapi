@@ -2,10 +2,7 @@ package info.movito.themoviedbapi.model.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class TokenAuthorisation {
-
-
     @JsonProperty("expires_at")
     private String expires;
 
@@ -14,7 +11,6 @@ public class TokenAuthorisation {
 
     @JsonProperty("success")
     private Boolean success;
-
 
     public String getExpires() {
         return expires;
@@ -33,7 +29,7 @@ public class TokenAuthorisation {
     }
 
     public Boolean getSuccess() {
-        return success == null ? false : success;
+        return success != null && success;
     }
 
     public void setSuccess(Boolean success) {

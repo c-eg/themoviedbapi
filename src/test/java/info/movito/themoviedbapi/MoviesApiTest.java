@@ -1,13 +1,21 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.*;
+import info.movito.themoviedbapi.model.AlternativeTitle;
+import info.movito.themoviedbapi.model.Credits;
+import info.movito.themoviedbapi.model.Data;
+import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.MovieImages;
+import info.movito.themoviedbapi.model.ProductionCompany;
+import info.movito.themoviedbapi.model.ReleaseInfo;
+import info.movito.themoviedbapi.model.Translation;
+import info.movito.themoviedbapi.model.Video;
 import info.movito.themoviedbapi.model.changes.ChangesItems;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.providers.ProviderResults;
 import info.movito.themoviedbapi.model.providers.WatchProviders;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import info.movito.themoviedbapi.tools.RequestMethod;
+import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.UrlReader;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -17,7 +25,11 @@ import java.io.IOException;
 import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
@@ -33,7 +45,8 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testGetMovieInfoWithAppendedMethods() {
-        MovieDb result = tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH, TmdbMovies.MovieMethod.values());
+        MovieDb result =
+            tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, LANGUAGE_ENGLISH, TmdbMovies.MovieMethod.values());
         ProductionCompany productionCompany = result.getProductionCompanies().get(0);
 
         assertEquals("Incorrect movie information", "Blade Runner", result.getOriginalTitle());
@@ -55,7 +68,6 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         country = "US";
         result = tmdb.getMovies().getAlternativeTitles(ID_MOVIE_BLADE_RUNNER, country);
         assertTrue("No alternative titles found", result.size() > 0);
-
     }
 
     @Test
@@ -103,7 +115,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
 
     @Test
     public void testMovieKeywordsAppendedMethod() {
-//        List<Keyword> result = tmdb.getMovies().getKeywords(10191);
+        //        List<Keyword> result = tmdb.getMovies().getKeywords(10191);
 
         MovieDb movie = tmdb.getMovies().getMovie(10191, "fr", TmdbMovies.MovieMethod.keywords);
         List<Keyword> result = movie.getKeywords();
@@ -117,12 +129,11 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         assertFalse("Release information missing", result.isEmpty());
     }
 
-
-//    @Test
-//    public void testGetMovieTrailers() {
-//        List<Trailer> result = tmdb.getMovies().getTrailers(ID_MOVIE_BLADE_RUNNER, "");
-//        assertFalse("Movie trailers missing", result.isEmpty());
-//    }
+    //    @Test
+    //    public void testGetMovieTrailers() {
+    //        List<Trailer> result = tmdb.getMovies().getTrailers(ID_MOVIE_BLADE_RUNNER, "");
+    //        assertFalse("Movie trailers missing", result.isEmpty());
+    //    }
 
     @Test
     public void testGetMovieVideos() {
@@ -147,40 +158,41 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
     public void testCreateImageUrl() {
         MovieDb movie = tmdb.getMovies().getMovie(ID_MOVIE_BLADE_RUNNER, "");
         String result = Utils.createImageUrl(tmdb, movie.getPosterPath(), "original").toString();
-        assertTrue("Error compiling image URL", !result.isEmpty());
+        assertFalse("Error compiling image URL", result.isEmpty());
     }
 
     @Test
     public void testGetNowPlayingMovies() {
         List<MovieDb> result = tmdb.getMovies().getNowPlayingMovies(LANGUAGE_DEFAULT, 0, null).getResults();
-        assertTrue("No now playing movies found", !result.isEmpty());
+        assertFalse("No now playing movies found", result.isEmpty());
     }
 
     @Test
     public void testGetPopularMovieList() {
         List<MovieDb> result = tmdb.getMovies().getPopularMovies(LANGUAGE_DEFAULT, 0).getResults();
-        assertTrue("No popular movies found", !result.isEmpty());
+        assertFalse("No popular movies found", result.isEmpty());
         assertNotNull(result.get(0).getOriginalTitle());
-//        assertNotNull(result.get(0).getImdbID());
+        //        assertNotNull(result.get(0).getImdbID());
 
     }
 
     @Test
     public void testGetTopRatedMovies() {
         List<MovieDb> results = tmdb.getMovies().getTopRatedMovies(LANGUAGE_DEFAULT, 0).getResults();
-        assertTrue("No top rated movies found", !results.isEmpty());
+        assertFalse("No top rated movies found", results.isEmpty());
     }
 
     @Test
     public void testGetSimilarMovies() {
-        List<MovieDb> result = tmdb.getMovies().getSimilarMovies(ID_MOVIE_BLADE_RUNNER, LANGUAGE_DEFAULT, 0).getResults();
-        assertTrue("No similar movies found", !result.isEmpty());
+        List<MovieDb> result =
+            tmdb.getMovies().getSimilarMovies(ID_MOVIE_BLADE_RUNNER, LANGUAGE_DEFAULT, 0).getResults();
+        assertFalse("No similar movies found", result.isEmpty());
     }
 
     @Test
     public void testGetLatestMovie() {
         MovieDb result = tmdb.getMovies().getLatestMovie();
-        assertTrue("No latest movie found", result != null);
+        assertNotNull("No latest movie found", result);
         assertTrue("No latest movie found", result.getId() > 0);
     }
 
@@ -188,7 +200,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
     public void testGetUpcoming() throws Exception {
 
         List<MovieDb> result = tmdb.getMovies().getUpcoming("en-US", 1, null).getResults();
-        assertTrue("No upcoming movies found", !result.isEmpty());
+        assertFalse("No upcoming movies found", result.isEmpty());
     }
 
     @Ignore("Do not test this until it is fixed")
@@ -219,25 +231,25 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         configApiUrl.addParam("api_key", getApiKey());
 
         doReturn(configResponse)
-                .when(mockUrlReader)
-                .request(
-                        argThat(url -> url.getPath().equals(new ApiUrl("configuration").buildUrl().getPath())),
-                        eq(null),
-                        eq(RequestMethod.GET));
+            .when(mockUrlReader)
+            .request(
+                argThat(url -> url.getPath().equals(new ApiUrl("configuration").buildUrl().getPath())),
+                eq(null),
+                eq(RequestType.GET));
 
         TmdbApi testTmdb = new TmdbApi("dummy_api", mockUrlReader, true);
 
         int movieId = 1234;
         ApiUrl expected = new ApiUrl(TMDB_METHOD_MOVIE, movieId, TmdbMovies.MovieMethod.watch_providers);
         doReturn(mockResponse)
-                .when(mockUrlReader)
-                .request(
-                        argThat(url -> url.getPath().equals(expected.buildUrl().getPath())),
-                        eq(null),
-                        eq(RequestMethod.GET));
+            .when(mockUrlReader)
+            .request(
+                argThat(url -> url.getPath().equals(expected.buildUrl().getPath())),
+                eq(null),
+                eq(RequestType.GET));
 
         ProviderResults results = testTmdb.getMovies()
-                .getWatchProviders(movieId);
+            .getWatchProviders(movieId);
 
         assertTrue(true);
         assertEquals(41, results.getResults().size());
@@ -255,7 +267,8 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         try {
             tmdb.getMovies().getMovie(199392, "fr", TmdbMovies.MovieMethod.values());
             Assert.fail("exception should have been thrown");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -270,7 +283,7 @@ public class MoviesApiTest extends AbstractTmdbApiTest {
         // call API requesting for credits
         // Request URL be like https://api.themoviedb.org/3/movie/293660?append_to_response=credits&language=en
         movieDb = tmdbMovies.getMovie(293660, "en", TmdbMovies.MovieMethod.credits);
-        assertTrue("Credits returned", movieDb.getCredits() != null);
+        assertNotNull("Credits returned", movieDb.getCredits());
         assertTrue("Credits-cast found", movieDb.getCast().size() > 0);
         assertTrue("Credits-crew found", movieDb.getCrew().size() > 0);
     }

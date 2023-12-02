@@ -15,19 +15,23 @@ import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-
+/**
+ * The movie database api for searching. See the
+ * <a href="https://developer.themoviedb.org/reference/search-collection">documentation</a> for more info.
+ */
 public class TmdbSearch extends AbstractTmdbApi {
-
     public static final String TMDB_METHOD_SEARCH = "search";
-    private static final String PARAM_QUERY = "query";
 
     public static final Object TMDB_METHOD_MULTI = "multi";
 
+    private static final String PARAM_QUERY = "query";
 
+    /**
+     * Create a new TmdbSearch instance to call the search TMDb API methods.
+     */
     public TmdbSearch(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
-
 
     /**
      * Search Movies This is a good starting point to start finding movies on TMDb.
@@ -38,7 +42,8 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param includeAdult Whether to include adult titles in the search.
      * @param page         The page of results to return. 0 to get the default (first page).
      */
-    public MovieResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult, Integer page) {
+    public MovieResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult,
+                                        Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MOVIE);
 
         if (isBlank(query)) {
@@ -62,7 +67,6 @@ public class TmdbSearch extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-
     /**
      * Search for TV shows by title.
      *
@@ -72,7 +76,8 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param includeAdult Whether to include adult titles in the search.
      * @param page         The page of results to return. 0 to get the default (first page).
      */
-    public TvResultsPage searchTv(String query, Integer searchYear, String language, boolean includeAdult, Integer page) {
+    public TvResultsPage searchTv(String query, Integer searchYear, String language, boolean includeAdult,
+                                  Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV);
 
         if (isBlank(query)) {
@@ -95,7 +100,6 @@ public class TmdbSearch extends AbstractTmdbApi {
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
-
 
     /**
      * Search for collections by name.
@@ -121,10 +125,9 @@ public class TmdbSearch extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, CollectionResultsPage.class);
     }
 
-
     /**
      * This is a good starting point to start finding people on TMDb.
-     * 
+     *
      * The idea is to be a quick and light method so you can iterate through people quickly.
      */
 
@@ -140,13 +143,12 @@ public class TmdbSearch extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, TmdbPeople.PersonResultsPage.class);
     }
 
-
     /**
      * Search for lists by name and description.
      */
     public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) {
         System.err.println("This method is part of the API but seems currently not available. " +
-                "See https://www.themoviedb.org/talk/593409e3c3a36859ef01eddb#597124f8c3a3681608008424");
+            "See https://www.themoviedb.org/talk/593409e3c3a36859ef01eddb#597124f8c3a3681608008424");
 
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_LIST);
 
@@ -161,13 +163,12 @@ public class TmdbSearch extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, TmdbAccount.MovieListResultsPage.class);
     }
 
-
     /**
      * Search Companies.
-     * 
+     *
      * You can use this method to search for production companies that are part of TMDb. The company IDs will map to
      * those returned on movie calls.
-     * 
+     *
      * http://help.themoviedb.org/kb/api/search-companies
      */
     public CompanyResultsPage searchCompany(String companyName, Integer page) {
@@ -179,9 +180,8 @@ public class TmdbSearch extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, CompanyResultsPage.class);
     }
 
-
     /**
-     * Search for keywords by name
+     * Search for keywords by name.
      */
     public KeywordResultsPage searchKeyword(String query, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword");
@@ -198,6 +198,7 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search the movie, tv show and person collections with a single query.
      * <p>Each mapped result is the same response you would get from each independent search.</p>
+     *
      * @return ResultsPage of Multi.
      */
     public MultiListResultsPage searchMulti(String query, String language, Integer page) {
@@ -218,16 +219,14 @@ public class TmdbSearch extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MultiListResultsPage.class);
     }
 
-
+    // CHECKSTYLE OFF: MissingJavadocType
     public static class KeywordResultsPage extends ResultsPage<Keyword> {
 
     }
 
-
     public static class CompanyResultsPage extends ResultsPage<Company> {
 
     }
-
 
     public static class CollectionResultsPage extends ResultsPage<Collection> {
 
@@ -236,5 +235,5 @@ public class TmdbSearch extends AbstractTmdbApi {
     public static class MultiListResultsPage extends ResultsPage<Multi> {
 
     }
-
+    // CHECKSTYLE ON: MissingJavadocType
 }

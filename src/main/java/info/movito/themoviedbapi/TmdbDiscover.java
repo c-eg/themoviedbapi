@@ -4,21 +4,23 @@ import info.movito.themoviedbapi.model.Discover;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
-
+/**
+ * The movie database api for discover. See the
+ * <a href="https://developer.themoviedb.org/reference/discover-movie">documentation</a> for more info.
+ */
 public class TmdbDiscover extends AbstractTmdbApi {
-
-
     public static final String TMDB_METHOD_DISCOVER = "discover";
 
-
+    /**
+     * Create a new TmdbDiscover instance to call the discover related TMDb API methods.
+     */
     TmdbDiscover(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
 
-
     /**
      * Discover movies by different types of data like average rating, number of votes, genres and certifications.
-     * 
+     *
      * You can alternatively create a "discover" object and pass it to this method to cut out the requirement for all of
      * these parameters
      *
@@ -43,43 +45,43 @@ public class TmdbDiscover extends AbstractTmdbApi {
      *                             certification for the specified 'certificationCountry'.
      * @param withCompanies        Filter movies to include a specific company. Expected value is an integer (the id of
      *                             a company). They can be comma separated to indicate an 'AND' query.
-     * @return
+     * @return the movie results page.
      */
-    public MovieResultsPage getDiscover(int page, String language, String sortBy, boolean includeAdult, int year,
-                                        int primaryReleaseYear, int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
-                                        String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies) {
+    public MovieResultsPage getDiscover(int page, String language, String sortBy, boolean includeAdult, int year, int primaryReleaseYear,
+                                        int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
+                                        String releaseDateLte, String certificationCountry, String certificationLte,
+                                        String withCompanies) {
 
         Discover discover = new Discover();
         discover.page(page)
-                .language(language)
-                .sortBy(sortBy)
-                .includeAdult(includeAdult)
-                .year(year)
-                .primaryReleaseYear(primaryReleaseYear)
-                .voteCountGte(voteCountGte)
-                .voteAverageGte(voteAverageGte)
-                .withGenres(withGenres)
-                .releaseDateGte(releaseDateGte)
-                .releaseDateLte(releaseDateLte)
-                .certificationCountry(certificationCountry)
-                .certificationLte(certificationLte)
-                .withCompanies(withCompanies);
+            .language(language)
+            .sortBy(sortBy)
+            .includeAdult(includeAdult)
+            .year(year)
+            .primaryReleaseYear(primaryReleaseYear)
+            .voteCountGte(voteCountGte)
+            .voteAverageGte(voteAverageGte)
+            .withGenres(withGenres)
+            .releaseDateGte(releaseDateGte)
+            .releaseDateLte(releaseDateLte)
+            .certificationCountry(certificationCountry)
+            .certificationLte(certificationLte)
+            .withCompanies(withCompanies);
 
         return getDiscover(discover);
     }
-
 
     /**
      * Discover movies by different types of data like average rating, number of votes, genres and certifications.
      *
      * @param discover A discover object containing the search criteria required
-     * @return
+     * @return the movie results page.
      */
     public MovieResultsPage getDiscover(Discover discover) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, "movie");
 
-        for (Object key : discover.getParams().keySet()) {
-            apiUrl.addParam((String) key, discover.getParams().get(key));
+        for (String key : discover.getParams().keySet()) {
+            apiUrl.addParam(key, discover.getParams().get(key));
         }
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
@@ -112,10 +114,10 @@ public class TmdbDiscover extends AbstractTmdbApi {
      *                             certification for the specified 'certificationCountry'.
      * @param withCompanies        Filter TVSeries to include a specific company. Expected value is an integer (the id of
      *                             a company). They can be comma separated to indicate an 'AND' query.
-     * @return
+     * @return the tv results page.
      */
-    public TvResultsPage getDiscoverTV(int page, String language, String sortBy, boolean includeAdult, int year,
-                                       int primaryReleaseYear, int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
+    public TvResultsPage getDiscoverTV(int page, String language, String sortBy, boolean includeAdult, int year, int primaryReleaseYear,
+                                       int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
                                        String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies) {
 
         Discover discover = new Discover();
@@ -137,18 +139,17 @@ public class TmdbDiscover extends AbstractTmdbApi {
         return getDiscoverTV(discover);
     }
 
-
     /**
      * Discover TVSeries by different types of data like average rating, number of votes, genres and certifications.
      *
      * @param discover A discover object containing the search criteria required
-     * @return
+     * @return the tv results page.
      */
     public TvResultsPage getDiscoverTV(Discover discover) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, "tv");
 
-        for (Object key : discover.getParams().keySet()) {
-            apiUrl.addParam((String) key, discover.getParams().get(key));
+        for (String key : discover.getParams().keySet()) {
+            apiUrl.addParam(key, discover.getParams().get(key));
         }
 
         return mapJsonResult(apiUrl, TvResultsPage.class);

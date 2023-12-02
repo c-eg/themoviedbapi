@@ -5,16 +5,19 @@ import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
-
+/**
+ * The movie database api for keywords. See the
+ * <a href="https://developer.themoviedb.org/reference/keyword-details">documentation</a> for more info.
+ */
 public class TmdbKeywords extends AbstractTmdbApi {
-
     public static final String TMDB_METHOD_KEYWORD = "keyword";
 
-
+    /**
+     * Create a new TmdbKeywords instance to call the keywords TMDb API methods.
+     */
     TmdbKeywords(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
-
 
     /**
      * Get the basic information for a specific keyword id.
@@ -25,13 +28,9 @@ public class TmdbKeywords extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, Keyword.class);
     }
 
-
     /**
      * Get the list of movies for a particular keyword by id.
      *
-     * @param keywordId
-     * @param language
-     * @param page
      * @return List of movies with the keyword
      */
     public MovieResultsPage getKeywordMovies(String keywordId, String language, Integer page) {
@@ -44,7 +43,9 @@ public class TmdbKeywords extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-
+    /**
+     * Keyword Result Page.
+     */
     public static class KeywordResultsPage extends ResultsPage<Keyword> {
 
     }

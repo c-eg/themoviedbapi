@@ -13,18 +13,17 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-
 public class SeriesApiTest extends AbstractTmdbApiTest {
 
     public static final int BREAKING_BAD_SERIES_ID = 1396;
 
-
     @Test
     public void getSeries() {
-        TvSeries result = tmdb.getTvSeries().getSeries(BREAKING_BAD_SERIES_ID, LANGUAGE_ENGLISH, TmdbTV.TvMethod.credits, TmdbTV.TvMethod.external_ids);
+        TvSeries result = tmdb.getTvSeries()
+            .getSeries(BREAKING_BAD_SERIES_ID, LANGUAGE_ENGLISH, TmdbTV.TvMethod.credits, TmdbTV.TvMethod.external_ids);
 
         assertNotNull("No results found", result);
-        Assert.assertTrue("No results found", result.getNetworks().size() == 1);
+        assertEquals("No results found", 1, result.getNetworks().size());
     }
 
     @Test
@@ -34,8 +33,8 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
 
         assertEquals("Unexpected genre count for mr robot", 2, result.getGenres().size());
 
-//       TvResultsPage popular = tmdb.getTvSeries().getPopular(LANGUAGE_ENGLISH, 1);
-//       System.out.println(popular);
+        //       TvResultsPage popular = tmdb.getTvSeries().getPopular(LANGUAGE_ENGLISH, 1);
+        //       System.out.println(popular);
     }
 
     @Test
@@ -45,60 +44,56 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
 
         assertEquals("Unexpected keyword count for mr robot", 8, result.getKeywords().size());
 
-//       TvResultsPage popular = tmdb.getTvSeries().getPopular(LANGUAGE_ENGLISH, 1);
-//       System.out.println(popular);
+        //       TvResultsPage popular = tmdb.getTvSeries().getPopular(LANGUAGE_ENGLISH, 1);
+        //       System.out.println(popular);
     }
-
 
     @Test
     public void getSeason() {
         TvSeason result = tmdb.getTvSeasons().getSeason(BREAKING_BAD_SERIES_ID, 5, LANGUAGE_ENGLISH);
 
         assertNotNull("No results found", result);
-        Assert.assertTrue("episode number does not match", result.getEpisodes().get(0).getEpisodeNumber() == 1);
+        assertEquals("episode number does not match", 1, result.getEpisodes().get(0).getEpisodeNumber());
     }
-
 
     @Test
     public void getSeasonWithAppendedMethods() {
-        TvSeason result = tmdb.getTvSeasons().getSeason(BREAKING_BAD_SERIES_ID, 5, LANGUAGE_ENGLISH, TmdbTvSeasons.SeasonMethod.values());
+        TvSeason result = tmdb.getTvSeasons()
+            .getSeason(BREAKING_BAD_SERIES_ID, 5, LANGUAGE_ENGLISH, TmdbTvSeasons.SeasonMethod.values());
 
         assertNotNull("No results found", result);
-        Assert.assertTrue("episode number does not match", result.getEpisodes().get(0).getEpisodeNumber() == 1);
+        assertEquals("episode number does not match", 1, result.getEpisodes().get(0).getEpisodeNumber());
 
         // todo add more asserts here that test the methods
     }
-
 
     @Test
     public void getEpisode() {
         TvEpisode episode = tmdb.getTvEpisodes().getEpisode(BREAKING_BAD_SERIES_ID, 5, 3, LANGUAGE_ENGLISH);
 
         assertNotNull("No results found", episode);
-        Assert.assertTrue("episode number does not match", episode.getEpisodeNumber() == 3);
+        assertEquals("episode number does not match", 3, episode.getEpisodeNumber());
         Assert.assertEquals("episode titles does not match", "Hazard Pay", episode.getName());
     }
 
-
     @Test
     public void getEpisodeWithAppendedMethods() {
-        TvEpisode episode = tmdb.getTvEpisodes().getEpisode(BREAKING_BAD_SERIES_ID, 5, 3, LANGUAGE_ENGLISH, TmdbTvEpisodes.EpisodeMethod.values());
+        TvEpisode episode = tmdb.getTvEpisodes()
+            .getEpisode(BREAKING_BAD_SERIES_ID, 5, 3, LANGUAGE_ENGLISH, TmdbTvEpisodes.EpisodeMethod.values());
 
         assertNotNull("No results found", episode);
-        Assert.assertTrue("episode number does not match", episode.getEpisodeNumber() == 3);
+        assertEquals("episode number does not match", 3, episode.getEpisodeNumber());
         Assert.assertEquals("episode titles does not match", "Hazard Pay", episode.getName());
         Assert.assertEquals("episode titles does not match", 8, episode.getCredits().getCast().size());
         Assert.assertEquals("episode titles does not match", "4339518", episode.getExternalIds().getTvdbId());
     }
 
-
     @Test
     public void testHomelandEpisodeStills() {
-        TvEpisode episode = tmdb.getTvEpisodes().getEpisode(1407, 1, 1, LANGUAGE_ENGLISH, TmdbTvEpisodes.EpisodeMethod.values());
+        TvEpisode episode =
+            tmdb.getTvEpisodes().getEpisode(1407, 1, 1, LANGUAGE_ENGLISH, TmdbTvEpisodes.EpisodeMethod.values());
         Assert.assertFalse(episode.getImages().getStills().isEmpty());
-
     }
-
 
     @Test
     public void testAiringToday() {
@@ -115,12 +110,11 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
         Assert.assertFalse(en.getResults().isEmpty());
     }
 
-
     @Test
     public void testGetMovieTrailers() {
         //todo implement me
-//        List<Trailer> result = tmdb.getTvSeries().getSeries(46648, "", TmdbTV.TvMethod.values()).getTrailers();
-//        assertFalse("Movie trailers missing", result.isEmpty());
+        //        List<Trailer> result = tmdb.getTvSeries().getSeries(46648, "", TmdbTV.TvMethod.values()).getTrailers();
+        //        assertFalse("Movie trailers missing", result.isEmpty());
     }
 
     @Test
@@ -130,5 +124,4 @@ public class SeriesApiTest extends AbstractTmdbApiTest {
 
         assertEquals("Unexpected content ratings count for mr robot", 5, result.getContentRatings().size());
     }
-
 }
