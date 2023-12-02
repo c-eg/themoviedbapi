@@ -5,27 +5,22 @@ package info.movito.themoviedbapi.model.core;
  * api.
  */
 public class SessionToken {
-
     private final String sessionToken;
-
 
     public SessionToken(String sessionToken) {
         assert sessionToken != null;
         this.sessionToken = sessionToken;
     }
 
-
     @Override
     public String toString() {
         return sessionToken;
     }
 
-
     @Override
     public int hashCode() {
         return sessionToken.hashCode();
     }
-
 
     @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     @Override

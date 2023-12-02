@@ -6,27 +6,20 @@ import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 
-
 /**
  * @author Holger Brandl
  */
 public abstract class AbstractJsonMapping implements Serializable {
-
-    private static Logger getLogger(Class<?> aClass) {
-        return LoggerFactory.getLogger(aClass);
+    private static Logger getLogger(Class<?> clazz) {
+        return LoggerFactory.getLogger(clazz);
     }
 
-
     /**
-     * Handle unknown properties and print a message
+     * Handle unknown properties and print a message.
      */
     @JsonAnySetter
     public void handleUnknown(String key, Object value) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Unknown property: '").append(key);
-        sb.append("' value: '").append(value).append("'");
-
-        getLogger(this.getClass()).trace(sb.toString());
+        String message = "Unknown property: '" + key + "' value: '" + value + "'";
+        getLogger(this.getClass()).trace(message);
     }
-
 }

@@ -11,36 +11,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-// todo fix or remove this
+/**
+ * TODO: fix or change this.
+ */
 public class ChangesItems {
+    private final Map<String, Object> newItems = new HashMap<>();
 
     @JsonProperty("changes")
-    private List<ChangeKeyItem> changedItems = new ArrayList<ChangeKeyItem>();
-    private final Map<String, Object> newItems = new HashMap<String, Object>();
-
+    private List<ChangeKeyItem> changedItems = new ArrayList<>();
 
     public List<ChangeKeyItem> getChangedItems() {
         return changedItems;
     }
 
-
     public void setChangedItems(List<ChangeKeyItem> changes) {
         this.changedItems = changes;
     }
-
 
     @JsonAnyGetter
     public Map<String, Object> getNewItems() {
         return this.newItems;
     }
 
-
     @JsonAnySetter
     public void setNewItems(String name, Object value) {
         this.newItems.put(name, value);
     }
-
 
     @Override
     public String toString() {

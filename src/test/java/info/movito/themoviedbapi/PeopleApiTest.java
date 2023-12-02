@@ -11,25 +11,24 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class PeopleApiTest extends AbstractTmdbApiTest {
-
 
     @Test
     public void testGetPersonInfo() {
         PersonPeople result = tmdb.getPeople().getPersonInfo(ID_PERSON_BRUCE_WILLIS);
-        assertTrue("Wrong actor returned", result.getId() == ID_PERSON_BRUCE_WILLIS);
+        assertEquals("Wrong actor returned", ID_PERSON_BRUCE_WILLIS, result.getId());
     }
-
 
     @Test
     public void testGetPersonCredits() {
         PersonCredits result = tmdb.getPeople().getCombinedPersonCredits(ID_PERSON_BRUCE_WILLIS);
         assertTrue("No cast information", result.getCast().size() > 0);
     }
-
 
     @Test
     public void testGetPersonImages() {
@@ -73,7 +72,6 @@ public class PeopleApiTest extends AbstractTmdbApiTest {
         assertTrue("No results found", StringUtils.isNotBlank(result.getName()));
     }
 
-
     @Ignore("Not ready yet")
     public void testGetPersonChanges() throws Exception {
 
@@ -82,7 +80,6 @@ public class PeopleApiTest extends AbstractTmdbApiTest {
         tmdb.getPeople().getPersonChanges(ID_PERSON_BRUCE_WILLIS, startDate, endDate);
     }
 
-
     @Test
     public void testGetPersonPopular_int() throws Exception {
 
@@ -90,5 +87,4 @@ public class PeopleApiTest extends AbstractTmdbApiTest {
         List<Person> result = tmdb.getPeople().getPersonPopular(page).getResults();
         assertFalse("No popular people", result.isEmpty());
     }
-
 }

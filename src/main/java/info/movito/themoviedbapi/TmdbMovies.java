@@ -1,7 +1,16 @@
 package info.movito.themoviedbapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.*;
+import info.movito.themoviedbapi.model.AlternativeTitle;
+import info.movito.themoviedbapi.model.Credits;
+import info.movito.themoviedbapi.model.ExternalIds;
+import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.MovieImages;
+import info.movito.themoviedbapi.model.MovieTranslations;
+import info.movito.themoviedbapi.model.MoviesAlternativeTitles;
+import info.movito.themoviedbapi.model.ReleaseInfo;
+import info.movito.themoviedbapi.model.Translation;
+import info.movito.themoviedbapi.model.Video;
 import info.movito.themoviedbapi.model.changes.ChangesItems;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
@@ -18,53 +27,31 @@ import static info.movito.themoviedbapi.TmdbMovies.MovieMethod.videos;
 import static info.movito.themoviedbapi.Utils.asStringArray;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-
+/**
+ * The movie database api for movies. See the
+ * <a href="https://developer.themoviedb.org/reference/movie-details">documentation</a> for more info.
+ */
 public class TmdbMovies extends AbstractTmdbApi {
-
     // API Methods
     public static final String TMDB_METHOD_MOVIE = "movie";
+
     private static final String PARAM_START_DATE = "start_date";
+
     private static final String PARAM_END_DATE = "end_date";
+
     private static final String PARAM_COUNTRY = "country";
+
     private static final String PARAM_REGION = "region";
 
-
-    // account_states and rating are not included as it wouldn't work anyway because of missing session id
-    // --> inject session id into tmdb-instance?
-    public static enum MovieMethod {
-        alternative_titles, credits, images, keywords, releases, release_dates,
-        @Deprecated trailers,
-        videos, // replacement for trailers
-        translations, similar, recommendations,
-        reviews, lists, changes, latest, upcoming, now_playing, popular, top_rated,
-        watch_providers("watch/providers"), external_ids;
-
-        private String name;
-
-        MovieMethod() {}
-
-        MovieMethod(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            if (name != null) {
-                return name;
-            }
-
-            return super.toString();
-        }
-    }
-
-
+    /**
+     * Create a new TmdbMovies instance to call the movie related TMDb API methods.
+     */
     public TmdbMovies(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
 
-
     /**
-     * This method is used to retrieve all of the basic movie information.
+     * This method is used to retrieve all the basic movie information.
      *
      * It will return the single highest rated poster and backdrop.
      */
@@ -78,9 +65,8 @@ public class TmdbMovies extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieDb.class);
     }
 
-
     /**
-     * This method is used to retrieve all of the alternative titles we have for a particular movie.
+     * This method is used to retrieve all the alternative titles we have for a particular movie.
      */
     public List<AlternativeTitle> getAlternativeTitles(int movieId, String country) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.alternative_titles);
@@ -89,17 +75,20 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addParam(PARAM_COUNTRY, country);
         }
 
-
         return mapJsonResult(apiUrl, MoviesAlternativeTitles.class).getTitles();
     }
 
-
+    /**
+     * Gets the movie credits.
+     *
+     * @param movieId the movies id
+     * @return the movie credits
+     */
     public Credits getCredits(int movieId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.credits);
 
         return mapJsonResult(apiUrl, Credits.class);
     }
-
 
     /**
      * This method should be used when you’re wanting to retrieve all of the images for a particular movie.
@@ -112,26 +101,16 @@ public class TmdbMovies extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieImages.class);
     }
 
-
     /**
-     * This method is used to retrieve all of the keywords that have been added to a particular movie.
+     * This method is used to retrieve all the keywords that have been added to a particular movie.
      *
      * Currently, only English keywords exist.
      */
     public List<Keyword> getKeywords(int movieId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.keywords);
 
-
         return mapJsonResult(apiUrl, KeywordResults.class).results;
     }
-
-
-    private static class KeywordResults extends IdElement {
-
-        @JsonProperty("keywords")
-        List<Keyword> results;
-    }
-
 
     /**
      * This method is used to retrieve all of the release and certification data we have for a specific movie.
@@ -139,24 +118,10 @@ public class TmdbMovies extends AbstractTmdbApi {
     public List<ReleaseInfo> getReleaseInfo(int movieId, String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.release_dates);
 
-
         apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, ReleaseInfoResults.class).results;
     }
-
-
-    public static class ReleaseInfoResults extends IdElement {
-
-        @JsonProperty("results")
-        private List<ReleaseInfo> results;
-
-
-        public List<ReleaseInfo> getResults() {
-            return results;
-        }
-    }
-
 
     /**
      * This method is used to retrieve all of the videos for a particular movie.
@@ -171,7 +136,6 @@ public class TmdbMovies extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, Video.Results.class).getVideos();
     }
 
-
     /**
      * This method is used to retrieve a list of the available translations for a specific movie.
      */
@@ -180,7 +144,6 @@ public class TmdbMovies extends AbstractTmdbApi {
 
         return mapJsonResult(apiUrl, MovieTranslations.class).getTranslations();
     }
-
 
     /**
      * The similar movies method will let you retrieve the similar movies for a particular movie.
@@ -216,11 +179,11 @@ public class TmdbMovies extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-
     /**
-     * Get the lists that the movie belongs to
+     * Get the lists that the movie belongs to.
      */
-    public TmdbAccount.MovieListResultsPage getListsContaining(int movieId, SessionToken sessionToken, String language, Integer page) {
+    public TmdbAccount.MovieListResultsPage getListsContaining(int movieId, SessionToken sessionToken, String language,
+                                                               Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.lists);
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -231,7 +194,6 @@ public class TmdbMovies extends AbstractTmdbApi {
 
         return mapJsonResult(apiUrl, TmdbAccount.MovieListResultsPage.class);
     }
-
 
     /**
      * Get the changes for a specific movie id.
@@ -261,7 +223,6 @@ public class TmdbMovies extends AbstractTmdbApi {
         }
 
         return mapJsonResult(apiUrl, ChangesItems.class);
-
     }
 
     /**
@@ -282,7 +243,6 @@ public class TmdbMovies extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, ProviderResults.class);
     }
 
-
     /**
      * This method is used to retrieve the external ids for a movie.
      */
@@ -292,17 +252,14 @@ public class TmdbMovies extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, ExternalIds.class);
     }
 
-
     /**
      * This method is used to retrieve the newest movie that was added to TMDb.
      */
     public MovieDb getLatestMovie() {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.latest);
 
-
         return mapJsonResult(apiUrl, MovieDb.class);
     }
-
 
     /**
      * Get the list of upcoming movies.
@@ -325,9 +282,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         }
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
-
     }
-
 
     /**
      * This method is used to retrieve the movies currently in theatres.
@@ -348,7 +303,6 @@ public class TmdbMovies extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-
     /**
      * This method is used to retrieve the daily movie popularity list.
      *
@@ -364,7 +318,6 @@ public class TmdbMovies extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-
     /**
      * This method is used to retrieve the top rated movies that have over 10 votes on TMDb.
      *
@@ -377,9 +330,55 @@ public class TmdbMovies extends AbstractTmdbApi {
 
         apiUrl.addPage(page);
 
-
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
+    /**
+     * TODO: account_states and rating are not included as it wouldn't work anyway because of missing session id
+     * --> inject session id into tmdb-instance?
+     * TODO: remove "trailers" if deprecated or no longer available.
+     */
+    public enum MovieMethod {
+        // CHECKSTYLE OFF: AnnotationLocation
+        alternative_titles, credits, images, keywords, releases, release_dates,
+        @Deprecated trailers,
+        videos, // replacement for trailers
+        translations, similar, recommendations,
+        reviews, lists, changes, latest, upcoming, now_playing, popular, top_rated,
+        watch_providers("watch/providers"), external_ids;
+        // CHECKSTYLE ON: AnnotationLocation
 
+        private String name;
+
+        MovieMethod() {
+        }
+
+        MovieMethod(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            if (name != null) {
+                return name;
+            }
+
+            return super.toString();
+        }
+    }
+
+    private static class KeywordResults extends IdElement {
+        @JsonProperty("keywords")
+        List<Keyword> results;
+    }
+
+    @SuppressWarnings("checkstyle:MissingJavadocType")
+    public static class ReleaseInfoResults extends IdElement {
+        @JsonProperty("results")
+        private List<ReleaseInfo> results;
+
+        public List<ReleaseInfo> getResults() {
+            return results;
+        }
+    }
 }

@@ -9,7 +9,6 @@ import java.util.List;
 
 @JsonRootName("content_ratings")
 public class ContentRating implements Serializable {
-
     @JsonProperty("iso_3166_1")
     private String locale;
 

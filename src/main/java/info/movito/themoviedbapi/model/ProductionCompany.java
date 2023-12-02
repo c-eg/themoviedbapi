@@ -8,7 +8,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 @JsonRootName("production_company")
 public class ProductionCompany extends NamedIdElement {
-
     @JsonProperty("logo_path")
     private String logoPath;
 

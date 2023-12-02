@@ -9,7 +9,9 @@ import org.junit.Test;
 import java.util.List;
 import java.util.TimeZone;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 
 public class TimezonesApiTest extends AbstractTmdbApiTest {
 
@@ -20,7 +22,7 @@ public class TimezonesApiTest extends AbstractTmdbApiTest {
         for (Timezone tz : timezones) {
             // Check if the time zone conforms to the JAVA TimeZone names 
             TimeZone t = TimeZone.getTimeZone(tz.getName());
-            assertFalse("Timezone '" + tz + "' is unknown", t == null);
+            assertNotNull("Timezone '" + tz + "' is unknown", t);
         }
 
         // search for an example timezone
@@ -33,10 +35,9 @@ public class TimezonesApiTest extends AbstractTmdbApiTest {
 
         assertEquals("unexpected number of timezone timezone names", 427, timezones.size());
 
-
         // disabled because certain time-zones are present in multiple countries
-//        HashSet<String> tzNames = Sets.newHashSet(Iterables.transform(timezones, Functions.toStringFunction()));
-//        assertEquals("duplicated timezone names", tzNames.size(), timezones.size());
+        //        HashSet<String> tzNames = Sets.newHashSet(Iterables.transform(timezones, Functions.toStringFunction()));
+        //        assertEquals("duplicated timezone names", tzNames.size(), timezones.size());
 
     }
 }

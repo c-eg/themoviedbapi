@@ -11,10 +11,7 @@ import info.movito.themoviedbapi.model.keywords.Keyword;
 
 import java.util.List;
 
-
 public class AbstractTvElement extends NamedIdElement {
-
-
     // Appendable responses for all tv elements
 
     @JsonProperty("credits")
@@ -36,32 +33,29 @@ public class AbstractTvElement extends NamedIdElement {
         return credits;
     }
 
-    public ExternalIds getExternalIds() {
-        return externalIds;
+    public void setCredits(Credits c) {
+        credits = c;
     }
 
-
-    public MovieImages getImages() {
-        return images;
+    public ExternalIds getExternalIds() {
+        return externalIds;
     }
 
     public void setExternalIds(ExternalIds e) {
         externalIds = e;
     }
 
-    public void setCredits(Credits c) {
-        credits = c;
+    public MovieImages getImages() {
+        return images;
     }
-
-    public List<Video> getVideos() {
-        return videos != null ? videos.getVideos() : null;
-    }
-
 
     public void setImages(MovieImages images) {
         this.images = images;
     }
 
+    public List<Video> getVideos() {
+        return videos != null ? videos.getVideos() : null;
+    }
 
     public void setVideos(Video.Results videos) {
         this.videos = videos;

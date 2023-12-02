@@ -8,22 +8,26 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 
 import java.util.List;
 
-
+/**
+ * The movie database api for genre. See the
+ * <a href="https://developer.themoviedb.org/reference/genre-movie-list">documentation</a> for more info.
+ */
 public class TmdbGenre extends AbstractTmdbApi {
-
     public static final String PARAM_INCLUDE_ALL_MOVIES = "include_all_movies";
+
     public static final String TMDB_METHOD_GENRE = "genre";
 
-
+    /**
+     * Create a new TmdbGenre instance to call the genre related TMDb API methods.
+     */
     public TmdbGenre(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
 
-
     /**
      * You can use this method to retrieve the list of genres used on TMDb.
-     * 
      * These IDs will correspond to those found in movie calls.
+     *
      * @deprecated use {@code getMovieGenreList} as TV shows Genres was added.
      */
     @Deprecated
@@ -31,9 +35,8 @@ public class TmdbGenre extends AbstractTmdbApi {
         return getMovieGenreList(language);
     }
 
-
     /**
-     * You can use this method to retrieve the list of of official genres for
+     * You can use this method to retrieve the list of official genres for
      * movies used on TMDb.
      *
      * These IDs will correspond to those found in movie calls.
@@ -45,7 +48,6 @@ public class TmdbGenre extends AbstractTmdbApi {
 
         return mapJsonResult(apiUrl, Genres.class).genres;
     }
-
 
     /**
      * You can use this method to retrieve the list of of official genres for
@@ -61,20 +63,11 @@ public class TmdbGenre extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, Genres.class).genres;
     }
 
-
-    private static class Genres extends AbstractJsonMapping {
-
-        @JsonProperty("genres")
-        private List<Genre> genres;
-
-    }
-
-
     /**
      * Get a list of movies per genre.
-     * 
+     *
      * It is important to understand that only movies with more than 10 votes get listed.
-     * 
+     *
      * This prevents movies from 1 10/10 rating from being listed first and for the first 5 pages.
      */
     public MovieResultsPage getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies) {
@@ -87,5 +80,10 @@ public class TmdbGenre extends AbstractTmdbApi {
         apiUrl.addParam(PARAM_INCLUDE_ALL_MOVIES, includeAllMovies);
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
+    }
+
+    private static class Genres extends AbstractJsonMapping {
+        @JsonProperty("genres")
+        private List<Genre> genres;
     }
 }

@@ -1,9 +1,21 @@
 package info.movito.themoviedbapi.model.people;
 
-
+/**
+ * The type of person.
+ */
 public enum PersonType {
+    /**
+     * A member of the cast.
+     */
+    CAST,
 
-    CAST,   // A member of the cast
-    CREW,   // A member of the crew
-    PERSON  // No specific type
+    /**
+     * A member of the crew.
+     */
+    CREW,
+
+    /**
+     * A member of the production.
+     */
+    PERSON
 }

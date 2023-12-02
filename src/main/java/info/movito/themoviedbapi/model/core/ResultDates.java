@@ -7,49 +7,39 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class ResultDates extends AbstractJsonMapping {
-
-
     private static final Logger logger = LoggerFactory.getLogger(ResultDates.class);
 
     @JsonProperty("minimum")
     private String minimum = "";
+
     @JsonProperty("maximum")
     private String maximum = "";
-
 
     public String getMinimum() {
         return minimum;
     }
 
+    public void setMinimum(String minimum) {
+        this.minimum = minimum;
+    }
 
     public String getMaximum() {
         return maximum;
     }
 
-
-    public void setMinimum(String minimum) {
-        this.minimum = minimum;
-    }
-
-
     public void setMaximum(String maximum) {
         this.maximum = maximum;
     }
 
-
     /**
-     * Handle unknown properties and print a message
+     * Handle unknown properties and print a message.
      */
     @JsonAnySetter
     public void handleUnknown(String key, Object value) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Unknown property: '").append(key);
-        sb.append("' value: '").append(value).append("'");
-        logger.trace(sb.toString());
+        String sb = "Unknown property: '" + key + "' value: '" + value + "'";
+        logger.trace(sb);
     }
-
 
     @Override
     public String toString() {

@@ -5,10 +5,7 @@ import info.movito.themoviedbapi.model.core.NamedIdElement;
 
 import java.util.List;
 
-
 public class CollectionInfo extends NamedIdElement {
-
-
     @JsonProperty("overview")
     private String overview;
 
@@ -21,44 +18,35 @@ public class CollectionInfo extends NamedIdElement {
     @JsonProperty("parts")
     private List<Collection> parts;
 
-
     public String getBackdropPath() {
         return backdropPath;
     }
-
-
-    public String getOverview() {
-        return overview;
-    }
-
-
-    public List<Collection> getParts() {
-        return parts;
-    }
-
-
-    public String getPosterPath() {
-        return posterPath;
-    }
-
 
     public void setBackdropPath(String backdropPath) {
         this.backdropPath = backdropPath;
     }
 
+    public String getOverview() {
+        return overview;
+    }
 
     public void setOverview(String overview) {
         this.overview = overview;
     }
 
+    public List<Collection> getParts() {
+        return parts;
+    }
 
     public void setParts(List<Collection> parts) {
         this.parts = parts;
     }
 
+    public String getPosterPath() {
+        return posterPath;
+    }
 
     public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
     }
-
 }

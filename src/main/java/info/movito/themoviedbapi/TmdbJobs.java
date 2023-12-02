@@ -7,24 +7,31 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 
 import java.util.List;
 
-
+/**
+ * TODO: Remove.
+ */
 public class TmdbJobs extends AbstractTmdbApi {
-
     public static final String TMDB_METHOD_JOB = "job";
 
-
+    /**
+     * TODO: Remove.
+     */
     TmdbJobs(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
 
-
+    /**
+     * TODO: Remove.
+     */
     public List<JobDepartment> getJobs() {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_JOB, "list");
 
         return mapJsonResult(apiUrl, JobDepartmentResults.class).jobs;
     }
 
-
+    /**
+     * TODO: Remove.
+     */
     private static class JobDepartmentResults extends AbstractJsonMapping {
 
         @JsonProperty("jobs")

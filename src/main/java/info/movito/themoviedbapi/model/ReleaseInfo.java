@@ -5,12 +5,10 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 import java.util.List;
 
-
 public class ReleaseInfo extends AbstractJsonMapping {
-
-
     @JsonProperty("iso_3166_1")
     private String country;
+
     @JsonProperty("release_dates")
     private List<ReleaseDate> releaseDates;
 
@@ -18,12 +16,12 @@ public class ReleaseInfo extends AbstractJsonMapping {
         return country;
     }
 
-    public List<ReleaseDate> getReleaseDates() {
-        return releaseDates;
-    }
-
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public List<ReleaseDate> getReleaseDates() {
+        return releaseDates;
     }
 
     public void setReleaseDates(List<ReleaseDate> releaseDates) {

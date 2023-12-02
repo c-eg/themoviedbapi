@@ -2,7 +2,11 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.config.Account;
-import info.movito.themoviedbapi.model.core.*;
+import info.movito.themoviedbapi.model.core.AccountID;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.ResponseStatus;
+import info.movito.themoviedbapi.model.core.ResultsPage;
+import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
 
@@ -13,17 +17,21 @@ import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.TmdbTvEpisodes.TMDB_METHOD_TV_EPISODE;
 import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
 
-
+/**
+ * The movie database api for accounts. See the
+ * <a href="https://developer.themoviedb.org/reference/account-details">documentation</a> for more info.
+ */
 public class TmdbAccount extends AbstractTmdbApi {
-
     public static final String PARAM_SESSION = "session_id";
+
     public static final String TMDB_METHOD_ACCOUNT = "account";
 
-
+    /**
+     * Create a new TmdbAccount instance to call the account related TMDb API methods.
+     */
     TmdbAccount(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
-
 
     /**
      * Get the basic information for an account. You will need to have a valid session id.
@@ -36,11 +44,11 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, Account.class);
     }
 
-
     /**
      * Get the lists that as user has created.
      */
-    public MovieListResultsPage getLists(SessionToken sessionToken, AccountID accountId, String language, Integer page) {
+    public MovieListResultsPage getLists(SessionToken sessionToken, AccountID accountId, String language,
+                                         Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "lists");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -50,44 +58,41 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieListResultsPage.class);
     }
 
-
-    public static class MovieListResultsPage extends ResultsPage<MovieList> {
-
-    }
-
-
+    /**
+     * Get the rated movies from the account.
+     */
     public MovieResultsPage getRatedMovies(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/movies");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
         apiUrl.addPage(page);
 
-
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-
+    /**
+     * Get the rated tv shows from the account.
+     */
     public TvResultsPage getRatedTvSeries(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
         apiUrl.addPage(page);
 
-
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
-
+    /**
+     * Get the rated tv episodes from the account.
+     */
     public TvEpisodesResultsPage getRatedEpisodes(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv/episodes");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
         apiUrl.addPage(page);
 
-
         return mapJsonResult(apiUrl, TvEpisodesResultsPage.class);
     }
-
 
     /**
      * This method lets users rate a movie.
@@ -98,23 +103,29 @@ public class TmdbAccount extends AbstractTmdbApi {
         return postRatingInternal(sessionToken, rating, new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "rating"));
     }
 
-
+    /**
+     * This method lets users rate a tv series.
+     * <p>
+     * A valid session id is required.
+     */
     public boolean postTvSeriesRating(SessionToken sessionToken, Integer movieId, Integer rating) {
         return postRatingInternal(sessionToken, rating, new ApiUrl(TmdbTV.TMDB_METHOD_TV, movieId, "rating"));
     }
 
-
-    public boolean postTvExpisodeRating(SessionToken sessionToken, Integer seriesId, Integer seasonNumber, Integer episodeNumber, Integer rating) {
+    /**
+     * This method lets users rate a tv episode.
+     */
+    public boolean postTvExpisodeRating(SessionToken sessionToken, Integer seriesId, Integer seasonNumber,
+                                        Integer episodeNumber, Integer rating) {
         ApiUrl apiUrl = new ApiUrl(
-                TMDB_METHOD_TV, seriesId,
-                TMDB_METHOD_TV_SEASON, seasonNumber,
-                TMDB_METHOD_TV_EPISODE, episodeNumber,
-                "rating"
+            TMDB_METHOD_TV, seriesId,
+            TMDB_METHOD_TV_SEASON, seasonNumber,
+            TMDB_METHOD_TV_EPISODE, episodeNumber,
+            "rating"
         );
 
         return postRatingInternal(sessionToken, rating, apiUrl);
     }
-
 
     private boolean postRatingInternal(SessionToken sessionToken, Integer rating, ApiUrl apiUrl) {
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -128,7 +139,9 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, ResponseStatus.class, jsonBody).getStatusCode() == 12;
     }
 
-
+    /**
+     * Get favourites movies from the account.
+     */
     public MovieResultsPage getFavoriteMovies(SessionToken sessionToken, AccountID accountId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies");
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -136,7 +149,9 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-
+    /**
+     * Get the favorite tv shows from the account.
+     */
     public TvResultsPage getFavoriteSeries(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv");
 
@@ -146,24 +161,24 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
-
     /**
      * Remove a movie from an account's favorites list.
      */
-    public ResponseStatus addFavorite(SessionToken sessionToken, AccountID accountId, Integer movieId, MediaType mediaType) {
+    public ResponseStatus addFavorite(SessionToken sessionToken, AccountID accountId, Integer movieId,
+                                      MediaType mediaType) {
         return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, true);
     }
 
-
     /**
      * Remove a movie from an account's favorites list.
      */
-    public ResponseStatus removeFavorite(SessionToken sessionToken, AccountID accountId, Integer movieId, MediaType mediaType) {
+    public ResponseStatus removeFavorite(SessionToken sessionToken, AccountID accountId, Integer movieId,
+                                         MediaType mediaType) {
         return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, false);
     }
 
-
-    private ResponseStatus changeFavoriteStatus(SessionToken sessionToken, AccountID accountId, Integer movieId, MediaType mediaType, boolean isFavorite) {
+    private ResponseStatus changeFavoriteStatus(SessionToken sessionToken, AccountID accountId, Integer movieId,
+                                                MediaType mediaType, boolean isFavorite) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -179,7 +194,6 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, ResponseStatus.class, jsonBody);
     }
 
-
     /**
      * Get the list of movies on an accounts watchlist.
      *
@@ -194,7 +208,11 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-
+    /**
+     * Get the list of tv series on an accounts watchlist.
+     *
+     * @return The watchlist of the user
+     */
     public TvResultsPage getWatchListSeries(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/tv");
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -204,24 +222,24 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, TvResultsPage.class);
     }
 
-
     /**
      * Add a movie to an account's watch list.
      */
-    public ResponseStatus addToWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId, MediaType mediaType) {
+    public ResponseStatus addToWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId,
+                                         MediaType mediaType) {
         return modifyWatchList(sessionToken, accountId, movieId, mediaType, true);
     }
-
 
     /**
      * Remove a movie from an account's watch list.
      */
-    public ResponseStatus removeFromWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId, MediaType mediaType) {
+    public ResponseStatus removeFromWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId,
+                                              MediaType mediaType) {
         return modifyWatchList(sessionToken, accountId, movieId, mediaType, false);
     }
 
-
-    private ResponseStatus modifyWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId, MediaType mediaType, boolean isWatched) {
+    private ResponseStatus modifyWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId,
+                                           MediaType mediaType, boolean isWatched) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
 
         apiUrl.addParam(PARAM_SESSION, sessionToken);
@@ -237,20 +255,23 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(apiUrl, ResponseStatus.class, jsonBody);
     }
 
-
     /**
      * needed to tell tmdb api about what type of id is provided. E.g. see http://docs.themoviedb.apiary.io/reference/account/accountidwatchlist
      */
     // note http://stackoverflow.com/questions/8143995/should-java-member-enum-types-be-capitalized
-    public static enum MediaType {
+    public enum MediaType {
         MOVIE, TV;
-
 
         @Override
         public String toString() {
             return super.toString().toLowerCase();
         }
+    }
 
+    /**
+     * Movies List Results Page.
+     */
+    public static class MovieListResultsPage extends ResultsPage<MovieList> {
 
     }
 }

@@ -5,9 +5,7 @@ import info.movito.themoviedbapi.model.core.NamedIdElement;
 
 import java.util.HashMap;
 
-
 public class Account extends NamedIdElement {
-
     @JsonProperty("username")
     private String userName;
 
@@ -21,21 +19,23 @@ public class Account extends NamedIdElement {
         return includeAdult;
     }
 
-
     public void setIncludeAdult(boolean includeAdult) {
         this.includeAdult = includeAdult;
     }
-
 
     public String getUserName() {
         return userName;
     }
 
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
+    /**
+     * Gets the gravatar hash.
+     *
+     * @return the gravatar hash.
+     */
     public String getGravatarHash() {
         if (avatar != null && avatar.get("gravatar") != null) {
             return avatar.get("gravatar").get("hash");

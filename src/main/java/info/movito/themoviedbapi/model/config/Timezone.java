@@ -3,8 +3,8 @@ package info.movito.themoviedbapi.model.config;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 public class Timezone extends AbstractJsonMapping {
-
     private String name;
+
     private String country;
 
     public Timezone(String name, String country) {

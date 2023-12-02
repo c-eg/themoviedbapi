@@ -10,19 +10,16 @@ import info.movito.themoviedbapi.model.people.Person;
 
 import java.util.List;
 
-
 /**
  * @author Holger Brandl
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class TvSeries extends AbstractTvElement implements Multi {
-
     @JsonProperty("created_by")
     private List<Person> createdBy;
 
     @JsonProperty("episode_run_time")
     private List<Integer> episodeRuntime;
-
 
     @JsonProperty("first_air_date")
     private String firstAirDate;
@@ -36,7 +33,6 @@ public class TvSeries extends AbstractTvElement implements Multi {
     @JsonProperty("homepage")
     private String homepage;
 
-
     @JsonProperty("original_name")
     private String originalName;
 
@@ -46,14 +42,11 @@ public class TvSeries extends AbstractTvElement implements Multi {
     @JsonProperty("networks")
     private List<Network> networks;
 
-
     @JsonProperty("overview")
     private String overview;
 
-
     @JsonProperty("popularity")
     private float popularity;
-
 
     @JsonProperty("backdrop_path")
     private String backdropPath;
@@ -61,14 +54,11 @@ public class TvSeries extends AbstractTvElement implements Multi {
     @JsonProperty("poster_path")
     private String posterPath;
 
-
     @JsonProperty("number_of_episodes")
     private int numberOfEpisodes;
 
-
     @JsonProperty("number_of_seasons")
     private int numberOfSeasons;
-
 
     @JsonProperty("seasons")
     private List<TvSeason> seasons;
@@ -95,213 +85,174 @@ public class TvSeries extends AbstractTvElement implements Multi {
         return createdBy;
     }
 
+    public void setCreatedBy(List<Person> createdBy) {
+        this.createdBy = createdBy;
+    }
 
     public List<Integer> getEpisodeRuntime() {
         return episodeRuntime;
     }
 
+    public void setEpisodeRuntime(List<Integer> episodeRuntime) {
+        this.episodeRuntime = episodeRuntime;
+    }
 
     public String getFirstAirDate() {
         return firstAirDate;
     }
 
+    public void setFirstAirDate(String firstAirDate) {
+        this.firstAirDate = firstAirDate;
+    }
 
     public String getLastAirDate() {
         return lastAirDate;
     }
 
+    public void setLastAirDate(String lastAirDate) {
+        this.lastAirDate = lastAirDate;
+    }
 
     public List<Genre> getGenres() {
         return genres;
     }
 
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
 
     public String getHomepage() {
         return homepage;
     }
 
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
+    }
 
     public String getOriginalName() {
         return originalName;
     }
 
+    public void setOriginalName(String originalName) {
+        this.originalName = originalName;
+    }
 
     public List<String> getOriginCountry() {
         return originCountry;
     }
 
+    public void setOriginCountry(List<String> originCountry) {
+        this.originCountry = originCountry;
+    }
 
     public List<Network> getNetworks() {
         return networks;
     }
 
+    public void setNetworks(List<Network> networks) {
+        this.networks = networks;
+    }
 
     public String getOverview() {
         return overview;
-    }
-
-
-    public float getPopularity() {
-        return popularity;
-    }
-
-
-    public String getBackdropPath() {
-        return backdropPath;
-    }
-
-
-    public String getPosterPath() {
-        return posterPath;
-    }
-
-
-    public int getNumberOfEpisodes() {
-        return numberOfEpisodes;
-    }
-
-
-    public int getNumberOfSeasons() {
-        return numberOfSeasons;
-    }
-
-    public List<TvSeason> getSeasons() {
-        return seasons;
-    }
-
-    public ResultsPage<TvSeries> getRecommendations() {
-        return recommendations;
-    }
-
-
-    public void setSeasons(List<TvSeason> seasons) {
-        this.seasons = seasons;
-    }
-
-
-    public float getUserRating() {
-        return userRating;
-    }
-
-
-    public float getVoteAverage() {
-        return voteAverage;
-    }
-
-
-    public int getVoteCount() {
-        return voteCount;
-    }
-
-
-    public String getStatus() {
-        return status;
-    }
-
-
-    public void setNetworks(List<Network> networks) {
-        this.networks = networks;
     }
 
     public void setOverview(String overview) {
         this.overview = overview;
     }
 
-    @Override
-    public MediaType getMediaType() {
-        return MediaType.TV_SERIES;
+    public float getPopularity() {
+        return popularity;
     }
-
-
-    public void setCreatedBy(List<Person> createdBy) {
-        this.createdBy = createdBy;
-    }
-
-
-    public void setEpisodeRuntime(List<Integer> episodeRuntime) {
-        this.episodeRuntime = episodeRuntime;
-    }
-
-
-    public void setFirstAirDate(String firstAirDate) {
-        this.firstAirDate = firstAirDate;
-    }
-
-
-    public void setLastAirDate(String lastAirDate) {
-        this.lastAirDate = lastAirDate;
-    }
-
-
-    public void setGenres(List<Genre> genres) {
-        this.genres = genres;
-    }
-
-
-    public void setHomepage(String homepage) {
-        this.homepage = homepage;
-    }
-
-
-    public void setOriginalName(String originalName) {
-        this.originalName = originalName;
-    }
-
-
-    public void setOriginCountry(List<String> originCountry) {
-        this.originCountry = originCountry;
-    }
-
 
     public void setPopularity(float popularity) {
         this.popularity = popularity;
     }
 
+    public String getBackdropPath() {
+        return backdropPath;
+    }
 
     public void setBackdropPath(String backdropPath) {
         this.backdropPath = backdropPath;
     }
 
+    public String getPosterPath() {
+        return posterPath;
+    }
 
     public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
     }
 
+    public int getNumberOfEpisodes() {
+        return numberOfEpisodes;
+    }
 
     public void setNumberOfEpisodes(int numberOfEpisodes) {
         this.numberOfEpisodes = numberOfEpisodes;
     }
 
+    public int getNumberOfSeasons() {
+        return numberOfSeasons;
+    }
 
     public void setNumberOfSeasons(int numberOfSeasons) {
         this.numberOfSeasons = numberOfSeasons;
     }
 
+    public List<TvSeason> getSeasons() {
+        return seasons;
+    }
+
+    public void setSeasons(List<TvSeason> seasons) {
+        this.seasons = seasons;
+    }
+
+    public ResultsPage<TvSeries> getRecommendations() {
+        return recommendations;
+    }
 
     public void setRecommendations(ResultsPage<TvSeries> recommendations) {
         this.recommendations = recommendations;
     }
 
+    public float getUserRating() {
+        return userRating;
+    }
 
     public void setUserRating(float userRating) {
         this.userRating = userRating;
     }
 
+    public float getVoteAverage() {
+        return voteAverage;
+    }
 
     public void setVoteAverage(float voteAverage) {
         this.voteAverage = voteAverage;
     }
 
+    public int getVoteCount() {
+        return voteCount;
+    }
 
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
     public void setStatus(String status) {
         this.status = status;
     }
 
+    @Override
+    public MediaType getMediaType() {
+        return MediaType.TV_SERIES;
+    }
 
     public List<ContentRating> getContentRatings() {
         return contentRatings != null ? contentRatings.getContentRatings() : null;
