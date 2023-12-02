@@ -1,9 +1,0 @@
-{
-  "images": {
-    "base_url": "https://example.com",
-    "secure_base_url": "https://example.com"
-  },
-  "change_keys": [
-    "123"
-  ]
-}
