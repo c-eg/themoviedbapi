@@ -60,7 +60,6 @@ https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_c
         </module>
 
         <!-- Class Design -->
-        <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>
         <module name="InnerTypeLast"/>
         <module name="InterfaceIsType"/>
@@ -71,7 +70,6 @@ https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_c
         <module name="ArrayTrailingComma"/>
         <module name="AvoidDoubleBraceInitialization"/>
         <module name="AvoidNoArgumentSuperConstructorCall"/>
-        <module name="DeclarationOrder"/>
         <module name="DefaultComesLast"/>
         <module name="EmptyStatement"/>
         <module name="EqualsHashCode"/>
@@ -121,6 +119,7 @@ https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_c
         <module name="JavadocStyle"/>
         <module name="JavadocType"/>
         <module name="MissingJavadocMethod">
+            <property name="allowMissingPropertyJavadoc" value="true"/>
             <property name="scope" value="protected"/>
         </module>
         <module name="MissingJavadocType"/>
@@ -263,9 +262,10 @@ https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_c
         </module>
 
         <!-- Filters -->
+        <module name="SuppressWarningsHolder"/>
         <module name="SuppressionCommentFilter">
-            <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)" />
-            <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)" />
+            <property name="offCommentFormat" value="CHECKSTYLE OFF\: ([\w\|]+)" />
+            <property name="onCommentFormat" value="CHECKSTYLE ON\: ([\w\|]+)" />
             <property name="checkFormat" value="$1" />
         </module>
         <module name="SuppressWithNearbyCommentFilter">
