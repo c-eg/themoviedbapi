@@ -1,6 +1,5 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.JobDepartment;
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.config.TmdbConfiguration;
 import info.movito.themoviedbapi.tools.ApiUrl;
@@ -154,10 +153,6 @@ public class TmdbApi {
 
     public TmdbDiscover getDiscover() {
         return new TmdbDiscover(this);
-    }
-
-    public List<JobDepartment> getJobs() {
-        return new TmdbJobs(this).getJobs();
     }
 
     public TmdbKeywords getKeywords() {

@@ -76,17 +76,6 @@ public class MiscApiTest extends AbstractTmdbApiTest {
     }
 
     //
-    // JOBS
-    //
-
-    @Test
-    public void testGetJobs() throws Exception {
-
-        List<JobDepartment> result = tmdb.getJobs();
-        assertFalse("No jobs found", result.isEmpty());
-    }
-
-    //
     // DISCOVER
     //
 
