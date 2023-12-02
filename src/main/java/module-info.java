@@ -10,6 +10,7 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.changes to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.certifications to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.config to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.keywords to com.fasterxml.jackson.databind;
@@ -20,6 +21,7 @@ module info.movito.themoviedbapi {
 
     exports info.movito.themoviedbapi;
     exports info.movito.themoviedbapi.model;
+    exports info.movito.themoviedbapi.model.certifications;
     exports info.movito.themoviedbapi.model.changes;
     exports info.movito.themoviedbapi.model.config;
     exports info.movito.themoviedbapi.model.core;

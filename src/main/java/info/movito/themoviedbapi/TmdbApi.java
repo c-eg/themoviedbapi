@@ -103,16 +103,48 @@ public class TmdbApi {
         return apiKey;
     }
 
+    public TmdbAccount getAccount() {
+        return new TmdbAccount(this);
+    }
+
+    public TmdbAuthentication getAuthentication() {
+        return new TmdbAuthentication(this);
+    }
+
+    public TmdbCertifications getCertifications() {
+        return new TmdbCertifications(this);
+    }
+
+    public TmdbChanges getChanges() {
+        return new TmdbChanges(this);
+    }
+
+    public TmdbCollections getCollections() {
+        return new TmdbCollections(this);
+    }
+
+    public TmdbCompany getCompany() {
+        return new TmdbCompany(this);
+    }
+
     public TmdbConfiguration getConfiguration() {
         return tmdbConfig;
     }
 
-    public List<Timezone> getTimezones() {
-        return new TmdbTimezones(this).getTimezones();
+    public TmdbDiscover getDiscover() {
+        return new TmdbDiscover(this);
     }
 
-    public TmdbAccount getAccount() {
-        return new TmdbAccount(this);
+    public TmdbFind getFind() {
+        return new TmdbFind(this);
+    }
+
+    public TmdbGenre getGenre() {
+        return new TmdbGenre(this);
+    }
+
+    public TmdbKeywords getKeywords() {
+        return new TmdbKeywords(this);
     }
 
     public TmdbLists getLists() {
@@ -123,44 +155,16 @@ public class TmdbApi {
         return new TmdbMovies(this);
     }
 
-    public TmdbSearch getSearch() {
-        return new TmdbSearch(this);
-    }
-
-    public TmdbGenre getGenre() {
-        return new TmdbGenre(this);
-    }
-
-    public TmdbCompany getCompany() {
-        return new TmdbCompany(this);
-    }
-
-    public TmdbCollections getCollections() {
-        return new TmdbCollections(this);
-    }
-
     public TmdbPeople getPeople() {
         return new TmdbPeople(this);
     }
 
-    public TmdbAuthentication getAuthentication() {
-        return new TmdbAuthentication(this);
-    }
-
-    public TmdbChanges getChanges() {
-        return new TmdbChanges(this);
-    }
-
-    public TmdbDiscover getDiscover() {
-        return new TmdbDiscover(this);
-    }
-
-    public TmdbKeywords getKeywords() {
-        return new TmdbKeywords(this);
-    }
-
     public TmdbReviews getReviews() {
         return new TmdbReviews(this);
+    }
+
+    public TmdbSearch getSearch() {
+        return new TmdbSearch(this);
     }
 
     public TmdbTV getTvSeries() {
@@ -175,7 +179,11 @@ public class TmdbApi {
         return new TmdbTvEpisodes(this);
     }
 
-    public TmdbFind getFind() {
-        return new TmdbFind(this);
+    /**
+     * @deprecated todo: implement in config api.
+     */
+    @Deprecated
+    public List<Timezone> getTimezones() {
+        return new TmdbTimezones(this).getTimezones();
     }
 }
