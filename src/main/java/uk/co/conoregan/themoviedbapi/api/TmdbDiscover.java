@@ -1,8 +1,8 @@
 package uk.co.conoregan.themoviedbapi.api;
 
-import uk.co.conoregan.themoviedbapi.model.TvResultsPage;
+import uk.co.conoregan.themoviedbapi.model.TvSeriesDbResultsPage;
 import uk.co.conoregan.themoviedbapi.model.Discover;
-import uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage;
+import uk.co.conoregan.themoviedbapi.model.core.MovieDbResultsPage;
 import uk.co.conoregan.themoviedbapi.tools.ApiEndpoint;
 import uk.co.conoregan.themoviedbapi.tools.TmdbException;
 
@@ -49,10 +49,10 @@ public class TmdbDiscover extends AbstractTmdbApi {
      *                             a company). They can be comma separated to indicate an 'AND' query.
      * @return the movie results page.
      */
-    public MovieResultsPage getDiscover(int page, String language, String sortBy, boolean includeAdult, int year, int primaryReleaseYear,
-                                        int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
-                                        String releaseDateLte, String certificationCountry, String certificationLte,
-                                        String withCompanies) throws TmdbException {
+    public MovieDbResultsPage getDiscover(int page, String language, String sortBy, boolean includeAdult, int year, int primaryReleaseYear,
+                                          int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
+                                          String releaseDateLte, String certificationCountry, String certificationLte,
+                                          String withCompanies) throws TmdbException {
 
         Discover discover = new Discover();
         discover.page(page)
@@ -79,7 +79,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
      * @param discover A discover object containing the search criteria required
      * @return the movie results page.
      */
-    public MovieResultsPage getDiscover(Discover discover) throws TmdbException {
+    public MovieDbResultsPage getDiscover(Discover discover) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_DISCOVER, "movie");
 
         for (String key : discover.getParams().keySet()) {
@@ -87,7 +87,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
         }
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieResultsPage.class);
+        return mapJsonResult(responseBody, MovieDbResultsPage.class);
     }
 
     /**
@@ -119,9 +119,9 @@ public class TmdbDiscover extends AbstractTmdbApi {
      *                             a company). They can be comma separated to indicate an 'AND' query.
      * @return the tv results page.
      */
-    public TvResultsPage getDiscoverTV(int page, String language, String sortBy, boolean includeAdult, int year, int primaryReleaseYear,
-                                       int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
-                                       String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies)
+    public TvSeriesDbResultsPage getDiscoverTV(int page, String language, String sortBy, boolean includeAdult, int year, int primaryReleaseYear,
+                                               int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
+                                               String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies)
         throws TmdbException {
 
         Discover discover = new Discover();
@@ -149,7 +149,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
      * @param discover A discover object containing the search criteria required
      * @return the tv results page.
      */
-    public TvResultsPage getDiscoverTV(Discover discover) throws TmdbException {
+    public TvSeriesDbResultsPage getDiscoverTV(Discover discover) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_DISCOVER, "tv");
 
         for (String key : discover.getParams().keySet()) {
@@ -157,6 +157,6 @@ public class TmdbDiscover extends AbstractTmdbApi {
         }
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, TvResultsPage.class);
+        return mapJsonResult(responseBody, TvSeriesDbResultsPage.class);
     }
 }

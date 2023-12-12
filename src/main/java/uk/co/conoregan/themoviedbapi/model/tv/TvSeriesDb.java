@@ -14,7 +14,7 @@ import java.util.List;
  * @author Holger Brandl
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-public class TvSeries extends AbstractTvElement implements Multi {
+public class TvSeriesDb extends AbstractTvElement implements Multi {
     @JsonProperty("created_by")
     private List<Person> createdBy;
 
@@ -64,7 +64,7 @@ public class TvSeries extends AbstractTvElement implements Multi {
     private List<TvSeason> seasons;
 
     @JsonProperty("recommendations")
-    private ResultsPage<TvSeries> recommendations;
+    private ResultsPage<TvSeriesDb> recommendations;
 
     @JsonProperty("rating")
     private float userRating;
@@ -209,11 +209,11 @@ public class TvSeries extends AbstractTvElement implements Multi {
         this.seasons = seasons;
     }
 
-    public ResultsPage<TvSeries> getRecommendations() {
+    public ResultsPage<TvSeriesDb> getRecommendations() {
         return recommendations;
     }
 
-    public void setRecommendations(ResultsPage<TvSeries> recommendations) {
+    public void setRecommendations(ResultsPage<TvSeriesDb> recommendations) {
         this.recommendations = recommendations;
     }
 

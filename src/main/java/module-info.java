@@ -26,6 +26,7 @@ module uk.co.conoregan.themoviedbapi {
 
     exports uk.co.conoregan.themoviedbapi.api;
     exports uk.co.conoregan.themoviedbapi.model;
+    exports uk.co.conoregan.themoviedbapi.model.account;
     exports uk.co.conoregan.themoviedbapi.model.changes;
     exports uk.co.conoregan.themoviedbapi.model.certifications;
     exports uk.co.conoregan.themoviedbapi.model.movies.changes;
@@ -38,4 +39,6 @@ module uk.co.conoregan.themoviedbapi {
     exports uk.co.conoregan.themoviedbapi.model.tv;
     exports uk.co.conoregan.themoviedbapi.tools;
     exports uk.co.conoregan.themoviedbapi.util;
+    exports uk.co.conoregan.themoviedbapi.model.rated;
+    opens uk.co.conoregan.themoviedbapi.model.rated to com.fasterxml.jackson.databind;
 }

@@ -27,8 +27,6 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testGetMovieCertifications() throws IOException, TmdbException {
-        getServer().url(String.join("/", TMDB_METHOD_CERTIFICATIONS, TMDB_METHOD_MOVIE_CERTIFICATIONS));
-
         String body = TestUtils.readTestFile("certifications/movie.json");
         mockResponse(body, 200);
 
@@ -57,8 +55,6 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testGetTvCertifications() throws IOException, TmdbException {
-        getServer().url(String.join("/", TMDB_METHOD_CERTIFICATIONS, TMDB_METHOD_TV_CERTIFICATIONS));
-
         String body = TestUtils.readTestFile("certifications/tv.json");
         mockResponse(body, 200);
 

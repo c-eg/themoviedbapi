@@ -1,6 +1,6 @@
 package uk.co.conoregan.themoviedbapi.api;
 
-import uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage;
+import uk.co.conoregan.themoviedbapi.model.core.MovieDbResultsPage;
 import uk.co.conoregan.themoviedbapi.model.core.ResultsPage;
 import uk.co.conoregan.themoviedbapi.model.keywords.Keyword;
 import uk.co.conoregan.themoviedbapi.tools.ApiEndpoint;
@@ -35,14 +35,14 @@ public class TmdbKeywords extends AbstractTmdbApi {
      *
      * @return List of movies with the keyword
      */
-    public MovieResultsPage getKeywordMovies(String keywordId, String language, Integer page) throws TmdbException {
+    public MovieDbResultsPage getKeywordMovies(String keywordId, String language, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_KEYWORD, keywordId, "movies");
 
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieResultsPage.class);
+        return mapJsonResult(responseBody, MovieDbResultsPage.class);
     }
 
     @SuppressWarnings("checkstyle:MissingJavadocType")

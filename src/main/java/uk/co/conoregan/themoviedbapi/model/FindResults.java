@@ -3,7 +3,7 @@ package uk.co.conoregan.themoviedbapi.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
 import uk.co.conoregan.themoviedbapi.model.people.Person;
-import uk.co.conoregan.themoviedbapi.model.tv.TvSeries;
+import uk.co.conoregan.themoviedbapi.model.tv.TvSeriesDb;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class FindResults extends AbstractJsonMapping {
     private List<Person> personResults;
 
     @JsonProperty("tv_results")
-    private List<TvSeries> tvResults;
+    private List<TvSeriesDb> tvResults;
 
     public List<MovieDb> getMovieResults() {
         return movieResults;
@@ -33,11 +33,11 @@ public class FindResults extends AbstractJsonMapping {
         this.personResults = personResults;
     }
 
-    public List<TvSeries> getTvResults() {
+    public List<TvSeriesDb> getTvResults() {
         return tvResults;
     }
 
-    public void setTvResults(List<TvSeries> tvResults) {
+    public void setTvResults(List<TvSeriesDb> tvResults) {
         this.tvResults = tvResults;
     }
 }

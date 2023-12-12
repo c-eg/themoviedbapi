@@ -1,12 +1,12 @@
 package uk.co.conoregan.themoviedbapi.api;
 
-import uk.co.conoregan.themoviedbapi.model.TvResultsPage;
+import uk.co.conoregan.themoviedbapi.model.TvSeriesDbResultsPage;
 import uk.co.conoregan.themoviedbapi.model.ContentRating;
 import uk.co.conoregan.themoviedbapi.model.Credits;
 import uk.co.conoregan.themoviedbapi.model.MovieImages;
 import uk.co.conoregan.themoviedbapi.model.config.Timezone;
 import uk.co.conoregan.themoviedbapi.model.core.TvKeywords;
-import uk.co.conoregan.themoviedbapi.model.tv.TvSeries;
+import uk.co.conoregan.themoviedbapi.model.tv.TvSeriesDb;
 import uk.co.conoregan.themoviedbapi.tools.ApiEndpoint;
 import uk.co.conoregan.themoviedbapi.tools.TmdbException;
 
@@ -45,7 +45,7 @@ public class TmdbTV extends AbstractTmdbApi {
     /**
      * This method is used to retrieve all the basic series information.
      */
-    public TvSeries getSeries(int seriesId, String language, TvMethod... appendToResponse) throws TmdbException {
+    public TvSeriesDb getSeries(int seriesId, String language, TvMethod... appendToResponse) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_TV, seriesId);
 
         apiEndpoint.addLanguage(language);
@@ -53,7 +53,7 @@ public class TmdbTV extends AbstractTmdbApi {
         apiEndpoint.appendToResponse(asStringArray(appendToResponse));
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, TvSeries.class);
+        return mapJsonResult(responseBody, TvSeriesDb.class);
     }
 
     /**
@@ -78,13 +78,13 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param page     the page
      * @return the series
      */
-    public TvResultsPage getPopular(String language, Integer page) throws TmdbException {
+    public TvSeriesDbResultsPage getPopular(String language, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_TV, TMDB_METHOD_POPULAR);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, TvResultsPage.class);
+        return mapJsonResult(responseBody, TvSeriesDbResultsPage.class);
     }
 
     /**
@@ -95,7 +95,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param timezone the timezone
      * @return the series
      */
-    public TvResultsPage getAiringToday(String language, Integer page, Timezone timezone) throws TmdbException {
+    public TvSeriesDbResultsPage getAiringToday(String language, Integer page, Timezone timezone) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_TV, TMDB_METHOD_AIRINGTODAY);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
@@ -105,7 +105,7 @@ public class TmdbTV extends AbstractTmdbApi {
         }
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, TvResultsPage.class);
+        return mapJsonResult(responseBody, TvSeriesDbResultsPage.class);
     }
 
     /**
@@ -115,13 +115,13 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param page     the page
      * @return the series
      */
-    public TvResultsPage getOnTheAir(String language, Integer page) throws TmdbException {
+    public TvSeriesDbResultsPage getOnTheAir(String language, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_TV, TMDB_METHOD_ONTHEAIR);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, TvResultsPage.class);
+        return mapJsonResult(responseBody, TvSeriesDbResultsPage.class);
     }
 
     /**
@@ -131,13 +131,13 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param page     the page
      * @return the series
      */
-    public TvResultsPage getTopRated(String language, Integer page) throws TmdbException {
+    public TvSeriesDbResultsPage getTopRated(String language, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_TV, TMDB_METHOD_TOPRATED);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, TvResultsPage.class);
+        return mapJsonResult(responseBody, TvSeriesDbResultsPage.class);
     }
 
     /**

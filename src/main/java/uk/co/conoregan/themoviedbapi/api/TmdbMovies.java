@@ -8,13 +8,14 @@ import uk.co.conoregan.themoviedbapi.model.Credits;
 import uk.co.conoregan.themoviedbapi.model.ExternalIds;
 import uk.co.conoregan.themoviedbapi.model.MovieDb;
 import uk.co.conoregan.themoviedbapi.model.MovieImages;
+import uk.co.conoregan.themoviedbapi.model.MovieListResultsPage;
 import uk.co.conoregan.themoviedbapi.model.MoviesAlternativeTitles;
 import uk.co.conoregan.themoviedbapi.model.ReleaseInfo;
 import uk.co.conoregan.themoviedbapi.model.Translation;
 import uk.co.conoregan.themoviedbapi.model.Translations;
 import uk.co.conoregan.themoviedbapi.model.Video;
 import uk.co.conoregan.themoviedbapi.model.core.IdElement;
-import uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage;
+import uk.co.conoregan.themoviedbapi.model.core.MovieDbResultsPage;
 import uk.co.conoregan.themoviedbapi.model.keywords.Keyword;
 import uk.co.conoregan.themoviedbapi.model.movies.changes.ChangesItems;
 import uk.co.conoregan.themoviedbapi.model.providers.ProviderResults;
@@ -155,13 +156,13 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * The data is much better with movies that have more keywords
      */
-    public MovieResultsPage getSimilarMovies(int movieId, String language, Integer page) throws TmdbException {
+    public MovieDbResultsPage getSimilarMovies(int movieId, String language, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, movieId, MovieMethod.similar);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieResultsPage.class);
+        return mapJsonResult(responseBody, MovieDbResultsPage.class);
     }
 
     /**
@@ -171,27 +172,27 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * The data is much better with movies that are more popular
      */
-    public MovieResultsPage getRecommendedMovies(int movieId, String language, Integer page) throws TmdbException {
+    public MovieDbResultsPage getRecommendedMovies(int movieId, String language, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, movieId, MovieMethod.recommendations);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieResultsPage.class);
+        return mapJsonResult(responseBody, MovieDbResultsPage.class);
     }
 
     /**
      * Get the lists that the movie belongs to.
      */
-    public TmdbAccount.MovieListResultsPage getListsContaining(int movieId, String sessionToken, String language,
-                                                               Integer page) throws TmdbException {
+    public MovieListResultsPage getListsContaining(int movieId, String sessionToken, String language,
+                                                   Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, movieId, MovieMethod.lists);
         apiEndpoint.addPathParam(TmdbAccount.PARAM_SESSION, sessionToken);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, TmdbAccount.MovieListResultsPage.class);
+        return mapJsonResult(responseBody, MovieListResultsPage.class);
     }
 
     /**
@@ -273,7 +274,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>
      * See https://developers.themoviedb.org/3/movies/get-upcoming
      */
-    public MovieResultsPage getUpcoming(String language, Integer page, String region) throws TmdbException {
+    public MovieDbResultsPage getUpcoming(String language, Integer page, String region) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, MovieMethod.upcoming);
 
         apiEndpoint.addLanguage(language);
@@ -284,7 +285,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         }
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieResultsPage.class);
+        return mapJsonResult(responseBody, MovieDbResultsPage.class);
     }
 
     /**
@@ -292,7 +293,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * This is a curated list that will normally contain 100 movies. The default response will return 20 movies.
      */
-    public MovieResultsPage getNowPlayingMovies(String language, Integer page, String region) throws TmdbException {
+    public MovieDbResultsPage getNowPlayingMovies(String language, Integer page, String region) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, MovieMethod.now_playing);
 
         apiEndpoint.addLanguage(language);
@@ -303,7 +304,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         }
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieResultsPage.class);
+        return mapJsonResult(responseBody, MovieDbResultsPage.class);
     }
 
     /**
@@ -311,13 +312,13 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * This list is updated daily. The default response will return 20 movies.
      */
-    public MovieResultsPage getPopularMovies(String language, Integer page) throws TmdbException {
+    public MovieDbResultsPage getPopularMovies(String language, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, MovieMethod.popular);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieResultsPage.class);
+        return mapJsonResult(responseBody, MovieDbResultsPage.class);
     }
 
     /**
@@ -325,13 +326,13 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * The default response will return 20 movies.
      */
-    public MovieResultsPage getTopRatedMovies(String language, Integer page) throws TmdbException {
+    public MovieDbResultsPage getTopRatedMovies(String language, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, MovieMethod.top_rated);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieResultsPage.class);
+        return mapJsonResult(responseBody, MovieDbResultsPage.class);
     }
 
     /**

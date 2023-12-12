@@ -1,10 +1,11 @@
 package uk.co.conoregan.themoviedbapi.api;
 
-import uk.co.conoregan.themoviedbapi.model.TvResultsPage;
+import uk.co.conoregan.themoviedbapi.model.MovieListResultsPage;
+import uk.co.conoregan.themoviedbapi.model.TvSeriesDbResultsPage;
 import uk.co.conoregan.themoviedbapi.model.Collection;
 import uk.co.conoregan.themoviedbapi.model.Company;
 import uk.co.conoregan.themoviedbapi.model.Multi;
-import uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage;
+import uk.co.conoregan.themoviedbapi.model.core.MovieDbResultsPage;
 import uk.co.conoregan.themoviedbapi.model.core.ResultsPage;
 import uk.co.conoregan.themoviedbapi.model.keywords.Keyword;
 import uk.co.conoregan.themoviedbapi.tools.ApiEndpoint;
@@ -44,8 +45,8 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param includeAdult Whether to include adult titles in the search.
      * @param page         The page of results to return. 0 to get the default (first page).
      */
-    public MovieResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult,
-                                        Integer page) throws TmdbException {
+    public MovieDbResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult,
+                                          Integer page) throws TmdbException {
         if (isBlank(query)) {
             throw new RuntimeException("query must not be blank");
         }
@@ -63,7 +64,7 @@ public class TmdbSearch extends AbstractTmdbApi {
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieResultsPage.class);
+        return mapJsonResult(responseBody, MovieDbResultsPage.class);
     }
 
     /**
@@ -75,8 +76,8 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param includeAdult Whether to include adult titles in the search.
      * @param page         The page of results to return. 0 to get the default (first page).
      */
-    public TvResultsPage searchTv(String query, Integer searchYear, String language, boolean includeAdult,
-                                  Integer page) throws TmdbException {
+    public TvSeriesDbResultsPage searchTv(String query, Integer searchYear, String language, boolean includeAdult,
+                                          Integer page) throws TmdbException {
         if (isBlank(query)) {
             throw new RuntimeException("query must not be blank");
         }
@@ -94,7 +95,7 @@ public class TmdbSearch extends AbstractTmdbApi {
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, TvResultsPage.class);
+        return mapJsonResult(responseBody, TvSeriesDbResultsPage.class);
     }
 
     /**
@@ -141,7 +142,7 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search for lists by name and description.
      */
-    public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) throws TmdbException {
+    public MovieListResultsPage searchList(String query, String language, Integer page) throws TmdbException {
         System.err.println("This method is part of the API but seems currently not available. " +
             "See https://www.themoviedb.org/talk/593409e3c3a36859ef01eddb#597124f8c3a3681608008424");
 
@@ -156,7 +157,7 @@ public class TmdbSearch extends AbstractTmdbApi {
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, TmdbAccount.MovieListResultsPage.class);
+        return mapJsonResult(responseBody, MovieListResultsPage.class);
     }
 
     /**
