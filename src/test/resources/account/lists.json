@@ -1,0 +1,207 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 120174,
+            "item_count": 5,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Test Alpha Sort",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8221116,
+            "item_count": 4,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Test List",
+            "poster_path": null
+        },
+        {
+            "description": "Here's a list of the films that take place in the DC Comics universe.",
+            "favorite_count": 0,
+            "id": 3,
+            "item_count": 30,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "The DC Comics Universe",
+            "poster_path": "/4H1jWsgEQOgTs4KeG5j5BorKMfX.jpg"
+        },
+        {
+            "description": "This is a test.",
+            "favorite_count": 0,
+            "id": 8212330,
+            "item_count": 2,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Test List #1",
+            "poster_path": null
+        },
+        {
+            "description": "Just a UTF test list. 🍩 🐝",
+            "favorite_count": 0,
+            "id": 7066467,
+            "item_count": 3,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "🚨 My Cool List!",
+            "poster_path": null
+        },
+        {
+            "description": "The idea behind this list is to collect the live action comic book movies from within the Marvel franchise.",
+            "favorite_count": 0,
+            "id": 1,
+            "item_count": 59,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "The Marvel Universe",
+            "poster_path": "/coJVIUEOToAEGViuhclM7pXC75R.jpg"
+        },
+        {
+            "description": "Test description.",
+            "favorite_count": 0,
+            "id": 136203,
+            "item_count": 2,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Test From Trav's Scripts",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 142798,
+            "item_count": 3,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "UFC Test",
+            "poster_path": null
+        },
+        {
+            "description": "A list of the films that were nominated at the 2012 Oscars for best picture.",
+            "favorite_count": 0,
+            "id": 2,
+            "item_count": 9,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "2012 Oscar Nominations for Best Picture - 84th Academy Awards",
+            "poster_path": "/zRqBleU93WncYnIwt8LAanQerZ7.jpg"
+        },
+        {
+            "description": "Here are the films that have won for best drama at the Golden Globes.",
+            "favorite_count": 0,
+            "id": 2469,
+            "item_count": 63,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Best Picture Winners - The Golden Globes",
+            "poster_path": "/zkjL4XYZkbSKPYJgK1goBYS9EVN.jpg"
+        },
+        {
+            "description": "Name pretty much says it all, here's the top 50 grossing films of all time.",
+            "favorite_count": 0,
+            "id": 10,
+            "item_count": 50,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Top 50 Grossing Films of All Time (Worldwide)",
+            "poster_path": "/sRbZeVtRKIWybTOVpCRPZtzW5bd.jpg"
+        },
+        {
+            "description": "A list of the films that were nominated at the 2013 Oscars for best picture.",
+            "favorite_count": 0,
+            "id": 2278,
+            "item_count": 9,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "2013 Oscar Nominations for Best Picture - 85th Academy Awards",
+            "poster_path": "/AfyPUSSn7E75daZ3SfENRbA25h9.jpg"
+        },
+        {
+            "description": "A list of the theatrical releases for Marvel's Avengers characters that are in the latest Avengers movie.",
+            "favorite_count": 0,
+            "id": 5,
+            "item_count": 10,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "The Avengers",
+            "poster_path": "/2i89ujVkhJebuoB2zy6QZcwbr2N.jpg"
+        },
+        {
+            "description": "A list of the films that were nominated at the 2008 Oscars for best picture.",
+            "favorite_count": 0,
+            "id": 27,
+            "item_count": 5,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "2008 Oscar Nominations for Best Picture - 80th Academy Awards",
+            "poster_path": "/nWwFabqFaBbukXdkUCmtnrFxPNh.jpg"
+        },
+        {
+            "description": "The View Askewniverse is a fictional universe created by writer/director Kevin Smith, featured in several films, comics and a television series; it is named for Smith's production company, View Askew Productions.",
+            "favorite_count": 0,
+            "id": 15,
+            "item_count": 6,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "The View Askewniverse",
+            "poster_path": "/tGmU66LL8edoRm1RO7sbrz1xuhr.jpg"
+        },
+        {
+            "description": "A list of the films that were nominated at the 2009 Oscars for best picture.",
+            "favorite_count": 0,
+            "id": 9,
+            "item_count": 5,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "2009 Oscar Nominations for Best Picture - 81st Academy Awards",
+            "poster_path": "/gShtwIvdSHgCEQRZfymNkEUEwFm.jpg"
+        },
+        {
+            "description": "A list of the films that were nominated at the 2016 Oscars for best picture.",
+            "favorite_count": 0,
+            "id": 10291,
+            "item_count": 8,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "2016 Oscar Nominations for Best Picture - 88th Academy Awards",
+            "poster_path": null
+        },
+        {
+            "description": "A list of the films that were nominated at the 2011 Oscars for best picture.",
+            "favorite_count": 0,
+            "id": 4,
+            "item_count": 10,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "2011 Oscar Nominations for Best Picture - 83rd Academy Awards",
+            "poster_path": "/iAHDZPyLD3NW7GuNV6U1TVtb0hN.jpg"
+        },
+        {
+            "description": "A list of the films that were nominated at the 2010 Oscars for best picture.",
+            "favorite_count": 0,
+            "id": 8,
+            "item_count": 10,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "2010 Oscar Nominations for Best Picture - 82nd Academy Awards",
+            "poster_path": "/8iwe0iP49A6Gqcv31jBleZDZqI4.jpg"
+        },
+        {
+            "description": "A list of the films that were nominated at the 2014 Oscars for best picture.",
+            "favorite_count": 0,
+            "id": 10288,
+            "item_count": 9,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "2014 Oscar Nominations for Best Picture - 86th Academy Awards",
+            "poster_path": null
+        }
+    ],
+    "total_pages": 2,
+    "total_results": 25
+}

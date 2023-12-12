@@ -1,0 +1,403 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/rgNzvSagnlc32TuMEBa529QFIig.jpg",
+            "genre_ids": [
+                878,
+                18,
+                53
+            ],
+            "id": 76726,
+            "original_language": "en",
+            "original_title": "Chronicle",
+            "overview": "Three high school students make an incredible discovery, leading to their developing uncanny powers beyond their understanding. As they learn to control their abilities and use them to their advantage, their lives start to spin out of control, and their darker sides begin to take over.",
+            "popularity": 37.148,
+            "poster_path": "/xENglsVIIWEEhhB5lgpy33tGcKI.jpg",
+            "release_date": "2012-02-01",
+            "title": "Chronicle",
+            "video": false,
+            "vote_average": 6.822,
+            "vote_count": 4741
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/q5zTYYhgRtUgB9MORq6TohCzxV3.jpg",
+            "genre_ids": [
+                28,
+                18,
+                53
+            ],
+            "id": 70435,
+            "original_language": "en",
+            "original_title": "Haywire",
+            "overview": "A black ops soldier seeks payback after she is betrayed and left for dead.",
+            "popularity": 18.699,
+            "poster_path": "/iI3KOQOyTMJgxccs50zjxn3R7DF.jpg",
+            "release_date": "2011-11-01",
+            "title": "Haywire",
+            "video": false,
+            "vote_average": 5.676,
+            "vote_count": 1190
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/v63E5H5TD7Eay1gZPVt9ibP9riy.jpg",
+            "genre_ids": [
+                14,
+                28,
+                27
+            ],
+            "id": 52520,
+            "original_language": "en",
+            "original_title": "Underworld: Awakening",
+            "overview": "Having escaped years of imprisonment, vampire warrioress Selene finds herself in a changed world where humans have discovered the existence of both Vampire and Lycan clans and are conducting an all-out war to eradicate both immortal species. Now Selene must battle the humans and a frightening new breed of super Lycans to ensure the death dealers' survival.",
+            "popularity": 49.928,
+            "poster_path": "/jN0uuc8U6M3sTg9zEaliJV60Stf.jpg",
+            "release_date": "2012-01-19",
+            "title": "Underworld: Awakening",
+            "video": false,
+            "vote_average": 6.298,
+            "vote_count": 3689
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/c7JgVgsF2qMp2UbCr9mCx85CIZo.jpg",
+            "genre_ids": [
+                14,
+                28,
+                53
+            ],
+            "id": 12437,
+            "original_language": "en",
+            "original_title": "Underworld: Rise of the Lycans",
+            "overview": "A prequel to the first two Underworld films, this fantasy explains the origins of the feud between the Vampires and the Lycans. Aided by his secret love, Sonja, courageous Lucian leads the Lycans in battle against brutal Vampire king Viktor. Determined to break the king's enslavement of his people, Lucian faces off against the Death Dealer army in a bid for Lycan independence.",
+            "popularity": 32.477,
+            "poster_path": "/yW9gF7rGn8EoV8B8rxOx1xjxVZf.jpg",
+            "release_date": "2009-01-22",
+            "title": "Underworld: Rise of the Lycans",
+            "video": false,
+            "vote_average": 6.5,
+            "vote_count": 3228
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/yMAqgJyxLm7wqeuQOr3J6FlIHxf.jpg",
+            "genre_ids": [
+                12,
+                16,
+                9648
+            ],
+            "id": 17578,
+            "original_language": "en",
+            "original_title": "The Adventures of Tintin",
+            "overview": "Intrepid young reporter, Tintin, and his loyal dog, Snowy, are thrust into a world of high adventure when they discover a ship carrying an explosive secret. As Tintin is drawn into a centuries-old mystery, Ivan Ivanovitch Sakharine suspects him of stealing a priceless treasure. Tintin and Snowy, with the help of salty, cantankerous Captain Haddock and bumbling detectives, Thompson and Thomson, travel half the world, one step ahead of their enemies, as Tintin endeavors to find the Unicorn, a sunken ship that may hold a vast fortune, but also an ancient curse.",
+            "popularity": 24.56,
+            "poster_path": "/mKYkNro2btaWMsnYSuyqrBdHQo3.jpg",
+            "release_date": "2011-10-24",
+            "title": "The Adventures of Tintin",
+            "video": false,
+            "vote_average": 6.875,
+            "vote_count": 4885
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/kXRskNzFiTxi5xwsM6hDmOTGae7.jpg",
+            "genre_ids": [
+                28,
+                53
+            ],
+            "id": 59961,
+            "original_language": "en",
+            "original_title": "Safe House",
+            "overview": "A dangerous CIA renegade resurfaces after a decade on the run. When the safe house he's remanded to is attacked by mercenaries, a rookie operative escapes with him. Now, the unlikely allies must stay alive long enough to uncover who wants them dead.",
+            "popularity": 20.431,
+            "poster_path": "/7SYBPjv5ywF6cI4BSFFtlDyChT2.jpg",
+            "release_date": "2012-02-08",
+            "title": "Safe House",
+            "video": false,
+            "vote_average": 6.4,
+            "vote_count": 3185
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/krDjqWqLAewVYiU8fDQLHO7gPmf.jpg",
+            "genre_ids": [
+                18,
+                14
+            ],
+            "id": 8967,
+            "original_language": "en",
+            "original_title": "The Tree of Life",
+            "overview": "The impressionistic story of a Texas family in the 1950s. The film follows the life journey of the eldest son, Jack, through the innocence of childhood to his disillusioned adult years as he tries to reconcile a complicated relationship with his father. Jack finds himself a lost soul in the modern world, seeking answers to the origins and meaning of life while questioning the existence of faith.",
+            "popularity": 14.837,
+            "poster_path": "/l8cwuB5WJSoj4uMAsnzuHBOMaSJ.jpg",
+            "release_date": "2011-05-17",
+            "title": "The Tree of Life",
+            "video": false,
+            "vote_average": 6.729,
+            "vote_count": 2758
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/kx2YVkcsnTnmF9XGTAj2NqEcHFG.jpg",
+            "genre_ids": [
+                28,
+                53,
+                878
+            ],
+            "id": 49530,
+            "original_language": "en",
+            "original_title": "In Time",
+            "overview": "In the not-too-distant future the aging gene has been switched off. To avoid overpopulation, time has become the currency and the way people pay for luxuries and necessities. The rich can live forever, while the rest try to negotiate for their immortality. A poor young man who comes into a fortune of time, though too late to help his mother from dying. He ends up on the run from a corrupt police force known as 'time keepers'.",
+            "popularity": 75.086,
+            "poster_path": "/kyuXWPU7KLGD6yIfhCVk59LF0KN.jpg",
+            "release_date": "2011-10-27",
+            "title": "In Time",
+            "video": false,
+            "vote_average": 6.952,
+            "vote_count": 10227
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/sA9sYbLUE1grGKh5q5SHgPaZS72.jpg",
+            "genre_ids": [
+                28,
+                53,
+                80
+            ],
+            "id": 49527,
+            "original_language": "en",
+            "original_title": "Man on a Ledge",
+            "overview": "An ex-cop turned con threatens to jump to his death from a Manhattan hotel rooftop. The NYPD dispatch a female police psychologist to talk him down. However, unbeknownst to the police on the scene, the suicide attempt is a cover for the biggest diamond heist ever pulled.",
+            "popularity": 22.56,
+            "poster_path": "/fn75crX6sRcKRc7lhuqKTenppQE.jpg",
+            "release_date": "2012-01-13",
+            "title": "Man on a Ledge",
+            "video": false,
+            "vote_average": 6.423,
+            "vote_count": 2331
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/7UjEgarkL9pKjXbJDfxx85Ws0ur.jpg",
+            "genre_ids": [
+                28,
+                53,
+                80,
+                18
+            ],
+            "id": 80389,
+            "original_language": "en",
+            "original_title": "Get the Gringo",
+            "overview": "A career criminal nabbed by Mexican authorities is placed in a tough prison where he learns to survive with the help of a 9-year-old boy.",
+            "popularity": 21.432,
+            "poster_path": "/v43pBEbRILw2CylmaC170kjY2DN.jpg",
+            "release_date": "2012-03-15",
+            "title": "Get the Gringo",
+            "video": false,
+            "vote_average": 6.537,
+            "vote_count": 1432
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/hffS9IjEmP3ab1N7WHWNG8zBu2t.jpg",
+            "genre_ids": [
+                53,
+                80,
+                9648
+            ],
+            "id": 65754,
+            "original_language": "en",
+            "original_title": "The Girl with the Dragon Tattoo",
+            "overview": "This English-language adaptation of the Swedish novel by Stieg Larsson follows a disgraced journalist, Mikael Blomkvist, as he investigates the disappearance of a weary patriarch's niece from 40 years ago. He is aided by the pierced, tattooed, punk computer hacker named Lisbeth Salander. As they work together in the investigation, Blomkvist and Salander uncover immense corruption beyond anything they have ever imagined.",
+            "popularity": 21.401,
+            "poster_path": "/zqDopwg7XQ4IfFX2dRlQCT1SwMG.jpg",
+            "release_date": "2011-12-14",
+            "title": "The Girl with the Dragon Tattoo",
+            "video": false,
+            "vote_average": 7.358,
+            "vote_count": 6273
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/uUEaGtiJ78GFloaLJLLdPzdHYlP.jpg",
+            "genre_ids": [
+                99,
+                35
+            ],
+            "id": 13007,
+            "original_language": "en",
+            "original_title": "Religulous",
+            "overview": "Commentator-comic Bill Maher plays devil's advocate with religion as he talks to believers about their faith. Traveling around the world, Maher examines the tenets of Christianity, Judaism and Islam and raises questions about homosexuality, proof of Christ's existence, Jewish Sabbath laws, violent Muslim extremists.",
+            "popularity": 12.396,
+            "poster_path": "/hBv5LCbWxPB8iU77dwurSGMVZ3N.jpg",
+            "release_date": "2008-10-01",
+            "title": "Religulous",
+            "video": false,
+            "vote_average": 7.09,
+            "vote_count": 513
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/sHHtfylgVd5A1pjBxKEPksF6eTC.jpg",
+            "genre_ids": [
+                18,
+                37,
+                80
+            ],
+            "id": 12690,
+            "original_language": "en",
+            "original_title": "Appaloosa",
+            "overview": "Two friends hired to police a small town that is suffering under the rule of a rancher find their job complicated by the arrival of a young widow.",
+            "popularity": 11.388,
+            "poster_path": "/qLLUC8QaNx4BK1Vuf7XqSyd8icX.jpg",
+            "release_date": "2008-09-19",
+            "title": "Appaloosa",
+            "video": false,
+            "vote_average": 6.574,
+            "vote_count": 866
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5AhpUb8CAP0jZ4Wrn7AsRUYjZxB.jpg",
+            "genre_ids": [
+                28,
+                35,
+                878
+            ],
+            "id": 41154,
+            "original_language": "en",
+            "original_title": "Men in Black 3",
+            "overview": "Agents J and K are back...in time. J has seen some inexplicable things in his 15 years with the Men in Black, but nothing, not even aliens, perplexes him as much as his wry, reticent partner. But when K's life and the fate of the planet are put at stake, Agent J will have to travel back in time to put things right. J discovers that there are secrets to the universe that K never told him - secrets that will reveal themselves as he teams up with the young Agent K to save his partner, the agency, and the future of humankind.",
+            "popularity": 44.272,
+            "poster_path": "/90DdoEStzeObs96fsYf4GG544iN.jpg",
+            "release_date": "2012-05-23",
+            "title": "Men in Black 3",
+            "video": false,
+            "vote_average": 6.503,
+            "vote_count": 9405
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/qSL3dh4QaaZ02dktTmfTDW6caMh.jpg",
+            "genre_ids": [
+                28,
+                14,
+                53
+            ],
+            "id": 23629,
+            "original_language": "en",
+            "original_title": "Sucker Punch",
+            "overview": "A young girl is institutionalized by her abusive stepfather. Retreating to an alternative reality as a coping strategy, she envisions a plan which will help her escape from the mental facility.",
+            "popularity": 38.426,
+            "poster_path": "/8oBc33JEnYm3rqPIwGtQXQbP96j.jpg",
+            "release_date": "2011-03-24",
+            "title": "Sucker Punch",
+            "video": false,
+            "vote_average": 6.174,
+            "vote_count": 4291
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/nVczQtHR7kjDWswKwZOPmzDvUrH.jpg",
+            "genre_ids": [
+                18,
+                36,
+                10752
+            ],
+            "id": 10142,
+            "original_language": "en",
+            "original_title": "Casualties of War",
+            "overview": "During the Vietnam War, a soldier finds himself the outsider of his own squad when they unnecessarily kidnap a female villager.",
+            "popularity": 13.868,
+            "poster_path": "/3SerZUDoU9TMCXMsQqiXvSWm0uL.jpg",
+            "release_date": "1989-08-18",
+            "title": "Casualties of War",
+            "video": false,
+            "vote_average": 7.151,
+            "vote_count": 743
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/xoVlCHgeLAsE9ZMyfNaYV277fmL.jpg",
+            "genre_ids": [
+                12,
+                10751,
+                14
+            ],
+            "id": 13600,
+            "original_language": "en",
+            "original_title": "City of Ember",
+            "overview": "For generations, the people of the City of Ember have flourished in an amazing world of glittering lights. But Ember's once powerful generator is failing and the great lamps that illuminate the city are starting to flicker. Now, two teenagers, in a race against time, must search Ember for clues that will unlock the ancient mystery of the city's existence, before the the lights go out forever.",
+            "popularity": 16.832,
+            "poster_path": "/eCdLMQMVk0SZlsfnDu43AOhbCJL.jpg",
+            "release_date": "2008-10-07",
+            "title": "City of Ember",
+            "video": false,
+            "vote_average": 6.291,
+            "vote_count": 1557
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/8Hztp05inY15obLOWpmveWOBKFy.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 49014,
+            "original_language": "en",
+            "original_title": "Cosmopolis",
+            "overview": "Riding across Manhattan in a stretch limo during a riot in order to get a haircut, a 28-year-old billionaire asset manager's life begins to crumble.",
+            "popularity": 10.415,
+            "poster_path": "/vZEUKrNspiOmy4Muiy7ne6TOVPq.jpg",
+            "release_date": "2012-05-25",
+            "title": "Cosmopolis",
+            "video": false,
+            "vote_average": 5.728,
+            "vote_count": 1111
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/6libokLFpgdNbhKZLNOeDyACSPW.jpg",
+            "genre_ids": [
+                80,
+                18,
+                53
+            ],
+            "id": 388,
+            "original_language": "en",
+            "original_title": "Inside Man",
+            "overview": "When an armed, masked gang enter a Manhattan bank, lock the doors and take hostages, the detective assigned to effect their release enters negotiations preoccupied with corruption charges he is facing.",
+            "popularity": 19.383,
+            "poster_path": "/5ljZJLpQj8s3iSk3LylnFDyDoIK.jpg",
+            "release_date": "2006-03-17",
+            "title": "Inside Man",
+            "video": false,
+            "vote_average": 7.398,
+            "vote_count": 5110
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5EEdDTV0IBxJ2J4jDUDvl076v7f.jpg",
+            "genre_ids": [
+                18,
+                53,
+                80
+            ],
+            "id": 59,
+            "original_language": "en",
+            "original_title": "A History of Violence",
+            "overview": "An average family is thrust into the spotlight after the father commits a seemingly self-defense murder at his diner.",
+            "popularity": 11.712,
+            "poster_path": "/A26rcvipOqptVs7i5uRmKicXRxE.jpg",
+            "release_date": "2005-09-23",
+            "title": "A History of Violence",
+            "video": false,
+            "vote_average": 7.179,
+            "vote_count": 2795
+        }
+    ],
+    "total_pages": 34,
+    "total_results": 677
+}

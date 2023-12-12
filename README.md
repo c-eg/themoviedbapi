@@ -34,7 +34,7 @@ Usage
 -----
 
 To get started you need a [TMdB API key](http://docs.themoviedb.apiary.io/). With this you can instantiate
-`info.movito.themoviedbapi.TmdbApi`, which has getters for all subcategories of the API.
+`uk.co.conoregan.themoviedbapi.api.TmdbApi`, which has getters for all subcategories of the API.
 
 For instance to get a movie by ID, do the following:
 
