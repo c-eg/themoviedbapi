@@ -119,9 +119,10 @@ public class TmdbDiscover extends AbstractTmdbApi {
      *                             a company). They can be comma separated to indicate an 'AND' query.
      * @return the tv results page.
      */
-    public TvSeriesDbResultsPage getDiscoverTV(int page, String language, String sortBy, boolean includeAdult, int year, int primaryReleaseYear,
-                                               int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
-                                               String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies)
+    public TvSeriesDbResultsPage getDiscoverTV(int page, String language, String sortBy, boolean includeAdult, int year,
+                                               int primaryReleaseYear, int voteCountGte, float voteAverageGte, String withGenres,
+                                               String releaseDateGte, String releaseDateLte, String certificationCountry,
+                                               String certificationLte, String withCompanies)
         throws TmdbException {
 
         Discover discover = new Discover();

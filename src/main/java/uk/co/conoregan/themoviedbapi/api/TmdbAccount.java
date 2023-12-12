@@ -1,17 +1,14 @@
 package uk.co.conoregan.themoviedbapi.api;
 
 import uk.co.conoregan.themoviedbapi.model.MovieListResultsPage;
-import uk.co.conoregan.themoviedbapi.model.rated.RatedMovieResultsPage;
-import uk.co.conoregan.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
-import uk.co.conoregan.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
-import uk.co.conoregan.themoviedbapi.model.TvEpisodesResultsPage;
-import uk.co.conoregan.themoviedbapi.model.TvSeriesDbResultsPage;
 import uk.co.conoregan.themoviedbapi.model.account.MovieResultsPage;
 import uk.co.conoregan.themoviedbapi.model.account.TvSeriesResultsPage;
 import uk.co.conoregan.themoviedbapi.model.config.Account;
 import uk.co.conoregan.themoviedbapi.model.core.AccountID;
-import uk.co.conoregan.themoviedbapi.model.core.MovieDbResultsPage;
 import uk.co.conoregan.themoviedbapi.model.core.responses.ResponseStatus;
+import uk.co.conoregan.themoviedbapi.model.rated.RatedMovieResultsPage;
+import uk.co.conoregan.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
+import uk.co.conoregan.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
 import uk.co.conoregan.themoviedbapi.tools.ApiEndpoint;
 import uk.co.conoregan.themoviedbapi.tools.MovieDbException;
 import uk.co.conoregan.themoviedbapi.tools.SortBy;

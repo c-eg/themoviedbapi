@@ -14,9 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static uk.co.conoregan.themoviedbapi.api.TmdbCertifications.TMDB_METHOD_CERTIFICATIONS;
-import static uk.co.conoregan.themoviedbapi.api.TmdbCertifications.TMDB_METHOD_MOVIE_CERTIFICATIONS;
-import static uk.co.conoregan.themoviedbapi.api.TmdbCertifications.TMDB_METHOD_TV_CERTIFICATIONS;
 
 /**
  * Tests for {@link uk.co.conoregan.themoviedbapi.api.TmdbCertifications}.

@@ -302,7 +302,8 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
-        RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = tmdbAccount.getRatedTvEpisodes(accountId, sessionToken, language, page, sortBy);
+        RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage =
+            tmdbAccount.getRatedTvEpisodes(accountId, sessionToken, language, page, sortBy);
         assertNotNull(ratedTvEpisodesResultsPage);
         assertTrue(ratedTvEpisodesResultsPage.getUnknownProperties().isEmpty());  // check for no unknown properties
         assertEquals(1, ratedTvEpisodesResultsPage.getPage());
