@@ -11,6 +11,7 @@ module uk.co.conoregan.themoviedbapi {
 
     opens uk.co.conoregan.themoviedbapi.api to com.fasterxml.jackson.databind;  // todo: maybe remove this
     opens uk.co.conoregan.themoviedbapi.model to com.fasterxml.jackson.databind;
+    opens uk.co.conoregan.themoviedbapi.model.account to com.fasterxml.jackson.databind;
     opens uk.co.conoregan.themoviedbapi.model.changes to com.fasterxml.jackson.databind;
     opens uk.co.conoregan.themoviedbapi.model.movies.changes to com.fasterxml.jackson.databind;
     opens uk.co.conoregan.themoviedbapi.model.certifications to com.fasterxml.jackson.databind;
