@@ -68,7 +68,7 @@ public class TmdbLists extends AbstractTmdbApi {
         apiEndpoint.addPathParam("movie_id", movieId);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, ListItemStatus.class).isItemPresent();
+        return mapJsonResult(responseBody, ListItemStatus.class).getItemPresent();
     }
 
     /**
