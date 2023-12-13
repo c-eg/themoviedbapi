@@ -1,12 +1,12 @@
 package uk.co.conoregan.themoviedbapi.model.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import uk.co.conoregan.themoviedbapi.model.core.NamedIdElement;
 
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class Account extends NamedIdElement {
     @JsonProperty("avatar")
     private Avatar avatar;

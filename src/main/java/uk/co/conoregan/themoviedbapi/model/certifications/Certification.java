@@ -1,12 +1,13 @@
 package uk.co.conoregan.themoviedbapi.model.certifications;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
 
-@Getter
-@Setter
-public class Certification {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class Certification extends AbstractJsonMapping {
     @JsonProperty("certification")
     private String certification;
 

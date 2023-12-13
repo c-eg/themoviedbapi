@@ -8,6 +8,7 @@ module uk.co.conoregan.themoviedbapi {
     requires org.slf4j;
     requires org.apache.commons.codec;
     requires org.apache.commons.lang3;
+    requires annotations;
 
     opens uk.co.conoregan.themoviedbapi.api to com.fasterxml.jackson.databind;  // todo: maybe remove this
     opens uk.co.conoregan.themoviedbapi.model to com.fasterxml.jackson.databind;

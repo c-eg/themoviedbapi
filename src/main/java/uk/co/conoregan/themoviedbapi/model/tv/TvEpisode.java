@@ -1,11 +1,11 @@
 package uk.co.conoregan.themoviedbapi.model.tv;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class TvEpisode extends AbstractTvElement {
     @JsonProperty("overview")
     private String overview;
@@ -14,23 +14,23 @@ public class TvEpisode extends AbstractTvElement {
     private String airDate;
 
     @JsonProperty("show_id")
-    private int seriesId;
+    private Integer seriesId;
 
     @JsonProperty("season_number")
     private Integer seasonNumber;
 
     @JsonProperty("episode_number")
-    private int episodeNumber;
+    private Integer episodeNumber;
 
     @JsonProperty("still_path")
     private String stillPath;
 
     @JsonProperty("rating")
-    private float userRating;
+    private Double userRating;
 
     @JsonProperty("vote_average")
-    private float voteAverage;
+    private Double voteAverage;
 
     @JsonProperty("vote_count")
-    private int voteCount;
+    private Integer voteCount;
 }

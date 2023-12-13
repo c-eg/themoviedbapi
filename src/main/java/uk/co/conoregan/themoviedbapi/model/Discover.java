@@ -15,6 +15,7 @@ import java.util.Map;
 /**
  * Generate a discover object for use in the MovieDbApi
  * This allows you to just add the search components you are concerned with.
+ * TODO: Investigate if this class still needs to be like this
  *
  * @author stuart.boston
  */

@@ -1,14 +1,14 @@
 package uk.co.conoregan.themoviedbapi.model.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import uk.co.conoregan.themoviedbapi.model.core.IdElement;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class Movie extends IdElement {
     @JsonProperty("adult")
     private Boolean adult;

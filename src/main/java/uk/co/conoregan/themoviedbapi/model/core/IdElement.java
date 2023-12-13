@@ -1,9 +1,8 @@
 package uk.co.conoregan.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -12,8 +11,7 @@ import java.io.Serializable;
  *
  * @author Holger Brandl
  */
-@Getter
-@Setter
+@Data
 @EqualsAndHashCode(callSuper = false)
 public class IdElement extends AbstractJsonMapping implements Serializable {
     @JsonProperty("id")

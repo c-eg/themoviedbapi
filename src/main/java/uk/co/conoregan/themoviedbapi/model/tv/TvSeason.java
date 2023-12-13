@@ -1,9 +1,13 @@
 package uk.co.conoregan.themoviedbapi.model.tv;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class TvSeason extends AbstractTvElement {
     @JsonProperty("air_date")
     private String airDate;
@@ -19,45 +23,4 @@ public class TvSeason extends AbstractTvElement {
 
     @JsonProperty("episodes")
     private List<TvEpisode> episodes;
-
-    public String getAirDate() {
-        return airDate;
-    }
-
-    public void setAirDate(String airDate) {
-        this.airDate = airDate;
-    }
-
-    public String getPosterPath() {
-        return posterPath;
-    }
-
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
-    }
-
-    public int getSeasonNumber() {
-        return seasonNumber;
-    }
-
-    public void setSeasonNumber(int seasonNumber) {
-        this.seasonNumber = seasonNumber;
-    }
-
-    public List<TvEpisode> getEpisodes() {
-
-        return episodes;
-    }
-
-    public void setEpisodes(List<TvEpisode> episodes) {
-        this.episodes = episodes;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
 }

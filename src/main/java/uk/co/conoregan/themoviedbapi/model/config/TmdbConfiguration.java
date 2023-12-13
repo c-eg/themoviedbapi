@@ -1,15 +1,15 @@
 package uk.co.conoregan.themoviedbapi.model.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
-import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
+import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class TmdbConfiguration extends AbstractJsonMapping {
     @JsonProperty("base_url")
     private String baseUrl;
@@ -31,6 +31,7 @@ public class TmdbConfiguration extends AbstractJsonMapping {
 
     /**
      * Copy the data from the passed object to this one.
+     * TODO: investigate this, not sure it would actually copy the values but rather just the reference
      */
     public void clone(TmdbConfiguration config) {
         backdropSizes = config.getBackdropSizes();

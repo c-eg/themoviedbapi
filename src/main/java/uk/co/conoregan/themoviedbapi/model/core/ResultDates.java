@@ -1,13 +1,11 @@
 package uk.co.conoregan.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Setter
-@Getter
-@ToString
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class ResultDates extends AbstractJsonMapping {
     @JsonProperty("minimum")
     private String minimum;

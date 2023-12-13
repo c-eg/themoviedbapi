@@ -2,46 +2,29 @@ package uk.co.conoregan.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
 import uk.co.conoregan.themoviedbapi.model.core.IdElement;
 
 import java.io.Serializable;
 import java.util.List;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 @JsonRootName("content_ratings")
-public class ContentRating implements Serializable {
+public class ContentRating extends AbstractJsonMapping implements Serializable {
     @JsonProperty("iso_3166_1")
     private String locale;
 
     @JsonProperty("rating")
     private String rating;
 
-    public String getLocale() {
-        return locale;
-    }
-
-    public void setLocale(String locale) {
-        this.locale = locale;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
+    // TODO: move into it's own file
+    @Data
+    @EqualsAndHashCode(callSuper = true)
     public static class Results extends IdElement {
-
         @JsonProperty("results")
         private List<ContentRating> results;
-
-        public List<ContentRating> getContentRatings() {
-            return results;
-        }
-
-        public void setContentRatings(List<ContentRating> contentRatings) {
-            results = contentRatings;
-        }
     }
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Small utility to get all pages.
+ * TODO: Maybe move to Util package.
  */
 public final class ResultPageHelper {
     private static final int MAX_PAGES_DEFAULT = 50;

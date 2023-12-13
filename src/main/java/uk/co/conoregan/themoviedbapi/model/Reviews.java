@@ -1,8 +1,12 @@
 package uk.co.conoregan.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import uk.co.conoregan.themoviedbapi.model.core.StringIdElement;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class Reviews extends StringIdElement {
     @JsonProperty("author")
     private String author;
@@ -12,28 +16,4 @@ public class Reviews extends StringIdElement {
 
     @JsonProperty("url")
     private String url;
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }

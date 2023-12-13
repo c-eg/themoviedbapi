@@ -1,14 +1,14 @@
 package uk.co.conoregan.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import uk.co.conoregan.themoviedbapi.model.core.NamedIdElement;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class CollectionInfo extends NamedIdElement {
     @JsonProperty("overview")
     private String overview;

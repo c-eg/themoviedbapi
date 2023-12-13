@@ -1,18 +1,16 @@
-package uk.co.conoregan.themoviedbapi.model.people;
+package uk.co.conoregan.themoviedbapi.model.keywords;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class PersonCredits extends AbstractJsonMapping {
-    @JsonProperty("cast")
-    private List<PersonCredit> cast;
-
-    @JsonProperty("crew")
-    private List<PersonCredit> crew;
+public class TvKeywords extends AbstractJsonMapping {
+    @JsonProperty("results")
+    private List<Keyword> results = new ArrayList<>();
 }

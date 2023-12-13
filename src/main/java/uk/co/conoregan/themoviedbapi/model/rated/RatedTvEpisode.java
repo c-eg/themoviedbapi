@@ -1,12 +1,12 @@
 package uk.co.conoregan.themoviedbapi.model.rated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import uk.co.conoregan.themoviedbapi.model.core.NamedIdElement;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class RatedTvEpisode extends NamedIdElement {
     @JsonProperty("air_date")
     private String airDate;

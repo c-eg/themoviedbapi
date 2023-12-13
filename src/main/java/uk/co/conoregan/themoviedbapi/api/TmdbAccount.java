@@ -4,7 +4,6 @@ import uk.co.conoregan.themoviedbapi.model.MovieListResultsPage;
 import uk.co.conoregan.themoviedbapi.model.account.MovieResultsPage;
 import uk.co.conoregan.themoviedbapi.model.account.TvSeriesResultsPage;
 import uk.co.conoregan.themoviedbapi.model.config.Account;
-import uk.co.conoregan.themoviedbapi.model.core.AccountID;
 import uk.co.conoregan.themoviedbapi.model.core.responses.ResponseStatus;
 import uk.co.conoregan.themoviedbapi.model.rated.RatedMovieResultsPage;
 import uk.co.conoregan.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
@@ -52,7 +51,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Add media from an account's favorites list.
      * See the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a> for more info.
      */
-    public ResponseStatus addFavorite(AccountID accountId, String sessionToken, Integer mediaId, MediaType mediaType)
+    public ResponseStatus addFavorite(Integer accountId, String sessionToken, Integer mediaId, MediaType mediaType)
         throws TmdbException {
         return changeFavoriteStatus(accountId, sessionToken, mediaId, mediaType, true);
     }
@@ -61,12 +60,12 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Remove media from an account's favorites list.
      * See the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a> for more info.
      */
-    public ResponseStatus removeFavorite(AccountID accountId, String sessionToken, Integer mediaId, MediaType mediaType)
+    public ResponseStatus removeFavorite(Integer accountId, String sessionToken, Integer mediaId, MediaType mediaType)
         throws TmdbException {
         return changeFavoriteStatus(accountId, sessionToken, mediaId, mediaType, false);
     }
 
-    private ResponseStatus changeFavoriteStatus(AccountID accountId, String sessionToken, Integer mediaId, MediaType mediaType,
+    private ResponseStatus changeFavoriteStatus(Integer accountId, String sessionToken, Integer mediaId, MediaType mediaType,
                                                 boolean isFavorite) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "favorite");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
@@ -85,7 +84,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Add media to an account's watch list.
      * See the <a href="https://developer.themoviedb.org/reference/account-add-to-watchlist">documentation</a> for more info.
      */
-    public ResponseStatus addToWatchList(AccountID accountId, String sessionToken, Integer mediaId, MediaType mediaType)
+    public ResponseStatus addToWatchList(Integer accountId, String sessionToken, Integer mediaId, MediaType mediaType)
         throws TmdbException {
         return changeWatchListStatus(accountId, sessionToken, mediaId, mediaType, true);
     }
@@ -94,12 +93,12 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Add media to an account's watch list.
      * See the <a href="https://developer.themoviedb.org/reference/account-add-to-watchlist">documentation</a> for more info.
      */
-    public ResponseStatus removeFromWatchList(AccountID accountId, String sessionToken, Integer mediaId, MediaType mediaType)
+    public ResponseStatus removeFromWatchList(Integer accountId, String sessionToken, Integer mediaId, MediaType mediaType)
         throws TmdbException {
         return changeWatchListStatus(accountId, sessionToken, mediaId, mediaType, false);
     }
 
-    private ResponseStatus changeWatchListStatus(AccountID accountId, String sessionToken, Integer mediaId, MediaType mediaType,
+    private ResponseStatus changeWatchListStatus(Integer accountId, String sessionToken, Integer mediaId, MediaType mediaType,
                                          boolean isWatchList) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
@@ -117,7 +116,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the favourite movies from the account.
      */
-    public MovieResultsPage getFavoriteMovies(AccountID accountId, String sessionToken, String language, Integer page,
+    public MovieResultsPage getFavoriteMovies(Integer accountId, String sessionToken, String language, Integer page,
                                               SortBy sortBy) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
@@ -132,7 +131,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the favorite tv shows from the account.
      */
-    public TvSeriesResultsPage getFavoriteTv(AccountID accountId, String sessionToken, String language, Integer page,
+    public TvSeriesResultsPage getFavoriteTv(Integer accountId, String sessionToken, String language, Integer page,
                                              SortBy sortBy) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
@@ -147,7 +146,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the lists that as user has created.
      */
-    public MovieListResultsPage getLists(AccountID accountId, String sessionToken, Integer page)
+    public MovieListResultsPage getLists(Integer accountId, String sessionToken, Integer page)
         throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "lists");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
@@ -160,7 +159,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the rated movies from the account.
      */
-    public RatedMovieResultsPage getRatedMovies(AccountID accountId, String sessionToken, String language, Integer page,
+    public RatedMovieResultsPage getRatedMovies(Integer accountId, String sessionToken, String language, Integer page,
                                                 SortBy sortBy) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "rated/movies");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
@@ -175,7 +174,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the rated tv shows from the account.
      */
-    public RatedTvSeriesResultsPage getRatedTvSeries(AccountID accountId, String sessionToken, String language, Integer page,
+    public RatedTvSeriesResultsPage getRatedTvSeries(Integer accountId, String sessionToken, String language, Integer page,
                                                      SortBy sortBy) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "rated/tv");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
@@ -190,7 +189,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the rated tv episodes from the account.
      */
-    public RatedTvEpisodeResultsPage getRatedTvEpisodes(AccountID accountId, String sessionToken, String language, Integer page,
+    public RatedTvEpisodeResultsPage getRatedTvEpisodes(Integer accountId, String sessionToken, String language, Integer page,
                                                         SortBy sortBy) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "rated/tv/episodes");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
@@ -207,7 +206,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @return The watchlist of the user
      */
-    public MovieResultsPage getWatchListMovies(AccountID accountId, String sessionToken, String language, Integer page,
+    public MovieResultsPage getWatchListMovies(Integer accountId, String sessionToken, String language, Integer page,
                                                  SortBy sortBy) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "watchlist/movies");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
@@ -224,7 +223,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @return The watchlist of the user
      */
-    public TvSeriesResultsPage getWatchListTvSeries(AccountID accountId, String sessionToken, String language, Integer page,
+    public TvSeriesResultsPage getWatchListTvSeries(Integer accountId, String sessionToken, String language, Integer page,
                                                     SortBy sortBy) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "watchlist/tv");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);

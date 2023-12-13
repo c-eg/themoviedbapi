@@ -1,14 +1,15 @@
 package uk.co.conoregan.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
 
-@Getter
-@Setter
-@ToString
-public class Translation {
+@lombok.Data
+@EqualsAndHashCode(callSuper = true)
+public class Translation extends AbstractJsonMapping {
     @JsonProperty("iso_3166_1")
     private String countryCode;
 

@@ -5,7 +5,7 @@ import uk.co.conoregan.themoviedbapi.model.ContentRating;
 import uk.co.conoregan.themoviedbapi.model.Credits;
 import uk.co.conoregan.themoviedbapi.model.MovieImages;
 import uk.co.conoregan.themoviedbapi.model.config.Timezone;
-import uk.co.conoregan.themoviedbapi.model.core.TvKeywords;
+import uk.co.conoregan.themoviedbapi.model.keywords.TvKeywords;
 import uk.co.conoregan.themoviedbapi.model.tv.TvSeriesDb;
 import uk.co.conoregan.themoviedbapi.tools.ApiEndpoint;
 import uk.co.conoregan.themoviedbapi.tools.TmdbException;

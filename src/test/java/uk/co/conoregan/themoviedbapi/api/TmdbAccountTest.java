@@ -9,7 +9,6 @@ import uk.co.conoregan.themoviedbapi.model.account.MovieResultsPage;
 import uk.co.conoregan.themoviedbapi.model.account.TvSeries;
 import uk.co.conoregan.themoviedbapi.model.account.TvSeriesResultsPage;
 import uk.co.conoregan.themoviedbapi.model.config.Account;
-import uk.co.conoregan.themoviedbapi.model.core.AccountID;
 import uk.co.conoregan.themoviedbapi.model.core.responses.ResponseStatus;
 import uk.co.conoregan.themoviedbapi.model.rated.RatedMovie;
 import uk.co.conoregan.themoviedbapi.model.rated.RatedMovieResultsPage;
@@ -56,11 +55,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#addFavorite(AccountID, String, Integer, TmdbAccount.MediaType)} with an expected result.
+     * Test {@link TmdbAccount#addFavorite(Integer, String, Integer, TmdbAccount.MediaType)} with an expected result.
      */
     @Test
     public void testAddFavourite() throws TmdbException, IOException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
@@ -77,11 +76,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#removeFavorite(AccountID, String, Integer, TmdbAccount.MediaType)} with an expected result.
+     * Test {@link TmdbAccount#removeFavorite(Integer, String, Integer, TmdbAccount.MediaType)} with an expected result.
      */
     @Test
     public void testRemoveFavorite() throws TmdbException, IOException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
@@ -98,11 +97,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#addToWatchList(AccountID, String, Integer, TmdbAccount.MediaType)} with an expected result.
+     * Test {@link TmdbAccount#addToWatchList(Integer, String, Integer, TmdbAccount.MediaType)} with an expected result.
      */
     @Test
     public void testAddToWatchList() throws IOException, TmdbException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
@@ -119,11 +118,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#removeFromWatchList(AccountID, String, Integer, TmdbAccount.MediaType)} with an expected result.
+     * Test {@link TmdbAccount#removeFromWatchList(Integer, String, Integer, TmdbAccount.MediaType)} with an expected result.
      */
     @Test
     public void testRemoveFromWatchList() throws IOException, TmdbException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
@@ -140,11 +139,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getFavoriteMovies(AccountID, String, String, Integer, SortBy)} with an expected result.
+     * Test {@link TmdbAccount#getFavoriteMovies(Integer, String, String, Integer, SortBy)} with an expected result.
      */
     @Test
     public void testGetFavouriteMovies() throws TmdbException, IOException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         String language = "en";
         Integer page = 1;
@@ -170,11 +169,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getFavoriteTv(AccountID, String, String, Integer, SortBy)} with an expected result.
+     * Test {@link TmdbAccount#getFavoriteTv(Integer, String, String, Integer, SortBy)} with an expected result.
      */
     @Test
     public void testGetFavouriteTv() throws IOException, TmdbException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         String language = "en";
         Integer page = 1;
@@ -200,11 +199,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getLists(AccountID, String, Integer)} with an expected result.
+     * Test {@link TmdbAccount#getLists(Integer, String, Integer)} with an expected result.
      */
     @Test
     public void testGetLists() throws TmdbException, IOException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         Integer page = 1;
 
@@ -228,11 +227,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getRatedMovies(AccountID, String, String, Integer, SortBy)} with an expected result.
+     * Test {@link TmdbAccount#getRatedMovies(Integer, String, String, Integer, SortBy)} with an expected result.
      */
     @Test
     public void testGetRatedMovies() throws TmdbException, IOException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         String language = "en";
         Integer page = 1;
@@ -258,11 +257,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getRatedTvSeries(AccountID, String, String, Integer, SortBy)} with an expected result.
+     * Test {@link TmdbAccount#getRatedTvSeries(Integer, String, String, Integer, SortBy)} with an expected result.
      */
     @Test
     public void testGetRatedTvSeries() throws TmdbException, IOException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         String language = "en";
         Integer page = 1;
@@ -288,11 +287,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getRatedTvEpisodes(AccountID, String, String, Integer, SortBy)} with an expected result.
+     * Test {@link TmdbAccount#getRatedTvEpisodes(Integer, String, String, Integer, SortBy)} with an expected result.
      */
     @Test
     public void testGetRatedTvEpisodes() throws TmdbException, IOException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         String language = "en";
         Integer page = 1;
@@ -319,11 +318,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getWatchListMovies(AccountID, String, String, Integer, SortBy)} with an expected result.
+     * Test {@link TmdbAccount#getWatchListMovies(Integer, String, String, Integer, SortBy)} with an expected result.
      */
     @Test
     public void testGetWatchListMovies() throws TmdbException, IOException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         String language = "en";
         Integer page = 1;
@@ -349,11 +348,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getWatchListTvSeries(AccountID, String, String, Integer, SortBy)} with an expected result.
+     * Test {@link TmdbAccount#getWatchListTvSeries(Integer, String, String, Integer, SortBy)} with an expected result.
      */
     @Test
     public void testGetWatchListTvSeries() throws TmdbException, IOException {
-        AccountID accountId = new AccountID(1234);
+        Integer accountId = 1234;
         String sessionToken = "testSessionToken";
         String language = "en";
         Integer page = 1;

@@ -1,12 +1,12 @@
 package uk.co.conoregan.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import uk.co.conoregan.themoviedbapi.model.core.IdElement;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class MovieList extends IdElement {
     @JsonProperty("description")
     private String description;
