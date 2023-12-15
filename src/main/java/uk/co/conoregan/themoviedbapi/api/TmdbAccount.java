@@ -9,15 +9,11 @@ import uk.co.conoregan.themoviedbapi.model.rated.RatedMovieResultsPage;
 import uk.co.conoregan.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
 import uk.co.conoregan.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
 import uk.co.conoregan.themoviedbapi.tools.ApiEndpoint;
-import uk.co.conoregan.themoviedbapi.tools.MovieDbException;
 import uk.co.conoregan.themoviedbapi.tools.SortBy;
 import uk.co.conoregan.themoviedbapi.tools.TmdbException;
 import uk.co.conoregan.themoviedbapi.util.Utils;
 
-import java.util.Collections;
 import java.util.HashMap;
-
-import static uk.co.conoregan.themoviedbapi.api.TmdbTV.TMDB_METHOD_TV;
 
 /**
  * The movie database api for accounts. See the
@@ -235,58 +231,10 @@ public class TmdbAccount extends AbstractTmdbApi {
         return mapJsonResult(responseBody, TvSeriesResultsPage.class);
     }
 
-    // TODO: move all of the of the functions below to the appropriate place
-
     /**
-     * This method lets users rate a movie.
-     * <p>
-     * A valid session id is required.
+     * Needed to tell TMDB API about what type of id is provided.
+     * e.g. see the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a>
      */
-    public ResponseStatus postMovieRating(String sessionToken, Integer movieId, Integer rating) throws TmdbException {
-        return postRatingInternal(sessionToken, rating, new ApiEndpoint(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "rating"));
-    }
-
-    /**
-     * This method lets users rate a tv series.
-     * <p>
-     * A valid session id is required.
-     */
-    public ResponseStatus postTvSeriesRating(String sessionToken, Integer movieId, Integer rating) throws TmdbException {
-        return postRatingInternal(sessionToken, rating, new ApiEndpoint(TmdbTV.TMDB_METHOD_TV, movieId, "rating"));
-    }
-
-    /**
-     * This method lets users rate a tv episode.
-     */
-    public ResponseStatus postTvExpisodeRating(String sessionToken, Integer seriesId, Integer seasonNumber,
-                                        Integer episodeNumber, Integer rating) throws TmdbException {
-        ApiEndpoint apiEndpoint = new ApiEndpoint(
-            TMDB_METHOD_TV, seriesId,
-            TmdbTvSeasons.TMDB_METHOD_TV_SEASON, seasonNumber,
-            TmdbTvEpisodes.TMDB_METHOD_TV_EPISODE, episodeNumber,
-            "rating"
-        );
-
-        return postRatingInternal(sessionToken, rating, apiEndpoint);
-    }
-
-    private ResponseStatus postRatingInternal(String sessionToken, Integer rating, ApiEndpoint apiEndpoint) throws TmdbException {
-        apiEndpoint.addQueryParam(PARAM_SESSION, sessionToken);
-
-        if (rating < 0 || rating > 10) {
-            throw new MovieDbException("rating out of range");
-        }
-
-        String jsonBody = Utils.convertToJson(getObjectMapper(), Collections.singletonMap("value", rating));
-        String responseBody = makePostRequest(apiEndpoint, jsonBody);
-        return mapJsonResult(responseBody, ResponseStatus.class);
-    }
-
-    /**
-     * Needed to tell tmdb api about what type of id is provided.
-     * e.g. see: http://docs.themoviedb.apiary.io/reference/account/accountidwatchlist
-     */
-    // note http://stackoverflow.com/questions/8143995/should-java-member-enum-types-be-capitalized
     public enum MediaType {
         MOVIE, TV;
 
