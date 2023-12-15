@@ -91,12 +91,12 @@ public class ApiEndpoint {
 
         name = StringUtils.trimToEmpty(name);
         if (name.isEmpty()) {
-            throw new RuntimeException("parameter name can not be empty");
+            throw new IllegalArgumentException("parameter name can not be empty");
         }
 
         value = StringUtils.trimToEmpty(value);
         if (value.isEmpty()) {
-            throw new RuntimeException("value of parameter '" + name + "' can not be empty");
+            throw new IllegalArgumentException("value of parameter '" + name + "' can not be empty");
         }
 
         params.put(name, value);

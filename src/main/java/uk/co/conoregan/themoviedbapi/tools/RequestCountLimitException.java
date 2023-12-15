@@ -1,8 +1,11 @@
 package uk.co.conoregan.themoviedbapi.tools;
 
+import lombok.Getter;
+
 /**
  * Exception that is thrown if the request limit is reached.
  */
+@Getter
 public class RequestCountLimitException extends RuntimeException {
     /**
      * Retry internal in seconds.
@@ -16,9 +19,5 @@ public class RequestCountLimitException extends RuntimeException {
     public RequestCountLimitException(String jsonResposne, int retryAfter) {
         super(jsonResposne);
         this.retryAfter = retryAfter;
-    }
-
-    public int getRetryAfter() {
-        return retryAfter;
     }
 }

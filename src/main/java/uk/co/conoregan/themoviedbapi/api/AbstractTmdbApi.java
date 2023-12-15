@@ -88,6 +88,18 @@ public abstract class AbstractTmdbApi {
      * Makes a DELETE request to the TMDb API.
      *
      * @param apiEndpoint the api endpoint (e.g. "movies/list")
+     * @param json the json body
+     * @return the string body, response
+     * @throws TmdbResponseException if the response was not successful
+     */
+    protected String makeDeleteRequest(ApiEndpoint apiEndpoint, String json) throws TmdbResponseException {
+        return makeRequest(apiEndpoint, json, RequestType.DELETE);
+    }
+
+    /**
+     * Makes a DELETE request to the TMDb API.
+     *
+     * @param apiEndpoint the api endpoint (e.g. "movies/list")
      * @return the string body, response
      * @throws TmdbResponseException if the response was not successful
      */
