@@ -1,7 +1,6 @@
 package uk.co.conoregan.themoviedbapi.api;
 
-import uk.co.conoregan.themoviedbapi.model.changes.Change;
-import uk.co.conoregan.themoviedbapi.model.core.ResultsPage;
+import uk.co.conoregan.themoviedbapi.model.changes.ChangesResultsPage;
 import uk.co.conoregan.themoviedbapi.tools.ApiEndpoint;
 import uk.co.conoregan.themoviedbapi.tools.TmdbException;
 
@@ -35,7 +34,6 @@ public class TmdbChanges extends AbstractTmdbApi {
      */
     public ChangesResultsPage getMovieChangesList(String startDate, String endDate, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, TMDB_METHOD_CHANGES);
-
         apiEndpoint.addQueryParam("start_date", startDate);
         apiEndpoint.addQueryParam("end_date", endDate);
         apiEndpoint.addPage(page);
@@ -54,7 +52,6 @@ public class TmdbChanges extends AbstractTmdbApi {
      */
     public ChangesResultsPage getPeopleChangesList(String startDate, String endDate, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_PERSON, TMDB_METHOD_CHANGES);
-
         apiEndpoint.addQueryParam("start_date", startDate);
         apiEndpoint.addQueryParam("end_date", endDate);
         apiEndpoint.addPage(page);
@@ -73,17 +70,11 @@ public class TmdbChanges extends AbstractTmdbApi {
      */
     public ChangesResultsPage getTvChangesList(String startDate, String endDate, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_TV, TMDB_METHOD_CHANGES);
-
         apiEndpoint.addQueryParam("start_date", startDate);
         apiEndpoint.addQueryParam("end_date", endDate);
         apiEndpoint.addPage(page);
 
         String responseBody = makeGetRequest(apiEndpoint);
         return mapJsonResult(responseBody, ChangesResultsPage.class);
-    }
-
-    @SuppressWarnings("checkstyle:MissingJavadocType")
-    public static class ChangesResultsPage extends ResultsPage<Change> {
-
     }
 }
