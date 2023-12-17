@@ -6,8 +6,14 @@ import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Abstract test class for TMDB API tests.
@@ -55,10 +61,37 @@ public abstract class AbstractTmdbApiTest {
      * @param body         the response body
      * @param responseCode the response code
      */
-    public void mockResponse(String body, int responseCode) {
+    protected void mockResponse(String body, int responseCode) {
         MockResponse mockResponse = new MockResponse()
             .setResponseCode(responseCode)
             .setBody(body);
         getServer().enqueue(mockResponse);
+    }
+
+    /**
+     * Tests the given object for null fields and unknown properties.
+     */
+    public void testForNullFieldsAndUnknownProperties(AbstractJsonMapping objectToCheck) {
+        assertTrue(getNullFields(objectToCheck).isEmpty(), "Null fields found in object: " + objectToCheck);
+        assertTrue(objectToCheck.getUnknownProperties().isEmpty(), "Unknown properties found in object: " + objectToCheck);
+    }
+
+    /**
+     * Returns all the null fields in the given object.
+     */
+    private List<Field> getNullFields(Object objectToCheck) {
+        List<Field> nullFields = new ArrayList<>();
+        for (Field field : objectToCheck.getClass().getDeclaredFields()) {
+            field.setAccessible(true);
+            try {
+                if (field.get(objectToCheck) == null) {
+                    nullFields.add(field);
+                }
+            }
+            catch (IllegalAccessException exception) {
+                throw new RuntimeException(exception);
+            }
+        }
+        return nullFields;
     }
 }

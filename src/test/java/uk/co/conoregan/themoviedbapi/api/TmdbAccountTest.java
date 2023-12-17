@@ -25,7 +25,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests for {@link uk.co.conoregan.themoviedbapi.api.TmdbAccount}.
@@ -39,10 +38,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/details.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         Account account = tmdbAccount.getDetails("testSessionToken");
         assertNotNull(account);
-        assertTrue(account.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(account);
 
         assertEquals("c9e9fc152ee756a900db85757c29815d", account.getAvatar().getGravatarHash());
         assertEquals("/xy44UvpbTgzs9kWmp4C3fEaCl5h.png", account.getAvatar().getTmdbAvatarPath());
@@ -50,7 +49,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         assertEquals("en", account.getIso6391());
         assertEquals("CA", account.getIso31661());
         assertEquals("Travis Bell", account.getName());
-        assertFalse(account.isIncludeAdult());
+        assertFalse(account.getIncludeAdult());
         assertEquals("travisbell", account.getUsername());
     }
 
@@ -67,10 +66,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/add_favourite.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         ResponseStatus responseStatus = tmdbAccount.addFavorite(accountId, sessionToken, mediaId, mediaType);
         assertNotNull(responseStatus);
-        assertTrue(responseStatus.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
         assertEquals("Success.", responseStatus.getStatusMessage());
     }
@@ -88,10 +87,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/add_favourite.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         ResponseStatus responseStatus = tmdbAccount.removeFavorite(accountId, sessionToken, mediaId, mediaType);
         assertNotNull(responseStatus);
-        assertTrue(responseStatus.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
         assertEquals("Success.", responseStatus.getStatusMessage());
     }
@@ -109,10 +108,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/add_to_watchlist.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         ResponseStatus responseStatus = tmdbAccount.addToWatchList(accountId, sessionToken, mediaId, mediaType);
         assertNotNull(responseStatus);
-        assertTrue(responseStatus.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
         assertEquals("Success.", responseStatus.getStatusMessage());
     }
@@ -130,10 +129,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/add_to_watchlist.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         ResponseStatus responseStatus = tmdbAccount.removeFromWatchList(accountId, sessionToken, mediaId, mediaType);
         assertNotNull(responseStatus);
-        assertTrue(responseStatus.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
         assertEquals("Success.", responseStatus.getStatusMessage());
     }
@@ -152,10 +151,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/favourite_movies.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         MovieResultsPage movieResultsPage = tmdbAccount.getFavoriteMovies(accountId, sessionToken, language, page, sortBy);
         assertNotNull(movieResultsPage);
-        assertTrue(movieResultsPage.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(movieResultsPage);
         assertEquals(1, movieResultsPage.getPage());
         assertEquals(4, movieResultsPage.getTotalPages());
         assertEquals(80, movieResultsPage.getTotalResults());
@@ -164,7 +163,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         assertEquals(20, movieResults.size());
 
         Movie movie = movieResults.get(0);
-        assertTrue(movie.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(movie);
         assertEquals(9806, movie.getId());
     }
 
@@ -182,10 +181,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/favourite_tv.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getFavoriteTv(accountId, sessionToken, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
-        assertTrue(tvSeriesResultsPage.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(tvSeriesResultsPage);
         assertEquals(1, tvSeriesResultsPage.getPage());
         assertEquals(4, tvSeriesResultsPage.getTotalPages());
         assertEquals(68, tvSeriesResultsPage.getTotalResults());
@@ -194,7 +193,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         assertEquals(20, tvResults.size());
 
         TvSeries tvSeries = tvResults.get(0);
-        assertTrue(tvSeries.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(tvSeries);
         assertEquals(1396, tvSeries.getId());
     }
 
@@ -210,10 +209,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/lists.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         MovieListResultsPage movieListResultsPage = tmdbAccount.getLists(accountId, sessionToken, page);
         assertNotNull(movieListResultsPage);
-        assertTrue(movieListResultsPage.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(movieListResultsPage);
         assertEquals(1, movieListResultsPage.getPage());
         assertEquals(2, movieListResultsPage.getTotalPages());
         assertEquals(25, movieListResultsPage.getTotalResults());
@@ -222,7 +221,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         assertEquals(20, movieLists.size());
 
         MovieList movieList = movieLists.get(0);
-        assertTrue(movieList.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(movieList);
         assertEquals(120174, movieList.getId());
     }
 
@@ -240,10 +239,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/rated_movies.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         RatedMovieResultsPage ratedMovieResultsPage = tmdbAccount.getRatedMovies(accountId, sessionToken, language, page, sortBy);
         assertNotNull(ratedMovieResultsPage);
-        assertTrue(ratedMovieResultsPage.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(ratedMovieResultsPage);
         assertEquals(1, ratedMovieResultsPage.getPage());
         assertEquals(47, ratedMovieResultsPage.getTotalPages());
         assertEquals(940, ratedMovieResultsPage.getTotalResults());
@@ -252,7 +251,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         assertEquals(16, ratedMovies.size());
 
         RatedMovie ratedMovie = ratedMovies.get(0);
-        assertTrue(ratedMovie.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(ratedMovie);
         assertEquals(120, ratedMovie.getId());
     }
 
@@ -270,10 +269,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/rated_tv.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         RatedTvSeriesResultsPage ratedTvSeriesResultsPage = tmdbAccount.getRatedTvSeries(accountId, sessionToken, language, page, sortBy);
         assertNotNull(ratedTvSeriesResultsPage);
-        assertTrue(ratedTvSeriesResultsPage.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(ratedTvSeriesResultsPage);
         assertEquals(1, ratedTvSeriesResultsPage.getPage());
         assertEquals(15, ratedTvSeriesResultsPage.getTotalPages());
         assertEquals(290, ratedTvSeriesResultsPage.getTotalResults());
@@ -282,7 +281,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         assertEquals(20, ratedTvSeriess.size());
 
         RatedTvSeries ratedTvSeries = ratedTvSeriess.get(0);
-        assertTrue(ratedTvSeries.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(ratedTvSeries);
         assertEquals(1705, ratedTvSeries.getId());
     }
 
@@ -300,11 +299,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/rated_tv_episodes.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage =
             tmdbAccount.getRatedTvEpisodes(accountId, sessionToken, language, page, sortBy);
         assertNotNull(ratedTvEpisodesResultsPage);
-        assertTrue(ratedTvEpisodesResultsPage.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(ratedTvEpisodesResultsPage);
         assertEquals(1, ratedTvEpisodesResultsPage.getPage());
         assertEquals(10, ratedTvEpisodesResultsPage.getTotalPages());
         assertEquals(186, ratedTvEpisodesResultsPage.getTotalResults());
@@ -313,7 +312,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         assertEquals(20, ratedTvEpisodes.size());
 
         RatedTvEpisode ratedTvEpisode = ratedTvEpisodes.get(0);
-        assertTrue(ratedTvEpisode.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(ratedTvEpisode);
         assertEquals(64782, ratedTvEpisode.getId());
     }
 
@@ -331,10 +330,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/watchlist_movies.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         MovieResultsPage movieResultsPage = tmdbAccount.getWatchListMovies(accountId, sessionToken, language, page, sortBy);
         assertNotNull(movieResultsPage);
-        assertTrue(movieResultsPage.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(movieResultsPage);
         assertEquals(1, movieResultsPage.getPage());
         assertEquals(34, movieResultsPage.getTotalPages());
         assertEquals(677, movieResultsPage.getTotalResults());
@@ -343,7 +342,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         assertEquals(20, movies.size());
 
         Movie movie = movies.get(0);
-        assertTrue(movie.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(movie);
         assertEquals(76726, movie.getId());
     }
 
@@ -361,10 +360,10 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("account/watchlist_tv.json");
         mockResponse(body, 200);
 
-        TmdbAccount tmdbAccount = new TmdbAccount(getTmdbApi());
+        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getWatchListTvSeries(accountId, sessionToken, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
-        assertTrue(tvSeriesResultsPage.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(tvSeriesResultsPage);
         assertEquals(1, tvSeriesResultsPage.getPage());
         assertEquals(17, tvSeriesResultsPage.getTotalPages());
         assertEquals(325, tvSeriesResultsPage.getTotalResults());
@@ -373,7 +372,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         assertEquals(20, tvSeriess.size());
 
         TvSeries tvSeries = tvSeriess.get(0);
-        assertTrue(tvSeries.getUnknownProperties().isEmpty());  // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(tvSeries);
         assertEquals(58932, tvSeries.getId());
     }
 }

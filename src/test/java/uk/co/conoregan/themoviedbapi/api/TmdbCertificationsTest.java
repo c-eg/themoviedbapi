@@ -27,7 +27,7 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("certifications/movie.json");
         mockResponse(body, 200);
 
-        TmdbCertifications tmdbCertifications = new TmdbCertifications(getTmdbApi());
+        TmdbCertifications tmdbCertifications = getTmdbApi().getCertifications();
         CertificationResults movieCertifications = tmdbCertifications.getMovieCertifications();
         assertNotNull(movieCertifications);
         assertTrue(movieCertifications.getUnknownProperties().isEmpty()); // check for no unknown properties
@@ -55,7 +55,7 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("certifications/tv.json");
         mockResponse(body, 200);
 
-        TmdbCertifications tmdbCertifications = new TmdbCertifications(getTmdbApi());
+        TmdbCertifications tmdbCertifications = getTmdbApi().getCertifications();
         CertificationResults tvCertifications = tmdbCertifications.getTvCertifications();
         assertNotNull(tvCertifications);
         assertTrue(tvCertifications.getUnknownProperties().isEmpty()); // check for no unknown properties
