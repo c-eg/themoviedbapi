@@ -23,7 +23,7 @@ public class Account extends NamedIdElement {
     private String name;
 
     @JsonProperty("include_adult")
-    private boolean includeAdult;
+    private Boolean includeAdult;
 
     @JsonProperty("username")
     private String username;

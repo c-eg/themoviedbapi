@@ -23,7 +23,7 @@ public class MovieDb extends IdElement implements Multi {
     private String originalTitle;
 
     @JsonProperty("popularity")
-    private float popularity;
+    private Double popularity;
 
     @JsonProperty("backdrop_path")
     private String backdropPath;
@@ -35,7 +35,7 @@ public class MovieDb extends IdElement implements Multi {
     private String releaseDate;
 
     @JsonProperty("adult")
-    private boolean adult;
+    private Boolean adult;
 
     @JsonProperty("belongs_to_collection")
     private Collection belongsToCollection;
@@ -69,7 +69,7 @@ public class MovieDb extends IdElement implements Multi {
     private long revenue;
 
     @JsonProperty("runtime")
-    private int runtime;
+    private Integer runtime;
 
     @JsonProperty("spoken_languages")
     private List<Language> spokenLanguages;
@@ -78,13 +78,13 @@ public class MovieDb extends IdElement implements Multi {
     private String tagline;
 
     @JsonProperty("rating")
-    private float userRating;
+    private Double userRating;
 
     @JsonProperty("vote_average")
-    private float voteAverage;
+    private Double voteAverage;
 
     @JsonProperty("vote_count")
-    private int voteCount;
+    private Integer voteCount;
 
     @JsonProperty("status")
     private String status;

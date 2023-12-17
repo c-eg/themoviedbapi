@@ -9,5 +9,5 @@ import uk.co.conoregan.themoviedbapi.model.core.IdElement;
 @EqualsAndHashCode(callSuper = true)
 public class Change extends IdElement {
     @JsonProperty("adult")
-    private boolean adult;
+    private Boolean adult;
 }

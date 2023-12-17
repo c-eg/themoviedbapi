@@ -16,7 +16,7 @@ public class TvSeason extends AbstractTvElement {
     private String posterPath;
 
     @JsonProperty("season_number")
-    private int seasonNumber;
+    private Integer seasonNumber;
 
     @JsonProperty("overview")
     private String overview;

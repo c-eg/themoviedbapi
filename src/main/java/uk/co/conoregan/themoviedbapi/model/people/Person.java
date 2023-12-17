@@ -13,7 +13,7 @@ public class Person extends NamedIdElement {
     protected String profilePath;
 
     @JsonProperty("cast_id")
-    private int castId;
+    private Integer castId;
 
     @JsonProperty("credit_id")
     private String creditId;

@@ -13,7 +13,7 @@ public class PersonCredit extends IdElement {
     private String language;
 
     @JsonProperty("episode_count")
-    private int episodeCount;
+    private Integer episodeCount;
 
     @JsonProperty("overview")
     private String overview;
@@ -55,7 +55,7 @@ public class PersonCredit extends IdElement {
     private Float voteAvg;
 
     @JsonProperty("vote_count")
-    private int voteCount;
+    private Integer voteCount;
 
     @JsonProperty("backdrop_path")
     private String backdropPath;

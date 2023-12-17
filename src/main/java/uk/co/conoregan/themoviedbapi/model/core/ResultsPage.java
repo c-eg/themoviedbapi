@@ -14,13 +14,13 @@ public class ResultsPage<T> extends AbstractJsonMapping implements Iterable<T> {
     private List<T> results;
 
     @JsonProperty("page")
-    private int page;
+    private Integer page;
 
     @JsonProperty("total_pages")
-    private int totalPages;
+    private Integer totalPages;
 
     @JsonProperty("total_results")
-    private int totalResults;
+    private Integer totalResults;
 
     @Override
     public Iterator<T> iterator() {

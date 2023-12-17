@@ -15,5 +15,5 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 public class IdElement extends AbstractJsonMapping implements Serializable {
     @JsonProperty("id")
-    private int id;
+    private Integer id;
 }

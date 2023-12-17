@@ -60,7 +60,7 @@ public class PersonPeople extends Person implements Multi {
     private float popularity = 0.0f;
 
     @JsonProperty("gender")
-    private int gender;
+    private Integer gender;
 
     @JsonProperty("known_for_department")
     private String knownForDepartment;

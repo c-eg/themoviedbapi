@@ -15,19 +15,19 @@ public class Artwork extends AbstractJsonMapping {
     private String filePath;
 
     @JsonProperty("aspect_ratio")
-    private float aspectRatio;
+    private Double aspectRatio;
 
     @JsonProperty("height")
-    private int height;
+    private Integer height;
 
     @JsonProperty("width")
-    private int width;
+    private Integer width;
 
     @JsonProperty("vote_average")
-    private float voteAverage;
+    private Double voteAverage;
 
     @JsonProperty("vote_count")
-    private int voteCount;
+    private Integer voteCount;
 
     @JsonProperty("flag")
     private String flag;

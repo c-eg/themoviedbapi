@@ -8,5 +8,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class ResponseStatusAuthentication extends ResponseStatus {
     @JsonProperty("success")
-    private boolean success;
+    private Boolean success;
 }

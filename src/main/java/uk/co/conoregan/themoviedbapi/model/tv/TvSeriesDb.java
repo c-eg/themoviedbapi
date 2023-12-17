@@ -50,7 +50,7 @@ public class TvSeriesDb extends AbstractTvElement implements Multi {
     private String overview;
 
     @JsonProperty("popularity")
-    private float popularity;
+    private Double popularity;
 
     @JsonProperty("backdrop_path")
     private String backdropPath;
@@ -59,10 +59,10 @@ public class TvSeriesDb extends AbstractTvElement implements Multi {
     private String posterPath;
 
     @JsonProperty("number_of_episodes")
-    private int numberOfEpisodes;
+    private Integer numberOfEpisodes;
 
     @JsonProperty("number_of_seasons")
-    private int numberOfSeasons;
+    private Integer numberOfSeasons;
 
     @JsonProperty("seasons")
     private List<TvSeason> seasons;
@@ -71,13 +71,13 @@ public class TvSeriesDb extends AbstractTvElement implements Multi {
     private ResultsPage<TvSeriesDb> recommendations;
 
     @JsonProperty("rating")
-    private float userRating;
+    private Double userRating;
 
     @JsonProperty("vote_average")
-    private float voteAverage;
+    private Double voteAverage;
 
     @JsonProperty("vote_count")
-    private int voteCount;
+    private Integer voteCount;
 
     @JsonProperty("status")
     private String status;

@@ -24,14 +24,14 @@ public class MovieKeyword extends IdElement {
     private String title;
 
     @JsonProperty("vote_average")
-    private float voteAverage;
+    private Double voteAverage;
 
     @JsonProperty("vote_count")
-    private double voteCount;
+    private Double voteCount;
 
     @JsonProperty("adult")
-    private boolean adult;
+    private Boolean adult;
 
     @JsonProperty("popularity")
-    private float popularity;
+    private Double popularity;
 }

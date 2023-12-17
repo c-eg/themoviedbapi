@@ -11,5 +11,5 @@ public class PersonCast extends Person {
     private String character;
 
     @JsonProperty("order")
-    private int order;
+    private Integer order;
 }

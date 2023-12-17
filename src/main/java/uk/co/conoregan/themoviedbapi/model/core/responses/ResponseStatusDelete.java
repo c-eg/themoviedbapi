@@ -9,5 +9,5 @@ import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
 @EqualsAndHashCode(callSuper = true)
 public class ResponseStatusDelete extends AbstractJsonMapping {
     @JsonProperty("success")
-    private boolean success;
+    private Boolean success;
 }
