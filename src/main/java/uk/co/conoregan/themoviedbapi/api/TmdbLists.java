@@ -44,10 +44,10 @@ public class TmdbLists extends AbstractTmdbApi {
      *
      * @return The list id
      */
-    public String createList(String sessionToken, String name, String description) throws TmdbException {
+    public String createList(String sessionId, String name, String description) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_LIST);
 
-        apiEndpoint.addPathParam(TmdbAccount.PARAM_SESSION, sessionToken);
+        apiEndpoint.addPathParam(TmdbAccount.PARAM_SESSION, sessionId);
 
         HashMap<String, String> body = new HashMap<>();
         body.put("name", StringUtils.trimToEmpty(name));
@@ -76,8 +76,8 @@ public class TmdbLists extends AbstractTmdbApi {
      *
      * @return true if the movie is on the list
      */
-    public ResponseStatus addMovieToList(String sessionToken, String listId, Integer movieId) throws TmdbException {
-        return modifyMovieList(sessionToken, listId, movieId, "add_item");
+    public ResponseStatus addMovieToList(String sessionId, String listId, Integer movieId) throws TmdbException {
+        return modifyMovieList(sessionId, listId, movieId, "add_item");
     }
 
     /**
@@ -85,14 +85,14 @@ public class TmdbLists extends AbstractTmdbApi {
      *
      * @return true if the movie is on the list
      */
-    public ResponseStatus removeMovieFromList(String sessionToken, String listId, Integer movieId) throws TmdbException {
-        return modifyMovieList(sessionToken, listId, movieId, "remove_item");
+    public ResponseStatus removeMovieFromList(String sessionId, String listId, Integer movieId) throws TmdbException {
+        return modifyMovieList(sessionId, listId, movieId, "remove_item");
     }
 
-    private ResponseStatus modifyMovieList(String sessionToken, String listId, Integer movieId,
+    private ResponseStatus modifyMovieList(String sessionId, String listId, Integer movieId,
                                            String operation) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_LIST, listId, operation);
-        apiEndpoint.addPathParam(TmdbAccount.PARAM_SESSION, sessionToken);
+        apiEndpoint.addPathParam(TmdbAccount.PARAM_SESSION, sessionId);
 
         Map<String, Object> body = Collections.singletonMap("media_id", movieId + "");
         String jsonBody = Utils.convertToJson(getObjectMapper(), body);
@@ -103,9 +103,9 @@ public class TmdbLists extends AbstractTmdbApi {
     /**
      * This method lets users delete a list that they created. A valid session id is required.
      */
-    public ResponseStatus deleteMovieList(String sessionToken, String listId) throws TmdbException {
+    public ResponseStatus deleteMovieList(String sessionId, String listId) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_LIST, listId);
-        apiEndpoint.addPathParam(TmdbAccount.PARAM_SESSION, sessionToken);
+        apiEndpoint.addPathParam(TmdbAccount.PARAM_SESSION, sessionId);
 
         String responseBody = makeDeleteRequest(apiEndpoint);
         return mapJsonResult(responseBody, ResponseStatus.class);

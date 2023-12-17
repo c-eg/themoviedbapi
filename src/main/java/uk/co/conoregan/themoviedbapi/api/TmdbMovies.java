@@ -184,10 +184,10 @@ public class TmdbMovies extends AbstractTmdbApi {
     /**
      * Get the lists that the movie belongs to.
      */
-    public MovieListResultsPage getListsContaining(int movieId, String sessionToken, String language,
+    public MovieListResultsPage getListsContaining(int movieId, String sessionId, String language,
                                                    Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, movieId, MovieMethod.lists);
-        apiEndpoint.addPathParam(TmdbAccount.PARAM_SESSION, sessionToken);
+        apiEndpoint.addPathParam(TmdbAccount.PARAM_SESSION, sessionId);
         apiEndpoint.addLanguage(language);
         apiEndpoint.addPage(page);
 

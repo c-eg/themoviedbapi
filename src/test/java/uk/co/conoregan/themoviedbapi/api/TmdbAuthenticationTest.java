@@ -5,7 +5,6 @@ import uk.co.conoregan.themoviedbapi.TestUtils;
 import uk.co.conoregan.themoviedbapi.model.authentication.GuestSession;
 import uk.co.conoregan.themoviedbapi.model.authentication.RequestToken;
 import uk.co.conoregan.themoviedbapi.model.authentication.Session;
-import uk.co.conoregan.themoviedbapi.model.authentication.SessionLogin;
 import uk.co.conoregan.themoviedbapi.model.core.responses.ResponseStatusAuthentication;
 import uk.co.conoregan.themoviedbapi.model.core.responses.ResponseStatusDelete;
 import uk.co.conoregan.themoviedbapi.model.core.responses.TmdbResponseException;
@@ -61,6 +60,37 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
     }
 
     /**
+     * Tests {@link TmdbAuthentication#getTmdbAuthenticationUrlForRequestToken(RequestToken, String)} with an expected result.
+     */
+    @Test
+    public void testGetTmdbAuthenticationUrlForRequestToken() throws TmdbException, IOException {
+        String body = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
+        mockResponse(body, 200);
+
+        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
+        RequestToken requestToken = tmdbAuthentication.createRequestToken();
+        String url = TmdbAuthentication.getTmdbAuthenticationUrlForRequestToken(requestToken, "redirectUrl");
+        assertEquals("https://www.themoviedb.org/authenticate/ff5c7eeb5a8870efe3cd7fc5c282cffd26800ecd?redirect_to=redirectUrl", url);
+    }
+
+    /**
+     * Tests {@link TmdbAuthentication#getTmdbAuthenticationUrlForRequestToken(RequestToken, String)} with a request token that is not
+     * successful.
+     */
+    @Test
+    public void testGetTmdbAuthenticationUrlForRequestTokenUnccessfulRequestToken() throws TmdbException, IOException {
+        String body = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
+        mockResponse(body, 200);
+
+        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
+        RequestToken requestToken = tmdbAuthentication.createRequestToken();
+        requestToken.setSuccess(false);
+
+        assertThrows(TmdbException.class, () ->
+            TmdbAuthentication.getTmdbAuthenticationUrlForRequestToken(requestToken, "redirectUrl"));
+    }
+
+    /**
      * Tests {@link TmdbAuthentication#createSession(RequestToken)} with an expected result.
      */
     @Test
@@ -91,7 +121,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Tests {@link TmdbAuthentication#createSession(RequestToken, String, String)} with an expected result.
+     * Tests {@link TmdbAuthentication#createAuthenticatedRequestToken(RequestToken, String, String)} with an expected result.
      */
     @Test
     public void testCreateSessionWithLogin() throws TmdbException, IOException {
@@ -101,72 +131,27 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         RequestToken requestToken = new RequestToken();
         requestToken.setSuccess(true);
-        SessionLogin sessionLogin = tmdbAuthentication.createSession(requestToken, "username", "password");
-        assertNotNull(sessionLogin);
-        testForNullFieldsAndUnknownProperties(sessionLogin);
 
-        assertEquals("2018-07-24 04:10:26 UTC", sessionLogin.getExpiresAt());
-        assertEquals("1531f1a558c8357ce8990cf887ff196e8f5402ec", sessionLogin.getRequestToken());
-        assertTrue(sessionLogin.getSuccess());
+        RequestToken authenticatedRequestToken = tmdbAuthentication.createAuthenticatedRequestToken(requestToken, "username", "password");
+        assertNotNull(authenticatedRequestToken);
+        testForNullFieldsAndUnknownProperties(authenticatedRequestToken);
+
+        assertEquals("2018-07-24 04:10:26 UTC", authenticatedRequestToken.getExpires());
+        assertEquals("1531f1a558c8357ce8990cf887ff196e8f5402ec", authenticatedRequestToken.getRequestToken());
+        assertTrue(authenticatedRequestToken.getSuccess());
     }
 
     /**
-     * Tests {@link TmdbAuthentication#createSession(RequestToken, String, String)} with a request token that is not successful.
+     * Tests {@link TmdbAuthentication#createAuthenticatedRequestToken(RequestToken, String, String)} with a request token that is not
+     * successful.
      */
     @Test
     public void testCreateSessionWithLoginUnsuccessfulRequestToken() {
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         RequestToken requestToken = new RequestToken();
         requestToken.setSuccess(false);
-        assertThrows(TmdbException.class, () -> tmdbAuthentication.createSession(requestToken, "username", "password"));
-    }
-
-    /**
-     * Tests {@link TmdbAuthentication#getSessionLogin(String, String)} with an expected result.
-     */
-    @Test
-    public void testGetSessionLogin() throws TmdbException, IOException {
-        String requestTokenBody = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
-        mockResponse(requestTokenBody, 200);
-        String sessionWithLoginBody = TestUtils.readTestFile("api_responses/authentication/create_session_with_login.json");
-        mockResponse(sessionWithLoginBody, 200);
-
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        SessionLogin sessionLogin = tmdbAuthentication.getSessionLogin("username", "password");
-        assertNotNull(sessionLogin);
-        testForNullFieldsAndUnknownProperties(sessionLogin);
-        assertEquals(2, getServer().getRequestCount());
-
-        assertEquals("2018-07-24 04:10:26 UTC", sessionLogin.getExpiresAt());
-        assertEquals("1531f1a558c8357ce8990cf887ff196e8f5402ec", sessionLogin.getRequestToken());
-        assertTrue(sessionLogin.getSuccess());
-    }
-
-    /**
-     * Tests {@link TmdbAuthentication#getSessionLogin(String, String)} with a request token that is not successful.
-     */
-    @Test
-    public void testGetSessionLoginUnsuccessfulRequestToken() throws IOException {
-        String requestTokenBody = TestUtils.readTestFile("api_responses/authentication/create_request_token_unsuccessful.json");
-        mockResponse(requestTokenBody, 200);
-
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        assertThrows(TmdbException.class, () -> tmdbAuthentication.getSessionLogin("username", "password"));
-    }
-
-    /**
-     * Tests {@link TmdbAuthentication#getSessionLogin(String, String)} with a session login that is not successful.
-     */
-    @Test
-    public void testGetSessionLoginUnsuccessfulSessionLogin() throws IOException {
-        String requestTokenBody = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
-        mockResponse(requestTokenBody, 200);
-        String sessionWithLoginBody = TestUtils.readTestFile("api_responses/authentication/create_session_with_login_unsuccessful.json");
-        mockResponse(sessionWithLoginBody, 200);
-
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        assertThrows(TmdbException.class, () -> tmdbAuthentication.getSessionLogin("username", "password"));
-        assertEquals(2, getServer().getRequestCount());
+        assertThrows(TmdbException.class, () ->
+            tmdbAuthentication.createAuthenticatedRequestToken(requestToken, "username", "password"));
     }
 
     /**
@@ -183,6 +168,18 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         testForNullFieldsAndUnknownProperties(responseStatusDelete);
 
         assertTrue(responseStatusDelete.getSuccess());
+    }
+
+    /**
+     * Tests {@link TmdbAuthentication#deleteSession(String)} with a null session_id.
+     */
+    @Test
+    public void testDeleteSessionNullSession() throws IOException {
+        String body = TestUtils.readTestFile("api_responses/authentication/delete_session.json");
+        mockResponse(body, 200);
+
+        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
+        assertThrows(TmdbException.class, () -> tmdbAuthentication.deleteSession(null));
     }
 
     /**

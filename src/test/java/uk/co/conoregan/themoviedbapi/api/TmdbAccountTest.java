@@ -39,7 +39,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        Account account = tmdbAccount.getDetails("testSessionToken");
+        Account account = tmdbAccount.getDetails("testSessionId");
         assertNotNull(account);
         testForNullFieldsAndUnknownProperties(account);
 
@@ -59,7 +59,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testAddFavourite() throws TmdbException, IOException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
@@ -67,7 +67,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        ResponseStatus responseStatus = tmdbAccount.addFavorite(accountId, sessionToken, mediaId, mediaType);
+        ResponseStatus responseStatus = tmdbAccount.addFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         testForNullFieldsAndUnknownProperties(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
@@ -80,7 +80,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testRemoveFavorite() throws TmdbException, IOException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
@@ -88,7 +88,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        ResponseStatus responseStatus = tmdbAccount.removeFavorite(accountId, sessionToken, mediaId, mediaType);
+        ResponseStatus responseStatus = tmdbAccount.removeFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         testForNullFieldsAndUnknownProperties(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
@@ -101,7 +101,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testAddToWatchList() throws IOException, TmdbException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
@@ -109,7 +109,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        ResponseStatus responseStatus = tmdbAccount.addToWatchList(accountId, sessionToken, mediaId, mediaType);
+        ResponseStatus responseStatus = tmdbAccount.addToWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         testForNullFieldsAndUnknownProperties(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
@@ -122,7 +122,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testRemoveFromWatchList() throws IOException, TmdbException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
@@ -130,7 +130,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        ResponseStatus responseStatus = tmdbAccount.removeFromWatchList(accountId, sessionToken, mediaId, mediaType);
+        ResponseStatus responseStatus = tmdbAccount.removeFromWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         testForNullFieldsAndUnknownProperties(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
@@ -143,7 +143,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testGetFavouriteMovies() throws TmdbException, IOException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
@@ -152,7 +152,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        MovieResultsPage movieResultsPage = tmdbAccount.getFavoriteMovies(accountId, sessionToken, language, page, sortBy);
+        MovieResultsPage movieResultsPage = tmdbAccount.getFavoriteMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
         testForNullFieldsAndUnknownProperties(movieResultsPage);
         assertEquals(1, movieResultsPage.getPage());
@@ -173,7 +173,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testGetFavouriteTv() throws IOException, TmdbException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
@@ -182,7 +182,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getFavoriteTv(accountId, sessionToken, language, page, sortBy);
+        TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getFavoriteTv(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
         testForNullFieldsAndUnknownProperties(tvSeriesResultsPage);
         assertEquals(1, tvSeriesResultsPage.getPage());
@@ -203,14 +203,14 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testGetLists() throws TmdbException, IOException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         Integer page = 1;
 
         String body = TestUtils.readTestFile("api_responses/account/lists.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        MovieListResultsPage movieListResultsPage = tmdbAccount.getLists(accountId, sessionToken, page);
+        MovieListResultsPage movieListResultsPage = tmdbAccount.getLists(accountId, sessionId, page);
         assertNotNull(movieListResultsPage);
         testForNullFieldsAndUnknownProperties(movieListResultsPage);
         assertEquals(1, movieListResultsPage.getPage());
@@ -231,7 +231,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testGetRatedMovies() throws TmdbException, IOException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
@@ -240,7 +240,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        RatedMovieResultsPage ratedMovieResultsPage = tmdbAccount.getRatedMovies(accountId, sessionToken, language, page, sortBy);
+        RatedMovieResultsPage ratedMovieResultsPage = tmdbAccount.getRatedMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedMovieResultsPage);
         testForNullFieldsAndUnknownProperties(ratedMovieResultsPage);
         assertEquals(1, ratedMovieResultsPage.getPage());
@@ -261,7 +261,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testGetRatedTvSeries() throws TmdbException, IOException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
@@ -270,7 +270,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        RatedTvSeriesResultsPage ratedTvSeriesResultsPage = tmdbAccount.getRatedTvSeries(accountId, sessionToken, language, page, sortBy);
+        RatedTvSeriesResultsPage ratedTvSeriesResultsPage = tmdbAccount.getRatedTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvSeriesResultsPage);
         testForNullFieldsAndUnknownProperties(ratedTvSeriesResultsPage);
         assertEquals(1, ratedTvSeriesResultsPage.getPage());
@@ -291,7 +291,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testGetRatedTvEpisodes() throws TmdbException, IOException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
@@ -301,7 +301,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage =
-            tmdbAccount.getRatedTvEpisodes(accountId, sessionToken, language, page, sortBy);
+            tmdbAccount.getRatedTvEpisodes(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvEpisodesResultsPage);
         testForNullFieldsAndUnknownProperties(ratedTvEpisodesResultsPage);
         assertEquals(1, ratedTvEpisodesResultsPage.getPage());
@@ -322,7 +322,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testGetWatchListMovies() throws TmdbException, IOException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
@@ -331,7 +331,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        MovieResultsPage movieResultsPage = tmdbAccount.getWatchListMovies(accountId, sessionToken, language, page, sortBy);
+        MovieResultsPage movieResultsPage = tmdbAccount.getWatchListMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
         testForNullFieldsAndUnknownProperties(movieResultsPage);
         assertEquals(1, movieResultsPage.getPage());
@@ -352,7 +352,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     @Test
     public void testGetWatchListTvSeries() throws TmdbException, IOException {
         Integer accountId = 1234;
-        String sessionToken = "testSessionToken";
+        String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
@@ -361,7 +361,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getWatchListTvSeries(accountId, sessionToken, language, page, sortBy);
+        TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getWatchListTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
         testForNullFieldsAndUnknownProperties(tvSeriesResultsPage);
         assertEquals(1, tvSeriesResultsPage.getPage());
