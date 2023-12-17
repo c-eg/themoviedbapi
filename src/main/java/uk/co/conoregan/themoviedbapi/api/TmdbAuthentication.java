@@ -56,7 +56,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      */
     public Session createSession(RequestToken token) throws TmdbException {
         if (!token.getSuccess()) {
-            throw new TmdbException("Authorisation token was not successful!");
+            throw new TmdbException("Request token was not successful!");
         }
 
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_AUTH, "session/new");
@@ -76,6 +76,10 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      * info.
      */
     public SessionLogin createSession(RequestToken token, String username, String password) throws TmdbException {
+        if (!token.getSuccess()) {
+            throw new TmdbException("Request token was not successful!");
+        }
+
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_AUTH, "token/validate_with_login");
 
         HashMap<String, Object> body = new HashMap<>();
@@ -97,10 +101,6 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      */
     public SessionLogin getSessionLogin(String username, String password) throws TmdbException {
         RequestToken requestToken = createRequestToken();
-        if (!requestToken.getSuccess()) {
-            throw new TmdbException("Authorisation token was not successful!");
-        }
-
         SessionLogin session = createSession(requestToken, username, password);
         if (!session.getSuccess()) {
             throw new TmdbException("User authentication failed:" + session);
