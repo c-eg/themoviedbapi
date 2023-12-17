@@ -13,10 +13,9 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Tests for {@link uk.co.conoregan.themoviedbapi.api.TmdbCertifications}.
+ * Tests for {@link TmdbCertifications}.
  */
 public class TmdbCertificationsTest extends AbstractTmdbApiTest {
     /**
@@ -24,13 +23,13 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testGetMovieCertifications() throws IOException, TmdbException {
-        String body = TestUtils.readTestFile("certifications/movie.json");
+        String body = TestUtils.readTestFile("api_responses/certifications/movie.json");
         mockResponse(body, 200);
 
         TmdbCertifications tmdbCertifications = getTmdbApi().getCertifications();
         CertificationResults movieCertifications = tmdbCertifications.getMovieCertifications();
         assertNotNull(movieCertifications);
-        assertTrue(movieCertifications.getUnknownProperties().isEmpty()); // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(movieCertifications);
 
         Map<String, List<Certification>> certifications = movieCertifications.getCertifications();
         assertFalse(certifications.isEmpty());
@@ -39,6 +38,7 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         assertFalse(auCertifications.isEmpty());
 
         Certification auCertification = auCertifications.get(0);
+        testForNullFieldsAndUnknownProperties(auCertification);
         assertNotNull(auCertification);
         assertEquals("E", auCertification.getCertification());
         assertEquals("Exempt from classification. Films that are exempt from classification must not" +
@@ -52,13 +52,13 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testGetTvCertifications() throws IOException, TmdbException {
-        String body = TestUtils.readTestFile("certifications/tv.json");
+        String body = TestUtils.readTestFile("api_responses/certifications/tv.json");
         mockResponse(body, 200);
 
         TmdbCertifications tmdbCertifications = getTmdbApi().getCertifications();
         CertificationResults tvCertifications = tmdbCertifications.getTvCertifications();
         assertNotNull(tvCertifications);
-        assertTrue(tvCertifications.getUnknownProperties().isEmpty()); // check for no unknown properties
+        testForNullFieldsAndUnknownProperties(tvCertifications);
 
         Map<String, List<Certification>> certifications = tvCertifications.getCertifications();
         assertFalse(certifications.isEmpty());
@@ -67,6 +67,7 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         assertFalse(auCertifications.isEmpty());
 
         Certification auCertification = auCertifications.get(0);
+        testForNullFieldsAndUnknownProperties(auCertification);
         assertNotNull(auCertification);
         assertEquals("P", auCertification.getCertification());
         assertEquals("Programming is intended for younger children 2–11; commercial stations must show " +

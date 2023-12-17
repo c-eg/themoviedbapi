@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.co.conoregan.themoviedbapi.tools.TmdbResponseCode.INVALID_API_KEY;
 
 /**
- * Tests for {@link uk.co.conoregan.themoviedbapi.api.TmdbAuthentication}.
+ * Tests for {@link TmdbAuthentication}.
  */
 public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
     /**
@@ -29,7 +29,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testCreateGuestSession() throws TmdbException, IOException {
-        String body = TestUtils.readTestFile("authentication/create_guest_session.json");
+        String body = TestUtils.readTestFile("api_responses/authentication/create_guest_session.json");
         mockResponse(body, 200);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
@@ -47,7 +47,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testCreateRequestToken() throws TmdbException, IOException {
-        String body = TestUtils.readTestFile("authentication/create_request_token.json");
+        String body = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
         mockResponse(body, 200);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
@@ -65,7 +65,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testCreateSession() throws TmdbException, IOException {
-        String body = TestUtils.readTestFile("authentication/create_session.json");
+        String body = TestUtils.readTestFile("api_responses/authentication/create_session.json");
         mockResponse(body, 200);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
@@ -95,7 +95,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testCreateSessionWithLogin() throws TmdbException, IOException {
-        String body = TestUtils.readTestFile("authentication/create_session_with_login.json");
+        String body = TestUtils.readTestFile("api_responses/authentication/create_session_with_login.json");
         mockResponse(body, 200);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
@@ -126,9 +126,9 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testGetSessionLogin() throws TmdbException, IOException {
-        String requestTokenBody = TestUtils.readTestFile("authentication/create_request_token.json");
+        String requestTokenBody = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
         mockResponse(requestTokenBody, 200);
-        String sessionWithLoginBody = TestUtils.readTestFile("authentication/create_session_with_login.json");
+        String sessionWithLoginBody = TestUtils.readTestFile("api_responses/authentication/create_session_with_login.json");
         mockResponse(sessionWithLoginBody, 200);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
@@ -147,7 +147,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testGetSessionLoginUnsuccessfulRequestToken() throws IOException {
-        String requestTokenBody = TestUtils.readTestFile("authentication/create_request_token_unsuccessful.json");
+        String requestTokenBody = TestUtils.readTestFile("api_responses/authentication/create_request_token_unsuccessful.json");
         mockResponse(requestTokenBody, 200);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
@@ -159,9 +159,9 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testGetSessionLoginUnsuccessfulSessionLogin() throws IOException {
-        String requestTokenBody = TestUtils.readTestFile("authentication/create_request_token.json");
+        String requestTokenBody = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
         mockResponse(requestTokenBody, 200);
-        String sessionWithLoginBody = TestUtils.readTestFile("authentication/create_session_with_login_unsuccessful.json");
+        String sessionWithLoginBody = TestUtils.readTestFile("api_responses/authentication/create_session_with_login_unsuccessful.json");
         mockResponse(sessionWithLoginBody, 200);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
@@ -174,7 +174,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testDeleteSession() throws TmdbException, IOException {
-        String body = TestUtils.readTestFile("authentication/delete_session.json");
+        String body = TestUtils.readTestFile("api_responses/authentication/delete_session.json");
         mockResponse(body, 200);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
@@ -190,7 +190,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testValidateKey() throws TmdbException, IOException {
-        String body = TestUtils.readTestFile("authentication/validate_key.json");
+        String body = TestUtils.readTestFile("api_responses/authentication/validate_key.json");
         mockResponse(body, 200);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
@@ -206,7 +206,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testValidateKeyUnsuccessful() throws IOException {
-        String body = TestUtils.readTestFile("authentication/validate_key_unsuccessful.json");
+        String body = TestUtils.readTestFile("api_responses/authentication/validate_key_unsuccessful.json");
         mockResponse(body, 401);
 
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();

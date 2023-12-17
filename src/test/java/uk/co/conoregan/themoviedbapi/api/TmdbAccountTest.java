@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
- * Tests for {@link uk.co.conoregan.themoviedbapi.api.TmdbAccount}.
+ * Tests for {@link TmdbAccount}.
  */
 public class TmdbAccountTest extends AbstractTmdbApiTest {
     /**
@@ -35,7 +35,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testGetAccount() throws IOException, TmdbException {
-        String body = TestUtils.readTestFile("account/details.json");
+        String body = TestUtils.readTestFile("api_responses/account/details.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -63,7 +63,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
-        String body = TestUtils.readTestFile("account/add_favourite.json");
+        String body = TestUtils.readTestFile("api_responses/account/add_favourite.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -84,7 +84,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
-        String body = TestUtils.readTestFile("account/add_favourite.json");
+        String body = TestUtils.readTestFile("api_responses/account/add_favourite.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -105,7 +105,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
-        String body = TestUtils.readTestFile("account/add_to_watchlist.json");
+        String body = TestUtils.readTestFile("api_responses/account/add_to_watchlist.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -126,7 +126,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
-        String body = TestUtils.readTestFile("account/add_to_watchlist.json");
+        String body = TestUtils.readTestFile("api_responses/account/add_to_watchlist.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -148,7 +148,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
 
-        String body = TestUtils.readTestFile("account/favourite_movies.json");
+        String body = TestUtils.readTestFile("api_responses/account/favourite_movies.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -178,7 +178,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
 
-        String body = TestUtils.readTestFile("account/favourite_tv.json");
+        String body = TestUtils.readTestFile("api_responses/account/favourite_tv.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -206,7 +206,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String sessionToken = "testSessionToken";
         Integer page = 1;
 
-        String body = TestUtils.readTestFile("account/lists.json");
+        String body = TestUtils.readTestFile("api_responses/account/lists.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -236,7 +236,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
 
-        String body = TestUtils.readTestFile("account/rated_movies.json");
+        String body = TestUtils.readTestFile("api_responses/account/rated_movies.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -266,7 +266,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
 
-        String body = TestUtils.readTestFile("account/rated_tv.json");
+        String body = TestUtils.readTestFile("api_responses/account/rated_tv.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -296,7 +296,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
 
-        String body = TestUtils.readTestFile("account/rated_tv_episodes.json");
+        String body = TestUtils.readTestFile("api_responses/account/rated_tv_episodes.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -327,7 +327,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
 
-        String body = TestUtils.readTestFile("account/watchlist_movies.json");
+        String body = TestUtils.readTestFile("api_responses/account/watchlist_movies.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
@@ -357,7 +357,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         Integer page = 1;
         SortBy sortBy = SortBy.ASC;
 
-        String body = TestUtils.readTestFile("account/watchlist_tv.json");
+        String body = TestUtils.readTestFile("api_responses/account/watchlist_tv.json");
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
