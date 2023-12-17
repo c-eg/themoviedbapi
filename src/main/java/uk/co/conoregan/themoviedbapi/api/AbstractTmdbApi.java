@@ -17,6 +17,8 @@ import uk.co.conoregan.themoviedbapi.tools.TmdbResponseCode;
 
 import java.io.IOException;
 
+import static uk.co.conoregan.themoviedbapi.tools.TmdbResponseCode.REQUEST_LIMIT_EXCEEDED;
+
 /**
  * Class to be inherited by a TmdbApi class.
  */
@@ -153,16 +155,15 @@ public abstract class AbstractTmdbApi {
             }
             String responseString = responseBody.string();
 
-            // check if the response was successful. tmdb have their own codes for successful and unsuccessful responses
-            // and some 2xx codes are not successful.
+            // check if the response was successful. tmdb have their own codes for successful and unsuccessful responses.
+            // some 2xx codes are not successful. See: https://developer.themoviedb.org/docs/errors for more info.
             ResponseStatus responseStatus = objectMapper.readValue(responseString, ResponseStatus.class);
             Integer statusCode = responseStatus.getStatusCode();
             if (statusCode != null) {
                 TmdbResponseCode tmdbResponseCode = TmdbResponseCode.fromCode(statusCode);
 
                 if (tmdbResponseCode != null) {
-                    // rate limit reached, wait 1 second and try again
-                    if (tmdbResponseCode.getTmdbCode() == 25) {
+                    if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
                         Thread.sleep(1000);
                         return makeRequest(apiEndpoint, json, requestType);
                     }
