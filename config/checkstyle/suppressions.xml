@@ -4,10 +4,10 @@
         "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 <suppressions>
     <!-- disable javadoc check in model package. The classes there are basically just data classes, so no need to document anything -->
-    <suppress files="uk.co.conoregan.themoviedbapi.model" checks="MissingJavadocType"/>
-    <suppress files="uk.co.conoregan.themoviedbapi.model" checks="JavadocMethod"/>
+    <suppress files="info.movito.themoviedbapi.model" checks="MissingJavadocType"/>
+    <suppress files="info.movito.themoviedbapi.model" checks="JavadocMethod"/>
 
-    <suppress files="uk.co.conoregan.themoviedbapi.tools.MovieDbException" checks="JavadocMethod"/>
-    <suppress files="uk.co.conoregan.themoviedbapi.tools.TmdbException" checks="JavadocMethod"/>
-    <suppress files="uk.co.conoregan.themoviedbapi.tools.TmdbException" checks="MissingJavadocMethod"/>
+    <suppress files="info.movito.themoviedbapi.tools.MovieDbException" checks="JavadocMethod"/>
+    <suppress files="info.movito.themoviedbapi.tools.TmdbException" checks="JavadocMethod"/>
+    <suppress files="info.movito.themoviedbapi.tools.TmdbException" checks="MissingJavadocMethod"/>
 </suppressions>
