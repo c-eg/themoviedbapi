@@ -8,7 +8,7 @@ import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.providers.ProviderResults;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import info.movito.themoviedbapi.api.TmdbMovies;
+import info.movito.themoviedbapi.TmdbMovies;
 
 import java.util.List;
 

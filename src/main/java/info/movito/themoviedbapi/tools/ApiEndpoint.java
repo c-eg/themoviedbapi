@@ -1,6 +1,6 @@
 package info.movito.themoviedbapi.tools;
 
-import info.movito.themoviedbapi.api.AbstractTmdbApi;
+import info.movito.themoviedbapi.AbstractTmdbApi;
 import org.apache.commons.lang3.StringUtils;
 
 import java.net.URLEncoder;

@@ -1,7 +1,7 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import org.junit.jupiter.api.Test;
-import info.movito.themoviedbapi.TestUtils;
+import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.MovieListResultsPage;
 import info.movito.themoviedbapi.model.account.Movie;

@@ -3,7 +3,7 @@ package info.movito.themoviedbapi.model;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
-import info.movito.themoviedbapi.api.AbstractTmdbApi;
+import info.movito.themoviedbapi.AbstractTmdbApi;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import org.apache.commons.lang3.StringUtils;

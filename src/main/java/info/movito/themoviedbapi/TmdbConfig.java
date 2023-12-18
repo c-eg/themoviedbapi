@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.config.ConfigResults;
 import info.movito.themoviedbapi.tools.ApiEndpoint;

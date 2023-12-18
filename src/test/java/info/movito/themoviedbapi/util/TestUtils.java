@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi;
+package info.movito.themoviedbapi.util;
 
 import org.apache.commons.io.IOUtils;
 

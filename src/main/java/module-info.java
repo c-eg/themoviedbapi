@@ -9,7 +9,7 @@ module info.movito.themoviedbapi {
     requires org.apache.commons.codec;
     requires org.apache.commons.lang3;
 
-    opens info.movito.themoviedbapi.api to com.fasterxml.jackson.databind;  // todo: maybe remove this
+    opens info.movito.themoviedbapi to com.fasterxml.jackson.databind;  // todo: maybe remove this
     opens info.movito.themoviedbapi.model to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.account to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.authentication to com.fasterxml.jackson.databind;
@@ -26,7 +26,7 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.tv to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.util to com.fasterxml.jackson.databind;
 
-    exports info.movito.themoviedbapi.api;
+    exports info.movito.themoviedbapi;
     exports info.movito.themoviedbapi.model;
     exports info.movito.themoviedbapi.model.account;
     exports info.movito.themoviedbapi.model.authentication;

@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.CollectionInfo;

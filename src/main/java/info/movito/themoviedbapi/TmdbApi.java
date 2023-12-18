@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import lombok.Getter;
 import info.movito.themoviedbapi.model.config.Timezone;

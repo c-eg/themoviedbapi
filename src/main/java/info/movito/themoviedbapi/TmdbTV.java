@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.TvSeriesDbResultsPage;
 import info.movito.themoviedbapi.model.ContentRating;

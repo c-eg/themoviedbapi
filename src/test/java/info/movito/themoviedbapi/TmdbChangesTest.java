@@ -1,7 +1,7 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import org.junit.jupiter.api.Test;
-import info.movito.themoviedbapi.TestUtils;
+import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.model.changes.Change;
 import info.movito.themoviedbapi.model.changes.ChangesResultsPage;
 import info.movito.themoviedbapi.tools.TmdbException;

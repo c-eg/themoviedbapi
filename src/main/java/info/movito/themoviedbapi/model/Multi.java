@@ -2,7 +2,7 @@ package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import info.movito.themoviedbapi.api.TmdbSearch;
+import info.movito.themoviedbapi.TmdbSearch;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.people.PersonPeople;
 import info.movito.themoviedbapi.model.tv.TvSeriesDb;

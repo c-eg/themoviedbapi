@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.MovieListResultsPage;
 import info.movito.themoviedbapi.model.TvSeriesDbResultsPage;
@@ -11,8 +11,8 @@ import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiEndpoint;
 import info.movito.themoviedbapi.tools.TmdbException;
 
-import static info.movito.themoviedbapi.api.TmdbLists.TMDB_METHOD_LIST;
-import static info.movito.themoviedbapi.api.TmdbMovies.TMDB_METHOD_MOVIE;
+import static info.movito.themoviedbapi.TmdbLists.TMDB_METHOD_LIST;
+import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 

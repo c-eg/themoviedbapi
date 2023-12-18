@@ -1,10 +1,10 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.tv.TvSeason;
 import info.movito.themoviedbapi.tools.ApiEndpoint;
 import info.movito.themoviedbapi.tools.TmdbException;
 
-import static info.movito.themoviedbapi.api.TmdbTV.TMDB_METHOD_TV;
+import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.util.Utils.asStringArray;
 
 /**

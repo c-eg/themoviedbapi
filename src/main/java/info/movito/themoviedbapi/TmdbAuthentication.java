@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.authentication.GuestSession;
 import info.movito.themoviedbapi.model.authentication.RequestToken;

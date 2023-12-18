@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;

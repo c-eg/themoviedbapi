@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -25,7 +25,7 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import java.util.List;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
-import static info.movito.themoviedbapi.api.TmdbMovies.MovieMethod.videos;
+import static info.movito.themoviedbapi.TmdbMovies.MovieMethod.videos;
 import static info.movito.themoviedbapi.util.Utils.asStringArray;
 
 /**

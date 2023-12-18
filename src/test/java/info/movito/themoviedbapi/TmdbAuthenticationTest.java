@@ -1,7 +1,7 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import org.junit.jupiter.api.Test;
-import info.movito.themoviedbapi.TestUtils;
+import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.model.authentication.GuestSession;
 import info.movito.themoviedbapi.model.authentication.RequestToken;
 import info.movito.themoviedbapi.model.authentication.Session;

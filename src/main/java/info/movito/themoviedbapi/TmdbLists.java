@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.api;
+package info.movito.themoviedbapi;
 
 import org.apache.commons.lang3.StringUtils;
 import info.movito.themoviedbapi.model.ListItemStatus;
