@@ -13,8 +13,10 @@ import java.util.List;
 /**
  * The movie database api for configuration. See the
  * <a href="https://developer.themoviedb.org/reference/configuration-details">documentation</a> for more info.
- * TODO: Move this to config api. I believe the current endpoint is being deprecated - there's no docs for it.
+ *
+ * @deprecated While this still currently works, it is not on the TMDB API documentation, so presume it is being deprecated.
  */
+@Deprecated
 public class TmdbTimezones extends AbstractTmdbApi {
     public static final String TMDB_METHOD_TIMEZONESLIST = "timezones/list";
 
