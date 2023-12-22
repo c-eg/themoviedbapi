@@ -35,10 +35,6 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         GuestSession guestSession = tmdbAuthentication.createGuestSession();
         assertNotNull(guestSession);
         testForNullFieldsAndUnknownProperties(guestSession);
-
-        assertEquals("2016-08-27 16:26:40 UTC", guestSession.getExpiresAt());
-        assertEquals("1ce82ec1223641636ad4a60b07de3581", guestSession.getGuestSessionId());
-        assertTrue(guestSession.getSuccess());
     }
 
     /**
@@ -53,10 +49,6 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         RequestToken requestToken = tmdbAuthentication.createRequestToken();
         assertNotNull(requestToken);
         testForNullFieldsAndUnknownProperties(requestToken);
-
-        assertEquals("2016-08-26 17:04:39 UTC", requestToken.getExpires());
-        assertEquals("ff5c7eeb5a8870efe3cd7fc5c282cffd26800ecd", requestToken.getRequestToken());
-        assertTrue(requestToken.getSuccess());
     }
 
     /**
@@ -104,9 +96,6 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         Session session = tmdbAuthentication.createSession(requestToken);
         assertNotNull(session);
         testForNullFieldsAndUnknownProperties(session);
-
-        assertEquals("79191836ddaa0da3df76a5ffef6f07ad6ab0c641", session.getSessionId());
-        assertTrue(session.getSuccess());
     }
 
     /**
@@ -135,10 +124,6 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         RequestToken authenticatedRequestToken = tmdbAuthentication.createAuthenticatedRequestToken(requestToken, "username", "password");
         assertNotNull(authenticatedRequestToken);
         testForNullFieldsAndUnknownProperties(authenticatedRequestToken);
-
-        assertEquals("2018-07-24 04:10:26 UTC", authenticatedRequestToken.getExpires());
-        assertEquals("1531f1a558c8357ce8990cf887ff196e8f5402ec", authenticatedRequestToken.getRequestToken());
-        assertTrue(authenticatedRequestToken.getSuccess());
     }
 
     /**

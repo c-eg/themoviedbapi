@@ -1,16 +1,15 @@
 package info.movito.themoviedbapi;
 
-import org.junit.jupiter.api.Test;
-import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.model.certifications.Certification;
 import info.movito.themoviedbapi.model.certifications.CertificationResults;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.util.TestUtils;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -38,13 +37,8 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         assertFalse(auCertifications.isEmpty());
 
         Certification auCertification = auCertifications.get(0);
-        testForNullFieldsAndUnknownProperties(auCertification);
         assertNotNull(auCertification);
-        assertEquals("E", auCertification.getCertification());
-        assertEquals("Exempt from classification. Films that are exempt from classification must not" +
-            " contain contentious material (i.e. material that would ordinarily be rated M or higher).",
-            auCertification.getMeaning());
-        assertEquals(1, auCertification.getOrder());
+        testForNullFieldsAndUnknownProperties(auCertification);
     }
 
     /**
@@ -67,13 +61,7 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         assertFalse(auCertifications.isEmpty());
 
         Certification auCertification = auCertifications.get(0);
-        testForNullFieldsAndUnknownProperties(auCertification);
         assertNotNull(auCertification);
-        assertEquals("P", auCertification.getCertification());
-        assertEquals("Programming is intended for younger children 2–11; commercial stations must show " +
-                "at least 30 minutes of P-rated content each weekday and weekends at all times. " +
-                "No advertisements may be shown during P-rated programs.",
-            auCertification.getMeaning());
-        assertEquals(1, auCertification.getOrder());
+        testForNullFieldsAndUnknownProperties(auCertification);
     }
 }

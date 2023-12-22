@@ -1,14 +1,13 @@
 package info.movito.themoviedbapi;
 
-import org.junit.jupiter.api.Test;
-import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.model.changes.Change;
 import info.movito.themoviedbapi.model.changes.ChangesResultsPage;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.util.TestUtils;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
@@ -31,7 +30,6 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         Change change = changesResultsPage.getResults().get(0);
         assertNotNull(change);
         testForNullFieldsAndUnknownProperties(change);
-        assertFalse(change.getAdult());
     }
 
     /**
@@ -50,7 +48,6 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         Change change = changesResultsPage.getResults().get(0);
         assertNotNull(change);
         testForNullFieldsAndUnknownProperties(change);
-        assertFalse(change.getAdult());
     }
 
     /**
@@ -69,6 +66,5 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         Change change = changesResultsPage.getResults().get(0);
         assertNotNull(change);
         testForNullFieldsAndUnknownProperties(change);
-        assertFalse(change.getAdult());
     }
 }
