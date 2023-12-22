@@ -125,8 +125,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      *
      * The idea is to be a quick and light method so you can iterate through people quickly.
      */
-
-    public TmdbPeople.PersonResultsPage searchPerson(String query, boolean includeAdult, Integer page) throws TmdbException {
+    public TmdbPeople.PersonResultsPage searchPerson(String query, Boolean includeAdult, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_SEARCH, TmdbPeople.TMDB_METHOD_PERSON);
 
         apiEndpoint.addPathParam(PARAM_QUERY, query);

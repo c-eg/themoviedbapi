@@ -4,6 +4,8 @@ import info.movito.themoviedbapi.model.changes.ChangesResultsPage;
 import info.movito.themoviedbapi.tools.ApiEndpoint;
 import info.movito.themoviedbapi.tools.TmdbException;
 
+import static info.movito.themoviedbapi.util.Utils.calculateDaysDifference;
+
 /**
  * The movie database api for changes. See the
  * <a href="https://developer.themoviedb.org/reference/changes-movie-list">documentation</a> for more info.
@@ -25,14 +27,20 @@ public class TmdbChanges extends AbstractTmdbApi {
     }
 
     /**
-     * Get a list of all the movie ids that have been changed in the past 24 hours.
+     * <p>Get a list of all the movie ids that have been changed in the past 24 hours.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/changes-movie-list">documentation</a> for more info.</p>
      *
      * @param startDate the start date, in format: YYYY-MM-DD.
      * @param endDate the end date, in format: YYYY-MM-DD.
      * @param page the page.
      * @return the changes results page.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangesResultsPage getMovieChangesList(String startDate, String endDate, Integer page) throws TmdbException {
+        if (calculateDaysDifference(startDate, endDate) > 14) {
+            throw new IllegalArgumentException("The date range must be less than or equal to 14 days.");
+        }
+
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, TMDB_METHOD_CHANGES);
         apiEndpoint.addQueryParam("start_date", startDate);
         apiEndpoint.addQueryParam("end_date", endDate);
@@ -51,6 +59,10 @@ public class TmdbChanges extends AbstractTmdbApi {
      * @return the changes results page.
      */
     public ChangesResultsPage getPeopleChangesList(String startDate, String endDate, Integer page) throws TmdbException {
+        if (calculateDaysDifference(startDate, endDate) > 14) {
+            throw new IllegalArgumentException("The date range must be less than or equal to 14 days.");
+        }
+
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_PERSON, TMDB_METHOD_CHANGES);
         apiEndpoint.addQueryParam("start_date", startDate);
         apiEndpoint.addQueryParam("end_date", endDate);
@@ -69,6 +81,10 @@ public class TmdbChanges extends AbstractTmdbApi {
      * @return the changes results page.
      */
     public ChangesResultsPage getTvChangesList(String startDate, String endDate, Integer page) throws TmdbException {
+        if (calculateDaysDifference(startDate, endDate) > 14) {
+            throw new IllegalArgumentException("The date range must be less than or equal to 14 days.");
+        }
+
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_TV, TMDB_METHOD_CHANGES);
         apiEndpoint.addQueryParam("start_date", startDate);
         apiEndpoint.addQueryParam("end_date", endDate);

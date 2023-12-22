@@ -30,7 +30,13 @@ public class ApiEndpoint {
         StringBuilder baseUrlBuilder = new StringBuilder();
 
         for (int i = 0; i < urlElements.length; i++) {
-            baseUrlBuilder.append(urlElements[i]);
+            Object object = urlElements[i];
+
+            if (object == null) {
+                throw new IllegalArgumentException("url element can not be null");
+            }
+
+            baseUrlBuilder.append(object);
 
             if (i < urlElements.length - 1) {
                 baseUrlBuilder.append("/");
@@ -100,26 +106,6 @@ public class ApiEndpoint {
         }
 
         params.put(name, value);
-    }
-
-    /**
-     * Adds a parameter to the api endpoint (e.g. "movies/list").
-     *
-     * @param key the key
-     * @param value the value
-     */
-    public void addPathParam(String key, int value) {
-        addPathParam(key, Integer.toString(value));
-    }
-
-    /**
-     * Adds a parameter to the api endpoint (e.g. "movies/list").
-     *
-     * @param key the key
-     * @param value the value
-     */
-    public void addPathParam(String key, boolean value) {
-        addPathParam(key, Boolean.toString(value));
     }
 
     /**

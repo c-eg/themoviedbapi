@@ -72,7 +72,21 @@ public abstract class AbstractTmdbApiTest {
      * Tests the given object for null fields and unknown properties.
      */
     public void testForNullFieldsAndUnknownProperties(AbstractJsonMapping objectToCheck) {
+        testForNullFields(objectToCheck);
+        testForUnknownProperties(objectToCheck);
+    }
+
+    /**
+     * Tests the given object for null fields.
+     */
+    public void testForNullFields(AbstractJsonMapping objectToCheck) {
         assertTrue(getNullFields(objectToCheck).isEmpty(), "Null fields found in object: " + objectToCheck);
+    }
+
+    /**
+     * Tests the given object for unknown properties.
+     */
+    public void testForUnknownProperties(AbstractJsonMapping objectToCheck) {
         assertTrue(objectToCheck.getUnknownProperties().isEmpty(), "Unknown properties found in object: " + objectToCheck);
     }
 
