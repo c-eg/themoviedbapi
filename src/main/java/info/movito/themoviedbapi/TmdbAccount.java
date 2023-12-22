@@ -32,11 +32,17 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the basic information for an account. You will need to have a valid session id.
-     * See the <a href="https://developer.themoviedb.org/reference/account-details">documentation</a> for more info.
+     * <p>Get the basic information for an account. You will need to have a valid session id.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-details">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @return The account details.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public Account getDetails(String sessionId) throws TmdbException {
+    public Account getDetails(Integer accountId, String sessionId) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT);
+        apiEndpoint.addPathParam("account_id", accountId);
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionId);
 
         String responseBody = makeGetRequest(apiEndpoint);
@@ -44,8 +50,15 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Add media from an account's favorites list.
-     * See the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a> for more info.
+     * <p>Add media to an account's favorites list.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param mediaId the id of the media to add to the favorites list.
+     * @param mediaType the type of media to add to the favorites list.
+     * @return The status of the request.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatus addFavorite(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType)
         throws TmdbException {
@@ -53,8 +66,15 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Remove media from an account's favorites list.
-     * See the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a> for more info.
+     * <p>Remove media to an account's favorites list.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param mediaId the id of the media to remove from the favorites list.
+     * @param mediaType the type of media to remove from the favorites list.
+     * @return The status of the request.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatus removeFavorite(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType)
         throws TmdbException {
@@ -77,8 +97,15 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Add media to an account's watch list.
-     * See the <a href="https://developer.themoviedb.org/reference/account-add-to-watchlist">documentation</a> for more info.
+     * <p>Add media to an account's watch list.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-add-to-watchlist">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param mediaId the id of the media to add to the watch list.
+     * @param mediaType the type of media to add to the watch list.
+     * @return The status of the request.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatus addToWatchList(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType)
         throws TmdbException {
@@ -86,8 +113,15 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Add media to an account's watch list.
-     * See the <a href="https://developer.themoviedb.org/reference/account-add-to-watchlist">documentation</a> for more info.
+     * <p>Remove media to an account's watch list.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-add-to-watchlist">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param mediaId the id of the media to remove from the watch list.
+     * @param mediaType the type of media to remove from the watch list.
+     * @return The status of the request.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatus removeFromWatchList(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType)
         throws TmdbException {
@@ -110,7 +144,16 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the favourite movies from the account.
+     * <p>Get the favorite movies from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-get-favorites">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The favorite movies of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieResultsPage getFavoriteMovies(Integer accountId, String sessionId, String language, Integer page,
                                               SortBy sortBy) throws TmdbException {
@@ -125,7 +168,16 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the favorite tv shows from the account.
+     * <p>Get the favorite tv shows from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-favorite-tv">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The favorite tv series of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage getFavoriteTv(Integer accountId, String sessionId, String language, Integer page,
                                              SortBy sortBy) throws TmdbException {
@@ -140,10 +192,17 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the lists that as user has created.
+     * <p>Get the lists that as user has created.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-lists">documentation</a> for more info.</p>
+     * TODO: maybe rename MovieListResultsPage to ListResultsPage or something similar. I'm not sure if it is only for movies or all media.
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param page optional - The page to return.
+     * @return The lists of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieListResultsPage getLists(Integer accountId, String sessionId, Integer page)
-        throws TmdbException {
+    public MovieListResultsPage getLists(Integer accountId, String sessionId, Integer page) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_ACCOUNT, accountId, "lists");
         apiEndpoint.addQueryParam(PARAM_SESSION, sessionId);
         apiEndpoint.addPage(page);
@@ -153,7 +212,16 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the rated movies from the account.
+     * <p>Get the rated movies from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-rated-movies">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The rated movies of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public RatedMovieResultsPage getRatedMovies(Integer accountId, String sessionId, String language, Integer page,
                                                 SortBy sortBy) throws TmdbException {
@@ -168,7 +236,16 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the rated tv shows from the account.
+     * <p>Get the rated tv shows from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-rated-tv">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The rated tv series of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public RatedTvSeriesResultsPage getRatedTvSeries(Integer accountId, String sessionId, String language, Integer page,
                                                      SortBy sortBy) throws TmdbException {
@@ -183,7 +260,16 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the rated tv episodes from the account.
+     * <p>Get the rated tv episodes from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-rated-tv-episodes">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The rated tv episodes of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public RatedTvEpisodeResultsPage getRatedTvEpisodes(Integer accountId, String sessionId, String language, Integer page,
                                                         SortBy sortBy) throws TmdbException {
@@ -198,9 +284,16 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the list of movies on an accounts watchlist.
+     * <p>Get the list of movies on an accounts watchlist.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-watchlist-movies">documentation</a> for more info.</p>
      *
-     * @return The watchlist of the user
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The movies in the account's watchlist
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieResultsPage getWatchListMovies(Integer accountId, String sessionId, String language, Integer page,
                                                  SortBy sortBy) throws TmdbException {
@@ -215,9 +308,16 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the list of tv series on an accounts watchlist.
+     * <p>Get the list of tv series on an accounts watchlist.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-watchlist-tv">documentation</a> for more info.</p>
      *
-     * @return The watchlist of the user
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The tv series in the account's watchlist
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage getWatchListTvSeries(Integer accountId, String sessionId, String language, Integer page,
                                                     SortBy sortBy) throws TmdbException {

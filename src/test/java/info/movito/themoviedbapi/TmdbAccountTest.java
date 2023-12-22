@@ -31,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  */
 public class TmdbAccountTest extends AbstractTmdbApiTest {
     /**
-     * Test {@link TmdbAccount#getDetails(String)} with an expected result.
+     * Test {@link TmdbAccount#getDetails(Integer, String)} with an expected result.
      */
     @Test
     public void testGetAccount() throws IOException, TmdbException {
@@ -39,7 +39,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         mockResponse(body, 200);
 
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        Account account = tmdbAccount.getDetails("testSessionId");
+        Account account = tmdbAccount.getDetails(1234, "testSessionId");
         assertNotNull(account);
         testForNullFieldsAndUnknownProperties(account);
 
