@@ -166,6 +166,9 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      * <p>Test your API Key to see if it's valid.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-validate-key">documentation</a>
      * for more info.</p>
+     *
+     * @return The response status.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatusAuthentication validateKey() throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_AUTH);

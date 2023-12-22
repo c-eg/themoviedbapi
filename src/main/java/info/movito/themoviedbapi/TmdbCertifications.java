@@ -20,7 +20,11 @@ public class TmdbCertifications extends AbstractTmdbApi {
     }
 
     /**
-     * Get the list of supported certifications for movies.
+     * <p>Get an up to date list of the officially supported movie certifications on TMDB.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/certification-movie-list">documentation</a> for more info.</p>
+     *
+     * @return The movie certifications.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public CertificationResults getMovieCertifications() throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_CERTIFICATIONS, "movie/list");
@@ -30,7 +34,11 @@ public class TmdbCertifications extends AbstractTmdbApi {
     }
 
     /**
-     * Get the list of supported certifications for tv series.
+     * <p>Get an up to date list of the officially supported tv certifications on TMDB.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/certifications-tv-list">documentation</a> for more info.</p>
+     *
+     * @return The tv certifications.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public CertificationResults getTvCertifications() throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_CERTIFICATIONS, "tv/list");
