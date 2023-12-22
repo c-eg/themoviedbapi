@@ -71,7 +71,8 @@ public class TmdbGenre extends AbstractTmdbApi {
      *
      * This prevents movies from 1 10/10 rating from being listed first and for the first 5 pages.
      */
-    public MovieDbResultsPage getGenreMovies(Integer genreId, String language, Integer page, Boolean includeAllMovies) throws TmdbException {
+    public MovieDbResultsPage getGenreMovies(Integer genreId, String language, Integer page, Boolean includeAllMovies)
+        throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_GENRE, genreId, "movies");
 
         apiEndpoint.addLanguage(language);
