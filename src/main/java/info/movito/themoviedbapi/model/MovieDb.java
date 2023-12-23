@@ -97,7 +97,7 @@ public class MovieDb extends IdElement implements Multi {
     private Credits credits;
 
     @JsonProperty("images")
-    private MovieImages images;
+    private Image images;
 
     // note: it seems to be a flaw in their api, because a paged result would be more consistent
     @JsonProperty("keywords")

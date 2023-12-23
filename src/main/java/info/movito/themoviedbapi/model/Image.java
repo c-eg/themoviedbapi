@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class MovieImages extends IdElement {
+public class Image extends IdElement {
     @JsonProperty("backdrops")
     private List<Artwork> backdrops;
 

@@ -3,7 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.TvSeriesDbResultsPage;
 import info.movito.themoviedbapi.model.ContentRating;
 import info.movito.themoviedbapi.model.Credits;
-import info.movito.themoviedbapi.model.MovieImages;
+import info.movito.themoviedbapi.model.Image;
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.keywords.TvKeywords;
 import info.movito.themoviedbapi.model.tv.TvSeriesDb;
@@ -147,12 +147,12 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param language the language
      * @return the series
      */
-    public MovieImages getImages(int seriesId, String language) throws TmdbException {
+    public Image getImages(int seriesId, String language) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_TV, seriesId, TvMethod.images);
         apiEndpoint.addLanguage(language);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieImages.class);
+        return mapJsonResult(responseBody, Image.class);
     }
 
     /**

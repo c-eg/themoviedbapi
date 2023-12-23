@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import info.movito.themoviedbapi.model.collections.Part;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
@@ -20,5 +21,5 @@ public class CollectionInfo extends NamedIdElement {
     private String backdropPath;
 
     @JsonProperty("parts")
-    private List<Collection> parts;
+    private List<Part> parts;
 }

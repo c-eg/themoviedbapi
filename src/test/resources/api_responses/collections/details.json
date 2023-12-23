@@ -1,0 +1,199 @@
+{
+    "id": 10,
+    "name": "Star Wars Collection",
+    "overview": "An epic space-opera theatrical film series, which depicts the adventures of various characters \"a long time ago in a galaxy far, far away….\"",
+    "poster_path": "/r8Ph5MYXL04Qzu4QBbq2KjqwtkQ.jpg",
+    "backdrop_path": "/d8duYyyC9J5T825Hg7grmaabfxQ.jpg",
+    "parts": [
+        {
+            "adult": false,
+            "backdrop_path": "/2w4xG178RpB4MDAIfTkqAuSJzec.jpg",
+            "id": 11,
+            "title": "Star Wars",
+            "original_language": "en",
+            "original_title": "Star Wars",
+            "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
+            "poster_path": "/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878
+            ],
+            "popularity": 100.492,
+            "release_date": "1977-05-25",
+            "video": false,
+            "vote_average": 8.207,
+            "vote_count": 18549
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/aJCtkxLLzkk1pECehVjKHA2lBgw.jpg",
+            "id": 1891,
+            "title": "The Empire Strikes Back",
+            "original_language": "en",
+            "original_title": "The Empire Strikes Back",
+            "overview": "The epic saga continues as Luke Skywalker, in hopes of defeating the evil Galactic Empire, learns the ways of the Jedi from aging master Yoda. But Darth Vader is more determined than ever to capture Luke. Meanwhile, rebel leader Princess Leia, cocky Han Solo, Chewbacca, and droids C-3PO and R2-D2 are thrown into various stages of capture, betrayal and despair.",
+            "poster_path": "/2l05cFWJacyIsTpsqSgH0wQXe4V.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878
+            ],
+            "popularity": 29.255,
+            "release_date": "1980-05-20",
+            "video": false,
+            "vote_average": 8.393,
+            "vote_count": 15286
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ziECpBRIyclmBNaFSWlvCfsKbMD.jpg",
+            "id": 1892,
+            "title": "Return of the Jedi",
+            "original_language": "en",
+            "original_title": "Return of the Jedi",
+            "overview": "Luke Skywalker leads a mission to rescue his friend Han Solo from the clutches of Jabba the Hutt, while the Emperor seeks to destroy the Rebellion once and for all with a second dreaded Death Star.",
+            "poster_path": "/xxCnFmRZ83jHTZsBiceG4IBUGoq.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878
+            ],
+            "popularity": 31.675,
+            "release_date": "1983-05-25",
+            "video": false,
+            "vote_average": 7.889,
+            "vote_count": 14152
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/wDe8LzwuvHYYiuwyNfxdYQq8ti4.jpg",
+            "id": 1893,
+            "title": "Star Wars: Episode I - The Phantom Menace",
+            "original_language": "en",
+            "original_title": "Star Wars: Episode I - The Phantom Menace",
+            "overview": "Anakin Skywalker, a young slave strong with the Force, is discovered on Tatooine. Meanwhile, the evil Sith have returned, enacting their plot for revenge against the Jedi.",
+            "poster_path": "/6wkfovpn7Eq8dYNKaG5PY3q2oq6.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878
+            ],
+            "popularity": 44.531,
+            "release_date": "1999-05-19",
+            "video": false,
+            "vote_average": 6.526,
+            "vote_count": 13145
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/abwxHfymXGAbbH3lo9PDEJEfvtW.jpg",
+            "id": 1894,
+            "title": "Star Wars: Episode II - Attack of the Clones",
+            "original_language": "en",
+            "original_title": "Star Wars: Episode II - Attack of the Clones",
+            "overview": "Following an assassination attempt on Senator Padmé Amidala, Jedi Knights Anakin Skywalker and Obi-Wan Kenobi investigate a mysterious plot that could change the galaxy forever.",
+            "poster_path": "/oZNPzxqM2s5DyVWab09NTQScDQt.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878
+            ],
+            "popularity": 41.509,
+            "release_date": "2002-05-15",
+            "video": false,
+            "vote_average": 6.548,
+            "vote_count": 11923
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/eFaRU5y8wIwV0D14DPkbLaRUzOV.jpg",
+            "id": 1895,
+            "title": "Star Wars: Episode III - Revenge of the Sith",
+            "original_language": "en",
+            "original_title": "Star Wars: Episode III - Revenge of the Sith",
+            "overview": "The evil Darth Sidious enacts his final plan for unlimited power -- and the heroic Jedi Anakin Skywalker must choose a side.",
+            "poster_path": "/xfSAoBEm9MNBjmlNcDYLvLSMlnq.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878
+            ],
+            "popularity": 35.524,
+            "release_date": "2005-05-17",
+            "video": false,
+            "vote_average": 7.402,
+            "vote_count": 12364
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/8BTsTfln4jlQrLXUBquXJ0ASQy9.jpg",
+            "id": 140607,
+            "title": "Star Wars: The Force Awakens",
+            "original_language": "en",
+            "original_title": "Star Wars: The Force Awakens",
+            "overview": "Thirty years after defeating the Galactic Empire, Han Solo and his allies face a new threat from the evil Kylo Ren and his army of Stormtroopers.",
+            "poster_path": "/wqnLdwVXoBjKibFRR5U3y0aDUhs.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878,
+                14
+            ],
+            "popularity": 69.142,
+            "release_date": "2015-12-15",
+            "video": false,
+            "vote_average": 7.299,
+            "vote_count": 17962
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/jOzrELAzFxtMx2I4uDGHOotdfsS.jpg",
+            "id": 181812,
+            "title": "Star Wars: The Rise of Skywalker",
+            "original_language": "en",
+            "original_title": "Star Wars: The Rise of Skywalker",
+            "overview": "The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.",
+            "poster_path": "/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878
+            ],
+            "popularity": 67.152,
+            "release_date": "2019-12-18",
+            "video": false,
+            "vote_average": 6.389,
+            "vote_count": 8704
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5Iw7zQTHVRBOYpA0V6z0yypOPZh.jpg",
+            "id": 181808,
+            "title": "Star Wars: The Last Jedi",
+            "original_language": "en",
+            "original_title": "Star Wars: The Last Jedi",
+            "overview": "Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.",
+            "poster_path": "/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878
+            ],
+            "popularity": 66.376,
+            "release_date": "2017-12-13",
+            "video": false,
+            "vote_average": 6.837,
+            "vote_count": 13938
+        }
+    ]
+}

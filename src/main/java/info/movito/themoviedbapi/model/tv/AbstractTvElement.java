@@ -7,7 +7,7 @@ import info.movito.themoviedbapi.model.core.NamedIdElement;
 import info.movito.themoviedbapi.model.keywords.TvKeywords;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import info.movito.themoviedbapi.model.MovieImages;
+import info.movito.themoviedbapi.model.Image;
 import info.movito.themoviedbapi.model.Video;
 
 /**
@@ -23,7 +23,7 @@ public class AbstractTvElement extends NamedIdElement {
     private ExternalIds externalIds;
 
     @JsonProperty("images")
-    private MovieImages images;
+    private Image images;
 
     @JsonProperty("videos")
     private Video.Results videos;

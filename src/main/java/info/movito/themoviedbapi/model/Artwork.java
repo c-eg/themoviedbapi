@@ -29,8 +29,5 @@ public class Artwork extends AbstractJsonMapping {
     @JsonProperty("vote_count")
     private Integer voteCount;
 
-    @JsonProperty("flag")
-    private String flag;
-
     private ArtworkType artworkType = ArtworkType.POSTER;
 }

@@ -2,7 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.CollectionInfo;
-import info.movito.themoviedbapi.model.MovieImages;
+import info.movito.themoviedbapi.model.Image;
 import info.movito.themoviedbapi.model.Translation;
 import info.movito.themoviedbapi.model.Translations;
 import info.movito.themoviedbapi.tools.ApiEndpoint;
@@ -26,11 +26,15 @@ public class TmdbCollections extends AbstractTmdbApi {
     }
 
     /**
-     * This method is used to retrieve all the basic information about a movie collection.
+     * <p>Get collection details by ID.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/collection-details">documentation</a> for more info.</p>
      *
-     * You can get the ID needed for this method by making a getMovieInfo request for the belongs_to_collection.
+     * @param collectionId The collection id.
+     * @param language optional - The language.
+     * @return The collection info.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public CollectionInfo getDetails(int collectionId, String language) throws TmdbException {
+    public CollectionInfo getDetails(Integer collectionId, String language) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_COLLECTION, collectionId);
         apiEndpoint.addLanguage(language);
 
@@ -39,22 +43,34 @@ public class TmdbCollections extends AbstractTmdbApi {
     }
 
     /**
-     * Get all the images for a particular collection by collection id.
+     * <p>Get the images that belong to a collection.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/collection-images">documentation</a> for more info.</p>
+     *
+     * @param collectionId The collection id.
+     * @param language optional - The language.
+     * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,null
+     * @return The images.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public List<Artwork> getImages(int collectionId, String language, Boolean includeImageLanguage) throws TmdbException {
+    public List<Artwork> getImages(Integer collectionId, String language, String... includeImageLanguage) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_COLLECTION, collectionId, "images");
 
         apiEndpoint.addLanguage(language);
-        apiEndpoint.addQueryParam("include_image_language", includeImageLanguage);
+        apiEndpoint.addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, MovieImages.class).getAll(ArtworkType.POSTER, ArtworkType.BACKDROP);
+        return mapJsonResult(responseBody, Image.class).getAll(ArtworkType.POSTER, ArtworkType.BACKDROP);
     }
 
     /**
-     * Get all translations for a collection.
+     * <p>Get all translations for a collection.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/collection-translations">documentation</a> for more info.</p>
+     *
+     * @param collectionId The collection id.
+     * @return The translations.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public List<Translation> getTranslations(int collectionId) throws TmdbException {
+    public List<Translation> getTranslations(Integer collectionId) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_COLLECTION, collectionId, "translations");
 
         String responseBody = makeGetRequest(apiEndpoint);

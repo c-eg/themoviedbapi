@@ -30,10 +30,10 @@ public class TmdbChanges extends AbstractTmdbApi {
      * <p>Get a list of all the movie ids that have been changed in the past 24 hours.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/changes-movie-list">documentation</a> for more info.</p>
      *
-     * @param startDate the start date, in format: YYYY-MM-DD.
-     * @param endDate the end date, in format: YYYY-MM-DD.
-     * @param page the page.
-     * @return the changes results page.
+     * @param startDate optional - The start date, in format: YYYY-MM-DD.
+     * @param endDate optional - The end date, in format: YYYY-MM-DD.
+     * @param page optional - The page.
+     * @return The changes results page.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangesResultsPage getMovieChangesList(String startDate, String endDate, Integer page) throws TmdbException {
@@ -51,12 +51,14 @@ public class TmdbChanges extends AbstractTmdbApi {
     }
 
     /**
-     * Get a list of all the people ids that have been changed in the past 24 hours.
+     * <p>Get a list of all the people ids that have been changed in the past 24 hours.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/changes-people-list">documentation</a> for more info.</p>
      *
-     * @param startDate the start date, in format: YYYY-MM-DD.
-     * @param endDate the end date, in format: YYYY-MM-DD.
-     * @param page the page.
-     * @return the changes results page.
+     * @param startDate optional - The start date, in format: YYYY-MM-DD.
+     * @param endDate optional - The end date, in format: YYYY-MM-DD.
+     * @param page optional - The page.
+     * @return The changes results page.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangesResultsPage getPeopleChangesList(String startDate, String endDate, Integer page) throws TmdbException {
         if (calculateDaysDifference(startDate, endDate) > 14) {
@@ -73,12 +75,14 @@ public class TmdbChanges extends AbstractTmdbApi {
     }
 
     /**
-     * Get a list of all the tv ids that have been changed in the past 24 hours.
+     * <p>Get a list of all the tv ids that have been changed in the past 24 hours.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/changes-tv-list">documentation</a> for more info.</p>
      *
-     * @param startDate the start date, in format: YYYY-MM-DD.
-     * @param endDate the end date, in format: YYYY-MM-DD.
-     * @param page the page.
-     * @return the changes results page.
+     * @param startDate optional - The start date, in format: YYYY-MM-DD.
+     * @param endDate optional - The end date, in format: YYYY-MM-DD.
+     * @param page optional - The page.
+     * @return optional - The changes results page.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangesResultsPage getTvChangesList(String startDate, String endDate, Integer page) throws TmdbException {
         if (calculateDaysDifference(startDate, endDate) > 14) {

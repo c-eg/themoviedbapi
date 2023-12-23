@@ -121,6 +121,18 @@ public class ApiEndpoint {
     }
 
     /**
+     * Adds an optional, comma separated, parameter to the api endpoint (e.g. "en,null").
+     *
+     * @param key the key.
+     * @param values the values to comma separate.
+     */
+    public void addQueryParamCommandSeparated(String key, String... values) {
+        if (values != null && values.length > 0) {
+            addPathParam(key, String.join(",", values));
+        }
+    }
+
+    /**
      * Convenience wrapper around addArgument.
      *
      * @param appendToResponse Comma separated, any movie method
@@ -130,7 +142,7 @@ public class ApiEndpoint {
             return;
         }
 
-        addPathParam(APPEND_TO_RESPONSE, StringUtils.join(appendToResponse, ","));
+        addPathParam(APPEND_TO_RESPONSE, String.join(",", appendToResponse));
     }
 
     /**
