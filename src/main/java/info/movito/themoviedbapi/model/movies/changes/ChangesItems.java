@@ -11,7 +11,7 @@ import java.util.List;
  * TODO: fix or change this.
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class ChangesItems extends AbstractJsonMapping {
     @JsonProperty("changes")
     private List<ChangeKeyItem> changedItems;

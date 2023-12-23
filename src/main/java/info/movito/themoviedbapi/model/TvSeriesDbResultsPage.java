@@ -6,6 +6,4 @@ import info.movito.themoviedbapi.model.tv.TvSeriesDb;
 /**
  * Tv Series Results Page.
  */
-public class TvSeriesDbResultsPage extends ResultsPage<TvSeriesDb> {
-
-}
+public class TvSeriesDbResultsPage extends ResultsPage<TvSeriesDb> { }

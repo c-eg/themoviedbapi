@@ -7,7 +7,7 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 @AllArgsConstructor
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Timezone extends AbstractJsonMapping {
     private String name;
 

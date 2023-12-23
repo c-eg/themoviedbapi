@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @JsonRootName("production_country")
 public class ProductionCountry extends AbstractJsonMapping {
     @JsonProperty("iso_3166_1")

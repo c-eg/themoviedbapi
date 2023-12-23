@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
  * @author Holger Brandl
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class ListItemStatus extends AbstractJsonMapping {
     @JsonProperty("status_code")
     private Integer statusCode;

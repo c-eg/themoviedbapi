@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class MovieKeywords extends AbstractJsonMapping {
     @JsonProperty("keywords")
     private List<Keyword> keywords = new ArrayList<>();

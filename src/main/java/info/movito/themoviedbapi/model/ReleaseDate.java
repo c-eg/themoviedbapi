@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class ReleaseDate extends AbstractJsonMapping {
     @JsonProperty("iso_639_1")
     private String language;

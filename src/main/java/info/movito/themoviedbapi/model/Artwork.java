@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Artwork extends AbstractJsonMapping {
     @JsonProperty("iso_639_1")
     private String language;

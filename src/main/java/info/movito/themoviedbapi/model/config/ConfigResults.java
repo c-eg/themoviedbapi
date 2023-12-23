@@ -8,8 +8,8 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import java.io.Serializable;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class ConfigResults extends AbstractJsonMapping implements Serializable {
     @JsonProperty("images")
     private TmdbConfiguration tmdbConfiguration;

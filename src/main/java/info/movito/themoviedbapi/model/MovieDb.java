@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.MovieKeywords;
 import info.movito.themoviedbapi.model.core.ResultsPage;
+import info.movito.themoviedbapi.model.core.image.CollectionImage;
 import info.movito.themoviedbapi.model.providers.ProviderResults;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -97,7 +98,7 @@ public class MovieDb extends IdElement implements Multi {
     private Credits credits;
 
     @JsonProperty("images")
-    private Image images;
+    private CollectionImage images;
 
     // note: it seems to be a flaw in their api, because a paged result would be more consistent
     @JsonProperty("keywords")

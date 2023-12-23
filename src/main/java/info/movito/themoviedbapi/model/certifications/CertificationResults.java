@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class CertificationResults extends AbstractJsonMapping {
     // TODO: this might be best wrapped around the ResultsPage class
     @JsonProperty("certifications")

@@ -5,7 +5,7 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.EqualsAndHashCode;
 
 @lombok.Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Translation extends AbstractJsonMapping {
     @JsonProperty("iso_3166_1")
     private String countryCode;

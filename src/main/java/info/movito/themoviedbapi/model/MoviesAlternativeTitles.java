@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class MoviesAlternativeTitles extends AbstractJsonMapping {
     @JsonProperty("titles")
     private List<AlternativeTitle> titles;

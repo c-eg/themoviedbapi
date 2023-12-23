@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 @lombok.Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Data extends AbstractJsonMapping {
     @JsonProperty("title")
     private String title;

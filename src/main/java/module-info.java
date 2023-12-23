@@ -43,4 +43,6 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.tv;
     exports info.movito.themoviedbapi.tools;
     exports info.movito.themoviedbapi.util;
+    exports info.movito.themoviedbapi.model.core.image;
+    opens info.movito.themoviedbapi.model.core.image to com.fasterxml.jackson.databind;
 }

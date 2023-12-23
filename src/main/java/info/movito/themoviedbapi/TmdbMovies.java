@@ -7,7 +7,7 @@ import info.movito.themoviedbapi.model.AlternativeTitle;
 import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.ExternalIds;
 import info.movito.themoviedbapi.model.MovieDb;
-import info.movito.themoviedbapi.model.Image;
+import info.movito.themoviedbapi.model.core.image.CollectionImage;
 import info.movito.themoviedbapi.model.MovieListResultsPage;
 import info.movito.themoviedbapi.model.MoviesAlternativeTitles;
 import info.movito.themoviedbapi.model.ReleaseInfo;
@@ -95,12 +95,12 @@ public class TmdbMovies extends AbstractTmdbApi {
     /**
      * This method should be used when you’re wanting to retrieve all the images for a particular movie.
      */
-    public Image getImages(int movieId, String language) throws TmdbException {
+    public CollectionImage getImages(int movieId, String language) throws TmdbException {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_MOVIE, movieId, MovieMethod.images);
         apiEndpoint.addLanguage(language);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, Image.class);
+        return mapJsonResult(responseBody, CollectionImage.class);
     }
 
     /**

@@ -2,7 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.CollectionInfo;
-import info.movito.themoviedbapi.model.Image;
+import info.movito.themoviedbapi.model.core.image.CollectionImage;
 import info.movito.themoviedbapi.model.Translation;
 import info.movito.themoviedbapi.model.Translations;
 import info.movito.themoviedbapi.tools.ApiEndpoint;
@@ -59,7 +59,7 @@ public class TmdbCollections extends AbstractTmdbApi {
         apiEndpoint.addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, Image.class).getAll(ArtworkType.POSTER, ArtworkType.BACKDROP);
+        return mapJsonResult(responseBody, CollectionImage.class).getAll(ArtworkType.POSTER, ArtworkType.BACKDROP);
     }
 
     /**

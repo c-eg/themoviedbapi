@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class ResponseStatus extends AbstractJsonMapping {
     @JsonProperty("status_code")
     private Integer statusCode;

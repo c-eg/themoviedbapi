@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @JsonRootName("spoken_language")
 public class Language extends AbstractJsonMapping {
     @JsonProperty("iso_639_1")

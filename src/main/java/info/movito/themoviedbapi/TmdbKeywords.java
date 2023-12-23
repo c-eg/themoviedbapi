@@ -46,7 +46,5 @@ public class TmdbKeywords extends AbstractTmdbApi {
     }
 
     @SuppressWarnings("checkstyle:MissingJavadocType")
-    public static class KeywordResultsPage extends ResultsPage<Keyword> {
-
-    }
+    public static class KeywordResultsPage extends ResultsPage<Keyword> { }
 }

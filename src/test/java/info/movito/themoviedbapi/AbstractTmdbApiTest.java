@@ -87,7 +87,8 @@ public abstract class AbstractTmdbApiTest {
      * Tests the given object for unknown properties.
      */
     public void testForUnknownProperties(AbstractJsonMapping objectToCheck) {
-        assertTrue(objectToCheck.getUnknownProperties().isEmpty(), "Unknown properties found in object: " + objectToCheck);
+        assertTrue(objectToCheck.getUnknownProperties().isEmpty(), "Unknown properties found in object: " +
+            objectToCheck.getUnknownProperties());
     }
 
     /**

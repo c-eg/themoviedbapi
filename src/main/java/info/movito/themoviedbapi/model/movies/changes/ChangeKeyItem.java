@@ -8,7 +8,7 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class ChangeKeyItem extends AbstractJsonMapping {
     @JsonProperty("key")
     private String key;

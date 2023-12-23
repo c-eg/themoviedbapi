@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class FindResults extends AbstractJsonMapping {
     @JsonProperty("movie_results")
     private List<MovieDb> movieResults;

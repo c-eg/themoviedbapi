@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class ReleaseInfo extends AbstractJsonMapping {
     @JsonProperty("iso_3166_1")
     private String country;

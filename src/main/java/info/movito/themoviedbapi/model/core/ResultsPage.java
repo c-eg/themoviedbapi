@@ -1,18 +1,12 @@
 package info.movito.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.util.Iterator;
-import java.util.List;
-
-@Setter
-@Getter
-public class ResultsPage<T> extends AbstractJsonMapping implements Iterable<T> {
-    @JsonProperty("results")
-    private List<T> results;
-
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class ResultsPage<T> extends Results<T> {
     @JsonProperty("page")
     private Integer page;
 
@@ -21,9 +15,4 @@ public class ResultsPage<T> extends AbstractJsonMapping implements Iterable<T> {
 
     @JsonProperty("total_results")
     private Integer totalResults;
-
-    @Override
-    public Iterator<T> iterator() {
-        return results.iterator();
-    }
 }

@@ -20,18 +20,9 @@ public class Company extends NamedIdElement {
     @JsonProperty("logo_path")
     private String logoPath;
 
+    @JsonProperty("origin_country")
+    private String originCountry;
+
     @JsonProperty("parent_company")
-    private Company parentCompany;
-
-    /**
-     * Sets the parent company.
-     */
-    public void setParentCompany(int id, String name, String logoPath) {
-        Company parent = new Company();
-        parent.setId(id);
-        parent.setName(name);
-        parent.setLogoPath(logoPath);
-
-        this.parentCompany = parent;
-    }
+    private Integer parentCompanyId;
 }

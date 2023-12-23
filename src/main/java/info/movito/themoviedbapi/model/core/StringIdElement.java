@@ -7,13 +7,12 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * Base class for json wrappers with id element.
- * TODO: Maybe remove this class.
+ * Base class for json wrappers with string id element.
  *
  * @author Holger Brandl
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class StringIdElement extends AbstractJsonMapping implements Serializable {
     @JsonProperty("id")
     private String id;

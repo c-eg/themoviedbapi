@@ -7,8 +7,8 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 import java.util.HashMap;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Avatar extends AbstractJsonMapping {
     @JsonProperty("gravatar")
     private HashMap<String, String> gravatar;

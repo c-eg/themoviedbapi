@@ -214,20 +214,12 @@ public class TmdbSearch extends AbstractTmdbApi {
     }
 
     // CHECKSTYLE OFF: MissingJavadocType
-    public static class KeywordResultsPage extends ResultsPage<Keyword> {
+    public static class KeywordResultsPage extends ResultsPage<Keyword> { }
 
-    }
+    public static class CompanyResultsPage extends ResultsPage<Company> { }
 
-    public static class CompanyResultsPage extends ResultsPage<Company> {
+    public static class CollectionResultsPage extends ResultsPage<Collection> { }
 
-    }
-
-    public static class CollectionResultsPage extends ResultsPage<Collection> {
-
-    }
-
-    public static class MultiListResultsPage extends ResultsPage<Multi> {
-
-    }
+    public static class MultiListResultsPage extends ResultsPage<Multi> { }
     // CHECKSTYLE ON: MissingJavadocType
 }

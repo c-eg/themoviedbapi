@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class RequestToken extends AbstractJsonMapping {
     @JsonProperty("expires_at")
     private String expires;

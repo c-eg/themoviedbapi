@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Session extends AbstractJsonMapping {
     @JsonProperty("session_id")
     private String sessionId;

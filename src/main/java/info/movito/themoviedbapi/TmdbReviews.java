@@ -37,7 +37,5 @@ public class TmdbReviews extends AbstractTmdbApi {
     }
 
     @SuppressWarnings("checkstyle:MissingJavadocType")
-    public static class ReviewResultsPage extends ResultsPage<Reviews> {
-
-    }
+    public static class ReviewResultsPage extends ResultsPage<Reviews> { }
 }

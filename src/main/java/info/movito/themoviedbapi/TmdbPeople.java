@@ -2,7 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.ArtworkType;
-import info.movito.themoviedbapi.model.Image;
+import info.movito.themoviedbapi.model.core.image.CollectionImage;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.people.PersonCredits;
@@ -59,7 +59,7 @@ public class TmdbPeople extends AbstractTmdbApi {
         ApiEndpoint apiEndpoint = new ApiEndpoint(TMDB_METHOD_PERSON, personId, "images");
 
         String responseBody = makeGetRequest(apiEndpoint);
-        return mapJsonResult(responseBody, Image.class).getAll(ArtworkType.PROFILE);
+        return mapJsonResult(responseBody, CollectionImage.class).getAll(ArtworkType.PROFILE);
     }
 
     /**
@@ -101,7 +101,5 @@ public class TmdbPeople extends AbstractTmdbApi {
     }
 
     @SuppressWarnings("checkstyle:MissingJavadocType")
-    public static class PersonResultsPage extends ResultsPage<Person> {
-
-    }
+    public static class PersonResultsPage extends ResultsPage<Person> { }
 }

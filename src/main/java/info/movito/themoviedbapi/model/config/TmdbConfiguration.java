@@ -9,7 +9,7 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class TmdbConfiguration extends AbstractJsonMapping {
     @JsonProperty("base_url")
     private String baseUrl;
