@@ -3,7 +3,6 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.AlternativeName;
 import info.movito.themoviedbapi.model.Company;
 import info.movito.themoviedbapi.model.core.ResultsPage;
-import info.movito.themoviedbapi.model.core.image.LogoImage;
 import info.movito.themoviedbapi.model.core.image.LogoImageResults;
 import info.movito.themoviedbapi.tools.ApiEndpoint;
 import info.movito.themoviedbapi.tools.TmdbException;
