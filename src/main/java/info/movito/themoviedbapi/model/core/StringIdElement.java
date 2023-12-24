@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-
 /**
  * Base class for json wrappers with string id element.
  *
@@ -13,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class StringIdElement extends AbstractJsonMapping implements Serializable {
+public class StringIdElement extends AbstractJsonMapping {
     @JsonProperty("id")
     private String id;
 }

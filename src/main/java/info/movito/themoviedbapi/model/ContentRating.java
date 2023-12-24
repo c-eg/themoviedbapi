@@ -7,13 +7,12 @@ import info.movito.themoviedbapi.model.core.IdElement;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 @JsonRootName("content_ratings")
-public class ContentRating extends AbstractJsonMapping implements Serializable {
+public class ContentRating extends AbstractJsonMapping {
     @JsonProperty("iso_3166_1")
     private String locale;
 

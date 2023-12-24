@@ -1,18 +1,17 @@
 package info.movito.themoviedbapi.model.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class ConfigResults extends AbstractJsonMapping implements Serializable {
+public class Configuration extends AbstractJsonMapping {
     @JsonProperty("images")
-    private TmdbConfiguration tmdbConfiguration;
+    private ImageConfig imageConfig;
 
     @JsonProperty("change_keys")
     private List<String> changeKeys;

@@ -60,8 +60,8 @@ public class TmdbApi {
         return new TmdbCollections(this);
     }
 
-    public TmdbConfig getConfig() {
-        return new TmdbConfig(this);
+    public TmdbConfiguration getConfiguration() {
+        return new TmdbConfiguration(this);
     }
 
     public TmdbCompany getCompany() {

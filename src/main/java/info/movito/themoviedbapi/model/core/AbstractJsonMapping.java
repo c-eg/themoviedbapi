@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +15,9 @@ import java.util.Map;
  */
 @Getter
 public abstract class AbstractJsonMapping implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 3386070448581949093L;
+
     private final Map<String, Object> unknownProperties = new HashMap<>();
 
     /**

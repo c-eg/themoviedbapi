@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class TmdbConfiguration extends AbstractJsonMapping {
+public class ImageConfig extends AbstractJsonMapping {
     @JsonProperty("base_url")
     private String baseUrl;
 
@@ -33,7 +33,7 @@ public class TmdbConfiguration extends AbstractJsonMapping {
      * Copy the data from the passed object to this one.
      * TODO: investigate this, not sure it would actually copy the values but rather just the reference
      */
-    public void clone(TmdbConfiguration config) {
+    public void clone(ImageConfig config) {
         backdropSizes = config.getBackdropSizes();
         baseUrl = config.getBaseUrl();
         posterSizes = config.getPosterSizes();
