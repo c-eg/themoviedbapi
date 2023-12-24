@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class Results<T> extends IdElement implements Iterable<T> {
     @JsonProperty("results")
     private List<T> results;
