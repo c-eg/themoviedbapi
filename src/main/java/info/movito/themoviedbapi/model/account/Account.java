@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.config;
+package info.movito.themoviedbapi.model.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

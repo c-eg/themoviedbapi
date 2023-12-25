@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model;
+package info.movito.themoviedbapi.model.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class JobDepartment extends AbstractJsonMapping {
+public class Job extends AbstractJsonMapping {
     @JsonProperty("department")
     private String department;
 

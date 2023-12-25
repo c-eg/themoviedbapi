@@ -1,10 +1,7 @@
 package info.movito.themoviedbapi;
 
+import lombok.AccessLevel;
 import lombok.Getter;
-import info.movito.themoviedbapi.model.config.Timezone;
-import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
-
-import java.util.List;
 
 /**
  * The movie db api for getting started. See the
@@ -12,7 +9,7 @@ import java.util.List;
  *
  * @author Holger Brandl.
  */
-@Getter
+@Getter(AccessLevel.PACKAGE)
 public class TmdbApi {
     private static final String TMDB_API_BASE_URL = "https://api.themoviedb.org/3/";
 
@@ -114,13 +111,5 @@ public class TmdbApi {
 
     public TmdbTvEpisodes getTvEpisodes() {
         return new TmdbTvEpisodes(this);
-    }
-
-    /**
-     * @deprecated todo: implement in config api.
-     */
-    @Deprecated
-    public List<Timezone> getTimezones() throws TmdbResponseException {
-        return new TmdbTimezones(this).getTimezones();
     }
 }

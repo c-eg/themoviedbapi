@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.config;
+package info.movito.themoviedbapi.model.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -30,22 +30,10 @@ public class ImageConfig extends AbstractJsonMapping {
     private List<String> logoSizes;
 
     /**
-     * Copy the data from the passed object to this one.
-     * TODO: investigate this, not sure it would actually copy the values but rather just the reference
-     */
-    public void clone(ImageConfig config) {
-        backdropSizes = config.getBackdropSizes();
-        baseUrl = config.getBaseUrl();
-        posterSizes = config.getPosterSizes();
-        profileSizes = config.getProfileSizes();
-        logoSizes = config.getLogoSizes();
-    }
-
-    /**
      * Check that the poster size is valid.
      */
     public boolean isValidPosterSize(String posterSize) {
-        if (StringUtils.isBlank(posterSize) || posterSizes.isEmpty()) {
+        if (StringUtils.isBlank(posterSize)) {
             return false;
         }
         return posterSizes.contains(posterSize);
@@ -55,7 +43,7 @@ public class ImageConfig extends AbstractJsonMapping {
      * Check that the backdrop size is valid.
      */
     public boolean isValidBackdropSize(String backdropSize) {
-        if (StringUtils.isBlank(backdropSize) || backdropSizes.isEmpty()) {
+        if (StringUtils.isBlank(backdropSize)) {
             return false;
         }
         return backdropSizes.contains(backdropSize);
@@ -65,7 +53,7 @@ public class ImageConfig extends AbstractJsonMapping {
      * Check that the profile size is valid.
      */
     public boolean isValidProfileSize(String profileSize) {
-        if (StringUtils.isBlank(profileSize) || profileSizes.isEmpty()) {
+        if (StringUtils.isBlank(profileSize)) {
             return false;
         }
         return profileSizes.contains(profileSize);
@@ -75,7 +63,7 @@ public class ImageConfig extends AbstractJsonMapping {
      * Check that the logo size is valid.
      */
     public boolean isValidLogoSize(String logoSize) {
-        if (StringUtils.isBlank(logoSize) || logoSizes.isEmpty()) {
+        if (StringUtils.isBlank(logoSize)) {
             return false;
         }
         return logoSizes.contains(logoSize);

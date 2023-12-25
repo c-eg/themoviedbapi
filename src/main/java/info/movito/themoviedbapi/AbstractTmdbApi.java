@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
@@ -55,6 +56,24 @@ public abstract class AbstractTmdbApi {
      * @throws TmdbException if the json could not be mapped
      */
     protected <T> T mapJsonResult(String json, Class<T> resultClass) throws TmdbException {
+        try {
+            return objectMapper.readValue(json, resultClass);
+        }
+        catch (JsonProcessingException exception) {
+            throw new TmdbException(exception.getMessage());
+        }
+    }
+
+    /**
+     * Maps the json result to the specified class.
+     *
+     * @param json the json to map
+     * @param resultClass the class to map to
+     * @param <T> the type of the result
+     * @return the mapped result
+     * @throws TmdbException if the json could not be mapped
+     */
+    protected <T> T mapJsonResult(String json, TypeReference<T> resultClass) throws TmdbException {
         try {
             return objectMapper.readValue(json, resultClass);
         }
@@ -155,22 +174,28 @@ public abstract class AbstractTmdbApi {
             }
             String responseString = responseBody.string();
 
-            // check if the response was successful. tmdb have their own codes for successful and unsuccessful responses.
-            // some 2xx codes are not successful. See: https://developer.themoviedb.org/docs/errors for more info.
-            ResponseStatus responseStatus = objectMapper.readValue(responseString, ResponseStatus.class);
-            Integer statusCode = responseStatus.getStatusCode();
-            if (statusCode != null) {
-                TmdbResponseCode tmdbResponseCode = TmdbResponseCode.fromCode(statusCode);
+            try {
+                // check if the response was successful. tmdb have their own codes for successful and unsuccessful responses.
+                // some 2xx codes are not successful. See: https://developer.themoviedb.org/docs/errors for more info.
+                ResponseStatus responseStatus = objectMapper.readValue(responseString, ResponseStatus.class);
+                Integer statusCode = responseStatus.getStatusCode();
+                if (statusCode != null) {
+                    TmdbResponseCode tmdbResponseCode = TmdbResponseCode.fromCode(statusCode);
 
-                if (tmdbResponseCode != null) {
-                    if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
-                        Thread.sleep(1000);
-                        return makeRequest(apiEndpoint, json, requestType);
-                    }
-                    else if (!tmdbResponseCode.isSuccess()) {
-                        throw new TmdbResponseException(tmdbResponseCode);
+                    if (tmdbResponseCode != null) {
+                        if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
+                            Thread.sleep(1000);
+                            return makeRequest(apiEndpoint, json, requestType);
+                        }
+                        else if (!tmdbResponseCode.isSuccess()) {
+                            throw new TmdbResponseException(tmdbResponseCode);
+                        }
                     }
                 }
+            }
+            catch (JsonProcessingException exception) {
+                // ignore
+                // TODO: maybe improve this? it's not very efficient to parse the json to check for an error
             }
 
             return responseString;

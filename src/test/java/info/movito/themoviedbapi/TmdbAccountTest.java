@@ -8,7 +8,7 @@ import info.movito.themoviedbapi.model.account.Movie;
 import info.movito.themoviedbapi.model.account.MovieResultsPage;
 import info.movito.themoviedbapi.model.account.TvSeries;
 import info.movito.themoviedbapi.model.account.TvSeriesResultsPage;
-import info.movito.themoviedbapi.model.config.Account;
+import info.movito.themoviedbapi.model.account.Account;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.rated.RatedMovie;
 import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;

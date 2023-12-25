@@ -4,7 +4,7 @@ import info.movito.themoviedbapi.model.TvSeriesDbResultsPage;
 import info.movito.themoviedbapi.model.ContentRating;
 import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.core.image.CollectionImage;
-import info.movito.themoviedbapi.model.config.Timezone;
+import info.movito.themoviedbapi.model.configuration.Timezone;
 import info.movito.themoviedbapi.model.keywords.TvKeywords;
 import info.movito.themoviedbapi.model.tv.TvSeriesDb;
 import info.movito.themoviedbapi.tools.ApiEndpoint;
