@@ -13,33 +13,33 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
- * Tests for {@link TmdbCompany}.
+ * Tests for {@link TmdbCompanies}.
  */
-public class TmdbCompanyTest extends AbstractTmdbApiTest {
+public class TmdbCompaniesTest extends AbstractTmdbApiTest {
     /**
-     * Tests {@link TmdbCompany#getDetails(Integer)}.
+     * Tests {@link TmdbCompanies#getDetails(Integer)}.
      */
     @Test
     public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/companies/details.json");
         mockResponse(body, 200);
 
-        TmdbCompany tmdbCompany = getTmdbApi().getCompany();
-        Company company = tmdbCompany.getDetails(1);
+        TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
+        Company company = tmdbCompanies.getDetails(1);
         assertNotNull(company);
         testForNullFieldsAndUnknownProperties(company);
     }
 
     /**
-     * Tests {@link TmdbCompany#getAlternativeNames(Integer)}.
+     * Tests {@link TmdbCompanies#getAlternativeNames(Integer)}.
      */
     @Test
     public void testGetAlternativeNames() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/companies/alternative_names.json");
         mockResponse(body, 200);
 
-        TmdbCompany tmdbCompany = getTmdbApi().getCompany();
-        TmdbCompany.AlternativeNamesResultsPage alternativeNamesResultsPage = tmdbCompany.getAlternativeNames(1);
+        TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
+        TmdbCompanies.AlternativeNamesResultsPage alternativeNamesResultsPage = tmdbCompanies.getAlternativeNames(1);
         assertNotNull(alternativeNamesResultsPage);
         testForNullFieldsAndUnknownProperties(alternativeNamesResultsPage);
 
@@ -49,15 +49,15 @@ public class TmdbCompanyTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Tests {@link TmdbCompany#getImages(Integer)}.
+     * Tests {@link TmdbCompanies#getImages(Integer)}.
      */
     @Test
     public void testGetImages() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/companies/images.json");
         mockResponse(body, 200);
 
-        TmdbCompany tmdbCompany = getTmdbApi().getCompany();
-        LogoImageResults logoImageResults = tmdbCompany.getImages(1);
+        TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
+        LogoImageResults logoImageResults = tmdbCompanies.getImages(1);
         assertNotNull(logoImageResults);
         testForNullFieldsAndUnknownProperties(logoImageResults);
 

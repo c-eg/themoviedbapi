@@ -11,13 +11,13 @@ import info.movito.themoviedbapi.tools.TmdbException;
  * The movie database api for companies. See the
  * <a href="https://developer.themoviedb.org/reference/company-details">documentation</a> for more info.
  */
-public class TmdbCompany extends AbstractTmdbApi {
+public class TmdbCompanies extends AbstractTmdbApi {
     private static final String TMDB_METHOD_COMPANY = "company";
 
     /**
      * Create a new TmdbCompany instance to call the company related TMDb API methods.
      */
-    TmdbCompany(TmdbApi tmdbApi) {
+    TmdbCompanies(TmdbApi tmdbApi) {
         super(tmdbApi);
     }
 

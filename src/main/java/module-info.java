@@ -18,7 +18,9 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.certifications to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.configuration to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.core.image to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.responses to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.credits to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.keywords to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.people to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.providers to com.fasterxml.jackson.databind;
@@ -35,7 +37,9 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.movies.changes;
     exports info.movito.themoviedbapi.model.configuration;
     exports info.movito.themoviedbapi.model.core;
+    exports info.movito.themoviedbapi.model.core.image;
     exports info.movito.themoviedbapi.model.core.responses;
+    exports info.movito.themoviedbapi.model.credits;
     exports info.movito.themoviedbapi.model.keywords;
     exports info.movito.themoviedbapi.model.people;
     exports info.movito.themoviedbapi.model.providers;
@@ -43,6 +47,4 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.tv;
     exports info.movito.themoviedbapi.tools;
     exports info.movito.themoviedbapi.util;
-    exports info.movito.themoviedbapi.model.core.image;
-    opens info.movito.themoviedbapi.model.core.image to com.fasterxml.jackson.databind;
 }

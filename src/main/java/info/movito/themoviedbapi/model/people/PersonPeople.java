@@ -13,8 +13,6 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class PersonPeople extends Person implements Multi {
-    // todo initializers should all go away
-
     /*
      * Static fields for default cast information
      */
@@ -36,7 +34,7 @@ public class PersonPeople extends Person implements Multi {
     private boolean adult = false;  // PersonPeople info
 
     @JsonProperty("also_known_as")
-    private List<String> aka = new ArrayList<String>();
+    private List<String> aka = new ArrayList<>();
 
     @JsonProperty("biography")
     private String biography;

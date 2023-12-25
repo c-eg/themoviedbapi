@@ -57,12 +57,16 @@ public class TmdbApi {
         return new TmdbCollections(this);
     }
 
+    public TmdbCompanies getCompanies() {
+        return new TmdbCompanies(this);
+    }
+
     public TmdbConfiguration getConfiguration() {
         return new TmdbConfiguration(this);
     }
 
-    public TmdbCompany getCompany() {
-        return new TmdbCompany(this);
+    public TmdbCredits getCredits() {
+        return new TmdbCredits(this);
     }
 
     public TmdbDiscover getDiscover() {
