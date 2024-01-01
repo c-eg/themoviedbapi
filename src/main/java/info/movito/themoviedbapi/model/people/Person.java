@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class Person extends NamedIdElement {
     @JsonProperty("profile_path")
     protected String profilePath;

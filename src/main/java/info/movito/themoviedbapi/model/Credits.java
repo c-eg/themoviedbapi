@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class Credits extends IdElement {
     @JsonProperty("crew")
     List<PersonCrew> crew;

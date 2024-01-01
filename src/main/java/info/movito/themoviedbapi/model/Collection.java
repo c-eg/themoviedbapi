@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @JsonRootName("collection")
 public class Collection extends IdElement {
     @JsonProperty("title")
