@@ -6,6 +6,7 @@ import com.google.common.collect.Iterables;
 import info.movito.themoviedbapi.AbstractTmdbApi;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.keywords.Keyword;
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
@@ -45,16 +46,13 @@ public class Discover {
 
     private static final int YEAR_MAX = 2100;
 
-    private final Map<String, String> params = new HashMap<>();
-
-    Function<IdElement, Integer> toID = IdElement::getId;
-
     /**
      * Get the parameters. This will be used to construct the URL in the API.
      */
-    public Map<String, String> getParams() {
-        return params;
-    }
+    @Getter
+    private final Map<String, String> params = new HashMap<>();
+
+    Function<IdElement, Integer> toID = IdElement::getId;
 
     /**
      * Minimum value is 1 if included.

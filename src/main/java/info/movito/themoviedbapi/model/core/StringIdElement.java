@@ -1,42 +1,17 @@
 package info.movito.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Base class for json wrappers with id element.
  *
  * @author Holger Brandl
  */
-public class StringIdElement extends AbstractJsonMapping implements Serializable {
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class StringIdElement extends AbstractJsonMapping {
     @JsonProperty("id")
     private String id;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        StringIdElement that = (StringIdElement) o;
-
-        return id.equals(that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
 }

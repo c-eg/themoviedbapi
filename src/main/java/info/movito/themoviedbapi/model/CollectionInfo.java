@@ -2,9 +2,13 @@ package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class CollectionInfo extends NamedIdElement {
     @JsonProperty("overview")
     private String overview;
@@ -17,36 +21,4 @@ public class CollectionInfo extends NamedIdElement {
 
     @JsonProperty("parts")
     private List<Collection> parts;
-
-    public String getBackdropPath() {
-        return backdropPath;
-    }
-
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
-
-    public List<Collection> getParts() {
-        return parts;
-    }
-
-    public void setParts(List<Collection> parts) {
-        this.parts = parts;
-    }
-
-    public String getPosterPath() {
-        return posterPath;
-    }
-
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
-    }
 }

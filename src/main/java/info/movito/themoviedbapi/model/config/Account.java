@@ -2,9 +2,13 @@ package info.movito.themoviedbapi.model.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.HashMap;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class Account extends NamedIdElement {
     @JsonProperty("username")
     private String userName;
@@ -14,22 +18,6 @@ public class Account extends NamedIdElement {
 
     @JsonProperty("avatar")
     private HashMap<String, HashMap<String, String>> avatar;
-
-    public boolean isIncludeAdult() {
-        return includeAdult;
-    }
-
-    public void setIncludeAdult(boolean includeAdult) {
-        this.includeAdult = includeAdult;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     /**
      * Gets the gravatar hash.

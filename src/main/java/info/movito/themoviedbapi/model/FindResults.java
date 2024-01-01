@@ -4,9 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.tv.TvSeries;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class FindResults extends AbstractJsonMapping {
     @JsonProperty("movie_results")
     private List<MovieDb> movieResults;
@@ -16,28 +20,4 @@ public class FindResults extends AbstractJsonMapping {
 
     @JsonProperty("tv_results")
     private List<TvSeries> tvResults;
-
-    public List<MovieDb> getMovieResults() {
-        return movieResults;
-    }
-
-    public void setMovieResults(List<MovieDb> movieResults) {
-        this.movieResults = movieResults;
-    }
-
-    public List<Person> getPersonResults() {
-        return personResults;
-    }
-
-    public void setPersonResults(List<Person> personResults) {
-        this.personResults = personResults;
-    }
-
-    public List<TvSeries> getTvResults() {
-        return tvResults;
-    }
-
-    public void setTvResults(List<TvSeries> tvResults) {
-        this.tvResults = tvResults;
-    }
 }

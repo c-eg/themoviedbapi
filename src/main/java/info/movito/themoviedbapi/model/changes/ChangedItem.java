@@ -4,10 +4,14 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.IdElement;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class ChangedItem extends IdElement {
     private final Map<String, Object> newItems = new HashMap<>();
 
@@ -22,38 +26,6 @@ public class ChangedItem extends IdElement {
 
     @JsonProperty("value")
     private Object value;
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public Object getValue() {
-        return value;
-    }
-
-    public void setValue(Object value) {
-        this.value = value;
-    }
 
     @JsonAnyGetter
     public Map<String, Object> getNewItems() {

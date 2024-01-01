@@ -3,8 +3,12 @@ package info.movito.themoviedbapi.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import info.movito.themoviedbapi.model.core.IdElement;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 @JsonRootName("collection")
 public class Collection extends IdElement {
     @JsonProperty("title")
@@ -22,30 +26,6 @@ public class Collection extends IdElement {
     @JsonProperty("release_date")
     private String releaseDate;
 
-    public String getBackdropPath() {
-        return backdropPath;
-    }
-
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
-    }
-
-    public String getPosterPath() {
-        return posterPath;
-    }
-
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
-    }
-
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
     /**
      * Gets the title, or name, if the title is blank.
      *
@@ -58,10 +38,6 @@ public class Collection extends IdElement {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     /**
      * Gets the name, or title, if the name is blank.
      *
@@ -72,9 +48,5 @@ public class Collection extends IdElement {
             return title;
         }
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

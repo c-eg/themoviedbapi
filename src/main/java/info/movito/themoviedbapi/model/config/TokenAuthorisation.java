@@ -1,7 +1,11 @@
 package info.movito.themoviedbapi.model.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class TokenAuthorisation {
     @JsonProperty("expires_at")
     private String expires;
@@ -11,28 +15,4 @@ public class TokenAuthorisation {
 
     @JsonProperty("success")
     private Boolean success;
-
-    public String getExpires() {
-        return expires;
-    }
-
-    public void setExpires(String expires) {
-        this.expires = expires;
-    }
-
-    public String getRequestToken() {
-        return requestToken;
-    }
-
-    public void setRequestToken(String requestToken) {
-        this.requestToken = requestToken;
-    }
-
-    public Boolean getSuccess() {
-        return success != null && success;
-    }
-
-    public void setSuccess(Boolean success) {
-        this.success = success;
-    }
 }

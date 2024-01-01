@@ -2,11 +2,15 @@ package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.IdElement;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class MovieImages extends IdElement {
     @JsonProperty("backdrops")
     private List<Artwork> backdrops;
@@ -20,38 +24,6 @@ public class MovieImages extends IdElement {
     // needed for episode backdrops
     @JsonProperty("stills")
     private List<Artwork> stills;
-
-    public List<Artwork> getBackdrops() {
-        return backdrops;
-    }
-
-    public void setBackdrops(List<Artwork> backdrops) {
-        this.backdrops = backdrops;
-    }
-
-    public List<Artwork> getPosters() {
-        return posters;
-    }
-
-    public void setPosters(List<Artwork> posters) {
-        this.posters = posters;
-    }
-
-    public List<Artwork> getProfiles() {
-        return profiles;
-    }
-
-    public void setProfiles(List<Artwork> profiles) {
-        this.profiles = profiles;
-    }
-
-    public List<Artwork> getStills() {
-        return stills;
-    }
-
-    public void setStills(List<Artwork> stills) {
-        this.stills = stills;
-    }
 
     /**
      * Convenience wrapper to return a list of all the artwork with their types.

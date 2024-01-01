@@ -1,7 +1,9 @@
 package info.movito.themoviedbapi.model.core;
 
 import info.movito.themoviedbapi.tools.MovieDbException;
+import lombok.Getter;
 
+@Getter
 public class ResponseStatusException extends MovieDbException {
     private final ResponseStatus responseStatus;
 
@@ -12,10 +14,6 @@ public class ResponseStatusException extends MovieDbException {
         super(responseStatus.getStatusCode() + " :: " + responseStatus.getStatusMessage());
 
         this.responseStatus = responseStatus;
-    }
-
-    public ResponseStatus getResponseStatus() {
-        return responseStatus;
     }
 
     @Override
