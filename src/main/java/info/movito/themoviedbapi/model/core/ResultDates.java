@@ -2,11 +2,15 @@ package info.movito.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Setter
+@Getter
 public class ResultDates extends AbstractJsonMapping {
     private static final Logger logger = LoggerFactory.getLogger(ResultDates.class);
 
@@ -15,22 +19,6 @@ public class ResultDates extends AbstractJsonMapping {
 
     @JsonProperty("maximum")
     private String maximum = "";
-
-    public String getMinimum() {
-        return minimum;
-    }
-
-    public void setMinimum(String minimum) {
-        this.minimum = minimum;
-    }
-
-    public String getMaximum() {
-        return maximum;
-    }
-
-    public void setMaximum(String maximum) {
-        this.maximum = maximum;
-    }
 
     /**
      * Handle unknown properties and print a message.

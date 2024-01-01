@@ -2,10 +2,14 @@ package info.movito.themoviedbapi.model.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class TmdbConfiguration extends AbstractJsonMapping {
     @JsonProperty("base_url")
     private String baseUrl;
@@ -24,54 +28,6 @@ public class TmdbConfiguration extends AbstractJsonMapping {
 
     @JsonProperty("logo_sizes")
     private List<String> logoSizes;
-
-    public List<String> getBackdropSizes() {
-        return backdropSizes;
-    }
-
-    public void setBackdropSizes(List<String> backdropSizes) {
-        this.backdropSizes = backdropSizes;
-    }
-
-    public String getBaseUrl() {
-        return baseUrl;
-    }
-
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
-    }
-
-    public List<String> getPosterSizes() {
-        return posterSizes;
-    }
-
-    public void setPosterSizes(List<String> posterSizes) {
-        this.posterSizes = posterSizes;
-    }
-
-    public List<String> getProfileSizes() {
-        return profileSizes;
-    }
-
-    public void setProfileSizes(List<String> profileSizes) {
-        this.profileSizes = profileSizes;
-    }
-
-    public List<String> getLogoSizes() {
-        return logoSizes;
-    }
-
-    public void setLogoSizes(List<String> logoSizes) {
-        this.logoSizes = logoSizes;
-    }
-
-    public String getSecureBaseUrl() {
-        return secureBaseUrl;
-    }
-
-    public void setSecureBaseUrl(String secureBaseUrl) {
-        this.secureBaseUrl = secureBaseUrl;
-    }
 
     /**
      * Copy the data from the passed object to this one.

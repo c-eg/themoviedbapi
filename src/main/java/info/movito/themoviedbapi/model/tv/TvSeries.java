@@ -7,12 +7,16 @@ import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.people.Person;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
  * @author Holger Brandl
  */
+@Data
+@EqualsAndHashCode(callSuper = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class TvSeries extends AbstractTvElement implements Multi {
     @JsonProperty("created_by")
@@ -81,184 +85,8 @@ public class TvSeries extends AbstractTvElement implements Multi {
     @JsonProperty("content_ratings")
     private ContentRating.Results contentRatings;
 
-    public List<Person> getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(List<Person> createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public List<Integer> getEpisodeRuntime() {
-        return episodeRuntime;
-    }
-
-    public void setEpisodeRuntime(List<Integer> episodeRuntime) {
-        this.episodeRuntime = episodeRuntime;
-    }
-
-    public String getFirstAirDate() {
-        return firstAirDate;
-    }
-
-    public void setFirstAirDate(String firstAirDate) {
-        this.firstAirDate = firstAirDate;
-    }
-
-    public String getLastAirDate() {
-        return lastAirDate;
-    }
-
-    public void setLastAirDate(String lastAirDate) {
-        this.lastAirDate = lastAirDate;
-    }
-
-    public List<Genre> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<Genre> genres) {
-        this.genres = genres;
-    }
-
-    public String getHomepage() {
-        return homepage;
-    }
-
-    public void setHomepage(String homepage) {
-        this.homepage = homepage;
-    }
-
-    public String getOriginalName() {
-        return originalName;
-    }
-
-    public void setOriginalName(String originalName) {
-        this.originalName = originalName;
-    }
-
-    public List<String> getOriginCountry() {
-        return originCountry;
-    }
-
-    public void setOriginCountry(List<String> originCountry) {
-        this.originCountry = originCountry;
-    }
-
-    public List<Network> getNetworks() {
-        return networks;
-    }
-
-    public void setNetworks(List<Network> networks) {
-        this.networks = networks;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
-
-    public float getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(float popularity) {
-        this.popularity = popularity;
-    }
-
-    public String getBackdropPath() {
-        return backdropPath;
-    }
-
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
-    }
-
-    public String getPosterPath() {
-        return posterPath;
-    }
-
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
-    }
-
-    public int getNumberOfEpisodes() {
-        return numberOfEpisodes;
-    }
-
-    public void setNumberOfEpisodes(int numberOfEpisodes) {
-        this.numberOfEpisodes = numberOfEpisodes;
-    }
-
-    public int getNumberOfSeasons() {
-        return numberOfSeasons;
-    }
-
-    public void setNumberOfSeasons(int numberOfSeasons) {
-        this.numberOfSeasons = numberOfSeasons;
-    }
-
-    public List<TvSeason> getSeasons() {
-        return seasons;
-    }
-
-    public void setSeasons(List<TvSeason> seasons) {
-        this.seasons = seasons;
-    }
-
-    public ResultsPage<TvSeries> getRecommendations() {
-        return recommendations;
-    }
-
-    public void setRecommendations(ResultsPage<TvSeries> recommendations) {
-        this.recommendations = recommendations;
-    }
-
-    public float getUserRating() {
-        return userRating;
-    }
-
-    public void setUserRating(float userRating) {
-        this.userRating = userRating;
-    }
-
-    public float getVoteAverage() {
-        return voteAverage;
-    }
-
-    public void setVoteAverage(float voteAverage) {
-        this.voteAverage = voteAverage;
-    }
-
-    public int getVoteCount() {
-        return voteCount;
-    }
-
-    public void setVoteCount(int voteCount) {
-        this.voteCount = voteCount;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     @Override
     public MediaType getMediaType() {
         return MediaType.TV_SERIES;
-    }
-
-    public List<ContentRating> getContentRatings() {
-        return contentRatings != null ? contentRatings.getContentRatings() : null;
-    }
-
-    public void setContentRatings(ContentRating.Results contentRatings) {
-        this.contentRatings = contentRatings;
     }
 }

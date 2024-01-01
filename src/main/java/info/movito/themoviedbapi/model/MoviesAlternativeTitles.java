@@ -2,18 +2,14 @@ package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class MoviesAlternativeTitles extends AbstractJsonMapping {
     @JsonProperty("titles")
     private List<AlternativeTitle> titles;
-
-    public List<AlternativeTitle> getTitles() {
-        return titles;
-    }
-
-    public void setTitles(List<AlternativeTitle> titles) {
-        this.titles = titles;
-    }
 }
