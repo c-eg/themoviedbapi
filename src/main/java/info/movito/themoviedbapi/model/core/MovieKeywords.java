@@ -12,5 +12,5 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class MovieKeywords extends AbstractJsonMapping {
     @JsonProperty("keywords")
-    private List<Keyword> keywords = new ArrayList<Keyword>();
+    private List<Keyword> keywords = new ArrayList<>();
 }

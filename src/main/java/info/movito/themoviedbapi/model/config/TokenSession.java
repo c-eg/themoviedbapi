@@ -1,12 +1,13 @@
 package info.movito.themoviedbapi.model.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class TokenSession {
+public class TokenSession extends AbstractJsonMapping {
     @JsonProperty("session_id")
     private String sessionId;
 
