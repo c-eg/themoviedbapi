@@ -1,12 +1,13 @@
 package info.movito.themoviedbapi.model.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class TokenAuthorisation {
+public class TokenAuthorisation extends AbstractJsonMapping {
     @JsonProperty("expires_at")
     private String expires;
 

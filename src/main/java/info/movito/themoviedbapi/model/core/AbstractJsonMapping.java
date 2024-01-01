@@ -1,25 +1,25 @@
 package info.movito.themoviedbapi.model.core;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Holger Brandl
  */
 public abstract class AbstractJsonMapping implements Serializable {
-    private static Logger getLogger(Class<?> clazz) {
-        return LoggerFactory.getLogger(clazz);
+    private final Map<String, Object> newItems = new HashMap<>();
+
+    @JsonAnyGetter
+    public Map<String, Object> getNewItems() {
+        return newItems;
     }
 
-    /**
-     * Handle unknown properties and print a message.
-     */
     @JsonAnySetter
-    public void handleUnknown(String key, Object value) {
-        String message = "Unknown property: '" + key + "' value: '" + value + "'";
-        getLogger(this.getClass()).trace(message);
+    public void setNewItems(String name, Object value) {
+        newItems.put(name, value);
     }
 }

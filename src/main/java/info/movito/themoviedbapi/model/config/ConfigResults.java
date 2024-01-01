@@ -5,12 +5,11 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class ConfigResults extends AbstractJsonMapping implements Serializable {
+public class ConfigResults extends AbstractJsonMapping {
     @JsonProperty("images")
     private TmdbConfiguration tmdbConfiguration;
 

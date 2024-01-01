@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi.model.providers;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class WatchProviders {
+public class WatchProviders extends AbstractJsonMapping {
     @JsonProperty("link")
     private String link;
 
