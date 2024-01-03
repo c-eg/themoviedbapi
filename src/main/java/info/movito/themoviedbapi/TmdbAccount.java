@@ -39,7 +39,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     public Account getAccount(SessionToken sessionToken) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT);
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
         return mapJsonResult(apiUrl, Account.class);
     }
@@ -51,7 +51,7 @@ public class TmdbAccount extends AbstractTmdbApi {
                                          Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "lists");
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
         apiUrl.addLanguage(language);
         apiUrl.addPage(page);
 
@@ -64,7 +64,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     public MovieResultsPage getRatedMovies(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/movies");
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
         apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
@@ -76,7 +76,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     public TvResultsPage getRatedTvSeries(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv");
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
         apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
@@ -88,7 +88,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     public TvEpisodesResultsPage getRatedEpisodes(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv/episodes");
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
         apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TvEpisodesResultsPage.class);
@@ -128,7 +128,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     private boolean postRatingInternal(SessionToken sessionToken, Integer rating, ApiUrl apiUrl) {
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
         if (rating < 0 || rating > 10) {
             throw new MovieDbException("rating out of range");
@@ -144,7 +144,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      */
     public MovieResultsPage getFavoriteMovies(SessionToken sessionToken, AccountID accountId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies");
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
@@ -155,7 +155,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     public TvResultsPage getFavoriteSeries(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv");
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
         apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
@@ -181,7 +181,7 @@ public class TmdbAccount extends AbstractTmdbApi {
                                                 MediaType mediaType, boolean isFavorite) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite");
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
         HashMap<String, Object> body = new HashMap<String, Object>();
 
@@ -202,7 +202,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     public MovieResultsPage getWatchListMovies(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/movies");
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
         apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
@@ -215,7 +215,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      */
     public TvResultsPage getWatchListSeries(SessionToken sessionToken, AccountID accountId, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/tv");
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
         apiUrl.addPage(page);
 
@@ -242,7 +242,7 @@ public class TmdbAccount extends AbstractTmdbApi {
                                            MediaType mediaType, boolean isWatched) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
         HashMap<String, Object> body = new HashMap<String, Object>();
 

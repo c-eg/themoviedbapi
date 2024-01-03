@@ -50,17 +50,17 @@ public class TmdbSearch extends AbstractTmdbApi {
             throw new RuntimeException("query must not be blank");
         }
 
-        apiUrl.addParam(PARAM_QUERY, query);
+        apiUrl.addPathParam(PARAM_QUERY, query);
 
         // optional parameters
 
         if (searchYear != null && searchYear > 0) {
-            apiUrl.addParam(PARAM_YEAR, Integer.toString(searchYear));
+            apiUrl.addPathParam(PARAM_YEAR, Integer.toString(searchYear));
         }
 
         apiUrl.addLanguage(language);
 
-        apiUrl.addParam(PARAM_ADULT, Boolean.toString(includeAdult));
+        apiUrl.addPathParam(PARAM_ADULT, Boolean.toString(includeAdult));
 
         apiUrl.addPage(page);
 
@@ -84,17 +84,17 @@ public class TmdbSearch extends AbstractTmdbApi {
             throw new RuntimeException("query must not be blank");
         }
 
-        apiUrl.addParam(PARAM_QUERY, query);
+        apiUrl.addPathParam(PARAM_QUERY, query);
 
         // optional parameters
 
         if (searchYear != null && searchYear > 0) {
-            apiUrl.addParam(PARAM_YEAR, Integer.toString(searchYear));
+            apiUrl.addPathParam(PARAM_YEAR, Integer.toString(searchYear));
         }
 
         apiUrl.addLanguage(language);
 
-        apiUrl.addParam(PARAM_ADULT, Boolean.toString(includeAdult));
+        apiUrl.addPathParam(PARAM_ADULT, Boolean.toString(includeAdult));
 
         apiUrl.addPage(page);
 
@@ -113,12 +113,12 @@ public class TmdbSearch extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_COLLECTION);
 
         if (isNotBlank(query)) {
-            apiUrl.addParam(PARAM_QUERY, query);
+            apiUrl.addPathParam(PARAM_QUERY, query);
         }
 
         apiUrl.addLanguage(language);
 
-        apiUrl.addParam(PARAM_ADULT, Boolean.toString(includeAdult));
+        apiUrl.addPathParam(PARAM_ADULT, Boolean.toString(includeAdult));
 
         apiUrl.addPage(page);
 
@@ -134,9 +134,9 @@ public class TmdbSearch extends AbstractTmdbApi {
     public TmdbPeople.PersonResultsPage searchPerson(String query, boolean includeAdult, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbPeople.TMDB_METHOD_PERSON);
 
-        apiUrl.addParam(PARAM_QUERY, query);
+        apiUrl.addPathParam(PARAM_QUERY, query);
 
-        apiUrl.addParam(PARAM_ADULT, includeAdult);
+        apiUrl.addPathParam(PARAM_ADULT, includeAdult);
 
         apiUrl.addPage(page);
 
@@ -153,7 +153,7 @@ public class TmdbSearch extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_LIST);
 
         if (isNotBlank(query)) {
-            apiUrl.addParam(PARAM_QUERY, query);
+            apiUrl.addPathParam(PARAM_QUERY, query);
         }
 
         apiUrl.addLanguage(language);
@@ -173,7 +173,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      */
     public CompanyResultsPage searchCompany(String companyName, Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company");
-        apiUrl.addParam(PARAM_QUERY, companyName);
+        apiUrl.addPathParam(PARAM_QUERY, companyName);
 
         apiUrl.addPage(page);
 
@@ -187,7 +187,7 @@ public class TmdbSearch extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword");
 
         if (isNotBlank(query)) {
-            apiUrl.addParam(PARAM_QUERY, query);
+            apiUrl.addPathParam(PARAM_QUERY, query);
         }
 
         apiUrl.addPage(page);
@@ -208,7 +208,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             throw new RuntimeException("query must not be blank");
         }
 
-        apiUrl.addParam(PARAM_QUERY, query);
+        apiUrl.addPathParam(PARAM_QUERY, query);
 
         // optional parameters
 

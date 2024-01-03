@@ -98,7 +98,7 @@ public class TmdbTV extends AbstractTmdbApi {
         apiUrl.addPage(page);
 
         if (timezone != null) {
-            apiUrl.addParam("timezone", timezone);
+            apiUrl.addPathParam("timezone", timezone);
         }
 
         return mapJsonResult(apiUrl, TvResultsPage.class);

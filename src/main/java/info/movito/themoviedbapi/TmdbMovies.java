@@ -72,7 +72,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.alternative_titles);
 
         if (StringUtils.isNotBlank(country)) {
-            apiUrl.addParam(PARAM_COUNTRY, country);
+            apiUrl.addPathParam(PARAM_COUNTRY, country);
         }
 
         return mapJsonResult(apiUrl, MoviesAlternativeTitles.class).getTitles();
@@ -186,7 +186,7 @@ public class TmdbMovies extends AbstractTmdbApi {
                                                                Integer page) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.lists);
 
-        apiUrl.addParam(PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
         apiUrl.addLanguage(language);
 
@@ -215,11 +215,11 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.changes);
 
         if (StringUtils.isNotBlank(startDate)) {
-            apiUrl.addParam(PARAM_START_DATE, startDate);
+            apiUrl.addPathParam(PARAM_START_DATE, startDate);
         }
 
         if (StringUtils.isNotBlank(endDate)) {
-            apiUrl.addParam(PARAM_END_DATE, endDate);
+            apiUrl.addPathParam(PARAM_END_DATE, endDate);
         }
 
         return mapJsonResult(apiUrl, ChangesItems.class);
@@ -278,7 +278,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         apiUrl.addPage(page);
 
         if (isNotBlank(region)) {
-            apiUrl.addParam(PARAM_REGION, region);
+            apiUrl.addPathParam(PARAM_REGION, region);
         }
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
@@ -297,7 +297,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         apiUrl.addPage(page);
 
         if (isNotBlank(region)) {
-            apiUrl.addParam(PARAM_REGION, region);
+            apiUrl.addPathParam(PARAM_REGION, region);
         }
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);

@@ -77,7 +77,7 @@ public class TmdbGenre extends AbstractTmdbApi {
 
         apiUrl.addPage(page);
 
-        apiUrl.addParam(PARAM_INCLUDE_ALL_MOVIES, includeAllMovies);
+        apiUrl.addPathParam(PARAM_INCLUDE_ALL_MOVIES, includeAllMovies);
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }

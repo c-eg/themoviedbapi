@@ -50,7 +50,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
             throw new MovieDbException("Authorisation token was not successful!");
         }
 
-        apiUrl.addParam(PARAM_REQUEST_TOKEN, token.getRequestToken());
+        apiUrl.addPathParam(PARAM_REQUEST_TOKEN, token.getRequestToken());
 
         return mapJsonResult(apiUrl, TokenSession.class);
     }
@@ -66,9 +66,9 @@ public class TmdbAuthentication extends AbstractTmdbApi {
     public TokenAuthorisation getLoginToken(TokenAuthorisation token, String user, String pwd) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "token/validate_with_login");
 
-        apiUrl.addParam(PARAM_REQUEST_TOKEN, token.getRequestToken());
-        apiUrl.addParam("username", user);
-        apiUrl.addParam("password", pwd);
+        apiUrl.addPathParam(PARAM_REQUEST_TOKEN, token.getRequestToken());
+        apiUrl.addPathParam("username", user);
+        apiUrl.addPathParam("password", pwd);
 
         return mapJsonResult(apiUrl, TokenAuthorisation.class);
     }

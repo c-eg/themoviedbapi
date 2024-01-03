@@ -23,7 +23,7 @@ public class TmdbFind extends AbstractTmdbApi {
     public FindResults find(String id, ExternalSource externalSource, String language) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_FIND, id);
 
-        apiUrl.addParam("external_source", externalSource.toString());
+        apiUrl.addPathParam("external_source", externalSource.toString());
         apiUrl.addLanguage(language);
 
         return mapJsonResult(apiUrl, FindResults.class);
