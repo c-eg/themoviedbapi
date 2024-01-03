@@ -8,8 +8,10 @@ import info.movito.themoviedbapi.tools.RequestCountLimitException;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.UrlReader;
 import info.movito.themoviedbapi.tools.WebBrowser;
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -19,6 +21,7 @@ import java.util.List;
  * @author Holger Brandl.
  */
 public class TmdbApi {
+    @Getter
     private final String apiKey;
 
     private final TmdbConfiguration tmdbConfig;
@@ -32,7 +35,7 @@ public class TmdbApi {
      * Automatically retry after indicated amount of seconds if we hit the request limit. See the
      * <a href="https://developer.themoviedb.org/docs/rate-limiting">documentation</a> for details.
      */
-    private boolean autoRetry = true;
+    private final boolean autoRetry;
 
     /**
      * Constructor.
@@ -76,31 +79,26 @@ public class TmdbApi {
      * @param jsonBody      can be null
      */
     public String requestWebPage(ApiUrl apiUrl, String jsonBody, RequestType requestType) {
-
         assert StringUtils.isNotBlank(apiKey);
-        apiUrl.addParam(AbstractTmdbApi.PARAM_API_KEY, getApiKey());
+        apiUrl.addPathParam(AbstractTmdbApi.PARAM_API_KEY, getApiKey());
 
-        return requestWebPageInternal(apiUrl, jsonBody, requestType);
+        return requestWebPageInternal(apiUrl.buildUrl(), jsonBody, requestType);
     }
 
-    private String requestWebPageInternal(ApiUrl apiUrl, String jsonBody, RequestType requestType) {
+    private String requestWebPageInternal(URL url, String jsonBody, RequestType requestType) {
         try {
-            return urlReader.request(apiUrl.buildUrl(), jsonBody, requestType);
+            return urlReader.request(url, jsonBody, requestType);
         }
         catch (RequestCountLimitException rcle) {
             if (autoRetry) {
                 Utils.sleep(rcle.getRetryAfter() * 1000);
-                return requestWebPageInternal(apiUrl, jsonBody, requestType);
+                return requestWebPageInternal(url, jsonBody, requestType);
             }
             else {
                 // just return the orignal json response if autoRetry is disabled. This will cause a ResponseStatusException.
                 return rcle.getMessage();
             }
         }
-    }
-
-    public String getApiKey() {
-        return apiKey;
     }
 
     public TmdbConfiguration getConfiguration() {

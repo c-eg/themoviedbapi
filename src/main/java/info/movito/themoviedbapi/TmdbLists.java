@@ -45,7 +45,7 @@ public class TmdbLists extends AbstractTmdbApi {
     public String createList(SessionToken sessionToken, String name, String description) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST);
 
-        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(TmdbAccount.PARAM_SESSION, sessionToken);
 
         HashMap<String, String> body = new HashMap<>();
         body.put("name", StringUtils.trimToEmpty(name));
@@ -64,7 +64,7 @@ public class TmdbLists extends AbstractTmdbApi {
     public boolean isMovieOnList(String listId, Integer movieId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "item_status");
 
-        apiUrl.addParam("movie_id", movieId);
+        apiUrl.addPathParam("movie_id", movieId);
 
         return mapJsonResult(apiUrl, ListItemStatus.class).isItemPresent();
     }
@@ -91,7 +91,7 @@ public class TmdbLists extends AbstractTmdbApi {
                                            String operation) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, operation);
 
-        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(TmdbAccount.PARAM_SESSION, sessionToken);
 
         String jsonBody = Utils.convertToJson(jsonMapper, Collections.singletonMap("media_id", movieId + ""));
 
@@ -104,7 +104,7 @@ public class TmdbLists extends AbstractTmdbApi {
     public ResponseStatus deleteMovieList(SessionToken sessionToken, String listId) {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId);
 
-        apiUrl.addParam(TmdbAccount.PARAM_SESSION, sessionToken);
+        apiUrl.addPathParam(TmdbAccount.PARAM_SESSION, sessionToken);
 
         return mapJsonResult(apiUrl, ResponseStatus.class, null, RequestType.DELETE);
     }

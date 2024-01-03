@@ -34,7 +34,13 @@ public class ApiUrl {
         StringBuilder baseUrlBuilder = new StringBuilder(TMDB_API_BASE_URL);
 
         for (int i = 0; i < urlElements.length; i++) {
-            baseUrlBuilder.append(urlElements[i]);
+            Object object = urlElements[i];
+
+            if (object == null) {
+                throw new IllegalArgumentException("url element can not be null");
+            }
+
+            baseUrlBuilder.append(object);
 
             if (i < urlElements.length - 1) {
                 baseUrlBuilder.append("/");
@@ -53,9 +59,8 @@ public class ApiUrl {
         StringBuilder urlBuilder = new StringBuilder(baseUrl);
 
         try {
-
             if (!params.isEmpty()) {
-                List<String> keys = new ArrayList<String>(params.keySet());
+                List<String> keys = new ArrayList<>(params.keySet());
                 for (int i = 0; i < keys.size(); i++) {
                     urlBuilder.append(i == 0 ? "?" : "&");
                     String paramName = keys.get(i);
@@ -78,8 +83,8 @@ public class ApiUrl {
      * @param name the key
      * @param value the value
      */
-    public void addParam(String name, Object value) {
-        addParam(name, value.toString());
+    public void addPathParam(String name, Object value) {
+        addPathParam(name, value.toString());
     }
 
     /**
@@ -88,19 +93,19 @@ public class ApiUrl {
      * @param name the key
      * @param value the value
      */
-    public void addParam(String name, String value) {
+    public void addPathParam(String name, String value) {
         if (params.containsKey(name)) {
             throw new RuntimeException("paramater '" + name + "' already defined");
         }
 
         name = StringUtils.trimToEmpty(name);
         if (name.isEmpty()) {
-            throw new RuntimeException("parameter name can not be empty");
+            throw new IllegalArgumentException("parameter name can not be empty");
         }
 
         value = StringUtils.trimToEmpty(value);
         if (value.isEmpty()) {
-            throw new RuntimeException("value of parameter '" + name + "' can not be empty");
+            throw new IllegalArgumentException("value of parameter '" + name + "' can not be empty");
         }
 
         params.put(name, value);
@@ -112,8 +117,8 @@ public class ApiUrl {
      * @param key the key
      * @param value the value
      */
-    public void addParam(String key, int value) {
-        addParam(key, Integer.toString(value));
+    public void addPathParam(String key, int value) {
+        addPathParam(key, Integer.toString(value));
     }
 
     /**
@@ -122,8 +127,42 @@ public class ApiUrl {
      * @param key the key
      * @param value the value
      */
-    public void addParam(String key, boolean value) {
-        addParam(key, Boolean.toString(value));
+    public void addPathParam(String key, boolean value) {
+        addPathParam(key, Boolean.toString(value));
+    }
+
+    /**
+     * Adds an optional parameter to the api endpoint.
+     *
+     * @param key the key.
+     * @param value the value.
+     */
+    public void addQueryParam(String key, Object value) {
+        if (value != null) {
+            addPathParam(key, value);
+        }
+    }
+
+    /**
+     * Adds the page parameter to the API url.
+     *
+     * @param page the page number
+     */
+    public void addPage(Integer page) {
+        if (page != null && page > 0) {
+            addPathParam(AbstractTmdbApi.PARAM_PAGE, page);
+        }
+    }
+
+    /**
+     * Adds the language to the API url.
+     *
+     * @param language the language.
+     */
+    public void addLanguage(String language) {
+        if (isNotBlank(language)) {
+            addPathParam(AbstractTmdbApi.PARAM_LANGUAGE, language);
+        }
     }
 
     /**
@@ -136,28 +175,6 @@ public class ApiUrl {
             return;
         }
 
-        addParam(APPEND_TO_RESPONSE, StringUtils.join(appendToResponse, ","));
-    }
-
-    /**
-     * Adds the page parameter to the API url.
-     *
-     * @param page the page number
-     */
-    public void addPage(Integer page) {
-        if (page != null && page > 0) {
-            addParam(AbstractTmdbApi.PARAM_PAGE, page);
-        }
-    }
-
-    /**
-     * Adds the language to the API url.
-     *
-     * @param language the language.
-     */
-    public void addLanguage(String language) {
-        if (isNotBlank(language)) {
-            addParam(AbstractTmdbApi.PARAM_LANGUAGE, language);
-        }
+        addPathParam(APPEND_TO_RESPONSE, String.join(",", appendToResponse));
     }
 }

@@ -81,7 +81,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, "movie");
 
         for (String key : discover.getParams().keySet()) {
-            apiUrl.addParam(key, discover.getParams().get(key));
+            apiUrl.addPathParam(key, discover.getParams().get(key));
         }
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
@@ -149,7 +149,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, "tv");
 
         for (String key : discover.getParams().keySet()) {
-            apiUrl.addParam(key, discover.getParams().get(key));
+            apiUrl.addPathParam(key, discover.getParams().get(key));
         }
 
         return mapJsonResult(apiUrl, TvResultsPage.class);
