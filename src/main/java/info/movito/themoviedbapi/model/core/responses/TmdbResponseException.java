@@ -19,4 +19,9 @@ public class TmdbResponseException extends TmdbException {
         super(message);
         this.responseCode = null;
     }
+
+    public TmdbResponseException(Exception exception) {
+        super(exception);
+        this.responseCode = null;
+    }
 }

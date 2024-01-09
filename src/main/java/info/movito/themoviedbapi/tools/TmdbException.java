@@ -8,6 +8,10 @@ public class TmdbException extends Exception {
         super(message);
     }
 
+    public TmdbException(Exception exception) {
+        super(exception);
+    }
+
     public TmdbException(String message, Throwable cause) {
         super(message, cause);
     }

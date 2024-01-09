@@ -1,16 +1,20 @@
 package info.movito.themoviedbapi;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
+import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
+import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
+import static info.movito.themoviedbapi.tools.TmdbResponseCode.REQUEST_LIMIT_EXCEEDED;
 
 /**
  * Class to be inherited by a TmdbApi class.
@@ -31,6 +35,8 @@ public abstract class AbstractTmdbApi {
     @Getter(AccessLevel.PROTECTED)
     private static final ObjectMapper objectMapper = new ObjectMapper()
         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+    private static final ObjectReader responseStatusReader = objectMapper.readerFor(ResponseStatus.class);
 
     protected final TmdbApi tmdbApi;
 
@@ -79,10 +85,29 @@ public abstract class AbstractTmdbApi {
         String jsonResponse = tmdbApi.getTmdbUrlReader().readUrl(apiUrl.buildUrl(), jsonBody, requestType);
 
         try {
+            // check if the response was successful. tmdb have their own codes for successful and unsuccessful responses.
+            // some 2xx codes are not successful. See: https://developer.themoviedb.org/docs/errors for more info.
+            ResponseStatus responseStatus = responseStatusReader.readValue(jsonResponse);
+            Integer statusCode = responseStatus.getStatusCode();
+
+            if (statusCode != null) {
+                TmdbResponseCode tmdbResponseCode = TmdbResponseCode.fromCode(statusCode);
+
+                if (tmdbResponseCode != null) {
+                    if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
+                        Thread.sleep(1000);
+                        return mapJsonResult(apiUrl, jsonBody, requestType, clazz);
+                    }
+                    else if (!tmdbResponseCode.isSuccess()) {
+                        throw new TmdbResponseException(tmdbResponseCode);
+                    }
+                }
+            }
+
             return objectMapper.readValue(jsonResponse, clazz);
         }
-        catch (IOException exception) {
-            throw new TmdbResponseException(exception.getMessage());
+        catch (JsonProcessingException | InterruptedException exception) {
+            throw new TmdbResponseException(exception);
         }
     }
 }
