@@ -5,6 +5,7 @@ import info.movito.themoviedbapi.model.Company;
 import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ResultsPage;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
@@ -43,7 +44,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param page         The page of results to return. 0 to get the default (first page).
      */
     public MovieResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult,
-                                        Integer page) {
+                                        Integer page) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MOVIE);
 
         if (isBlank(query)) {
@@ -77,7 +78,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param page         The page of results to return. 0 to get the default (first page).
      */
     public TvResultsPage searchTv(String query, Integer searchYear, String language, boolean includeAdult,
-                                  Integer page) {
+                                  Integer page) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV);
 
         if (isBlank(query)) {
@@ -109,7 +110,8 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param includeAdult Whether to include adult titles in the search.
      * @param page         The page of results to return. 0 to get the default (first page).
      */
-    public CollectionResultsPage searchCollection(String query, String language, boolean includeAdult, Integer page) {
+    public CollectionResultsPage searchCollection(String query, String language, boolean includeAdult, Integer page)
+        throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_COLLECTION);
 
         if (isNotBlank(query)) {
@@ -131,7 +133,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      * The idea is to be a quick and light method so you can iterate through people quickly.
      */
 
-    public TmdbPeople.PersonResultsPage searchPerson(String query, boolean includeAdult, Integer page) {
+    public TmdbPeople.PersonResultsPage searchPerson(String query, boolean includeAdult, Integer page) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbPeople.TMDB_METHOD_PERSON);
 
         apiUrl.addPathParam(PARAM_QUERY, query);
@@ -146,7 +148,7 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search for lists by name and description.
      */
-    public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) {
+    public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) throws TmdbResponseException {
         System.err.println("This method is part of the API but seems currently not available. " +
             "See https://www.themoviedb.org/talk/593409e3c3a36859ef01eddb#597124f8c3a3681608008424");
 
@@ -171,7 +173,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      *
      * http://help.themoviedb.org/kb/api/search-companies
      */
-    public CompanyResultsPage searchCompany(String companyName, Integer page) {
+    public CompanyResultsPage searchCompany(String companyName, Integer page) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company");
         apiUrl.addPathParam(PARAM_QUERY, companyName);
 
@@ -183,7 +185,7 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search for keywords by name.
      */
-    public KeywordResultsPage searchKeyword(String query, Integer page) {
+    public KeywordResultsPage searchKeyword(String query, Integer page) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword");
 
         if (isNotBlank(query)) {
@@ -201,7 +203,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      *
      * @return ResultsPage of Multi.
      */
-    public MultiListResultsPage searchMulti(String query, String language, Integer page) {
+    public MultiListResultsPage searchMulti(String query, String language, Integer page) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MULTI);
 
         if (isBlank(query)) {

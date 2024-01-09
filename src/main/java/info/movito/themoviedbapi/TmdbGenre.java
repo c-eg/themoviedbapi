@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class TmdbGenre extends AbstractTmdbApi {
      * @deprecated use {@code getMovieGenreList} as TV shows Genres was added.
      */
     @Deprecated
-    public List<Genre> getGenreList(String language) {
+    public List<Genre> getGenreList(String language) throws TmdbResponseException {
         return getMovieGenreList(language);
     }
 
@@ -41,7 +42,7 @@ public class TmdbGenre extends AbstractTmdbApi {
      *
      * These IDs will correspond to those found in movie calls.
      */
-    public List<Genre> getMovieGenreList(String language) {
+    public List<Genre> getMovieGenreList(String language) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "movie", "list");
 
         apiUrl.addLanguage(language);
@@ -55,7 +56,7 @@ public class TmdbGenre extends AbstractTmdbApi {
      *
      * These IDs will correspond to those found in TV shows calls.
      */
-    public List<Genre> getTvGenreList(String language) {
+    public List<Genre> getTvGenreList(String language) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "tv", "list");
 
         apiUrl.addLanguage(language);
@@ -70,7 +71,8 @@ public class TmdbGenre extends AbstractTmdbApi {
      *
      * This prevents movies from 1 10/10 rating from being listed first and for the first 5 pages.
      */
-    public MovieResultsPage getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies) {
+    public MovieResultsPage getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies)
+        throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, genreId, "movies");
 
         apiUrl.addLanguage(language);

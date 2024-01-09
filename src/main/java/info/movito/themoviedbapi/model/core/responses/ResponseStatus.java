@@ -1,16 +1,10 @@
-package info.movito.themoviedbapi.model.core;
+package info.movito.themoviedbapi.model.core.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
+import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
-/**
- * See https://www.themoviedb.org/documentation/api/status-codes.
- */
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class ResponseStatus extends AbstractJsonMapping {

@@ -4,6 +4,7 @@ import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.ArtworkType;
 import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.core.ResultsPage;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.people.PersonCredits;
 import info.movito.themoviedbapi.model.people.PersonPeople;
@@ -31,7 +32,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      *
      * It will return the single highest rated profile image.
      */
-    public PersonPeople getPersonInfo(int personId, String... appendToResponse) {
+    public PersonPeople getPersonInfo(int personId, String... appendToResponse) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId);
 
         apiUrl.appendToResponse(appendToResponse);
@@ -44,7 +45,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      *
      * It will return the single highest rated poster for each movie record.
      */
-    public PersonCredits getCombinedPersonCredits(int personId) {
+    public PersonCredits getCombinedPersonCredits(int personId) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "combined_credits");
 
         return mapJsonResult(apiUrl, PersonCredits.class);
@@ -53,7 +54,7 @@ public class TmdbPeople extends AbstractTmdbApi {
     /**
      * This method is used to retrieve all of the profile images for a person.
      */
-    public List<Artwork> getPersonImages(int personId) {
+    public List<Artwork> getPersonImages(int personId) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "images");
 
         return mapJsonResult(apiUrl, MovieImages.class).getAll(ArtworkType.PROFILE);
@@ -79,7 +80,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      *
      * This list refreshes every day.
      */
-    public PersonResultsPage getPersonPopular(Integer page) {
+    public PersonResultsPage getPersonPopular(Integer page) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "popular");
 
         apiUrl.addPage(page);
@@ -90,7 +91,7 @@ public class TmdbPeople extends AbstractTmdbApi {
     /**
      * Get the latest person id.
      */
-    public PersonPeople getPersonLatest() {
+    public PersonPeople getPersonLatest() throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "latest");
 
         return mapJsonResult(apiUrl, PersonPeople.class);

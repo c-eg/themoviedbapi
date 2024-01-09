@@ -5,5 +5,6 @@ package info.movito.themoviedbapi.tools;
  */
 public enum RequestType {
     GET,
+    POST,
     DELETE
 }

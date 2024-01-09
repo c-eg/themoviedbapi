@@ -2,16 +2,13 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.config.TmdbConfiguration;
-import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.MovieDbException;
-import info.movito.themoviedbapi.tools.RequestCountLimitException;
-import info.movito.themoviedbapi.tools.RequestType;
-import info.movito.themoviedbapi.tools.UrlReader;
-import info.movito.themoviedbapi.tools.WebBrowser;
+import info.movito.themoviedbapi.tools.TmdbHttpClient;
+import info.movito.themoviedbapi.tools.TmdbUrlReader;
+import lombok.AccessLevel;
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
 
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -21,21 +18,14 @@ import java.util.List;
  * @author Holger Brandl.
  */
 public class TmdbApi {
-    @Getter
-    private final String apiKey;
+    /**
+     * Http client to make requests to the movie database api.
+     * can make certain things static if necessary
+     */
+    @Getter(AccessLevel.PROTECTED)
+    private final TmdbUrlReader tmdbUrlReader;
 
     private final TmdbConfiguration tmdbConfig;
-
-    /**
-     * Reader implementation that is used to fetch all websites.
-     */
-    private final UrlReader urlReader;
-
-    /**
-     * Automatically retry after indicated amount of seconds if we hit the request limit. See the
-     * <a href="https://developer.themoviedb.org/docs/rate-limiting">documentation</a> for details.
-     */
-    private final boolean autoRetry;
 
     /**
      * Constructor.
@@ -43,20 +33,16 @@ public class TmdbApi {
      * @param apiKey your TMDB api key
      */
     public TmdbApi(String apiKey) {
-        this(apiKey, new WebBrowser(), true);
+        this(new TmdbHttpClient(apiKey));
     }
 
     /**
      * Constructor.
      *
-     * @param apiKey    your TMDB api key
-     * @param urlReader the reader implementation that is used to fetch all websites
-     * @param autoRetry automatically retry after indicated amount of seconds if we hit the request limit.
+     * @param tmdbUrlReader the url reader to use
      */
-    public TmdbApi(String apiKey, UrlReader urlReader, boolean autoRetry) {
-        this.urlReader = urlReader;
-        this.apiKey = apiKey;
-        this.autoRetry = autoRetry;
+    public TmdbApi(TmdbUrlReader tmdbUrlReader) {
+        this.tmdbUrlReader = tmdbUrlReader;
 
         try {
             tmdbConfig = new TmdbConfig(this).getConfig().getTmdbConfiguration();
@@ -69,43 +55,12 @@ public class TmdbApi {
         }
     }
 
-    /**
-     * Uses the instance's api key to request information from api.tmdb.org.
-     *
-     * Depending on the <code>autoRetry</code> setting this method will stall and internally recurse until the request was  successfully
-     * processed.
-     *
-     * @param apiUrl        The url to be requested
-     * @param jsonBody      can be null
-     */
-    public String requestWebPage(ApiUrl apiUrl, String jsonBody, RequestType requestType) {
-        assert StringUtils.isNotBlank(apiKey);
-        apiUrl.addPathParam(AbstractTmdbApi.PARAM_API_KEY, getApiKey());
-
-        return requestWebPageInternal(apiUrl.buildUrl(), jsonBody, requestType);
-    }
-
-    private String requestWebPageInternal(URL url, String jsonBody, RequestType requestType) {
-        try {
-            return urlReader.request(url, jsonBody, requestType);
-        }
-        catch (RequestCountLimitException rcle) {
-            if (autoRetry) {
-                Utils.sleep(rcle.getRetryAfter() * 1000);
-                return requestWebPageInternal(url, jsonBody, requestType);
-            }
-            else {
-                // just return the orignal json response if autoRetry is disabled. This will cause a ResponseStatusException.
-                return rcle.getMessage();
-            }
-        }
-    }
-
     public TmdbConfiguration getConfiguration() {
         return tmdbConfig;
     }
 
-    public List<Timezone> getTimezones() {
+    @SuppressWarnings("checkstyle:MissingJavadocMethod")
+    public List<Timezone> getTimezones() throws TmdbResponseException {
         return new TmdbTimezones(this).getTimezones();
     }
 

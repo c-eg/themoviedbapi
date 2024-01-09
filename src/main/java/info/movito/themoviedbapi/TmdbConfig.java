@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.config.ConfigResults;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
 /**
@@ -17,7 +18,7 @@ class TmdbConfig extends AbstractTmdbApi {
         super(tmdbApi);
     }
 
-    public ConfigResults getConfig() {
+    public ConfigResults getConfig() throws TmdbResponseException {
         return mapJsonResult(new ApiUrl(TMDB_METHOD_CONFIGURATION), ConfigResults.class);
     }
 }
