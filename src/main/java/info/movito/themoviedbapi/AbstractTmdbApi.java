@@ -1,18 +1,20 @@
 package info.movito.themoviedbapi;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import info.movito.themoviedbapi.model.core.ResponseStatus;
-import info.movito.themoviedbapi.model.core.ResponseStatusException;
+import com.fasterxml.jackson.databind.ObjectReader;
+import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import info.movito.themoviedbapi.tools.MovieDbException;
 import info.movito.themoviedbapi.tools.RequestType;
+import info.movito.themoviedbapi.tools.TmdbResponseCode;
+import lombok.AccessLevel;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
+import static info.movito.themoviedbapi.tools.TmdbResponseCode.REQUEST_LIMIT_EXCEEDED;
 
 /**
  * Class to be inherited by a TmdbApi class.
@@ -30,14 +32,11 @@ public abstract class AbstractTmdbApi {
 
     public static final String PARAM_API_KEY = "api_key";
 
-    protected static final ObjectMapper jsonMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    @Getter(AccessLevel.PROTECTED)
+    private static final ObjectMapper objectMapper = new ObjectMapper()
+        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-    // see https://www.themoviedb.org/documentation/api/status-codes
-    private static final Collection<Integer> SUCCESS_STATUS_CODES = Arrays.asList(
-        1, // Success
-        12, // The item/record was updated successfully.
-        13 // The item/record was updated successfully.
-    );
+    private static final ObjectReader responseStatusReader = objectMapper.readerFor(ResponseStatus.class);
 
     protected final TmdbApi tmdbApi;
 
@@ -55,55 +54,60 @@ public abstract class AbstractTmdbApi {
      * @param <T> the type of class to map to
      * @return the mapped class
      */
-    public <T> T mapJsonResult(ApiUrl apiUrl, Class<T> clazz) {
-        return mapJsonResult(apiUrl, clazz, null);
+    public <T> T mapJsonResult(ApiUrl apiUrl, Class<T> clazz) throws TmdbResponseException {
+        return mapJsonResult(apiUrl, null, clazz);
     }
 
     /**
      * Maps a json result to a class.
      *
      * @param apiUrl the api url to map
-     * @param clazz the class to map to
      * @param jsonBody the json body
+     * @param clazz the class to map to
      * @param <T> the type of class to map to
      * @return the mapped class.
      */
-    public <T> T mapJsonResult(ApiUrl apiUrl, Class<T> clazz, String jsonBody) {
-        return mapJsonResult(apiUrl, clazz, jsonBody, RequestType.GET);
+    public <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, Class<T> clazz) throws TmdbResponseException {
+        return mapJsonResult(apiUrl, jsonBody, RequestType.GET, clazz);
     }
 
     /**
      * Maps a json result to a class.
      *
      * @param apiUrl the api url to map
-     * @param clazz the class to map to
      * @param jsonBody the json body
      * @param requestType the type of request
+     * @param clazz the class to map to
      * @param <T> the type of class to map to
      * @return the mapped class.
      */
-    public <T> T mapJsonResult(ApiUrl apiUrl, Class<T> clazz, String jsonBody, RequestType requestType) {
-        String webpage = tmdbApi.requestWebPage(apiUrl, jsonBody, requestType);
+    public <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, Class<T> clazz) throws TmdbResponseException {
+        String jsonResponse = tmdbApi.getTmdbUrlReader().readUrl(apiUrl.buildUrl(), jsonBody, requestType);
 
         try {
-            // check if was error responseStatus
-            ResponseStatus responseStatus = jsonMapper.readValue(webpage, ResponseStatus.class);
-            // work around the problem that there's no status code for suspected spam names yet
-            String suspectedSpam = "Unable to create list because: Description is suspected to be spam.";
-            if (webpage.contains(suspectedSpam)) {
-                responseStatus = new ResponseStatus(-100, suspectedSpam);
-            }
-
-            // if null, the json response was not a error responseStatus code, but something else
+            // check if the response was successful. tmdb have their own codes for successful and unsuccessful responses.
+            // some 2xx codes are not successful. See: https://developer.themoviedb.org/docs/errors for more info.
+            ResponseStatus responseStatus = responseStatusReader.readValue(jsonResponse);
             Integer statusCode = responseStatus.getStatusCode();
-            if (statusCode != null && !SUCCESS_STATUS_CODES.contains(statusCode)) {
-                throw new ResponseStatusException(responseStatus);
+
+            if (statusCode != null) {
+                TmdbResponseCode tmdbResponseCode = TmdbResponseCode.fromCode(statusCode);
+
+                if (tmdbResponseCode != null) {
+                    if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
+                        Thread.sleep(1000);
+                        return mapJsonResult(apiUrl, jsonBody, requestType, clazz);
+                    }
+                    else if (!tmdbResponseCode.isSuccess()) {
+                        throw new TmdbResponseException(tmdbResponseCode);
+                    }
+                }
             }
 
-            return jsonMapper.readValue(webpage, clazz);
+            return objectMapper.readValue(jsonResponse, clazz);
         }
-        catch (IOException ex) {
-            throw new MovieDbException("mapping failed:\n" + webpage, ex);
+        catch (JsonProcessingException | InterruptedException exception) {
+            throw new TmdbResponseException(exception);
         }
     }
 }

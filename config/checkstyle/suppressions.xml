@@ -8,4 +8,6 @@
     <suppress files="info.movito.themoviedbapi.model" checks="JavadocMethod"/>
 
     <suppress files="info.movito.themoviedbapi.tools.MovieDbException" checks="JavadocMethod"/>
+    <suppress files="info.movito.themoviedbapi.tools.TmdbException" checks="JavadocMethod"/>
+    <suppress files="info.movito.themoviedbapi.tools.TmdbException" checks="MissingJavadocMethod"/>
 </suppressions>

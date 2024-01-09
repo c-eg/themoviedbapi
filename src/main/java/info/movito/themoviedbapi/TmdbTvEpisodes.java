@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Credits;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.model.tv.TvEpisode;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
@@ -27,7 +28,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * Gets the details for a tv episode.
      */
     public TvEpisode getEpisode(int seriesId, int seasonNumber, int episodeNumber, String language,
-                                EpisodeMethod... appendToResponse) {
+                                EpisodeMethod... appendToResponse) throws TmdbResponseException {
         ApiUrl apiUrl =
             new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber);
 
@@ -41,7 +42,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
     /**
      * Gets the credits for a tv episode.
      */
-    public Credits getCredits(int seriesId, int seasonNumber, int episodeNumber, String language) {
+    public Credits getCredits(int seriesId, int seasonNumber, int episodeNumber, String language) throws TmdbResponseException {
         ApiUrl apiUrl =
             new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE,
                 episodeNumber, credits);

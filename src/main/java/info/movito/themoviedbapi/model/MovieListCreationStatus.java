@@ -1,7 +1,7 @@
 package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.core.ResponseStatus;
+import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

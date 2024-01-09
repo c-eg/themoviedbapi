@@ -2,6 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ResultsPage;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
@@ -22,7 +23,7 @@ public class TmdbKeywords extends AbstractTmdbApi {
     /**
      * Get the basic information for a specific keyword id.
      */
-    public Keyword getKeyword(String keywordId) {
+    public Keyword getKeyword(String keywordId) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_KEYWORD, keywordId);
 
         return mapJsonResult(apiUrl, Keyword.class);
@@ -33,7 +34,7 @@ public class TmdbKeywords extends AbstractTmdbApi {
      *
      * @return List of movies with the keyword
      */
-    public MovieResultsPage getKeywordMovies(String keywordId, String language, Integer page) {
+    public MovieResultsPage getKeywordMovies(String keywordId, String language, Integer page) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_KEYWORD, keywordId, "movies");
 
         apiUrl.addLanguage(language);

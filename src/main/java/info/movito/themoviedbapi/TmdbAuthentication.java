@@ -2,6 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.config.TokenAuthorisation;
 import info.movito.themoviedbapi.model.config.TokenSession;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
 
@@ -31,7 +32,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      * As soon as a valid session id has been created the token will be destroyed.
      */
 
-    public TokenAuthorisation getAuthorisationToken() {
+    public TokenAuthorisation getAuthorisationToken() throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "token/new");
 
         return mapJsonResult(apiUrl, TokenAuthorisation.class);
@@ -42,7 +43,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      *
      * A session id is required in order to use any of the write methods.
      */
-    public TokenSession getSessionToken(TokenAuthorisation token) {
+    public TokenSession getSessionToken(TokenAuthorisation token) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "session/new");
 
         if (!token.getSuccess()) {
@@ -63,7 +64,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      * @param pwd   password
      * @return The validated TokenAuthorisation. The same as input with getSuccess()==true
      */
-    public TokenAuthorisation getLoginToken(TokenAuthorisation token, String user, String pwd) {
+    public TokenAuthorisation getLoginToken(TokenAuthorisation token, String user, String pwd) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "token/validate_with_login");
 
         apiUrl.addPathParam(PARAM_REQUEST_TOKEN, token.getRequestToken());
@@ -88,7 +89,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      * @return validated TokenSession
      * @throws info.movito.themoviedbapi.tools.MovieDbException if the login failed
      */
-    public TokenSession getSessionLogin(String username, String password) {
+    public TokenSession getSessionLogin(String username, String password) throws TmdbResponseException {
         TokenAuthorisation authToken = getAuthorisationToken();
 
         if (!authToken.getSuccess()) {
@@ -117,7 +118,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      *
      * If a guest session is not used for the first time within 24 hours, it will be automatically discarded.
      */
-    public TokenSession getGuestSessionToken() {
+    public TokenSession getGuestSessionToken() throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "guest_session/new");
 
         return mapJsonResult(apiUrl, TokenSession.class);

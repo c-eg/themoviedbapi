@@ -120,10 +120,9 @@ public final class Utils {
     /**
      * Use Jackson to convert Map to json string.
      */
-    // fixme why is the argument not used??
-    public static String convertToJson(ObjectMapper jsonMapper, Map<String, ?> map) {
+    public static String convertToJson(ObjectMapper objectMapper, Map<String, ?> map) {
         try {
-            return new ObjectMapper().writeValueAsString(map);
+            return objectMapper.writeValueAsString(map);
         }
         catch (JsonProcessingException jpe) {
             throw new RuntimeException("json conversion failed", jpe);

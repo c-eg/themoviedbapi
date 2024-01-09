@@ -2,6 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Discover;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 
 /**
@@ -50,7 +51,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
     public MovieResultsPage getDiscover(int page, String language, String sortBy, boolean includeAdult, int year, int primaryReleaseYear,
                                         int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
                                         String releaseDateLte, String certificationCountry, String certificationLte,
-                                        String withCompanies) {
+                                        String withCompanies) throws TmdbResponseException {
 
         Discover discover = new Discover();
         discover.page(page)
@@ -77,7 +78,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
      * @param discover A discover object containing the search criteria required
      * @return the movie results page.
      */
-    public MovieResultsPage getDiscover(Discover discover) {
+    public MovieResultsPage getDiscover(Discover discover) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, "movie");
 
         for (String key : discover.getParams().keySet()) {
@@ -118,7 +119,8 @@ public class TmdbDiscover extends AbstractTmdbApi {
      */
     public TvResultsPage getDiscoverTV(int page, String language, String sortBy, boolean includeAdult, int year, int primaryReleaseYear,
                                        int voteCountGte, float voteAverageGte, String withGenres, String releaseDateGte,
-                                       String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies) {
+                                       String releaseDateLte, String certificationCountry, String certificationLte, String withCompanies)
+        throws TmdbResponseException {
 
         Discover discover = new Discover();
         discover.page(page)
@@ -145,7 +147,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
      * @param discover A discover object containing the search criteria required
      * @return the tv results page.
      */
-    public TvResultsPage getDiscoverTV(Discover discover) {
+    public TvResultsPage getDiscoverTV(Discover discover) throws TmdbResponseException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, "tv");
 
         for (String key : discover.getParams().keySet()) {
