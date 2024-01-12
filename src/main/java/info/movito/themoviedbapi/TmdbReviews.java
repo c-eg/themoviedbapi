@@ -2,8 +2,8 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Reviews;
 import info.movito.themoviedbapi.model.core.ResultsPage;
-import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbException;
 
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 
@@ -27,7 +27,7 @@ public class TmdbReviews extends AbstractTmdbApi {
      * @param page the page
      * @return the reviews
      */
-    public ReviewResultsPage getReviews(int movieId, String language, Integer page) throws TmdbResponseException {
+    public ReviewResultsPage getReviews(int movieId, String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "reviews");
 
         apiUrl.addLanguage(language);

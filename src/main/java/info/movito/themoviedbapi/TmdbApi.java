@@ -2,8 +2,8 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.config.TmdbConfiguration;
-import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbHttpClient;
 import info.movito.themoviedbapi.tools.TmdbUrlReader;
 import lombok.AccessLevel;
@@ -60,7 +60,7 @@ public class TmdbApi {
     }
 
     @SuppressWarnings("checkstyle:MissingJavadocMethod")
-    public List<Timezone> getTimezones() throws TmdbResponseException {
+    public List<Timezone> getTimezones() throws TmdbException {
         return new TmdbTimezones(this).getTimezones();
     }
 

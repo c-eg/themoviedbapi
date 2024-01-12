@@ -8,6 +8,7 @@ import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
+import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -54,7 +55,7 @@ public abstract class AbstractTmdbApi {
      * @param <T> the type of class to map to
      * @return the mapped class
      */
-    public <T> T mapJsonResult(ApiUrl apiUrl, Class<T> clazz) throws TmdbResponseException {
+    public <T> T mapJsonResult(ApiUrl apiUrl, Class<T> clazz) throws TmdbException {
         return mapJsonResult(apiUrl, null, clazz);
     }
 
@@ -67,7 +68,7 @@ public abstract class AbstractTmdbApi {
      * @param <T> the type of class to map to
      * @return the mapped class.
      */
-    public <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, Class<T> clazz) throws TmdbResponseException {
+    public <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, Class<T> clazz) throws TmdbException {
         return mapJsonResult(apiUrl, jsonBody, RequestType.GET, clazz);
     }
 
@@ -81,7 +82,7 @@ public abstract class AbstractTmdbApi {
      * @param <T> the type of class to map to
      * @return the mapped class.
      */
-    public <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, Class<T> clazz) throws TmdbResponseException {
+    public <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, Class<T> clazz) throws TmdbException {
         String jsonResponse = tmdbApi.getTmdbUrlReader().readUrl(apiUrl.buildUrl(), jsonBody, requestType);
 
         try {
@@ -107,7 +108,7 @@ public abstract class AbstractTmdbApi {
             return objectMapper.readValue(jsonResponse, clazz);
         }
         catch (JsonProcessingException | InterruptedException exception) {
-            throw new TmdbResponseException(exception);
+            throw new TmdbException(exception);
         }
     }
 }

@@ -11,8 +11,4 @@ public class TmdbException extends Exception {
     public TmdbException(Exception exception) {
         super(exception);
     }
-
-    public TmdbException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

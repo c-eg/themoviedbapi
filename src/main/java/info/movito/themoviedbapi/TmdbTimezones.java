@@ -2,9 +2,9 @@ package info.movito.themoviedbapi;
 
 import com.google.common.collect.Lists;
 import info.movito.themoviedbapi.model.config.Timezone;
-import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
+import info.movito.themoviedbapi.tools.TmdbException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class TmdbTimezones extends AbstractTmdbApi {
      */
     @Deprecated
     @SuppressWarnings("unchecked")
-    public List<Timezone> getTimezones() throws TmdbResponseException {
+    public List<Timezone> getTimezones() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TmdbTimezones.TMDB_METHOD_TIMEZONESLIST);
 
         String webpage = tmdbApi.getTmdbUrlReader().readUrl(apiUrl.buildUrl(), null, RequestType.GET);

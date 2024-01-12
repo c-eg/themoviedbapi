@@ -1,8 +1,8 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.model.tv.TvSeason;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbException;
 
 import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.Utils.asStringArray;
@@ -25,7 +25,7 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * Gets the details for a tv season.
      */
     public TvSeason getSeason(int seriesId, int seasonNumber, String language, SeasonMethod... appendToResponse)
-        throws TmdbResponseException {
+        throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber);
 
         apiUrl.addLanguage(language);

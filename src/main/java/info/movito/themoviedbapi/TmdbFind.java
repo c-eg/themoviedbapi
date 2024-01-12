@@ -1,8 +1,8 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.FindResults;
-import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for find. See the
@@ -21,7 +21,7 @@ public class TmdbFind extends AbstractTmdbApi {
     /**
      * Supported query ids are imdb, people, freebase, series. For details see     http://docs.themoviedb.apiary.io/#find
      */
-    public FindResults find(String id, ExternalSource externalSource, String language) throws TmdbResponseException {
+    public FindResults find(String id, ExternalSource externalSource, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_FIND, id);
 
         apiUrl.addPathParam("external_source", externalSource.toString());

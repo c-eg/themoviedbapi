@@ -5,9 +5,9 @@ import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.core.TvKeywords;
-import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbException;
 
 import static info.movito.themoviedbapi.Utils.asStringArray;
 
@@ -44,7 +44,7 @@ public class TmdbTV extends AbstractTmdbApi {
     /**
      * This method is used to retrieve all the basic series information.
      */
-    public TvSeries getSeries(int seriesId, String language, TvMethod... appendToResponse) throws TmdbResponseException {
+    public TvSeries getSeries(int seriesId, String language, TvMethod... appendToResponse) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId);
 
         apiUrl.addLanguage(language);
@@ -61,7 +61,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param language the language
      * @return the show's credits
      */
-    public Credits getCredits(int seriesId, String language) throws TmdbResponseException {
+    public Credits getCredits(int seriesId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_CREDITS);
 
         apiUrl.addLanguage(language);
@@ -75,7 +75,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param page     the page
      * @return the series
      */
-    public TvResultsPage getPopular(String language, Integer page) throws TmdbResponseException {
+    public TvResultsPage getPopular(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_POPULAR);
 
         apiUrl.addLanguage(language);
@@ -92,7 +92,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param timezone the timezone
      * @return the series
      */
-    public TvResultsPage getAiringToday(String language, Integer page, Timezone timezone) throws TmdbResponseException {
+    public TvResultsPage getAiringToday(String language, Integer page, Timezone timezone) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_AIRINGTODAY);
 
         apiUrl.addLanguage(language);
@@ -112,7 +112,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param page     the page
      * @return the series
      */
-    public TvResultsPage getOnTheAir(String language, Integer page) throws TmdbResponseException {
+    public TvResultsPage getOnTheAir(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_ONTHEAIR);
 
         apiUrl.addLanguage(language);
@@ -128,7 +128,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param page     the page
      * @return the series
      */
-    public TvResultsPage getTopRated(String language, Integer page) throws TmdbResponseException {
+    public TvResultsPage getTopRated(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_TOPRATED);
 
         apiUrl.addLanguage(language);
@@ -144,7 +144,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param language the language
      * @return the series
      */
-    public MovieImages getImages(int seriesId, String language) throws TmdbResponseException {
+    public MovieImages getImages(int seriesId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TvMethod.images);
 
         apiUrl.addLanguage(language);
@@ -159,7 +159,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param language the language
      * @return the keywords
      */
-    public TvKeywords getKeywords(int seriesId, String language) throws TmdbResponseException {
+    public TvKeywords getKeywords(int seriesId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_KEYWORDS);
 
         apiUrl.addLanguage(language);
@@ -174,7 +174,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param language the language
      * @return the content rating
      */
-    public ContentRating.Results getContentRating(int seriesId, String language) throws TmdbResponseException {
+    public ContentRating.Results getContentRating(int seriesId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_CONTENT_RATING);
 
         apiUrl.addLanguage(language);

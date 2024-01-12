@@ -4,12 +4,12 @@ import info.movito.themoviedbapi.model.MovieList;
 import info.movito.themoviedbapi.model.config.Account;
 import info.movito.themoviedbapi.model.core.AccountID;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
-import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
+import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
 
 import java.util.Collections;
@@ -38,7 +38,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the basic information for an account. You will need to have a valid session id.
      */
-    public Account getAccount(SessionToken sessionToken) throws TmdbResponseException {
+    public Account getAccount(SessionToken sessionToken) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT);
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
@@ -50,7 +50,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Get the lists that as user has created.
      */
     public MovieListResultsPage getLists(SessionToken sessionToken, AccountID accountId, String language,
-                                         Integer page) throws TmdbResponseException {
+                                         Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "lists");
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
@@ -63,7 +63,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the rated movies from the account.
      */
-    public MovieResultsPage getRatedMovies(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbResponseException {
+    public MovieResultsPage getRatedMovies(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/movies");
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
@@ -75,7 +75,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the rated tv shows from the account.
      */
-    public TvResultsPage getRatedTvSeries(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbResponseException {
+    public TvResultsPage getRatedTvSeries(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv");
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
@@ -88,7 +88,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Get the rated tv episodes from the account.
      */
     public TvEpisodesResultsPage getRatedEpisodes(SessionToken sessionToken, AccountID accountId, Integer page)
-        throws TmdbResponseException {
+        throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv/episodes");
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
@@ -102,7 +102,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * <p>
      * A valid session id is required.
      */
-    public boolean postMovieRating(SessionToken sessionToken, Integer movieId, Integer rating) throws TmdbResponseException {
+    public boolean postMovieRating(SessionToken sessionToken, Integer movieId, Integer rating) throws TmdbException {
         return postRatingInternal(sessionToken, rating, new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "rating"));
     }
 
@@ -111,7 +111,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * <p>
      * A valid session id is required.
      */
-    public boolean postTvSeriesRating(SessionToken sessionToken, Integer movieId, Integer rating) throws TmdbResponseException {
+    public boolean postTvSeriesRating(SessionToken sessionToken, Integer movieId, Integer rating) throws TmdbException {
         return postRatingInternal(sessionToken, rating, new ApiUrl(TmdbTV.TMDB_METHOD_TV, movieId, "rating"));
     }
 
@@ -119,7 +119,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * This method lets users rate a tv episode.
      */
     public boolean postTvExpisodeRating(SessionToken sessionToken, Integer seriesId, Integer seasonNumber,
-                                        Integer episodeNumber, Integer rating) throws TmdbResponseException {
+                                        Integer episodeNumber, Integer rating) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(
             TMDB_METHOD_TV, seriesId,
             TMDB_METHOD_TV_SEASON, seasonNumber,
@@ -130,7 +130,7 @@ public class TmdbAccount extends AbstractTmdbApi {
         return postRatingInternal(sessionToken, rating, apiUrl);
     }
 
-    private boolean postRatingInternal(SessionToken sessionToken, Integer rating, ApiUrl apiUrl) throws TmdbResponseException {
+    private boolean postRatingInternal(SessionToken sessionToken, Integer rating, ApiUrl apiUrl) throws TmdbException {
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
         if (rating < 0 || rating > 10) {
@@ -145,7 +145,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get favourites movies from the account.
      */
-    public MovieResultsPage getFavoriteMovies(SessionToken sessionToken, AccountID accountId) throws TmdbResponseException {
+    public MovieResultsPage getFavoriteMovies(SessionToken sessionToken, AccountID accountId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies");
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
@@ -155,7 +155,7 @@ public class TmdbAccount extends AbstractTmdbApi {
     /**
      * Get the favorite tv shows from the account.
      */
-    public TvResultsPage getFavoriteSeries(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbResponseException {
+    public TvResultsPage getFavoriteSeries(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv");
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
@@ -168,7 +168,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Remove a movie from an account's favorites list.
      */
     public ResponseStatus addFavorite(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                      MediaType mediaType) throws TmdbResponseException {
+                                      MediaType mediaType) throws TmdbException {
         return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, true);
     }
 
@@ -176,12 +176,12 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Remove a movie from an account's favorites list.
      */
     public ResponseStatus removeFavorite(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                         MediaType mediaType) throws TmdbResponseException {
+                                         MediaType mediaType) throws TmdbException {
         return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, false);
     }
 
     private ResponseStatus changeFavoriteStatus(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                                MediaType mediaType, boolean isFavorite) throws TmdbResponseException {
+                                                MediaType mediaType, boolean isFavorite) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite");
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
@@ -202,7 +202,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @return The watchlist of the user
      */
-    public MovieResultsPage getWatchListMovies(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbResponseException {
+    public MovieResultsPage getWatchListMovies(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/movies");
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
@@ -216,7 +216,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @return The watchlist of the user
      */
-    public TvResultsPage getWatchListSeries(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbResponseException {
+    public TvResultsPage getWatchListSeries(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/tv");
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
 
@@ -229,7 +229,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Add a movie to an account's watch list.
      */
     public ResponseStatus addToWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                         MediaType mediaType) throws TmdbResponseException {
+                                         MediaType mediaType) throws TmdbException {
         return modifyWatchList(sessionToken, accountId, movieId, mediaType, true);
     }
 
@@ -237,12 +237,12 @@ public class TmdbAccount extends AbstractTmdbApi {
      * Remove a movie from an account's watch list.
      */
     public ResponseStatus removeFromWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                              MediaType mediaType) throws TmdbResponseException {
+                                              MediaType mediaType) throws TmdbException {
         return modifyWatchList(sessionToken, accountId, movieId, mediaType, false);
     }
 
     private ResponseStatus modifyWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                           MediaType mediaType, boolean isWatched) throws TmdbResponseException {
+                                           MediaType mediaType, boolean isWatched) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);

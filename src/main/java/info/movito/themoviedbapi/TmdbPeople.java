@@ -4,12 +4,12 @@ import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.ArtworkType;
 import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.core.ResultsPage;
-import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.people.PersonCredits;
 import info.movito.themoviedbapi.model.people.PersonPeople;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.TmdbException;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      *
      * It will return the single highest rated profile image.
      */
-    public PersonPeople getPersonInfo(int personId, String... appendToResponse) throws TmdbResponseException {
+    public PersonPeople getPersonInfo(int personId, String... appendToResponse) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId);
 
         apiUrl.appendToResponse(appendToResponse);
@@ -45,7 +45,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      *
      * It will return the single highest rated poster for each movie record.
      */
-    public PersonCredits getCombinedPersonCredits(int personId) throws TmdbResponseException {
+    public PersonCredits getCombinedPersonCredits(int personId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "combined_credits");
 
         return mapJsonResult(apiUrl, PersonCredits.class);
@@ -54,7 +54,7 @@ public class TmdbPeople extends AbstractTmdbApi {
     /**
      * This method is used to retrieve all of the profile images for a person.
      */
-    public List<Artwork> getPersonImages(int personId) throws TmdbResponseException {
+    public List<Artwork> getPersonImages(int personId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "images");
 
         return mapJsonResult(apiUrl, MovieImages.class).getAll(ArtworkType.PROFILE);
@@ -80,7 +80,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      *
      * This list refreshes every day.
      */
-    public PersonResultsPage getPersonPopular(Integer page) throws TmdbResponseException {
+    public PersonResultsPage getPersonPopular(Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "popular");
 
         apiUrl.addPage(page);
@@ -91,7 +91,7 @@ public class TmdbPeople extends AbstractTmdbApi {
     /**
      * Get the latest person id.
      */
-    public PersonPeople getPersonLatest() throws TmdbResponseException {
+    public PersonPeople getPersonLatest() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "latest");
 
         return mapJsonResult(apiUrl, PersonPeople.class);
