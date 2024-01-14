@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.config;
+package info.movito.themoviedbapi.model.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
@@ -9,9 +9,9 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class ConfigResults extends AbstractJsonMapping {
+public class Configuration extends AbstractJsonMapping {
     @JsonProperty("images")
-    private TmdbConfiguration tmdbConfiguration;
+    private ImageConfig imageConfig;
 
     @JsonProperty("change_keys")
     private List<String> changeKeys;

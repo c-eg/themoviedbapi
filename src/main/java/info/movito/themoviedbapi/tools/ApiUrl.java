@@ -19,7 +19,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @author Holger Brandl
  */
 public class ApiUrl {
-    private static final String TMDB_API_BASE_URL = "https://api.themoviedb.org/3/";
+    public static final String TMDB_API_BASE_URL = "https://api.themoviedb.org/3/";
 
     private static final String APPEND_TO_RESPONSE = "append_to_response";
 

@@ -3,7 +3,7 @@ package info.movito.themoviedbapi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import info.movito.themoviedbapi.model.MovieDb;
-import info.movito.themoviedbapi.model.config.TmdbConfiguration;
+import info.movito.themoviedbapi.model.configuration.ImageConfig;
 import info.movito.themoviedbapi.tools.MovieDbException;
 import org.apache.commons.lang3.StringUtils;
 
@@ -96,17 +96,16 @@ public final class Utils {
     /**
      * Generate the full image URL from the size and image path.
      */
-    public static URL createImageUrl(TmdbApi tmdb, String imagePath, String requiredSize) {
+    public static URL createImageUrl(ImageConfig imageConfig, String imagePath, String requiredSize) {
         if (StringUtils.isBlank(imagePath)) {
             return null;
         }
 
-        TmdbConfiguration configuration = tmdb.getConfiguration();
-        if (!configuration.isValidSize(requiredSize)) {
+        if (!imageConfig.isValidSize(requiredSize)) {
             throw new MovieDbException("Invalid size: " + requiredSize);
         }
 
-        StringBuilder sb = new StringBuilder(configuration.getBaseUrl());
+        StringBuilder sb = new StringBuilder(imageConfig.getBaseUrl());
         sb.append(requiredSize);
         sb.append(imagePath);
         try {

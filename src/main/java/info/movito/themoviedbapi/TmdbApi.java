@@ -1,8 +1,6 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.config.Timezone;
-import info.movito.themoviedbapi.model.config.TmdbConfiguration;
-import info.movito.themoviedbapi.tools.MovieDbException;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbHttpClient;
 import info.movito.themoviedbapi.tools.TmdbUrlReader;
@@ -25,8 +23,6 @@ public class TmdbApi {
     @Getter(AccessLevel.PROTECTED)
     private final TmdbUrlReader tmdbUrlReader;
 
-    private final TmdbConfiguration tmdbConfig;
-
     /**
      * Constructor.
      *
@@ -43,20 +39,6 @@ public class TmdbApi {
      */
     public TmdbApi(TmdbUrlReader tmdbUrlReader) {
         this.tmdbUrlReader = tmdbUrlReader;
-
-        try {
-            tmdbConfig = new TmdbConfig(this).getConfig().getTmdbConfiguration();
-        }
-        catch (MovieDbException ex) {
-            throw ex;
-        }
-        catch (Throwable ex) {
-            throw new MovieDbException("Failed to read configuration", ex);
-        }
-    }
-
-    public TmdbConfiguration getConfiguration() {
-        return tmdbConfig;
     }
 
     @SuppressWarnings("checkstyle:MissingJavadocMethod")
@@ -66,6 +48,10 @@ public class TmdbApi {
 
     public TmdbAccount getAccount() {
         return new TmdbAccount(this);
+    }
+
+    public TmdbConfiguration getConfiguration() {
+        return new TmdbConfiguration(this);
     }
 
     public TmdbLists getLists() {
