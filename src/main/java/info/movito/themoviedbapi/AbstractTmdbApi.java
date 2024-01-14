@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -55,8 +56,20 @@ public abstract class AbstractTmdbApi {
      * @param <T> the type of class to map to
      * @return the mapped class
      */
-    public <T> T mapJsonResult(ApiUrl apiUrl, Class<T> clazz) throws TmdbException {
+    protected <T> T mapJsonResult(ApiUrl apiUrl, Class<T> clazz) throws TmdbException {
         return mapJsonResult(apiUrl, null, clazz);
+    }
+
+    /**
+     * Maps a json result to a class.
+     *
+     * @param apiUrl the api url to map
+     * @param resultClass the class to map to
+     * @param <T> the type of class to map to
+     * @return the mapped class
+     */
+    protected <T> T mapJsonResult(ApiUrl apiUrl, TypeReference<T> resultClass) throws TmdbException {
+        return mapJsonResult(apiUrl, null, resultClass);
     }
 
     /**
@@ -68,8 +81,21 @@ public abstract class AbstractTmdbApi {
      * @param <T> the type of class to map to
      * @return the mapped class.
      */
-    public <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, Class<T> clazz) throws TmdbException {
+    protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, Class<T> clazz) throws TmdbException {
         return mapJsonResult(apiUrl, jsonBody, RequestType.GET, clazz);
+    }
+
+    /**
+     * Maps a json result to a class.
+     *
+     * @param apiUrl the api url to map
+     * @param jsonBody the json body
+     * @param resultClass the class to map to
+     * @param <T> the type of class to map to
+     * @return the mapped class
+     */
+    protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, TypeReference<T> resultClass) throws TmdbException {
+        return mapJsonResult(apiUrl, jsonBody, RequestType.GET, resultClass);
     }
 
     /**
@@ -82,7 +108,36 @@ public abstract class AbstractTmdbApi {
      * @param <T> the type of class to map to
      * @return the mapped class.
      */
-    public <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, Class<T> clazz) throws TmdbException {
+    protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, Class<T> clazz) throws TmdbException {
+        return mapJsonResult(apiUrl, jsonBody, requestType, objectMapper.readerFor(clazz));
+    }
+
+    /**
+     * Maps a json result to a class.
+     *
+     * @param apiUrl the api url to map
+     * @param jsonBody the json body
+     * @param requestType the type of request
+     * @param resultClass the class to map to
+     * @param <T> the type of class to map to
+     * @return the mapped class.
+     */
+    protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, TypeReference<T> resultClass)
+        throws TmdbException {
+        return mapJsonResult(apiUrl, jsonBody, requestType, objectMapper.readerFor(resultClass));
+    }
+
+    /**
+     * Maps a json result to a class.
+     *
+     * @param apiUrl the api url to map
+     * @param jsonBody the json body
+     * @param requestType the type of request
+     * @param objectReader the object reader
+     * @param <T> the type of class to map to
+     * @return the mapped class.
+     */
+    private <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, ObjectReader objectReader) throws TmdbException {
         String jsonResponse = tmdbApi.getTmdbUrlReader().readUrl(apiUrl.buildUrl(), jsonBody, requestType);
 
         try {
@@ -97,17 +152,25 @@ public abstract class AbstractTmdbApi {
                 if (tmdbResponseCode != null) {
                     if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
                         Thread.sleep(1000);
-                        return mapJsonResult(apiUrl, jsonBody, requestType, clazz);
+                        return mapJsonResult(apiUrl, jsonBody, requestType, objectReader);
                     }
                     else if (!tmdbResponseCode.isSuccess()) {
                         throw new TmdbResponseException(tmdbResponseCode);
                     }
                 }
             }
-
-            return objectMapper.readValue(jsonResponse, clazz);
         }
-        catch (JsonProcessingException | InterruptedException exception) {
+        catch (JsonProcessingException exception) {
+            // ignore, not an error
+        }
+        catch (InterruptedException exception) {
+            throw new TmdbException(exception);
+        }
+
+        try {
+            return objectReader.readValue(jsonResponse);
+        }
+        catch (JsonProcessingException exception) {
             throw new TmdbException(exception);
         }
     }
