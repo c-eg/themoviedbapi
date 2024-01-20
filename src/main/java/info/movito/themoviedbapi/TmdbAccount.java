@@ -1,32 +1,28 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.MovieList;
-import info.movito.themoviedbapi.model.config.Account;
-import info.movito.themoviedbapi.model.core.AccountID;
-import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.core.ResultsPage;
-import info.movito.themoviedbapi.model.core.SessionToken;
+import info.movito.themoviedbapi.model.MovieListResultsPage;
+import info.movito.themoviedbapi.model.account.Account;
+import info.movito.themoviedbapi.model.account.MovieResultsPage;
+import info.movito.themoviedbapi.model.account.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
+import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
+import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
+import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
-import info.movito.themoviedbapi.tools.TmdbResponseCode;
+import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 
-import java.util.Collections;
 import java.util.HashMap;
-
-import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
-import static info.movito.themoviedbapi.TmdbTvEpisodes.TMDB_METHOD_TV_EPISODE;
-import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
 
 /**
  * The movie database api for accounts. See the
  * <a href="https://developer.themoviedb.org/reference/account-details">documentation</a> for more info.
  */
 public class TmdbAccount extends AbstractTmdbApi {
-    public static final String PARAM_SESSION = "session_id";
+    protected static final String TMDB_METHOD_ACCOUNT = "account";
 
-    public static final String TMDB_METHOD_ACCOUNT = "account";
+    public static final String PARAM_SESSION = "session_id";
 
     /**
      * Create a new TmdbAccount instance to call the account related TMDb API methods.
@@ -36,232 +32,296 @@ public class TmdbAccount extends AbstractTmdbApi {
     }
 
     /**
-     * Get the basic information for an account. You will need to have a valid session id.
+     * <p>Get the basic information for an account. You will need to have a valid session id.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-details">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @return The account details.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public Account getAccount(SessionToken sessionToken) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT);
-
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
+    public Account getDetails(Integer accountId, String sessionId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId);
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
 
         return mapJsonResult(apiUrl, Account.class);
     }
 
     /**
-     * Get the lists that as user has created.
+     * <p>Add media to an account's favorites list.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param mediaId the id of the media to add to the favorites list.
+     * @param mediaType the type of media to add to the favorites list.
+     * @return The status of the request.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieListResultsPage getLists(SessionToken sessionToken, AccountID accountId, String language,
-                                         Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "lists");
+    public ResponseStatus addFavorite(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType)
+        throws TmdbException {
+        return changeFavoriteStatus(accountId, sessionId, mediaId, mediaType, true);
+    }
 
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
+    /**
+     * <p>Remove media to an account's favorites list.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param mediaId the id of the media to remove from the favorites list.
+     * @param mediaType the type of media to remove from the favorites list.
+     * @return The status of the request.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public ResponseStatus removeFavorite(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType)
+        throws TmdbException {
+        return changeFavoriteStatus(accountId, sessionId, mediaId, mediaType, false);
+    }
+
+    private ResponseStatus changeFavoriteStatus(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType,
+                                                boolean isFavorite) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite");
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("media_type", mediaType.toString());
+        body.put("media_id", mediaId);
+        body.put("favorite", isFavorite);
+
+        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
+    }
+
+    /**
+     * <p>Add media to an account's watch list.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-add-to-watchlist">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param mediaId the id of the media to add to the watch list.
+     * @param mediaType the type of media to add to the watch list.
+     * @return The status of the request.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public ResponseStatus addToWatchList(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType)
+        throws TmdbException {
+        return changeWatchListStatus(accountId, sessionId, mediaId, mediaType, true);
+    }
+
+    /**
+     * <p>Remove media to an account's watch list.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-add-to-watchlist">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param mediaId the id of the media to remove from the watch list.
+     * @param mediaType the type of media to remove from the watch list.
+     * @return The status of the request.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public ResponseStatus removeFromWatchList(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType)
+        throws TmdbException {
+        return changeWatchListStatus(accountId, sessionId, mediaId, mediaType, false);
+    }
+
+    private ResponseStatus changeWatchListStatus(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType,
+                                                 boolean isWatchList) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("media_type", mediaType.toString());
+        body.put("media_id", mediaId);
+        body.put("watchlist", isWatchList);
+
+        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
+    }
+
+    /**
+     * <p>Get the favorite movies from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-get-favorites">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The favorite movies of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public MovieResultsPage getFavoriteMovies(Integer accountId, String sessionId, String language, Integer page,
+                                              AccountSortBy sortBy) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies");
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
         apiUrl.addLanguage(language);
+        apiUrl.addPage(page);
+        apiUrl.addSortBy(sortBy);
+
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
+    }
+
+    /**
+     * <p>Get the favorite tv shows from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-favorite-tv">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The favorite tv series of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public TvSeriesResultsPage getFavoriteTv(Integer accountId, String sessionId, String language, Integer page,
+                                             AccountSortBy sortBy) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv");
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+        apiUrl.addLanguage(language);
+        apiUrl.addPage(page);
+        apiUrl.addSortBy(sortBy);
+
+        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+    }
+
+    /**
+     * <p>Get the lists that as user has created.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-lists">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param page optional - The page to return.
+     * @return The lists of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public MovieListResultsPage getLists(Integer accountId, String sessionId, Integer page) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "lists");
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
         apiUrl.addPage(page);
 
         return mapJsonResult(apiUrl, MovieListResultsPage.class);
     }
 
     /**
-     * Get the rated movies from the account.
+     * <p>Get the rated movies from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-rated-movies">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The rated movies of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieResultsPage getRatedMovies(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
+    public RatedMovieResultsPage getRatedMovies(Integer accountId, String sessionId, String language, Integer page,
+                                                AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/movies");
-
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+        apiUrl.addLanguage(language);
         apiUrl.addPage(page);
+        apiUrl.addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return mapJsonResult(apiUrl, RatedMovieResultsPage.class);
     }
 
     /**
-     * Get the rated tv shows from the account.
+     * <p>Get the rated tv shows from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-rated-tv">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The rated tv series of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public TvResultsPage getRatedTvSeries(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
+    public RatedTvSeriesResultsPage getRatedTvSeries(Integer accountId, String sessionId, String language, Integer page,
+                                                     AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv");
-
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+        apiUrl.addLanguage(language);
         apiUrl.addPage(page);
+        apiUrl.addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, TvResultsPage.class);
+        return mapJsonResult(apiUrl, RatedTvSeriesResultsPage.class);
     }
 
     /**
-     * Get the rated tv episodes from the account.
+     * <p>Get the rated tv episodes from the account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-rated-tv-episodes">documentation</a> for more info.</p>
+     *
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The rated tv episodes of the user.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public TvEpisodesResultsPage getRatedEpisodes(SessionToken sessionToken, AccountID accountId, Integer page)
-        throws TmdbException {
+    public RatedTvEpisodeResultsPage getRatedTvEpisodes(Integer accountId, String sessionId, String language, Integer page,
+                                                        AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv/episodes");
-
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+        apiUrl.addLanguage(language);
         apiUrl.addPage(page);
+        apiUrl.addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, TvEpisodesResultsPage.class);
+        return mapJsonResult(apiUrl, RatedTvEpisodeResultsPage.class);
     }
 
     /**
-     * This method lets users rate a movie.
-     * <p>
-     * A valid session id is required.
-     */
-    public boolean postMovieRating(SessionToken sessionToken, Integer movieId, Integer rating) throws TmdbException {
-        return postRatingInternal(sessionToken, rating, new ApiUrl(TmdbMovies.TMDB_METHOD_MOVIE, movieId, "rating"));
-    }
-
-    /**
-     * This method lets users rate a tv series.
-     * <p>
-     * A valid session id is required.
-     */
-    public boolean postTvSeriesRating(SessionToken sessionToken, Integer movieId, Integer rating) throws TmdbException {
-        return postRatingInternal(sessionToken, rating, new ApiUrl(TmdbTV.TMDB_METHOD_TV, movieId, "rating"));
-    }
-
-    /**
-     * This method lets users rate a tv episode.
-     */
-    public boolean postTvExpisodeRating(SessionToken sessionToken, Integer seriesId, Integer seasonNumber,
-                                        Integer episodeNumber, Integer rating) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(
-            TMDB_METHOD_TV, seriesId,
-            TMDB_METHOD_TV_SEASON, seasonNumber,
-            TMDB_METHOD_TV_EPISODE, episodeNumber,
-            "rating"
-        );
-
-        return postRatingInternal(sessionToken, rating, apiUrl);
-    }
-
-    private boolean postRatingInternal(SessionToken sessionToken, Integer rating, ApiUrl apiUrl) throws TmdbException {
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
-
-        if (rating < 0 || rating > 10) {
-            throw new MovieDbException("rating out of range");
-        }
-
-        String jsonBody = Utils.convertToJson(getObjectMapper(), Collections.singletonMap("value", rating));
-
-        return mapJsonResult(apiUrl, jsonBody, ResponseStatus.class).getStatusCode() == TmdbResponseCode.ITEM_UPDATED.getTmdbCode();
-    }
-
-    /**
-     * Get favourites movies from the account.
-     */
-    public MovieResultsPage getFavoriteMovies(SessionToken sessionToken, AccountID accountId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies");
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
-
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
-    }
-
-    /**
-     * Get the favorite tv shows from the account.
-     */
-    public TvResultsPage getFavoriteSeries(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv");
-
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
-        apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, TvResultsPage.class);
-    }
-
-    /**
-     * Remove a movie from an account's favorites list.
-     */
-    public ResponseStatus addFavorite(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                      MediaType mediaType) throws TmdbException {
-        return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, true);
-    }
-
-    /**
-     * Remove a movie from an account's favorites list.
-     */
-    public ResponseStatus removeFavorite(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                         MediaType mediaType) throws TmdbException {
-        return changeFavoriteStatus(sessionToken, accountId, movieId, mediaType, false);
-    }
-
-    private ResponseStatus changeFavoriteStatus(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                                MediaType mediaType, boolean isFavorite) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite");
-
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
-
-        HashMap<String, Object> body = new HashMap<>();
-
-        body.put("media_type", mediaType.toString());
-        body.put("media_id", movieId);
-        body.put("favorite", isFavorite);
-
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
-
-        return mapJsonResult(apiUrl, jsonBody, ResponseStatus.class);
-    }
-
-    /**
-     * Get the list of movies on an accounts watchlist.
+     * <p>Get the list of movies on an accounts watchlist.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-watchlist-movies">documentation</a> for more info.</p>
      *
-     * @return The watchlist of the user
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The movies in the account's watchlist
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieResultsPage getWatchListMovies(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
+    public MovieResultsPage getWatchListMovies(Integer accountId, String sessionId, String language, Integer page,
+                                               AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/movies");
-
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+        apiUrl.addLanguage(language);
         apiUrl.addPage(page);
+        apiUrl.addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
     /**
-     * Get the list of tv series on an accounts watchlist.
+     * <p>Get the list of tv series on an accounts watchlist.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/account-watchlist-tv">documentation</a> for more info.</p>
      *
-     * @return The watchlist of the user
+     * @param accountId The account id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param language optional - The language to use for the results.
+     * @param page optional - The page to return.
+     * @param sortBy optional - The sort order of the results.
+     * @return The tv series in the account's watchlist
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public TvResultsPage getWatchListSeries(SessionToken sessionToken, AccountID accountId, Integer page) throws TmdbException {
+    public TvSeriesResultsPage getWatchListTvSeries(Integer accountId, String sessionId, String language, Integer page,
+                                                    AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/tv");
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
-
+        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+        apiUrl.addLanguage(language);
         apiUrl.addPage(page);
+        apiUrl.addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, TvResultsPage.class);
+        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 
     /**
-     * Add a movie to an account's watch list.
+     * Needed to tell TMDB API about what type of id is provided.
+     * e.g. see the <a href="https://developer.themoviedb.org/reference/account-add-favorite">documentation</a>
      */
-    public ResponseStatus addToWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                         MediaType mediaType) throws TmdbException {
-        return modifyWatchList(sessionToken, accountId, movieId, mediaType, true);
-    }
-
-    /**
-     * Remove a movie from an account's watch list.
-     */
-    public ResponseStatus removeFromWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                              MediaType mediaType) throws TmdbException {
-        return modifyWatchList(sessionToken, accountId, movieId, mediaType, false);
-    }
-
-    private ResponseStatus modifyWatchList(SessionToken sessionToken, AccountID accountId, Integer movieId,
-                                           MediaType mediaType, boolean isWatched) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
-
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
-
-        HashMap<String, Object> body = new HashMap<>();
-
-        body.put("media_type", mediaType.toString());
-        body.put("media_id", movieId);
-        body.put("watchlist", isWatched);
-
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
-
-        return mapJsonResult(apiUrl, jsonBody, ResponseStatus.class);
-    }
-
-    /**
-     * needed to tell tmdb api about what type of id is provided. E.g. see http://docs.themoviedb.apiary.io/reference/account/accountidwatchlist
-     */
-    // note http://stackoverflow.com/questions/8143995/should-java-member-enum-types-be-capitalized
     public enum MediaType {
         MOVIE, TV;
 
@@ -269,12 +329,5 @@ public class TmdbAccount extends AbstractTmdbApi {
         public String toString() {
             return super.toString().toLowerCase();
         }
-    }
-
-    /**
-     * Movies List Results Page.
-     */
-    public static class MovieListResultsPage extends ResultsPage<MovieList> {
-
     }
 }

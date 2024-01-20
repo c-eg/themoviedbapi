@@ -34,6 +34,8 @@ public abstract class AbstractTmdbApi {
 
     public static final String PARAM_API_KEY = "api_key";
 
+    public static final String PARAM_SORT_BY = "sort_by";
+
     @Getter(AccessLevel.PROTECTED)
     private static final ObjectMapper objectMapper = new ObjectMapper()
         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
