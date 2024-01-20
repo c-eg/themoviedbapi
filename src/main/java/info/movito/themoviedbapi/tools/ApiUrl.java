@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi.tools;
 
 import info.movito.themoviedbapi.AbstractTmdbApi;
+import info.movito.themoviedbapi.tools.sortby.SortBy;
 import org.apache.commons.lang3.StringUtils;
 
 import java.net.URL;
@@ -176,5 +177,16 @@ public class ApiUrl {
         }
 
         addPathParam(APPEND_TO_RESPONSE, String.join(",", appendToResponse));
+    }
+
+    /**
+     * Adds the sort by ordering to the api endpoint.
+     *
+     * @param sortBy the order to sort.
+     */
+    public void addSortBy(SortBy sortBy) {
+        if (sortBy != null) {
+            addQueryParam(AbstractTmdbApi.PARAM_SORT_BY, sortBy.getValue());
+        }
     }
 }
