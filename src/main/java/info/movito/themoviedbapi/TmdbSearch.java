@@ -2,6 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.Company;
+import info.movito.themoviedbapi.model.MovieListResultsPage;
 import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ResultsPage;
@@ -148,7 +149,7 @@ public class TmdbSearch extends AbstractTmdbApi {
     /**
      * Search for lists by name and description.
      */
-    public TmdbAccount.MovieListResultsPage searchList(String query, String language, Integer page) throws TmdbException {
+    public MovieListResultsPage searchList(String query, String language, Integer page) throws TmdbException {
         System.err.println("This method is part of the API but seems currently not available. " +
             "See https://www.themoviedb.org/talk/593409e3c3a36859ef01eddb#597124f8c3a3681608008424");
 
@@ -162,7 +163,7 @@ public class TmdbSearch extends AbstractTmdbApi {
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, TmdbAccount.MovieListResultsPage.class);
+        return mapJsonResult(apiUrl, MovieListResultsPage.class);
     }
 
     /**

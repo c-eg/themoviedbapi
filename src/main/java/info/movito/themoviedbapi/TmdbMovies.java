@@ -6,6 +6,7 @@ import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.ExternalIds;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieImages;
+import info.movito.themoviedbapi.model.MovieListResultsPage;
 import info.movito.themoviedbapi.model.MovieTranslations;
 import info.movito.themoviedbapi.model.MoviesAlternativeTitles;
 import info.movito.themoviedbapi.model.ReleaseInfo;
@@ -183,8 +184,8 @@ public class TmdbMovies extends AbstractTmdbApi {
     /**
      * Get the lists that the movie belongs to.
      */
-    public TmdbAccount.MovieListResultsPage getListsContaining(int movieId, SessionToken sessionToken, String language,
-                                                               Integer page) throws TmdbException {
+    public MovieListResultsPage getListsContaining(int movieId, SessionToken sessionToken, String language,
+                                                   Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.lists);
 
         apiUrl.addPathParam(PARAM_SESSION, sessionToken);
@@ -193,7 +194,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, TmdbAccount.MovieListResultsPage.class);
+        return mapJsonResult(apiUrl, MovieListResultsPage.class);
     }
 
     /**
