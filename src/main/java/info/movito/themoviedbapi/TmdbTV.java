@@ -9,7 +9,7 @@ import info.movito.themoviedbapi.model.tv.TvSeries;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
-import static info.movito.themoviedbapi.Utils.asStringArray;
+import static info.movito.themoviedbapi.util.Utils.asStringArray;
 
 /**
  * The movie database api for tv series. See the

@@ -26,7 +26,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbAccount.PARAM_SESSION;
 import static info.movito.themoviedbapi.TmdbMovies.MovieMethod.videos;
-import static info.movito.themoviedbapi.Utils.asStringArray;
+import static info.movito.themoviedbapi.util.Utils.asStringArray;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**

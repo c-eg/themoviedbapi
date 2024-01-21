@@ -8,6 +8,7 @@ import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.util.Utils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;

@@ -5,7 +5,7 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
-import static info.movito.themoviedbapi.Utils.asStringArray;
+import static info.movito.themoviedbapi.util.Utils.asStringArray;
 
 /**
  * The movie database api for tv seasons. See the

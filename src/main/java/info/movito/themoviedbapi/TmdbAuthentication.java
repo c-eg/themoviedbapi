@@ -1,19 +1,25 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.config.TokenAuthorisation;
-import info.movito.themoviedbapi.model.config.TokenSession;
+import info.movito.themoviedbapi.model.authentication.GuestSession;
+import info.movito.themoviedbapi.model.authentication.RequestToken;
+import info.movito.themoviedbapi.model.authentication.Session;
+import info.movito.themoviedbapi.model.core.responses.ResponseStatusAuthentication;
+import info.movito.themoviedbapi.model.core.responses.ResponseStatusDelete;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import info.movito.themoviedbapi.tools.MovieDbException;
+import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.util.Utils;
+
+import java.util.HashMap;
 
 /**
  * The movie database api for authentication. See the
  * <a href="https://developer.themoviedb.org/reference/authentication-how-do-i-generate-a-session-id">documentation</a> for more info.
  */
 public class TmdbAuthentication extends AbstractTmdbApi {
-    public static final String PARAM_REQUEST_TOKEN = "request_token";
+    protected static final String TMDB_METHOD_AUTH = "authentication";
 
-    public static final String TMDB_METHOD_AUTH = "authentication";
+    private static final String PARAM_REQUEST_TOKEN = "request_token";
 
     /**
      * Create a new TmdbAuthentication instance to call the authentication related TMDb API methods.
@@ -23,104 +29,143 @@ public class TmdbAuthentication extends AbstractTmdbApi {
     }
 
     /**
-     * This method is used to generate a valid request token for user based authentication.
+     * <p>Creates a guest session.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-create-guest-session">documentation</a>
+     * for more info.</p>
      *
-     * A request token is required in order to request a session id.
-     *
-     * You can generate any number of request tokens but they will expire after 60 minutes.
-     *
-     * As soon as a valid session id has been created the token will be destroyed.
+     * @return The guest session.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-
-    public TokenAuthorisation getAuthorisationToken() throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "token/new");
-
-        return mapJsonResult(apiUrl, TokenAuthorisation.class);
+    public GuestSession createGuestSession() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "guest_session/new");
+        return mapJsonResult(apiUrl, GuestSession.class);
     }
 
     /**
-     * This method is used to generate a session id for user based authentication.
+     * <p>Creates an unauthenticated request token. This will need to be authenticated by the user using
+     * {@link #getTmdbAuthenticationUrlForRequestToken(RequestToken, String)}. If you cannot redirect the user to a browser,
+     * use {@link #createAuthenticatedRequestToken(RequestToken, String, String)} instead.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-create-request-token">documentation</a>
+     * for more info.</p>
      *
-     * A session id is required in order to use any of the write methods.
+     * @return The unauthenticated request token.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public TokenSession getSessionToken(TokenAuthorisation token) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "session/new");
+    public RequestToken createRequestToken() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "token/new");
+        return mapJsonResult(apiUrl, RequestToken.class);
+    }
 
-        if (!token.getSuccess()) {
-            logger.warn("Authorisation token was not successful!");
-            throw new MovieDbException("Authorisation token was not successful!");
+    /**
+     * <p>Creates the url to redirect the user to in order to authenticate their request token.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-how-do-i-generate-a-session-id">documentation</a>
+     * for more info.</p>
+     *
+     * @param token The request token.
+     * @param redirectUrl optional - The url to redirect the user to after authentication.
+     * @return The url to redirect the user to.
+     * @throws TmdbException If the request token is null or not successful.
+     */
+    public static String getTmdbAuthenticationUrlForRequestToken(RequestToken token, String redirectUrl) throws TmdbException {
+        if (token == null || !token.getSuccess()) {
+            throw new TmdbException("Invalid request token! The request token must not be null and must be successful!");
         }
 
-        apiUrl.addPathParam(PARAM_REQUEST_TOKEN, token.getRequestToken());
+        StringBuilder sb = new StringBuilder("https://www.themoviedb.org/authenticate/");
+        sb.append(token.getRequestToken());
 
-        return mapJsonResult(apiUrl, TokenSession.class);
+        if (redirectUrl != null && !redirectUrl.trim().isEmpty()) {
+            sb.append("?redirect_to=").append(redirectUrl);
+        }
+
+        return sb.toString();
     }
 
     /**
-     * Try to validate TokenAuthorisation with username and password.
+     * <p>Creates an authenticated request token, with the non-authenticated request token, username and password.</p>
+     * <p>Use this function if you have no way of directing the user to a browser for authentication.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-create-session-from-login">documentation</a>
+     * for more info.</p>
      *
-     * @param token A TokenAuthorisation previously generated by getAuthorisationToken
-     * @param user  username
-     * @param pwd   password
-     * @return The validated TokenAuthorisation. The same as input with getSuccess()==true
+     * @param token The unauthenticated request token.
+     * @param username The TMDB account username.
+     * @param password The TMDB account password.
+     * @return The authenticated request token.
+     * @throws TmdbException If the request token is null or not successful. Or, if there was an error making the request or mapping the
+     * response.
      */
-    public TokenAuthorisation getLoginToken(TokenAuthorisation token, String user, String pwd) throws TmdbException {
+    public RequestToken createAuthenticatedRequestToken(RequestToken token, String username, String password) throws TmdbException {
+        if (token == null || !token.getSuccess()) {
+            throw new TmdbException("Invalid request token! The request token must not be null and must be successful!");
+        }
+
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "token/validate_with_login");
 
-        apiUrl.addPathParam(PARAM_REQUEST_TOKEN, token.getRequestToken());
-        apiUrl.addPathParam("username", user);
-        apiUrl.addPathParam("password", pwd);
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("username", username);
+        body.put("password", password);
+        body.put(PARAM_REQUEST_TOKEN, token.getRequestToken());
+        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
 
-        return mapJsonResult(apiUrl, TokenAuthorisation.class);
+        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, RequestToken.class);
     }
 
     /**
-     * Does all the necessary username/password authentication
-     * stuff in one go
+     * <p>Creates a session with an authenticated request token.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-create-session">documentation</a>
+     * for more info.</p>
      *
-     * Generates a new valid TokenAuthorisation
-     *
-     * Validates the Token via username/password
-     *
-     * requests a new session id with the validated TokenAuthorisation
-     * and returns a new TokenSession which one may want to transform
-     * into SessionToken for APO calls that require a authorized user.
-     *
-     * @return validated TokenSession
-     * @throws info.movito.themoviedbapi.tools.MovieDbException if the login failed
+     * @param token The authenticated request token.
+     * @return The session.
+     * @throws TmdbException If the request token is null or not successful.
      */
-    public TokenSession getSessionLogin(String username, String password) throws TmdbException {
-        TokenAuthorisation authToken = getAuthorisationToken();
-
-        if (!authToken.getSuccess()) {
-            throw new MovieDbException("Authorisation token was not successful!");
+    public Session createSession(RequestToken token) throws TmdbException {
+        if (token == null || !token.getSuccess()) {
+            throw new TmdbException("Invalid request token! The request token must not be null and must be successful!");
         }
 
-        TokenAuthorisation loginToken = getLoginToken(authToken, username, password);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "session/new");
 
-        if (!loginToken.getSuccess()) {
-            throw new MovieDbException("User authentication failed:" + loginToken);
-        }
+        HashMap<String, Object> body = new HashMap<>();
+        body.put(PARAM_REQUEST_TOKEN, token.getRequestToken());
+        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
 
-        return getSessionToken(loginToken);
+        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, Session.class);
     }
 
     /**
-     * This method is used to generate a guest session id.
+     * <p>Deletes a session.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-delete-session">documentation</a>
+     * for more info.</p>
      *
-     * A guest session can be used to rate movies without having a registered TMDb user account.
-     *
-     * You should only generate a single guest session per user (or device) as you will be able to attach the ratings to
-     * a TMDb user account in the future.
-     *
-     * There are also IP limits in place so you should always make sure it's the end user doing the guest session
-     * actions.
-     *
-     * If a guest session is not used for the first time within 24 hours, it will be automatically discarded.
+     * @param sessionId The session id.
+     * @return The response status.
+     * @throws TmdbException If the session id is null or empty. Or, if there was an error making the request or mapping the response.
      */
-    public TokenSession getGuestSessionToken() throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "guest_session/new");
+    public ResponseStatusDelete deleteSession(String sessionId) throws TmdbException {
+        if (sessionId == null || sessionId.trim().isEmpty()) {
+            throw new TmdbException("Invalid session id! The session id must not be null or empty!");
+        }
 
-        return mapJsonResult(apiUrl, TokenSession.class);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "session");
+
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("session_id", sessionId);
+        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+
+        return mapJsonResult(apiUrl, jsonBody, RequestType.DELETE, ResponseStatusDelete.class);
+    }
+
+    /**
+     * <p>Test your API Key to see if it's valid.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-validate-key">documentation</a>
+     * for more info.</p>
+     *
+     * @return The response status.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public ResponseStatusAuthentication validateKey() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH);
+        return mapJsonResult(apiUrl, ResponseStatusAuthentication.class);
     }
 }
