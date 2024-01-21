@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi;
+package info.movito.themoviedbapi.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

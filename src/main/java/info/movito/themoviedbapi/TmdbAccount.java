@@ -12,6 +12,7 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
+import info.movito.themoviedbapi.util.Utils;
 
 import java.util.HashMap;
 

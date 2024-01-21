@@ -12,6 +12,7 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.account to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.authentication to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.changes to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.config to com.fasterxml.jackson.databind; // todo: remove
     opens info.movito.themoviedbapi.model.configuration to com.fasterxml.jackson.databind;
@@ -24,10 +25,12 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.tv to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.tools to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.tools.sortby to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.util to com.fasterxml.jackson.databind;
 
     exports info.movito.themoviedbapi;
     exports info.movito.themoviedbapi.model;
     exports info.movito.themoviedbapi.model.account;
+    exports info.movito.themoviedbapi.model.authentication;
     exports info.movito.themoviedbapi.model.changes;
     exports info.movito.themoviedbapi.model.config;
     exports info.movito.themoviedbapi.model.configuration;
@@ -40,4 +43,5 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.tv;
     exports info.movito.themoviedbapi.tools;
     exports info.movito.themoviedbapi.tools.sortby;
+    exports info.movito.themoviedbapi.util;
 }

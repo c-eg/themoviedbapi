@@ -18,6 +18,7 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 import info.movito.themoviedbapi.util.TestUtils;
+import info.movito.themoviedbapi.util.Utils;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
