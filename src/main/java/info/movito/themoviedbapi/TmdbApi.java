@@ -18,7 +18,6 @@ import java.util.List;
 public class TmdbApi {
     /**
      * Http client to make requests to the movie database api.
-     * can make certain things static if necessary
      */
     @Getter(AccessLevel.PROTECTED)
     private final TmdbUrlReader tmdbUrlReader;
@@ -41,13 +40,16 @@ public class TmdbApi {
         this.tmdbUrlReader = tmdbUrlReader;
     }
 
-    @SuppressWarnings("checkstyle:MissingJavadocMethod")
-    public List<Timezone> getTimezones() throws TmdbException {
-        return new TmdbTimezones(this).getTimezones();
-    }
-
     public TmdbAccount getAccount() {
         return new TmdbAccount(this);
+    }
+
+    public TmdbAuthentication getAuthentication() {
+        return new TmdbAuthentication(this);
+    }
+
+    public TmdbCertifications getCertifications() {
+        return new TmdbCertifications(this);
     }
 
     public TmdbConfiguration getConfiguration() {
@@ -82,10 +84,6 @@ public class TmdbApi {
         return new TmdbPeople(this);
     }
 
-    public TmdbAuthentication getAuthentication() {
-        return new TmdbAuthentication(this);
-    }
-
     public TmdbChanges getChanges() {
         return new TmdbChanges(this);
     }
@@ -116,5 +114,10 @@ public class TmdbApi {
 
     public TmdbFind getFind() {
         return new TmdbFind(this);
+    }
+
+    @SuppressWarnings("checkstyle:MissingJavadocMethod")
+    public List<Timezone> getTimezones() throws TmdbException {
+        return new TmdbTimezones(this).getTimezones();
     }
 }
