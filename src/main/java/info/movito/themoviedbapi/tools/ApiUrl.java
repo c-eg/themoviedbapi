@@ -4,12 +4,11 @@ import info.movito.themoviedbapi.AbstractTmdbApi;
 import info.movito.themoviedbapi.tools.sortby.SortBy;
 import org.apache.commons.lang3.StringUtils;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -26,7 +25,7 @@ public class ApiUrl {
 
     private final String baseUrl;
 
-    private final Map<String, String> params = new HashMap<>();
+    private final Map<String, String> params = new LinkedHashMap<>();
 
     /**
      * Constructor.
@@ -60,20 +59,14 @@ public class ApiUrl {
         StringBuilder urlBuilder = new StringBuilder(baseUrl);
 
         try {
-            if (!params.isEmpty()) {
-                List<String> keys = new ArrayList<>(params.keySet());
-                for (int i = 0; i < keys.size(); i++) {
-                    urlBuilder.append(i == 0 ? "?" : "&");
-                    String paramName = keys.get(i);
-
-                    urlBuilder.append(paramName).append("=");
-                    urlBuilder.append(URLEncoder.encode(params.get(paramName), StandardCharsets.UTF_8));
-                }
+            for (Map.Entry<String, String> entry : params.entrySet()) {
+                urlBuilder.append(urlBuilder.toString().contains("?") ? "&" : "?")
+                          .append(entry.getKey()).append("=").append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8));
             }
 
             return new URL(urlBuilder.toString());
         }
-        catch (Throwable e) {
+        catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
     }

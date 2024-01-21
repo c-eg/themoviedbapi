@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ChangedMovie extends IdElement {
+public class Change extends IdElement {
     @JsonProperty("adult")
-    private boolean adult;
+    private Boolean adult;
 }
