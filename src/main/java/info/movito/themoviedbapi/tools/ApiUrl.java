@@ -7,9 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -26,7 +24,7 @@ public class ApiUrl {
 
     private final String baseUrl;
 
-    private final Map<String, String> params = new HashMap<>();
+    private final Map<String, String> params = new LinkedHashMap<>();
 
     /**
      * Constructor.
