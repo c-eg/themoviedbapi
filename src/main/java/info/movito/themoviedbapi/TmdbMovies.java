@@ -12,7 +12,7 @@ import info.movito.themoviedbapi.model.MoviesAlternativeTitles;
 import info.movito.themoviedbapi.model.ReleaseInfo;
 import info.movito.themoviedbapi.model.Translation;
 import info.movito.themoviedbapi.model.Video;
-import info.movito.themoviedbapi.model.changes.ChangesItems;
+import info.movito.themoviedbapi.model.movies.changes.ChangesItems;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;

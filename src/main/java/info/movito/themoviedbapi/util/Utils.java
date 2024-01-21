@@ -9,6 +9,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Map;
 
 /**
@@ -143,5 +146,20 @@ public final class Utils {
         }
 
         return asArray;
+    }
+
+    /**
+     * Calculate the difference in days between two date strings.
+     *
+     * @param startDateString the start date string, in format: YYYY-MM-DD.
+     * @param endDateString   the end date string, in format: YYYY-MM-DD.
+     * @return the difference in days.
+     */
+    public static long calculateDaysDifference(String startDateString, String endDateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate startDate = LocalDate.parse(startDateString, formatter);
+        LocalDate endDate = LocalDate.parse(endDateString, formatter);
+
+        return ChronoUnit.DAYS.between(startDate, endDate);
     }
 }
