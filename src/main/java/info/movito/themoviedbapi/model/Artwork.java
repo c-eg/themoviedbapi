@@ -1,9 +1,9 @@
 package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -15,22 +15,19 @@ public class Artwork extends AbstractJsonMapping {
     private String filePath;
 
     @JsonProperty("aspect_ratio")
-    private float aspectRatio;
+    private Double aspectRatio;
 
     @JsonProperty("height")
-    private int height;
+    private Integer height;
 
     @JsonProperty("width")
-    private int width;
+    private Integer width;
 
     @JsonProperty("vote_average")
-    private float voteAverage;
+    private Double voteAverage;
 
     @JsonProperty("vote_count")
-    private int voteCount;
-
-    @JsonProperty("flag")
-    private String flag;
+    private Integer voteCount;
 
     private ArtworkType artworkType = ArtworkType.POSTER;
 }

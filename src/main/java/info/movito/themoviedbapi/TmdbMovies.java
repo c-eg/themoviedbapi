@@ -7,7 +7,7 @@ import info.movito.themoviedbapi.model.ExternalIds;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.MovieListResultsPage;
-import info.movito.themoviedbapi.model.MovieTranslations;
+import info.movito.themoviedbapi.model.Translations;
 import info.movito.themoviedbapi.model.MoviesAlternativeTitles;
 import info.movito.themoviedbapi.model.ReleaseInfo;
 import info.movito.themoviedbapi.model.Translation;
@@ -144,7 +144,7 @@ public class TmdbMovies extends AbstractTmdbApi {
     public List<Translation> getTranslations(int movieId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.translations);
 
-        return mapJsonResult(apiUrl, MovieTranslations.class).getTranslations();
+        return mapJsonResult(apiUrl, Translations.class).getTranslations();
     }
 
     /**

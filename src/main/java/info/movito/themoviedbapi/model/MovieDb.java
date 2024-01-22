@@ -113,7 +113,7 @@ public class MovieDb extends IdElement implements Multi {
     private Video.Results videos;
 
     @JsonProperty("translations")
-    private MovieTranslations translations;
+    private Translations translations;
 
     @JsonProperty("similar")
     private ResultsPage<MovieDb> similarMovies;

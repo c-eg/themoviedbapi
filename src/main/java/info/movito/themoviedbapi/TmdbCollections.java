@@ -1,22 +1,22 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
+import info.movito.themoviedbapi.model.ArtworkType;
 import info.movito.themoviedbapi.model.CollectionInfo;
-import info.movito.themoviedbapi.model.MovieImages;
+import info.movito.themoviedbapi.model.Translation;
+import info.movito.themoviedbapi.model.Translations;
+import info.movito.themoviedbapi.model.core.image.CollectionImage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 import java.util.List;
-
-import static info.movito.themoviedbapi.model.ArtworkType.BACKDROP;
-import static info.movito.themoviedbapi.model.ArtworkType.POSTER;
 
 /**
  * The movie database api for collections. See the
  * <a href="https://developer.themoviedb.org/reference/collection-details">documentation</a> for more info.
  */
 public class TmdbCollections extends AbstractTmdbApi {
-    public static final String TMDB_METHOD_COLLECTION = "collection";
+    protected static final String TMDB_METHOD_COLLECTION = "collection";
 
     /**
      * Create a new TmdbCollections instance to call the collections related TMDb API methods.
@@ -26,26 +26,47 @@ public class TmdbCollections extends AbstractTmdbApi {
     }
 
     /**
-     * This method is used to retrieve all of the basic information about a movie collection.
+     * <p>Get collection details by ID.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/collection-details">documentation</a> for more info.</p>
      *
-     * You can get the ID needed for this method by making a getMovieInfo request for the belongs_to_collection.
+     * @param collectionId The collection id.
+     * @param language optional - The language.
+     * @return The collection info.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public CollectionInfo getCollectionInfo(int collectionId, String language) throws TmdbException {
+    public CollectionInfo getDetails(Integer collectionId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId);
-
         apiUrl.addLanguage(language);
-
         return mapJsonResult(apiUrl, CollectionInfo.class);
     }
 
     /**
-     * Get all of the images for a particular collection by collection id.
+     * <p>Get the images that belong to a collection.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/collection-images">documentation</a> for more info.</p>
+     *
+     * @param collectionId The collection id.
+     * @param language optional - The language.
+     * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
+     * @return The images.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public List<Artwork> getCollectionImages(int collectionId, String language) throws TmdbException {
+    public List<Artwork> getImages(Integer collectionId, String language, String... includeImageLanguage) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId, "images");
-
         apiUrl.addLanguage(language);
+        apiUrl.addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
+        return mapJsonResult(apiUrl, CollectionImage.class).getAll(ArtworkType.POSTER, ArtworkType.BACKDROP);
+    }
 
-        return mapJsonResult(apiUrl, MovieImages.class).getAll(POSTER, BACKDROP);
+    /**
+     * <p>Get all translations for a collection.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/collection-translations">documentation</a> for more info.</p>
+     *
+     * @param collectionId The collection id.
+     * @return The translations.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public List<Translation> getTranslations(Integer collectionId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId, "translations");
+        return mapJsonResult(apiUrl, Translations.class).getTranslations();
     }
 }
