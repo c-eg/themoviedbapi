@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class MovieTranslations extends IdElement {
+public class Translations extends IdElement {
     @JsonProperty("translations")
     private List<Translation> translations;
 }
