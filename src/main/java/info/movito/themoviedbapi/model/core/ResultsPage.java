@@ -4,26 +4,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.Iterator;
-import java.util.List;
-
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class ResultsPage<T> extends AbstractJsonMapping implements Iterable<T> {
-    @JsonProperty("results")
-    private List<T> results;
-
+@EqualsAndHashCode(callSuper = true)
+public class ResultsPage<T> extends Results<T> {
     @JsonProperty("page")
-    private int page;
+    private Integer page;
 
     @JsonProperty("total_pages")
-    private int totalPages;
+    private Integer totalPages;
 
     @JsonProperty("total_results")
-    private int totalResults;
-
-    @Override
-    public Iterator<T> iterator() {
-        return results.iterator();
-    }
+    private Integer totalResults;
 }
