@@ -6,6 +6,8 @@
     <!-- disable javadoc check in model package. The classes there are basically just data classes, so no need to document anything -->
     <suppress files="info.movito.themoviedbapi.model" checks="MissingJavadocType"/>
     <suppress files="info.movito.themoviedbapi.model" checks="JavadocMethod"/>
+    <!-- disable javadoc check in builders package. The api documentation might change so better to look there for the most up-to-date information -->
+    <suppress files="info.movito.themoviedbapi.tools.builders.discover" checks="JavadocMethod"/>
 
     <suppress files="info.movito.themoviedbapi.tools.MovieDbException" checks="JavadocMethod"/>
     <suppress files="info.movito.themoviedbapi.tools.TmdbException" checks="JavadocMethod"/>

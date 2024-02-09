@@ -2,8 +2,8 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.MovieListResultsPage;
 import info.movito.themoviedbapi.model.account.Account;
-import info.movito.themoviedbapi.model.account.MovieResultsPage;
-import info.movito.themoviedbapi.model.account.TvSeriesResultsPage;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;

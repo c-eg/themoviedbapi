@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi.tools;
 
 import info.movito.themoviedbapi.AbstractTmdbApi;
+import info.movito.themoviedbapi.tools.builders.ParamBuilder;
 import info.movito.themoviedbapi.tools.sortby.SortBy;
 import org.apache.commons.lang3.StringUtils;
 
@@ -31,6 +32,7 @@ public class ApiUrl {
      * Constructor.
      */
     public ApiUrl(Object... urlElements) {
+        // TODO: improve this in discover commit
         StringBuilder baseUrlBuilder = new StringBuilder(TMDB_API_BASE_URL);
 
         for (int i = 0; i < urlElements.length; i++) {
@@ -68,6 +70,21 @@ public class ApiUrl {
         }
         catch (MalformedURLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Adds all parameters from the given builder to the API url.
+     *
+     * @param paramBuilder optional - the parameter builder.
+     */
+    public void addParams(ParamBuilder paramBuilder) {
+        if (paramBuilder == null) {
+            return;
+        }
+
+        for (Map.Entry<String, String> entry : paramBuilder.getParameterMap().entrySet()) {
+            addPathParam(entry.getKey(), entry.getValue());
         }
     }
 

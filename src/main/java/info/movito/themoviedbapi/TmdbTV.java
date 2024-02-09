@@ -5,7 +5,8 @@ import info.movito.themoviedbapi.model.Credits;
 import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.core.TvKeywords;
-import info.movito.themoviedbapi.model.tv.TvSeries;
+import info.movito.themoviedbapi.model.core.TvSeriesDbResultsPage;
+import info.movito.themoviedbapi.model.tv.TvSeriesDb;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
@@ -44,14 +45,14 @@ public class TmdbTV extends AbstractTmdbApi {
     /**
      * This method is used to retrieve all the basic series information.
      */
-    public TvSeries getSeries(int seriesId, String language, TvMethod... appendToResponse) throws TmdbException {
+    public TvSeriesDb getSeries(int seriesId, String language, TvMethod... appendToResponse) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId);
 
         apiUrl.addLanguage(language);
 
         apiUrl.appendToResponse(asStringArray(appendToResponse));
 
-        return mapJsonResult(apiUrl, TvSeries.class);
+        return mapJsonResult(apiUrl, TvSeriesDb.class);
     }
 
     /**
@@ -75,13 +76,13 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param page     the page
      * @return the series
      */
-    public TvResultsPage getPopular(String language, Integer page) throws TmdbException {
+    public TvSeriesDbResultsPage getPopular(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_POPULAR);
 
         apiUrl.addLanguage(language);
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, TvResultsPage.class);
+        return mapJsonResult(apiUrl, TvSeriesDbResultsPage.class);
     }
 
     /**
@@ -92,7 +93,7 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param timezone the timezone
      * @return the series
      */
-    public TvResultsPage getAiringToday(String language, Integer page, Timezone timezone) throws TmdbException {
+    public TvSeriesDbResultsPage getAiringToday(String language, Integer page, Timezone timezone) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_AIRINGTODAY);
 
         apiUrl.addLanguage(language);
@@ -102,7 +103,7 @@ public class TmdbTV extends AbstractTmdbApi {
             apiUrl.addPathParam("timezone", timezone);
         }
 
-        return mapJsonResult(apiUrl, TvResultsPage.class);
+        return mapJsonResult(apiUrl, TvSeriesDbResultsPage.class);
     }
 
     /**
@@ -112,13 +113,13 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param page     the page
      * @return the series
      */
-    public TvResultsPage getOnTheAir(String language, Integer page) throws TmdbException {
+    public TvSeriesDbResultsPage getOnTheAir(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_ONTHEAIR);
 
         apiUrl.addLanguage(language);
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, TvResultsPage.class);
+        return mapJsonResult(apiUrl, TvSeriesDbResultsPage.class);
     }
 
     /**
@@ -128,13 +129,13 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param page     the page
      * @return the series
      */
-    public TvResultsPage getTopRated(String language, Integer page) throws TmdbException {
+    public TvSeriesDbResultsPage getTopRated(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_TOPRATED);
 
         apiUrl.addLanguage(language);
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, TvResultsPage.class);
+        return mapJsonResult(apiUrl, TvSeriesDbResultsPage.class);
     }
 
     /**

@@ -14,7 +14,7 @@ import info.movito.themoviedbapi.model.Translation;
 import info.movito.themoviedbapi.model.Video;
 import info.movito.themoviedbapi.model.movies.changes.ChangesItems;
 import info.movito.themoviedbapi.model.core.IdElement;
-import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.MovieDbResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.providers.ProviderResults;
@@ -154,14 +154,14 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * The data is much better with movies that have more keywords
      */
-    public MovieResultsPage getSimilarMovies(int movieId, String language, Integer page) throws TmdbException {
+    public MovieDbResultsPage getSimilarMovies(int movieId, String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.similar);
 
         apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 
     /**
@@ -171,14 +171,14 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * The data is much better with movies that are more popular
      */
-    public MovieResultsPage getRecommendedMovies(int movieId, String language, Integer page) throws TmdbException {
+    public MovieDbResultsPage getRecommendedMovies(int movieId, String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.recommendations);
 
         apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 
     /**
@@ -272,7 +272,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>
      * See https://developers.themoviedb.org/3/movies/get-upcoming
      */
-    public MovieResultsPage getUpcoming(String language, Integer page, String region) throws TmdbException {
+    public MovieDbResultsPage getUpcoming(String language, Integer page, String region) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.upcoming);
 
         apiUrl.addLanguage(language);
@@ -283,7 +283,7 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addPathParam(PARAM_REGION, region);
         }
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 
     /**
@@ -291,7 +291,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * This is a curated list that will normally contain 100 movies. The default response will return 20 movies.
      */
-    public MovieResultsPage getNowPlayingMovies(String language, Integer page, String region) throws TmdbException {
+    public MovieDbResultsPage getNowPlayingMovies(String language, Integer page, String region) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.now_playing);
 
         apiUrl.addLanguage(language);
@@ -302,7 +302,7 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addPathParam(PARAM_REGION, region);
         }
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 
     /**
@@ -310,14 +310,14 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * This list is updated daily. The default response will return 20 movies.
      */
-    public MovieResultsPage getPopularMovies(String language, Integer page) throws TmdbException {
+    public MovieDbResultsPage getPopularMovies(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.popular);
 
         apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 
     /**
@@ -325,14 +325,14 @@ public class TmdbMovies extends AbstractTmdbApi {
      *
      * The default response will return 20 movies.
      */
-    public MovieResultsPage getTopRatedMovies(String language, Integer page) throws TmdbException {
+    public MovieDbResultsPage getTopRatedMovies(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.top_rated);
 
         apiUrl.addLanguage(language);
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 
     /**

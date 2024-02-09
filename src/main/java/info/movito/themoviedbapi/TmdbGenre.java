@@ -3,7 +3,7 @@ package info.movito.themoviedbapi;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
-import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.MovieDbResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
@@ -71,7 +71,7 @@ public class TmdbGenre extends AbstractTmdbApi {
      *
      * This prevents movies from 1 10/10 rating from being listed first and for the first 5 pages.
      */
-    public MovieResultsPage getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies)
+    public MovieDbResultsPage getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies)
         throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, genreId, "movies");
 
@@ -81,7 +81,7 @@ public class TmdbGenre extends AbstractTmdbApi {
 
         apiUrl.addPathParam(PARAM_INCLUDE_ALL_MOVIES, includeAllMovies);
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 
     private static class Genres extends AbstractJsonMapping {
