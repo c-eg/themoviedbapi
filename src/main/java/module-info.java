@@ -48,6 +48,8 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.rated;
     exports info.movito.themoviedbapi.model.tv;
     exports info.movito.themoviedbapi.tools;
+    exports info.movito.themoviedbapi.tools.builders;
+    exports info.movito.themoviedbapi.tools.builders.discover;
     exports info.movito.themoviedbapi.tools.sortby;
     exports info.movito.themoviedbapi.util;
 }

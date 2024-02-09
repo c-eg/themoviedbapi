@@ -4,8 +4,9 @@ import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.Company;
 import info.movito.themoviedbapi.model.MovieListResultsPage;
 import info.movito.themoviedbapi.model.Multi;
-import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.MovieDbResultsPage;
 import info.movito.themoviedbapi.model.core.ResultsPage;
+import info.movito.themoviedbapi.model.core.TvSeriesDbResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -44,8 +45,8 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param includeAdult Whether to include adult titles in the search.
      * @param page         The page of results to return. 0 to get the default (first page).
      */
-    public MovieResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult,
-                                        Integer page) throws TmdbException {
+    public MovieDbResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult,
+                                          Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MOVIE);
 
         if (isBlank(query)) {
@@ -66,7 +67,7 @@ public class TmdbSearch extends AbstractTmdbApi {
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 
     /**
@@ -78,8 +79,8 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param includeAdult Whether to include adult titles in the search.
      * @param page         The page of results to return. 0 to get the default (first page).
      */
-    public TvResultsPage searchTv(String query, Integer searchYear, String language, boolean includeAdult,
-                                  Integer page) throws TmdbException {
+    public TvSeriesDbResultsPage searchTv(String query, Integer searchYear, String language, boolean includeAdult,
+                                          Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV);
 
         if (isBlank(query)) {
@@ -100,7 +101,7 @@ public class TmdbSearch extends AbstractTmdbApi {
 
         apiUrl.addPage(page);
 
-        return mapJsonResult(apiUrl, TvResultsPage.class);
+        return mapJsonResult(apiUrl, TvSeriesDbResultsPage.class);
     }
 
     /**

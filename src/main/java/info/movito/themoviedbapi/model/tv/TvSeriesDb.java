@@ -18,7 +18,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-public class TvSeries extends AbstractTvElement implements Multi {
+public class TvSeriesDb extends AbstractTvElement implements Multi {
     @JsonProperty("created_by")
     private List<Person> createdBy;
 
@@ -68,7 +68,7 @@ public class TvSeries extends AbstractTvElement implements Multi {
     private List<TvSeason> seasons;
 
     @JsonProperty("recommendations")
-    private ResultsPage<TvSeries> recommendations;
+    private ResultsPage<TvSeriesDb> recommendations;
 
     @JsonProperty("rating")
     private float userRating;

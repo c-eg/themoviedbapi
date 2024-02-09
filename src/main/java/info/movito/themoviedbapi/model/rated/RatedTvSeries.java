@@ -1,7 +1,7 @@
 package info.movito.themoviedbapi.model.rated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.account.TvSeries;
+import info.movito.themoviedbapi.model.core.TvSeries;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
