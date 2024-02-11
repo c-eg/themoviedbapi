@@ -1,17 +1,16 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.Reviews;
-import info.movito.themoviedbapi.model.core.ResultsPage;
+import info.movito.themoviedbapi.model.Review;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
-
-import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 
 /**
  * The movie database api for reviews. See the
  * <a href="https://developer.themoviedb.org/reference/review-details">documentation</a> for more info.
  */
 public class TmdbReviews extends AbstractTmdbApi {
+    protected static final String TMDB_METHOD_MOVIE_REVIEW = "reviews";
+
     /**
      * Create a new TmdbReviews instance to call the reviews related TMDb API methods.
      */
@@ -20,24 +19,14 @@ public class TmdbReviews extends AbstractTmdbApi {
     }
 
     /**
-     * Get the reviews for a movie.
+     * <p>Get the details for a review.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/review-details">documentation</a> for more info.</p>
      *
-     * @param movieId the movies id
-     * @param language the language
-     * @param page the page
+     * @param reviewId The review id.
      * @return the reviews
      */
-    public ReviewResultsPage getReviews(int movieId, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "reviews");
-
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, ReviewResultsPage.class);
-    }
-
-    @SuppressWarnings("checkstyle:MissingJavadocType")
-    public static class ReviewResultsPage extends ResultsPage<Reviews> {
-
+    public Review getDetails(int reviewId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_REVIEW, reviewId);
+        return mapJsonResult(apiUrl, Review.class);
     }
 }

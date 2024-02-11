@@ -25,6 +25,7 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.people to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.providers to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.rated to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.reviews to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.tv to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.tools to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.tools.sortby to com.fasterxml.jackson.databind;
@@ -46,6 +47,7 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.people;
     exports info.movito.themoviedbapi.model.providers;
     exports info.movito.themoviedbapi.model.rated;
+    exports info.movito.themoviedbapi.model.reviews;
     exports info.movito.themoviedbapi.model.tv;
     exports info.movito.themoviedbapi.tools;
     exports info.movito.themoviedbapi.tools.builders;
