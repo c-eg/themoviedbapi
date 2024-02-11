@@ -122,7 +122,7 @@ public class MovieDb extends IdElement implements Multi {
     private ResultsPage<MovieDb> recommendedMovies;
 
     @JsonProperty("reviews")
-    private ResultsPage<Reviews> reviews;
+    private ResultsPage<Review> reviews;
 
     @JsonProperty("lists")
     private ResultsPage<MovieList> lists;
@@ -177,7 +177,7 @@ public class MovieDb extends IdElement implements Multi {
         return lists != null ? lists.getResults() : null;
     }
 
-    public List<Reviews> getReviews() {
+    public List<Review> getReviews() {
         return reviews != null ? reviews.getResults() : null;
     }
 
