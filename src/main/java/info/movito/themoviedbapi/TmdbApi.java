@@ -120,4 +120,8 @@ public class TmdbApi {
     public TmdbTvSeasons getTvSeasons() {
         return new TmdbTvSeasons(this);
     }
+
+    public TmdbWatchProviders getWatchProviders() {
+        return new TmdbWatchProviders(this);
+    }
 }
