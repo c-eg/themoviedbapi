@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class LogoImageResults extends IdElement {
+public class ImageResults extends IdElement {
     @JsonProperty("logos")
-    private List<LogoImage> logos;
+    private List<Image> logos;
 }

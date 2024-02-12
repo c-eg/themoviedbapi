@@ -3,7 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.AlternativeName;
 import info.movito.themoviedbapi.model.Company;
 import info.movito.themoviedbapi.model.core.ResultsPage;
-import info.movito.themoviedbapi.model.core.image.LogoImageResults;
+import info.movito.themoviedbapi.model.core.image.ImageResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
@@ -55,9 +55,9 @@ public class TmdbCompanies extends AbstractTmdbApi {
      * @return The company logos
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public LogoImageResults getImages(Integer companyId) throws TmdbException {
+    public ImageResults getImages(Integer companyId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COMPANY, companyId, "images");
-        return mapJsonResult(apiUrl, LogoImageResults.class);
+        return mapJsonResult(apiUrl, ImageResults.class);
     }
 
     @SuppressWarnings("checkstyle:MissingJavadocType")
