@@ -3,7 +3,6 @@ package info.movito.themoviedbapi;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
-import info.movito.themoviedbapi.model.core.MovieDbResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
@@ -14,9 +13,7 @@ import java.util.List;
  * <a href="https://developer.themoviedb.org/reference/genre-movie-list">documentation</a> for more info.
  */
 public class TmdbGenre extends AbstractTmdbApi {
-    public static final String PARAM_INCLUDE_ALL_MOVIES = "include_all_movies";
-
-    public static final String TMDB_METHOD_GENRE = "genre";
+    protected static final String TMDB_METHOD_GENRE = "genre";
 
     /**
      * Create a new TmdbGenre instance to call the genre related TMDb API methods.
@@ -26,62 +23,31 @@ public class TmdbGenre extends AbstractTmdbApi {
     }
 
     /**
-     * You can use this method to retrieve the list of genres used on TMDb.
-     * These IDs will correspond to those found in movie calls.
+     * <p>Get the list of official genres for movies.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/genre-movie-list">documentation</a> for more info.</p>
      *
-     * @deprecated use {@code getMovieGenreList} as TV shows Genres was added.
+     * @param language optional - The language, e.g. "en".
+     * @return The list of official genres for movies.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    @Deprecated
-    public List<Genre> getGenreList(String language) throws TmdbException {
-        return getMovieGenreList(language);
-    }
-
-    /**
-     * You can use this method to retrieve the list of official genres for
-     * movies used on TMDb.
-     *
-     * These IDs will correspond to those found in movie calls.
-     */
-    public List<Genre> getMovieGenreList(String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "movie", "list");
-
+    public List<Genre> getMovieList(String language) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "movie/list");
         apiUrl.addLanguage(language);
-
         return mapJsonResult(apiUrl, Genres.class).genres;
     }
 
     /**
-     * You can use this method to retrieve the list of of official genres for
-     * TV shows used on TMDb.
+     * <p>Get the list of official genres for TV shows.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/genre-tv-list">documentation</a> for more info.</p>
      *
-     * These IDs will correspond to those found in TV shows calls.
+     * @param language optional - The language, e.g. "en".
+     * @return The list of official genres for movies.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public List<Genre> getTvGenreList(String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "tv", "list");
-
+    public List<Genre> getTvList(String language) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "tv/list");
         apiUrl.addLanguage(language);
-
         return mapJsonResult(apiUrl, Genres.class).genres;
-    }
-
-    /**
-     * Get a list of movies per genre.
-     *
-     * It is important to understand that only movies with more than 10 votes get listed.
-     *
-     * This prevents movies from 1 10/10 rating from being listed first and for the first 5 pages.
-     */
-    public MovieDbResultsPage getGenreMovies(int genreId, String language, Integer page, boolean includeAllMovies)
-        throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, genreId, "movies");
-
-        apiUrl.addLanguage(language);
-
-        apiUrl.addPage(page);
-
-        apiUrl.addPathParam(PARAM_INCLUDE_ALL_MOVIES, includeAllMovies);
-
-        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 
     private static class Genres extends AbstractJsonMapping {
