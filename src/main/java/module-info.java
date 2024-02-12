@@ -22,6 +22,7 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.core.responses to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.keywords to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.movies.changes to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.networks to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.people to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.peoplelists to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.providers to com.fasterxml.jackson.databind;
@@ -46,6 +47,7 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.core.responses;
     exports info.movito.themoviedbapi.model.keywords;
     exports info.movito.themoviedbapi.model.movies.changes;
+    exports info.movito.themoviedbapi.model.networks;
     exports info.movito.themoviedbapi.model.people;
     exports info.movito.themoviedbapi.model.peoplelists;
     exports info.movito.themoviedbapi.model.providers;

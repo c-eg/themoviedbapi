@@ -2,8 +2,8 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.AlternativeName;
 import info.movito.themoviedbapi.model.Company;
-import info.movito.themoviedbapi.model.core.image.LogoImage;
-import info.movito.themoviedbapi.model.core.image.LogoImageResults;
+import info.movito.themoviedbapi.model.core.image.Image;
+import info.movito.themoviedbapi.model.core.image.ImageResults;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
@@ -72,12 +72,12 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
-        LogoImageResults logoImageResults = tmdbCompanies.getImages(1);
+        ImageResults logoImageResults = tmdbCompanies.getImages(1);
         assertNotNull(logoImageResults);
         testForNullFieldsAndNewItems(logoImageResults);
 
-        LogoImage logoImage = logoImageResults.getLogos().get(0);
-        assertNotNull(logoImage);
-        testForNullFieldsAndNewItems(logoImage);
+        Image image = logoImageResults.getLogos().get(0);
+        assertNotNull(image);
+        testForNullFieldsAndNewItems(image);
     }
 }

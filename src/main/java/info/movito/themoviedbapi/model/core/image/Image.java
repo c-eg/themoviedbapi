@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class LogoImage extends StringIdElement {
+public class Image extends StringIdElement {
     @JsonProperty("aspect_ratio")
     private Double aspectRatio;
 
