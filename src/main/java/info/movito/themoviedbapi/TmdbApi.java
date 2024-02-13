@@ -80,6 +80,10 @@ public class TmdbApi {
         return new TmdbGenre(this);
     }
 
+    public TmdbGuestSessions getGuestSessions() {
+        return new TmdbGuestSessions(this);
+    }
+
     public TmdbKeywords getKeywords() {
         return new TmdbKeywords(this);
     }
