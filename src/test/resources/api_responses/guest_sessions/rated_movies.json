@@ -1,0 +1,27 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/ikR2qy9xJCHX7M8i5rcvuNfdYXs.jpg",
+            "genre_ids": [
+                18,
+                80
+            ],
+            "id": 16,
+            "original_language": "en",
+            "original_title": "Dancer in the Dark",
+            "overview": "Selma, a Czech immigrant on the verge of blindness, struggles to make ends meet for herself and her son, who has inherited the same genetic disorder and will suffer the same fate without an expensive operation. When life gets too difficult, Selma learns to cope through her love of musicals, escaping life's troubles - even if just for a moment - by dreaming up little numbers to the rhythmic beats of her surroundings.",
+            "popularity": 14.684,
+            "poster_path": "/8Wdd3fQfbbQeoSfWpHrDfaFNhBU.jpg",
+            "release_date": "2000-06-30",
+            "title": "Dancer in the Dark",
+            "video": false,
+            "vote_average": 7.885,
+            "vote_count": 1549,
+            "rating": 8.5
+        }
+    ],
+    "total_pages": 1,
+    "total_results": 1
+}
