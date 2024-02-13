@@ -251,11 +251,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getRatedMovies(Integer, String, String, Integer, AccountSortBy)} with an expected result.
+     * Test {@link TmdbAccount#getRatedMovies(int, String, String, Integer, AccountSortBy)} with an expected result.
      */
     @Test
     public void testGetRatedMovies() throws TmdbException, IOException {
-        Integer accountId = 1234;
+        int accountId = 1234;
         String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;
@@ -280,11 +280,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getRatedTvSeries(Integer, String, String, Integer, AccountSortBy)} with an expected result.
+     * Test {@link TmdbAccount#getRatedTvSeries(int, String, String, Integer, AccountSortBy)} with an expected result.
      */
     @Test
     public void testGetRatedTvSeries() throws TmdbException, IOException {
-        Integer accountId = 1234;
+        int accountId = 1234;
         String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;
@@ -309,11 +309,11 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
     }
 
     /**
-     * Test {@link TmdbAccount#getRatedTvEpisodes(Integer, String, String, Integer, AccountSortBy)} with an expected result.
+     * Test {@link TmdbAccount#getRatedTvEpisodes(int, String, String, Integer, AccountSortBy)} with an expected result.
      */
     @Test
     public void testGetRatedTvEpisodes() throws TmdbException, IOException {
-        Integer accountId = 1234;
+        int accountId = 1234;
         String sessionId = "testSessionId";
         String language = "en";
         Integer page = 1;

@@ -216,7 +216,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @return The rated movies of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public RatedMovieResultsPage getRatedMovies(Integer accountId, String sessionId, String language, Integer page,
+    public RatedMovieResultsPage getRatedMovies(int accountId, String sessionId, String language, Integer page,
                                                 AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/movies");
         apiUrl.addQueryParam(PARAM_SESSION, sessionId);
@@ -239,7 +239,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @return The rated tv series of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public RatedTvSeriesResultsPage getRatedTvSeries(Integer accountId, String sessionId, String language, Integer page,
+    public RatedTvSeriesResultsPage getRatedTvSeries(int accountId, String sessionId, String language, Integer page,
                                                      AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv");
         apiUrl.addQueryParam(PARAM_SESSION, sessionId);
@@ -262,7 +262,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @return The rated tv episodes of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public RatedTvEpisodeResultsPage getRatedTvEpisodes(Integer accountId, String sessionId, String language, Integer page,
+    public RatedTvEpisodeResultsPage getRatedTvEpisodes(int accountId, String sessionId, String language, Integer page,
                                                         AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv/episodes");
         apiUrl.addQueryParam(PARAM_SESSION, sessionId);
