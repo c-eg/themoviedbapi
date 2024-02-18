@@ -19,9 +19,6 @@ public class Account extends NamedIdElement {
     @JsonProperty("iso_3166_1")
     private String iso31661;
 
-    @JsonProperty("name")
-    private String name;
-
     @JsonProperty("include_adult")
     private Boolean includeAdult;
 

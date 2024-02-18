@@ -67,17 +67,23 @@ public final class TestUtils {
      */
     private static List<Field> getNullFields(Object objectToCheck) {
         List<Field> nullFields = new ArrayList<>();
-        for (Field field : objectToCheck.getClass().getDeclaredFields()) {
-            field.setAccessible(true);
-            try {
-                if (field.get(objectToCheck) == null) {
-                    nullFields.add(field);
+
+        Class<?> clazz = objectToCheck.getClass();
+        while (clazz != null) {
+            for (Field field : clazz.getDeclaredFields()) {
+                field.setAccessible(true);
+                try {
+                    if (field.get(objectToCheck) == null) {
+                        nullFields.add(field);
+                    }
+                }
+                catch (IllegalAccessException exception) {
+                    throw new RuntimeException(exception);
                 }
             }
-            catch (IllegalAccessException exception) {
-                throw new RuntimeException(exception);
-            }
+            clazz = clazz.getSuperclass();
         }
+
         return nullFields;
     }
 }
