@@ -1,24 +1,25 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.Artwork;
-import info.movito.themoviedbapi.model.ArtworkType;
-import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.core.ResultsPage;
-import info.movito.themoviedbapi.model.people.Person;
-import info.movito.themoviedbapi.model.people.PersonCredits;
-import info.movito.themoviedbapi.model.people.PersonPeople;
+import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
+import info.movito.themoviedbapi.model.people.ExternalIds;
+import info.movito.themoviedbapi.model.people.PersonDb;
+import info.movito.themoviedbapi.model.people.PersonImages;
+import info.movito.themoviedbapi.model.people.Translations;
+import info.movito.themoviedbapi.model.people.credits.CombinedPersonCredits;
+import info.movito.themoviedbapi.model.people.credits.MovieCredits;
+import info.movito.themoviedbapi.model.people.credits.Person;
+import info.movito.themoviedbapi.model.people.credits.TvCredits;
 import info.movito.themoviedbapi.tools.ApiUrl;
-import info.movito.themoviedbapi.tools.MovieDbException;
 import info.movito.themoviedbapi.tools.TmdbException;
-
-import java.util.List;
+import info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse;
 
 /**
  * The movie database api for people. See the
  * <a href="https://developer.themoviedb.org/reference/person-details">documentation</a> for more info.
  */
 public class TmdbPeople extends AbstractTmdbApi {
-    public static final String TMDB_METHOD_PERSON = "person";
+    protected static final String TMDB_METHOD_PERSON = "person";
 
     /**
      * Create a new TmdbPeople instance to call the people related TMDb API methods.
@@ -28,73 +29,135 @@ public class TmdbPeople extends AbstractTmdbApi {
     }
 
     /**
-     * This method is used to retrieve all of the basic person information.
+     * <p>Query the top level details of a person.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/person-details">documentation</a> for more info.</p>
      *
-     * It will return the single highest rated profile image.
+     * @param personId The TMDb id of the person.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @param appendToResponse optional - additional namespaces to append to the result (20 max).
+     * @return The person details.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public PersonPeople getPersonInfo(int personId, String... appendToResponse) throws TmdbException {
+    public PersonDb getDetails(int personId, String language, PersonAppendToResponse... appendToResponse) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId);
-
-        apiUrl.appendToResponse(appendToResponse);
-
-        return mapJsonResult(apiUrl, PersonPeople.class);
+        apiUrl.addLanguage(language);
+        apiUrl.addAppendToResponses(appendToResponse);
+        return mapJsonResult(apiUrl, PersonDb.class);
     }
 
     /**
-     * This method is used to retrieve all of the cast &amp; crew information for the person.
+     * <p>Get the recent changes for a person.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/person-changes">documentation</a> for more info.</p>
      *
-     * It will return the single highest rated poster for each movie record.
+     * @param personId The TMDb id of the person.
+     * @param startDate optional - The start date, in format: YYYY-MM-DD.
+     * @param endDate optional - The end date, in format: YYYY-MM-DD.
+     * @param page optional - The page of results to return. Default: 1.
+     * @return The person changes.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public PersonCredits getCombinedPersonCredits(int personId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "combined_credits");
-
-        return mapJsonResult(apiUrl, PersonCredits.class);
-    }
-
-    /**
-     * This method is used to retrieve all of the profile images for a person.
-     */
-    public List<Artwork> getPersonImages(int personId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "images");
-
-        return mapJsonResult(apiUrl, MovieImages.class).getAll(ArtworkType.PROFILE);
-    }
-
-    /**
-     * Get the changes for a specific person id.
-     *
-     * Changes are grouped by key, and ordered by date in descending order.
-     *
-     * By default, only the last 24 hours of changes are returned.
-     *
-     * The maximum number of days that can be returned in a single request is 14.
-     *
-     * The language is present on fields that are translatable.
-     */
-    public void getPersonChanges(int personId, String startDate, String endDate) {
-        throw new MovieDbException("Not implemented yet");
-    }
-
-    /**
-     * Get the list of popular people on The Movie Database.
-     *
-     * This list refreshes every day.
-     */
-    public PersonResultsPage getPersonPopular(Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "popular");
-
+    public ChangeResults getChanges(int personId, String startDate, String endDate, Integer page) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "changes");
+        apiUrl.addQueryParam("start_date", startDate);
+        apiUrl.addQueryParam("end_date", endDate);
         apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, PersonResultsPage.class);
+        return mapJsonResult(apiUrl, ChangeResults.class);
     }
 
     /**
-     * Get the latest person id.
+     * <p>Get the combined movie and TV credits that belong to a person.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/person-combined-credits">documentation</a> for more info.</p>
+     *
+     * @param personId The TMDb id of the person.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @return The combined person credits.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public PersonPeople getPersonLatest() throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "latest");
+    public CombinedPersonCredits getCombinedCredits(int personId, String language) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "combined_credits");
+        apiUrl.addLanguage(language);
+        return mapJsonResult(apiUrl, CombinedPersonCredits.class);
+    }
 
-        return mapJsonResult(apiUrl, PersonPeople.class);
+    /**
+     * <p>Get the external ID's that belong to a person.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/person-external-ids">documentation</a> for more info.</p>
+     *
+     * @param personId The TMDb id of the person.
+     * @return The external IDs.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public ExternalIds getExternalIds(int personId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "external_ids");
+        return mapJsonResult(apiUrl, ExternalIds.class);
+    }
+
+    /**
+     * <p>Get the profile images that belong to a person.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/person-images">documentation</a> for more info.</p>
+     *
+     * @param personId The TMDb id of the person.
+     * @return The profile images.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public PersonImages getImages(int personId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "images");
+        return mapJsonResult(apiUrl, PersonImages.class);
+    }
+
+    /**
+     * <p>Get the newest created person. This is a live response and will continuously change.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/person-latest-id">documentation</a> for more info.</p>
+     *
+     * @return The latest person.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public PersonDb getLatest() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "latest");
+        return mapJsonResult(apiUrl, PersonDb.class);
+    }
+
+    /**
+     * <p>Get the movie credits for a person.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/person-movie-credits">documentation</a> for more info.</p>
+     *
+     * @param personId The TMDb id of the person.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @return The movie credits.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public MovieCredits getMovieCredits(int personId, String language) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "movie_credits");
+        apiUrl.addLanguage(language);
+        return mapJsonResult(apiUrl, MovieCredits.class);
+    }
+
+    /**
+     * <p>Get the TV credits that belong to a person..</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/person-tv-credits">documentation</a> for more info.</p>
+     *
+     * @param personId The TMDb id of the person.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @return The TV credits.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public TvCredits getTvCredits(int personId, String language) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "tv_credits");
+        apiUrl.addLanguage(language);
+        return mapJsonResult(apiUrl, TvCredits.class);
+    }
+
+    /**
+     * <p>Get the translations that belong to a person.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/translations">documentation</a> for more info.</p>
+     *
+     * @param personId The TMDb id of the person.
+     * @return The translations.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public Translations getTranslations(int personId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "translations");
+        return mapJsonResult(apiUrl, Translations.class);
     }
 
     @SuppressWarnings("checkstyle:MissingJavadocType")

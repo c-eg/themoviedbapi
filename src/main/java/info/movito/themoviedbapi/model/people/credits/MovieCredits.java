@@ -1,18 +1,15 @@
-package info.movito.themoviedbapi.model.people;
+package info.movito.themoviedbapi.model.people.credits;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.IdElement;
-import info.movito.themoviedbapi.model.people.credits.MovieCast;
-import info.movito.themoviedbapi.model.people.credits.MovieCrew;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
-// todo probably remove this when updating movie api
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class PersonCredits extends IdElement {
+public class MovieCredits extends IdElement {
     @JsonProperty("cast")
     private List<MovieCast> cast;
 

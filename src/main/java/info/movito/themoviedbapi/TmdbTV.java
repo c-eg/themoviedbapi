@@ -1,16 +1,14 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.ContentRating;
-import info.movito.themoviedbapi.model.Credits;
-import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.model.core.TvKeywords;
 import info.movito.themoviedbapi.model.core.TvSeriesDbResultsPage;
+import info.movito.themoviedbapi.model.core.image.CollectionImages;
+import info.movito.themoviedbapi.model.people.PersonCredits;
 import info.movito.themoviedbapi.model.tv.TvSeriesDb;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
-
-import static info.movito.themoviedbapi.util.Utils.asStringArray;
 
 /**
  * The movie database api for tv series. See the
@@ -50,7 +48,7 @@ public class TmdbTV extends AbstractTmdbApi {
 
         apiUrl.addLanguage(language);
 
-        apiUrl.appendToResponse(asStringArray(appendToResponse));
+        //apiUrl.addAppendToResponses(asStringArray(appendToResponse)); todo fix me
 
         return mapJsonResult(apiUrl, TvSeriesDb.class);
     }
@@ -62,11 +60,11 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param language the language
      * @return the show's credits
      */
-    public Credits getCredits(int seriesId, String language) throws TmdbException {
+    public PersonCredits getCredits(int seriesId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_CREDITS);
 
         apiUrl.addLanguage(language);
-        return mapJsonResult(apiUrl, Credits.class);
+        return mapJsonResult(apiUrl, PersonCredits.class);
     }
 
     /**
@@ -145,12 +143,12 @@ public class TmdbTV extends AbstractTmdbApi {
      * @param language the language
      * @return the series
      */
-    public MovieImages getImages(int seriesId, String language) throws TmdbException {
+    public CollectionImages getImages(int seriesId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TvMethod.images);
 
         apiUrl.addLanguage(language);
 
-        return mapJsonResult(apiUrl, MovieImages.class);
+        return mapJsonResult(apiUrl, CollectionImages.class);
     }
 
     /**

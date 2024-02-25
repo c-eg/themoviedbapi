@@ -1,6 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.Credits;
+import info.movito.themoviedbapi.model.people.PersonCredits;
 import info.movito.themoviedbapi.model.tv.TvEpisode;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -8,7 +8,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.TmdbTvEpisodes.EpisodeMethod.credits;
 import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
-import static info.movito.themoviedbapi.util.Utils.asStringArray;
 
 /**
  * The movie database api for tv episodes. See the
@@ -34,7 +33,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
 
         apiUrl.addLanguage(language);
 
-        apiUrl.appendToResponse(asStringArray(appendToResponse));
+        //apiUrl.addAppendToResponses(asStringArray(appendToResponse)); todo fix me
 
         return mapJsonResult(apiUrl, TvEpisode.class);
     }
@@ -42,14 +41,14 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
     /**
      * Gets the credits for a tv episode.
      */
-    public Credits getCredits(int seriesId, int seasonNumber, int episodeNumber, String language) throws TmdbException {
+    public PersonCredits getCredits(int seriesId, int seasonNumber, int episodeNumber, String language) throws TmdbException {
         ApiUrl apiUrl =
             new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE,
                 episodeNumber, credits);
 
         apiUrl.addLanguage(language);
 
-        return mapJsonResult(apiUrl, Credits.class);
+        return mapJsonResult(apiUrl, PersonCredits.class);
     }
 
     /**

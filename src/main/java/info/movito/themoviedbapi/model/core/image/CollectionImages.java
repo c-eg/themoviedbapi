@@ -13,7 +13,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class CollectionImage extends IdElement {
+public class CollectionImages extends IdElement {
     @JsonProperty("backdrops")
     private List<Artwork> backdrops;
 

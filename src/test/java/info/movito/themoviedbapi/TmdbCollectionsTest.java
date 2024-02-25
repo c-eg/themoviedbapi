@@ -2,8 +2,8 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.CollectionInfo;
-import info.movito.themoviedbapi.model.Data;
-import info.movito.themoviedbapi.model.Translation;
+import info.movito.themoviedbapi.model.collections.Data;
+import info.movito.themoviedbapi.model.collections.Translation;
 import info.movito.themoviedbapi.model.collections.Part;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;

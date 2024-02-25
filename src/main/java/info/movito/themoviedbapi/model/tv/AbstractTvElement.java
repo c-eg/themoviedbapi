@@ -1,12 +1,12 @@
 package info.movito.themoviedbapi.model.tv;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.Credits;
-import info.movito.themoviedbapi.model.ExternalIds;
-import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.Video;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
 import info.movito.themoviedbapi.model.core.TvKeywords;
+import info.movito.themoviedbapi.model.core.image.CollectionImages;
+import info.movito.themoviedbapi.model.people.ExternalIds;
+import info.movito.themoviedbapi.model.people.PersonCredits;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,13 +16,13 @@ public class AbstractTvElement extends NamedIdElement {
     // Appendable responses for all tv elements
 
     @JsonProperty("credits")
-    private Credits credits;
+    private PersonCredits personCredits;
 
     @JsonProperty("external_ids")
     private ExternalIds externalIds;
 
     @JsonProperty("images")
-    private MovieImages images;
+    private CollectionImages images;
 
     @JsonProperty("videos")
     private Video.Results videos;

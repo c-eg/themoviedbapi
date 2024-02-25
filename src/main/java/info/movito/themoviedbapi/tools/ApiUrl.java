@@ -1,6 +1,7 @@
 package info.movito.themoviedbapi.tools;
 
 import info.movito.themoviedbapi.AbstractTmdbApi;
+import info.movito.themoviedbapi.tools.appendtoresponse.AppendToResponse;
 import info.movito.themoviedbapi.tools.builders.ParamBuilder;
 import info.movito.themoviedbapi.tools.sortby.SortBy;
 import org.apache.commons.lang3.StringUtils;
@@ -9,8 +10,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -32,7 +35,6 @@ public class ApiUrl {
      * Constructor.
      */
     public ApiUrl(Object... urlElements) {
-        // TODO: improve this in discover commit
         StringBuilder baseUrlBuilder = new StringBuilder(TMDB_API_BASE_URL);
 
         for (int i = 0; i < urlElements.length; i++) {
@@ -74,21 +76,6 @@ public class ApiUrl {
     }
 
     /**
-     * Adds all parameters from the given builder to the API url.
-     *
-     * @param paramBuilder optional - the parameter builder.
-     */
-    public void addParams(ParamBuilder paramBuilder) {
-        if (paramBuilder == null) {
-            return;
-        }
-
-        for (Map.Entry<String, String> entry : paramBuilder.getParameterMap().entrySet()) {
-            addPathParam(entry.getKey(), entry.getValue());
-        }
-    }
-
-    /**
      * Adds a parameter to the API url.
      *
      * @param name the key
@@ -124,6 +111,7 @@ public class ApiUrl {
 
     /**
      * Adds a parameter to the API url.
+     * todo: remove this method
      *
      * @param key the key
      * @param value the value
@@ -134,12 +122,28 @@ public class ApiUrl {
 
     /**
      * Adds a parameter to the API url.
+     * todo: remove this method
      *
      * @param key the key
      * @param value the value
      */
     public void addPathParam(String key, boolean value) {
         addPathParam(key, Boolean.toString(value));
+    }
+
+    /**
+     * Adds all parameters from the given builder to the API url.
+     *
+     * @param paramBuilder optional - the parameter builder.
+     */
+    public void addPathParams(ParamBuilder paramBuilder) {
+        if (paramBuilder == null) {
+            return;
+        }
+
+        for (Map.Entry<String, String> entry : paramBuilder.getParameterMap().entrySet()) {
+            addPathParam(entry.getKey(), entry.getValue());
+        }
     }
 
     /**
@@ -151,6 +155,18 @@ public class ApiUrl {
     public void addQueryParam(String key, Object value) {
         if (value != null) {
             addPathParam(key, value);
+        }
+    }
+
+    /**
+     * Adds an optional, comma separated, parameter to the api endpoint (e.g. "en,null").
+     *
+     * @param key the key.
+     * @param values the values to comma separate.
+     */
+    public void addQueryParamCommandSeparated(String key, String... values) {
+        if (values != null && values.length > 0) {
+            addPathParam(key, String.join(",", values));
         }
     }
 
@@ -177,28 +193,17 @@ public class ApiUrl {
     }
 
     /**
-     * Adds an optional, comma separated, parameter to the api endpoint (e.g. "en,null").
+     * Adds the append to response to the API url.
      *
-     * @param key the key.
-     * @param values the values to comma separate.
+     * @param appendToResponse the responses to append.
      */
-    public void addQueryParamCommandSeparated(String key, String... values) {
-        if (values != null && values.length > 0) {
-            addPathParam(key, String.join(",", values));
-        }
-    }
-
-    /**
-     * Convenience wrapper around addArgument.
-     *
-     * @param appendToResponse Comma separated, any movie method
-     */
-    public void appendToResponse(String... appendToResponse) {
+    public void addAppendToResponses(AppendToResponse... appendToResponse) {
         if (appendToResponse == null || appendToResponse.length == 0) {
             return;
         }
 
-        addPathParam(APPEND_TO_RESPONSE, String.join(",", appendToResponse));
+        String appendToResponseQuery = Arrays.stream(appendToResponse).map(AppendToResponse::getValue).collect(Collectors.joining(","));
+        addQueryParam(APPEND_TO_RESPONSE, appendToResponseQuery);
     }
 
     /**

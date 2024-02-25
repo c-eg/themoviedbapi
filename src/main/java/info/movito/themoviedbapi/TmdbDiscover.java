@@ -32,7 +32,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
      */
     public MovieResultsPage getMovie(DiscoverMovieParamBuilder builder) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, TMDB_METHOD_MOVIE);
-        apiUrl.addParams(builder);
+        apiUrl.addPathParams(builder);
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
@@ -45,7 +45,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
      */
     public TvSeriesResultsPage getTv(DiscoverTvParamBuilder builder) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, TMDB_METHOD_TV);
-        apiUrl.addParams(builder);
+        apiUrl.addPathParams(builder);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 }

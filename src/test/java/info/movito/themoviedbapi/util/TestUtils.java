@@ -47,11 +47,14 @@ public final class TestUtils {
 
     /**
      * Tests the given object for null fields.
+     *
+     * @param objectToCheck the object to check for null fields.
+     * @param fieldsToIgnore the fields to ignore.
      */
-    public static void testForNullFields(AbstractJsonMapping objectToCheck) {
-        List<Field> nullFields = getNullFields(objectToCheck);
+    public static void testForNullFields(AbstractJsonMapping objectToCheck, String... fieldsToIgnore) {
+        List<Field> nullFields = getNullFields(objectToCheck, fieldsToIgnore);
         List<String> nullFieldNames = nullFields.stream().map(Field::getName).toList();
-        assertTrue(nullFields.isEmpty(), "Null fields found in object: " + nullFieldNames);
+        assertTrue(nullFields.isEmpty(), "Null fields found in " + objectToCheck.getClass().getSimpleName() + ": " + nullFieldNames);
     }
 
     /**
@@ -59,18 +62,22 @@ public final class TestUtils {
      */
     public static void testForNewItems(AbstractJsonMapping objectToCheck) {
         Map<String, Object> newItems = objectToCheck.getNewItems();
-        assertTrue(newItems.isEmpty(), "Unknown properties found in object: " + newItems);
+        assertTrue(newItems.isEmpty(), "Unknown properties found in " + objectToCheck.getClass().getSimpleName() + ": " + newItems);
     }
 
     /**
      * Returns all the null fields in the given object.
      */
-    private static List<Field> getNullFields(Object objectToCheck) {
+    private static List<Field> getNullFields(Object objectToCheck, String... fieldsToIgnore) {
         List<Field> nullFields = new ArrayList<>();
 
         Class<?> clazz = objectToCheck.getClass();
         while (clazz != null) {
             for (Field field : clazz.getDeclaredFields()) {
+                if (fieldsToIgnore != null && List.of(fieldsToIgnore).contains(field.getName())) {
+                    continue;
+                }
+
                 field.setAccessible(true);
                 try {
                     if (field.get(objectToCheck) == null) {

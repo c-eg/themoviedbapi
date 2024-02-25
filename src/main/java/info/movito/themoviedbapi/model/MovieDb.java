@@ -3,12 +3,17 @@ package info.movito.themoviedbapi.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.TmdbMovies;
+import info.movito.themoviedbapi.model.collections.Translation;
+import info.movito.themoviedbapi.model.collections.Translations;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.MovieKeywords;
 import info.movito.themoviedbapi.model.core.ResultsPage;
+import info.movito.themoviedbapi.model.core.image.CollectionImages;
 import info.movito.themoviedbapi.model.keywords.Keyword;
-import info.movito.themoviedbapi.model.people.PersonCast;
-import info.movito.themoviedbapi.model.people.PersonCrew;
+import info.movito.themoviedbapi.model.people.ExternalIds;
+import info.movito.themoviedbapi.model.people.credits.MovieCast;
+import info.movito.themoviedbapi.model.people.PersonCredits;
+import info.movito.themoviedbapi.model.people.credits.MovieCrew;
 import info.movito.themoviedbapi.model.providers.ProviderResults;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -97,10 +102,10 @@ public class MovieDb extends IdElement implements Multi {
     private MoviesAlternativeTitles alternativeTitles;
 
     @JsonProperty("credits")
-    private Credits credits;
+    private PersonCredits personCredits;
 
     @JsonProperty("images")
-    private MovieImages images;
+    private CollectionImages images;
 
     // note: it seems to be a flaw in their api, because a paged result would be more consistent
     @JsonProperty("keywords")
@@ -137,12 +142,12 @@ public class MovieDb extends IdElement implements Multi {
         return alternativeTitles != null ? alternativeTitles.getTitles() : null;
     }
 
-    public List<PersonCast> getCast() {
-        return credits != null ? credits.getCast() : null;
+    public List<MovieCast> getCast() {
+        return personCredits != null ? personCredits.getCast() : null;
     }
 
-    public List<PersonCrew> getCrew() {
-        return credits != null ? credits.getCrew() : null;
+    public List<MovieCrew> getCrew() {
+        return personCredits != null ? personCredits.getCrew() : null;
     }
 
     public List<Artwork> getImages(ArtworkType... artworkTypes) {

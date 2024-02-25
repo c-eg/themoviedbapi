@@ -2,21 +2,21 @@ package info.movito.themoviedbapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.AlternativeTitle;
-import info.movito.themoviedbapi.model.Credits;
-import info.movito.themoviedbapi.model.ExternalIds;
 import info.movito.themoviedbapi.model.MovieDb;
-import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.MovieListResultsPage;
-import info.movito.themoviedbapi.model.Translations;
 import info.movito.themoviedbapi.model.MoviesAlternativeTitles;
 import info.movito.themoviedbapi.model.ReleaseInfo;
-import info.movito.themoviedbapi.model.Translation;
+import info.movito.themoviedbapi.model.collections.Translation;
+import info.movito.themoviedbapi.model.collections.Translations;
 import info.movito.themoviedbapi.model.Video;
-import info.movito.themoviedbapi.model.movies.changes.ChangesItems;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.MovieDbResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
+import info.movito.themoviedbapi.model.core.image.CollectionImages;
 import info.movito.themoviedbapi.model.keywords.Keyword;
+import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
+import info.movito.themoviedbapi.model.people.ExternalIds;
+import info.movito.themoviedbapi.model.people.PersonCredits;
 import info.movito.themoviedbapi.model.providers.ProviderResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -26,7 +26,6 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbAccount.PARAM_SESSION;
 import static info.movito.themoviedbapi.TmdbMovies.MovieMethod.videos;
-import static info.movito.themoviedbapi.util.Utils.asStringArray;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
@@ -62,7 +61,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
         apiUrl.addLanguage(language);
 
-        apiUrl.appendToResponse(asStringArray(appendToResponse));
+        //apiUrl.addAppendToResponses(asStringArray(appendToResponse)); todo fix me
 
         return mapJsonResult(apiUrl, MovieDb.class);
     }
@@ -86,21 +85,21 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param movieId the movies id
      * @return the movie credits
      */
-    public Credits getCredits(int movieId) throws TmdbException {
+    public PersonCredits getCredits(int movieId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.credits);
 
-        return mapJsonResult(apiUrl, Credits.class);
+        return mapJsonResult(apiUrl, PersonCredits.class);
     }
 
     /**
      * This method should be used when you’re wanting to retrieve all of the images for a particular movie.
      */
-    public MovieImages getImages(int movieId, String language) throws TmdbException {
+    public CollectionImages getImages(int movieId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.images);
 
         apiUrl.addLanguage(language);
 
-        return mapJsonResult(apiUrl, MovieImages.class);
+        return mapJsonResult(apiUrl, CollectionImages.class);
     }
 
     /**
@@ -213,7 +212,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param startDate the start date of the changes, optional
      * @param endDate   the end date of the changes, optional
      */
-    public ChangesItems getChanges(int movieId, String startDate, String endDate) throws TmdbException {
+    public ChangeResults getChanges(int movieId, String startDate, String endDate) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.changes);
 
         if (StringUtils.isNotBlank(startDate)) {
@@ -224,7 +223,7 @@ public class TmdbMovies extends AbstractTmdbApi {
             apiUrl.addPathParam(PARAM_END_DATE, endDate);
         }
 
-        return mapJsonResult(apiUrl, ChangesItems.class);
+        return mapJsonResult(apiUrl, ChangeResults.class);
     }
 
     /**
