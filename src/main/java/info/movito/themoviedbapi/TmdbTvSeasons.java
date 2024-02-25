@@ -5,7 +5,6 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
-import static info.movito.themoviedbapi.util.Utils.asStringArray;
 
 /**
  * The movie database api for tv seasons. See the
@@ -29,7 +28,7 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber);
 
         apiUrl.addLanguage(language);
-        apiUrl.appendToResponse(asStringArray(appendToResponse));
+        //apiUrl.addAppendToResponses(asStringArray(appendToResponse)); todo fix me
 
         return mapJsonResult(apiUrl, TvSeason.class);
     }

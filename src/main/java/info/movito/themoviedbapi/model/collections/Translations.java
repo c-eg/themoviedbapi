@@ -1,13 +1,15 @@
-package info.movito.themoviedbapi.model.movies.changes;
+package info.movito.themoviedbapi.model.collections;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.IdElement;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ChangedMovie extends IdElement {
-    @JsonProperty("adult")
-    private boolean adult;
+public class Translations extends IdElement {
+    @JsonProperty("translations")
+    private List<Translation> translations;
 }

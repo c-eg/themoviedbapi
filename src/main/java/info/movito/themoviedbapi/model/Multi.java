@@ -2,8 +2,8 @@ package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import info.movito.themoviedbapi.model.people.Person;
-import info.movito.themoviedbapi.model.people.PersonPeople;
+import info.movito.themoviedbapi.model.people.credits.Person;
+import info.movito.themoviedbapi.model.people.PersonDb;
 import info.movito.themoviedbapi.model.tv.TvSeriesDb;
 
 /**
@@ -17,8 +17,9 @@ import info.movito.themoviedbapi.model.tv.TvSeriesDb;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "media_type")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = MovieDb.class, name = "movie"),
-    @JsonSubTypes.Type(value = PersonPeople.class, name = "person"),
-    @JsonSubTypes.Type(value = TvSeriesDb.class, name = "tv")})
+    @JsonSubTypes.Type(value = PersonDb.class, name = "person"),
+    @JsonSubTypes.Type(value = TvSeriesDb.class, name = "tv")
+})
 public interface Multi {
     /**
      * Used to determine type Multi object without {@code instanceof()} or {@code getClass}.

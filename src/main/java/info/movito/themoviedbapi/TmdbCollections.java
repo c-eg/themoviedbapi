@@ -3,9 +3,9 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.ArtworkType;
 import info.movito.themoviedbapi.model.CollectionInfo;
-import info.movito.themoviedbapi.model.Translation;
-import info.movito.themoviedbapi.model.Translations;
-import info.movito.themoviedbapi.model.core.image.CollectionImage;
+import info.movito.themoviedbapi.model.collections.Translation;
+import info.movito.themoviedbapi.model.collections.Translations;
+import info.movito.themoviedbapi.model.core.image.CollectionImages;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
@@ -54,7 +54,7 @@ public class TmdbCollections extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId, "images");
         apiUrl.addLanguage(language);
         apiUrl.addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
-        return mapJsonResult(apiUrl, CollectionImage.class).getAll(ArtworkType.POSTER, ArtworkType.BACKDROP);
+        return mapJsonResult(apiUrl, CollectionImages.class).getAll(ArtworkType.POSTER, ArtworkType.BACKDROP);
     }
 
     /**
