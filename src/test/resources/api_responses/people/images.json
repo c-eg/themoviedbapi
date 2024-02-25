@@ -1,0 +1,41 @@
+{
+    "id": 1233,
+    "profiles": [
+        {
+            "aspect_ratio": 0.667,
+            "height": 1489,
+            "iso_639_1": "en",
+            "file_path": "/50rqDkmvXwjwVhFH7q6ph2Rkw7S.jpg",
+            "vote_average": 5.4,
+            "vote_count": 16,
+            "width": 993
+        },
+        {
+            "aspect_ratio": 0.667,
+            "height": 1919,
+            "iso_639_1": "en",
+            "file_path": "/763NV1EOHMi6ms4kjYQGfiaZ937.jpg",
+            "vote_average": 5.392,
+            "vote_count": 8,
+            "width": 1280
+        },
+        {
+            "aspect_ratio": 0.667,
+            "height": 1500,
+            "iso_639_1": "en",
+            "file_path": "/qgSTZu5F7LyJTInpXVQOyRlZgbw.jpg",
+            "vote_average": 5.286,
+            "vote_count": 16,
+            "width": 1000
+        },
+        {
+            "aspect_ratio": 0.667,
+            "height": 1500,
+            "iso_639_1": null,
+            "file_path": "/vEDJukK8CjIsA0DjNFhoT88TvzS.jpg",
+            "vote_average": 5.276,
+            "vote_count": 12,
+            "width": 1000
+        }
+    ]
+}

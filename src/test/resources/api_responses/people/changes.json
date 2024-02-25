@@ -1,0 +1,30 @@
+{
+    "changes": [
+        {
+            "key": "biography",
+            "items": [
+                {
+                    "id": "640469b113654500ba4e859a",
+                    "action": "added",
+                    "time": "2023-03-05 10:06:41 UTC",
+                    "iso_639_1": "ca",
+                    "iso_3166_1": "ES",
+                    "value": "Thomas \"Tom\" Jeffrey Hanks (Concord, Califòrnia, 9 de juliol de 1956) és un actor de cinema i productor estatunidenc, guanyador dues vegades de l'Oscar al millor actor i considerat un dels més versàtils i talentosos del cinema actual.\n\nHanks és l'actor que més diners ha guanyat de tota la història del cinema amb un total de gairebé sis mil milions de dòlars (setembre 2006). És també copropietari de Playtone, una companyia de producció de pel·lícules."
+                }
+            ]
+        },
+        {
+            "key": "translations",
+            "items": [
+                {
+                    "id": "640469a7e61e6d00963c33bb",
+                    "action": "added",
+                    "time": "2023-03-05 10:06:31 UTC",
+                    "iso_639_1": "",
+                    "iso_3166_1": "",
+                    "value": "ca-ES"
+                }
+            ]
+        }
+    ]
+}
