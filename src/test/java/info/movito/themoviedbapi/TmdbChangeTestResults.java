@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbChanges}.
  */
-public class TmdbChangesTest extends AbstractTmdbApiTest {
+public class TmdbChangeTestResults extends AbstractTmdbApiTest {
     /**
      * Tests the {@link TmdbChanges#getMovieChangesList(String, String, Integer)} with an expected result.
      */
