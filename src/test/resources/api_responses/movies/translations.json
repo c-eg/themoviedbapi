@@ -1,0 +1,616 @@
+{
+    "id": 550,
+    "translations": [
+        {
+            "iso_3166_1": "SA",
+            "iso_639_1": "ar",
+            "name": "العربية",
+            "english_name": "Arabic",
+            "data": {
+                "homepage": "",
+                "overview": "إدوارد يتعرض لضغوط حتى يصل به الحال إلى أنه لا يستطيع النوم لفتراتٍ طويلة، لكنه يجد بعض السلام في جلسات العلاج النفسي الجماعي، يتعرف إدوارد على أحد الأشخاص وهو (تايلر ديردن) الذي يحرره من تعلقه بالأشياء الذي تستعبده ،ثم يحرره من خوفه من الناس. يقومان معًا بإنشاء نادي القتال الذي يجذب الكثير من الأفراد المحبطين ،الذين يقومون بإخراج طاقة غضبهم وكرههم للعالم في القتال.",
+                "runtime": 0,
+                "tagline": "",
+                "title": ""
+            }
+        },
+        {
+            "iso_3166_1": "AZ",
+            "iso_639_1": "az",
+            "name": "Azərbaycan",
+            "english_name": "Azerbaijani",
+            "data": {
+                "homepage": "",
+                "overview": "Xəyalları olmayan bir gənc yuxusuzluğa qarşı mübarizə aparır, bəlkə də boz və gündəlik həyatı ilə cansıxıcılığının nəticəsidir. Təyyarə gəzintisində o, çox xüsusi bir fəlsəfəyə sahib olan xarizmatik sabun satıcısı Tyler Durden ilə tanış olur: mükəmməllik zəif insanların işidir; bunun əvəzinə özünü məhv etmək həyatı həqiqətən yaşamağa dəyər edən yeganə şeydir. Hər ikisi məyusluqlarını və qəzəblərini söndürə bildikləri gizli mübarizə klubu yaratmaq qərarına gəlirlər, bu da böyük bir müvəffəqiyyət olacaqdır.",
+                "runtime": 0,
+                "tagline": "",
+                "title": "Döyüshçü Klubu"
+            }
+        },
+        {
+            "iso_3166_1": "BG",
+            "iso_639_1": "bg",
+            "name": "български език",
+            "english_name": "Bulgarian",
+            "data": {
+                "homepage": "",
+                "overview": "Разказвачът е самотник, чийто живот е безцелен низ от незначителни случки. Промяната започва едва след запознанството му с агресивния нихилист Джак. Той го въвежда в подземния свят на тъмни сделки и машинации. Разказвача се включва като участник в кървави боксови двубои, които не му носят очакваното удовлетворение. Постепенно той осъзнава, че губи контрол над себе си, откривайки, че мачовете са част от зловещ план?",
+                "runtime": 139,
+                "tagline": "",
+                "title": "Боен клуб"
+            }
+        },
+        {
+            "iso_3166_1": "ES",
+            "iso_639_1": "ca",
+            "name": "Català",
+            "english_name": "Catalan",
+            "data": {
+                "homepage": "",
+                "overview": "Un jove sense il·lusions lluita contra el seu insomni, conseqüència potser del seu tedi per la seva vida gris i rutinària. En un viatge amb avió coneix Tyler Durden, un carismàtic venedor de sabó que sosté una filosofia molt particular: el perfeccionisme és cosa de gent feble; en canvi, l'autodestrucció és l'única cosa que fa que realment la vida valgui la pena. Tots dos decideixen llavors formar un club secret de lluita on descarregar les seves frustracions i la seva ira que tindrà un èxit aclaparador.",
+                "runtime": 0,
+                "tagline": "Caos, entremaliadures i sabó",
+                "title": "El club de la lluita"
+            }
+        },
+        {
+            "iso_3166_1": "CZ",
+            "iso_639_1": "cs",
+            "name": "Český",
+            "english_name": "Czech",
+            "data": {
+                "homepage": "",
+                "overview": "Když nemůžete půl roku usnout, celý okolní svět vám začne připadat jako nekonečný sen. Všechno kolem vás je nedokonalou xeroxovou kopií sebe sama. Chodíte do práce, díváte se na televizi a jste vděčni za to, když občas ztratíte vědomí a nevíte o světě. Lidí s podobnými problémy moc není, ale mladý úspěšný úředník, který si říká Jack, je jedním z nich. Má slušnou práci, vydělává slušné peníze, ale trpí nejtěžší formou nespavosti. Na služební cestě se Jack seznámí s Tylerem Durdenem, který mu nabídne příbytek pod podmínkou, že mu vrazí pořádnou ránu. Tato \"výměna názorů\" se oběma zalíbí a brzy vznikne první Klub rváčů. Místo, kde můžou mladí muži, znechucení světem, odložit své starosti a stát se na pár minut zvířaty.",
+                "runtime": 0,
+                "tagline": "",
+                "title": "Klub rváčů"
+            }
+        },
+        {
+            "iso_3166_1": "DK",
+            "iso_639_1": "da",
+            "name": "Dansk",
+            "english_name": "Danish",
+            "data": {
+                "homepage": "",
+                "overview": "Nortons evner som stjerneskuespiller viser sig i rollen som Jack, en kronisk søvnløs der er desperat efter at slippe ud af sit ulideligt kedelige liv. Da møder han Tyler Durden (Pitt), en karismatisk sæbesælger med en usædvanlig livsfilosofi. Tyler synes at udvikling af én selv er for de svage - det er selvdestruktionen der gør livet værd at leve. Inden længe er Jack og Tyler ved at slå hinanden til plukfisk på en parkeringsplads, en slåskamp der giver det ultimative kick. For at introducere andre  mænd for de simple glæder ved fysisk vold, danner Jack og Tyler den hemmelige Fight Club der bliver voldsomt populær. Men en chokerende overraskelse der vender op og ned på alt, venter Jack...",
+                "runtime": 139,
+                "tagline": "",
+                "title": "Fight Club"
+            }
+        },
+        {
+            "iso_3166_1": "DE",
+            "iso_639_1": "de",
+            "name": "Deutsch",
+            "english_name": "German",
+            "data": {
+                "homepage": "",
+                "overview": "Ein Yuppie findet beim charismatischen Tyler Durden Unterschlupf, nachdem seine Wohnung in die Luft gejagt wird. Ein Gerangel zwischen den beiden entwickelt sich zu einer Schlägerei, die mit der Erkenntnis endet, dass man sich nach einer ordentlichen Portion Prügel einfach besser fühlt. Der \"Fight Club\" ist geboren. Immer mehr Männer versammeln sich, um sich zu schlagen - und gestärkt in den Alltag zu gehen. Wie ein Virus greift das Konzept um sich, doch für Tyler ist der Kampfverein nur die erste Stufe, um die USA in die Knie zu zwingen.",
+                "runtime": 139,
+                "tagline": "Übermut. Chaos. Seife.",
+                "title": ""
+            }
+        },
+        {
+            "iso_3166_1": "GR",
+            "iso_639_1": "el",
+            "name": "ελληνικά",
+            "english_name": "Greek",
+            "data": {
+                "homepage": "",
+                "overview": "Ο υλικός κορεσμός και η αίσθηση της κενότητας οδηγούν ένα γιάπη στην αϋπνία. Από εκεί στα μεταμεσονύχτια κέντρα υποστήριξης για κάθε πικραμένο. Τελικά, στη γνωριμία με τον Τάιλερ Ντέρντεν, έναν μυστηριώδη αναρχικό λούμπεν. Αυτός θα τους προτείνει την ίδρυση του Fight Club, όπου οι αλλοτριωμένοι αστοί θα εκτονώνονται μέχρι τελικής πτώσης.",
+                "runtime": 139,
+                "tagline": "Αναστάτωση. Μακελειό. Σαπούνι.",
+                "title": ""
+            }
+        },
+        {
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "name": "English",
+            "english_name": "English",
+            "data": {
+                "homepage": "http://www.foxmovies.com/movies/fight-club",
+                "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+                "runtime": 139,
+                "tagline": "Mischief. Mayhem. Soap.",
+                "title": ""
+            }
+        },
+        {
+            "iso_3166_1": "ES",
+            "iso_639_1": "es",
+            "name": "Español",
+            "english_name": "Spanish",
+            "data": {
+                "homepage": "",
+                "overview": "Un joven sin ilusiones lucha contra su insomnio, consecuencia quizás de su hastío por su gris y rutinaria vida. En un viaje en avión conoce a Tyler Durden, un carismático vendedor de jabón que sostiene una filosofía muy particular: el perfeccionismo es cosa de gentes débiles; en cambio, la autodestrucción es lo único que hace que realmente la vida merezca la pena. Ambos deciden entonces formar un club secreto de lucha donde descargar sus frustaciones y su ira que tendrá un éxito arrollador.",
+                "runtime": 139,
+                "tagline": "Caos, travesuras y jabón",
+                "title": "El Club de la Lucha"
+            }
+        },
+        {
+            "iso_3166_1": "MX",
+            "iso_639_1": "es",
+            "name": "Español",
+            "english_name": "Spanish",
+            "data": {
+                "homepage": "https://www.20thcenturystudios.com/movies/fight-club",
+                "overview": "Un oficinista con insomnio y un vendedor de jabón despreocupado forman un club de lucha clandestino que se convierte en algo mucho, mucho más.",
+                "runtime": 139,
+                "tagline": "Caos, violencia y jabón",
+                "title": "El club de la pelea"
+            }
+        },
+        {
+            "iso_3166_1": "EE",
+            "iso_639_1": "et",
+            "name": "Eesti",
+            "english_name": "Estonian",
+            "data": {
+                "homepage": "",
+                "overview": "Ilma illusioonideta noormees võitleb oma unetuse vastu, mis võib-olla on tagajärg tema igavusest halli ja rutiinse eluga. Lennureisil kohtub ta karismaatilise seebimüüjaga Tyler Durdeniga, kellel on väga eriline filosoofia: perfektsionism on nõrkade inimeste töö; selle asemel on enese hävitamine ainus asi, mis teeb elu tõesti elamist väärt. Mõlemad otsustavad moodustada salavõitlusklubi, kus saavad vabaneda oma pettumusest ja vihast, mis saab olema suur edu.",
+                "runtime": 0,
+                "tagline": "",
+                "title": "Kaklusklubi"
+            }
+        },
+        {
+            "iso_3166_1": "IR",
+            "iso_639_1": "fa",
+            "name": "فارسی",
+            "english_name": "Persian",
+            "data": {
+                "homepage": "",
+                "overview": "«راوی» (نورتن)، جوانی پریشان حال پی می برد که به کمک مشت بازی با دست های برهنه، بیش از هر زمان دیگری احساس زنده بودن می کند. او و «تایلر دردن» (پیت) که به دوستانی صمیمی تبدیل شده اند، هفته ای یک بار با هم ملاقات می کنند تا با هم مشت بازی کنند. در حالی که افراد دیگری هم به باشگاه شان می پیوندند، محفل شان به رغم آن که رازی است بین شرکت کننده هایش، شهرت و محبوبیت یک باشگاه زیرزمینی را پیدا می کند.",
+                "runtime": 0,
+                "tagline": "",
+                "title": "باشگاه مبارزه"
+            }
+        },
+        {
+            "iso_3166_1": "FI",
+            "iso_639_1": "fi",
+            "name": "suomi",
+            "english_name": "Finnish",
+            "data": {
+                "homepage": "",
+                "overview": "Jack kärsii kroonisesta unettomuudesta ja yrittää epätoivoisesti paeta sietämättömän tylsää elämäänsä. Työmatkalla hän tapaa karismaattisen saippuakauppiaan, Tyler Durdenin , jolla on vähintäänkin kieroutunut elämänkatsomus. Tyler uskoo itsetuhon olevan elämän suola. Ennen pitkää Jack ja Tyler purkavat patoutumiaan hakkaamalla toisiaan tohjoksi paikallisbaarin parkkipaikalla, ja huomaavat ankaran nyrkkitappelun tuottavan heille äärimmäisen hyvänolontunteen. Jotta muutkin miehet pääsisivät jyvälle tästä fyysisen väkivallan tuottamasta ilosta, Jack ja Tyler perustavat salaisen tappelukerhon, Fight Clubin, jonka suosio on valtava. Mutta Jackia odottaa järkyttävä yllätys, joka muuttaa kaiken.",
+                "runtime": 139,
+                "tagline": "",
+                "title": "Fight Club"
+            }
+        },
+        {
+            "iso_3166_1": "CA",
+            "iso_639_1": "fr",
+            "name": "Français",
+            "english_name": "French",
+            "data": {
+                "homepage": "",
+                "overview": "Le narrateur, sans identité précise, vit seul, travaille seul, dort seul, mange seul ses plateaux-repas pour une personne comme beaucoup d’autres personnes seules qui connaissent la misère humaine, morale et sexuelle. C’est pourquoi il va devenir membre du Fight club, un lieu clandestin où il va pouvoir retrouver sa virilité, l’échange et la communication. Ce club est dirigé par Tyler Durden, une sorte d’anarchiste entre gourou et philosophe qui prêche l’amour de son prochain.",
+                "runtime": 139,
+                "tagline": "",
+                "title": ""
+            }
+        },
+        {
+            "iso_3166_1": "FR",
+            "iso_639_1": "fr",
+            "name": "Français",
+            "english_name": "French",
+            "data": {
+                "homepage": "",
+                "overview": "Le narrateur, sans identité précise, vit seul, travaille seul, dort seul, mange seul ses plateaux‐repas pour une personne comme beaucoup d’autres personnes seules qui connaissent la misère humaine, morale et sexuelle. C’est pourquoi il va devenir membre du Fight club, un lieu clandestin où il va pouvoir retrouver sa virilité, l’échange et la communication. Ce club est dirigé par Tyler Durden, une sorte d’anarchiste entre gourou et philosophe qui prêche l’amour de son prochain.",
+                "runtime": 139,
+                "tagline": "Le chaos. Confusion. Savon.",
+                "title": "Fight Club"
+            }
+        },
+        {
+            "iso_3166_1": "IL",
+            "iso_639_1": "he",
+            "name": "עִבְרִית",
+            "english_name": "Hebrew",
+            "data": {
+                "homepage": "",
+                "overview": "בהשפעתו של גבר כריזמטי אותו פגש בטיסה, עוזב פקיד אפרורי את עבודתו ואת ביתו המלוקק, ופותח מועדון קרבות מחתרתי. בהדרגה העניינים יוצאים משליטה.",
+                "runtime": 0,
+                "tagline": "צרות. בלאגן. סבון.",
+                "title": "מועדון קרב"
+            }
+        },
+        {
+            "iso_3166_1": "HR",
+            "iso_639_1": "hr",
+            "name": "Hrvatski",
+            "english_name": "Croatian",
+            "data": {
+                "homepage": "",
+                "overview": "Crnohumorna, satirična drama s podosta nasilja, (prozvana i \"Paklena naranča\" dvadesetih) rođena prema debitantskom romanu Chucka Palahniuka. Ispričana je kroz naraciju bezimenog glavnog lika - depresivnoga urbanog mladog usamljenika (E. Norton), a vrijeme radnje pomaknuto je u blisku budućnost.",
+                "runtime": 139,
+                "tagline": "Tematski, film prikazuje sukob između mladih ljudi i sustava vrijednosti reklamiranja",
+                "title": "Klub boraca"
+            }
+        },
+        {
+            "iso_3166_1": "HU",
+            "iso_639_1": "hu",
+            "name": "Magyar",
+            "english_name": "Hungarian",
+            "data": {
+                "homepage": "",
+                "overview": "Amerika nagyvárosainak pincéiben egy titkos szervezet működik: ha egy éjjel az utca összes nyilvános telefonja összetörik, ők jártak ott; ha egy köztéri szobor óriás fémgömbje legurul talapzatáról, és szétrombol egy gyorsétkezdét, az az ő művük; ha egy elegáns bank parkolójának összes autóját rettentően összerondítják a galambok - az sem véletlen. Vigyáznak a leveleinkre, átveszik telefonüzeneteinket, kísérnek az utcán: és még csak készülnek a végső dobásra: a nagy bummra... Pedig az egészet csak két túlzottan unatkozó jóbarát találta ki: azzal kezdték, hogy rájöttek, nincs jobb stresszoldó, mint ha alaposan megverik egymást. Pofonokat adni jó. Pofonokat kapni jó. Számukra ez a boldog élet szabálya.",
+                "runtime": 139,
+                "tagline": "Káosz. Pánik. Szappan.",
+                "title": "Harcosok klubja"
+            }
+        },
+        {
+            "iso_3166_1": "IT",
+            "iso_639_1": "it",
+            "name": "Italiano",
+            "english_name": "Italian",
+            "data": {
+                "homepage": "",
+                "overview": "Un uomo di trent'anni è insofferente su tutto e la notte non riesce più a dormire. In cerca di qualche luogo dove scaricare la propria ansia si mette a frequentare quei corsi dove gruppi di malati gravi si riuniscono e confessano agli altri le rispettive situazioni. Mentre si lascia andare alla commozione e al pianto di fronte a quello che vede, l'uomo fa la conoscenza prima di Marla Singer poi di Tyler Durden. Lei è una ragazza a sua volta alla deriva, incapace di scelte o decisioni; lui è un tipo deciso e vigoroso con un'idea precisa in testa. Tyler fa saltare per aria l'appartamento dell'uomo e i due vanno a vivere insieme in una casa fatiscente. Deciso a coinvolgerlo nel suo progetto, Tyler lo fa entrare in un 'Fight Club', uno stanzone sotterraneo dove ci si riunisce per picchiarsi e in questo modo sentirsi di nuovo vivi...",
+                "runtime": 139,
+                "tagline": "Combatti per sapere chi sei",
+                "title": "Fight Club"
+            }
+        },
+        {
+            "iso_3166_1": "JP",
+            "iso_639_1": "ja",
+            "name": "日本語",
+            "english_name": "Japanese",
+            "data": {
+                "homepage": "",
+                "overview": "空虚な生活を送るヤング・エグゼクティブのジャックは、謎の男テイラーに導かれるまま、謎の秘密組織「ファイト・クラブ」のメンバーになる。そこは鍛え抜かれた男達が己の拳のみを武器に闘いを繰り広げる、壮絶で危険な空間だった。",
+                "runtime": 139,
+                "tagline": "",
+                "title": "ファイト・クラブ"
+            }
+        },
+        {
+            "iso_3166_1": "GE",
+            "iso_639_1": "ka",
+            "name": "ქართული",
+            "english_name": "Georgian",
+            "data": {
+                "homepage": "",
+                "overview": "უძილობით შეპყრობილი მამაკაცი და საპნების გაყიდვების მენეჯერი, მამაკაცურ აგრესიას ახალ, შოკურ თერაპიად გარდაქმნიან. ეს კონცეფცია პოპულარობას იხვეჭს. იატაკქვეშა \"მებრძოლთა კლუბები\" ყველა ქალაქში ყალიბდება.",
+                "runtime": 0,
+                "tagline": "",
+                "title": "მებრძოლთა კლუბი"
+            }
+        },
+        {
+            "iso_3166_1": "KR",
+            "iso_639_1": "ko",
+            "name": "한국어/조선말",
+            "english_name": "Korean",
+            "data": {
+                "homepage": "",
+                "overview": "자동차 회사의 리콜 심사관으로 일하는 주인공(에드워드 노튼)은 일상의 무료함과 공허함 속에서 늘 새로운 탈출을 꿈꾼다. 그는 비행기에서 자신을 비누 제조업자라고 소개하는 타일러 더든(브래드 피트)을 만난다. 집에 돌아온 주인공은 아파트가 누군가에 의해 폭파되었음을 발견하고, 타일러에게 도움을 청해 함께 생활하게 된다. 어느 날 밤 타일러는 주인공에게 자신을 때려달라고 부탁한다. 사람은 싸워봐야 진정한 자신을 알 수 있다는 것이다. 결국 이들은 매주 토요일 밤 술집 지하에서 맨주먹으로 격투를 벌이는 파이트 클럽을 결성하기에 이르는데...",
+                "runtime": 0,
+                "tagline": "당신이 알고 있는 모든 것은 허구다",
+                "title": "파이트 클럽"
+            }
+        },
+        {
+            "iso_3166_1": "LT",
+            "iso_639_1": "lt",
+            "name": "Lietuvių",
+            "english_name": "Lithuanian",
+            "data": {
+                "homepage": "",
+                "overview": "Nemigos kamuojamas Džekas lankosi įvairiuose nelaimėlių susitikimuose, klausosi jų išpažinčių ir drauge verkia. Jis skraido lėktuvais, kiekvienąkart tikėdamasis katastrofos. Tačiau kartą skrisdamas jis sutinka spalvingą asmenybę. Tailerio gyvenimas nepaprastas - nerūpestingas ir linksmas. Jis kartais linksmai ir nerūpestingai paprašo trenkti jam į galvą... Džekas neatsisako. Todėl tarp draugų užverda rimtos muštynės, ir netrukus jiedu įkuria klubą, kur vaikinai gali muštis iki sąmonės netekimo...",
+                "runtime": 0,
+                "tagline": "",
+                "title": "Kovos klubas"
+            }
+        },
+        {
+            "iso_3166_1": "LV",
+            "iso_639_1": "lv",
+            "name": "Latviešu",
+            "english_name": "Latvian",
+            "data": {
+                "homepage": "",
+                "overview": "Jauns vīrietis bez ilūzijām cīnās pret savu bezmiegu, kas, iespējams, ir viņa garlaicības un pelēkās ikdienas dzīves sekas. Lidojumā ar lidmašīnu viņš tiekas ar Taileru Durdenu, harizmātisku ziepju pārdevēju, kuram ir ļoti īpaša filozofija: perfekcionisms ir vāju cilvēku darbs; tā vietā sevis iznīcināšana ir vienīgā lieta, kas padara dzīvi patiešām dzīvošanas vērtu. Abi nolemj izveidot slepenu cīņas klubu, kur varētu atbrīvoties no neapmierinātības un dusmām, kas būs pārliecinoši panākumi.",
+                "runtime": 0,
+                "tagline": "Cik daudz tu vari zināt par sevi, ja nekad neesi piedalījies kautiņā?",
+                "title": "Cīņas klubs"
+            }
+        },
+        {
+            "iso_3166_1": "MK",
+            "iso_639_1": "mk",
+            "name": "",
+            "english_name": "Macedonian",
+            "data": {
+                "homepage": "",
+                "overview": "Млад службеник е уморен од својата кариера и заедно со својот пријател Тајлер Дурден формира нов клуб каде што мажи се ослободуваат од своите фрустрации тепајќи се меѓусебно.",
+                "runtime": 0,
+                "tagline": "",
+                "title": "Боречки клуб"
+            }
+        },
+        {
+            "iso_3166_1": "IN",
+            "iso_639_1": "ml",
+            "name": "",
+            "english_name": "Malayalam",
+            "data": {
+                "homepage": "",
+                "overview": "മിഥ്യാധാരണയില്ലാത്ത ഒരു ചെറുപ്പക്കാരൻ ഉറക്കമില്ലായ്മയ്‌ക്കെതിരെ പോരാടുന്നു, അതിന്റെ ഫലമായി നരച്ചതും പതിവുള്ളതുമായ ജീവിതത്തിലെ വിരസത. ഒരു വിമാന യാത്രയിൽ അദ്ദേഹം ഒരു പ്രത്യേക തത്ത്വചിന്ത കൈവശമുള്ള കരിസ്മാറ്റിക് സോപ്പ് വിൽപ്പനക്കാരനായ ടൈലർ ഡർഡനെ കണ്ടുമുട്ടുന്നു: പരിപൂർണ്ണത ദുർബലരായ ആളുകളുടെ പ്രവർത്തനമാണ്; പകരം, സ്വയം നാശമാണ് ജീവിതത്തെ ശരിക്കും വിലമതിക്കുന്ന ഒരേയൊരു കാര്യം. തങ്ങളുടെ നിരാശയും കോപവും പ്രകടിപ്പിക്കാൻ കഴിയുന്ന ഒരു രഹസ്യ പോരാട്ട ക്ലബ് രൂപീകരിക്കാൻ ഇരുവരും തീരുമാനിക്കുന്നു, അത് ഒരു വലിയ വിജയമായിരിക്കും.",
+                "runtime": 0,
+                "tagline": "",
+                "title": "ഫൈറ്റ് ക്ലബ്ബ്"
+            }
+        },
+        {
+            "iso_3166_1": "NL",
+            "iso_639_1": "nl",
+            "name": "Nederlands",
+            "english_name": "Dutch",
+            "data": {
+                "homepage": "",
+                "overview": "Een verzekeringsinspecteur die aan chronische slapeloosheid lijdt probeert wanhopig uit zijn oersaaie bestaan te ontsnappen. Bij toeval ontmoet hij Tyler Durden, een charismatische zeepverkoper met een bizarre levensfilosofie.",
+                "runtime": 139,
+                "tagline": "",
+                "title": ""
+            }
+        },
+        {
+            "iso_3166_1": "NO",
+            "iso_639_1": "no",
+            "name": "Norsk",
+            "english_name": "Norwegian",
+            "data": {
+                "homepage": "",
+                "overview": "Jack, en kronisk søvnløs som er desperat etter å slippe ut av sitt ulidelig kjedelige liv. Da møter han Tyler Durden, en karismatisk såpeselger med en usedvanlig livsfilosofi. Tyler synes at utvikling av en selv er for de svake - det er selvdestruksjon som gjør livet verdt å leve. Ikke lenge etter holder Jack og Tyler på å slå hverandre til plukkfisk på en parkeringsplass, en rensende slåsskamp som gir det ultimate kick. For å introdusere andre menn for de simple gleder ved fysisk vold, danner Jack og Tyler den hemmelige Fight Club som blir voldsomt populær. Men en sjokkerende overraskelse som snur opp ned på alt venter Jack...",
+                "runtime": 0,
+                "tagline": "",
+                "title": ""
+            }
+        },
+        {
+            "iso_3166_1": "PL",
+            "iso_639_1": "pl",
+            "name": "Polski",
+            "english_name": "Polish",
+            "data": {
+                "homepage": "",
+                "overview": "Co ty możesz o sobie wiedzieć, jeśli nigdy nie walczyłeś? W tym niezwykłym, pełnym niespodziewanych zwrotów akcji i nie pozbawionym swoistego humoru filmie w reżyserii Davida Finchera (\"Siedem\") oryginalne i dynamiczne kreacje stworzyli Brad Pitt (\"Siedem\") i Edward Norton (\"Lęk pierwotny\"). Jack (Norton) cierpi na chroniczną bezsenność i jest całkowicie znudzony swym dotychczasowym życiem. Do czasu, gdy spotyka charyzmatycznego Tylera Durdena (Pitt) - sprzedawcę mydła o dość pokrętnej filozofii życia... Uważa on bowiem, że samo-doskonalenie jest dla słabeuszy, a to co rzeczywiście sprawia, że warto żyć to samo-destrukcja.",
+                "runtime": 139,
+                "tagline": "Anarchia. Chaos. Mydło.",
+                "title": "Podziemny Krąg"
+            }
+        },
+        {
+            "iso_3166_1": "BR",
+            "iso_639_1": "pt",
+            "name": "Português",
+            "english_name": "Portuguese",
+            "data": {
+                "homepage": "",
+                "overview": "Um homem deprimido que sofre de insônia conhece um estranho vendedor de sabonetes chamado Tyler Durden. Eles formam um clube clandestino com regras rígidas onde lutam com outros homens cansados de suas vidas mundanas. Mas sua parceria perfeita é comprometida quando Marla chama a atenção de Tyler.",
+                "runtime": 139,
+                "tagline": "Má conduta. Caos. Sabão.",
+                "title": "Clube da Luta"
+            }
+        },
+        {
+            "iso_3166_1": "PT",
+            "iso_639_1": "pt",
+            "name": "Português",
+            "english_name": "Portuguese",
+            "data": {
+                "homepage": "http://www.welcometofc.com/",
+                "overview": "O Clube de combate é uma invenção de Tyler Durden, um génio anarquista, e são apenas o início dos seus planos de vingança contra um mundo onde jovens saudáveis vão a reuniões de grupos de apoio ao cancro porque apenas aí conseguem encontrar calor humano e compaixão.",
+                "runtime": 139,
+                "tagline": "Tu não vais falar dele.",
+                "title": "Clube de Combate"
+            }
+        },
+        {
+            "iso_3166_1": "RO",
+            "iso_639_1": "ro",
+            "name": "Română",
+            "english_name": "Romanian",
+            "data": {
+                "homepage": "",
+                "overview": "Un insomniac gata să cedeze și un vânzător de săpun fără scrupule își canalizează agresiunea masculină într-o formă de terapie nouă și șocantă. Ideea lor se prinde și „cluburi de luptă” se formează în fiecare oraș, până când apare un excentric și pornește o spirală ieșită de sub control către uitare.",
+                "runtime": 180,
+                "tagline": "Cât de multe poți știi despre tine dacă nu ai fost niciodată într-o luptă?",
+                "title": "Fight Club - Sala de lupte"
+            }
+        },
+        {
+            "iso_3166_1": "RU",
+            "iso_639_1": "ru",
+            "name": "Pусский",
+            "english_name": "Russian",
+            "data": {
+                "homepage": "",
+                "overview": "Терзаемый хронической бессонницей и отчаянно пытающийся вырваться из мучительно скучной жизни клерк встречает некоего Тайлера Дардена, харизматического торговца мылом с извращённой философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное, ради чего стоит жить.",
+                "runtime": 130,
+                "tagline": "Интриги. Хаос. Мыло.",
+                "title": "Бойцовский клуб"
+            }
+        },
+        {
+            "iso_3166_1": "SK",
+            "iso_639_1": "sk",
+            "name": "Slovenčina",
+            "english_name": "Slovak",
+            "data": {
+                "homepage": "",
+                "overview": "Filmová ikona konca deväťdesiatych rokov o absolútnej strate hodnôt, anarchistických hlbinách v každom z nás a živote v permanentnom déjà vu konzumnej spoločnosti. Mainstreamový film, ktorý úplne narušil pravidlá mainstreamu ukázal na veľkom plátne šokujúce násilné scény, obnažené pohlavné orgány a inteli­gentný terorizmus. Komplikovaná dejová skladačka adap­tujúca rovnomenný a podobne prevratný román Chucka Palahniuka pracujúci s odvekým motívom dvojníka. Katalógy z IKEA, Meat Loafove poprsie, päste v tme, tučniaci, liposukcia a mydlo. Snímka, ktorý bude za sto rokov vo všetkých učebniciach o dejinách filmu.",
+                "runtime": 139,
+                "tagline": "Násilie. Chaos. Mydlo.",
+                "title": "Klub bitkárov"
+            }
+        },
+        {
+            "iso_3166_1": "SI",
+            "iso_639_1": "sl",
+            "name": "Slovenščina",
+            "english_name": "Slovenian",
+            "data": {
+                "homepage": "",
+                "overview": "Fight Club ni le prispodoba o (samo)destruktivnem begu posameznika iz ujetosti potrošniškega nesmisla, temveč (tudi) parabola upora zoper nezmožnost poistovetenja s prvobitnim moškim/očetovskim principom — odraža se v sprevrženi percepciji psihosocialnih norm in nevrotični konfrontaciji ter boju (dobesedno \"z golimi pestmi\") s samim seboj. Dodajmo še patološke predstave o ljubezenski zvezi in vlogi ženske, metaforični upor maskuliniziranega segmenta potlačene moške dominantnosti, ki v ničemer ne najde prave identifikacije in opore, zato njegov dezorientirani razcepljeni um primanjkljaj kompenzira tako, da ustvarja namišljene alegorične osebnosti — ter izvrstno igralsko zasedbo (Edward Norton, Brad Pitt, Helena Bontham Carter) — pa dobimo enega najbolj izvirnih (in vplivnih) produktov ameriške literature in kinematografije zadnjih desetletij.",
+                "runtime": 0,
+                "tagline": "",
+                "title": "Klub golih pesti"
+            }
+        },
+        {
+            "iso_3166_1": "RS",
+            "iso_639_1": "sr",
+            "name": "Srpski",
+            "english_name": "Serbian",
+            "data": {
+                "homepage": "",
+                "overview": "Усамљени безимени тридесетогодишњак (Едвард Нортон), запослен као кординатор за опозив у ауто-компанији, има проблема са несаницом коју покушава да реши на разне начине. У авиону упознаје Тајлера Дардена (Бред Пит), произвођача и продавца сапуна, са којим ће се спријатељити и основати удружење „Борилачки клуб“ које ће од простог малог друштва где људи после напорног дана долазе да се испразне постати тајни и добро организован анархистички покрет.",
+                "runtime": 139,
+                "tagline": "Борилачки клуб",
+                "title": "Борилачки клуб"
+            }
+        },
+        {
+            "iso_3166_1": "SE",
+            "iso_639_1": "sv",
+            "name": "svenska",
+            "english_name": "Swedish",
+            "data": {
+                "homepage": "",
+                "overview": "Brad Pitt och Edward Norton gör två knockoutbra roller i denna häpnadsväckande och originella thriller med ironisk underton av David Fincher, regissören till Seven. Norton spelar Jack, en kroniskt sömnlös man som desperat försöker fly sitt olidligt tråkiga liv. Men så möter han Tyler Durden (Pitt) en karismatisk tvålförsäljare med en snedvriden filosofi. Tyler menar att självförbättring är för de svaga - det är självdestruktion som verkligen gör livet värt att leva. Inom kort är Jack och Tyler i full gång med att mörbulta varandra på en parkeringsplats. Ett renande slagsmål med en endorfinkick utan dess like. För att introducera andra män i denna enkla lycka av fysiskt våld bildar Jack och Tyler en hemlig \"Fight Club\" som snabbt blir omåttligt populär. Men en hemsk överraskning väntar Jack, en sanning som kommer att förändra allt... Filmen innehåller också kommentarer av David Fincher, Brad Pitt, Edward Norton och Helena Bonham Carter.",
+                "runtime": 133,
+                "tagline": "",
+                "title": "Fight Club"
+            }
+        },
+        {
+            "iso_3166_1": "TH",
+            "iso_639_1": "th",
+            "name": "ภาษาไทย",
+            "english_name": "Thai",
+            "data": {
+                "homepage": "",
+                "overview": "ไทเลอร์ (แบรด พิทท์) กล่าวว่า ทุกสิ่งทุกอย่างที่คุณครอบครองอยู่นั้น ท้ายที่สุดแล้วพวกมันก็จะครอบงำคุณเสีย แต่ถ้าหากคุณสูญสิ้นทุกสิ่งเมื่อใด คุณก็จะกล้าทำอะไรต่อมิอะไรได้อย่างไร้กังวลตลอดไป ซึ่ง Fight Club เปรียบได้กับอิสรภาพแบบนั้น \"",
+                "runtime": 0,
+                "tagline": "ดิบดวลดิบ",
+                "title": "ไฟท์ คลับ ดิบดวลดิบ"
+            }
+        },
+        {
+            "iso_3166_1": "TR",
+            "iso_639_1": "tr",
+            "name": "Türkçe",
+            "english_name": "Turkish",
+            "data": {
+                "homepage": "",
+                "overview": "Dövüş kulübünün ilk kuralı, dövüş kulübü hakkında konuşmamaktır. Dövüş kulübünün ikinci kuralı da, kulüp hakkında konuşmamaktır... Filmin baş kişisi, sıradan hayatının girdaplarında bunalımlar geçiren bir sigorta müfettişi olan Jack, Kanserli olmadığı halde, uykusuzluğunu yenmek ve hayatına anlam katmak adına, kanserlilere moral destek sağlayan terapi gruplarına katılır. Orada, Marla Singer adlı bir kızla garip bir yakınlık kurar. Bir iş gezisi dönüşü ise, Tyler Durden adlı egzantrik karakterle tanışır. Durden, Jack'in olmak isteyip de olamadığı adam gibidir. Tyler'ın girişimleriyle bir yeraltı faaliyeti olarak başlayan dövüş kulübü, Jack'e hayatında yepyeni kapılar açacaktır... Ve tabii, bu kapılardan ister istemez Marla geçecektir... Fakat... Tyler Durden gerçekte kimdir?",
+                "runtime": 139,
+                "tagline": "Fesatlık. Kargaşa. Sabun.",
+                "title": "Dövüş Kulübü"
+            }
+        },
+        {
+            "iso_3166_1": "TW",
+            "iso_639_1": "tw",
+            "name": "",
+            "english_name": "Twi",
+            "data": {
+                "homepage": "",
+                "overview": "",
+                "runtime": 0,
+                "tagline": "",
+                "title": "鬥陣俱樂部"
+            }
+        },
+        {
+            "iso_3166_1": "UA",
+            "iso_639_1": "uk",
+            "name": "Український",
+            "english_name": "Ukrainian",
+            "data": {
+                "homepage": "",
+                "overview": "Джек, страждає хронічним безсонням і відчайдушно намагається вирватися з нудного життя. Саме тоді він зустрічає Тайлера Дердена, торговця із збоченою філософією. Тайлер впевнений, що самовдосконалення - доля слабких, а саморуйнування - єдине, заради чого варто жити. І ось вже Джек і Тайлер луплять один одному пики на стоянці перед баром, що приносить їм неабияке задоволення. Залучаючи інших чоловіків до простих радощів фізичної жорстокості, Джек і Тайлер засновують таємний Бійцівський Клуб, який має величезний успіх. Але Джека чекає шокуюче відкриття, здатне змінити все...",
+                "runtime": 0,
+                "tagline": "",
+                "title": "Бійцівський клуб"
+            }
+        },
+        {
+            "iso_3166_1": "UZ",
+            "iso_639_1": "uz",
+            "name": "ozbek",
+            "english_name": "Uzbek",
+            "data": {
+                "homepage": "",
+                "overview": "Hech qanday xayolga ega bo'lmagan yigit uyqusizlikka qarshi kurashadi, ehtimol uning kulrang va odatdagi hayotidan zerikish. Samolyotda u xarizmatik sovun sotuvchisi Tayler Durden bilan uchrashadi, u juda falsafaga ega: perfektsionizm - bu zaif odamlarning ishi; buning o'rniga, o'z-o'zini yo'q qilish hayotni haqiqatan ham yashashga majbur qiladigan yagona narsa. Ikkalasi ham g'azab va g'azabni bajara oladigan yashirin kurash klubini tuzishga qaror qilishadi, bu esa muvaffaqiyat qozonadi.",
+                "runtime": 0,
+                "tagline": "",
+                "title": "Jang klubi"
+            }
+        },
+        {
+            "iso_3166_1": "VN",
+            "iso_639_1": "vi",
+            "name": "Tiếng Việt",
+            "english_name": "Vietnamese",
+            "data": {
+                "homepage": "",
+                "overview": "Cuộc gặp gỡ định mệnh của một nhân viên giám định bảo hiểm và một gã lông bông bán xà phòng trên chuyến bay đã mở ra một cuộc phiêu lưu kỳ lạ. Với các \"câu lạc bộ chiến đấu\" ngầm hình thành ở mọi thị trấn, cuốn theo nhiều diễn biến phức tạp và một cái kết đầy kịch tính.",
+                "runtime": 0,
+                "tagline": "Thủ đoạn. Lộn xộn. Xà phòng.",
+                "title": "Sàn Đấu Sinh Tử"
+            }
+        },
+        {
+            "iso_3166_1": "CN",
+            "iso_639_1": "zh",
+            "name": "普通话",
+            "english_name": "Mandarin",
+            "data": {
+                "homepage": "",
+                "overview": "杰克( 爱德华·诺顿 Edward Norton 饰)是一个充满中年危机意识的人，他非常憎恨自己的生活及一切，再加上他患有严重的失眠症，所以他常常参加各种团体谘询会，只为了能接触人群。在某一个团体谘询会上，杰克遇上了一个跟他同样理由来参加的女烟枪，玛拉(海伦娜·邦汉·卡特 Helena Bonham Carter  饰)，在莫名激素的影响下，杰克和玛拉一起逃离了谘询会，两人的情愫因而滋生… 一个偶然的机会，杰克遇到了卖肥皂的商人泰勒(布拉德·皮特 Brad Pitt 饰)，一个浑身充满叛逆、残酷和暴烈的痞子英雄，并因为自己公寓失火而住进了泰勒破旧不堪的家中。两人因缘际会地成为了好朋友，并创立了“搏击俱乐部”：一个让人们不戴护具而徒手搏击，宗旨在于发泄情绪的地下组织。",
+                "runtime": 0,
+                "tagline": "搏击俱乐部",
+                "title": "搏击俱乐部"
+            }
+        },
+        {
+            "iso_3166_1": "HK",
+            "iso_639_1": "zh",
+            "name": "普通话",
+            "english_name": "Mandarin",
+            "data": {
+                "homepage": "",
+                "overview": "愛德華諾頓飾演一位失眠病患者，讀完大學，找到一份工作，然後買屋，過著沉悶痛苦的刻板生活。直到遇上肥皂推銷員畢彼特，扭轉了他的命運。畢彼特深信自我進步是弱者的行為，只有自我毀滅才活得有價值。他們組成「搏擊會」，會員互相毆打致頭破血流，尋求「真正的生活意義」，並集結，自行重整社會秩序。直至畢彼特愈見走火入魔，終引發出愛德華一段聲嘶力竭的掙扎。",
+                "runtime": 0,
+                "tagline": "",
+                "title": "搏擊會"
+            }
+        },
+        {
+            "iso_3166_1": "TW",
+            "iso_639_1": "zh",
+            "name": "普通话",
+            "english_name": "Mandarin",
+            "data": {
+                "homepage": "",
+                "overview": "傑克（愛德華諾頓飾演）是一個充滿中年危機意識的人，他非常憎恨自己的生活及一切，再加上他患有嚴重的失眠症，所以他常常參加各種團體諮詢會，只為了能接觸人群。在某一個團體諮詢會上，傑克遇上了一個跟他同樣理由來參加的女煙槍，瑪拉（海倫娜寶漢卡特飾演）。  在一個商務旅行中，傑克在飛機上遇到賣肥皂的商人－泰勒（布萊德彼特飾演），兩人因緣際會地成了好友，並開始創建了「鬥陣俱樂部」：一個讓彼此不戴護具而互毆的聚會，宗旨在發洩情緒。  某夜，泰勒在傑克的公寓中把瑪拉給「上」了，這讓傑克非常忌妒。同時「鬥陣俱樂部」也成了全國性的地下大組織，所有成員都將泰勒視為教父。為了辨識起見，成員還都剃了光頭。  傑克對於「鬥陣俱樂部」的現況及泰勒的瘋狂模樣越來越無法忍受，所以他決定疏遠泰勒。但是，此時的「鬥陣俱樂部」成員卻發起全國性的暴動，他們炸毀了不少建築物......，一切的局勢都是傑克始料未及的，他該如何解決這混亂的現狀？「鬥陣俱樂部」又會瘋狂成什麼樣子？  傑克與泰勒之間的恩恩怨怨會如何了結？",
+                "runtime": 0,
+                "tagline": "",
+                "title": "鬥陣俱樂部"
+            }
+        }
+    ]
+}

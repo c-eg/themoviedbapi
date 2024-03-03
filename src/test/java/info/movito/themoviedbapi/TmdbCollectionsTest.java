@@ -3,6 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.CollectionInfo;
 import info.movito.themoviedbapi.model.collections.Data;
+import info.movito.themoviedbapi.model.collections.Images;
 import info.movito.themoviedbapi.model.collections.Translation;
 import info.movito.themoviedbapi.model.collections.Part;
 import info.movito.themoviedbapi.tools.RequestType;
@@ -66,12 +67,17 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbCollections tmdbCollections = getTmdbApi().getCollections();
-        List<Artwork> artworks = tmdbCollections.getImages(collectionId, language);
-        assertFalse(artworks.isEmpty());
+        Images images = tmdbCollections.getImages(collectionId, language);
+        assertNotNull(images);
+        testForNullFieldsAndNewItems(images);
 
-        Artwork artwork = artworks.get(0);
-        assertNotNull(artwork);
-        testForNullFieldsAndNewItems(artwork);
+        List<Artwork> posters = images.getPosters();
+        assertFalse(posters.isEmpty());
+        testForNullFieldsAndNewItems(posters.get(0));
+
+        List<Artwork> backdrops = images.getBackdrops();
+        assertFalse(backdrops.isEmpty());
+        testForNullFieldsAndNewItems(backdrops.get(0));
     }
 
     /**
@@ -89,12 +95,17 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbCollections tmdbCollections = getTmdbApi().getCollections();
-        List<Artwork> artworks = tmdbCollections.getImages(collectionId, null, includeImageLanguage);
-        assertFalse(artworks.isEmpty());
+        Images images = tmdbCollections.getImages(collectionId, null, includeImageLanguage);
+        assertNotNull(images);
+        testForNullFieldsAndNewItems(images);
 
-        Artwork artwork = artworks.get(0);
-        assertNotNull(artwork);
-        testForNullFieldsAndNewItems(artwork);
+        List<Artwork> posters = images.getPosters();
+        assertFalse(posters.isEmpty());
+        testForNullFieldsAndNewItems(posters.get(0));
+
+        List<Artwork> backdrops = images.getBackdrops();
+        assertFalse(backdrops.isEmpty());
+        testForNullFieldsAndNewItems(backdrops.get(0));
     }
 
     /**

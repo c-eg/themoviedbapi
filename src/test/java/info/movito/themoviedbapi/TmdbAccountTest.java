@@ -1,7 +1,7 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.MovieList;
-import info.movito.themoviedbapi.model.MovieListResultsPage;
+import info.movito.themoviedbapi.model.movies.MovieList;
+import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.account.Account;
 import info.movito.themoviedbapi.model.core.Movie;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;

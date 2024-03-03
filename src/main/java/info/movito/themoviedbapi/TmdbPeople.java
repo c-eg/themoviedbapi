@@ -8,7 +8,7 @@ import info.movito.themoviedbapi.model.people.PersonImages;
 import info.movito.themoviedbapi.model.people.Translations;
 import info.movito.themoviedbapi.model.people.credits.CombinedPersonCredits;
 import info.movito.themoviedbapi.model.people.credits.MovieCredits;
-import info.movito.themoviedbapi.model.people.credits.Person;
+import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.people.credits.TvCredits;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;

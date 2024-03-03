@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model;
+package info.movito.themoviedbapi.model.movies;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.StringIdElement;
@@ -20,18 +20,6 @@ public class Review extends StringIdElement {
 
     @JsonProperty("created_at")
     private String createdAt;
-
-    @JsonProperty("iso_639_1")
-    private String iso6391;
-
-    @JsonProperty("media_id")
-    private Integer mediaId;
-
-    @JsonProperty("media_title")
-    private String mediaTitle;
-
-    @JsonProperty("media_type")
-    private String mediaType;
 
     @JsonProperty("updated_at")
     private String updatedAt;

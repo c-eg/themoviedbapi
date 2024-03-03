@@ -3,7 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.configuration.Configuration;
 import info.movito.themoviedbapi.model.configuration.Country;
 import info.movito.themoviedbapi.model.configuration.Job;
-import info.movito.themoviedbapi.model.configuration.Language;
+import info.movito.themoviedbapi.model.core.Language;
 import info.movito.themoviedbapi.model.configuration.Timezone;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;

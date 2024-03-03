@@ -54,6 +54,7 @@ public class PersonDb extends NamedIdElement implements Multi {
     @JsonProperty("profile_path")
     private String profilePath;
 
+    /* append to responses */
     @JsonProperty("combined_credits")
     private CombinedPersonCredits combinedCredits;
 

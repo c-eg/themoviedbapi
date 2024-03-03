@@ -13,4 +13,7 @@ public class AlternativeTitle extends AbstractJsonMapping {
 
     @JsonProperty("title")
     private String title;
+
+    @JsonProperty("type")
+    private String type;
 }

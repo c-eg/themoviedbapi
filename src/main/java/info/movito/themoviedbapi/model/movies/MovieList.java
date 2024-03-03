@@ -1,13 +1,13 @@
-package info.movito.themoviedbapi.model;
+package info.movito.themoviedbapi.model.movies;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.core.IdElement;
+import info.movito.themoviedbapi.model.core.NamedIdElement;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class MovieList extends IdElement {
+public class MovieList extends NamedIdElement {
     @JsonProperty("description")
     private String description;
 
@@ -22,9 +22,6 @@ public class MovieList extends IdElement {
 
     @JsonProperty("list_type")
     private String listType;
-
-    @JsonProperty("name")
-    private String name;
 
     @JsonProperty("poster_path")
     private String posterPath;

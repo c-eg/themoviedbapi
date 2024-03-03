@@ -1,0 +1,208 @@
+{
+    "id": 550,
+    "page": 1,
+    "results": [
+        {
+            "description": "Movies I own",
+            "favorite_count": 0,
+            "id": 8248696,
+            "item_count": 409,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "My Movies",
+            "poster_path": "paster path"
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8211179,
+            "item_count": 842,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "myList",
+            "poster_path": null
+        },
+        {
+            "description": "I watch way too much but not everything till the end",
+            "favorite_count": 0,
+            "id": 142064,
+            "item_count": 2245,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Watched",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8168597,
+            "item_count": 14752,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "movies",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 7054306,
+            "item_count": 1551,
+            "iso_639_1": "es",
+            "list_type": "movie",
+            "name": "Peliculas",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 7075790,
+            "item_count": 1358,
+            "iso_639_1": "es",
+            "list_type": "movie",
+            "name": "Accion",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 7102641,
+            "item_count": 452,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Seen movies",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8191899,
+            "item_count": 412,
+            "iso_639_1": "fr",
+            "list_type": "movie",
+            "name": "Vu",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 127215,
+            "item_count": 498,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "movielist",
+            "poster_path": null
+        },
+        {
+            "description": "Películas que he visto",
+            "favorite_count": 0,
+            "id": 8208045,
+            "item_count": 781,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Películas vistas",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8195461,
+            "item_count": 2006,
+            "iso_639_1": "pt",
+            "list_type": "movie",
+            "name": "Filmes da Disney (TODOS)",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8191446,
+            "item_count": 947,
+            "iso_639_1": "pt",
+            "list_type": "movie",
+            "name": "Filmes STAR",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8245213,
+            "item_count": 280,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "All movies (Except Thai movie  )(Movie Franchises ที่ยาว จะเอามาไม่เกิน 2 ภาค)(ไม่มี MCU , DC)",
+            "poster_path": null
+        },
+        {
+            "description": "ความชอบโดยส่วนตัวมีทั้งหนังที่ดีและหนังที่ไม่ดี",
+            "favorite_count": 0,
+            "id": 8196069,
+            "item_count": 79,
+            "iso_639_1": "th",
+            "list_type": "movie",
+            "name": "หนังที่รักทั้ง100เรื่อง",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 7078357,
+            "item_count": 81,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Drama",
+            "poster_path": null
+        },
+        {
+            "description": "افلامي",
+            "favorite_count": 0,
+            "id": 131230,
+            "item_count": 2387,
+            "iso_639_1": "ar",
+            "list_type": "movie",
+            "name": "أنا",
+            "poster_path": null
+        },
+        {
+            "description": "DO NOT DELETE",
+            "favorite_count": 0,
+            "id": 110683,
+            "item_count": 1179,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Plex",
+            "poster_path": null
+        },
+        {
+            "description": "Master List In Progress",
+            "favorite_count": 0,
+            "id": 51108,
+            "item_count": 9861,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "My Movies",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 7069381,
+            "item_count": 387,
+            "iso_639_1": "fr",
+            "list_type": "movie",
+            "name": "Films",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8191211,
+            "item_count": 690,
+            "iso_639_1": "en",
+            "list_type": "movie",
+            "name": "Descargar",
+            "poster_path": null
+        }
+    ],
+    "total_pages": 122,
+    "total_results": 2422
+}

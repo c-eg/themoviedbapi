@@ -9,7 +9,7 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 @EqualsAndHashCode(callSuper = false)
 public class Artwork extends AbstractJsonMapping {
     @JsonProperty("iso_639_1")
-    private String language;
+    private String iso6391;
 
     @JsonProperty("file_path")
     private String filePath;
@@ -28,6 +28,4 @@ public class Artwork extends AbstractJsonMapping {
 
     @JsonProperty("vote_count")
     private Integer voteCount;
-
-    private ArtworkType artworkType = ArtworkType.POSTER;
 }

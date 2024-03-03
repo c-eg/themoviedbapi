@@ -1,48 +1,35 @@
 package info.movito.themoviedbapi;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.AlternativeTitle;
-import info.movito.themoviedbapi.model.MovieDb;
-import info.movito.themoviedbapi.model.MovieListResultsPage;
-import info.movito.themoviedbapi.model.MoviesAlternativeTitles;
-import info.movito.themoviedbapi.model.ReleaseInfo;
-import info.movito.themoviedbapi.model.collections.Translation;
-import info.movito.themoviedbapi.model.collections.Translations;
-import info.movito.themoviedbapi.model.Video;
-import info.movito.themoviedbapi.model.core.IdElement;
-import info.movito.themoviedbapi.model.core.MovieDbResultsPage;
-import info.movito.themoviedbapi.model.core.SessionToken;
-import info.movito.themoviedbapi.model.core.image.CollectionImages;
-import info.movito.themoviedbapi.model.keywords.Keyword;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
+import info.movito.themoviedbapi.model.movies.AccountStates;
+import info.movito.themoviedbapi.model.movies.AlternativeTitles;
+import info.movito.themoviedbapi.model.movies.Credits;
+import info.movito.themoviedbapi.model.movies.ExternalIds;
+import info.movito.themoviedbapi.model.movies.Images;
+import info.movito.themoviedbapi.model.movies.KeywordResults;
+import info.movito.themoviedbapi.model.movies.MovieDb;
+import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
+import info.movito.themoviedbapi.model.movies.ReleaseDateResults;
+import info.movito.themoviedbapi.model.movies.ReviewResultsPage;
+import info.movito.themoviedbapi.model.movies.Translations;
+import info.movito.themoviedbapi.model.movies.VideoResults;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.people.ExternalIds;
-import info.movito.themoviedbapi.model.people.PersonCredits;
 import info.movito.themoviedbapi.model.providers.ProviderResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
-import org.apache.commons.lang3.StringUtils;
+import info.movito.themoviedbapi.tools.appendtoresponse.MovieAppendToResponse;
+import info.movito.themoviedbapi.util.Utils;
 
-import java.util.List;
-
-import static info.movito.themoviedbapi.TmdbAccount.PARAM_SESSION;
-import static info.movito.themoviedbapi.TmdbMovies.MovieMethod.videos;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import java.util.HashMap;
 
 /**
  * The movie database api for movies. See the
  * <a href="https://developer.themoviedb.org/reference/movie-details">documentation</a> for more info.
  */
 public class TmdbMovies extends AbstractTmdbApi {
-    // API Methods
-    public static final String TMDB_METHOD_MOVIE = "movie";
-
-    private static final String PARAM_START_DATE = "start_date";
-
-    private static final String PARAM_END_DATE = "end_date";
-
-    private static final String PARAM_COUNTRY = "country";
-
-    private static final String PARAM_REGION = "region";
+    protected static final String TMDB_METHOD_MOVIE = "movie";
 
     /**
      * Create a new TmdbMovies instance to call the movie related TMDb API methods.
@@ -52,334 +39,310 @@ public class TmdbMovies extends AbstractTmdbApi {
     }
 
     /**
-     * This method is used to retrieve all the basic movie information.
+     * <p>Get the top level details of a movie by ID.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-details">documentation</a> for more info.</p>
      *
-     * It will return the single highest rated poster and backdrop.
+     * @param movieId The TMDb id of the movie.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @param appendToResponse optional - additional namespaces to append to the result (20 max).
+     * @return The movie details.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieDb getMovie(int movieId, String language, MovieMethod... appendToResponse) throws TmdbException {
+    public MovieDb getDetails(int movieId, String language, MovieAppendToResponse... appendToResponse) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId);
-
         apiUrl.addLanguage(language);
-
-        //apiUrl.addAppendToResponses(asStringArray(appendToResponse)); todo fix me
-
+        apiUrl.addAppendToResponses(appendToResponse);
         return mapJsonResult(apiUrl, MovieDb.class);
     }
 
     /**
-     * This method is used to retrieve all the alternative titles we have for a particular movie.
-     */
-    public List<AlternativeTitle> getAlternativeTitles(int movieId, String country) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.alternative_titles);
-
-        if (StringUtils.isNotBlank(country)) {
-            apiUrl.addPathParam(PARAM_COUNTRY, country);
-        }
-
-        return mapJsonResult(apiUrl, MoviesAlternativeTitles.class).getTitles();
-    }
-
-    /**
-     * Gets the movie credits.
+     * <p>Get the rating, watchlist and favourite status of an account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-account-states">documentation</a> for more info.</p>
      *
-     * @param movieId the movies id
-     * @return the movie credits
+     * @param movieId The TMDb id of the movie.
+     * @param sessionId optional - The session id of the user.
+     * @param guestSessionId optional - The guest session id of the user.
+     * @return The account states of the movie.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public PersonCredits getCredits(int movieId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.credits);
-
-        return mapJsonResult(apiUrl, PersonCredits.class);
+    public AccountStates getAccountStates(int movieId, String sessionId, String guestSessionId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "account_states");
+        apiUrl.addQueryParam("session_id", sessionId);
+        apiUrl.addQueryParam("guest_session_id", guestSessionId);
+        return mapJsonResult(apiUrl, AccountStates.class);
     }
 
     /**
-     * This method should be used when you’re wanting to retrieve all of the images for a particular movie.
-     */
-    public CollectionImages getImages(int movieId, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.images);
-
-        apiUrl.addLanguage(language);
-
-        return mapJsonResult(apiUrl, CollectionImages.class);
-    }
-
-    /**
-     * This method is used to retrieve all the keywords that have been added to a particular movie.
+     * <p>Get the alternative titles for a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-alternative-titles">documentation</a> for more info.</p>
      *
-     * Currently, only English keywords exist.
+     * @param movieId The TMDb id of the movie.
+     * @param country optional - The country to query the results in (ISO-3166-1), e.g. "US".
+     * @return The alternative titles of the movie.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public List<Keyword> getKeywords(int movieId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.keywords);
-
-        return mapJsonResult(apiUrl, KeywordResults.class).results;
+    public AlternativeTitles getAlternativeTitles(int movieId, String country) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "alternative_titles");
+        apiUrl.addQueryParam("country", country);
+        return mapJsonResult(apiUrl, AlternativeTitles.class);
     }
 
     /**
-     * This method is used to retrieve all of the release and certification data we have for a specific movie.
-     */
-    public List<ReleaseInfo> getReleaseInfo(int movieId, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.release_dates);
-
-        apiUrl.addLanguage(language);
-
-        return mapJsonResult(apiUrl, ReleaseInfoResults.class).results;
-    }
-
-    /**
-     * This method is used to retrieve all of the videos for a particular movie.
+     * <p>Get the recent changes for a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-changes">documentation</a> for more info.</p>
      *
-     * Supported sites are YouTube and QuickTime.
+     * @param movieId The TMDb id of the movie.
+     * @param startDate optional - The start date, in format: YYYY-MM-DD.
+     * @param endDate optional - The end date, in format: YYYY-MM-DD.
+     * @param page optional - The page of results to return. Default: 1.
+     * @return The movie changes.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public List<Video> getVideos(int movieId, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, videos);
-
-        apiUrl.addLanguage(language);
-
-        return mapJsonResult(apiUrl, Video.Results.class).getVideos();
-    }
-
-    /**
-     * This method is used to retrieve a list of the available translations for a specific movie.
-     */
-    public List<Translation> getTranslations(int movieId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.translations);
-
-        return mapJsonResult(apiUrl, Translations.class).getTranslations();
-    }
-
-    /**
-     * The similar movies method will let you retrieve the similar movies for a particular movie.
-     *
-     * This data is created dynamically but with the help of users votes on TMDb.
-     *
-     * The data is much better with movies that have more keywords
-     */
-    public MovieDbResultsPage getSimilarMovies(int movieId, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.similar);
-
-        apiUrl.addLanguage(language);
-
+    public ChangeResults getChanges(int movieId, String startDate, String endDate, Integer page) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "changes");
+        apiUrl.addQueryParam("start_date", startDate);
+        apiUrl.addQueryParam("end_date", endDate);
         apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
-    }
-
-    /**
-     * The recomendations movies method will let you retrieve the reccomended movies for a particular movie.
-     *
-     * This data is created dynamically but with the help of TMDb internal algorithm.
-     *
-     * The data is much better with movies that are more popular
-     */
-    public MovieDbResultsPage getRecommendedMovies(int movieId, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.recommendations);
-
-        apiUrl.addLanguage(language);
-
-        apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
-    }
-
-    /**
-     * Get the lists that the movie belongs to.
-     */
-    public MovieListResultsPage getListsContaining(int movieId, SessionToken sessionToken, String language,
-                                                   Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.lists);
-
-        apiUrl.addPathParam(PARAM_SESSION, sessionToken);
-
-        apiUrl.addLanguage(language);
-
-        apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, MovieListResultsPage.class);
-    }
-
-    /**
-     * Get the changes for a specific movie id.
-     *
-     * Changes are grouped by key, and ordered by date in descending order.
-     *
-     * By default, only the last 24 hours of changes are returned.
-     *
-     * The maximum number of days that can be returned in a single request is 14.
-     *
-     * The language is present on fields that are translatable.
-     *
-     * TODO: DOES NOT WORK AT THE MOMENT. This is due to the "value" item changing type in the ChangeItem
-     *
-     * @param startDate the start date of the changes, optional
-     * @param endDate   the end date of the changes, optional
-     */
-    public ChangeResults getChanges(int movieId, String startDate, String endDate) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.changes);
-
-        if (StringUtils.isNotBlank(startDate)) {
-            apiUrl.addPathParam(PARAM_START_DATE, startDate);
-        }
-
-        if (StringUtils.isNotBlank(endDate)) {
-            apiUrl.addPathParam(PARAM_END_DATE, endDate);
-        }
-
         return mapJsonResult(apiUrl, ChangeResults.class);
     }
 
     /**
-     * Powered by our partnership with JustWatch, you can query this method to get a list of the availabilities per country by provider.
-     * <p>
-     * This is not going to return full deep links, but rather, it's just enough information to display what's available where.
-     * <p>
-     * You can link to the provided TMDB URL to help support TMDB and provide the actual deep links to the content.
+     * <p>Get the credits for a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-credits">documentation</a> for more info.</p>
      *
-     * See: <a href="https://developers.themoviedb.org/3/movies/get-movie-watch-providers">API Docs</a>
-     *
-     * @param movieId The MovieId to retrieve watch providers for
-     * @return Complete set of watch providers by country
+     * @param movieId The TMDb id of the movie.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @return The movie credits.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public ProviderResults getWatchProviders(int movieId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.watch_providers);
-
-        return mapJsonResult(apiUrl, ProviderResults.class);
+    public Credits getCredits(int movieId, String language) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "credits");
+        apiUrl.addLanguage(language);
+        return mapJsonResult(apiUrl, Credits.class);
     }
 
     /**
-     * This method is used to retrieve the external ids for a movie.
+     * <p>Get the external ID's for a movie..</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-external-ids">documentation</a> for more info.</p>
+     *
+     * @param movieId The TMDb id of the movie.
+     * @return The external IDs.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ExternalIds getExternalIds(int movieId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, MovieMethod.external_ids);
-
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "external_ids");
         return mapJsonResult(apiUrl, ExternalIds.class);
     }
 
     /**
-     * This method is used to retrieve the newest movie that was added to TMDb.
+     * <p>Get the images that belong to a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-images">documentation</a> for more info.</p>
+     *
+     * @param movieId The movie id.
+     * @param language optional - The language.
+     * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
+     * @return The images.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieDb getLatestMovie() throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.latest);
+    public Images getImages(int movieId, String language, String... includeImageLanguage) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "images");
+        apiUrl.addLanguage(language);
+        apiUrl.addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
+        return mapJsonResult(apiUrl, Images.class);
+    }
 
+    /**
+     * <p>Get the keywords that belong to a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-keywords">documentation</a> for more info.</p>
+     *
+     * @param movieId The movie id.
+     * @return The keywords.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public KeywordResults getKeywords(int movieId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "keywords");
+        return mapJsonResult(apiUrl, KeywordResults.class);
+    }
+
+    /**
+     * <p>Get the newest movie ID.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-latest-id">documentation</a> for more info.</p>
+     *
+     * @return The latest movie.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public MovieDb getLatest() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "latest");
         return mapJsonResult(apiUrl, MovieDb.class);
     }
 
     /**
-     * Get the list of upcoming movies.
+     * <p>Get the lists that a movie has been added to.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-lists">documentation</a> for more info.</p>
      *
-     * This list refreshes every day.
-     *
-     * The maximum number of items this list will include is 100.
-     * <p>
-     * See https://developers.themoviedb.org/3/movies/get-upcoming
+     * @param movieId The TMDb id of the movie.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @param page optional - The page of results to return. Default: 1.
+     * @return The movie lists.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieDbResultsPage getUpcoming(String language, Integer page, String region) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.upcoming);
-
+    public MovieListResultsPage getLists(int movieId, String language, Integer page) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "lists");
         apiUrl.addLanguage(language);
-
         apiUrl.addPage(page);
-
-        if (isNotBlank(region)) {
-            apiUrl.addPathParam(PARAM_REGION, region);
-        }
-
-        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
+        return mapJsonResult(apiUrl, MovieListResultsPage.class);
     }
 
     /**
-     * This method is used to retrieve the movies currently in theatres.
+     * <p>Get the recommendations for a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-recommendations">documentation</a> for more info.</p>
      *
-     * This is a curated list that will normally contain 100 movies. The default response will return 20 movies.
+     * @param movieId The TMDb id of the movie.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @param page optional - The page of results to return. Default: 1.
+     * @return The recommended movies.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieDbResultsPage getNowPlayingMovies(String language, Integer page, String region) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.now_playing);
-
+    public MovieResultsPage getRecommendations(int movieId, String language, Integer page) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "recommendations");
         apiUrl.addLanguage(language);
-
         apiUrl.addPage(page);
-
-        if (isNotBlank(region)) {
-            apiUrl.addPathParam(PARAM_REGION, region);
-        }
-
-        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
     /**
-     * This method is used to retrieve the daily movie popularity list.
+     * <p>Get the release dates and certifications for a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-release-dates">documentation</a> for more info.</p>
      *
-     * This list is updated daily. The default response will return 20 movies.
+     * @param movieId The TMDb id of the movie.
+     * @return The release dates and certifications.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieDbResultsPage getPopularMovies(String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.popular);
-
-        apiUrl.addLanguage(language);
-
-        apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
+    public ReleaseDateResults getReleaseDates(int movieId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "release_dates");
+        return mapJsonResult(apiUrl, ReleaseDateResults.class);
     }
 
     /**
-     * This method is used to retrieve the top rated movies that have over 10 votes on TMDb.
+     * <p>Get the user reviews for a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-reviews">documentation</a> for more info.</p>
      *
-     * The default response will return 20 movies.
+     * @param movieId The TMDb id of the movie.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @param page optional - The page of results to return. Default: 1.
+     * @return The movie reviews.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieDbResultsPage getTopRatedMovies(String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, MovieMethod.top_rated);
-
+    public ReviewResultsPage getReviews(int movieId, String language, Integer page) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "reviews");
         apiUrl.addLanguage(language);
-
         apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
+        return mapJsonResult(apiUrl, ReviewResultsPage.class);
     }
 
     /**
-     * TODO: account_states and rating are not included as it wouldn't work anyway because of missing session id
-     * --> inject session id into tmdb-instance?
-     * TODO: remove "trailers" if deprecated or no longer available.
+     * <p>Get the similar movies based on genres and keywords.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-similar">documentation</a> for more info.</p>
+     *
+     * @param movieId The TMDb id of the movie.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @param page optional - The page of results to return. Default: 1.
+     * @return The similar movies.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public enum MovieMethod {
-        // CHECKSTYLE OFF: AnnotationLocation
-        alternative_titles, credits, images, keywords, releases, release_dates,
-        @Deprecated trailers,
-        videos, // replacement for trailers
-        translations, similar, recommendations,
-        reviews, lists, changes, latest, upcoming, now_playing, popular, top_rated,
-        watch_providers("watch/providers"), external_ids;
-        // CHECKSTYLE ON: AnnotationLocation
-
-        private String name;
-
-        MovieMethod() {
-        }
-
-        MovieMethod(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            if (name != null) {
-                return name;
-            }
-
-            return super.toString();
-        }
+    public MovieResultsPage getSimilar(int movieId, String language, Integer page) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "similar");
+        apiUrl.addLanguage(language);
+        apiUrl.addPage(page);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-    private static class KeywordResults extends IdElement {
-        @JsonProperty("keywords")
-        List<Keyword> results;
+    /**
+     * <p>Get the translations for a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-translations">documentation</a> for more info.</p>
+     *
+     * @param movieId The TMDb id of the movie.
+     * @return The translations.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public Translations getTranslations(int movieId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "translations");
+        return mapJsonResult(apiUrl, Translations.class);
     }
 
-    @SuppressWarnings("checkstyle:MissingJavadocType")
-    public static class ReleaseInfoResults extends IdElement {
-        @JsonProperty("results")
-        private List<ReleaseInfo> results;
+    /**
+     * <p>Get the videos that have been added to a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-videos">documentation</a> for more info.</p>
+     *
+     * @param movieId The TMDb id of the movie.
+     * @param language optional - The language to query the results in. Default: en-US.
+     * @return The videos.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public VideoResults getVideos(int movieId, String language) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "videos");
+        apiUrl.addLanguage(language);
+        return mapJsonResult(apiUrl, VideoResults.class);
+    }
 
-        public List<ReleaseInfo> getResults() {
-            return results;
+    /**
+     * <p>Get the list of streaming providers we have for a movie.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-watch-providers">documentation</a> for more info.</p>
+     *
+     * @param movieId The TMDb id of the movie.
+     * @return The watch providers.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public ProviderResults getWatchProviders(int movieId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "watch/providers");
+        return mapJsonResult(apiUrl, ProviderResults.class);
+    }
+
+    /**
+     * <p>Rate a movie and save it to your rated list.</p>
+     * <p>Note: if no <code>guestSessionId</code> or <code>sessionId</code> are provided, the method will add the rating to the API key
+     * holder's account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-add-rating">documentation</a> for more info.</p>
+     *
+     * @param movieId The TMDb id of the movie.
+     * @param guestSessionId optional - The guest session id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @param rating The rating of the movie. Must be: 0 < rating <= 10.
+     * @return The response status.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public ResponseStatus addRating(int movieId, String guestSessionId, String sessionId, double rating) throws TmdbException {
+        if (rating < 0 || rating > 10) {
+            throw new IllegalArgumentException("Rating must be: 0 < rating <= 10");
         }
+
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "rating");
+        apiUrl.addQueryParam("session_id", sessionId);
+        apiUrl.addQueryParam("guest_session_id", guestSessionId);
+
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("value", rating);
+
+        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
+    }
+
+    /**
+     * <p>Delete a user rating.</p>
+     * <p>Note: if no <code>guestSessionId</code> or <code>sessionId</code> are provided, the method will delete the rating to the API key
+     * holder's account.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/movie-delete-rating">documentation</a> for more info.</p>
+     *
+     * @param movieId The TMDb id of the movie.
+     * @param guestSessionId optional - The guest session id of the user.
+     * @param sessionId optional - The session id of the user.
+     * @return The response status.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public ResponseStatus deleteRating(int movieId, String guestSessionId, String sessionId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "rating");
+        apiUrl.addQueryParam("session_id", sessionId);
+        apiUrl.addQueryParam("guest_session_id", guestSessionId);
+        return mapJsonResult(apiUrl, null, RequestType.DELETE, ResponseStatus.class);
     }
 }

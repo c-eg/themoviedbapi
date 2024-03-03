@@ -1,15 +1,6 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
-import info.movito.themoviedbapi.model.movies.changes.Change;
-import info.movito.themoviedbapi.model.movies.changes.ChangeItem;
-import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.people.Data;
-import info.movito.themoviedbapi.model.people.ExternalIds;
-import info.movito.themoviedbapi.model.people.PersonDb;
-import info.movito.themoviedbapi.model.people.PersonImages;
-import info.movito.themoviedbapi.model.people.Translation;
-import info.movito.themoviedbapi.model.people.Translations;
 import info.movito.themoviedbapi.model.people.credits.Cast;
 import info.movito.themoviedbapi.model.people.credits.CombinedPersonCredits;
 import info.movito.themoviedbapi.model.people.credits.Crew;
@@ -20,6 +11,15 @@ import info.movito.themoviedbapi.model.people.credits.MovieCrew;
 import info.movito.themoviedbapi.model.people.credits.TvCast;
 import info.movito.themoviedbapi.model.people.credits.TvCredits;
 import info.movito.themoviedbapi.model.people.credits.TvCrew;
+import info.movito.themoviedbapi.model.movies.changes.Change;
+import info.movito.themoviedbapi.model.movies.changes.ChangeItem;
+import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
+import info.movito.themoviedbapi.model.people.Data;
+import info.movito.themoviedbapi.model.people.ExternalIds;
+import info.movito.themoviedbapi.model.people.PersonDb;
+import info.movito.themoviedbapi.model.people.PersonImages;
+import info.movito.themoviedbapi.model.people.Translation;
+import info.movito.themoviedbapi.model.people.Translations;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse;
@@ -32,14 +32,6 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbPeople.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse.CHANGES;
-import static info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse.COMBINED_CREDITS;
-import static info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse.EXTERNAL_IDS;
-import static info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse.IMAGES;
-import static info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse.LATEST;
-import static info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse.MOVIE_CREDITS;
-import static info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse.TRANSLATIONS;
-import static info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse.TV_CREDITS;
 import static info.movito.themoviedbapi.util.TestUtils.testForNewItems;
 import static info.movito.themoviedbapi.util.TestUtils.testForNullFields;
 import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
@@ -84,8 +76,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        PersonDb details = tmdbPeople.getDetails(123, "en-US", CHANGES, COMBINED_CREDITS, EXTERNAL_IDS, IMAGES, LATEST, MOVIE_CREDITS,
-            TV_CREDITS, TRANSLATIONS);
+        PersonDb details = tmdbPeople.getDetails(123, "en-US", PersonAppendToResponse.values());
         assertNotNull(details);
         testForNullFieldsAndNewItems(details);
 
