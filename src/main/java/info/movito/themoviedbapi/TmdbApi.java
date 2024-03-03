@@ -92,6 +92,10 @@ public class TmdbApi {
         return new TmdbLists(this);
     }
 
+    public TmdbMovieLists getMovieLists() {
+        return new TmdbMovieLists(this);
+    }
+
     public TmdbMovies getMovies() {
         return new TmdbMovies(this);
     }
