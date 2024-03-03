@@ -1,0 +1,65 @@
+{
+    "id": 550,
+    "titles": [
+        {
+            "iso_3166_1": "RS",
+            "title": "Borilački klub",
+            "type": ""
+        },
+        {
+            "iso_3166_1": "IL",
+            "title": "Mo'adon Krav",
+            "type": "romanization"
+        },
+        {
+            "iso_3166_1": "RU",
+            "title": "Boytsovskiy klub",
+            "type": ""
+        },
+        {
+            "iso_3166_1": "BG",
+            "title": "Boen klub",
+            "type": ""
+        },
+        {
+            "iso_3166_1": "GR",
+            "title": "Kláb máchis",
+            "type": ""
+        },
+        {
+            "iso_3166_1": "UA",
+            "title": "Biytsivsʹkyy klub",
+            "type": ""
+        },
+        {
+            "iso_3166_1": "TR",
+            "title": "Dövüş Klubü",
+            "type": ""
+        },
+        {
+            "iso_3166_1": "MX",
+            "title": "El Club de la Pelea",
+            "type": "Hispanoamérica"
+        },
+        {
+            "iso_3166_1": "KR",
+            "title": "파이트 클럽",
+            "type": ""
+        },
+        {
+            "iso_3166_1": "LV",
+            "title": "Cīņas klubs",
+            "type": ""
+        },
+        {
+            "iso_3166_1": "IR",
+            "title": "باشگاه مشت زنی",
+            "type": ""
+        },
+        {
+            "iso_3166_1": "PL",
+            "title": "Podziemny krąg",
+            "type": ""
+        }
+    ]
+}

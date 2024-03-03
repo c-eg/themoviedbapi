@@ -1,6 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.Review;
+import info.movito.themoviedbapi.model.reviews.Review;
 import info.movito.themoviedbapi.model.reviews.AuthorDetails;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
