@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+// todo: remove this
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class CollectionImages extends IdElement {
