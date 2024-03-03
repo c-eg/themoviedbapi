@@ -22,6 +22,7 @@ public class TmdbPeopleLists extends AbstractTmdbApi {
      * @param language optional - The language to display the results in. e.g. "en-US".
      * @param page optional - The page of results to return.
      * @return The popular people.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public PopularPersonResults getPopular(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PEOPLE_LISTS);
