@@ -49,6 +49,8 @@ public class TmdbWatchProviders extends AbstractTmdbApi {
 
     /**
      * <p>Get the list of streaming providers we have for TV shows.</p>
+     * <p>In order to use this data you must attribute the source of the data as JustWatch. If TMDb find any usage not complying with these
+     * terms TMDb will revoke access to the API.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/watch-provider-tv-list">documentation</a>
      * for more info.</p>
      *

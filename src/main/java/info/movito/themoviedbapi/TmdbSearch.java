@@ -2,7 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.Company;
-import info.movito.themoviedbapi.model.MovieListResultsPage;
+import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.core.MovieDbResultsPage;
 import info.movito.themoviedbapi.model.core.ResultsPage;

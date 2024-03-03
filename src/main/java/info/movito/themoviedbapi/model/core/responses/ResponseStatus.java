@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class ResponseStatus extends AbstractJsonMapping {
+    // todo: maybe map this to the enum TmdbResponseCode
     @JsonProperty("status_code")
     private Integer statusCode;
 

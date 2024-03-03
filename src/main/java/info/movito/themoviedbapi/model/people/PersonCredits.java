@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
-// todo probably remove this when updating movie api
+// todo remove this
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class PersonCredits extends IdElement {

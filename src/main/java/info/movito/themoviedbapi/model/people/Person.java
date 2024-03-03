@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.people.credits;
+package info.movito.themoviedbapi.model.people;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.IdElement;

@@ -1,7 +1,7 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.ListItemStatus;
-import info.movito.themoviedbapi.model.MovieList;
+import info.movito.themoviedbapi.model.movies.MovieList;
 import info.movito.themoviedbapi.model.MovieListCreationStatus;
 import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;

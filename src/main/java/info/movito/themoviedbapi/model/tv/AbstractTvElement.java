@@ -10,6 +10,8 @@ import info.movito.themoviedbapi.model.people.PersonCredits;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class AbstractTvElement extends NamedIdElement {
@@ -25,7 +27,7 @@ public class AbstractTvElement extends NamedIdElement {
     private CollectionImages images;
 
     @JsonProperty("videos")
-    private Video.Results videos;
+    private List<Video> videos;
 
     @JsonProperty("keywords")
     private TvKeywords keywords;

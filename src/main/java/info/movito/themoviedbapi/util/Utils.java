@@ -2,7 +2,7 @@ package info.movito.themoviedbapi.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.movies.MovieDb;
 import info.movito.themoviedbapi.model.configuration.ImageConfig;
 import info.movito.themoviedbapi.tools.MovieDbException;
 import org.apache.commons.lang3.StringUtils;

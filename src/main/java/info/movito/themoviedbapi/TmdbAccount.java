@@ -1,6 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.MovieListResultsPage;
+import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.account.Account;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;

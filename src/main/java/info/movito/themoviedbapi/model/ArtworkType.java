@@ -17,5 +17,15 @@ public enum ArtworkType {
     /**
      * PersonPeople image.
      */
-    PROFILE
+    PROFILE,
+
+    /**
+     * Logo image.
+     */
+    LOGO,
+
+    /**
+     * Still image.
+     */
+    STILL
 }

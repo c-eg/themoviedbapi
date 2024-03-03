@@ -9,7 +9,4 @@ import lombok.EqualsAndHashCode;
 public class NamedStringIdElement extends StringIdElement {
     @JsonProperty("name")
     private String name;
-
-    @JsonProperty("iso_639_1")
-    private String iso639;
 }

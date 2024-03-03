@@ -6,7 +6,7 @@ import info.movito.themoviedbapi.model.ContentRating;
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.core.ResultsPage;
-import info.movito.themoviedbapi.model.people.credits.Person;
+import info.movito.themoviedbapi.model.people.Person;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
