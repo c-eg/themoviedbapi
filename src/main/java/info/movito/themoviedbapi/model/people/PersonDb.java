@@ -12,7 +12,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.List;
-import java.util.Optional;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -55,54 +54,34 @@ public class PersonDb extends NamedIdElement implements Multi {
     private String profilePath;
 
     /* append to responses */
+
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("combined_credits")
     private CombinedPersonCredits combinedCredits;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("changes")
     private ChangeResults changes;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("external_ids")
     private ExternalIds externalIds;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("images")
     private PersonImages images;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("movie_credits")
     private MovieCredits movieCredits;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("tv_credits")
     private TvCredits tvCredits;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("translations")
     private Translations translations;
-
-    public Optional<CombinedPersonCredits> getCombinedCredits() {
-        return Optional.ofNullable(combinedCredits);
-    }
-
-    public Optional<ChangeResults> getChanges() {
-        return Optional.ofNullable(changes);
-    }
-
-    public Optional<ExternalIds> getExternalIds() {
-        return Optional.ofNullable(externalIds);
-    }
-
-    public Optional<PersonImages> getImages() {
-        return Optional.ofNullable(images);
-    }
-
-    public Optional<MovieCredits> getMovieCredits() {
-        return Optional.ofNullable(movieCredits);
-    }
-
-    public Optional<TvCredits> getTvCredits() {
-        return Optional.ofNullable(tvCredits);
-    }
-
-    public Optional<Translations> getTranslations() {
-        return Optional.ofNullable(translations);
-    }
 
     @Override
     public MediaType getMediaType() {

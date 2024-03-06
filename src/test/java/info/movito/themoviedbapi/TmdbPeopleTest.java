@@ -32,6 +32,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbPeople.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
+import static info.movito.themoviedbapi.util.TestUtils.testForNestedEmptyCollectionsAndNullObjects;
 import static info.movito.themoviedbapi.util.TestUtils.testForNewItems;
 import static info.movito.themoviedbapi.util.TestUtils.testForNullFields;
 import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
@@ -59,6 +60,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         testForNullFields(details, "changes", "combinedCredits", "externalIds", "images", "latest", "movieCredits", "tvCredits",
             "translations");
         testForNewItems(details);
+        testForNestedEmptyCollectionsAndNullObjects(details);
 
         List<String> alsoKnownAs = details.getAlsoKnownAs();
         assertNotNull(alsoKnownAs);

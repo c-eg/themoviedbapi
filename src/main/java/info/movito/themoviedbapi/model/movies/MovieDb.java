@@ -15,7 +15,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.List;
-import java.util.Optional;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -94,110 +93,66 @@ public class MovieDb extends IdElement implements Multi {
     private Integer voteCount;
 
     /* append to responses */
+
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("account_states")
     private AccountStates accountStates;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("alternative_titles")
     private AlternativeTitles alternativeTitles;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("credits")
     private Credits credits;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("changes")
     private ChangeResults changes;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("external_ids")
     private ExternalIds externalIds;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("images")
     private Images images;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("keywords")
     private KeywordResults keywords;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("recommendations")
     private MovieResultsPage recommendations;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("release_dates")
     private ReleaseDateResults releaseDates;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("lists")
     private MovieListResultsPage lists;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("reviews")
     private ReviewResultsPage reviews;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("similar")
     private MovieResultsPage similar;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("translations")
     private Translations translations;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("videos")
     private VideoResults videos;
 
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("watch/providers")
     private ProviderResults watchProviders;
-
-    public Optional<AccountStates> getAccountStates() {
-        return Optional.ofNullable(accountStates);
-    }
-
-    public Optional<AlternativeTitles> getAlternativeTitles() {
-        return Optional.ofNullable(alternativeTitles);
-    }
-
-    public Optional<Credits> getCredits() {
-        return Optional.ofNullable(credits);
-    }
-
-    public Optional<ChangeResults> getChanges() {
-        return Optional.ofNullable(changes);
-    }
-
-    public Optional<ExternalIds> getExternalIds() {
-        return Optional.ofNullable(externalIds);
-    }
-
-    public Optional<Images> getImages() {
-        return Optional.ofNullable(images);
-    }
-
-    public Optional<KeywordResults> getKeywords() {
-        return Optional.ofNullable(keywords);
-    }
-
-    public Optional<MovieResultsPage> getRecommendations() {
-        return Optional.ofNullable(recommendations);
-    }
-
-    public Optional<ReleaseDateResults> getReleaseDates() {
-        return Optional.ofNullable(releaseDates);
-    }
-
-    public Optional<MovieListResultsPage> getLists() {
-        return Optional.ofNullable(lists);
-    }
-
-    public Optional<ReviewResultsPage> getReviews() {
-        return Optional.ofNullable(reviews);
-    }
-
-    public Optional<MovieResultsPage> getSimilar() {
-        return Optional.ofNullable(similar);
-    }
-
-    public Optional<Translations> getTranslations() {
-        return Optional.ofNullable(translations);
-    }
-
-    public Optional<VideoResults> getVideos() {
-        return Optional.ofNullable(videos);
-    }
-
-    public Optional<ProviderResults> getWatchProviders() {
-        return Optional.ofNullable(watchProviders);
-    }
 
     @Override
     public MediaType getMediaType() {

@@ -59,6 +59,7 @@ import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.testForNewItems;
 import static info.movito.themoviedbapi.util.TestUtils.testForNullFields;
 import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.testForNestedEmptyCollectionsAndNullObjects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -84,6 +85,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         testForNullFields(movie, "accountStates", "alternativeTitles", "credits", "changes", "externalIds", "images", "keywords",
             "recommendations", "releaseDates", "lists", "reviews", "similar", "translations", "videos", "watchProviders");
         testForNewItems(movie);
+        testForNestedEmptyCollectionsAndNullObjects(movie);
 
         List<Genre> genres = movie.getGenres();
         assertNotNull(genres);
@@ -120,84 +122,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         MovieDb movie = tmdbMovies.getDetails(123, "en-US", MovieAppendToResponse.values());
         assertNotNull(movie);
-        testForNullFields(movie);
-        testForNewItems(movie);
-
-        Optional<AccountStates> accountStates = movie.getAccountStates();
-        assertNotNull(accountStates);
-        assertTrue(accountStates.isPresent());
-        testForNullFields(accountStates.get(), "rated"); // strange case, rated can either be boolean (false) or an object
-        testForNewItems(accountStates.get());
-
-        Optional<AlternativeTitles> alternativeTitles = movie.getAlternativeTitles();
-        assertNotNull(alternativeTitles);
-        assertTrue(alternativeTitles.isPresent());
-        testForNullFieldsAndNewItems(alternativeTitles.get());
-
-        Optional<Credits> credits = movie.getCredits();
-        assertNotNull(credits);
-        assertTrue(credits.isPresent());
-        testForNullFieldsAndNewItems(credits.get());
-
-        Optional<ChangeResults> changes = movie.getChanges();
-        assertNotNull(changes);
-        assertTrue(changes.isPresent());
-        testForNullFieldsAndNewItems(changes.get());
-
-        Optional<ExternalIds> externalIds = movie.getExternalIds();
-        assertNotNull(externalIds);
-        assertTrue(externalIds.isPresent());
-        testForNullFieldsAndNewItems(externalIds.get());
-
-        Optional<Images> images = movie.getImages();
-        assertNotNull(images);
-        assertTrue(images.isPresent());
-        testForNullFieldsAndNewItems(images.get());
-
-        Optional<KeywordResults> keywords = movie.getKeywords();
-        assertNotNull(keywords);
-        assertTrue(keywords.isPresent());
-        testForNullFieldsAndNewItems(keywords.get());
-
-        Optional<MovieListResultsPage> lists = movie.getLists();
-        assertNotNull(lists);
-        assertTrue(lists.isPresent());
-        testForNullFieldsAndNewItems(lists.get());
-
-        Optional<ReviewResultsPage> reviews = movie.getReviews();
-        assertNotNull(reviews);
-        assertTrue(reviews.isPresent());
-        testForNullFieldsAndNewItems(reviews.get());
-
-        Optional<MovieResultsPage> recommendations = movie.getRecommendations();
-        assertNotNull(recommendations);
-        assertTrue(recommendations.isPresent());
-        testForNullFieldsAndNewItems(recommendations.get());
-
-        Optional<ReleaseDateResults> releaseDates = movie.getReleaseDates();
-        assertNotNull(releaseDates);
-        assertTrue(releaseDates.isPresent());
-        testForNullFieldsAndNewItems(releaseDates.get());
-
-        Optional<MovieResultsPage> similar = movie.getSimilar();
-        assertNotNull(similar);
-        assertTrue(similar.isPresent());
-        testForNullFieldsAndNewItems(similar.get());
-
-        Optional<Translations> translations = movie.getTranslations();
-        assertNotNull(translations);
-        assertTrue(translations.isPresent());
-        testForNullFieldsAndNewItems(translations.get());
-
-        Optional<VideoResults> videos = movie.getVideos();
-        assertNotNull(videos);
-        assertTrue(videos.isPresent());
-        testForNullFieldsAndNewItems(videos.get());
-
-        Optional<ProviderResults> watchProviders = movie.getWatchProviders();
-        assertNotNull(watchProviders);
-        assertTrue(watchProviders.isPresent());
-        testForNullFieldsAndNewItems(watchProviders.get());
+        testForNullFieldsAndNewItems(movie);
     }
 
     /**

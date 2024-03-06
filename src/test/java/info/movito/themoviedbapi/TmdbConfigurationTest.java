@@ -26,16 +26,16 @@ import static org.mockito.Mockito.when;
  */
 public class TmdbConfigurationTest extends AbstractTmdbApiTest {
     /**
-     * Test for {@link TmdbConfiguration#getConfig()} with an expected result.
+     * Test for {@link TmdbConfiguration#getDetails()} with an expected result.
      */
     @Test
-    public void testGetConfig() throws IOException, TmdbException {
+    public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/configuration/details.json");
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CONFIGURATION);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbConfiguration tmdbConfiguration = getTmdbApi().getConfiguration();
-        Configuration configuration = tmdbConfiguration.getConfig();
+        Configuration configuration = tmdbConfiguration.getDetails();
         assertNotNull(configuration);
         testForNullFieldsAndNewItems(configuration);
     }

@@ -29,6 +29,9 @@ public class ImageConfig extends AbstractJsonMapping {
     @JsonProperty("logo_sizes")
     private List<String> logoSizes;
 
+    @JsonProperty("still_sizes")
+    private List<String> stillSizes;
+
     /**
      * Check that the poster size is valid.
      */

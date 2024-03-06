@@ -32,7 +32,7 @@ public class TmdbConfiguration extends AbstractTmdbApi {
      * @return The configuration details
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public Configuration getConfig() throws TmdbException {
+    public Configuration getDetails() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION);
         return mapJsonResult(apiUrl, Configuration.class);
     }
