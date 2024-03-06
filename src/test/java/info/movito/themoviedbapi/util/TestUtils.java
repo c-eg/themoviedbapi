@@ -8,9 +8,12 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -43,6 +46,7 @@ public final class TestUtils {
     public static void testForNullFieldsAndNewItems(AbstractJsonMapping objectToCheck) {
         testForNullFields(objectToCheck);
         testForNewItems(objectToCheck);
+        testForNestedEmptyCollectionsAndNullObjects(objectToCheck);
     }
 
     /**
@@ -63,6 +67,51 @@ public final class TestUtils {
     public static void testForNewItems(AbstractJsonMapping objectToCheck) {
         Map<String, Object> newItems = objectToCheck.getNewItems();
         assertTrue(newItems.isEmpty(), "Unknown properties found in " + objectToCheck.getClass().getSimpleName() + ": " + newItems);
+    }
+
+    /**
+     * Tests the given object's fields for instances of objects, collections or maps. If there are any, it tests them for null fields and
+     * new items.
+     */
+    public static void testForNestedEmptyCollectionsAndNullObjects(Object objectToCheck) {
+        for (Field field : objectToCheck.getClass().getDeclaredFields()) {
+            field.setAccessible(true);
+
+            try {
+                Object fieldValue = field.get(objectToCheck);
+                if (fieldValue != null) {
+                    if (fieldValue instanceof AbstractJsonMapping abstractJsonMapping) {
+                        testForNullFieldsAndNewItems(abstractJsonMapping);
+                    }
+                    else if (fieldValue instanceof Collection<?> collection) {
+                        assertFalse(collection.isEmpty(), "Empty collection found in " + objectToCheck.getClass().getName() + "." +
+                            field.getName());
+
+                        Object item = collection.iterator().next();
+                        if (item instanceof AbstractJsonMapping abstractJsonMapping) {
+                            testForNullFieldsAndNewItems(abstractJsonMapping);
+                        }
+
+                        assertNotNull(item, "Null item found in " + objectToCheck.getClass().getName() + "." + field.getName());
+
+                    }
+                    else if (fieldValue instanceof Map<?, ?> map) {
+                        assertFalse(map.isEmpty(), "Empty map found in " + objectToCheck.getClass().getName() + "." + field.getName());
+
+                        for (Object item : map.values()) {
+                            if (item instanceof AbstractJsonMapping abstractJsonMapping) {
+                                testForNullFieldsAndNewItems(abstractJsonMapping);
+                            }
+
+                            assertNotNull(item, "Null item found in " + objectToCheck.getClass().getName() + "." + field.getName());
+                        }
+                    }
+                }
+            }
+            catch (IllegalAccessException exception) {
+                throw new RuntimeException(exception);
+            }
+        }
     }
 
     /**
