@@ -14,7 +14,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbPeopleLists.TMDB_METHOD_PEOPLE_LISTS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -35,7 +35,7 @@ public class TmdbPeopleListsTest extends AbstractTmdbApiTest {
         TmdbPeopleLists tmdbPeopleLists = getTmdbApi().getPeopleLists();
         PopularPersonResults popularPersonResults = tmdbPeopleLists.getPopular("en-US", 1);
         assertNotNull(popularPersonResults);
-        testForNullFieldsAndNewItems(popularPersonResults);
+        checkForNullAndEmptyFieldsAndNewItems(popularPersonResults);
 
         List<PopularPerson> popularPeople = popularPersonResults.getResults();
         assertNotNull(popularPeople);
@@ -43,10 +43,10 @@ public class TmdbPeopleListsTest extends AbstractTmdbApiTest {
 
         PopularPerson popularPerson = popularPeople.get(0);
         assertNotNull(popularPerson);
-        testForNullFieldsAndNewItems(popularPerson);
+        checkForNullAndEmptyFieldsAndNewItems(popularPerson);
 
         KnownFor knownFor = popularPerson.getKnownFor().get(0);
         assertNotNull(knownFor);
-        testForNullFieldsAndNewItems(knownFor);
+        checkForNullAndEmptyFieldsAndNewItems(knownFor);
     }
 }

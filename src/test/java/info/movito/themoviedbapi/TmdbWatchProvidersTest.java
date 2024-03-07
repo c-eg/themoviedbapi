@@ -16,7 +16,7 @@ import java.util.Map;
 
 import static info.movito.themoviedbapi.TmdbWatchProviders.TMDB_METHOD_WATCH_PROVIDERS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -37,7 +37,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest {
         TmdbWatchProviders tmdbWatchProviders = getTmdbApi().getWatchProviders();
         AvailableRegionResults availableRegionResults = tmdbWatchProviders.getAvailableRegions("en-US");
         assertNotNull(availableRegionResults);
-        testForNullFieldsAndNewItems(availableRegionResults);
+        checkForNullAndEmptyFieldsAndNewItems(availableRegionResults);
 
         List<AvailableRegion> availableRegions = availableRegionResults.getResults();
         assertNotNull(availableRegions);
@@ -45,7 +45,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest {
 
         AvailableRegion availableRegion = availableRegions.get(0);
         assertNotNull(availableRegion);
-        testForNullFieldsAndNewItems(availableRegion);
+        checkForNullAndEmptyFieldsAndNewItems(availableRegion);
     }
 
     /**
@@ -60,11 +60,11 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest {
         TmdbWatchProviders tmdbWatchProviders = getTmdbApi().getWatchProviders();
         ProviderResults providerResults = tmdbWatchProviders.getMovieProviders("en-US", "US");
         assertNotNull(providerResults);
-        testForNullFieldsAndNewItems(providerResults);
+        checkForNullAndEmptyFieldsAndNewItems(providerResults);
 
         Provider provider = providerResults.getResults().get(0);
         assertNotNull(provider);
-        testForNullFieldsAndNewItems(provider);
+        checkForNullAndEmptyFieldsAndNewItems(provider);
 
         for (Map.Entry<String, Integer> entry : provider.getDisplayPriorities().entrySet()) {
             assertNotNull(entry.getKey());
@@ -84,11 +84,11 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest {
         TmdbWatchProviders tmdbWatchProviders = getTmdbApi().getWatchProviders();
         ProviderResults providerResults = tmdbWatchProviders.getTvProviders("en-US", "US");
         assertNotNull(providerResults);
-        testForNullFieldsAndNewItems(providerResults);
+        checkForNullAndEmptyFieldsAndNewItems(providerResults);
 
         Provider provider = providerResults.getResults().get(0);
         assertNotNull(provider);
-        testForNullFieldsAndNewItems(provider);
+        checkForNullAndEmptyFieldsAndNewItems(provider);
 
         for (Map.Entry<String, Integer> entry : provider.getDisplayPriorities().entrySet()) {
             assertNotNull(entry.getKey());

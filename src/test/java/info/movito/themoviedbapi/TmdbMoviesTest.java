@@ -58,7 +58,7 @@ import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.testForNewItems;
 import static info.movito.themoviedbapi.util.TestUtils.testForNullFields;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static info.movito.themoviedbapi.util.TestUtils.testForNestedEmptyCollectionsAndNullObjects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -90,22 +90,22 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         List<Genre> genres = movie.getGenres();
         assertNotNull(genres);
         assertFalse(genres.isEmpty());
-        testForNullFieldsAndNewItems(genres.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(genres.get(0));
 
         List<ProductionCompany> productionCompanies = movie.getProductionCompanies();
         assertNotNull(productionCompanies);
         assertFalse(productionCompanies.isEmpty());
-        testForNullFieldsAndNewItems(productionCompanies.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(productionCompanies.get(0));
 
         List<ProductionCountry> productionCountries = movie.getProductionCountries();
         assertNotNull(productionCountries);
         assertFalse(productionCountries.isEmpty());
-        testForNullFieldsAndNewItems(productionCountries.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(productionCountries.get(0));
 
         List<Language> spokenLanguages = movie.getSpokenLanguages();
         assertNotNull(spokenLanguages);
         assertFalse(spokenLanguages.isEmpty());
-        testForNullFieldsAndNewItems(spokenLanguages.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(spokenLanguages.get(0));
     }
 
     /**
@@ -122,7 +122,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         MovieDb movie = tmdbMovies.getDetails(123, "en-US", MovieAppendToResponse.values());
         assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -137,12 +137,12 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         AccountStates accountStates = tmdbMovies.getAccountStates(123, "123", null);
         assertNotNull(accountStates);
-        testForNullFieldsAndNewItems(accountStates);
+        checkForNullAndEmptyFieldsAndNewItems(accountStates);
 
         Optional<Rated> rated = accountStates.getRated();
         assertNotNull(rated);
         assertTrue(rated.isPresent());
-        testForNullFieldsAndNewItems(rated.get());
+        checkForNullAndEmptyFieldsAndNewItems(rated.get());
     }
 
     /**
@@ -157,12 +157,12 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         AlternativeTitles alternativeTitles = tmdbMovies.getAlternativeTitles(123, "US");
         assertNotNull(alternativeTitles);
-        testForNullFieldsAndNewItems(alternativeTitles);
+        checkForNullAndEmptyFieldsAndNewItems(alternativeTitles);
 
         List<AlternativeTitle> titles = alternativeTitles.getTitles();
         assertNotNull(titles);
         assertFalse(titles.isEmpty());
-        testForNullFieldsAndNewItems(titles.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(titles.get(0));
     }
 
     /**
@@ -177,7 +177,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         ChangeResults changeResults = tmdbMovies.getChanges(123, null, null, null);
         assertNotNull(changeResults);
-        testForNullFieldsAndNewItems(changeResults);
+        checkForNullAndEmptyFieldsAndNewItems(changeResults);
 
         List<Change> changedItems = changeResults.getChangedItems();
         assertNotNull(changedItems);
@@ -185,12 +185,12 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
 
         Change change = changedItems.get(0);
         assertNotNull(change);
-        testForNullFieldsAndNewItems(change);
+        checkForNullAndEmptyFieldsAndNewItems(change);
 
         List<ChangeItem> changeItems = change.getChangeItems();
         assertNotNull(changeItems);
         assertFalse(changeItems.isEmpty());
-        testForNullFieldsAndNewItems(changeItems.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(changeItems.get(0));
     }
 
     /**
@@ -205,17 +205,17 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         Credits credits = tmdbMovies.getCredits(123, "en-US");
         assertNotNull(credits);
-        testForNullFieldsAndNewItems(credits);
+        checkForNullAndEmptyFieldsAndNewItems(credits);
 
         List<Cast> cast = credits.getCast();
         assertNotNull(cast);
         assertFalse(cast.isEmpty());
-        testForNullFieldsAndNewItems(cast.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(cast.get(0));
 
         List<Crew> crew = credits.getCrew();
         assertNotNull(crew);
         assertFalse(crew.isEmpty());
-        testForNullFieldsAndNewItems(crew.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(crew.get(0));
     }
 
     /**
@@ -230,7 +230,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         ExternalIds externalIds = tmdbMovies.getExternalIds(123);
         assertNotNull(externalIds);
-        testForNullFieldsAndNewItems(externalIds);
+        checkForNullAndEmptyFieldsAndNewItems(externalIds);
     }
 
     /**
@@ -245,19 +245,19 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         Images images = tmdbMovies.getImages(123, "en-US");
         assertNotNull(images);
-        testForNullFieldsAndNewItems(images);
+        checkForNullAndEmptyFieldsAndNewItems(images);
 
         List<Artwork> posters = images.getPosters();
         assertFalse(posters.isEmpty());
-        testForNullFieldsAndNewItems(posters.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(posters.get(0));
 
         List<Artwork> backdrops = images.getBackdrops();
         assertFalse(backdrops.isEmpty());
-        testForNullFieldsAndNewItems(backdrops.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(backdrops.get(0));
 
         List<Artwork> logos = images.getLogos();
         assertFalse(logos.isEmpty());
-        testForNullFieldsAndNewItems(logos.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(logos.get(0));
     }
 
     /**
@@ -272,11 +272,11 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         KeywordResults keywords = tmdbMovies.getKeywords(123);
         assertNotNull(keywords);
-        testForNullFieldsAndNewItems(keywords);
+        checkForNullAndEmptyFieldsAndNewItems(keywords);
 
         List<Keyword> keywordsList = keywords.getKeywords();
         assertFalse(keywordsList.isEmpty());
-        testForNullFieldsAndNewItems(keywordsList.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(keywordsList.get(0));
     }
 
     /**
@@ -308,11 +308,11 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         MovieListResultsPage lists = tmdbMovies.getLists(123, "en-US", null);
         assertNotNull(lists);
-        testForNullFieldsAndNewItems(lists);
+        checkForNullAndEmptyFieldsAndNewItems(lists);
 
         MovieList list = lists.getResults().get(0);
         assertNotNull(list);
-        testForNullFieldsAndNewItems(list);
+        checkForNullAndEmptyFieldsAndNewItems(list);
     }
 
     /**
@@ -327,11 +327,11 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         MovieResultsPage recommendations = tmdbMovies.getRecommendations(123, "en-US", 1);
         assertNotNull(recommendations);
-        testForNullFieldsAndNewItems(recommendations);
+        checkForNullAndEmptyFieldsAndNewItems(recommendations);
 
         Movie movie = recommendations.getResults().get(0);
         assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -346,11 +346,11 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         ReleaseDateResults releaseDates = tmdbMovies.getReleaseDates(123);
         assertNotNull(releaseDates);
-        testForNullFieldsAndNewItems(releaseDates);
+        checkForNullAndEmptyFieldsAndNewItems(releaseDates);
 
         ReleaseInfo releaseInfo = releaseDates.getResults().get(0);
         assertNotNull(releaseInfo);
-        testForNullFieldsAndNewItems(releaseInfo);
+        checkForNullAndEmptyFieldsAndNewItems(releaseInfo);
 
         List<ReleaseDate> releaseDatesList = releaseInfo.getReleaseDates();
         assertNotNull(releaseDatesList);
@@ -358,9 +358,9 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
 
         ReleaseDate releaseDate = releaseDatesList.get(0);
         assertNotNull(releaseDate);
-        testForNullFieldsAndNewItems(releaseDate);
+        checkForNullAndEmptyFieldsAndNewItems(releaseDate);
 
-        List<String> descriptors = releaseDate.getDescriptors();
+        List<Object> descriptors = releaseDate.getDescriptors();
         assertNotNull(descriptors);
         assertFalse(descriptors.isEmpty());
         assertNotNull(descriptors.get(0));
@@ -378,15 +378,15 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         ReviewResultsPage reviews = tmdbMovies.getReviews(123, "en-US", null);
         assertNotNull(reviews);
-        testForNullFieldsAndNewItems(reviews);
+        checkForNullAndEmptyFieldsAndNewItems(reviews);
 
         Review review = reviews.getResults().get(0);
         assertNotNull(review);
-        testForNullFieldsAndNewItems(review);
+        checkForNullAndEmptyFieldsAndNewItems(review);
 
         AuthorDetails authorDetails = review.getAuthorDetails();
         assertNotNull(authorDetails);
-        testForNullFieldsAndNewItems(authorDetails);
+        checkForNullAndEmptyFieldsAndNewItems(authorDetails);
     }
 
     /**
@@ -401,11 +401,11 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         MovieResultsPage similar = tmdbMovies.getSimilar(123, "en-US", null);
         assertNotNull(similar);
-        testForNullFieldsAndNewItems(similar);
+        checkForNullAndEmptyFieldsAndNewItems(similar);
 
         Movie movie = similar.getResults().get(0);
         assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -420,7 +420,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         Translations translations = tmdbMovies.getTranslations(123);
         assertNotNull(translations);
-        testForNullFieldsAndNewItems(translations);
+        checkForNullAndEmptyFieldsAndNewItems(translations);
 
         List<Translation> translationsList = translations.getTranslations();
         assertNotNull(translationsList);
@@ -428,11 +428,11 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
 
         Translation translation = translationsList.get(0);
         assertNotNull(translation);
-        testForNullFieldsAndNewItems(translation);
+        checkForNullAndEmptyFieldsAndNewItems(translation);
 
         Data data = translation.getData();
         assertNotNull(data);
-        testForNullFieldsAndNewItems(data);
+        checkForNullAndEmptyFieldsAndNewItems(data);
     }
 
     /**
@@ -447,12 +447,12 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         VideoResults videos = tmdbMovies.getVideos(123, "en-US");
         assertNotNull(videos);
-        testForNullFieldsAndNewItems(videos);
+        checkForNullAndEmptyFieldsAndNewItems(videos);
 
         List<Video> videosList = videos.getResults();
         assertNotNull(videosList);
         assertFalse(videosList.isEmpty());
-        testForNullFieldsAndNewItems(videosList.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(videosList.get(0));
     }
 
     /**
@@ -467,7 +467,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         ProviderResults watchProviders = tmdbMovies.getWatchProviders(123);
         assertNotNull(watchProviders);
-        testForNullFieldsAndNewItems(watchProviders);
+        checkForNullAndEmptyFieldsAndNewItems(watchProviders);
 
         Map<String, WatchProviders> results = watchProviders.getResults();
         assertNotNull(results);
@@ -475,22 +475,22 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
 
         WatchProviders watchProvider = results.get("AE");
         assertNotNull(watchProvider);
-        testForNullFieldsAndNewItems(watchProvider);
+        checkForNullAndEmptyFieldsAndNewItems(watchProvider);
 
         List<Provider> rentProviders = watchProvider.getRentProviders();
         assertNotNull(rentProviders);
         assertFalse(rentProviders.isEmpty());
-        testForNullFieldsAndNewItems(rentProviders.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(rentProviders.get(0));
 
         List<Provider> buyProviders = watchProvider.getBuyProviders();
         assertNotNull(buyProviders);
         assertFalse(buyProviders.isEmpty());
-        testForNullFieldsAndNewItems(buyProviders.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(buyProviders.get(0));
 
         List<Provider> flatrateProviders = watchProvider.getFlatrateProviders();
         assertNotNull(flatrateProviders);
         assertFalse(flatrateProviders.isEmpty());
-        testForNullFieldsAndNewItems(flatrateProviders.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(flatrateProviders.get(0));
     }
 
     /**
@@ -509,7 +509,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         ResponseStatus responseStatus = tmdbMovies.addRating(123, null, null, 2.1);
         assertNotNull(responseStatus);
-        testForNullFieldsAndNewItems(responseStatus);
+        checkForNullAndEmptyFieldsAndNewItems(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
     }
 
@@ -525,7 +525,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         ResponseStatus responseStatus = tmdbMovies.deleteRating(123, null, null);
         assertNotNull(responseStatus);
-        testForNullFieldsAndNewItems(responseStatus);
+        checkForNullAndEmptyFieldsAndNewItems(responseStatus);
         assertEquals(13, responseStatus.getStatusCode());
     }
 }

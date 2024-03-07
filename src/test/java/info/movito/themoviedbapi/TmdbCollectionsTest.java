@@ -17,7 +17,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbCollections.TMDB_METHOD_COLLECTION;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -42,14 +42,14 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         TmdbCollections tmdbCollections = getTmdbApi().getCollections();
         CollectionInfo collectionInfo = tmdbCollections.getDetails(collectionId, language);
         assertNotNull(collectionInfo);
-        testForNullFieldsAndNewItems(collectionInfo);
+        checkForNullAndEmptyFieldsAndNewItems(collectionInfo);
 
         List<Part> partList = collectionInfo.getParts();
         assertFalse(partList.isEmpty());
 
         Part part = partList.get(0);
         assertNotNull(part);
-        testForNullFieldsAndNewItems(part);
+        checkForNullAndEmptyFieldsAndNewItems(part);
     }
 
     /**
@@ -69,15 +69,15 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         TmdbCollections tmdbCollections = getTmdbApi().getCollections();
         Images images = tmdbCollections.getImages(collectionId, language);
         assertNotNull(images);
-        testForNullFieldsAndNewItems(images);
+        checkForNullAndEmptyFieldsAndNewItems(images);
 
         List<Artwork> posters = images.getPosters();
         assertFalse(posters.isEmpty());
-        testForNullFieldsAndNewItems(posters.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(posters.get(0));
 
         List<Artwork> backdrops = images.getBackdrops();
         assertFalse(backdrops.isEmpty());
-        testForNullFieldsAndNewItems(backdrops.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(backdrops.get(0));
     }
 
     /**
@@ -97,15 +97,15 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         TmdbCollections tmdbCollections = getTmdbApi().getCollections();
         Images images = tmdbCollections.getImages(collectionId, null, includeImageLanguage);
         assertNotNull(images);
-        testForNullFieldsAndNewItems(images);
+        checkForNullAndEmptyFieldsAndNewItems(images);
 
         List<Artwork> posters = images.getPosters();
         assertFalse(posters.isEmpty());
-        testForNullFieldsAndNewItems(posters.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(posters.get(0));
 
         List<Artwork> backdrops = images.getBackdrops();
         assertFalse(backdrops.isEmpty());
-        testForNullFieldsAndNewItems(backdrops.get(0));
+        checkForNullAndEmptyFieldsAndNewItems(backdrops.get(0));
     }
 
     /**
@@ -125,10 +125,10 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
 
         Translation translation = translations.get(0);
         assertNotNull(translation);
-        testForNullFieldsAndNewItems(translation);
+        checkForNullAndEmptyFieldsAndNewItems(translation);
 
         Data data = translation.getData();
         assertNotNull(data);
-        testForNullFieldsAndNewItems(data);
+        checkForNullAndEmptyFieldsAndNewItems(data);
     }
 }

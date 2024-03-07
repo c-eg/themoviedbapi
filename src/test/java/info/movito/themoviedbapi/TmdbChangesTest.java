@@ -15,7 +15,7 @@ import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -43,11 +43,11 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         long end = System.currentTimeMillis();
         System.out.println("Time: " + (end - start));
         assertNotNull(changesResultsPage);
-        testForNullFieldsAndNewItems(changesResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(changesResultsPage);
 
         Change change = changesResultsPage.getResults().get(0);
         assertNotNull(change);
-        testForNullFieldsAndNewItems(change);
+        checkForNullAndEmptyFieldsAndNewItems(change);
     }
 
     /**
@@ -67,11 +67,11 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         TmdbChanges tmdbChanges = getTmdbApi().getChanges();
         ChangesResultsPage changesResultsPage = tmdbChanges.getPeopleChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
-        testForNullFieldsAndNewItems(changesResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(changesResultsPage);
 
         Change change = changesResultsPage.getResults().get(0);
         assertNotNull(change);
-        testForNullFieldsAndNewItems(change);
+        checkForNullAndEmptyFieldsAndNewItems(change);
     }
 
     /**
@@ -91,10 +91,10 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         TmdbChanges tmdbChanges = getTmdbApi().getChanges();
         ChangesResultsPage changesResultsPage = tmdbChanges.getTvChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
-        testForNullFieldsAndNewItems(changesResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(changesResultsPage);
 
         Change change = changesResultsPage.getResults().get(0);
         assertNotNull(change);
-        testForNullFieldsAndNewItems(change);
+        checkForNullAndEmptyFieldsAndNewItems(change);
     }
 }

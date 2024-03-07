@@ -18,7 +18,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbGuestSessions.TMDB_METHOD_GUEST_SESSIONS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -39,14 +39,14 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
         TmdbGuestSessions guestSessions = new TmdbGuestSessions(getTmdbApi());
         RatedMovieResultsPage ratedMovieResultsPage = guestSessions.getRatedMovies(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedMovieResultsPage);
-        testForNullFieldsAndNewItems(ratedMovieResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(ratedMovieResultsPage);
 
         List<RatedMovie> ratedMovies = ratedMovieResultsPage.getResults();
         assertFalse(ratedMovies.isEmpty());
 
         RatedMovie ratedMovie = ratedMovies.get(0);
         assertNotNull(ratedMovie);
-        testForNullFieldsAndNewItems(ratedMovie);
+        checkForNullAndEmptyFieldsAndNewItems(ratedMovie);
     }
 
     /**
@@ -61,14 +61,14 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
         TmdbGuestSessions guestSessions = new TmdbGuestSessions(getTmdbApi());
         RatedTvSeriesResultsPage ratedTvSeriesResultsPage = guestSessions.getRatedTvSeries(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvSeriesResultsPage);
-        testForNullFieldsAndNewItems(ratedTvSeriesResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(ratedTvSeriesResultsPage);
 
         List<RatedTvSeries> ratedTvSeriess = ratedTvSeriesResultsPage.getResults();
         assertFalse(ratedTvSeriess.isEmpty());
 
         RatedTvSeries ratedTvSeries = ratedTvSeriess.get(0);
         assertNotNull(ratedTvSeries);
-        testForNullFieldsAndNewItems(ratedTvSeries);
+        checkForNullAndEmptyFieldsAndNewItems(ratedTvSeries);
     }
 
     /**
@@ -84,13 +84,13 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
         TmdbGuestSessions guestSessions = new TmdbGuestSessions(getTmdbApi());
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = guestSessions.getRatedTvEpisodes(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvEpisodesResultsPage);
-        testForNullFieldsAndNewItems(ratedTvEpisodesResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(ratedTvEpisodesResultsPage);
 
         List<RatedTvEpisode> ratedTvEpisodes = ratedTvEpisodesResultsPage.getResults();
         assertFalse(ratedTvEpisodes.isEmpty());
 
         RatedTvEpisode ratedTvEpisode = ratedTvEpisodes.get(0);
         assertNotNull(ratedTvEpisode);
-        testForNullFieldsAndNewItems(ratedTvEpisode);
+        checkForNullAndEmptyFieldsAndNewItems(ratedTvEpisode);
     }
 }

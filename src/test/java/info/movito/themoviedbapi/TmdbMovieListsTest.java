@@ -15,7 +15,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbMovieLists.TMDB_METHOD_MOVIE_LISTS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -36,11 +36,11 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
         MovieResultsPageWithDates movieResultsPageWithDates = tmdbMovieLists.getNowPlaying("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
-        testForNullFieldsAndNewItems(movieResultsPageWithDates);
+        checkForNullAndEmptyFieldsAndNewItems(movieResultsPageWithDates);
 
         Dates dates = movieResultsPageWithDates.getDates();
         assertNotNull(dates);
-        testForNullFieldsAndNewItems(dates);
+        checkForNullAndEmptyFieldsAndNewItems(dates);
 
         List<Movie> movies = movieResultsPageWithDates.getResults();
         assertNotNull(movies);
@@ -48,7 +48,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
 
         Movie movie = movies.get(0);
         assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        checkForNullAndEmptyFieldsAndNewItems(movie);
 
         List<Integer> genreIds = movie.getGenreIds();
         assertNotNull(genreIds);
@@ -68,7 +68,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
         MovieResultsPage movieResultsPage = tmdbMovieLists.getPopular("en-US", 1, null);
         assertNotNull(movieResultsPage);
-        testForNullFieldsAndNewItems(movieResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
 
         List<Movie> movies = movieResultsPage.getResults();
         assertNotNull(movies);
@@ -76,7 +76,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
 
         Movie movie = movies.get(0);
         assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        checkForNullAndEmptyFieldsAndNewItems(movie);
 
         List<Integer> genreIds = movie.getGenreIds();
         assertNotNull(genreIds);
@@ -96,7 +96,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
         MovieResultsPage movieResultsPage = tmdbMovieLists.getTopRated("en-US", 1, null);
         assertNotNull(movieResultsPage);
-        testForNullFieldsAndNewItems(movieResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
 
         List<Movie> movies = movieResultsPage.getResults();
         assertNotNull(movies);
@@ -104,7 +104,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
 
         Movie movie = movies.get(0);
         assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        checkForNullAndEmptyFieldsAndNewItems(movie);
 
         List<Integer> genreIds = movie.getGenreIds();
         assertNotNull(genreIds);
@@ -124,11 +124,11 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
         MovieResultsPageWithDates movieResultsPageWithDates = tmdbMovieLists.getUpcoming("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
-        testForNullFieldsAndNewItems(movieResultsPageWithDates);
+        checkForNullAndEmptyFieldsAndNewItems(movieResultsPageWithDates);
 
         Dates dates = movieResultsPageWithDates.getDates();
         assertNotNull(dates);
-        testForNullFieldsAndNewItems(dates);
+        checkForNullAndEmptyFieldsAndNewItems(dates);
 
         List<Movie> movies = movieResultsPageWithDates.getResults();
         assertNotNull(movies);
@@ -136,7 +136,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
 
         Movie movie = movies.get(0);
         assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        checkForNullAndEmptyFieldsAndNewItems(movie);
 
         List<Integer> genreIds = movie.getGenreIds();
         assertNotNull(genreIds);

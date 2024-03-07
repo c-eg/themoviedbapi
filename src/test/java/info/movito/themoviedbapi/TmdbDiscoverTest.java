@@ -18,7 +18,7 @@ import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_DISCOVER;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -41,11 +41,11 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
 
         MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(discoverMovieParamBuilder);
         assertNotNull(movieResultsPage);
-        testForNullFieldsAndNewItems(movieResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
 
         Movie movie = movieResultsPage.getResults().get(0);
         assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -60,11 +60,11 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
         MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(null);
         assertNotNull(movieResultsPage);
-        testForNullFieldsAndNewItems(movieResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
 
         Movie movie = movieResultsPage.getResults().get(0);
         assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -82,11 +82,11 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
 
         TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(discoverTvParamBuilder);
         assertNotNull(tvSeriesResultsPage);
-        testForNullFieldsAndNewItems(tvSeriesResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(tvSeriesResultsPage);
 
         TvSeries tvSeries = tvSeriesResultsPage.getResults().get(0);
         assertNotNull(tvSeries);
-        testForNullFieldsAndNewItems(tvSeries);
+        checkForNullAndEmptyFieldsAndNewItems(tvSeries);
     }
 
     /**
@@ -101,10 +101,10 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
         TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(null);
         assertNotNull(tvSeriesResultsPage);
-        testForNullFieldsAndNewItems(tvSeriesResultsPage);
+        checkForNullAndEmptyFieldsAndNewItems(tvSeriesResultsPage);
 
         TvSeries tvSeries = tvSeriesResultsPage.getResults().get(0);
         assertNotNull(tvSeries);
-        testForNullFieldsAndNewItems(tvSeries);
+        checkForNullAndEmptyFieldsAndNewItems(tvSeries);
     }
 }

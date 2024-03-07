@@ -16,7 +16,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbConfiguration.TMDB_METHOD_CONFIGURATION;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -37,7 +37,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
         TmdbConfiguration tmdbConfiguration = getTmdbApi().getConfiguration();
         Configuration configuration = tmdbConfiguration.getDetails();
         assertNotNull(configuration);
-        testForNullFieldsAndNewItems(configuration);
+        checkForNullAndEmptyFieldsAndNewItems(configuration);
     }
 
     /**
@@ -56,7 +56,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
 
         Country country = countries.get(0);
         assertNotNull(country);
-        testForNullFieldsAndNewItems(country);
+        checkForNullAndEmptyFieldsAndNewItems(country);
     }
 
     /**
@@ -75,7 +75,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
 
         Job job = jobs.get(0);
         assertNotNull(job);
-        testForNullFieldsAndNewItems(job);
+        checkForNullAndEmptyFieldsAndNewItems(job);
     }
 
     /**
@@ -94,7 +94,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
 
         Language language = languages.get(0);
         assertNotNull(language);
-        testForNullFieldsAndNewItems(language);
+        checkForNullAndEmptyFieldsAndNewItems(language);
     }
 
     /**
@@ -131,6 +131,6 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
 
         Timezone timezone = timezones.get(0);
         assertNotNull(timezone);
-        testForNullFieldsAndNewItems(timezone);
+        checkForNullAndEmptyFieldsAndNewItems(timezone);
     }
 }

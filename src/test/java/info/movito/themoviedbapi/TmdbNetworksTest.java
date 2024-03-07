@@ -16,7 +16,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbNetworks.TMDB_METHOD_NETWORK;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -37,7 +37,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
         Network network = tmdbNetworks.getDetails(1);
         assertNotNull(network);
-        testForNullFieldsAndNewItems(network);
+        checkForNullAndEmptyFieldsAndNewItems(network);
     }
 
     /**
@@ -52,7 +52,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
         AlternativeNamesResults alternativeNamesResults = tmdbNetworks.getAlternativeNames(1);
         assertNotNull(alternativeNamesResults);
-        testForNullFieldsAndNewItems(alternativeNamesResults);
+        checkForNullAndEmptyFieldsAndNewItems(alternativeNamesResults);
 
         List<AlternativeName> alternativeNames = alternativeNamesResults.getResults();
         assertNotNull(alternativeNames);
@@ -60,7 +60,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
 
         AlternativeName alternativeName = alternativeNames.get(0);
         assertNotNull(alternativeName);
-        testForNullFieldsAndNewItems(alternativeName);
+        checkForNullAndEmptyFieldsAndNewItems(alternativeName);
     }
 
     /**
@@ -75,7 +75,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
         ImageResults imageResults = tmdbNetworks.getImages(1);
         assertNotNull(imageResults);
-        testForNullFieldsAndNewItems(imageResults);
+        checkForNullAndEmptyFieldsAndNewItems(imageResults);
 
         List<Image> images = imageResults.getLogos();
         assertNotNull(images);
@@ -83,6 +83,6 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
 
         Image image = images.get(0);
         assertNotNull(image);
-        testForNullFieldsAndNewItems(image);
+        checkForNullAndEmptyFieldsAndNewItems(image);
     }
 }
