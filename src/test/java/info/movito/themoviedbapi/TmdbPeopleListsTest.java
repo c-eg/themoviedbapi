@@ -11,7 +11,7 @@ import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbPeopleLists.TMDB_METHOD_PEOPLE_LISTS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -31,6 +31,6 @@ public class TmdbPeopleListsTest extends AbstractTmdbApiTest {
         TmdbPeopleLists tmdbPeopleLists = getTmdbApi().getPeopleLists();
         PopularPersonResults popularPersonResults = tmdbPeopleLists.getPopular("en-US", 1);
         assertNotNull(popularPersonResults);
-        checkForNullAndEmptyFieldsAndNewItems(popularPersonResults);
+        validateAbstractJsonMappingFields(popularPersonResults);
     }
 }

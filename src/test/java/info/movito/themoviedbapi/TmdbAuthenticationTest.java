@@ -20,7 +20,7 @@ import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbAuthentication.TMDB_METHOD_AUTH;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.tools.TmdbResponseCode.INVALID_API_KEY;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -44,7 +44,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         GuestSession guestSession = tmdbAuthentication.createGuestSession();
         assertNotNull(guestSession);
-        checkForNullAndEmptyFieldsAndNewItems(guestSession);
+        validateAbstractJsonMappingFields(guestSession);
     }
 
     /**
@@ -59,7 +59,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         RequestToken requestToken = tmdbAuthentication.createRequestToken();
         assertNotNull(requestToken);
-        checkForNullAndEmptyFieldsAndNewItems(requestToken);
+        validateAbstractJsonMappingFields(requestToken);
     }
 
     /**
@@ -116,7 +116,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         requestToken.setRequestToken(requestTokenStr);
         Session session = tmdbAuthentication.createSession(requestToken);
         assertNotNull(session);
-        checkForNullAndEmptyFieldsAndNewItems(session);
+        validateAbstractJsonMappingFields(session);
     }
 
     /**
@@ -152,7 +152,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
 
         RequestToken authenticatedRequestToken = tmdbAuthentication.createAuthenticatedRequestToken(requestToken, "username", "password");
         assertNotNull(authenticatedRequestToken);
-        checkForNullAndEmptyFieldsAndNewItems(authenticatedRequestToken);
+        validateAbstractJsonMappingFields(authenticatedRequestToken);
     }
 
     /**
@@ -186,7 +186,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         ResponseStatusDelete responseStatusDelete = tmdbAuthentication.deleteSession("sessionId");
         assertNotNull(responseStatusDelete);
-        checkForNullAndEmptyFieldsAndNewItems(responseStatusDelete);
+        validateAbstractJsonMappingFields(responseStatusDelete);
 
         assertTrue(responseStatusDelete.getSuccess());
     }
@@ -212,7 +212,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         ResponseStatusAuthentication responseStatusAuthentication = tmdbAuthentication.validateKey();
         assertNotNull(responseStatusAuthentication);
-        checkForNullAndEmptyFieldsAndNewItems(responseStatusAuthentication);
+        validateAbstractJsonMappingFields(responseStatusAuthentication);
 
         assertTrue(responseStatusAuthentication.getSuccess());
     }

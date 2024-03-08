@@ -11,7 +11,7 @@ import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbKeywords.TMDB_METHOD_KEYWORD;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -31,6 +31,6 @@ public class TmdbKeywordsTest extends AbstractTmdbApiTest {
         TmdbKeywords tmdbKeywords = getTmdbApi().getKeywords();
         Keyword keyword = tmdbKeywords.getDetails(1);
         assertNotNull(keyword);
-        checkForNullAndEmptyFieldsAndNewItems(keyword);
+        validateAbstractJsonMappingFields(keyword);
     }
 }

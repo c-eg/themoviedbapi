@@ -16,7 +16,7 @@ import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_DISCOVER;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -39,7 +39,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
 
         MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(discoverMovieParamBuilder);
         assertNotNull(movieResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
+        validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -54,7 +54,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
         MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(null);
         assertNotNull(movieResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
+        validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -72,7 +72,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
 
         TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(discoverTvParamBuilder);
         assertNotNull(tvSeriesResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(tvSeriesResultsPage);
+        validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 
     /**
@@ -87,6 +87,6 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
         TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(null);
         assertNotNull(tvSeriesResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(tvSeriesResultsPage);
+        validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 }

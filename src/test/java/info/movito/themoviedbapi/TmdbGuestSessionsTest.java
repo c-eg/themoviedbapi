@@ -14,7 +14,7 @@ import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbGuestSessions.TMDB_METHOD_GUEST_SESSIONS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -34,7 +34,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
         TmdbGuestSessions guestSessions = new TmdbGuestSessions(getTmdbApi());
         RatedMovieResultsPage ratedMovieResultsPage = guestSessions.getRatedMovies(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedMovieResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(ratedMovieResultsPage);
+        validateAbstractJsonMappingFields(ratedMovieResultsPage);
     }
 
     /**
@@ -49,7 +49,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
         TmdbGuestSessions guestSessions = new TmdbGuestSessions(getTmdbApi());
         RatedTvSeriesResultsPage ratedTvSeriesResultsPage = guestSessions.getRatedTvSeries(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvSeriesResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(ratedTvSeriesResultsPage);
+        validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
     }
 
     /**
@@ -65,6 +65,6 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
         TmdbGuestSessions guestSessions = new TmdbGuestSessions(getTmdbApi());
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = guestSessions.getRatedTvEpisodes(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvEpisodesResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(ratedTvEpisodesResultsPage);
+        validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);
     }
 }

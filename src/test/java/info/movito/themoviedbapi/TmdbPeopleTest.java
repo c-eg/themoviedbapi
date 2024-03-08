@@ -30,7 +30,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbPeople.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -85,7 +85,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         PersonDb details = tmdbPeople.getDetails(123, "en-US", PersonAppendToResponse.values());
         assertNotNull(details);
-        checkForNullAndEmptyFieldsAndNewItems(details);
+        validateAbstractJsonMappingFields(details);
     }
 
     /**
@@ -105,7 +105,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         ChangeResults changes = tmdbPeople.getChanges(123, startDate, endDate, page);
         assertNotNull(changes);
-        checkForNullAndEmptyFieldsAndNewItems(changes);
+        validateAbstractJsonMappingFields(changes);
     }
 
     /**
@@ -120,7 +120,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         CombinedPersonCredits personCredits = tmdbPeople.getCombinedCredits(123, "en-US");
         assertNotNull(personCredits);
-        checkForNullAndEmptyFieldsAndNewItems(personCredits);
+        validateAbstractJsonMappingFields(personCredits);
 
         // this is not done in generic util way to make sure that the cast and crew are of the correct type
         List<Cast> cast = personCredits.getCast();
@@ -128,20 +128,20 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         assertFalse(cast.isEmpty());
         MovieCast movieCast = (MovieCast) cast.get(0);
         assertNotNull(movieCast);
-        checkForNullAndEmptyFieldsAndNewItems(movieCast);
+        validateAbstractJsonMappingFields(movieCast);
         TvCast tvCast = (TvCast) cast.get(1);
         assertNotNull(tvCast);
-        checkForNullAndEmptyFieldsAndNewItems(tvCast);
+        validateAbstractJsonMappingFields(tvCast);
 
         List<Crew> crew = personCredits.getCrew();
         assertNotNull(crew);
         assertFalse(crew.isEmpty());
         MovieCrew movieCrew = (MovieCrew) crew.get(0);
         assertNotNull(movieCrew);
-        checkForNullAndEmptyFieldsAndNewItems(movieCrew);
+        validateAbstractJsonMappingFields(movieCrew);
         TvCrew tvCrew = (TvCrew) crew.get(1);
         assertNotNull(tvCrew);
-        checkForNullAndEmptyFieldsAndNewItems(tvCrew);
+        validateAbstractJsonMappingFields(tvCrew);
     }
 
     /**
@@ -156,7 +156,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         ExternalIds externalIds = tmdbPeople.getExternalIds(123);
         assertNotNull(externalIds);
-        checkForNullAndEmptyFieldsAndNewItems(externalIds);
+        validateAbstractJsonMappingFields(externalIds);
     }
 
     /**
@@ -171,7 +171,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         PersonImages images = tmdbPeople.getImages(123);
         assertNotNull(images);
-        checkForNullAndEmptyFieldsAndNewItems(images);
+        validateAbstractJsonMappingFields(images);
     }
 
     /**
@@ -218,7 +218,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         MovieCredits movieCredits = tmdbPeople.getMovieCredits(123, "en-US");
         assertNotNull(movieCredits);
-        checkForNullAndEmptyFieldsAndNewItems(movieCredits);
+        validateAbstractJsonMappingFields(movieCredits);
 
         // this is not done in generic util way to make sure that the cast and crew are of the correct type
         List<MovieCast> cast = movieCredits.getCast();
@@ -228,7 +228,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
 
         MovieCast movieCast = cast.get(0);
         assertNotNull(movieCast);
-        checkForNullAndEmptyFieldsAndNewItems(movieCast);
+        validateAbstractJsonMappingFields(movieCast);
 
         List<MovieCrew> crew = movieCredits.getCrew();
         assertNotNull(crew);
@@ -237,7 +237,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
 
         MovieCrew movieCrew = crew.get(0);
         assertNotNull(movieCrew);
-        checkForNullAndEmptyFieldsAndNewItems(movieCrew);
+        validateAbstractJsonMappingFields(movieCrew);
     }
 
     /**
@@ -252,7 +252,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         TvCredits tvCredits = tmdbPeople.getTvCredits(123, "en-US");
         assertNotNull(tvCredits);
-        checkForNullAndEmptyFieldsAndNewItems(tvCredits);
+        validateAbstractJsonMappingFields(tvCredits);
 
         // this is not done in generic util way to make sure that the cast and crew are of the correct type
         List<TvCast> cast = tvCredits.getCast();
@@ -262,7 +262,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
 
         TvCast tvCast = cast.get(0);
         assertNotNull(tvCast);
-        checkForNullAndEmptyFieldsAndNewItems(tvCast);
+        validateAbstractJsonMappingFields(tvCast);
 
         List<TvCrew> crew = tvCredits.getCrew();
         assertNotNull(crew);
@@ -271,7 +271,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
 
         TvCrew tvCrew = crew.get(0);
         assertNotNull(tvCrew);
-        checkForNullAndEmptyFieldsAndNewItems(tvCrew);
+        validateAbstractJsonMappingFields(tvCrew);
     }
 
     /**
@@ -286,6 +286,6 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         Translations translations = tmdbPeople.getTranslations(123);
         assertNotNull(translations);
-        checkForNullAndEmptyFieldsAndNewItems(translations);
+        validateAbstractJsonMappingFields(translations);
     }
 }

@@ -12,7 +12,7 @@ import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbCompanies.TMDB_METHOD_COMPANY;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -34,7 +34,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
         Company company = tmdbCompanies.getDetails(companyId);
         assertNotNull(company);
-        checkForNullAndEmptyFieldsAndNewItems(company);
+        validateAbstractJsonMappingFields(company);
     }
 
     /**
@@ -51,7 +51,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
         TmdbCompanies.AlternativeNamesResultsPage alternativeNamesResultsPage = tmdbCompanies.getAlternativeNames(1);
         assertNotNull(alternativeNamesResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(alternativeNamesResultsPage);
+        validateAbstractJsonMappingFields(alternativeNamesResultsPage);
     }
 
     /**
@@ -68,6 +68,6 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
         ImageResults logoImageResults = tmdbCompanies.getImages(1);
         assertNotNull(logoImageResults);
-        checkForNullAndEmptyFieldsAndNewItems(logoImageResults);
+        validateAbstractJsonMappingFields(logoImageResults);
     }
 }

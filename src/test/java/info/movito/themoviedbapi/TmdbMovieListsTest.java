@@ -12,7 +12,7 @@ import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbMovieLists.TMDB_METHOD_MOVIE_LISTS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -32,7 +32,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
         MovieResultsPageWithDates movieResultsPageWithDates = tmdbMovieLists.getNowPlaying("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
-        checkForNullAndEmptyFieldsAndNewItems(movieResultsPageWithDates);
+        validateAbstractJsonMappingFields(movieResultsPageWithDates);
     }
 
     /**
@@ -47,7 +47,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
         MovieResultsPage movieResultsPage = tmdbMovieLists.getPopular("en-US", 1, null);
         assertNotNull(movieResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
+        validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -62,7 +62,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
         MovieResultsPage movieResultsPage = tmdbMovieLists.getTopRated("en-US", 1, null);
         assertNotNull(movieResultsPage);
-        checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
+        validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -77,6 +77,6 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
         MovieResultsPageWithDates movieResultsPageWithDates = tmdbMovieLists.getUpcoming("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
-        checkForNullAndEmptyFieldsAndNewItems(movieResultsPageWithDates);
+        validateAbstractJsonMappingFields(movieResultsPageWithDates);
     }
 }

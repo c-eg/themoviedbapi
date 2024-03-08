@@ -13,7 +13,7 @@ import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbNetworks.TMDB_METHOD_NETWORK;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -33,7 +33,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
         Network network = tmdbNetworks.getDetails(1);
         assertNotNull(network);
-        checkForNullAndEmptyFieldsAndNewItems(network);
+        validateAbstractJsonMappingFields(network);
     }
 
     /**
@@ -48,7 +48,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
         AlternativeNamesResults alternativeNamesResults = tmdbNetworks.getAlternativeNames(1);
         assertNotNull(alternativeNamesResults);
-        checkForNullAndEmptyFieldsAndNewItems(alternativeNamesResults);
+        validateAbstractJsonMappingFields(alternativeNamesResults);
     }
 
     /**
@@ -63,6 +63,6 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
         ImageResults imageResults = tmdbNetworks.getImages(1);
         assertNotNull(imageResults);
-        checkForNullAndEmptyFieldsAndNewItems(imageResults);
+        validateAbstractJsonMappingFields(imageResults);
     }
 }

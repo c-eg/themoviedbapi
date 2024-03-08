@@ -14,7 +14,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbCollections.TMDB_METHOD_COLLECTION;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -39,7 +39,7 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         TmdbCollections tmdbCollections = getTmdbApi().getCollections();
         CollectionInfo collectionInfo = tmdbCollections.getDetails(collectionId, language);
         assertNotNull(collectionInfo);
-        checkForNullAndEmptyFieldsAndNewItems(collectionInfo);
+        validateAbstractJsonMappingFields(collectionInfo);
     }
 
     /**
@@ -59,7 +59,7 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         TmdbCollections tmdbCollections = getTmdbApi().getCollections();
         Images images = tmdbCollections.getImages(collectionId, language);
         assertNotNull(images);
-        checkForNullAndEmptyFieldsAndNewItems(images);
+        validateAbstractJsonMappingFields(images);
     }
 
     /**
@@ -79,7 +79,7 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         TmdbCollections tmdbCollections = getTmdbApi().getCollections();
         Images images = tmdbCollections.getImages(collectionId, null, includeImageLanguage);
         assertNotNull(images);
-        checkForNullAndEmptyFieldsAndNewItems(images);
+        validateAbstractJsonMappingFields(images);
     }
 
     /**
