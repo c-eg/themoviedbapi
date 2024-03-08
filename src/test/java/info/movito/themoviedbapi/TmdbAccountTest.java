@@ -1,18 +1,12 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.account.Account;
-import info.movito.themoviedbapi.model.core.Movie;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.core.TvSeries;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
-import info.movito.themoviedbapi.model.movies.MovieList;
 import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
-import info.movito.themoviedbapi.model.rated.RatedMovie;
 import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
-import info.movito.themoviedbapi.model.rated.RatedTvEpisode;
 import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
-import info.movito.themoviedbapi.model.rated.RatedTvSeries;
 import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -24,14 +18,12 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.List;
 
 import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbAccount.TMDB_METHOD_ACCOUNT;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -186,13 +178,6 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         MovieResultsPage movieResultsPage = tmdbAccount.getFavoriteMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
-
-        List<Movie> movieResults = movieResultsPage.getResults();
-        assertFalse(movieResults.isEmpty());
-
-        Movie movie = movieResults.get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -215,13 +200,6 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getFavoriteTv(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(tvSeriesResultsPage);
-
-        List<TvSeries> tvResults = tvSeriesResultsPage.getResults();
-        assertFalse(tvResults.isEmpty());
-
-        TvSeries tvSeries = tvResults.get(0);
-        assertNotNull(tvSeries);
-        checkForNullAndEmptyFieldsAndNewItems(tvSeries);
     }
 
     /**
@@ -241,13 +219,6 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         MovieListResultsPage movieListResultsPage = tmdbAccount.getLists(accountId, sessionId, page);
         assertNotNull(movieListResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(movieListResultsPage);
-
-        List<MovieList> movieLists = movieListResultsPage.getResults();
-        assertFalse(movieLists.isEmpty());
-
-        MovieList movieList = movieLists.get(0);
-        assertNotNull(movieList);
-        checkForNullAndEmptyFieldsAndNewItems(movieList);
     }
 
     /**
@@ -270,13 +241,6 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         RatedMovieResultsPage ratedMovieResultsPage = tmdbAccount.getRatedMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedMovieResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(ratedMovieResultsPage);
-
-        List<RatedMovie> ratedMovies = ratedMovieResultsPage.getResults();
-        assertFalse(ratedMovies.isEmpty());
-
-        RatedMovie ratedMovie = ratedMovies.get(0);
-        assertNotNull(ratedMovie);
-        checkForNullAndEmptyFieldsAndNewItems(ratedMovie);
     }
 
     /**
@@ -299,13 +263,6 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         RatedTvSeriesResultsPage ratedTvSeriesResultsPage = tmdbAccount.getRatedTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvSeriesResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(ratedTvSeriesResultsPage);
-
-        List<RatedTvSeries> ratedTvSeriess = ratedTvSeriesResultsPage.getResults();
-        assertFalse(ratedTvSeriess.isEmpty());
-
-        RatedTvSeries ratedTvSeries = ratedTvSeriess.get(0);
-        assertNotNull(ratedTvSeries);
-        checkForNullAndEmptyFieldsAndNewItems(ratedTvSeries);
     }
 
     /**
@@ -329,13 +286,6 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
             tmdbAccount.getRatedTvEpisodes(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvEpisodesResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(ratedTvEpisodesResultsPage);
-
-        List<RatedTvEpisode> ratedTvEpisodes = ratedTvEpisodesResultsPage.getResults();
-        assertFalse(ratedTvEpisodes.isEmpty());
-
-        RatedTvEpisode ratedTvEpisode = ratedTvEpisodes.get(0);
-        assertNotNull(ratedTvEpisode);
-        checkForNullAndEmptyFieldsAndNewItems(ratedTvEpisode);
     }
 
     /**
@@ -358,13 +308,6 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         MovieResultsPage movieResultsPage = tmdbAccount.getWatchListMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
-
-        List<Movie> movies = movieResultsPage.getResults();
-        assertFalse(movies.isEmpty());
-
-        Movie movie = movies.get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -387,12 +330,5 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getWatchListTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(tvSeriesResultsPage);
-
-        List<TvSeries> tvSeriess = tvSeriesResultsPage.getResults();
-        assertFalse(tvSeriess.isEmpty());
-
-        TvSeries tvSeries = tvSeriess.get(0);
-        assertNotNull(tvSeries);
-        checkForNullAndEmptyFieldsAndNewItems(tvSeries);
     }
 }

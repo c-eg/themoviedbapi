@@ -1,8 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.core.Movie;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.movielists.Dates;
 import info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -11,12 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbMovieLists.TMDB_METHOD_MOVIE_LISTS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -37,23 +33,6 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         MovieResultsPageWithDates movieResultsPageWithDates = tmdbMovieLists.getNowPlaying("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
         checkForNullAndEmptyFieldsAndNewItems(movieResultsPageWithDates);
-
-        Dates dates = movieResultsPageWithDates.getDates();
-        assertNotNull(dates);
-        checkForNullAndEmptyFieldsAndNewItems(dates);
-
-        List<Movie> movies = movieResultsPageWithDates.getResults();
-        assertNotNull(movies);
-        assertFalse(movies.isEmpty());
-
-        Movie movie = movies.get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
-
-        List<Integer> genreIds = movie.getGenreIds();
-        assertNotNull(genreIds);
-        assertFalse(genreIds.isEmpty());
-        assertNotNull(genreIds.get(0));
     }
 
     /**
@@ -69,19 +48,6 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         MovieResultsPage movieResultsPage = tmdbMovieLists.getPopular("en-US", 1, null);
         assertNotNull(movieResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
-
-        List<Movie> movies = movieResultsPage.getResults();
-        assertNotNull(movies);
-        assertFalse(movies.isEmpty());
-
-        Movie movie = movies.get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
-
-        List<Integer> genreIds = movie.getGenreIds();
-        assertNotNull(genreIds);
-        assertFalse(genreIds.isEmpty());
-        assertNotNull(genreIds.get(0));
     }
 
     /**
@@ -97,19 +63,6 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         MovieResultsPage movieResultsPage = tmdbMovieLists.getTopRated("en-US", 1, null);
         assertNotNull(movieResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
-
-        List<Movie> movies = movieResultsPage.getResults();
-        assertNotNull(movies);
-        assertFalse(movies.isEmpty());
-
-        Movie movie = movies.get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
-
-        List<Integer> genreIds = movie.getGenreIds();
-        assertNotNull(genreIds);
-        assertFalse(genreIds.isEmpty());
-        assertNotNull(genreIds.get(0));
     }
 
     /**
@@ -125,22 +78,5 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         MovieResultsPageWithDates movieResultsPageWithDates = tmdbMovieLists.getUpcoming("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
         checkForNullAndEmptyFieldsAndNewItems(movieResultsPageWithDates);
-
-        Dates dates = movieResultsPageWithDates.getDates();
-        assertNotNull(dates);
-        checkForNullAndEmptyFieldsAndNewItems(dates);
-
-        List<Movie> movies = movieResultsPageWithDates.getResults();
-        assertNotNull(movies);
-        assertFalse(movies.isEmpty());
-
-        Movie movie = movies.get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
-
-        List<Integer> genreIds = movie.getGenreIds();
-        assertNotNull(genreIds);
-        assertFalse(genreIds.isEmpty());
-        assertNotNull(genreIds.get(0));
     }
 }

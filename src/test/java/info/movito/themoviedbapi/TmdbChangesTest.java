@@ -1,6 +1,5 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.changes.Change;
 import info.movito.themoviedbapi.model.changes.ChangesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -38,16 +37,9 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbChanges tmdbChanges = getTmdbApi().getChanges();
-        long start = System.currentTimeMillis();
         ChangesResultsPage changesResultsPage = tmdbChanges.getMovieChangesList(startDate, endDate, page);
-        long end = System.currentTimeMillis();
-        System.out.println("Time: " + (end - start));
         assertNotNull(changesResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(changesResultsPage);
-
-        Change change = changesResultsPage.getResults().get(0);
-        assertNotNull(change);
-        checkForNullAndEmptyFieldsAndNewItems(change);
     }
 
     /**
@@ -68,10 +60,6 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         ChangesResultsPage changesResultsPage = tmdbChanges.getPeopleChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(changesResultsPage);
-
-        Change change = changesResultsPage.getResults().get(0);
-        assertNotNull(change);
-        checkForNullAndEmptyFieldsAndNewItems(change);
     }
 
     /**
@@ -92,9 +80,5 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         ChangesResultsPage changesResultsPage = tmdbChanges.getTvChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(changesResultsPage);
-
-        Change change = changesResultsPage.getResults().get(0);
-        assertNotNull(change);
-        checkForNullAndEmptyFieldsAndNewItems(change);
     }
 }

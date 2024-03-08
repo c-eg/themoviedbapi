@@ -1,8 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.core.Movie;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.core.TvSeries;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -42,10 +40,6 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(discoverMovieParamBuilder);
         assertNotNull(movieResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
-
-        Movie movie = movieResultsPage.getResults().get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -61,10 +55,6 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(null);
         assertNotNull(movieResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(movieResultsPage);
-
-        Movie movie = movieResultsPage.getResults().get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -83,10 +73,6 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(discoverTvParamBuilder);
         assertNotNull(tvSeriesResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(tvSeriesResultsPage);
-
-        TvSeries tvSeries = tvSeriesResultsPage.getResults().get(0);
-        assertNotNull(tvSeries);
-        checkForNullAndEmptyFieldsAndNewItems(tvSeries);
     }
 
     /**
@@ -102,9 +88,5 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(null);
         assertNotNull(tvSeriesResultsPage);
         checkForNullAndEmptyFieldsAndNewItems(tvSeriesResultsPage);
-
-        TvSeries tvSeries = tvSeriesResultsPage.getResults().get(0);
-        assertNotNull(tvSeries);
-        checkForNullAndEmptyFieldsAndNewItems(tvSeries);
     }
 }

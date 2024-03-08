@@ -1,44 +1,22 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.AlternativeTitle;
-import info.movito.themoviedbapi.model.Artwork;
-import info.movito.themoviedbapi.model.Genre;
-import info.movito.themoviedbapi.model.ProductionCompany;
-import info.movito.themoviedbapi.model.ProductionCountry;
-import info.movito.themoviedbapi.model.ReleaseDate;
-import info.movito.themoviedbapi.model.ReleaseInfo;
-import info.movito.themoviedbapi.model.Video;
-import info.movito.themoviedbapi.model.core.Language;
-import info.movito.themoviedbapi.model.core.Movie;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
-import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.model.movies.AccountStates;
 import info.movito.themoviedbapi.model.movies.AlternativeTitles;
-import info.movito.themoviedbapi.model.movies.Cast;
 import info.movito.themoviedbapi.model.movies.Credits;
-import info.movito.themoviedbapi.model.movies.Crew;
-import info.movito.themoviedbapi.model.movies.Data;
 import info.movito.themoviedbapi.model.movies.ExternalIds;
 import info.movito.themoviedbapi.model.movies.Images;
 import info.movito.themoviedbapi.model.movies.KeywordResults;
 import info.movito.themoviedbapi.model.movies.MovieDb;
-import info.movito.themoviedbapi.model.movies.MovieList;
 import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.movies.Rated;
 import info.movito.themoviedbapi.model.movies.ReleaseDateResults;
-import info.movito.themoviedbapi.model.movies.Review;
 import info.movito.themoviedbapi.model.movies.ReviewResultsPage;
-import info.movito.themoviedbapi.model.movies.Translation;
 import info.movito.themoviedbapi.model.movies.Translations;
 import info.movito.themoviedbapi.model.movies.VideoResults;
-import info.movito.themoviedbapi.model.movies.changes.Change;
-import info.movito.themoviedbapi.model.movies.changes.ChangeItem;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.providers.Provider;
 import info.movito.themoviedbapi.model.providers.ProviderResults;
-import info.movito.themoviedbapi.model.providers.WatchProviders;
-import info.movito.themoviedbapi.model.reviews.AuthorDetails;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.MovieAppendToResponse;
@@ -53,17 +31,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
-import static info.movito.themoviedbapi.util.TestUtils.testForNewItems;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFields;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
@@ -87,21 +61,21 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(movie);
         List<FieldsToIgnore> fieldsToIgnore = new ArrayList<>();
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "translations", "translations"));
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "keywords", "keywords"));
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "changes", "changes"));
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "watchProviders", "watchProviders"));
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "reviews", "reviews"));
         fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "accountStates", "accountStates"));
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "images", "images"));
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "externalIds", "externalIds"));
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "credits", "credits"));
         fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "alternativeTitles", "alternativeTitles"));
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "releaseDates", "releaseDates"));
-        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "videos", "videos"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "credits", "credits"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "changes", "changes"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "externalIds", "externalIds"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "images", "images"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "keywords", "keywords"));
         fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "recommendations", "recommendations"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "releaseDates", "releaseDates"));
         fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "lists", "lists"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "reviews", "reviews"));
         fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "similar", "similar"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "translations", "translations"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "videos", "videos"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "watchProviders", "watchProviders"));
 
         abstractJsonMappingValidator.validateNullFields(fieldsToIgnore);
         abstractJsonMappingValidator.validateEmptyCollections();
@@ -109,26 +83,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         abstractJsonMappingValidator.validateEmptyMaps();
         abstractJsonMappingValidator.validateNullContainingMaps();
         abstractJsonMappingValidator.validateNewItems();
-
-        List<Genre> genres = movie.getGenres();
-        assertNotNull(genres);
-        assertFalse(genres.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(genres.get(0));
-
-        List<ProductionCompany> productionCompanies = movie.getProductionCompanies();
-        assertNotNull(productionCompanies);
-        assertFalse(productionCompanies.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(productionCompanies.get(0));
-
-        List<ProductionCountry> productionCountries = movie.getProductionCountries();
-        assertNotNull(productionCountries);
-        assertFalse(productionCountries.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(productionCountries.get(0));
-
-        List<Language> spokenLanguages = movie.getSpokenLanguages();
-        assertNotNull(spokenLanguages);
-        assertFalse(spokenLanguages.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(spokenLanguages.get(0));
     }
 
     /**
@@ -181,11 +135,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         AlternativeTitles alternativeTitles = tmdbMovies.getAlternativeTitles(123, "US");
         assertNotNull(alternativeTitles);
         checkForNullAndEmptyFieldsAndNewItems(alternativeTitles);
-
-        List<AlternativeTitle> titles = alternativeTitles.getTitles();
-        assertNotNull(titles);
-        assertFalse(titles.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(titles.get(0));
     }
 
     /**
@@ -201,19 +150,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         ChangeResults changeResults = tmdbMovies.getChanges(123, null, null, null);
         assertNotNull(changeResults);
         checkForNullAndEmptyFieldsAndNewItems(changeResults);
-
-        List<Change> changedItems = changeResults.getChangedItems();
-        assertNotNull(changedItems);
-        assertFalse(changedItems.isEmpty());
-
-        Change change = changedItems.get(0);
-        assertNotNull(change);
-        checkForNullAndEmptyFieldsAndNewItems(change);
-
-        List<ChangeItem> changeItems = change.getChangeItems();
-        assertNotNull(changeItems);
-        assertFalse(changeItems.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(changeItems.get(0));
     }
 
     /**
@@ -229,16 +165,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         Credits credits = tmdbMovies.getCredits(123, "en-US");
         assertNotNull(credits);
         checkForNullAndEmptyFieldsAndNewItems(credits);
-
-        List<Cast> cast = credits.getCast();
-        assertNotNull(cast);
-        assertFalse(cast.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(cast.get(0));
-
-        List<Crew> crew = credits.getCrew();
-        assertNotNull(crew);
-        assertFalse(crew.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(crew.get(0));
     }
 
     /**
@@ -269,18 +195,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         Images images = tmdbMovies.getImages(123, "en-US");
         assertNotNull(images);
         checkForNullAndEmptyFieldsAndNewItems(images);
-
-        List<Artwork> posters = images.getPosters();
-        assertFalse(posters.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(posters.get(0));
-
-        List<Artwork> backdrops = images.getBackdrops();
-        assertFalse(backdrops.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(backdrops.get(0));
-
-        List<Artwork> logos = images.getLogos();
-        assertFalse(logos.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(logos.get(0));
     }
 
     /**
@@ -296,10 +210,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         KeywordResults keywords = tmdbMovies.getKeywords(123);
         assertNotNull(keywords);
         checkForNullAndEmptyFieldsAndNewItems(keywords);
-
-        List<Keyword> keywordsList = keywords.getKeywords();
-        assertFalse(keywordsList.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(keywordsList.get(0));
     }
 
     /**
@@ -314,9 +224,31 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         MovieDb movie = tmdbMovies.getLatest();
         assertNotNull(movie);
-        testForNullFields(movie, "accountStates", "alternativeTitles", "credits", "changes", "externalIds", "images", "keywords",
-            "recommendations", "releaseDates", "lists", "reviews", "similar", "translations", "videos", "watchProviders");
-        testForNewItems(movie);
+
+        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(movie);
+        List<FieldsToIgnore> fieldsToIgnore = new ArrayList<>();
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "accountStates", "accountStates"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "alternativeTitles", "alternativeTitles"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "credits", "credits"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "changes", "changes"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "externalIds", "externalIds"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "images", "images"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "keywords", "keywords"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "recommendations", "recommendations"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "releaseDates", "releaseDates"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "lists", "lists"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "reviews", "reviews"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "similar", "similar"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "translations", "translations"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "videos", "videos"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "watchProviders", "watchProviders"));
+
+        abstractJsonMappingValidator.validateNullFields(fieldsToIgnore);
+        abstractJsonMappingValidator.validateEmptyCollections();
+        abstractJsonMappingValidator.validateNullContainingCollection();
+        abstractJsonMappingValidator.validateEmptyMaps();
+        abstractJsonMappingValidator.validateNullContainingMaps();
+        abstractJsonMappingValidator.validateNewItems();
     }
 
     /**
@@ -332,10 +264,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         MovieListResultsPage lists = tmdbMovies.getLists(123, "en-US", null);
         assertNotNull(lists);
         checkForNullAndEmptyFieldsAndNewItems(lists);
-
-        MovieList list = lists.getResults().get(0);
-        assertNotNull(list);
-        checkForNullAndEmptyFieldsAndNewItems(list);
     }
 
     /**
@@ -351,10 +279,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         MovieResultsPage recommendations = tmdbMovies.getRecommendations(123, "en-US", 1);
         assertNotNull(recommendations);
         checkForNullAndEmptyFieldsAndNewItems(recommendations);
-
-        Movie movie = recommendations.getResults().get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -370,23 +294,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         ReleaseDateResults releaseDates = tmdbMovies.getReleaseDates(123);
         assertNotNull(releaseDates);
         checkForNullAndEmptyFieldsAndNewItems(releaseDates);
-
-        ReleaseInfo releaseInfo = releaseDates.getResults().get(0);
-        assertNotNull(releaseInfo);
-        checkForNullAndEmptyFieldsAndNewItems(releaseInfo);
-
-        List<ReleaseDate> releaseDatesList = releaseInfo.getReleaseDates();
-        assertNotNull(releaseDatesList);
-        assertFalse(releaseDatesList.isEmpty());
-
-        ReleaseDate releaseDate = releaseDatesList.get(0);
-        assertNotNull(releaseDate);
-        checkForNullAndEmptyFieldsAndNewItems(releaseDate);
-
-        List<Object> descriptors = releaseDate.getDescriptors();
-        assertNotNull(descriptors);
-        assertFalse(descriptors.isEmpty());
-        assertNotNull(descriptors.get(0));
     }
 
     /**
@@ -402,14 +309,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         ReviewResultsPage reviews = tmdbMovies.getReviews(123, "en-US", null);
         assertNotNull(reviews);
         checkForNullAndEmptyFieldsAndNewItems(reviews);
-
-        Review review = reviews.getResults().get(0);
-        assertNotNull(review);
-        checkForNullAndEmptyFieldsAndNewItems(review);
-
-        AuthorDetails authorDetails = review.getAuthorDetails();
-        assertNotNull(authorDetails);
-        checkForNullAndEmptyFieldsAndNewItems(authorDetails);
     }
 
     /**
@@ -425,10 +324,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         MovieResultsPage similar = tmdbMovies.getSimilar(123, "en-US", null);
         assertNotNull(similar);
         checkForNullAndEmptyFieldsAndNewItems(similar);
-
-        Movie movie = similar.getResults().get(0);
-        assertNotNull(movie);
-        checkForNullAndEmptyFieldsAndNewItems(movie);
     }
 
     /**
@@ -444,18 +339,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         Translations translations = tmdbMovies.getTranslations(123);
         assertNotNull(translations);
         checkForNullAndEmptyFieldsAndNewItems(translations);
-
-        List<Translation> translationsList = translations.getTranslations();
-        assertNotNull(translationsList);
-        assertFalse(translationsList.isEmpty());
-
-        Translation translation = translationsList.get(0);
-        assertNotNull(translation);
-        checkForNullAndEmptyFieldsAndNewItems(translation);
-
-        Data data = translation.getData();
-        assertNotNull(data);
-        checkForNullAndEmptyFieldsAndNewItems(data);
     }
 
     /**
@@ -471,11 +354,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         VideoResults videos = tmdbMovies.getVideos(123, "en-US");
         assertNotNull(videos);
         checkForNullAndEmptyFieldsAndNewItems(videos);
-
-        List<Video> videosList = videos.getResults();
-        assertNotNull(videosList);
-        assertFalse(videosList.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(videosList.get(0));
     }
 
     /**
@@ -491,29 +369,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         ProviderResults watchProviders = tmdbMovies.getWatchProviders(123);
         assertNotNull(watchProviders);
         checkForNullAndEmptyFieldsAndNewItems(watchProviders);
-
-        Map<String, WatchProviders> results = watchProviders.getResults();
-        assertNotNull(results);
-        assertFalse(results.isEmpty());
-
-        WatchProviders watchProvider = results.get("AE");
-        assertNotNull(watchProvider);
-        checkForNullAndEmptyFieldsAndNewItems(watchProvider);
-
-        List<Provider> rentProviders = watchProvider.getRentProviders();
-        assertNotNull(rentProviders);
-        assertFalse(rentProviders.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(rentProviders.get(0));
-
-        List<Provider> buyProviders = watchProvider.getBuyProviders();
-        assertNotNull(buyProviders);
-        assertFalse(buyProviders.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(buyProviders.get(0));
-
-        List<Provider> flatrateProviders = watchProvider.getFlatrateProviders();
-        assertNotNull(flatrateProviders);
-        assertFalse(flatrateProviders.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(flatrateProviders.get(0));
     }
 
     /**

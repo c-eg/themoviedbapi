@@ -1,6 +1,5 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.certifications.Certification;
 import info.movito.themoviedbapi.model.certifications.CertificationResults;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -9,15 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 
 import static info.movito.themoviedbapi.TmdbCertifications.TMDB_METHOD_CERTIFICATIONS;
 import static info.movito.themoviedbapi.TmdbCertifications.TMDB_METHOD_MOVIE_CERTIFICATIONS;
 import static info.movito.themoviedbapi.TmdbCertifications.TMDB_METHOD_TV_CERTIFICATIONS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -38,16 +34,6 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         CertificationResults movieCertifications = tmdbCertifications.getMovieCertifications();
         assertNotNull(movieCertifications);
         checkForNullAndEmptyFieldsAndNewItems(movieCertifications);
-
-        Map<String, List<Certification>> certifications = movieCertifications.getCertifications();
-        assertFalse(certifications.isEmpty());
-
-        List<Certification> auCertifications = certifications.get("AU");
-        assertFalse(auCertifications.isEmpty());
-
-        Certification auCertification = auCertifications.get(0);
-        assertNotNull(auCertification);
-        checkForNullAndEmptyFieldsAndNewItems(auCertification);
     }
 
     /**
@@ -63,15 +49,5 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         CertificationResults tvCertifications = tmdbCertifications.getTvCertifications();
         assertNotNull(tvCertifications);
         checkForNullAndEmptyFieldsAndNewItems(tvCertifications);
-
-        Map<String, List<Certification>> certifications = tvCertifications.getCertifications();
-        assertFalse(certifications.isEmpty());
-
-        List<Certification> auCertifications = certifications.get("AU");
-        assertFalse(auCertifications.isEmpty());
-
-        Certification auCertification = auCertifications.get(0);
-        assertNotNull(auCertification);
-        checkForNullAndEmptyFieldsAndNewItems(auCertification);
     }
 }

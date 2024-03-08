@@ -1,11 +1,8 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.CollectionInfo;
-import info.movito.themoviedbapi.model.collections.Data;
 import info.movito.themoviedbapi.model.collections.Images;
 import info.movito.themoviedbapi.model.collections.Translation;
-import info.movito.themoviedbapi.model.collections.Part;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
@@ -43,13 +40,6 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         CollectionInfo collectionInfo = tmdbCollections.getDetails(collectionId, language);
         assertNotNull(collectionInfo);
         checkForNullAndEmptyFieldsAndNewItems(collectionInfo);
-
-        List<Part> partList = collectionInfo.getParts();
-        assertFalse(partList.isEmpty());
-
-        Part part = partList.get(0);
-        assertNotNull(part);
-        checkForNullAndEmptyFieldsAndNewItems(part);
     }
 
     /**
@@ -70,14 +60,6 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         Images images = tmdbCollections.getImages(collectionId, language);
         assertNotNull(images);
         checkForNullAndEmptyFieldsAndNewItems(images);
-
-        List<Artwork> posters = images.getPosters();
-        assertFalse(posters.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(posters.get(0));
-
-        List<Artwork> backdrops = images.getBackdrops();
-        assertFalse(backdrops.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(backdrops.get(0));
     }
 
     /**
@@ -98,14 +80,6 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         Images images = tmdbCollections.getImages(collectionId, null, includeImageLanguage);
         assertNotNull(images);
         checkForNullAndEmptyFieldsAndNewItems(images);
-
-        List<Artwork> posters = images.getPosters();
-        assertFalse(posters.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(posters.get(0));
-
-        List<Artwork> backdrops = images.getBackdrops();
-        assertFalse(backdrops.isEmpty());
-        checkForNullAndEmptyFieldsAndNewItems(backdrops.get(0));
     }
 
     /**
@@ -122,13 +96,5 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         TmdbCollections tmdbCollections = getTmdbApi().getCollections();
         List<Translation> translations = tmdbCollections.getTranslations(collectionId);
         assertFalse(translations.isEmpty());
-
-        Translation translation = translations.get(0);
-        assertNotNull(translation);
-        checkForNullAndEmptyFieldsAndNewItems(translation);
-
-        Data data = translation.getData();
-        assertNotNull(data);
-        checkForNullAndEmptyFieldsAndNewItems(data);
     }
 }

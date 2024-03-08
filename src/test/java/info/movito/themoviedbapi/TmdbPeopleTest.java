@@ -1,14 +1,9 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.Artwork;
-import info.movito.themoviedbapi.model.movies.changes.Change;
-import info.movito.themoviedbapi.model.movies.changes.ChangeItem;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.people.Data;
 import info.movito.themoviedbapi.model.people.ExternalIds;
 import info.movito.themoviedbapi.model.people.PersonDb;
 import info.movito.themoviedbapi.model.people.PersonImages;
-import info.movito.themoviedbapi.model.people.Translation;
 import info.movito.themoviedbapi.model.people.Translations;
 import info.movito.themoviedbapi.model.people.credits.Cast;
 import info.movito.themoviedbapi.model.people.credits.CombinedPersonCredits;
@@ -36,8 +31,6 @@ import java.util.List;
 import static info.movito.themoviedbapi.TmdbPeople.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
-import static info.movito.themoviedbapi.util.TestUtils.testForNewItems;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFields;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -77,10 +70,6 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         abstractJsonMappingValidator.validateEmptyMaps();
         abstractJsonMappingValidator.validateNullContainingMaps();
         abstractJsonMappingValidator.validateNewItems();
-
-        List<String> alsoKnownAs = details.getAlsoKnownAs();
-        assertNotNull(alsoKnownAs);
-        assertFalse(alsoKnownAs.isEmpty());
     }
 
     /**
@@ -97,10 +86,6 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         PersonDb details = tmdbPeople.getDetails(123, "en-US", PersonAppendToResponse.values());
         assertNotNull(details);
         checkForNullAndEmptyFieldsAndNewItems(details);
-
-        List<String> alsoKnownAs = details.getAlsoKnownAs();
-        assertNotNull(alsoKnownAs);
-        assertFalse(alsoKnownAs.isEmpty());
     }
 
     /**
@@ -121,22 +106,6 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         ChangeResults changes = tmdbPeople.getChanges(123, startDate, endDate, page);
         assertNotNull(changes);
         checkForNullAndEmptyFieldsAndNewItems(changes);
-
-        List<Change> changedItems = changes.getChangedItems();
-        assertNotNull(changedItems);
-        assertFalse(changedItems.isEmpty());
-
-        Change change = changedItems.get(0);
-        assertNotNull(change);
-        checkForNullAndEmptyFieldsAndNewItems(change);
-
-        List<ChangeItem> changeItems = change.getChangeItems();
-        assertNotNull(changeItems);
-        assertFalse(changeItems.isEmpty());
-
-        ChangeItem changeItem = changeItems.get(0);
-        assertNotNull(changeItem);
-        checkForNullAndEmptyFieldsAndNewItems(changeItem);
     }
 
     /**
@@ -153,6 +122,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         assertNotNull(personCredits);
         checkForNullAndEmptyFieldsAndNewItems(personCredits);
 
+        // this is not done in generic util way to make sure that the cast and crew are of the correct type
         List<Cast> cast = personCredits.getCast();
         assertNotNull(cast);
         assertFalse(cast.isEmpty());
@@ -202,14 +172,6 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         PersonImages images = tmdbPeople.getImages(123);
         assertNotNull(images);
         checkForNullAndEmptyFieldsAndNewItems(images);
-
-        List<Artwork> profiles = images.getProfiles();
-        assertNotNull(profiles);
-        assertFalse(profiles.isEmpty());
-
-        Artwork profile = profiles.get(0);
-        assertNotNull(profile);
-        checkForNullAndEmptyFieldsAndNewItems(profile);
     }
 
     /**
@@ -224,17 +186,24 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         PersonDb latest = tmdbPeople.getLatest();
         assertNotNull(latest);
-        testForNullFields(latest, "changes", "combinedCredits", "externalIds", "images", "latest", "movieCredits", "tvCredits",
-            "translations");
-        testForNewItems(latest);
 
-        List<String> alsoKnownAs = latest.getAlsoKnownAs();
-        assertNotNull(alsoKnownAs);
-        assertFalse(alsoKnownAs.isEmpty());
+        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(latest);
+        List<FieldsToIgnore> fieldsToIgnore = new ArrayList<>();
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "changes", "changes"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "combinedCredits", "combinedCredits"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "externalIds", "externalIds"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "images", "images"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "latest", "latest"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "movieCredits", "movieCredits"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "tvCredits", "tvCredits"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "translations", "translations"));
 
-        String alsoKnownAsValue = alsoKnownAs.get(0);
-        assertNotNull(alsoKnownAsValue);
-        assertFalse(alsoKnownAsValue.isEmpty());
+        abstractJsonMappingValidator.validateNullFields(fieldsToIgnore);
+        abstractJsonMappingValidator.validateEmptyCollections();
+        abstractJsonMappingValidator.validateNullContainingCollection();
+        abstractJsonMappingValidator.validateEmptyMaps();
+        abstractJsonMappingValidator.validateNullContainingMaps();
+        abstractJsonMappingValidator.validateNewItems();
     }
 
     /**
@@ -251,6 +220,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         assertNotNull(movieCredits);
         checkForNullAndEmptyFieldsAndNewItems(movieCredits);
 
+        // this is not done in generic util way to make sure that the cast and crew are of the correct type
         List<MovieCast> cast = movieCredits.getCast();
         assertNotNull(cast);
         assertFalse(cast.isEmpty());
@@ -284,6 +254,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         assertNotNull(tvCredits);
         checkForNullAndEmptyFieldsAndNewItems(tvCredits);
 
+        // this is not done in generic util way to make sure that the cast and crew are of the correct type
         List<TvCast> cast = tvCredits.getCast();
         assertNotNull(cast);
         assertFalse(cast.isEmpty());
@@ -316,17 +287,5 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         Translations translations = tmdbPeople.getTranslations(123);
         assertNotNull(translations);
         checkForNullAndEmptyFieldsAndNewItems(translations);
-
-        List<Translation> translationList = translations.getTranslations();
-        assertNotNull(translationList);
-        assertFalse(translationList.isEmpty());
-
-        Translation translation = translationList.get(0);
-        assertNotNull(translation);
-        checkForNullAndEmptyFieldsAndNewItems(translation);
-
-        Data data = translation.getData();
-        assertNotNull(data);
-        checkForNullAndEmptyFieldsAndNewItems(data);
     }
 }

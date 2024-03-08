@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.reviews.Review;
-import info.movito.themoviedbapi.model.reviews.AuthorDetails;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
@@ -35,9 +34,5 @@ public class TmdbReviewsTest extends AbstractTmdbApiTest {
         Review review = tmdbReviews.getDetails(reviewId);
         assertNotNull(review);
         checkForNullAndEmptyFieldsAndNewItems(review);
-
-        AuthorDetails authorDetails = review.getAuthorDetails();
-        assertNotNull(authorDetails);
-        checkForNullAndEmptyFieldsAndNewItems(authorDetails);
     }
 }
