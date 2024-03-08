@@ -1,6 +1,15 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.Artwork;
+import info.movito.themoviedbapi.model.movies.changes.Change;
+import info.movito.themoviedbapi.model.movies.changes.ChangeItem;
+import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
+import info.movito.themoviedbapi.model.people.Data;
+import info.movito.themoviedbapi.model.people.ExternalIds;
+import info.movito.themoviedbapi.model.people.PersonDb;
+import info.movito.themoviedbapi.model.people.PersonImages;
+import info.movito.themoviedbapi.model.people.Translation;
+import info.movito.themoviedbapi.model.people.Translations;
 import info.movito.themoviedbapi.model.people.credits.Cast;
 import info.movito.themoviedbapi.model.people.credits.CombinedPersonCredits;
 import info.movito.themoviedbapi.model.people.credits.Crew;
@@ -11,31 +20,24 @@ import info.movito.themoviedbapi.model.people.credits.MovieCrew;
 import info.movito.themoviedbapi.model.people.credits.TvCast;
 import info.movito.themoviedbapi.model.people.credits.TvCredits;
 import info.movito.themoviedbapi.model.people.credits.TvCrew;
-import info.movito.themoviedbapi.model.movies.changes.Change;
-import info.movito.themoviedbapi.model.movies.changes.ChangeItem;
-import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.people.Data;
-import info.movito.themoviedbapi.model.people.ExternalIds;
-import info.movito.themoviedbapi.model.people.PersonDb;
-import info.movito.themoviedbapi.model.people.PersonImages;
-import info.movito.themoviedbapi.model.people.Translation;
-import info.movito.themoviedbapi.model.people.Translations;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse;
+import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
+import info.movito.themoviedbapi.util.FieldsToIgnore;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbPeople.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNestedEmptyCollectionsAndNullObjects;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static info.movito.themoviedbapi.util.TestUtils.testForNewItems;
 import static info.movito.themoviedbapi.util.TestUtils.testForNullFields;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -57,10 +59,24 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         TmdbPeople tmdbPeople = getTmdbApi().getPeople();
         PersonDb details = tmdbPeople.getDetails(123, "en-US");
         assertNotNull(details);
-        testForNullFields(details, "changes", "combinedCredits", "externalIds", "images", "latest", "movieCredits", "tvCredits",
-            "translations");
-        testForNewItems(details);
-        testForNestedEmptyCollectionsAndNullObjects(details);
+
+        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(details);
+        List<FieldsToIgnore> fieldsToIgnore = new ArrayList<>();
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "changes", "changes"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "combinedCredits", "combinedCredits"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "externalIds", "externalIds"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "images", "images"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "latest", "latest"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "movieCredits", "movieCredits"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "tvCredits", "tvCredits"));
+        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "translations", "translations"));
+
+        abstractJsonMappingValidator.validateNullFields(fieldsToIgnore);
+        abstractJsonMappingValidator.validateEmptyCollections();
+        abstractJsonMappingValidator.validateNullContainingCollection();
+        abstractJsonMappingValidator.validateEmptyMaps();
+        abstractJsonMappingValidator.validateNullContainingMaps();
+        abstractJsonMappingValidator.validateNewItems();
 
         List<String> alsoKnownAs = details.getAlsoKnownAs();
         assertNotNull(alsoKnownAs);

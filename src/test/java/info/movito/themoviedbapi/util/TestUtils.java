@@ -41,15 +41,7 @@ public final class TestUtils {
      * Tests the given object for null fields and new items.
      */
     public static void checkForNullAndEmptyFieldsAndNewItems(AbstractJsonMapping objectToCheck) {
-        AbstractJsonMappingValidator abstractJsonMappingValidator;
-
-        try {
-            abstractJsonMappingValidator = new AbstractJsonMappingValidator(objectToCheck);
-        }
-        catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-
+        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(objectToCheck);
         abstractJsonMappingValidator.validateAll();
     }
 

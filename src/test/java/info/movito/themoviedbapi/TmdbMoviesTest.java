@@ -42,12 +42,15 @@ import info.movito.themoviedbapi.model.reviews.AuthorDetails;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.MovieAppendToResponse;
+import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
+import info.movito.themoviedbapi.util.FieldsToIgnore;
 import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.util.Utils;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,10 +59,9 @@ import java.util.Optional;
 import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
+import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
 import static info.movito.themoviedbapi.util.TestUtils.testForNewItems;
 import static info.movito.themoviedbapi.util.TestUtils.testForNullFields;
-import static info.movito.themoviedbapi.util.TestUtils.checkForNullAndEmptyFieldsAndNewItems;
-import static info.movito.themoviedbapi.util.TestUtils.testForNestedEmptyCollectionsAndNullObjects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -82,10 +84,31 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         TmdbMovies tmdbMovies = getTmdbApi().getMovies();
         MovieDb movie = tmdbMovies.getDetails(123, "en-US");
         assertNotNull(movie);
-        testForNullFields(movie, "accountStates", "alternativeTitles", "credits", "changes", "externalIds", "images", "keywords",
-            "recommendations", "releaseDates", "lists", "reviews", "similar", "translations", "videos", "watchProviders");
-        testForNewItems(movie);
-        testForNestedEmptyCollectionsAndNullObjects(movie);
+
+        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(movie);
+        List<FieldsToIgnore> fieldsToIgnore = new ArrayList<>();
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "translations", "translations"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "keywords", "keywords"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "changes", "changes"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "watchProviders", "watchProviders"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "reviews", "reviews"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "accountStates", "accountStates"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "images", "images"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "externalIds", "externalIds"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "credits", "credits"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "alternativeTitles", "alternativeTitles"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "releaseDates", "releaseDates"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "videos", "videos"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "recommendations", "recommendations"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "lists", "lists"));
+        fieldsToIgnore.add(new FieldsToIgnore(MovieDb.class, "similar", "similar"));
+
+        abstractJsonMappingValidator.validateNullFields(fieldsToIgnore);
+        abstractJsonMappingValidator.validateEmptyCollections();
+        abstractJsonMappingValidator.validateNullContainingCollection();
+        abstractJsonMappingValidator.validateEmptyMaps();
+        abstractJsonMappingValidator.validateNullContainingMaps();
+        abstractJsonMappingValidator.validateNewItems();
 
         List<Genre> genres = movie.getGenres();
         assertNotNull(genres);
