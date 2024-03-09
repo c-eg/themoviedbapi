@@ -1,8 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.AlternativeName;
 import info.movito.themoviedbapi.model.Company;
-import info.movito.themoviedbapi.model.core.image.Image;
 import info.movito.themoviedbapi.model.core.image.ImageResults;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -14,7 +12,7 @@ import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbCompanies.TMDB_METHOD_COMPANY;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -36,7 +34,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
         Company company = tmdbCompanies.getDetails(companyId);
         assertNotNull(company);
-        testForNullFieldsAndNewItems(company);
+        validateAbstractJsonMappingFields(company);
     }
 
     /**
@@ -53,11 +51,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
         TmdbCompanies.AlternativeNamesResultsPage alternativeNamesResultsPage = tmdbCompanies.getAlternativeNames(1);
         assertNotNull(alternativeNamesResultsPage);
-        testForNullFieldsAndNewItems(alternativeNamesResultsPage);
-
-        AlternativeName alternativeName = alternativeNamesResultsPage.getResults().get(0);
-        assertNotNull(alternativeName);
-        testForNullFieldsAndNewItems(alternativeName);
+        validateAbstractJsonMappingFields(alternativeNamesResultsPage);
     }
 
     /**
@@ -74,10 +68,6 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
         ImageResults logoImageResults = tmdbCompanies.getImages(1);
         assertNotNull(logoImageResults);
-        testForNullFieldsAndNewItems(logoImageResults);
-
-        Image image = logoImageResults.getLogos().get(0);
-        assertNotNull(image);
-        testForNullFieldsAndNewItems(image);
+        validateAbstractJsonMappingFields(logoImageResults);
     }
 }

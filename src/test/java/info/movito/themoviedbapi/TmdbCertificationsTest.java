@@ -1,6 +1,5 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.certifications.Certification;
 import info.movito.themoviedbapi.model.certifications.CertificationResults;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -9,15 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 
 import static info.movito.themoviedbapi.TmdbCertifications.TMDB_METHOD_CERTIFICATIONS;
 import static info.movito.themoviedbapi.TmdbCertifications.TMDB_METHOD_MOVIE_CERTIFICATIONS;
 import static info.movito.themoviedbapi.TmdbCertifications.TMDB_METHOD_TV_CERTIFICATIONS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -37,17 +33,7 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         TmdbCertifications tmdbCertifications = getTmdbApi().getCertifications();
         CertificationResults movieCertifications = tmdbCertifications.getMovieCertifications();
         assertNotNull(movieCertifications);
-        testForNullFieldsAndNewItems(movieCertifications);
-
-        Map<String, List<Certification>> certifications = movieCertifications.getCertifications();
-        assertFalse(certifications.isEmpty());
-
-        List<Certification> auCertifications = certifications.get("AU");
-        assertFalse(auCertifications.isEmpty());
-
-        Certification auCertification = auCertifications.get(0);
-        assertNotNull(auCertification);
-        testForNullFieldsAndNewItems(auCertification);
+        validateAbstractJsonMappingFields(movieCertifications);
     }
 
     /**
@@ -62,16 +48,6 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         TmdbCertifications tmdbCertifications = getTmdbApi().getCertifications();
         CertificationResults tvCertifications = tmdbCertifications.getTvCertifications();
         assertNotNull(tvCertifications);
-        testForNullFieldsAndNewItems(tvCertifications);
-
-        Map<String, List<Certification>> certifications = tvCertifications.getCertifications();
-        assertFalse(certifications.isEmpty());
-
-        List<Certification> auCertifications = certifications.get("AU");
-        assertFalse(auCertifications.isEmpty());
-
-        Certification auCertification = auCertifications.get(0);
-        assertNotNull(auCertification);
-        testForNullFieldsAndNewItems(auCertification);
+        validateAbstractJsonMappingFields(tvCertifications);
     }
 }

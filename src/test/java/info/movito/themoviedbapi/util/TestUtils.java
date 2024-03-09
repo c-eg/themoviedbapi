@@ -5,13 +5,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test utilities.
@@ -40,57 +34,8 @@ public final class TestUtils {
     /**
      * Tests the given object for null fields and new items.
      */
-    public static void testForNullFieldsAndNewItems(AbstractJsonMapping objectToCheck) {
-        testForNullFields(objectToCheck);
-        testForNewItems(objectToCheck);
-    }
-
-    /**
-     * Tests the given object for null fields.
-     *
-     * @param objectToCheck the object to check for null fields.
-     * @param fieldsToIgnore the fields to ignore.
-     */
-    public static void testForNullFields(AbstractJsonMapping objectToCheck, String... fieldsToIgnore) {
-        List<Field> nullFields = getNullFields(objectToCheck, fieldsToIgnore);
-        List<String> nullFieldNames = nullFields.stream().map(Field::getName).toList();
-        assertTrue(nullFields.isEmpty(), "Null fields found in " + objectToCheck.getClass().getSimpleName() + ": " + nullFieldNames);
-    }
-
-    /**
-     * Tests the given object for new items.
-     */
-    public static void testForNewItems(AbstractJsonMapping objectToCheck) {
-        Map<String, Object> newItems = objectToCheck.getNewItems();
-        assertTrue(newItems.isEmpty(), "Unknown properties found in " + objectToCheck.getClass().getSimpleName() + ": " + newItems);
-    }
-
-    /**
-     * Returns all the null fields in the given object.
-     */
-    private static List<Field> getNullFields(Object objectToCheck, String... fieldsToIgnore) {
-        List<Field> nullFields = new ArrayList<>();
-
-        Class<?> clazz = objectToCheck.getClass();
-        while (clazz != null) {
-            for (Field field : clazz.getDeclaredFields()) {
-                if (fieldsToIgnore != null && List.of(fieldsToIgnore).contains(field.getName())) {
-                    continue;
-                }
-
-                field.setAccessible(true);
-                try {
-                    if (field.get(objectToCheck) == null) {
-                        nullFields.add(field);
-                    }
-                }
-                catch (IllegalAccessException exception) {
-                    throw new RuntimeException(exception);
-                }
-            }
-            clazz = clazz.getSuperclass();
-        }
-
-        return nullFields;
+    public static void validateAbstractJsonMappingFields(AbstractJsonMapping objectToCheck) {
+        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(objectToCheck);
+        abstractJsonMappingValidator.validateAll();
     }
 }

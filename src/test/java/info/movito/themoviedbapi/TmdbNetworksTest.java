@@ -1,7 +1,5 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.AlternativeName;
-import info.movito.themoviedbapi.model.core.image.Image;
 import info.movito.themoviedbapi.model.core.image.ImageResults;
 import info.movito.themoviedbapi.model.networks.AlternativeNamesResults;
 import info.movito.themoviedbapi.model.networks.Network;
@@ -12,12 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbNetworks.TMDB_METHOD_NETWORK;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -37,7 +33,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
         Network network = tmdbNetworks.getDetails(1);
         assertNotNull(network);
-        testForNullFieldsAndNewItems(network);
+        validateAbstractJsonMappingFields(network);
     }
 
     /**
@@ -52,15 +48,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
         AlternativeNamesResults alternativeNamesResults = tmdbNetworks.getAlternativeNames(1);
         assertNotNull(alternativeNamesResults);
-        testForNullFieldsAndNewItems(alternativeNamesResults);
-
-        List<AlternativeName> alternativeNames = alternativeNamesResults.getResults();
-        assertNotNull(alternativeNames);
-        assertFalse(alternativeNames.isEmpty());
-
-        AlternativeName alternativeName = alternativeNames.get(0);
-        assertNotNull(alternativeName);
-        testForNullFieldsAndNewItems(alternativeName);
+        validateAbstractJsonMappingFields(alternativeNamesResults);
     }
 
     /**
@@ -75,14 +63,6 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
         ImageResults imageResults = tmdbNetworks.getImages(1);
         assertNotNull(imageResults);
-        testForNullFieldsAndNewItems(imageResults);
-
-        List<Image> images = imageResults.getLogos();
-        assertNotNull(images);
-        assertFalse(images.isEmpty());
-
-        Image image = images.get(0);
-        assertNotNull(image);
-        testForNullFieldsAndNewItems(image);
+        validateAbstractJsonMappingFields(imageResults);
     }
 }

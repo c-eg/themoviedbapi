@@ -1,6 +1,5 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.changes.Change;
 import info.movito.themoviedbapi.model.changes.ChangesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -15,7 +14,7 @@ import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -38,16 +37,9 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbChanges tmdbChanges = getTmdbApi().getChanges();
-        long start = System.currentTimeMillis();
         ChangesResultsPage changesResultsPage = tmdbChanges.getMovieChangesList(startDate, endDate, page);
-        long end = System.currentTimeMillis();
-        System.out.println("Time: " + (end - start));
         assertNotNull(changesResultsPage);
-        testForNullFieldsAndNewItems(changesResultsPage);
-
-        Change change = changesResultsPage.getResults().get(0);
-        assertNotNull(change);
-        testForNullFieldsAndNewItems(change);
+        validateAbstractJsonMappingFields(changesResultsPage);
     }
 
     /**
@@ -67,11 +59,7 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         TmdbChanges tmdbChanges = getTmdbApi().getChanges();
         ChangesResultsPage changesResultsPage = tmdbChanges.getPeopleChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
-        testForNullFieldsAndNewItems(changesResultsPage);
-
-        Change change = changesResultsPage.getResults().get(0);
-        assertNotNull(change);
-        testForNullFieldsAndNewItems(change);
+        validateAbstractJsonMappingFields(changesResultsPage);
     }
 
     /**
@@ -91,10 +79,6 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
         TmdbChanges tmdbChanges = getTmdbApi().getChanges();
         ChangesResultsPage changesResultsPage = tmdbChanges.getTvChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
-        testForNullFieldsAndNewItems(changesResultsPage);
-
-        Change change = changesResultsPage.getResults().get(0);
-        assertNotNull(change);
-        testForNullFieldsAndNewItems(change);
+        validateAbstractJsonMappingFields(changesResultsPage);
     }
 }

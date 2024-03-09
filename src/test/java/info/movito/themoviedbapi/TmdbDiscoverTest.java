@@ -1,8 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.core.Movie;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.core.TvSeries;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -18,7 +16,7 @@ import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_DISCOVER;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -41,11 +39,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
 
         MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(discoverMovieParamBuilder);
         assertNotNull(movieResultsPage);
-        testForNullFieldsAndNewItems(movieResultsPage);
-
-        Movie movie = movieResultsPage.getResults().get(0);
-        assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -60,11 +54,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
         MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(null);
         assertNotNull(movieResultsPage);
-        testForNullFieldsAndNewItems(movieResultsPage);
-
-        Movie movie = movieResultsPage.getResults().get(0);
-        assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -82,11 +72,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
 
         TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(discoverTvParamBuilder);
         assertNotNull(tvSeriesResultsPage);
-        testForNullFieldsAndNewItems(tvSeriesResultsPage);
-
-        TvSeries tvSeries = tvSeriesResultsPage.getResults().get(0);
-        assertNotNull(tvSeries);
-        testForNullFieldsAndNewItems(tvSeries);
+        validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 
     /**
@@ -101,10 +87,6 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
         TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(null);
         assertNotNull(tvSeriesResultsPage);
-        testForNullFieldsAndNewItems(tvSeriesResultsPage);
-
-        TvSeries tvSeries = tvSeriesResultsPage.getResults().get(0);
-        assertNotNull(tvSeries);
-        testForNullFieldsAndNewItems(tvSeries);
+        validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 }

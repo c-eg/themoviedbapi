@@ -16,7 +16,7 @@ import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbConfiguration.TMDB_METHOD_CONFIGURATION;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -26,18 +26,18 @@ import static org.mockito.Mockito.when;
  */
 public class TmdbConfigurationTest extends AbstractTmdbApiTest {
     /**
-     * Test for {@link TmdbConfiguration#getConfig()} with an expected result.
+     * Test for {@link TmdbConfiguration#getDetails()} with an expected result.
      */
     @Test
-    public void testGetConfig() throws IOException, TmdbException {
+    public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/configuration/details.json");
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CONFIGURATION);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbConfiguration tmdbConfiguration = getTmdbApi().getConfiguration();
-        Configuration configuration = tmdbConfiguration.getConfig();
+        Configuration configuration = tmdbConfiguration.getDetails();
         assertNotNull(configuration);
-        testForNullFieldsAndNewItems(configuration);
+        validateAbstractJsonMappingFields(configuration);
     }
 
     /**
@@ -56,7 +56,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
 
         Country country = countries.get(0);
         assertNotNull(country);
-        testForNullFieldsAndNewItems(country);
+        validateAbstractJsonMappingFields(country);
     }
 
     /**
@@ -75,7 +75,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
 
         Job job = jobs.get(0);
         assertNotNull(job);
-        testForNullFieldsAndNewItems(job);
+        validateAbstractJsonMappingFields(job);
     }
 
     /**
@@ -94,7 +94,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
 
         Language language = languages.get(0);
         assertNotNull(language);
-        testForNullFieldsAndNewItems(language);
+        validateAbstractJsonMappingFields(language);
     }
 
     /**
@@ -131,6 +131,6 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
 
         Timezone timezone = timezones.get(0);
         assertNotNull(timezone);
-        testForNullFieldsAndNewItems(timezone);
+        validateAbstractJsonMappingFields(timezone);
     }
 }

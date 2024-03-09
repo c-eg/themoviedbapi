@@ -307,7 +307,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param movieId The TMDb id of the movie.
      * @param guestSessionId optional - The guest session id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param rating The rating of the movie. Must be: 0 < rating <= 10.
+     * @param rating The rating of the movie. Must be: 0 &lt; rating &lE; 10.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

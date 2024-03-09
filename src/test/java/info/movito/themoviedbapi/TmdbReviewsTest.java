@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.reviews.Review;
-import info.movito.themoviedbapi.model.reviews.AuthorDetails;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
@@ -12,7 +11,7 @@ import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbReviews.TMDB_METHOD_MOVIE_REVIEW;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -34,10 +33,6 @@ public class TmdbReviewsTest extends AbstractTmdbApiTest {
         TmdbReviews tmdbReviews = getTmdbApi().getReviews();
         Review review = tmdbReviews.getDetails(reviewId);
         assertNotNull(review);
-        testForNullFieldsAndNewItems(review);
-
-        AuthorDetails authorDetails = review.getAuthorDetails();
-        assertNotNull(authorDetails);
-        testForNullFieldsAndNewItems(authorDetails);
+        validateAbstractJsonMappingFields(review);
     }
 }

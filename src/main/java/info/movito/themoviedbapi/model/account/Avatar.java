@@ -5,16 +5,16 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.HashMap;
+import java.util.Map;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Avatar extends AbstractJsonMapping {
     @JsonProperty("gravatar")
-    private HashMap<String, String> gravatar;
+    private Map<String, String> gravatar;
 
     @JsonProperty("tmdb")
-    private HashMap<String, String> tmdb;
+    private Map<String, String> tmdb;
 
     public String getGravatarHash() {
         return gravatar.get("hash");

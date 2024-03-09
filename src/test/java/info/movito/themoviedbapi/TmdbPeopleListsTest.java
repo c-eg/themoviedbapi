@@ -1,7 +1,5 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.peoplelists.KnownFor;
-import info.movito.themoviedbapi.model.peoplelists.PopularPerson;
 import info.movito.themoviedbapi.model.peoplelists.PopularPersonResults;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -10,12 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbPeopleLists.TMDB_METHOD_PEOPLE_LISTS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -35,18 +31,6 @@ public class TmdbPeopleListsTest extends AbstractTmdbApiTest {
         TmdbPeopleLists tmdbPeopleLists = getTmdbApi().getPeopleLists();
         PopularPersonResults popularPersonResults = tmdbPeopleLists.getPopular("en-US", 1);
         assertNotNull(popularPersonResults);
-        testForNullFieldsAndNewItems(popularPersonResults);
-
-        List<PopularPerson> popularPeople = popularPersonResults.getResults();
-        assertNotNull(popularPeople);
-        assertFalse(popularPeople.isEmpty());
-
-        PopularPerson popularPerson = popularPeople.get(0);
-        assertNotNull(popularPerson);
-        testForNullFieldsAndNewItems(popularPerson);
-
-        KnownFor knownFor = popularPerson.getKnownFor().get(0);
-        assertNotNull(knownFor);
-        testForNullFieldsAndNewItems(knownFor);
+        validateAbstractJsonMappingFields(popularPersonResults);
     }
 }

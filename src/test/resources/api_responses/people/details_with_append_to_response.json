@@ -22,7 +22,7 @@
         "cast": [
             {
                 "adult": false,
-                "backdrop_path": null,
+                "backdrop_path": "backdrop path",
                 "genre_ids": [
                     99,
                     10770
@@ -1052,30 +1052,44 @@
         ]
     },
     "changes": {
-        "changes": []
+        "changes": [
+            {
+                "key": "biography",
+                "items": [
+                    {
+                        "id": "640469b113654500ba4e859a",
+                        "action": "added",
+                        "time": "2023-03-05 10:06:41 UTC",
+                        "iso_639_1": "ca",
+                        "iso_3166_1": "ES",
+                        "value": "Thomas \"Tom\" Jeffrey Hanks (Concord, Califòrnia, 9 de juliol de 1956) és un actor de cinema i productor estatunidenc, guanyador dues vegades de l'Oscar al millor actor i considerat un dels més versàtils i talentosos del cinema actual.\n\nHanks és l'actor que més diners ha guanyat de tota la història del cinema amb un total de gairebé sis mil milions de dòlars (setembre 2006). És també copropietari de Playtone, una companyia de producció de pel·lícules."
+                    }
+                ]
+            }
+        ]
     },
     "external_ids": {
-        "freebase_mid": null,
-        "freebase_id": null,
-        "imdb_id": "nm0651614",
-        "tvrage_id": null,
-        "wikidata_id": null,
-        "facebook_id": null,
-        "instagram_id": null,
-        "tiktok_id": null,
-        "twitter_id": null,
-        "youtube_id": null
+        "freebase_mid": "/m/0bxtg",
+        "freebase_id": "/en/tom_hanks",
+        "imdb_id": "nm0000158",
+        "tvrage_id": 14293,
+        "wikidata_id": "Q2263",
+        "facebook_id": "TomHanks",
+        "instagram_id": "tomhanks",
+        "tiktok_id": "tomhanks",
+        "twitter_id": "tomhanks",
+        "youtube_id": "tomhanks"
     },
     "images": {
         "profiles": [
             {
                 "aspect_ratio": 0.667,
-                "height": 1500,
-                "iso_639_1": null,
-                "file_path": "/xWtXYk6M5NFroddcQDviLlxOnkU.jpg",
-                "vote_average": 0,
-                "vote_count": 0,
-                "width": 1000
+                "height": 1489,
+                "iso_639_1": "en",
+                "file_path": "/50rqDkmvXwjwVhFH7q6ph2Rkw7S.jpg",
+                "vote_average": 5.4,
+                "vote_count": 16,
+                "width": 993
             }
         ]
     },
@@ -1083,7 +1097,7 @@
         "cast": [
             {
                 "adult": false,
-                "backdrop_path": null,
+                "backdrop_path": "backdrop path",
                 "genre_ids": [
                     99,
                     10770
@@ -2069,8 +2083,60 @@
         ]
     },
     "tv_credits": {
-        "cast": [],
-        "crew": []
+        "cast": [
+            {
+                "adult": false,
+                "backdrop_path": "/ttvojTMgaIN7U8gqB5LlNqO4vPN.jpg",
+                "genre_ids": [
+                    10767
+                ],
+                "id": 1900,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "LIVE with Kelly and Mark",
+                "overview": "A morning talk show with A-list celebrity guests, top-notch performances and one-of-a-kind segments that are unrivaled on daytime television, plus spontaneous, hilarious and unpredictable talk.",
+                "popularity": 700.508,
+                "poster_path": "/l5y8egG27p2fSTyq8s21SQMmQLy.jpg",
+                "first_air_date": "1988-09-05",
+                "name": "LIVE with Kelly and Mark",
+                "vote_average": 5.4,
+                "vote_count": 25,
+                "character": "",
+                "credit_id": "52571af019c29571140d5c92",
+                "episode_count": 1
+            }
+        ],
+        "crew": [
+            {
+                "adult": false,
+                "backdrop_path": "/6uMA6EAiwcsCqQJwWgYwtORvE0v.jpg",
+                "genre_ids": [
+                    35,
+                    9648,
+                    80,
+                    10765
+                ],
+                "id": 2391,
+                "origin_country": [
+                    "US"
+                ],
+                "original_language": "en",
+                "original_name": "Tales from the Crypt",
+                "overview": "Cadaverous scream legend the Crypt Keeper is your macabre host for these forays of fright and fun based on the classic E.C. Comics tales from back in the day. So shamble up to the bar and pick your poison. Will it be an insane Santa on a personal slay ride? Honeymooners out to fulfill the \"til death do we part\" vow ASAP?",
+                "popularity": 24.88,
+                "poster_path": "/dDfXQH6Kg2JNASI0dqNALukjhk1.jpg",
+                "first_air_date": "1989-06-10",
+                "name": "Tales from the Crypt",
+                "vote_average": 7.978,
+                "vote_count": 757,
+                "credit_id": "525734f3760ee3776a397211",
+                "department": "Directing",
+                "episode_count": 1,
+                "job": "Director"
+            }
+        ]
     },
     "translations": {
         "translations": [

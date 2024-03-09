@@ -1,18 +1,12 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.movies.MovieList;
-import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.account.Account;
-import info.movito.themoviedbapi.model.core.Movie;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.core.TvSeries;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
-import info.movito.themoviedbapi.model.rated.RatedMovie;
+import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
-import info.movito.themoviedbapi.model.rated.RatedTvEpisode;
 import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
-import info.movito.themoviedbapi.model.rated.RatedTvSeries;
 import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -24,14 +18,12 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.List;
 
 import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbAccount.TMDB_METHOD_ACCOUNT;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.testForNullFieldsAndNewItems;
+import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -51,7 +43,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         Account account = tmdbAccount.getDetails(1234, "testSessionId");
         assertNotNull(account);
-        testForNullFieldsAndNewItems(account);
+        validateAbstractJsonMappingFields(account);
     }
 
     /**
@@ -77,7 +69,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         ResponseStatus responseStatus = tmdbAccount.addFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
-        testForNullFieldsAndNewItems(responseStatus);
+        validateAbstractJsonMappingFields(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
         assertEquals("Success.", responseStatus.getStatusMessage());
     }
@@ -105,7 +97,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         ResponseStatus responseStatus = tmdbAccount.removeFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
-        testForNullFieldsAndNewItems(responseStatus);
+        validateAbstractJsonMappingFields(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
         assertEquals("Success.", responseStatus.getStatusMessage());
     }
@@ -133,7 +125,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         ResponseStatus responseStatus = tmdbAccount.addToWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
-        testForNullFieldsAndNewItems(responseStatus);
+        validateAbstractJsonMappingFields(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
         assertEquals("Success.", responseStatus.getStatusMessage());
     }
@@ -161,7 +153,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         ResponseStatus responseStatus = tmdbAccount.removeFromWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
-        testForNullFieldsAndNewItems(responseStatus);
+        validateAbstractJsonMappingFields(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
         assertEquals("Success.", responseStatus.getStatusMessage());
     }
@@ -185,14 +177,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         MovieResultsPage movieResultsPage = tmdbAccount.getFavoriteMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
-        testForNullFieldsAndNewItems(movieResultsPage);
-
-        List<Movie> movieResults = movieResultsPage.getResults();
-        assertFalse(movieResults.isEmpty());
-
-        Movie movie = movieResults.get(0);
-        assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -214,14 +199,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getFavoriteTv(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
-        testForNullFieldsAndNewItems(tvSeriesResultsPage);
-
-        List<TvSeries> tvResults = tvSeriesResultsPage.getResults();
-        assertFalse(tvResults.isEmpty());
-
-        TvSeries tvSeries = tvResults.get(0);
-        assertNotNull(tvSeries);
-        testForNullFieldsAndNewItems(tvSeries);
+        validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 
     /**
@@ -240,14 +218,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         MovieListResultsPage movieListResultsPage = tmdbAccount.getLists(accountId, sessionId, page);
         assertNotNull(movieListResultsPage);
-        testForNullFieldsAndNewItems(movieListResultsPage);
-
-        List<MovieList> movieLists = movieListResultsPage.getResults();
-        assertFalse(movieLists.isEmpty());
-
-        MovieList movieList = movieLists.get(0);
-        assertNotNull(movieList);
-        testForNullFieldsAndNewItems(movieList);
+        validateAbstractJsonMappingFields(movieListResultsPage);
     }
 
     /**
@@ -269,14 +240,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         RatedMovieResultsPage ratedMovieResultsPage = tmdbAccount.getRatedMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedMovieResultsPage);
-        testForNullFieldsAndNewItems(ratedMovieResultsPage);
-
-        List<RatedMovie> ratedMovies = ratedMovieResultsPage.getResults();
-        assertFalse(ratedMovies.isEmpty());
-
-        RatedMovie ratedMovie = ratedMovies.get(0);
-        assertNotNull(ratedMovie);
-        testForNullFieldsAndNewItems(ratedMovie);
+        validateAbstractJsonMappingFields(ratedMovieResultsPage);
     }
 
     /**
@@ -298,14 +262,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         RatedTvSeriesResultsPage ratedTvSeriesResultsPage = tmdbAccount.getRatedTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvSeriesResultsPage);
-        testForNullFieldsAndNewItems(ratedTvSeriesResultsPage);
-
-        List<RatedTvSeries> ratedTvSeriess = ratedTvSeriesResultsPage.getResults();
-        assertFalse(ratedTvSeriess.isEmpty());
-
-        RatedTvSeries ratedTvSeries = ratedTvSeriess.get(0);
-        assertNotNull(ratedTvSeries);
-        testForNullFieldsAndNewItems(ratedTvSeries);
+        validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
     }
 
     /**
@@ -328,14 +285,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage =
             tmdbAccount.getRatedTvEpisodes(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvEpisodesResultsPage);
-        testForNullFieldsAndNewItems(ratedTvEpisodesResultsPage);
-
-        List<RatedTvEpisode> ratedTvEpisodes = ratedTvEpisodesResultsPage.getResults();
-        assertFalse(ratedTvEpisodes.isEmpty());
-
-        RatedTvEpisode ratedTvEpisode = ratedTvEpisodes.get(0);
-        assertNotNull(ratedTvEpisode);
-        testForNullFieldsAndNewItems(ratedTvEpisode);
+        validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);
     }
 
     /**
@@ -357,14 +307,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         MovieResultsPage movieResultsPage = tmdbAccount.getWatchListMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
-        testForNullFieldsAndNewItems(movieResultsPage);
-
-        List<Movie> movies = movieResultsPage.getResults();
-        assertFalse(movies.isEmpty());
-
-        Movie movie = movies.get(0);
-        assertNotNull(movie);
-        testForNullFieldsAndNewItems(movie);
+        validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -386,13 +329,6 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getWatchListTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
-        testForNullFieldsAndNewItems(tvSeriesResultsPage);
-
-        List<TvSeries> tvSeriess = tvSeriesResultsPage.getResults();
-        assertFalse(tvSeriess.isEmpty());
-
-        TvSeries tvSeries = tvSeriess.get(0);
-        assertNotNull(tvSeries);
-        testForNullFieldsAndNewItems(tvSeries);
+        validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 }
