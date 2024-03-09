@@ -19,7 +19,6 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse;
 import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
-import info.movito.themoviedbapi.util.FieldsToIgnore;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
 
@@ -54,17 +53,17 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         assertNotNull(details);
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(details);
-        List<FieldsToIgnore> fieldsToIgnore = new ArrayList<>();
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "changes", "changes"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "combinedCredits", "combinedCredits"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "externalIds", "externalIds"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "images", "images"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "latest", "latest"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "movieCredits", "movieCredits"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "tvCredits", "tvCredits"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "translations", "translations"));
+        List<String> filteredModel = new ArrayList<>();
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.changes");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.combinedCredits");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.externalIds");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.images");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.latest");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.movieCredits");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.tvCredits");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.translations");
 
-        abstractJsonMappingValidator.validateNullFields(fieldsToIgnore);
+        abstractJsonMappingValidator.validateNullFields(filteredModel);
         abstractJsonMappingValidator.validateEmptyCollections();
         abstractJsonMappingValidator.validateNullContainingCollection();
         abstractJsonMappingValidator.validateEmptyMaps();
@@ -188,17 +187,17 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         assertNotNull(latest);
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(latest);
-        List<FieldsToIgnore> fieldsToIgnore = new ArrayList<>();
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "changes", "changes"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "combinedCredits", "combinedCredits"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "externalIds", "externalIds"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "images", "images"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "latest", "latest"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "movieCredits", "movieCredits"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "tvCredits", "tvCredits"));
-        fieldsToIgnore.add(new FieldsToIgnore(PersonDb.class, "translations", "translations"));
+        List<String> filteredModel = new ArrayList<>();
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.changes");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.combinedCredits");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.externalIds");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.images");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.latest");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.movieCredits");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.tvCredits");
+        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.translations");
 
-        abstractJsonMappingValidator.validateNullFields(fieldsToIgnore);
+        abstractJsonMappingValidator.validateNullFields(filteredModel);
         abstractJsonMappingValidator.validateEmptyCollections();
         abstractJsonMappingValidator.validateNullContainingCollection();
         abstractJsonMappingValidator.validateEmptyMaps();

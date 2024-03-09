@@ -5,8 +5,8 @@ import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -16,11 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Validates an {@link AbstractJsonMapping} object's fields.
  */
 public class AbstractJsonMappingValidator {
-    private final Map<String, List<Field>> nullFields = new HashMap<>();
-    private final Map<String, List<Field>> emptyCollections = new HashMap<>();
-    private final Map<String, List<Field>> nullContainingCollection = new HashMap<>();
-    private final Map<String, List<Field>> emptyMaps = new HashMap<>();
-    private final Map<String, List<Field>> nullContainingMaps = new HashMap<>();
+    private final List<String> nullFields = new ArrayList<>();
+    private final List<String> emptyCollections = new ArrayList<>();
+    private final List<String> nullContainingCollection = new ArrayList<>();
+    private final List<String> emptyMaps = new ArrayList<>();
+    private final List<String> nullContainingMaps = new ArrayList<>();
     private final Map<String, Map<String, Object>> newItems = new HashMap<>();
 
     /**
@@ -30,7 +30,7 @@ public class AbstractJsonMappingValidator {
      */
     public AbstractJsonMappingValidator(AbstractJsonMapping objectToCheck) {
         try {
-            addNullAndEmptyFields(objectToCheck, null);
+            processFields(objectToCheck, objectToCheck.getClass().getName());
         }
         catch (IllegalAccessException exception) {
             throw new RuntimeException(exception);
@@ -54,7 +54,7 @@ public class AbstractJsonMappingValidator {
      * Validates the object for: null fields.
      */
     public void validateNullFields() {
-        assertTrue(nullFields.isEmpty(), "Null fields found: " + getFormattedFieldNames(nullFields));
+        validateNullFields(Collections.emptyList());
     }
 
     /**
@@ -62,19 +62,16 @@ public class AbstractJsonMappingValidator {
      *
      * @param fieldsToIgnore the fields to ignore.
      */
-    public void validateNullFields(List<FieldsToIgnore> fieldsToIgnore) {
-        for (FieldsToIgnore fieldToIgnore : fieldsToIgnore) {
-            filterFieldsToIgnore(nullFields, fieldToIgnore.clazz(), fieldToIgnore.initialFieldNameFromObjectToCheck(),
-                fieldToIgnore.nullFieldsToIgnore());
-        }
-        assertTrue(nullFields.isEmpty(), "Null fields found: " + getFormattedFieldNames(nullFields));
+    public void validateNullFields(List<String> fieldsToIgnore) {
+        nullFields.removeAll(fieldsToIgnore);
+        assertTrue(nullFields.isEmpty(), "Null fields found: " + nullFields);
     }
 
     /**
      * Validates the object for: empty collections.
      */
     public void validateEmptyCollections() {
-        assertTrue(emptyCollections.isEmpty(), "Empty collections found in: " + getFormattedFieldNames(emptyCollections));
+        validateEmptyCollections(Collections.emptyList());
     }
 
     /**
@@ -82,20 +79,16 @@ public class AbstractJsonMappingValidator {
      *
      * @param fieldsToIgnore the fields to ignore.
      */
-    public void validateEmptyCollections(List<FieldsToIgnore> fieldsToIgnore) {
-        for (FieldsToIgnore fieldToIgnore : fieldsToIgnore) {
-            filterFieldsToIgnore(emptyCollections, fieldToIgnore.clazz(), fieldToIgnore.initialFieldNameFromObjectToCheck(),
-                fieldToIgnore.nullFieldsToIgnore());
-        }
-        assertTrue(emptyCollections.isEmpty(), "Empty collections found in: " + getFormattedFieldNames(emptyCollections));
+    public void validateEmptyCollections(List<String> fieldsToIgnore) {
+        emptyCollections.removeAll(fieldsToIgnore);
+        assertTrue(emptyCollections.isEmpty(), "Empty collections found in: " + emptyCollections);
     }
 
     /**
      * Validates the object for: collections containing null.
      */
     public void validateNullContainingCollection() {
-        assertTrue(nullContainingCollection.isEmpty(), "Collections containing null found: " +
-            getFormattedFieldNames(nullContainingCollection));
+        validateNullContainingCollection(Collections.emptyList());
     }
 
     /**
@@ -103,20 +96,16 @@ public class AbstractJsonMappingValidator {
      *
      * @param fieldsToIgnore the fields to ignore.
      */
-    public void validateNullContainingCollection(List<FieldsToIgnore> fieldsToIgnore) {
-        for (FieldsToIgnore fieldToIgnore : fieldsToIgnore) {
-            filterFieldsToIgnore(nullContainingCollection, fieldToIgnore.clazz(), fieldToIgnore.initialFieldNameFromObjectToCheck(),
-                fieldToIgnore.nullFieldsToIgnore());
-        }
-        assertTrue(nullContainingCollection.isEmpty(), "Collections containing null found: " +
-            getFormattedFieldNames(nullContainingCollection));
+    public void validateNullContainingCollection(List<String> fieldsToIgnore) {
+        nullContainingCollection.removeAll(fieldsToIgnore);
+        assertTrue(nullContainingCollection.isEmpty(), "Collections containing null found: " + nullContainingCollection);
     }
 
     /**
      * Validates the object for: empty maps.
      */
     public void validateEmptyMaps() {
-        assertTrue(emptyMaps.isEmpty(), "Empty maps found: " + getFormattedFieldNames(emptyMaps));
+        validateEmptyMaps(Collections.emptyList());
     }
 
     /**
@@ -124,19 +113,16 @@ public class AbstractJsonMappingValidator {
      *
      * @param fieldsToIgnore the fields to ignore.
      */
-    public void validateEmptyMaps(List<FieldsToIgnore> fieldsToIgnore) {
-        for (FieldsToIgnore fieldToIgnore : fieldsToIgnore) {
-            filterFieldsToIgnore(emptyMaps, fieldToIgnore.clazz(), fieldToIgnore.initialFieldNameFromObjectToCheck(),
-                fieldToIgnore.nullFieldsToIgnore());
-        }
-        assertTrue(emptyMaps.isEmpty(), "Empty maps found: " + getFormattedFieldNames(emptyMaps));
+    public void validateEmptyMaps(List<String> fieldsToIgnore) {
+        emptyMaps.removeAll(fieldsToIgnore);
+        assertTrue(emptyMaps.isEmpty(), "Empty maps found: " + emptyMaps);
     }
 
     /**
      * Validates the object for: maps containing null.
      */
     public void validateNullContainingMaps() {
-        assertTrue(nullContainingMaps.isEmpty(), "Maps containing null found: " + getFormattedFieldNames(nullContainingMaps));
+        validateNullContainingMaps(Collections.emptyList());
     }
 
     /**
@@ -144,87 +130,63 @@ public class AbstractJsonMappingValidator {
      *
      * @param fieldsToIgnore the fields to ignore.
      */
-    public void validateNullContainingMaps(List<FieldsToIgnore> fieldsToIgnore) {
-        for (FieldsToIgnore fieldToIgnore : fieldsToIgnore) {
-            filterFieldsToIgnore(nullContainingMaps, fieldToIgnore.clazz(), fieldToIgnore.initialFieldNameFromObjectToCheck(),
-                fieldToIgnore.nullFieldsToIgnore());
-        }
-        assertTrue(nullContainingMaps.isEmpty(), "Maps containing null found: " + getFormattedFieldNames(nullContainingMaps));
+    public void validateNullContainingMaps(List<String> fieldsToIgnore) {
+        nullContainingMaps.removeAll(fieldsToIgnore);
+        assertTrue(nullContainingMaps.isEmpty(), "Maps containing null found: " + nullContainingMaps);
     }
 
     /**
      * Validates the object for: new items.
      */
     public void validateNewItems() {
-        assertTrue(newItems.isEmpty(), "New items found: " + getFormattedFieldNamesForNewItems(newItems));
+        String newItemsString = newItems.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).toList().toString();
+        assertTrue(newItems.isEmpty(), "New items found: " + newItemsString);
     }
 
-    private void filterFieldsToIgnore(Map<String, List<Field>> map, Class<?> clazz, String initialFieldNameFromObjectToCheck,
-                                      String... fieldsToIgnore) {
-        String key = clazz.getName() + "." + initialFieldNameFromObjectToCheck;
-
-        Iterator<Map.Entry<String, List<Field>>> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, List<Field>> entry = iterator.next();
-            if (entry.getKey().equals(key)) {
-                List<Field> fields = entry.getValue();
-                for (String fieldToIgnore : fieldsToIgnore) {
-                    fields.removeIf(field -> field.getName().equals(fieldToIgnore));
-                }
-            }
-
-            if (entry.getValue().isEmpty()) {
-                iterator.remove();
-            }
-        }
-    }
-
-    private void addNullAndEmptyFields(AbstractJsonMapping objectToCheck, Field initialField) throws IllegalAccessException {
-        Class<?> clazz = objectToCheck.getClass();
-
+    private void processFields(AbstractJsonMapping objectToCheck, String fieldName) throws IllegalAccessException {
         Map<String, Object> newItems = objectToCheck.getNewItems();
         if (!newItems.isEmpty()) {
-            this.newItems.put(getMapKey(objectToCheck, initialField), newItems);
+            this.newItems.put(fieldName, newItems);
         }
 
+        Class<?> clazz = objectToCheck.getClass();
         while (clazz != null && clazz != AbstractJsonMapping.class) {
             for (Field field : clazz.getDeclaredFields()) {
                 field.setAccessible(true);
 
+                String newFieldName = fieldName + "." + field.getName();
                 Object fieldValue = field.get(objectToCheck);
-                Field parentField = initialField != null ? initialField : field;
-
                 if (fieldValue == null) {
-                    mergeMapWithNew(nullFields, objectToCheck, field, parentField);
+                    nullFields.add(newFieldName);
                 }
                 else if (fieldValue instanceof AbstractJsonMapping abstractJsonMapping) {
-                    addNullAndEmptyFields(abstractJsonMapping, parentField);
+                    processFields(abstractJsonMapping, newFieldName);
                 }
                 else if (fieldValue instanceof Collection<?> collection) {
                     if (collection.isEmpty()) {
-                        mergeMapWithNew(emptyCollections, objectToCheck, field, parentField);
+                        emptyCollections.add(newFieldName);
                     }
                     else {
                         Object item = collection.iterator().next();
                         if (item == null) {
-                            mergeMapWithNew(nullContainingCollection, objectToCheck, field, parentField);
+                            nullContainingCollection.add(newFieldName);
                         }
                         else if (item instanceof AbstractJsonMapping abstractJsonMapping) {
-                            addNullAndEmptyFields(abstractJsonMapping, parentField);
+                            processFields(abstractJsonMapping, newFieldName);
                         }
                     }
                 }
                 else if (fieldValue instanceof Map<?, ?> map) {
                     if (map.isEmpty()) {
-                        mergeMapWithNew(emptyMaps, objectToCheck, field, parentField);
+                        emptyMaps.add(newFieldName);
                     }
                     else {
                         for (Map.Entry<?, ?> entry : map.entrySet()) {
                             if (entry.getValue() == null) {
-                                mergeMapWithNew(nullContainingMaps, objectToCheck, field, parentField);
+                                nullContainingMaps.add(newFieldName);
                             }
                             else if (entry.getValue() instanceof AbstractJsonMapping abstractJsonMapping) {
-                                addNullAndEmptyFields(abstractJsonMapping, parentField);
+                                processFields(abstractJsonMapping, newFieldName);
                             }
                         }
                     }
@@ -233,30 +195,5 @@ public class AbstractJsonMappingValidator {
 
             clazz = clazz.getSuperclass();
         }
-    }
-
-    private void mergeMapWithNew(Map<String, List<Field>> map, AbstractJsonMapping objectToCheck, Field field, Field parentField) {
-        map.merge(getMapKey(objectToCheck, parentField), new ArrayList<>(List.of(field)), (oldValue, newValue) -> {
-            oldValue.addAll(newValue);
-            return oldValue;
-        });
-    }
-
-    private String getMapKey(AbstractJsonMapping objectToCheck, Field initialField) {
-        StringBuilder key = new StringBuilder();
-        key.append(objectToCheck.getClass().getName());
-        if (initialField != null) {
-            key.append('.').append(initialField.getName());
-        }
-        return key.toString();
-    }
-
-    private String getFormattedFieldNames(Map<String, List<Field>> fields) {
-        return fields.entrySet().stream().map(entry -> entry.getKey() + ": " +
-            entry.getValue().stream().map(Field::getName).toList()).toList().toString();
-    }
-
-    private String getFormattedFieldNamesForNewItems(Map<String, Map<String, Object>> newItems) {
-        return newItems.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).toList().toString();
     }
 }
