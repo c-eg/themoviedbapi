@@ -34,7 +34,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
-import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
