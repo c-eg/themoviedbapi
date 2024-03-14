@@ -8,8 +8,8 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class TvKeywords extends AbstractJsonMapping {
+@EqualsAndHashCode(callSuper = true)
+public class TvKeywords extends IdElement {
     @JsonProperty("results")
     private List<Keyword> results;
 }

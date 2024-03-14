@@ -9,8 +9,11 @@ import info.movito.themoviedbapi.model.ProductionCountry;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.Language;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.ReviewResultsPage;
+import info.movito.themoviedbapi.model.core.accountstates.AccountStates;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.providers.ProviderResults;
+import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
+import info.movito.themoviedbapi.model.core.video.VideoResults;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

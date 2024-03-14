@@ -2,7 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
-import info.movito.themoviedbapi.model.movies.AccountStates;
+import info.movito.themoviedbapi.model.core.accountstates.AccountStates;
 import info.movito.themoviedbapi.model.movies.AlternativeTitles;
 import info.movito.themoviedbapi.model.movies.Credits;
 import info.movito.themoviedbapi.model.movies.ExternalIds;
@@ -11,11 +11,11 @@ import info.movito.themoviedbapi.model.movies.KeywordResults;
 import info.movito.themoviedbapi.model.movies.MovieDb;
 import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.movies.ReleaseDateResults;
-import info.movito.themoviedbapi.model.movies.ReviewResultsPage;
+import info.movito.themoviedbapi.model.core.ReviewResultsPage;
 import info.movito.themoviedbapi.model.movies.Translations;
-import info.movito.themoviedbapi.model.movies.VideoResults;
+import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.providers.ProviderResults;
+import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -122,7 +122,7 @@ public class TmdbMovies extends AbstractTmdbApi {
     }
 
     /**
-     * <p>Get the external ID's for a movie..</p>
+     * <p>Get the external ID's for a movie.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-external-ids">documentation</a> for more info.</p>
      *
      * @param movieId The TMDb id of the movie.
@@ -287,6 +287,8 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * <p>Get the list of streaming providers we have for a movie.</p>
+     * <p>In order to use this data you must attribute the source of the data as JustWatch. If TMDb find any usage not complying with these
+     * terms TMDb will revoke access to the API.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-watch-providers">documentation</a> for more info.</p>
      *
      * @param movieId The TMDb id of the movie.
@@ -307,7 +309,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * @param movieId The TMDb id of the movie.
      * @param guestSessionId optional - The guest session id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param rating The rating of the movie. Must be: 0 &lt; rating &lE; 10.
+     * @param rating The rating of the movie. Must be: 0 &lt; rating &le; 10.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -329,7 +331,7 @@ public class TmdbMovies extends AbstractTmdbApi {
 
     /**
      * <p>Delete a user rating.</p>
-     * <p>Note: if no <code>guestSessionId</code> or <code>sessionId</code> are provided, the method will delete the rating to the API key
+     * <p>Note: if no <code>guestSessionId</code> or <code>sessionId</code> are provided, the method will delete the rating for the API key
      * holder's account.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-delete-rating">documentation</a> for more info.</p>
      *
