@@ -1,0 +1,86 @@
+{
+    "id": 1399,
+    "results": {
+        "AE": {
+            "link": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AE",
+            "buy": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 3
+                }
+            ],
+            "flatrate": [
+                {
+                    "logo_path": "/xEPXbwbfABzPrUTWbgtDFH1NOa.jpg",
+                    "provider_id": 629,
+                    "provider_name": "OSN",
+                    "display_priority": 11
+                }
+            ],
+            "rent": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 6
+                }
+            ]
+        },
+        "AR": {
+            "link": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AR",
+            "buy": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 3
+                }
+            ],
+            "flatrate": [
+                {
+                    "logo_path": "/xEPXbwbfABzPrUTWbgtDFH1NOa.jpg",
+                    "provider_id": 629,
+                    "provider_name": "OSN",
+                    "display_priority": 11
+                }
+            ],
+            "rent": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 6
+                }
+            ]
+        },
+        "AT": {
+            "link": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AT",
+            "buy": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 3
+                }
+            ],
+            "flatrate": [
+                {
+                    "logo_path": "/xEPXbwbfABzPrUTWbgtDFH1NOa.jpg",
+                    "provider_id": 629,
+                    "provider_name": "OSN",
+                    "display_priority": 11
+                }
+            ],
+            "rent": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 6
+                }
+            ]
+        }
+    }
+}

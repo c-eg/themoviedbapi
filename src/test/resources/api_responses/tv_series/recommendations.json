@@ -1,0 +1,477 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/bsNm9z2TJfe0WO3RedPGWQ8mG1X.jpg",
+            "id": 1396,
+            "name": "Breaking Bad",
+            "original_language": "en",
+            "original_name": "Breaking Bad",
+            "overview": "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+            "poster_path": "/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                80
+            ],
+            "popularity": 292.904,
+            "first_air_date": "2008-01-20",
+            "vote_average": 8.878,
+            "vote_count": 11544,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/wvdWb5kTQipdMDqCclC6Y3zr4j3.jpg",
+            "id": 1402,
+            "name": "The Walking Dead",
+            "original_language": "en",
+            "original_name": "The Walking Dead",
+            "overview": "Sheriff's deputy Rick Grimes awakens from a coma to find a post-apocalyptic world dominated by flesh-eating zombies. He sets out to find his family and encounters many other survivors along the way.",
+            "poster_path": "/xf9wuDcqlUPWABZNeDKPbZUjWx0.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10759,
+                18,
+                10765
+            ],
+            "popularity": 306.145,
+            "first_air_date": "2010-10-31",
+            "vote_average": 8.117,
+            "vote_count": 14869,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/lHe8iwM4Cdm6RSEiara4PN8ZcBd.jpg",
+            "id": 44217,
+            "name": "Vikings",
+            "original_language": "en",
+            "original_name": "Vikings",
+            "overview": "The adventures of Ragnar Lothbrok, the greatest hero of his age. The series tells the sagas of Ragnar's band of Viking brothers and his family, as he rises to become King of the Viking tribes. As well as being a fearless warrior, Ragnar embodies the Norse traditions of devotion to the gods. Legend has it that he was a direct descendant of Odin, the god of war and warriors.",
+            "poster_path": "/bQLrHIRNEkE3PdIWQrZHynQZazu.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10759,
+                18,
+                10768
+            ],
+            "popularity": 323.222,
+            "first_air_date": "2013-03-03",
+            "vote_average": 8.079,
+            "vote_count": 6130,
+            "origin_country": [
+                "CA"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
+            "id": 66732,
+            "name": "Stranger Things",
+            "original_language": "en",
+            "original_name": "Stranger Things",
+            "overview": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.",
+            "poster_path": "/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                10765,
+                9648
+            ],
+            "popularity": 212.846,
+            "first_air_date": "2016-07-15",
+            "vote_average": 8.635,
+            "vote_count": 15438,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/vXpeJJs1z8OKC88CNJX9O9QOhtr.jpg",
+            "id": 94997,
+            "name": "House of the Dragon",
+            "original_language": "en",
+            "original_name": "House of the Dragon",
+            "overview": "The Targaryen dynasty is at the absolute apex of its power, with more than 15 dragons under their yoke. Most empires crumble from such heights. In the case of the Targaryens, their slow fall begins when King Viserys breaks with a century of tradition by naming his daughter Rhaenyra heir to the Iron Throne. But when Viserys later fathers a son, the court is shocked when Rhaenyra retains her status as his heir, and seeds of division sow friction across the realm.",
+            "poster_path": "/1X4h40fcB4WWUmIBK0auT4zRBAV.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                18,
+                10759
+            ],
+            "popularity": 250.102,
+            "first_air_date": "2022-08-21",
+            "vote_average": 8.481,
+            "vote_count": 3091,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/xZUZ9i6vVayjyhR1vRo9Bjku4h.jpg",
+            "id": 63174,
+            "name": "Lucifer",
+            "original_language": "en",
+            "original_name": "Lucifer",
+            "overview": "Bored and unhappy as the Lord of Hell, Lucifer Morningstar abandoned his throne and retired to Los Angeles, where he has teamed up with LAPD detective Chloe Decker to take down criminals. But the longer he's away from the underworld, the greater the threat that the worst of humanity could escape.",
+            "poster_path": "/ekZobS8isE6mA53RAiGDG93hBxL.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                80,
+                10765
+            ],
+            "popularity": 512.509,
+            "first_air_date": "2016-01-25",
+            "vote_average": 8.489,
+            "vote_count": 13422,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/8X1BTSaUyF5rc0malaaQovpxC3f.jpg",
+            "id": 1418,
+            "name": "The Big Bang Theory",
+            "original_language": "en",
+            "original_name": "The Big Bang Theory",
+            "overview": "The sitcom is centered on five characters living in Pasadena, California: roommates Leonard Hofstadter and Sheldon Cooper; Penny, a waitress and aspiring actress who lives across the hall; and Leonard and Sheldon's equally geeky and socially awkward friends and co-workers, mechanical engineer Howard Wolowitz and astrophysicist Raj Koothrappali. The geekiness and intellect of the four guys is contrasted for comic effect with Penny's social skills and common sense.",
+            "poster_path": "/ooBGRQBdbGzBxAVfExiO8r7kloA.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                35
+            ],
+            "popularity": 134.048,
+            "first_air_date": "2007-09-24",
+            "vote_average": 7.88,
+            "vote_count": 9898,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/gFZriCkpJYsApPZEF3jhxL4yLzG.jpg",
+            "id": 71446,
+            "name": "Money Heist",
+            "original_language": "es",
+            "original_name": "La Casa de Papel",
+            "overview": "To carry out the biggest heist in history, a mysterious man called The Professor recruits a band of eight robbers who have a single characteristic: none of them has anything to lose. Five months of seclusion - memorizing every step, every detail, every probability - culminate in eleven days locked up in the National Coinage and Stamp Factory of Spain, surrounded by police forces and with dozens of hostages in their power, to find out whether their suicide wager will lead to everything or nothing.",
+            "poster_path": "/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                80,
+                18
+            ],
+            "popularity": 87.11,
+            "first_air_date": "2017-05-02",
+            "vote_average": 8.262,
+            "vote_count": 17484,
+            "origin_country": [
+                "ES"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/gFkHcIh7iE5G0oVOgpmY8ONQjhl.jpg",
+            "id": 60735,
+            "name": "The Flash",
+            "original_language": "en",
+            "original_name": "The Flash",
+            "overview": "After a particle accelerator causes a freak storm, CSI Investigator Barry Allen is struck by lightning and falls into a coma. Months later he awakens with the power of super speed, granting him the ability to move through Central City like an unseen guardian angel. Though initially excited by his newfound powers, Barry is shocked to discover he is not the only \"meta-human\" who was created in the wake of the accelerator explosion -- and not everyone is using their new powers for good. Barry partners with S.T.A.R. Labs and dedicates his life to protect the innocent. For now, only a few close friends and associates know that Barry is literally the fastest man alive, but it won't be long before the world learns what Barry Allen has become...The Flash.",
+            "poster_path": "/rg8N7x27Ef6PvlIiioLStf9ZaIO.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                10765
+            ],
+            "popularity": 523.763,
+            "first_air_date": "2014-10-07",
+            "vote_average": 7.797,
+            "vote_count": 10367,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/hTExot1sfn7dHZjGrk0Aiwpntxt.jpg",
+            "id": 48866,
+            "name": "The 100",
+            "original_language": "en",
+            "original_name": "The 100",
+            "overview": "100 years in the future, when the Earth has been abandoned due to radioactivity, the last surviving humans live on an ark orbiting the planet — but the ark won't last forever. So the repressive regime picks 100 expendable juvenile delinquents to send down to Earth to see if the planet is still habitable.",
+            "poster_path": "/wcaDIAG1QdXQLRaj4vC1EFdBT2.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                18,
+                10759
+            ],
+            "popularity": 181.475,
+            "first_air_date": "2014-03-19",
+            "vote_average": 7.916,
+            "vote_count": 7464,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/20eIP9o5ebArmu2HxJutaBjhLf4.jpg",
+            "id": 87108,
+            "name": "Chernobyl",
+            "original_language": "en",
+            "original_name": "Chernobyl",
+            "overview": "The true story of one of the worst man-made catastrophes in history: the catastrophic nuclear accident at Chernobyl. A tale of the brave men and women who sacrificed to save Europe from unimaginable disaster.",
+            "poster_path": "/hlLXt2tOPT6RRnjiUmoxyG1LTFi.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18
+            ],
+            "popularity": 71.974,
+            "first_air_date": "2019-05-06",
+            "vote_average": 8.631,
+            "vote_count": 4951,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/hmLTIRtVyTHShJl2Wb8LHmvUgJm.jpg",
+            "id": 19885,
+            "name": "Sherlock",
+            "original_language": "en",
+            "original_name": "Sherlock",
+            "overview": "A modern update finds the famous sleuth and his doctor partner solving crime in 21st century London.",
+            "poster_path": "/7WTsnHkbA0FaG6R9twfFde0I9hl.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                80,
+                18,
+                9648
+            ],
+            "popularity": 82.572,
+            "first_air_date": "2010-07-25",
+            "vote_average": 8.534,
+            "vote_count": 4423,
+            "origin_country": [
+                "GB"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/wiE9doxiLwq3WCGamDIOb2PqBqc.jpg",
+            "id": 60574,
+            "name": "Peaky Blinders",
+            "original_language": "en",
+            "original_name": "Peaky Blinders",
+            "overview": "A gangster family epic set in 1919 Birmingham, England and centered on a gang who sew razor blades in the peaks of their caps, and their fierce boss Tommy Shelby, who means to move up in the world.",
+            "poster_path": "/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                80
+            ],
+            "popularity": 367.768,
+            "first_air_date": "2013-09-12",
+            "vote_average": 8.549,
+            "vote_count": 8314,
+            "origin_country": [
+                "GB"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/uNyEVSPeAtJgUBehuQJ8WEFwatN.jpg",
+            "id": 456,
+            "name": "The Simpsons",
+            "original_language": "en",
+            "original_name": "The Simpsons",
+            "overview": "Set in Springfield, the average American town, the show focuses on the antics and everyday adventures of the Simpson family; Homer, Marge, Bart, Lisa and Maggie, as well as a virtual cast of thousands. Since the beginning, the series has been a pop culture icon, attracting hundreds of celebrities to guest star. The show has also made name for itself in its fearless satirical take on politics, media and American life in general.",
+            "poster_path": "/zI3E2a3WYma5w8emI35mgq5Iurx.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10751,
+                16,
+                35
+            ],
+            "popularity": 505.055,
+            "first_air_date": "1989-12-17",
+            "vote_average": 7.992,
+            "vote_count": 8782,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/nVRyd8hlg0ZLxBn9RaI7mUMQLnz.jpg",
+            "id": 1622,
+            "name": "Supernatural",
+            "original_language": "en",
+            "original_name": "Supernatural",
+            "overview": "When they were boys, Sam and Dean Winchester lost their mother to a mysterious and demonic supernatural force. Subsequently, their father raised them to be soldiers. He taught them about the paranormal evil that lives in the dark corners and on the back roads of America ... and he taught them how to kill it. Now, the Winchester brothers crisscross the country in their '67 Chevy Impala, battling every kind of supernatural threat they encounter along the way. ",
+            "poster_path": "/KoYWXbnYuS3b0GyQPkbuexlVK9.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                9648,
+                10765
+            ],
+            "popularity": 361.403,
+            "first_air_date": "2005-09-13",
+            "vote_average": 8.304,
+            "vote_count": 6649,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/l0qVZIpXtIo7km9u5Yqh0nKPOr5.jpg",
+            "id": 1668,
+            "name": "Friends",
+            "original_language": "en",
+            "original_name": "Friends",
+            "overview": "Six young people from New York City, on their own and struggling to survive in the real world, find the companionship, comfort and support they get from each other to be the perfect antidote to the pressures of life.",
+            "poster_path": "/f496cm9enuEsZkSPzCwnTESEK5s.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                35,
+                18
+            ],
+            "popularity": 234.56,
+            "first_air_date": "1994-09-22",
+            "vote_average": 8.5,
+            "vote_count": 6823,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ci6HNWyJxZ3zrn0AefMb4uUdEKp.jpg",
+            "id": 63247,
+            "name": "Westworld",
+            "original_language": "en",
+            "original_name": "Westworld",
+            "overview": "A dark odyssey about the dawn of artificial consciousness and the evolution of sin. Set at the intersection of the near future and the reimagined past, it explores a world in which every human appetite, no matter how noble or depraved, can be indulged.",
+            "poster_path": "/ALlSU9du9iRiKIIoY1sREGNqQ5.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                37
+            ],
+            "popularity": 87.566,
+            "first_air_date": "2016-10-02",
+            "vote_average": 8.089,
+            "vote_count": 4731,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/thLAoL6VeZGmCyDpCOeoxLvA8yS.jpg",
+            "id": 76479,
+            "name": "The Boys",
+            "original_language": "en",
+            "original_name": "The Boys",
+            "overview": "A group of vigilantes known informally as “The Boys” set out to take down corrupt superheroes with no more than blue-collar grit and a willingness to fight dirty.",
+            "poster_path": "/ut4PhX7OP2l2oJhrIUYWnt9pnQU.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                10759
+            ],
+            "popularity": 174.912,
+            "first_air_date": "2019-07-25",
+            "vote_average": 8.471,
+            "vote_count": 8245,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/uGy4DCmM33I7l86W7iCskNkvmLD.jpg",
+            "id": 60625,
+            "name": "Rick and Morty",
+            "original_language": "en",
+            "original_name": "Rick and Morty",
+            "overview": "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+            "poster_path": "/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                16,
+                35,
+                10765,
+                10759
+            ],
+            "popularity": 310.022,
+            "first_air_date": "2013-12-02",
+            "vote_average": 8.72,
+            "vote_count": 8149,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/cJYLon9ejKJV7ua03ab8Tj9u067.jpg",
+            "id": 18165,
+            "name": "The Vampire Diaries",
+            "original_language": "en",
+            "original_name": "The Vampire Diaries",
+            "overview": "The story of two vampire brothers obsessed with the same girl, who bears a striking resemblance to the beautiful but ruthless vampire they knew and loved in 1864.",
+            "poster_path": "/xnow2L5YZTo36T4koZs24zU5oqa.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                10765
+            ],
+            "popularity": 255.487,
+            "first_air_date": "2009-09-10",
+            "vote_average": 8.34,
+            "vote_count": 8080,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/bZGAX8oMDm3Mo5i0ZPKh9G2OcaO.jpg",
+            "id": 84958,
+            "name": "Loki",
+            "original_language": "en",
+            "original_name": "Loki",
+            "overview": "After stealing the Tesseract during the events of “Avengers: Endgame,” an alternate version of Loki is brought to the mysterious Time Variance Authority, a bureaucratic organization that exists outside of time and space and monitors the timeline. They give Loki a choice: face being erased from existence due to being a “time variant” or help fix the timeline and stop a greater threat.",
+            "poster_path": "/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                10765
+            ],
+            "popularity": 107.848,
+            "first_air_date": "2021-06-09",
+            "vote_average": 8.169,
+            "vote_count": 9812,
+            "origin_country": [
+                "US"
+            ]
+        }
+    ],
+    "total_pages": 2,
+    "total_results": 40
+}

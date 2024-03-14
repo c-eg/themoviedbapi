@@ -1,0 +1,208 @@
+{
+    "id": 1399,
+    "page": 1,
+    "results": [
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8257231,
+            "item_count": 182,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Done",
+            "poster_path": "poster path"
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8258601,
+            "item_count": 220,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "All",
+            "poster_path": null
+        },
+        {
+            "description": "All the Great Movies I've Watched So Far",
+            "favorite_count": 0,
+            "id": 7092449,
+            "item_count": 757,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Watched Movies",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8289292,
+            "item_count": 9,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "watched tv series",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8234063,
+            "item_count": 4617,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Favorite Actors",
+            "poster_path": null
+        },
+        {
+            "description": "Eyeball Witnessed",
+            "favorite_count": 0,
+            "id": 47199,
+            "item_count": 1864,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "My Watched List",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8241867,
+            "item_count": 50,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "My Watch List",
+            "poster_path": null
+        },
+        {
+            "description": "This is a long list of films and television shows that I have watched. Each one has been reviewed. The letters at the end of the review represent the initial of the person ranking said film. (H) is myself. Any other initial is of the person I watched that film with. (L) is the initial of my partner Libby who I enjoy showing all my favourite films.",
+            "favorite_count": 0,
+            "id": 8284628,
+            "item_count": 257,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Reviews ",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8173010,
+            "item_count": 476,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "SERIES",
+            "poster_path": null
+        },
+        {
+            "description": "List of all complete Series & Movies.",
+            "favorite_count": 0,
+            "id": 133323,
+            "item_count": 716,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Complete",
+            "poster_path": null
+        },
+        {
+            "description": "All movies and shows I've seen",
+            "favorite_count": 0,
+            "id": 7111094,
+            "item_count": 2961,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Movies I've seen",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8237878,
+            "item_count": 381,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "NewTV",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8234057,
+            "item_count": 2389,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Favorite Actresses",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 6608629,
+            "item_count": 4054,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Emmy Award Nominated Titles - IMDb",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8283865,
+            "item_count": 277,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "i have seen",
+            "poster_path": null
+        },
+        {
+            "description": "Series i've already watched",
+            "favorite_count": 0,
+            "id": 8215169,
+            "item_count": 76,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Seen 👀",
+            "poster_path": null
+        },
+        {
+            "description": "All the series that I've watched - no matter how good or bad",
+            "favorite_count": 0,
+            "id": 7102937,
+            "item_count": 30,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Series",
+            "poster_path": null
+        },
+        {
+            "description": "My All time Favourite Shows , Web Series or Dramas",
+            "favorite_count": 0,
+            "id": 8269471,
+            "item_count": 113,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Dramas/Tv Shows",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 34410,
+            "item_count": 14,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "Watched",
+            "poster_path": null
+        },
+        {
+            "description": "",
+            "favorite_count": 0,
+            "id": 8288513,
+            "item_count": 57,
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "name": "TV Series",
+            "poster_path": null
+        }
+    ],
+    "total_pages": 96,
+    "total_results": 1906
+}
