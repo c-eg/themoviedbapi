@@ -44,7 +44,7 @@ v1.10
 * Added support for `ProductionCompany`
 * Improved language support for `TmdbPeople`
 * Fixe: TV Keywords
-* Added Vote Count and popularity to credits
+* Added Vote Count and popularity to aggregateCredits
 * Added keywords to TV shows
 * Added Content Ratings to TV Series
 * Various bug-fixes

@@ -13,6 +13,11 @@ import java.util.Map;
 public abstract class AbstractJsonMapping implements Serializable {
     private final Map<String, Object> newItems = new HashMap<>();
 
+    /**
+     * Gets the new items that were not mapped to any field from a model extending this class.
+     *
+     * @return the new items.
+     */
     @JsonAnyGetter
     public Map<String, Object> getNewItems() {
         return newItems;

@@ -125,8 +125,8 @@ public class TmdbApi {
         return new TmdbTimezones(this).getTimezones();
     }
 
-    public TmdbTV getTvSeries() {
-        return new TmdbTV(this);
+    public TmdbTvSeries getTvSeries() {
+        return new TmdbTvSeries(this);
     }
 
     public TmdbTvEpisodes getTvEpisodes() {

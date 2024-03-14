@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.movies;
+package info.movito.themoviedbapi.model.core.accountstates;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;

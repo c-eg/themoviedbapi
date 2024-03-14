@@ -1,7 +1,6 @@
-package info.movito.themoviedbapi.model.movies;
+package info.movito.themoviedbapi.model.tv.tvseries.credits;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.core.AlternativeTitle;
 import info.movito.themoviedbapi.model.core.IdElement;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,7 +9,10 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class AlternativeTitles extends IdElement {
-    @JsonProperty("titles")
-    private List<AlternativeTitle> titles;
+public class Credits extends IdElement {
+    @JsonProperty("cast")
+    private List<Cast> cast;
+
+    @JsonProperty("crew")
+    private List<Crew> crew;
 }

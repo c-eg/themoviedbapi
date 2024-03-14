@@ -5,7 +5,7 @@ import info.movito.themoviedbapi.model.tv.TvEpisode;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
-import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
+import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.TmdbTvEpisodes.EpisodeMethod.credits;
 import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
 

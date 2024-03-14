@@ -56,13 +56,13 @@ Every API element has a number of query flags that need to be set in order to pu
 
 ```
 TmdbMovies movies = tmdbApi.getMovies();
-movies.getMovie(293660, "en", MovieMethod.credits)
+movies.getMovie(293660, "en", MovieMethod.aggregateCredits)
 ```
 
 #### Example 2: Get image urls, videos and similar movies
 ```
 TmdbMovies movies = tmdbApi.getMovies();
-movies.getMovie(78, "en", MovieMethod.credits, MovieMethod.images, MovieMethod.similar)
+movies.getMovie(78, "en", MovieMethod.aggregateCredits, MovieMethod.images, MovieMethod.similar)
 ```
 
 

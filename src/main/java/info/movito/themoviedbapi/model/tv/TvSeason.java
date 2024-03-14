@@ -1,26 +1,28 @@
 package info.movito.themoviedbapi.model.tv;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import info.movito.themoviedbapi.model.core.NamedIdElement;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.List;
-
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class TvSeason extends AbstractTvElement {
+public class TvSeason extends NamedIdElement {
     @JsonProperty("air_date")
     private String airDate;
+
+    @JsonProperty("episode_count")
+    private Integer episodeCount;
+
+    @JsonProperty("overview")
+    private String overview;
 
     @JsonProperty("poster_path")
     private String posterPath;
 
     @JsonProperty("season_number")
-    private int seasonNumber;
+    private Integer seasonNumber;
 
-    @JsonProperty("overview")
-    private String overview;
-
-    @JsonProperty("episodes")
-    private List<TvEpisode> episodes;
+    @JsonProperty("vote_average")
+    private Integer voteAverage;
 }

@@ -1,6 +1,6 @@
 package info.movito.themoviedbapi.model.core;
 
-import info.movito.themoviedbapi.model.tv.TvSeriesDb;
+import info.movito.themoviedbapi.model.tv.tvseries.TvSeriesDb;
 
 /**
  * Tv Series Results Page.

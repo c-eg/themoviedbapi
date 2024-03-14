@@ -14,7 +14,7 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import static info.movito.themoviedbapi.TmdbCollections.TMDB_METHOD_COLLECTION;
 import static info.movito.themoviedbapi.TmdbLists.TMDB_METHOD_LIST;
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
-import static info.movito.themoviedbapi.TmdbTV.TMDB_METHOD_TV;
+import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 

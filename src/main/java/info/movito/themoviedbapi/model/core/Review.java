@@ -1,7 +1,6 @@
-package info.movito.themoviedbapi.model.movies;
+package info.movito.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.core.StringIdElement;
 import info.movito.themoviedbapi.model.reviews.AuthorDetails;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

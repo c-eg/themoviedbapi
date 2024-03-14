@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.movies.MovieDb;
-import info.movito.themoviedbapi.model.tv.TvSeriesDb;
+import info.movito.themoviedbapi.model.tv.tvseries.TvSeriesDb;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
