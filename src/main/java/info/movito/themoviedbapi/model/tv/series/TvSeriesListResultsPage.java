@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.tv.tvseries;
+package info.movito.themoviedbapi.model.tv.series;
 
 import info.movito.themoviedbapi.model.core.ResultsPage;
 

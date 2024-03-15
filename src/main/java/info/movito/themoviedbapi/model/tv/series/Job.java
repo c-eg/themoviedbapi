@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.tv.tvseries;
+package info.movito.themoviedbapi.model.tv.series;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
@@ -7,12 +7,12 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Role extends AbstractJsonMapping {
+public class Job extends AbstractJsonMapping {
     @JsonProperty("credit_id")
     private String creditId;
 
-    @JsonProperty("character")
-    private String character;
+    @JsonProperty("job")
+    private String job;
 
     @JsonProperty("episode_count")
     private Integer episodeCount;

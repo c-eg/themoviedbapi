@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.tv.tvseries;
+package info.movito.themoviedbapi.model.tv.series;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.Artwork;

@@ -35,8 +35,8 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.rated to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.reviews to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.tv to com.fasterxml.jackson.databind;
-    opens info.movito.themoviedbapi.model.tv.tvseries to com.fasterxml.jackson.databind;
-    opens info.movito.themoviedbapi.model.tv.tvseries.credits to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.tv.series to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.tv.series.credits to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.watchproviders to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.util to com.fasterxml.jackson.databind;
 
@@ -66,8 +66,8 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.rated;
     exports info.movito.themoviedbapi.model.reviews;
     exports info.movito.themoviedbapi.model.tv;
-    exports info.movito.themoviedbapi.model.tv.tvseries;
-    exports info.movito.themoviedbapi.model.tv.tvseries.credits;
+    exports info.movito.themoviedbapi.model.tv.series;
+    exports info.movito.themoviedbapi.model.tv.series.credits;
     exports info.movito.themoviedbapi.model.watchproviders;
     exports info.movito.themoviedbapi.tools;
     exports info.movito.themoviedbapi.tools.appendtoresponse;

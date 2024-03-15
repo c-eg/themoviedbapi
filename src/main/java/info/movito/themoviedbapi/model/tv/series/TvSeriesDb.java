@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.tv.tvseries;
+package info.movito.themoviedbapi.model.tv.series;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -16,8 +16,8 @@ import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.tv.TvEpisode;
 import info.movito.themoviedbapi.model.tv.TvSeason;
-import info.movito.themoviedbapi.model.tv.tvseries.credits.AggregateCredits;
-import info.movito.themoviedbapi.model.tv.tvseries.credits.Credits;
+import info.movito.themoviedbapi.model.tv.series.credits.AggregateCredits;
+import info.movito.themoviedbapi.model.tv.series.credits.Credits;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
