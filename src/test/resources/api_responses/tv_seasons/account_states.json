@@ -1,0 +1,17 @@
+{
+    "id": 3624,
+    "results": [
+        {
+            "id": 63056,
+            "episode_number": 1,
+            "rated": {
+                "value": 9
+            }
+        },
+        {
+            "id": 63057,
+            "episode_number": 2,
+            "rated": false
+        }
+    ]
+}
