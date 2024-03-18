@@ -11,7 +11,7 @@ import info.movito.themoviedbapi.model.core.NamedIdElement;
 import info.movito.themoviedbapi.model.core.ReviewResultsPage;
 import info.movito.themoviedbapi.model.core.TvKeywords;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
-import info.movito.themoviedbapi.model.core.accountstates.AccountStates;
+import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.tv.TvEpisode;

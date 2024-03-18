@@ -2,7 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
-import info.movito.themoviedbapi.model.core.accountstates.AccountStates;
+import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.movies.AlternativeTitles;
 import info.movito.themoviedbapi.model.movies.Credits;
 import info.movito.themoviedbapi.model.movies.ExternalIds;
