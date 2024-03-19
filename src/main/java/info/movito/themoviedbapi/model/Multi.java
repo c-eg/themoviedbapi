@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.movies.MovieDb;
 import info.movito.themoviedbapi.model.people.PersonDb;
-import info.movito.themoviedbapi.model.tv.tvseries.TvSeriesDb;
+import info.movito.themoviedbapi.model.tv.series.TvSeriesDb;
 
 /**
  * Interface that is needed for /search/multi request

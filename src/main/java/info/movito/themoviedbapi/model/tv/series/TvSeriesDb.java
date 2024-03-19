@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.movies;
+package info.movito.themoviedbapi.model.tv.series;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -6,34 +6,44 @@ import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.ProductionCompany;
 import info.movito.themoviedbapi.model.ProductionCountry;
-import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.Language;
-import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.NamedIdElement;
 import info.movito.themoviedbapi.model.core.ReviewResultsPage;
+import info.movito.themoviedbapi.model.core.TvKeywords;
+import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.AccountStates;
-import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
+import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
+import info.movito.themoviedbapi.model.tv.TvEpisode;
+import info.movito.themoviedbapi.model.tv.TvSeason;
+import info.movito.themoviedbapi.model.tv.series.credits.AggregateCredits;
+import info.movito.themoviedbapi.model.tv.series.credits.Credits;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+/**
+ * @author Holger Brandl, c-eg
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-public class MovieDb extends IdElement implements Multi {
+public class TvSeriesDb extends NamedIdElement implements Multi {
     @JsonProperty("adult")
     private Boolean adult;
 
     @JsonProperty("backdrop_path")
     private String backdropPath;
 
-    @JsonProperty("belongs_to_collection")
-    private String belongsToCollection;
+    @JsonProperty("created_by")
+    private List<CreatedBy> createdBy;
 
-    @JsonProperty("budget")
-    private Integer budget;
+    @JsonProperty("episode_run_time")
+    private List<Integer> episodeRunTime;
+
+    @JsonProperty("first_air_date")
+    private String firstAirDate;
 
     @JsonProperty("genres")
     private List<Genre> genres;
@@ -41,14 +51,38 @@ public class MovieDb extends IdElement implements Multi {
     @JsonProperty("homepage")
     private String homepage;
 
-    @JsonProperty("imdb_id")
-    private String imdbID;
+    @JsonProperty("in_production")
+    private Boolean inProduction;
+
+    @JsonProperty("languages")
+    private List<String> languages;
+
+    @JsonProperty("last_air_date")
+    private String lastAirDate;
+
+    @JsonProperty("last_episode_to_air")
+    private TvEpisode lastEpisodeToAir;
+
+    @JsonProperty("next_episode_to_air")
+    private TvEpisode nextEpisodeToAir;
+
+    @JsonProperty("networks")
+    private List<Network> networks;
+
+    @JsonProperty("number_of_episodes")
+    private Integer numberOfEpisodes;
+
+    @JsonProperty("number_of_seasons")
+    private Integer numberOfSeasons;
+
+    @JsonProperty("origin_country")
+    private List<String> originCountry;
 
     @JsonProperty("original_language")
     private String originalLanguage;
 
-    @JsonProperty("original_title")
-    private String originalTitle;
+    @JsonProperty("original_name")
+    private String originalName;
 
     @JsonProperty("overview")
     private String overview;
@@ -65,14 +99,8 @@ public class MovieDb extends IdElement implements Multi {
     @JsonProperty("production_countries")
     private List<ProductionCountry> productionCountries;
 
-    @JsonProperty("release_date")
-    private String releaseDate;
-
-    @JsonProperty("revenue")
-    private Integer revenue;
-
-    @JsonProperty("runtime")
-    private Integer runtime;
+    @JsonProperty("seasons")
+    private List<TvSeason> seasons;
 
     @JsonProperty("spoken_languages")
     private List<Language> spokenLanguages;
@@ -83,11 +111,8 @@ public class MovieDb extends IdElement implements Multi {
     @JsonProperty("tagline")
     private String tagline;
 
-    @JsonProperty("title")
-    private String title;
-
-    @JsonProperty("video")
-    private Boolean video;
+    @JsonProperty("type")
+    private String type;
 
     @JsonProperty("vote_average")
     private Double voteAverage;
@@ -102,16 +127,28 @@ public class MovieDb extends IdElement implements Multi {
     private AccountStates accountStates;
 
     /** Can be null if not appended to the request (append to response). */
+    @JsonProperty("aggregate_credits")
+    private AggregateCredits aggregateCredits;
+
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("alternative_titles")
-    private AlternativeTitles alternativeTitles;
+    private AlternativeTitleResults alternativeTitles;
+
+    /** Can be null if not appended to the request (append to response). */
+    @JsonProperty("changes")
+    private ChangeResults changes;
+
+    /** Can be null if not appended to the request (append to response). */
+    @JsonProperty("content_ratings")
+    private ContentRatingResults contentRatings;
 
     /** Can be null if not appended to the request (append to response). */
     @JsonProperty("credits")
     private Credits credits;
 
     /** Can be null if not appended to the request (append to response). */
-    @JsonProperty("changes")
-    private ChangeResults changes;
+    @JsonProperty("episode_groups")
+    private EpisodeGroupResults episodeGroups;
 
     /** Can be null if not appended to the request (append to response). */
     @JsonProperty("external_ids")
@@ -123,27 +160,27 @@ public class MovieDb extends IdElement implements Multi {
 
     /** Can be null if not appended to the request (append to response). */
     @JsonProperty("keywords")
-    private KeywordResults keywords;
-
-    /** Can be null if not appended to the request (append to response). */
-    @JsonProperty("recommendations")
-    private MovieResultsPage recommendations;
-
-    /** Can be null if not appended to the request (append to response). */
-    @JsonProperty("release_dates")
-    private ReleaseDateResults releaseDates;
+    private TvKeywords keywords;
 
     /** Can be null if not appended to the request (append to response). */
     @JsonProperty("lists")
-    private MovieListResultsPage lists;
+    private TvSeriesListResultsPage lists;
+
+    /** Can be null if not appended to the request (append to response). */
+    @JsonProperty("recommendations")
+    private TvSeriesResultsPage recommendations;
 
     /** Can be null if not appended to the request (append to response). */
     @JsonProperty("reviews")
     private ReviewResultsPage reviews;
 
     /** Can be null if not appended to the request (append to response). */
+    @JsonProperty("screened_theatrically")
+    private ScreenedTheatricallyResults screenedTheatrically;
+
+    /** Can be null if not appended to the request (append to response). */
     @JsonProperty("similar")
-    private MovieResultsPage similar;
+    private TvSeriesResultsPage similar;
 
     /** Can be null if not appended to the request (append to response). */
     @JsonProperty("translations")
@@ -159,6 +196,6 @@ public class MovieDb extends IdElement implements Multi {
 
     @Override
     public MediaType getMediaType() {
-        return MediaType.MOVIE;
+        return MediaType.TV_SERIES;
     }
 }

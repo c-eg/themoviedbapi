@@ -1,0 +1,116 @@
+{
+    "id": 3624,
+    "results": {
+        "AE": {
+            "link": "https://www.themoviedb.org/tv/1399-game-of-thrones/season/1/watch?locale=AE",
+            "flatrate": [
+                {
+                    "logo_path": "/xEPXbwbfABzPrUTWbgtDFH1NOa.jpg",
+                    "provider_id": 629,
+                    "provider_name": "OSN",
+                    "display_priority": 11
+                }
+            ],
+            "rent": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 6
+                }
+            ],
+            "buy": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 3
+                },
+                {
+                    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+                    "provider_id": 3,
+                    "provider_name": "Google Play Movies",
+                    "display_priority": 8
+                }
+            ]
+        },
+        "AR": {
+            "link": "https://www.themoviedb.org/tv/1399-game-of-thrones/season/1/watch?locale=AR",
+            "flatrate": [
+                {
+                    "logo_path": "/Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg",
+                    "provider_id": 384,
+                    "provider_name": "HBO Max",
+                    "display_priority": 5
+                },
+                {
+                    "logo_path": "/cDzkhgvozSr4GW2aRdV22uDuFpw.jpg",
+                    "provider_id": 339,
+                    "provider_name": "Movistar Play",
+                    "display_priority": 9
+                }
+            ],
+            "rent": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 6
+                }
+            ],
+            "buy": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 3
+                },
+                {
+                    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+                    "provider_id": 3,
+                    "provider_name": "Google Play Movies",
+                    "display_priority": 8
+                }
+            ]
+        },
+        "AT": {
+            "link": "https://www.themoviedb.org/tv/1399-game-of-thrones/season/1/watch?locale=AT",
+            "flatrate": [
+                {
+                    "logo_path": "/y0kyIFElN5sJAsmW8Txj69wzrD2.jpg",
+                    "provider_id": 321,
+                    "provider_name": "Sky X",
+                    "display_priority": 23
+                },
+                {
+                    "logo_path": "/MiVcYLkztM6qqLeVSYWHFCUcXx.jpg",
+                    "provider_id": 30,
+                    "provider_name": "WOW",
+                    "display_priority": 1000
+                }
+            ],
+            "rent": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 6
+                }
+            ],
+            "buy": [
+                {
+                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
+                    "display_priority": 3
+                },
+                {
+                    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+                    "provider_id": 3,
+                    "provider_name": "Google Play Movies",
+                    "display_priority": 8
+                }
+            ]
+        }
+    }
+}

@@ -1,8 +1,11 @@
 package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.ReviewResultsPage;
+import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
-import info.movito.themoviedbapi.model.core.accountstates.AccountStates;
+import info.movito.themoviedbapi.model.core.video.VideoResults;
+import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.movies.AlternativeTitles;
 import info.movito.themoviedbapi.model.movies.Credits;
 import info.movito.themoviedbapi.model.movies.ExternalIds;
@@ -10,13 +13,9 @@ import info.movito.themoviedbapi.model.movies.Images;
 import info.movito.themoviedbapi.model.movies.KeywordResults;
 import info.movito.themoviedbapi.model.movies.MovieDb;
 import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
-import info.movito.themoviedbapi.model.core.accountstates.Rated;
 import info.movito.themoviedbapi.model.movies.ReleaseDateResults;
-import info.movito.themoviedbapi.model.core.ReviewResultsPage;
 import info.movito.themoviedbapi.model.movies.Translations;
-import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.MovieAppendToResponse;
@@ -30,7 +29,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
@@ -38,7 +36,6 @@ import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 /**
@@ -114,11 +111,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         AccountStates accountStates = tmdbMovies.getAccountStates(123, "123", null);
         assertNotNull(accountStates);
         validateAbstractJsonMappingFields(accountStates);
-
-        Optional<Rated> rated = accountStates.getRated();
-        assertNotNull(rated);
-        assertTrue(rated.isPresent());
-        validateAbstractJsonMappingFields(rated.get());
     }
 
     /**
