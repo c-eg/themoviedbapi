@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
-import info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb;
-import info.movito.themoviedbapi.model.tv.series.credits.AggregateCredits;
-import info.movito.themoviedbapi.model.tv.series.credits.Credits;
+import info.movito.themoviedbapi.model.tv.core.Translations;
+import info.movito.themoviedbapi.model.tv.core.credits.AggregateCredits;
+import info.movito.themoviedbapi.model.tv.core.credits.Credits;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -22,7 +22,7 @@ public class TvSeasonDb extends NamedIdElement {
     private String airDate;
 
     @JsonProperty("episodes")
-    private List<TvEpisodeDb> episodes;
+    private List<TvSeasonEpisode> episodes;
 
     @JsonProperty("overview")
     private String overview;

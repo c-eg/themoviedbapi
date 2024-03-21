@@ -2,14 +2,14 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
+import info.movito.themoviedbapi.model.tv.core.Translations;
+import info.movito.themoviedbapi.model.tv.core.credits.AggregateCredits;
+import info.movito.themoviedbapi.model.tv.core.credits.Credits;
 import info.movito.themoviedbapi.model.tv.season.AccountStateResults;
 import info.movito.themoviedbapi.model.tv.season.ChangeResults;
 import info.movito.themoviedbapi.model.tv.season.ExternalIds;
 import info.movito.themoviedbapi.model.tv.season.Images;
-import info.movito.themoviedbapi.model.tv.season.Translations;
 import info.movito.themoviedbapi.model.tv.season.TvSeasonDb;
-import info.movito.themoviedbapi.model.tv.series.credits.AggregateCredits;
-import info.movito.themoviedbapi.model.tv.series.credits.Credits;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvSeasonsAppendToResponse;

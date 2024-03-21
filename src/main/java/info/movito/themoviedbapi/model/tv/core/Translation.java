@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.tv.season;
+package info.movito.themoviedbapi.model.tv.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
