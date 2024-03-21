@@ -1,17 +1,23 @@
-package info.movito.themoviedbapi.model.tv.series.credits;
+package info.movito.themoviedbapi.model.tv.episode;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
 import info.movito.themoviedbapi.model.people.Gender;
-import info.movito.themoviedbapi.model.tv.series.Job;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.List;
-
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class AggregateCrew extends NamedIdElement {
+public class GuestStar extends NamedIdElement {
+    @JsonProperty("character")
+    private String character;
+
+    @JsonProperty("credit_id")
+    private String creditId;
+
+    @JsonProperty("order")
+    private Integer order;
+
     @JsonProperty("adult")
     private Boolean adult;
 
@@ -29,13 +35,4 @@ public class AggregateCrew extends NamedIdElement {
 
     @JsonProperty("profile_path")
     private String profilePath;
-
-    @JsonProperty("jobs")
-    private List<Job> jobs;
-
-    @JsonProperty("department")
-    private String department;
-
-    @JsonProperty("total_episode_count")
-    private Integer totalEpisodeCount;
 }

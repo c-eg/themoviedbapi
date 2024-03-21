@@ -14,10 +14,11 @@ import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
-import info.movito.themoviedbapi.model.tv.TvEpisode;
-import info.movito.themoviedbapi.model.tv.TvSeason;
-import info.movito.themoviedbapi.model.tv.series.credits.AggregateCredits;
-import info.movito.themoviedbapi.model.tv.series.credits.Credits;
+import info.movito.themoviedbapi.model.tv.core.ChangeResults;
+import info.movito.themoviedbapi.model.tv.core.TvEpisode;
+import info.movito.themoviedbapi.model.tv.core.TvSeason;
+import info.movito.themoviedbapi.model.tv.core.credits.AggregateCredits;
+import info.movito.themoviedbapi.model.tv.core.credits.Credits;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

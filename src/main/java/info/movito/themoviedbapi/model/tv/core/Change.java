@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.tv.series;
+package info.movito.themoviedbapi.model.tv.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
@@ -9,7 +9,10 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class ChangeResults extends AbstractJsonMapping {
-    @JsonProperty("changes")
-    private List<Change> changedItems;
+public class Change extends AbstractJsonMapping {
+    @JsonProperty("key")
+    private String key;
+
+    @JsonProperty("items")
+    private List<ChangeItem> changeItems;
 }
