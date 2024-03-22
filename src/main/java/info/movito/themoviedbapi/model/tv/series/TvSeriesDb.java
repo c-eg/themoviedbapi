@@ -15,6 +15,7 @@ import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.tv.core.ChangeResults;
+import info.movito.themoviedbapi.model.tv.core.Network;
 import info.movito.themoviedbapi.model.tv.core.TvEpisode;
 import info.movito.themoviedbapi.model.tv.core.TvSeason;
 import info.movito.themoviedbapi.model.tv.core.credits.AggregateCredits;

@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.tv.series;
+package info.movito.themoviedbapi.model.tv.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.NamedIdElement;

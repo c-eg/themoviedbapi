@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.tv.series;
+package info.movito.themoviedbapi.model.tv.episodegroups;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.NamedStringIdElement;
@@ -6,9 +6,11 @@ import info.movito.themoviedbapi.model.tv.core.Network;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class EpisodeGroup extends NamedStringIdElement {
+public class TvEpisodeGroups extends NamedStringIdElement {
     @JsonProperty("description")
     private String description;
 
@@ -18,9 +20,12 @@ public class EpisodeGroup extends NamedStringIdElement {
     @JsonProperty("group_count")
     private Integer groupCount;
 
+    @JsonProperty("groups")
+    private List<TvEpisodeGroup> groups;
+
     @JsonProperty("network")
     private Network network;
 
     @JsonProperty("type")
-    private String type;
+    private EpisodeGroupType type;
 }
