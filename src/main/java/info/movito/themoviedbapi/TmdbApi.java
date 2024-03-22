@@ -125,16 +125,20 @@ public class TmdbApi {
         return new TmdbTimezones(this).getTimezones();
     }
 
-    public TmdbTvSeries getTvSeries() {
-        return new TmdbTvSeries(this);
-    }
-
     public TmdbTvEpisodes getTvEpisodes() {
         return new TmdbTvEpisodes(this);
     }
 
+    public TmdbTvEpisodeGroups getTvEpisodeGroups() {
+        return new TmdbTvEpisodeGroups(this);
+    }
+
     public TmdbTvSeasons getTvSeasons() {
         return new TmdbTvSeasons(this);
+    }
+
+    public TmdbTvSeries getTvSeries() {
+        return new TmdbTvSeries(this);
     }
 
     public TmdbTvSeriesLists getTvSeriesLists() {
