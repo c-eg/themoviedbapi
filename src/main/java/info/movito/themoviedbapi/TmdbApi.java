@@ -137,6 +137,10 @@ public class TmdbApi {
         return new TmdbTvSeasons(this);
     }
 
+    public TmdbTvSeriesLists getTvSeriesLists() {
+        return new TmdbTvSeriesLists(this);
+    }
+
     public TmdbWatchProviders getWatchProviders() {
         return new TmdbWatchProviders(this);
     }
