@@ -1,0 +1,1482 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "id": 224513,
+            "name": "Ana de Armas",
+            "original_name": "Ana de Armas",
+            "media_type": "person",
+            "popularity": 349.766,
+            "gender": 1,
+            "known_for_department": "Acting",
+            "profile_path": "/3vxvsmYLTf4jnr163SUlBIw51ee.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/ilRyazdMJwN05exqhwK4tMKBYZs.jpg",
+                    "id": 335984,
+                    "title": "Blade Runner 2049",
+                    "original_language": "en",
+                    "original_title": "Blade Runner 2049",
+                    "overview": "Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what's left of society into chaos. K's discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years.",
+                    "poster_path": "/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        878,
+                        18
+                    ],
+                    "popularity": 79.571,
+                    "release_date": "2017-10-04",
+                    "video": false,
+                    "vote_average": 7.531,
+                    "vote_count": 11771
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/4HWAQu28e2yaWrtupFPGFkdNU7V.jpg",
+                    "id": 546554,
+                    "title": "Knives Out",
+                    "original_language": "en",
+                    "original_title": "Knives Out",
+                    "overview": "When renowned crime novelist Harlan Thrombey is found dead at his estate just after his 85th birthday, the inquisitive and debonair Detective Benoit Blanc is mysteriously enlisted to investigate. From Harlan's dysfunctional family to his devoted staff, Blanc sifts through a web of red herrings and self-serving lies to uncover the truth behind Harlan's untimely death.",
+                    "poster_path": "/pThyQovXQrw2m0s9x82twj48Jq4.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        35,
+                        80,
+                        9648
+                    ],
+                    "popularity": 52.748,
+                    "release_date": "2019-11-27",
+                    "video": false,
+                    "vote_average": 7.854,
+                    "vote_count": 10630
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/3Mnbw4gOYz5BNZB9PhZ2cyBSQum.jpg",
+                    "id": 308266,
+                    "title": "War Dogs",
+                    "original_language": "en",
+                    "original_title": "War Dogs",
+                    "overview": "Based on the true story of two young men, David Packouz and Efraim Diveroli, who won a $300 million contract from the Pentagon to arm America's allies in Afghanistan.",
+                    "poster_path": "/uH9qGH5XS1iZXCSb3tgu40dxQoh.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        35,
+                        80,
+                        18
+                    ],
+                    "popularity": 29.906,
+                    "release_date": "2016-08-17",
+                    "video": false,
+                    "vote_average": 6.892,
+                    "vote_count": 4324
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 1158,
+            "name": "Al Pacino",
+            "original_name": "Al Pacino",
+            "media_type": "person",
+            "popularity": 47.533,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/fMDFeVf0pjopTJbyRSLFwNDm8Wr.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/kGzFbGhp99zva6oZODW5atUtnqi.jpg",
+                    "id": 240,
+                    "title": "The Godfather Part II",
+                    "original_language": "en",
+                    "original_title": "The Godfather Part II",
+                    "overview": "In the continuing saga of the Corleone crime family, a young Vito Corleone grows up in Sicily and in 1910s New York. In the 1950s, Michael Corleone attempts to expand the family business into Las Vegas, Hollywood and Cuba.",
+                    "poster_path": "/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        18,
+                        80
+                    ],
+                    "popularity": 62.221,
+                    "release_date": "1974-12-20",
+                    "video": false,
+                    "vote_average": 8.597,
+                    "vote_count": 10775
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/cCvp5Sni75agCtyJkNOMapORUQV.jpg",
+                    "id": 111,
+                    "title": "Scarface",
+                    "original_language": "en",
+                    "original_title": "Scarface",
+                    "overview": "After getting a green card in exchange for assassinating a Cuban government official, Tony Montana stakes a claim on the drug trade in Miami. Viciously murdering anyone who stands in his way, Tony eventually becomes the biggest drug lord in the state, controlling nearly all the cocaine that comes through Miami. But increased pressure from the police, wars with Colombian drug cartels and his own drug-fueled paranoia serve to fuel the flames of his eventual downfall.",
+                    "poster_path": "/iQ5ztdjvteGeboxtmRdXEChJOHh.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        80,
+                        18
+                    ],
+                    "popularity": 76.345,
+                    "release_date": "1983-12-09",
+                    "video": false,
+                    "vote_average": 8.166,
+                    "vote_count": 10271
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/tmU7GeKVybMWFButWEGl2M4GeiP.jpg",
+                    "id": 238,
+                    "title": "The Godfather",
+                    "original_language": "en",
+                    "original_title": "The Godfather",
+                    "overview": "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
+                    "poster_path": "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        18,
+                        80
+                    ],
+                    "popularity": 102.215,
+                    "release_date": "1972-03-14",
+                    "video": false,
+                    "vote_average": 8.712,
+                    "vote_count": 17806
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 57607,
+            "name": "Stephen Chow",
+            "original_name": "Stephen Chow",
+            "media_type": "person",
+            "popularity": 23.539,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/qPGmIuQ3DKzzpZy5Y12WeoOUijV.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/z8eKIdNRbTmCLpFoZqTQvN4wdEM.jpg",
+                    "id": 9470,
+                    "title": "Kung Fu Hustle",
+                    "original_language": "cn",
+                    "original_title": "功夫",
+                    "overview": "It's the 1940s, and the notorious Axe Gang terrorizes Shanghai. Small-time criminals Sing and Bone hope to join, but they only manage to make lots of very dangerous enemies. Fortunately for them, kung fu masters and hidden strength can be found in unlikely places. Now they just have to take on the entire Axe Gang.",
+                    "poster_path": "/exbyTbrvRUDKN2mcNEuVor4VFQW.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        35,
+                        80,
+                        14
+                    ],
+                    "popularity": 24.234,
+                    "release_date": "2004-02-10",
+                    "video": false,
+                    "vote_average": 7.402,
+                    "vote_count": 2394
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/tkxYmE3HzHy7E39zY3VvQ0k0VLU.jpg",
+                    "id": 11770,
+                    "title": "Shaolin Soccer",
+                    "original_language": "cn",
+                    "original_title": "少林足球",
+                    "overview": "A young Shaolin follower reunites with his discouraged brothers to form a soccer team using their martial art skills to their advantage.",
+                    "poster_path": "/kVpq68NxChzynK7otaymRSaWR8p.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        35
+                    ],
+                    "popularity": 35.178,
+                    "release_date": "2001-07-05",
+                    "video": false,
+                    "vote_average": 7.072,
+                    "vote_count": 1884
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/7y0ol1zsvs0GbYR0BdTvWdOIDHo.jpg",
+                    "id": 13688,
+                    "title": "CJ7",
+                    "original_language": "cn",
+                    "original_title": "長江七號",
+                    "overview": "Ti, a really poor construction worker that struggles to keep his son, Dicky, in private school, mistakes an orb he finds in a junkjard for a toy which proves to be much, much more once the young boy starts to play with it.",
+                    "poster_path": "/sRzSfpSb3wYYshbaiMRIuFCJJGU.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        35,
+                        18,
+                        10751,
+                        14,
+                        878
+                    ],
+                    "popularity": 32.929,
+                    "release_date": "2008-01-30",
+                    "video": false,
+                    "vote_average": 7.2,
+                    "vote_count": 556
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 505710,
+            "name": "Zendaya",
+            "original_name": "Zendaya",
+            "media_type": "person",
+            "popularity": 62.802,
+            "gender": 1,
+            "known_for_department": "Acting",
+            "profile_path": "/4ot6zcXkhYoDkwPk5B6534U03kB.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
+                    "id": 85552,
+                    "name": "Euphoria",
+                    "original_language": "en",
+                    "original_name": "Euphoria",
+                    "overview": "A group of high school students navigate love and friendships in a world of drugs, sex, trauma, and social media.",
+                    "poster_path": "/jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg",
+                    "media_type": "tv",
+                    "genre_ids": [
+                        18,
+                        80
+                    ],
+                    "popularity": 266.939,
+                    "first_air_date": "2019-06-16",
+                    "vote_average": 8.377,
+                    "vote_count": 8683,
+                    "origin_country": [
+                        "US"
+                    ]
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg",
+                    "id": 634649,
+                    "title": "Spider-Man: No Way Home",
+                    "original_language": "en",
+                    "original_title": "Spider-Man: No Way Home",
+                    "overview": "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
+                    "poster_path": "/uJYYizSuA9Y3DCs0qS4qWvHfZg4.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        878
+                    ],
+                    "popularity": 320.221,
+                    "release_date": "2021-12-15",
+                    "video": false,
+                    "vote_average": 8.009,
+                    "vote_count": 17237
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/fn4n6uOYcB6Uh89nbNPoU2w80RV.jpg",
+                    "id": 315635,
+                    "title": "Spider-Man: Homecoming",
+                    "original_language": "en",
+                    "original_title": "Spider-Man: Homecoming",
+                    "overview": "Following the events of Captain America: Civil War, Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in Queens, New York City, with fighting crime as his superhero alter ego Spider-Man as a new threat, the Vulture, emerges.",
+                    "poster_path": "/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        878,
+                        18
+                    ],
+                    "popularity": 86.82,
+                    "release_date": "2017-07-05",
+                    "video": false,
+                    "vote_average": 7.35,
+                    "vote_count": 19905
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 2963,
+            "name": "Nicolas Cage",
+            "original_name": "Nicolas Cage",
+            "media_type": "person",
+            "popularity": 114.101,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/ar33qcWbEgREn07ZpXv5Pbj8hbM.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/bNgqt819qpHcszjCzLCG5y16ldF.jpg",
+                    "id": 49519,
+                    "title": "The Croods",
+                    "original_language": "en",
+                    "original_title": "The Croods",
+                    "overview": "The prehistoric Croods family live in a particularly dangerous moment in time. Patriarch Grug, his mate Ugga, teenage daughter Eep, son Thunk, and feisty Gran gather food by day and huddle together in a cave at night. When a more evolved caveman named Guy arrives on the scene, Grug is distrustful, but it soon becomes apparent that Guy is correct about the impending destruction of their world.",
+                    "poster_path": "/p7lJkqHlK01nr0zNacunUFI5Qxy.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        16,
+                        12,
+                        10751,
+                        14,
+                        35,
+                        28
+                    ],
+                    "popularity": 54.15,
+                    "release_date": "2013-03-15",
+                    "video": false,
+                    "vote_average": 6.909,
+                    "vote_count": 6419
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/xXWT0je8dTFFNBq6P2CeTZkPUu2.jpg",
+                    "id": 2059,
+                    "title": "National Treasure",
+                    "original_language": "en",
+                    "original_title": "National Treasure",
+                    "overview": "Modern treasure hunters, led by archaeologist Ben Gates, search for a chest of riches rumored to have been stashed away by George Washington, Thomas Jefferson and Benjamin Franklin during the Revolutionary War. The chest's whereabouts may lie in secret clues embedded in the Constitution and the Declaration of Independence, and Gates is in a race to find the gold before his enemies do.",
+                    "poster_path": "/pxL6E4GBOPUG6CdkO9cUQN5VMwI.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        12,
+                        28,
+                        53,
+                        9648
+                    ],
+                    "popularity": 34.281,
+                    "release_date": "2004-11-19",
+                    "video": false,
+                    "vote_average": 6.6,
+                    "vote_count": 5664
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/7zS58YPAw002RNejOF1vNB3XHbW.jpg",
+                    "id": 1250,
+                    "title": "Ghost Rider",
+                    "original_language": "en",
+                    "original_title": "Ghost Rider",
+                    "overview": "In order to save his dying father, young stunt cyclist Johnny Blaze sells his soul to Mephistopheles and sadly parts from the pure-hearted Roxanne Simpson, the love of his life. Years later, Johnny's path crosses again with Roxanne, now a go-getting reporter, and also with Mephistopheles, who offers to release Johnny's soul if Johnny becomes the fabled, fiery 'Ghost Rider'.",
+                    "poster_path": "/8LaVQiXBsnlo7MXCPK1nXTVARUZ.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        53,
+                        28,
+                        14
+                    ],
+                    "popularity": 51.47,
+                    "release_date": "2007-01-15",
+                    "video": false,
+                    "vote_average": 5.533,
+                    "vote_count": 5294
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 190,
+            "name": "Clint Eastwood",
+            "original_name": "Clint Eastwood",
+            "media_type": "person",
+            "popularity": 27.22,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/okP7SeXKP3tw9Y3YTVWLIZAMdm8.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/wmsePXV2z1b6ecXuKKrFbG0Q92P.jpg",
+                    "id": 13223,
+                    "title": "Gran Torino",
+                    "original_language": "en",
+                    "original_title": "Gran Torino",
+                    "overview": "Disgruntled Korean War veteran Walt Kowalski sets out to reform his neighbor, Thao Lor, a Hmong teenager who tried to steal Kowalski's prized possession: a 1972 Gran Torino.",
+                    "poster_path": "/zUybYvxWdAJy5hhYovsXtHSWI1l.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        18
+                    ],
+                    "popularity": 26.802,
+                    "release_date": "2008-12-09",
+                    "video": false,
+                    "vote_average": 7.999,
+                    "vote_count": 9698
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/oGMomeS7bE43eN8SGJUaKvQnmud.jpg",
+                    "id": 70,
+                    "title": "Million Dollar Baby",
+                    "original_language": "en",
+                    "original_title": "Million Dollar Baby",
+                    "overview": "Despondent over a painful estrangement from his daughter, trainer Frankie Dunn isn't prepared for boxer Maggie Fitzgerald to enter his life. But Maggie's determined to go pro and to convince Dunn and his cohort to help her.",
+                    "poster_path": "/2ti3l1OeB8G94yyqfAI7nmMZUbA.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        18
+                    ],
+                    "popularity": 19.499,
+                    "release_date": "2004-12-15",
+                    "video": false,
+                    "vote_average": 7.961,
+                    "vote_count": 8597
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/eoCSp75lxatmIa6aGqfnzwtbttd.jpg",
+                    "id": 429,
+                    "title": "The Good, the Bad and the Ugly",
+                    "original_language": "it",
+                    "original_title": "Il buono, il brutto, il cattivo",
+                    "overview": "While the Civil War rages on between the Union and the Confederacy, three men – a quiet loner, a ruthless hitman, and a Mexican bandit – comb the American Southwest in search of a strongbox containing $200,000 in stolen gold.",
+                    "poster_path": "/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        37
+                    ],
+                    "popularity": 53.755,
+                    "release_date": "1966-12-23",
+                    "video": false,
+                    "vote_average": 8.482,
+                    "vote_count": 7347
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 500,
+            "name": "Tom Cruise",
+            "original_name": "Tom Cruise",
+            "media_type": "person",
+            "popularity": 34.959,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/8qBylBsQf4llkGrWR3qAsOtOU8O.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/4V1yIoAKPMRQwGBaSses8Bp2nsi.jpg",
+                    "id": 137113,
+                    "title": "Edge of Tomorrow",
+                    "original_language": "en",
+                    "original_title": "Edge of Tomorrow",
+                    "overview": "Major Bill Cage is an officer who has never seen a day of combat when he is unceremoniously demoted and dropped into combat. Cage is killed within minutes, managing to take an alpha alien down with him. He awakens back at the beginning of the same day and is forced to fight and die again... and again - as physical contact with the alien has thrown him into a time loop.",
+                    "poster_path": "/dULtPHV0A6Hfwr4hVfcAFoTsIFo.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        878
+                    ],
+                    "popularity": 41.02,
+                    "release_date": "2014-05-27",
+                    "video": false,
+                    "vote_average": 7.6,
+                    "vote_count": 12446
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/19AqfWi8S99tDmp7hskCeDQuwLU.jpg",
+                    "id": 75612,
+                    "title": "Oblivion",
+                    "original_language": "en",
+                    "original_title": "Oblivion",
+                    "overview": "Jack Harper is one of the last few drone repairmen stationed on Earth. Part of a massive operation to extract vital resources after decades of war with a terrifying threat known as the Scavs, Jack’s mission is nearly complete. His existence is brought crashing down when he rescues a beautiful  stranger from a downed spacecraft. Her arrival triggers a chain of events that  forces him to question everything he knows and puts the fate of humanity in his hands.",
+                    "poster_path": "/4okm2WpQyHvVEkU8Zidf7oyxvyl.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        878,
+                        12,
+                        9648
+                    ],
+                    "popularity": 28.119,
+                    "release_date": "2013-04-10",
+                    "video": false,
+                    "vote_average": 6.611,
+                    "vote_count": 9784
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/hqyjzDRCs1N5gEsh2gklzPdsEFD.jpg",
+                    "id": 56292,
+                    "title": "Mission: Impossible - Ghost Protocol",
+                    "original_language": "en",
+                    "original_title": "Mission: Impossible - Ghost Protocol",
+                    "overview": "Ethan Hunt and his team are racing against time to track down a dangerous terrorist named Hendricks, who has gained access to Russian nuclear launch codes and is planning a strike on the United States. An attempt to stop him ends in an explosion causing severe destruction to the Kremlin and the IMF to be implicated in the bombing, forcing the President to disavow them. No longer being aided by the government, Ethan and his team chase Hendricks around the globe, although they might still be too late to stop a disaster.",
+                    "poster_path": "/psiWp3VTjznfokmGQG9uqiiknQQ.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        53,
+                        12
+                    ],
+                    "popularity": 58.756,
+                    "release_date": "2011-12-07",
+                    "video": false,
+                    "vote_average": 7.053,
+                    "vote_count": 8828
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 18897,
+            "name": "Jackie Chan",
+            "original_name": "Jackie Chan",
+            "media_type": "person",
+            "popularity": 65.969,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/nraZoTzwJQPHspAVsKfgl3RXKKa.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/r4yFYBEcV247B9VXi1307fIhVqN.jpg",
+                    "id": 2109,
+                    "title": "Rush Hour",
+                    "original_language": "en",
+                    "original_title": "Rush Hour",
+                    "overview": "When Hong Kong Inspector Lee is summoned to Los Angeles to investigate a kidnapping, the FBI doesn't want any outside help and assigns cocky LAPD Detective James Carter to distract Lee from the case. Not content to watch the action from the sidelines, Lee and Carter form an unlikely partnership and investigate the case themselves.",
+                    "poster_path": "/we7wOLVFgxhzLzUt0qNe50xdIQZ.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        35,
+                        80
+                    ],
+                    "popularity": 41.286,
+                    "release_date": "1998-09-18",
+                    "video": false,
+                    "vote_average": 7.001,
+                    "vote_count": 4156
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/zzFTSEAZcLGSbGipQVflSNUqpij.jpg",
+                    "id": 5175,
+                    "title": "Rush Hour 2",
+                    "original_language": "en",
+                    "original_title": "Rush Hour 2",
+                    "overview": "It's vacation time for Carter as he finds himself alongside Lee in Hong Kong wishing for more excitement. While Carter wants to party and meet the ladies, Lee is out to track down a Triad gang lord who may be responsible for killing two men at the American Embassy. Things get complicated as the pair stumble onto a counterfeiting plot. The boys are soon up to their necks in fist fights and life-threatening situations. A trip back to the U.S. may provide the answers about the bombing, the counterfeiting, and the true allegiance of sexy customs agent Isabella.",
+                    "poster_path": "/aBQf2vMiCINeVC9v6BGVYKXurTh.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        35,
+                        80
+                    ],
+                    "popularity": 35.708,
+                    "release_date": "2001-08-03",
+                    "video": false,
+                    "vote_average": 6.7,
+                    "vote_count": 3516
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/ozsLB1HRCN6ZAmJN89pWtoiAwnb.jpg",
+                    "id": 5174,
+                    "title": "Rush Hour 3",
+                    "original_language": "en",
+                    "original_title": "Rush Hour 3",
+                    "overview": "After a botched assassination attempt, the mismatched duo finds themselves in Paris, struggling to retrieve a precious list of names, as the murderous crime syndicate's henchmen try their best to stop them. Once more, Lee and Carter must fight their way through dangerous gangsters; however, this time, the past has come back to haunt Lee. Will the boys get the job done once and for all?",
+                    "poster_path": "/rZ7IxJlPhNNJ6Rn8z1rzsXuA70P.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        35,
+                        80
+                    ],
+                    "popularity": 38.156,
+                    "release_date": "2007-08-08",
+                    "video": false,
+                    "vote_average": 6.423,
+                    "vote_count": 2770
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 72129,
+            "name": "Jennifer Lawrence",
+            "original_name": "Jennifer Lawrence",
+            "media_type": "person",
+            "popularity": 20.954,
+            "gender": 1,
+            "known_for_department": "Acting",
+            "profile_path": "/f7cyXplSWuYFX1e7JxcNMiRfbaH.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/3kz6mLESBmdxAJwoHMS5YYfoWLE.jpg",
+                    "id": 70160,
+                    "title": "The Hunger Games",
+                    "original_language": "en",
+                    "original_title": "The Hunger Games",
+                    "overview": "Every year in the ruins of what was once North America, the nation of Panem forces each of its twelve districts to send a teenage boy and girl to compete in the Hunger Games.  Part twisted entertainment, part government intimidation tactic, the Hunger Games are a nationally televised event in which “Tributes” must fight with one another until one survivor remains.  Pitted against highly-trained Tributes who have prepared for these Games their entire lives, Katniss is forced to rely upon her sharp instincts as well as the mentorship of drunken former victor Haymitch Abernathy.  If she’s ever to return home to District 12, Katniss must make impossible choices in the arena that weigh survival against humanity and life against love. The world will be watching.",
+                    "poster_path": "/1ewwtjqAcwZ5abr2X7coGN0UwaI.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        878,
+                        12,
+                        14
+                    ],
+                    "popularity": 37.891,
+                    "release_date": "2012-03-12",
+                    "video": false,
+                    "vote_average": 7.189,
+                    "vote_count": 20170
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/ldl3MkGTyom9618e65oKvXSF1lC.jpg",
+                    "id": 101299,
+                    "title": "The Hunger Games: Catching Fire",
+                    "original_language": "en",
+                    "original_title": "The Hunger Games: Catching Fire",
+                    "overview": "Katniss Everdeen has returned home safe after winning the 74th Annual Hunger Games along with fellow tribute Peeta Mellark. Winning means that they must turn around and leave their family and close friends, embarking on a \"Victor's Tour\" of the districts. Along the way Katniss senses that a rebellion is simmering, but the Capitol is still very much in control as President Snow prepares the 75th Annual Hunger Games (The Quarter Quell) - a competition that could change Panem forever.",
+                    "poster_path": "/vrQHDXjVmbYzadOXQ0UaObunoy2.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        12,
+                        28,
+                        878
+                    ],
+                    "popularity": 61.962,
+                    "release_date": "2013-11-15",
+                    "video": false,
+                    "vote_average": 7.421,
+                    "vote_count": 15758
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/tFlSDoWQsAZ2qjICKzfP5Yw6zM5.jpg",
+                    "id": 131631,
+                    "title": "The Hunger Games: Mockingjay - Part 1",
+                    "original_language": "en",
+                    "original_title": "The Hunger Games: Mockingjay - Part 1",
+                    "overview": "Katniss Everdeen reluctantly becomes the symbol of a mass rebellion against the autocratic Capitol.",
+                    "poster_path": "/4FAA18ZIja70d1Tu5hr5cj2q1sB.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        878,
+                        12,
+                        53
+                    ],
+                    "popularity": 94.186,
+                    "release_date": "2014-11-19",
+                    "video": false,
+                    "vote_average": 6.801,
+                    "vote_count": 14334
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 1077300,
+            "name": "Eadweard Muybridge",
+            "original_name": "Eadweard Muybridge",
+            "media_type": "person",
+            "popularity": 3.175,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/idESyuc7NbHnKRDvSWXgOVBxtQU.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": null,
+                    "id": 123092,
+                    "title": "Eadweard Muybridge, Zoopraxographer",
+                    "original_language": "en",
+                    "original_title": "Eadweard Muybridge, Zoopraxographer",
+                    "overview": "Thom Andersen's remarkable and sadly neglected hour-long documentary adroitly combines biography, history, film theory, and philosophical reflection. Muybridge's photographic studies of animal locomotion in the 1870s were a major forerunner of movies; even more interesting are his subsequent studies of diverse people, photographed against neutral backgrounds.",
+                    "poster_path": "/aheet9nDJ6FWrXlRj50c18mMZCB.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        99
+                    ],
+                    "popularity": 2.296,
+                    "release_date": "1975-09-28",
+                    "video": false,
+                    "vote_average": 7.067,
+                    "vote_count": 15
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 880,
+            "name": "Ben Affleck",
+            "original_name": "Ben Affleck",
+            "media_type": "person",
+            "popularity": 33.902,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/u525jeDOzg9hVdvYfeehTGnw7Aa.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/h2JaQWLKhapm7AuSViJwGiv8ngC.jpg",
+                    "id": 210577,
+                    "title": "Gone Girl",
+                    "original_language": "en",
+                    "original_title": "Gone Girl",
+                    "overview": "With his wife's disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him when it's suspected that he may not be innocent.",
+                    "poster_path": "/qymaJhucquUwjpb8oiqynMeXnID.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        9648,
+                        53,
+                        18
+                    ],
+                    "popularity": 51.385,
+                    "release_date": "2014-10-01",
+                    "video": false,
+                    "vote_average": 7.892,
+                    "vote_count": 16877
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/5fX1oSGuYdKgwWmUTAN5MNSQGzr.jpg",
+                    "id": 209112,
+                    "title": "Batman v Superman: Dawn of Justice",
+                    "original_language": "en",
+                    "original_title": "Batman v Superman: Dawn of Justice",
+                    "overview": "Fearing the actions of a god-like Super Hero left unchecked, Gotham City’s own formidable, forceful vigilante takes on Metropolis’s most revered, modern-day savior, while the world wrestles with what sort of hero it really needs. And with Batman and Superman at war with one another, a new threat quickly arises, putting mankind in greater danger than it’s ever known before.",
+                    "poster_path": "/5UsK3grJvtQrtzEgqNlDljJW96w.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        14
+                    ],
+                    "popularity": 73.175,
+                    "release_date": "2016-03-23",
+                    "video": false,
+                    "vote_average": 5.943,
+                    "vote_count": 16703
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/2nyaeISu2xIxIgZYNpX4UayY8PN.jpg",
+                    "id": 141052,
+                    "title": "Justice League",
+                    "original_language": "en",
+                    "original_title": "Justice League",
+                    "overview": "Fuelled by his restored faith in humanity and inspired by Superman's selfless act, Bruce Wayne and Diana Prince assemble a team of metahumans consisting of Barry Allen, Arthur Curry and Victor Stone to face the catastrophic threat of Steppenwolf and the Parademons who are on the hunt for three Mother Boxes on Earth.",
+                    "poster_path": "/eifGNCSDuxJeS1loAXil5bIGgvC.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        878
+                    ],
+                    "popularity": 78.506,
+                    "release_date": "2017-11-15",
+                    "video": false,
+                    "vote_average": 6.105,
+                    "vote_count": 11982
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 18918,
+            "name": "Dwayne Johnson",
+            "original_name": "Dwayne Johnson",
+            "media_type": "person",
+            "popularity": 26.007,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/cgoy7t5Ve075naBPcewZrc08qGw.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/zJDMuXQDraHjtF53wikmyBQIcYe.jpg",
+                    "id": 353486,
+                    "title": "Jumanji: Welcome to the Jungle",
+                    "original_language": "en",
+                    "original_title": "Jumanji: Welcome to the Jungle",
+                    "overview": "Four teenagers in detention discover an old video game console with a game they’ve never heard of. When they decide to play, they are immediately sucked into the jungle world of Jumanji in the bodies of their avatars. They’ll have to complete the adventure of their lives filled with fun, thrills and danger or be stuck in the game forever!",
+                    "poster_path": "/pSgXKPU5h6U89ipF7HBYajvYt7j.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        12,
+                        28,
+                        35,
+                        14
+                    ],
+                    "popularity": 50.765,
+                    "release_date": "2017-12-09",
+                    "video": false,
+                    "vote_average": 6.824,
+                    "vote_count": 12454
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg",
+                    "id": 512200,
+                    "title": "Jumanji: The Next Level",
+                    "original_language": "en",
+                    "original_title": "Jumanji: The Next Level",
+                    "overview": "As the gang return to Jumanji to rescue one of their own, they discover that nothing is as they expect. The players will have to brave parts unknown and unexplored in order to escape the world’s most dangerous game.",
+                    "poster_path": "/jyw8VKYEiM1UDzPB7NsisUgBeJ8.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        12,
+                        35,
+                        14
+                    ],
+                    "popularity": 65.303,
+                    "release_date": "2019-12-04",
+                    "video": false,
+                    "vote_average": 6.941,
+                    "vote_count": 7638
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/ipjZVitWMjrVd2hoWKU2waVdxGy.jpg",
+                    "id": 254128,
+                    "title": "San Andreas",
+                    "original_language": "en",
+                    "original_title": "San Andreas",
+                    "overview": "In the aftermath of a massive earthquake in California, a rescue-chopper pilot makes a dangerous journey across the state in order to rescue his estranged daughter.",
+                    "poster_path": "/2Gfjn962aaFSD6eST6QU3oLDZTo.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        18,
+                        53
+                    ],
+                    "popularity": 78.482,
+                    "release_date": "2015-05-27",
+                    "video": false,
+                    "vote_average": 6.206,
+                    "vote_count": 7613
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 73457,
+            "name": "Chris Pratt",
+            "original_name": "Chris Pratt",
+            "media_type": "person",
+            "popularity": 54.136,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/a56s3RxYTVXoS9csmaB5Zm5b4Xq.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/uLtVbjvS1O7gXL8lUOwsFOH4man.jpg",
+                    "id": 118340,
+                    "title": "Guardians of the Galaxy",
+                    "original_language": "en",
+                    "original_title": "Guardians of the Galaxy",
+                    "overview": "Light years from Earth, 26 years after being abducted, Peter Quill finds himself the prime target of a manhunt after discovering an orb wanted by Ronan the Accuser.",
+                    "poster_path": "/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        878,
+                        12
+                    ],
+                    "popularity": 60.063,
+                    "release_date": "2014-07-30",
+                    "video": false,
+                    "vote_average": 7.903,
+                    "vote_count": 25779
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/aJn9XeesqsrSLKcHfHP4u5985hn.jpg",
+                    "id": 283995,
+                    "title": "Guardians of the Galaxy Vol. 2",
+                    "original_language": "en",
+                    "original_title": "Guardians of the Galaxy Vol. 2",
+                    "overview": "The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill's true parentage.",
+                    "poster_path": "/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        12,
+                        28,
+                        878
+                    ],
+                    "popularity": 110.04,
+                    "release_date": "2017-04-19",
+                    "video": false,
+                    "vote_average": 7.623,
+                    "vote_count": 19505
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/aIGIYJTyOkEVUmEd3z5x6diYsFx.jpg",
+                    "id": 135397,
+                    "title": "Jurassic World",
+                    "original_language": "en",
+                    "original_title": "Jurassic World",
+                    "overview": "Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.",
+                    "poster_path": "/A0LZHXUzo5C60Oahvt7VxvwuzHw.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        878,
+                        53
+                    ],
+                    "popularity": 67.724,
+                    "release_date": "2015-06-12",
+                    "video": false,
+                    "vote_average": 6.7,
+                    "vote_count": 19005
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 1136406,
+            "name": "Tom Holland",
+            "original_name": "Tom Holland",
+            "media_type": "person",
+            "popularity": 111.443,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/2bXKtSlrJyzpXs7gTOiCnQJBCBp.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/fn4n6uOYcB6Uh89nbNPoU2w80RV.jpg",
+                    "id": 315635,
+                    "title": "Spider-Man: Homecoming",
+                    "original_language": "en",
+                    "original_title": "Spider-Man: Homecoming",
+                    "overview": "Following the events of Captain America: Civil War, Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in Queens, New York City, with fighting crime as his superhero alter ego Spider-Man as a new threat, the Vulture, emerges.",
+                    "poster_path": "/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        878,
+                        18
+                    ],
+                    "popularity": 86.82,
+                    "release_date": "2017-07-05",
+                    "video": false,
+                    "vote_average": 7.35,
+                    "vote_count": 19905
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg",
+                    "id": 634649,
+                    "title": "Spider-Man: No Way Home",
+                    "original_language": "en",
+                    "original_title": "Spider-Man: No Way Home",
+                    "overview": "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
+                    "poster_path": "/uJYYizSuA9Y3DCs0qS4qWvHfZg4.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        878
+                    ],
+                    "popularity": 320.221,
+                    "release_date": "2021-12-15",
+                    "video": false,
+                    "vote_average": 8.009,
+                    "vote_count": 17237
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/ng6SSB3JhbcpKTwbPDsRwUYK8Cq.jpg",
+                    "id": 429617,
+                    "title": "Spider-Man: Far From Home",
+                    "original_language": "en",
+                    "original_title": "Spider-Man: Far From Home",
+                    "overview": "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.",
+                    "poster_path": "/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        878
+                    ],
+                    "popularity": 62.768,
+                    "release_date": "2019-06-28",
+                    "video": false,
+                    "vote_average": 7.46,
+                    "vote_count": 13938
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 309,
+            "name": "Pedro Almodóvar",
+            "original_name": "Pedro Almodóvar",
+            "media_type": "person",
+            "popularity": 5.092,
+            "gender": 2,
+            "known_for_department": "Directing",
+            "profile_path": "/dKlaXJk3NLcsC1CKMx6xmyW5BZD.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/oPxTkDKK2NcHcAEADATWiXKOkFw.jpg",
+                    "id": 63311,
+                    "title": "The Skin I Live In",
+                    "original_language": "es",
+                    "original_title": "La piel que habito",
+                    "overview": "A brilliant plastic surgeon creates a synthetic skin that withstands any kind of damage. His guinea pig: a mysterious and volatile woman who holds the key to his obsession.",
+                    "poster_path": "/wlTHU4M3Hmkxntnfv4iVMeMnPg2.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        18,
+                        27,
+                        9648,
+                        53
+                    ],
+                    "popularity": 24.328,
+                    "release_date": "2011-08-17",
+                    "video": false,
+                    "vote_average": 7.527,
+                    "vote_count": 3751
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/tilClWjFZeUTGJu0pxgF72fvUmN.jpg",
+                    "id": 99,
+                    "title": "All About My Mother",
+                    "original_language": "es",
+                    "original_title": "Todo sobre mi madre",
+                    "overview": "Following the tragic death of her teenage son, Manuela travels from Madrid to Barcelona in an attempt to contact the long-estranged father the boy never knew. She reunites with an old friend, an outspoken transgender sex worker, and befriends a troubled actress and a pregnant, HIV-positive nun.",
+                    "poster_path": "/hjQhzhkGYXPNM96k0mOgob6HMmn.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        35,
+                        18
+                    ],
+                    "popularity": 15.632,
+                    "release_date": "1999-04-16",
+                    "video": false,
+                    "vote_average": 7.663,
+                    "vote_count": 1622
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/vxTFLjaAiirocGfiXWPE9tQFchI.jpg",
+                    "id": 519010,
+                    "title": "Pain and Glory",
+                    "original_language": "es",
+                    "original_title": "Dolor y gloria",
+                    "overview": "Salvador Mallo, a filmmaker in the twilight of his career, remembers his life: his mother, his lovers, the actors he worked with. The sixties in a small village in Valencia, the eighties in Madrid, the present, when he feels an immeasurable emptiness, facing his mortality, the incapability of continuing filming, the impossibility of separating creation from his own life. The need of narrating his past can be his salvation.",
+                    "poster_path": "/cMlueArJXXwZbeLpb4NhC3pxmBk.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        18
+                    ],
+                    "popularity": 11.661,
+                    "release_date": "2019-03-22",
+                    "video": false,
+                    "vote_average": 7.43,
+                    "vote_count": 1604
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 1100,
+            "name": "Arnold Schwarzenegger",
+            "original_name": "Arnold Schwarzenegger",
+            "media_type": "person",
+            "popularity": 18.619,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/zEMhugsgXIpnQqO31GpAJYMUZZ1.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/wh4ze6klUbeichAj603OKZwY1W5.jpg",
+                    "id": 218,
+                    "title": "The Terminator",
+                    "original_language": "en",
+                    "original_title": "The Terminator",
+                    "overview": "In the post-apocalyptic future, reigning tyrannical supercomputers teleport a cyborg assassin known as the \"Terminator\" back to 1984 to kill Sarah Connor, whose unborn son is destined to lead insurgents against 21st century mechanical hegemony. Meanwhile, the human-resistance movement dispatches a lone warrior to safeguard Sarah. Can he stop the virtually indestructible killing machine?",
+                    "poster_path": "/kdYu7YJJP0uuGEuhUX5toqvBSog.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        53,
+                        878
+                    ],
+                    "popularity": 48.05,
+                    "release_date": "1984-10-26",
+                    "video": false,
+                    "vote_average": 7.64,
+                    "vote_count": 11396
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/xKb6mtdfI5Qsggc44Hr9CCUDvaj.jpg",
+                    "id": 280,
+                    "title": "Terminator 2: Judgment Day",
+                    "original_language": "en",
+                    "original_title": "Terminator 2: Judgment Day",
+                    "overview": "Nearly 10 years have passed since Sarah Connor was targeted for termination by a cyborg from the future. Now her son, John, the future leader of the resistance, is the target for a newer, more deadly terminator. Once again, the resistance has managed to send a protector back to attempt to save John and his mother Sarah.",
+                    "poster_path": "/5M0j0B18abtBI5gi2RhfjjurTqb.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        53,
+                        878
+                    ],
+                    "popularity": 64.827,
+                    "release_date": "1991-07-03",
+                    "video": false,
+                    "vote_average": 8.096,
+                    "vote_count": 11253
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/g4a5YLWwi6OCp8TcvxsUNrXMbN5.jpg",
+                    "id": 87101,
+                    "title": "Terminator Genisys",
+                    "original_language": "en",
+                    "original_title": "Terminator Genisys",
+                    "overview": "The year is 2029. John Connor, leader of the resistance continues the war against the machines. At the Los Angeles offensive, John's fears of the unknown future begin to emerge when TECOM spies reveal a new plot by SkyNet that will attack him from both fronts; past and future, and will ultimately change warfare forever.",
+                    "poster_path": "/oZRVDpNtmHk8M1VYy1aeOWUXgbC.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        878,
+                        28,
+                        53,
+                        12
+                    ],
+                    "popularity": 73.211,
+                    "release_date": "2015-06-23",
+                    "video": false,
+                    "vote_average": 5.905,
+                    "vote_count": 7624
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 62064,
+            "name": "Chris Pine",
+            "original_name": "Chris Pine",
+            "media_type": "person",
+            "popularity": 38.065,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/vNhLYVlo84q78NVIP6s3EYV7lEH.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/AaABt75ZzfMGrscUR2seabz4PEX.jpg",
+                    "id": 297762,
+                    "title": "Wonder Woman",
+                    "original_language": "en",
+                    "original_title": "Wonder Woman",
+                    "overview": "An Amazon princess comes to the world of Man in the grips of the First World War to confront the forces of evil and bring an end to human conflict.",
+                    "poster_path": "/imekS7f1OuHyUP2LAiTEM0zBzUz.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        14
+                    ],
+                    "popularity": 61.562,
+                    "release_date": "2017-05-30",
+                    "video": false,
+                    "vote_average": 7.239,
+                    "vote_count": 18568
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/q7M0JpPixbEYT8EhnI7wTEMONxz.jpg",
+                    "id": 13475,
+                    "title": "Star Trek",
+                    "original_language": "en",
+                    "original_title": "Star Trek",
+                    "overview": "The fate of the galaxy rests in the hands of bitter rivals. One, James Kirk, is a delinquent, thrill-seeking Iowa farm boy. The other, Spock, a Vulcan, was raised in a logic-based society that rejects all emotion. As fiery instinct clashes with calm reason, their unlikely but powerful partnership is the only thing capable of leading their crew through unimaginable danger, boldly going where no one has gone before. The human adventure has begun again.",
+                    "poster_path": "/lV5OpzAss1z06YNagOVap1I35mH.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        878,
+                        28,
+                        12
+                    ],
+                    "popularity": 45.706,
+                    "release_date": "2009-05-06",
+                    "video": false,
+                    "vote_average": 7.432,
+                    "vote_count": 9096
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/npDrIM6ZbuD7nUxI7ZzNBxs4IRF.jpg",
+                    "id": 54138,
+                    "title": "Star Trek Into Darkness",
+                    "original_language": "en",
+                    "original_title": "Star Trek Into Darkness",
+                    "overview": "When the crew of the Enterprise is called back home, they find an unstoppable force of terror from within their own organization has detonated the fleet and everything it stands for, leaving our world in a state of crisis.  With a personal score to settle, Captain Kirk leads a manhunt to a war-zone world to capture a one man weapon of mass destruction. As our heroes are propelled into an epic chess game of life and death, love will be challenged, friendships will be torn apart, and sacrifices must be made for the only family Kirk has left: his crew.",
+                    "poster_path": "/7XrRkhMa9lQ71RszzSyVrJVvhyS.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        878
+                    ],
+                    "popularity": 31.032,
+                    "release_date": "2013-05-05",
+                    "video": false,
+                    "vote_average": 7.331,
+                    "vote_count": 8387
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 192,
+            "name": "Morgan Freeman",
+            "original_name": "Morgan Freeman",
+            "media_type": "person",
+            "popularity": 75.088,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/jPsLqiYGSofU4s6BjrxnefMfabb.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg",
+                    "id": 278,
+                    "title": "The Shawshank Redemption",
+                    "original_language": "en",
+                    "original_title": "The Shawshank Redemption",
+                    "overview": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.",
+                    "poster_path": "/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        18,
+                        80
+                    ],
+                    "popularity": 120.999,
+                    "release_date": "1994-09-23",
+                    "video": false,
+                    "vote_average": 8.702,
+                    "vote_count": 23656
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/hh28CTWLdxTXA5yJgefZ6gUnFDo.jpg",
+                    "id": 807,
+                    "title": "Se7en",
+                    "original_language": "en",
+                    "original_title": "Se7en",
+                    "overview": "Two homicide detectives are on a desperate hunt for a serial killer whose crimes are based on the \"seven deadly sins\" in this dark and haunting film that takes viewers from the tortured remains of one victim to the next. The seasoned Det. Sommerset researches each sin in an effort to get inside the killer's mind, while his novice partner, Mills, scoffs at his efforts to unravel the case.",
+                    "poster_path": "/6yoghtyTpznpBik8EngEmJskVUO.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        80,
+                        9648,
+                        53
+                    ],
+                    "popularity": 47.062,
+                    "release_date": "1995-09-22",
+                    "video": false,
+                    "vote_average": 8.366,
+                    "vote_count": 18669
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/ozVwXlfxqNsariipatGwa5px3Pm.jpg",
+                    "id": 240832,
+                    "title": "Lucy",
+                    "original_language": "en",
+                    "original_title": "Lucy",
+                    "overview": "A woman, accidentally caught in a dark deal, turns the tables on her captors and transforms into a merciless warrior evolved beyond human logic.",
+                    "poster_path": "/dhjyfcwEoW6jJ4Q7DpZTp6E58GA.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        878
+                    ],
+                    "popularity": 53.937,
+                    "release_date": "2014-07-25",
+                    "video": false,
+                    "vote_average": 6.432,
+                    "vote_count": 14825
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 6384,
+            "name": "Keanu Reeves",
+            "original_name": "Keanu Reeves",
+            "media_type": "person",
+            "popularity": 66.373,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/4D0PpNI0kmP58hgrwGC3wCjxhnm.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/l4QHerTSbMI7qgvasqxP36pqjN6.jpg",
+                    "id": 603,
+                    "title": "The Matrix",
+                    "original_language": "en",
+                    "original_title": "The Matrix",
+                    "overview": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.",
+                    "poster_path": "/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        878
+                    ],
+                    "popularity": 71.384,
+                    "release_date": "1999-03-30",
+                    "video": false,
+                    "vote_average": 8.2,
+                    "vote_count": 23099
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/7dzngS8pLkGJpyeskCFcjPO9qLF.jpg",
+                    "id": 245891,
+                    "title": "John Wick",
+                    "original_language": "en",
+                    "original_title": "John Wick",
+                    "overview": "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.",
+                    "poster_path": "/wXqWR7dHncNRbxoEGybEy7QTe9h.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        53
+                    ],
+                    "popularity": 174.46,
+                    "release_date": "2014-10-22",
+                    "video": false,
+                    "vote_average": 7.402,
+                    "vote_count": 17211
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/r17jFHAemzcWPPtoO0UxjIX0xas.jpg",
+                    "id": 324552,
+                    "title": "John Wick: Chapter 2",
+                    "original_language": "en",
+                    "original_title": "John Wick: Chapter 2",
+                    "overview": "John Wick is forced out of retirement by a former associate looking to seize control of a shadowy international assassins’ guild. Bound by a blood oath to aid him, Wick travels to Rome and does battle against some of the world’s most dangerous killers.",
+                    "poster_path": "/hXWBc0ioZP3cN4zCu6SN3YHXZVO.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        53,
+                        80
+                    ],
+                    "popularity": 294.191,
+                    "release_date": "2017-02-08",
+                    "video": false,
+                    "vote_average": 7.311,
+                    "vote_count": 11397
+                }
+            ]
+        },
+        {
+            "adult": false,
+            "id": 550843,
+            "name": "Elizabeth Olsen",
+            "original_name": "Elizabeth Olsen",
+            "media_type": "person",
+            "popularity": 24.278,
+            "gender": 1,
+            "known_for_department": "Acting",
+            "profile_path": "/upS7wivapuUwGS5ABIpH58vVvL8.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/33j33midGw49BBxiqlNZeZ6PZ0O.jpg",
+                    "id": 85271,
+                    "name": "WandaVision",
+                    "original_language": "en",
+                    "original_name": "WandaVision",
+                    "overview": "Wanda Maximoff and Vision—two super-powered beings living idealized suburban lives—begin to suspect that everything is not as it seems.",
+                    "poster_path": "/frobUz2X5Pc8OiVZU8Oo5K3NKMM.jpg",
+                    "media_type": "tv",
+                    "genre_ids": [
+                        10765,
+                        9648,
+                        18
+                    ],
+                    "popularity": 66.691,
+                    "first_air_date": "2021-01-15",
+                    "vote_average": 8.283,
+                    "vote_count": 10992,
+                    "origin_country": [
+                        "US"
+                    ]
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/zCjZfevPFBbOh2SAx2syIBHSqEI.jpg",
+                    "id": 124905,
+                    "title": "Godzilla",
+                    "original_language": "en",
+                    "original_title": "Godzilla",
+                    "overview": "Ford Brody, a Navy bomb expert, has just reunited with his family in San Francisco when he is forced to go to Japan to help his estranged father, Joe. Soon, both men are swept up in an escalating crisis when an ancient alpha predator arises from the sea to combat malevolent adversaries that threaten the survival of humanity. The creatures leave colossal destruction in their wake, as they make their way toward their final battleground: San Francisco.",
+                    "poster_path": "/iBZhbCVhLpyxAfW1B8ePUxjScrx.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        18,
+                        878
+                    ],
+                    "popularity": 73.711,
+                    "release_date": "2014-05-14",
+                    "video": false,
+                    "vote_average": 6.276,
+                    "vote_count": 8135
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/iKUwhA4DUxMcNKu5lLSbDFwwilk.jpg",
+                    "id": 453395,
+                    "title": "Doctor Strange in the Multiverse of Madness",
+                    "original_language": "en",
+                    "original_title": "Doctor Strange in the Multiverse of Madness",
+                    "overview": "Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.",
+                    "poster_path": "/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        14,
+                        28,
+                        12
+                    ],
+                    "popularity": 266.886,
+                    "release_date": "2022-05-04",
+                    "video": false,
+                    "vote_average": 7.383,
+                    "vote_count": 7322
+                }
+            ]
+        }
+    ],
+    "total_pages": 1000,
+    "total_results": 20000
+}

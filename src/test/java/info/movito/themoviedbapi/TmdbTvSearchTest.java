@@ -8,9 +8,9 @@ import info.movito.themoviedbapi.model.search.CompanyResultsPage;
 import info.movito.themoviedbapi.model.search.KeywordResultsPage;
 import info.movito.themoviedbapi.model.search.Multi;
 import info.movito.themoviedbapi.model.search.MultiResultsPage;
-import info.movito.themoviedbapi.model.search.SearchedMovie;
-import info.movito.themoviedbapi.model.search.SearchedPerson;
-import info.movito.themoviedbapi.model.search.SearchedTvSeries;
+import info.movito.themoviedbapi.model.search.MultiMovie;
+import info.movito.themoviedbapi.model.search.MultiPerson;
+import info.movito.themoviedbapi.model.search.MultiTvSeries;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
@@ -116,17 +116,17 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest {
         Multi multiMovie = results.get(0);
         assertNotNull(multiMovie);
         assertEquals(Multi.MediaType.MOVIE, multiMovie.getMediaType());
-        validateAbstractJsonMappingFields((SearchedMovie) multiMovie);
+        validateAbstractJsonMappingFields((MultiMovie) multiMovie);
 
         Multi multiTv = results.get(1);
         assertNotNull(multiTv);
         assertEquals(Multi.MediaType.TV_SERIES, multiTv.getMediaType());
-        validateAbstractJsonMappingFields((SearchedTvSeries) multiTv);
+        validateAbstractJsonMappingFields((MultiTvSeries) multiTv);
 
         Multi multiPerson = results.get(2);
         assertNotNull(multiPerson);
         assertEquals(Multi.MediaType.PERSON, multiPerson.getMediaType());
-        validateAbstractJsonMappingFields((SearchedPerson) multiPerson);
+        validateAbstractJsonMappingFields((MultiPerson) multiPerson);
     }
 
     /**
