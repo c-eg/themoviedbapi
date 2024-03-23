@@ -25,7 +25,7 @@ public class TmdbTvEpisodeGroupsTest extends AbstractTmdbApiTest {
     private TmdbTvEpisodeGroups tmdbTvEpisodeGroups;
 
     /**
-     * Sets up TmdbTvEpisodes class.
+     * Sets up TmdbTvEpisodeGroups class.
      */
     @BeforeEach
     @Override

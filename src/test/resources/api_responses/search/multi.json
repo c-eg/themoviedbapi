@@ -1,0 +1,128 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/aDYSnJAK0BTVeE8osOy22Kz3SXY.jpg",
+            "id": 11,
+            "title": "Star Wars",
+            "original_language": "en",
+            "original_title": "Star Wars",
+            "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
+            "poster_path": "/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                878
+            ],
+            "popularity": 78.047,
+            "release_date": "1977-05-25",
+            "video": false,
+            "vote_average": 8.208,
+            "vote_count": 18528
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ajztm40qDPqMONaSJhQ2PaNe2Xd.jpg",
+            "id": 83867,
+            "name": "Star Wars: Andor",
+            "original_language": "en",
+            "original_name": "Star Wars: Andor",
+            "overview": "The tale of the burgeoning rebellion against the Empire and how people and planets became involved. In an era filled with danger, deception and intrigue, Cassian Andor embarks on the path that is destined to turn him into a rebel hero.",
+            "poster_path": "/59SVNwLfoMnZPPB6ukW6dlPxAdI.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                10759,
+                10768,
+                18
+            ],
+            "popularity": 87.697,
+            "first_air_date": "2022-09-21",
+            "vote_average": 8.223,
+            "vote_count": 671,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "id": 12835,
+            "name": "Vin Diesel",
+            "original_name": "Vin Diesel",
+            "media_type": "person",
+            "popularity": 74.552,
+            "gender": 2,
+            "known_for_department": "Acting",
+            "profile_path": "/nZdVry7lnUkE24PnXakok9okvL4.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/cHkhb5A4gQRK6zs6Pv7zorHs8Nk.jpg",
+                    "id": 168259,
+                    "title": "Furious 7",
+                    "original_language": "en",
+                    "original_title": "Furious 7",
+                    "overview": "Deckard Shaw seeks revenge against Dominic Toretto and his family for his comatose brother.",
+                    "poster_path": "/ktofZ9Htrjiy0P6LEowsDaxd3Ri.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        53,
+                        80
+                    ],
+                    "popularity": 72.224,
+                    "release_date": "2015-04-01",
+                    "video": false,
+                    "vote_average": 7.235,
+                    "vote_count": 10251
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/mRfI3y2oAd7ejur2di09xC9niqp.jpg",
+                    "id": 82992,
+                    "title": "Fast & Furious 6",
+                    "original_language": "en",
+                    "original_title": "Fast & Furious 6",
+                    "overview": "Hobbs has Dominic and Brian reassemble their crew to take down a team of mercenaries; Dominic unexpectedly gets sidetracked with facing his presumed deceased girlfriend, Letty.",
+                    "poster_path": "/3EXOOkhSmJQ9DisNmIjZ8Xi633I.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        53,
+                        80
+                    ],
+                    "popularity": 7.279,
+                    "release_date": "2013-05-21",
+                    "video": false,
+                    "vote_average": 6.8,
+                    "vote_count": 10241
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/jzdnhRhG0dsuYorwvSqPqqnM1cV.jpg",
+                    "id": 337339,
+                    "title": "The Fate of the Furious",
+                    "original_language": "en",
+                    "original_title": "The Fate of the Furious",
+                    "overview": "When a mysterious woman seduces Dom into the world of crime and a betrayal of those closest to him, the crew face trials that will test them as never before.",
+                    "poster_path": "/dImWM7GJqryWJO9LHa3XQ8DD5NH.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        80,
+                        53
+                    ],
+                    "popularity": 60.81,
+                    "release_date": "2017-04-12",
+                    "video": false,
+                    "vote_average": 6.881,
+                    "vote_count": 9961
+                }
+            ]
+        }
+    ],
+    "total_pages": 11,
+    "total_results": 201
+}

@@ -1,0 +1,127 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "id": 3268,
+            "logo_path": "/tuomPhY2UtuPTqqFnKMVHvSb724.png",
+            "name": "HBO",
+            "origin_country": "US"
+        },
+        {
+            "id": 142414,
+            "logo_path": "/tC3oVZvqpwhAG1uSjpMnmj4nW3O.png",
+            "name": "HBO Asia",
+            "origin_country": "SG"
+        },
+        {
+            "id": 143571,
+            "logo_path": null,
+            "name": "HBO Showcase",
+            "origin_country": ""
+        },
+        {
+            "id": 14914,
+            "logo_path": "/1RZBWz53SpHUTLpRcM8BGv2plIP.png",
+            "name": "HBO Documentary Films",
+            "origin_country": "US"
+        },
+        {
+            "id": 119349,
+            "logo_path": null,
+            "name": "HBO Central Europe",
+            "origin_country": ""
+        },
+        {
+            "id": 48582,
+            "logo_path": "/tyoN6zoxMJ71GBddxVkk4dpaeze.png",
+            "name": "HBO Europe",
+            "origin_country": ""
+        },
+        {
+            "id": 147188,
+            "logo_path": null,
+            "name": "HBO / Cinemax",
+            "origin_country": ""
+        },
+        {
+            "id": 7429,
+            "logo_path": "/6in9uMqxXEHx5XgYgkeRBpZ4rPw.png",
+            "name": "HBO Films",
+            "origin_country": "US"
+        },
+        {
+            "id": 158691,
+            "logo_path": "/s5ELD35ShWgVKQxgERHM2iP5bXA.png",
+            "name": "HBO Max",
+            "origin_country": "US"
+        },
+        {
+            "id": 21222,
+            "logo_path": "/baMruKL2uRhJ1Soi4flSHVzXIH2.png",
+            "name": "HBO Independent Productions",
+            "origin_country": "US"
+        },
+        {
+            "id": 27289,
+            "logo_path": null,
+            "name": "HBO Bulgaria",
+            "origin_country": ""
+        },
+        {
+            "id": 128608,
+            "logo_path": null,
+            "name": "H-Bomb Films",
+            "origin_country": ""
+        },
+        {
+            "id": 89525,
+            "logo_path": null,
+            "name": "HBO Family",
+            "origin_country": ""
+        },
+        {
+            "id": 37659,
+            "logo_path": "/zfouUSOEq718TbB9YqN9OylPtD7.png",
+            "name": "HBO Polska",
+            "origin_country": "PL"
+        },
+        {
+            "id": 136561,
+            "logo_path": "/mReKmOZLemFcWlMocCwiq3XbsbB.png",
+            "name": "HBO Europe",
+            "origin_country": "CZ"
+        },
+        {
+            "id": 44618,
+            "logo_path": "/vh38lPSFvesAuOQ8r5TrUT9Vur5.png",
+            "name": "HBO Latin America",
+            "origin_country": ""
+        },
+        {
+            "id": 67207,
+            "logo_path": null,
+            "name": "HBO Downtown Productions",
+            "origin_country": ""
+        },
+        {
+            "id": 11489,
+            "logo_path": null,
+            "name": "HBO/Cinemax Documentary",
+            "origin_country": ""
+        },
+        {
+            "id": 13670,
+            "logo_path": null,
+            "name": "HBO Romania",
+            "origin_country": "RO"
+        },
+        {
+            "id": 6751,
+            "logo_path": "/giPzzhPdiNloiuwo7qLagRn5uGH.png",
+            "name": "HBO Sports",
+            "origin_country": "US"
+        }
+    ],
+    "total_pages": 2,
+    "total_results": 22
+}

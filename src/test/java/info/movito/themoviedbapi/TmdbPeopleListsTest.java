@@ -1,6 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.peoplelists.PopularPersonResults;
+import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
@@ -29,8 +29,8 @@ public class TmdbPeopleListsTest extends AbstractTmdbApiTest {
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbPeopleLists tmdbPeopleLists = getTmdbApi().getPeopleLists();
-        PopularPersonResults popularPersonResults = tmdbPeopleLists.getPopular("en-US", 1);
-        assertNotNull(popularPersonResults);
-        validateAbstractJsonMappingFields(popularPersonResults);
+        PopularPersonResultsPage popularPersonResultsPage = tmdbPeopleLists.getPopular("en-US", 1);
+        assertNotNull(popularPersonResultsPage);
+        validateAbstractJsonMappingFields(popularPersonResultsPage);
     }
 }
