@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.core.popularperson;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
 import lombok.Data;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@JsonIgnoreProperties(value = {"media_type"})
 public class PopularPerson extends NamedIdElement {
     @JsonProperty("adult")
     private Boolean adult;

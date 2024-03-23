@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class SearchedTvSeries extends TvSeries implements Multi {
+public class MultiTvSeries extends TvSeries implements Multi {
     @Override
     public MediaType getMediaType() {
         return MediaType.TV_SERIES;

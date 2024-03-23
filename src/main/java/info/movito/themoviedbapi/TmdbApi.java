@@ -120,6 +120,10 @@ public class TmdbApi {
         return new TmdbSearch(this);
     }
 
+    public TmdbTrending getTrending() {
+        return new TmdbTrending(this);
+    }
+
     @SuppressWarnings("checkstyle:MissingJavadocMethod")
     public List<Timezone> getTimezones() throws TmdbException {
         return new TmdbTimezones(this).getTimezones();
