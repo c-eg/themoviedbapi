@@ -20,6 +20,7 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.configuration to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.image to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.core.popularperson to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.responses to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.video to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.watchproviders to com.fasterxml.jackson.databind;
@@ -30,9 +31,9 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.networks to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.people to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.people.credits to com.fasterxml.jackson.databind;
-    opens info.movito.themoviedbapi.model.peoplelists to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.rated to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.reviews to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.search to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.tv.core to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.tv.episode to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.tv.episodegroups to com.fasterxml.jackson.databind;
@@ -53,6 +54,7 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.configuration;
     exports info.movito.themoviedbapi.model.core;
     exports info.movito.themoviedbapi.model.core.image;
+    exports info.movito.themoviedbapi.model.core.popularperson;
     exports info.movito.themoviedbapi.model.core.responses;
     exports info.movito.themoviedbapi.model.core.video;
     exports info.movito.themoviedbapi.model.core.watchproviders;
@@ -63,9 +65,9 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.networks;
     exports info.movito.themoviedbapi.model.people;
     exports info.movito.themoviedbapi.model.people.credits;
-    exports info.movito.themoviedbapi.model.peoplelists;
     exports info.movito.themoviedbapi.model.rated;
     exports info.movito.themoviedbapi.model.reviews;
+    exports info.movito.themoviedbapi.model.search;
     exports info.movito.themoviedbapi.model.tv.core;
     exports info.movito.themoviedbapi.model.tv.episode;
     exports info.movito.themoviedbapi.model.tv.episodegroups;

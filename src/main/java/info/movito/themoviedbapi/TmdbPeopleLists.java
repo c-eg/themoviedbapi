@@ -1,6 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.peoplelists.PopularPersonResults;
+import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
@@ -24,10 +24,10 @@ public class TmdbPeopleLists extends AbstractTmdbApi {
      * @return The popular people.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public PopularPersonResults getPopular(String language, Integer page) throws TmdbException {
+    public PopularPersonResultsPage getPopular(String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PEOPLE_LISTS);
         apiUrl.addLanguage(language);
         apiUrl.addPage(page);
-        return mapJsonResult(apiUrl, PopularPersonResults.class);
+        return mapJsonResult(apiUrl, PopularPersonResultsPage.class);
     }
 }

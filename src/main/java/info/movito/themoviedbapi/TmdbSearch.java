@@ -1,31 +1,27 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.Collection;
-import info.movito.themoviedbapi.model.Company;
-import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
-import info.movito.themoviedbapi.model.Multi;
-import info.movito.themoviedbapi.model.core.MovieDbResultsPage;
-import info.movito.themoviedbapi.model.core.ResultsPage;
-import info.movito.themoviedbapi.model.core.TvSeriesDbResultsPage;
-import info.movito.themoviedbapi.model.keywords.Keyword;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
+import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
+import info.movito.themoviedbapi.model.search.CollectionResultsPage;
+import info.movito.themoviedbapi.model.search.CompanyResultsPage;
+import info.movito.themoviedbapi.model.search.KeywordResultsPage;
+import info.movito.themoviedbapi.model.search.MultiResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 import static info.movito.themoviedbapi.TmdbCollections.TMDB_METHOD_COLLECTION;
-import static info.movito.themoviedbapi.TmdbLists.TMDB_METHOD_LIST;
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
+import static info.movito.themoviedbapi.TmdbPeople.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
-import static org.apache.commons.lang3.StringUtils.isBlank;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * The movie database api for searching. See the
  * <a href="https://developer.themoviedb.org/reference/search-collection">documentation</a> for more info.
  */
 public class TmdbSearch extends AbstractTmdbApi {
-    public static final String TMDB_METHOD_SEARCH = "search";
-
-    public static final Object TMDB_METHOD_MULTI = "multi";
+    protected static final String TMDB_METHOD_SEARCH = "search";
+    protected static final String TMDB_METHOD_MULTI = "multi";
 
     private static final String PARAM_QUERY = "query";
 
@@ -37,207 +33,149 @@ public class TmdbSearch extends AbstractTmdbApi {
     }
 
     /**
-     * Search Movies This is a good starting point to start finding movies on TMDb.
+     * <p>Search for collections by their original, translated and alternative names.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/search-collection">documentation</a> for more info.</p>
      *
-     * @param query        The query to search for.
-     * @param searchYear   Limit the search to the provided year. Zero (0) will get all years.
-     * @param language     The language to include. Can be blank/null.
-     * @param includeAdult Whether to include adult titles in the search.
-     * @param page         The page of results to return. 0 to get the default (first page).
+     * @param query The query to search for.
+     * @param language optional - The language to display the results in. e.g. "en-US".
+     * @param includeAdult optional - Whether to include adult results in the search.
+     * @param page optional - The page of results to return.
+     * @param region optional - The region (ISO-3166-1 code) to display the results for. e.g. "US".
+     * @return The collection results.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MovieDbResultsPage searchMovie(String query, Integer searchYear, String language, boolean includeAdult,
-                                          Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MOVIE);
-
-        if (isBlank(query)) {
-            throw new RuntimeException("query must not be blank");
-        }
-
-        apiUrl.addPathParam(PARAM_QUERY, query);
-
-        // optional parameters
-
-        if (searchYear != null && searchYear > 0) {
-            apiUrl.addPathParam(PARAM_YEAR, Integer.toString(searchYear));
-        }
-
-        apiUrl.addLanguage(language);
-
-        apiUrl.addPathParam(PARAM_ADULT, Boolean.toString(includeAdult));
-
-        apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
-    }
-
-    /**
-     * Search for TV shows by title.
-     *
-     * @param query        The query to search for.
-     * @param searchYear   Limit the search to the provided year. Zero (0) will get all years.
-     * @param language     The language to include. Can be blank/null.
-     * @param includeAdult Whether to include adult titles in the search.
-     * @param page         The page of results to return. 0 to get the default (first page).
-     */
-    public TvSeriesDbResultsPage searchTv(String query, Integer searchYear, String language, boolean includeAdult,
-                                          Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV);
-
-        if (isBlank(query)) {
-            throw new RuntimeException("query must not be blank");
-        }
-
-        apiUrl.addPathParam(PARAM_QUERY, query);
-
-        // optional parameters
-
-        if (searchYear != null && searchYear > 0) {
-            apiUrl.addPathParam(PARAM_YEAR, Integer.toString(searchYear));
-        }
-
-        apiUrl.addLanguage(language);
-
-        apiUrl.addPathParam(PARAM_ADULT, Boolean.toString(includeAdult));
-
-        apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, TvSeriesDbResultsPage.class);
-    }
-
-    /**
-     * Search for collections by name.
-     *
-     * @param query        The query to search for.
-     * @param language     The language to include. Can be blank/null.
-     * @param includeAdult Whether to include adult titles in the search.
-     * @param page         The page of results to return. 0 to get the default (first page).
-     */
-    public CollectionResultsPage searchCollection(String query, String language, boolean includeAdult, Integer page)
+    public CollectionResultsPage searchCollection(String query, String language, Boolean includeAdult, Integer page, String region)
         throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_COLLECTION);
-
-        if (isNotBlank(query)) {
-            apiUrl.addPathParam(PARAM_QUERY, query);
-        }
-
+        apiUrl.addPathParam(PARAM_QUERY, query);
+        apiUrl.addQueryParam("include_adult", includeAdult);
+        apiUrl.addQueryParam("region", region);
         apiUrl.addLanguage(language);
-
-        apiUrl.addPathParam(PARAM_ADULT, Boolean.toString(includeAdult));
-
         apiUrl.addPage(page);
-
         return mapJsonResult(apiUrl, CollectionResultsPage.class);
     }
 
     /**
-     * This is a good starting point to start finding people on TMDb.
+     * <p>Search for companies by their original and alternative names.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/search-company">documentation</a> for more info.</p>
      *
-     * The idea is to be a quick and light method so you can iterate through people quickly.
+     * @param query The query to search for.
+     * @param page optional - The page of results to return.
+     * @return The company results.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-
-    public TmdbPeople.PersonResultsPage searchPerson(String query, boolean includeAdult, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TmdbPeople.TMDB_METHOD_PERSON);
-
-        apiUrl.addPathParam(PARAM_QUERY, query);
-
-        apiUrl.addPathParam(PARAM_ADULT, includeAdult);
-
-        apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, TmdbPeople.PersonResultsPage.class);
-    }
-
-    /**
-     * Search for lists by name and description.
-     */
-    public MovieListResultsPage searchList(String query, String language, Integer page) throws TmdbException {
-        System.err.println("This method is part of the API but seems currently not available. " +
-            "See https://www.themoviedb.org/talk/593409e3c3a36859ef01eddb#597124f8c3a3681608008424");
-
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_LIST);
-
-        if (isNotBlank(query)) {
-            apiUrl.addPathParam(PARAM_QUERY, query);
-        }
-
-        apiUrl.addLanguage(language);
-
-        apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, MovieListResultsPage.class);
-    }
-
-    /**
-     * Search Companies.
-     *
-     * You can use this method to search for production companies that are part of TMDb. The company IDs will map to
-     * those returned on movie calls.
-     *
-     * http://help.themoviedb.org/kb/api/search-companies
-     */
-    public CompanyResultsPage searchCompany(String companyName, Integer page) throws TmdbException {
+    public CompanyResultsPage searchCompany(String query, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company");
-        apiUrl.addPathParam(PARAM_QUERY, companyName);
-
+        apiUrl.addPathParam(PARAM_QUERY, query);
         apiUrl.addPage(page);
-
         return mapJsonResult(apiUrl, CompanyResultsPage.class);
     }
 
     /**
-     * Search for keywords by name.
+     * <p>Search for keywords by their name.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/search-keyword">documentation</a> for more info.</p>
+     *
+     * @param query The query to search for.
+     * @param page optional - The page of results to return.
+     * @return The keyword results.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public KeywordResultsPage searchKeyword(String query, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword");
-
-        if (isNotBlank(query)) {
-            apiUrl.addPathParam(PARAM_QUERY, query);
-        }
-
+        apiUrl.addPathParam(PARAM_QUERY, query);
         apiUrl.addPage(page);
-
         return mapJsonResult(apiUrl, KeywordResultsPage.class);
     }
 
     /**
-     * Search the movie, tv show and person collections with a single query.
-     * <p>Each mapped result is the same response you would get from each independent search.</p>
+     * <p>Search for movies by their original, translated and alternative titles.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/search-movie">documentation</a> for more info.</p>
      *
-     * @return ResultsPage of Multi.
+     * @param query The query to search for.
+     * @param includeAdult optional - Whether to include adult results in the search.
+     * @param language optional - The language to display the results in. e.g. "en-US".
+     * @param primaryReleaseYear optional - Filter the results so that only the primary release year matches this value.
+     * @param page optional - The page of results to return.
+     * @param region optional - The region (ISO-3166-1 code) to display the results for. e.g. "US".
+     * @param year optional - Filter the results so that only the release year matches this value.
+     * @return The movie results.
+     * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public MultiListResultsPage searchMulti(String query, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MULTI);
-
-        if (isBlank(query)) {
-            throw new RuntimeException("query must not be blank");
-        }
-
+    public MovieResultsPage searchMovie(String query, Boolean includeAdult, String language, String primaryReleaseYear, Integer page,
+                                        String region, String year) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MOVIE);
         apiUrl.addPathParam(PARAM_QUERY, query);
-
-        // optional parameters
-
+        apiUrl.addQueryParam("include_adult", includeAdult);
+        apiUrl.addQueryParam("primary_release_year", primaryReleaseYear);
+        apiUrl.addQueryParam("region", region);
+        apiUrl.addQueryParam("year", year);
         apiUrl.addLanguage(language);
-
         apiUrl.addPage(page);
-
-        return mapJsonResult(apiUrl, MultiListResultsPage.class);
+        return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
-    // CHECKSTYLE OFF: MissingJavadocType
-    public static class KeywordResultsPage extends ResultsPage<Keyword> {
-
+    /**
+     * <p>Use multi search when you want to search for movies, TV shows and people in a single request.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/search-multi">documentation</a> for more info.</p>
+     *
+     * @param query The query to search for.
+     * @param includeAdult optional - Whether to include adult results in the search.
+     * @param language optional - The language to display the results in. e.g. "en-US".
+     * @param page optional - The page of results to return.
+     * @return The multi results.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public MultiResultsPage searchMulti(String query, Boolean includeAdult, String language, Integer page) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MULTI);
+        apiUrl.addPathParam(PARAM_QUERY, query);
+        apiUrl.addQueryParam("include_adult", includeAdult);
+        apiUrl.addLanguage(language);
+        apiUrl.addPage(page);
+        return mapJsonResult(apiUrl, MultiResultsPage.class);
     }
 
-    public static class CompanyResultsPage extends ResultsPage<Company> {
-
+    /**
+     * <p>Search for people by their name and also known as names.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/search-person">documentation</a> for more info.</p>
+     *
+     * @param query The query to search for.
+     * @param includeAdult optional - Whether to include adult results in the search.
+     * @param language optional - The language to display the results in. e.g. "en-US".
+     * @param page optional - The page of results to return.
+     * @return The person results.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public PopularPersonResultsPage searchPerson(String query, Boolean includeAdult, String language, Integer page) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_PERSON);
+        apiUrl.addPathParam(PARAM_QUERY, query);
+        apiUrl.addQueryParam("include_adult", includeAdult);
+        apiUrl.addLanguage(language);
+        apiUrl.addPage(page);
+        return mapJsonResult(apiUrl, PopularPersonResultsPage.class);
     }
 
-    public static class CollectionResultsPage extends ResultsPage<Collection> {
-
+    /**
+     * <p>Search for TV shows by their original, translated and also known as names.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/search-tv">documentation</a> for more info.</p>
+     *
+     * @param query The query to search for.
+     * @param firstAirDateYear optional - Filter the results so that only the first air date year matches this value.
+     * @param includeAdult optional - Whether to include adult results in the search.
+     * @param language optional - The language to display the results in. e.g. "en-US".
+     * @param page optional - The page of results to return.
+     * @param year optional - Filter the results so that only the release year matches this value.
+     * @return The TV series results.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public TvSeriesResultsPage searchTv(String query, Integer firstAirDateYear, Boolean includeAdult, String language, Integer page,
+                                          Integer year) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV);
+        apiUrl.addPathParam(PARAM_QUERY, query);
+        apiUrl.addQueryParam("first_air_date_year", firstAirDateYear);
+        apiUrl.addQueryParam("include_adult", includeAdult);
+        apiUrl.addQueryParam("year", year);
+        apiUrl.addLanguage(language);
+        apiUrl.addPage(page);
+        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
-
-    public static class MultiListResultsPage extends ResultsPage<Multi> {
-
-    }
-    // CHECKSTYLE ON: MissingJavadocType
 }

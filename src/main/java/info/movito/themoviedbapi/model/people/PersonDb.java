@@ -2,7 +2,6 @@ package info.movito.themoviedbapi.model.people;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
 import info.movito.themoviedbapi.model.people.credits.CombinedPersonCredits;
@@ -16,7 +15,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-public class PersonDb extends NamedIdElement implements Multi {
+public class PersonDb extends NamedIdElement {
     @JsonProperty("adult")
     private Boolean adult;
 
@@ -82,9 +81,4 @@ public class PersonDb extends NamedIdElement implements Multi {
     /** Can be null if not appended to the request (append to response). */
     @JsonProperty("translations")
     private Translations translations;
-
-    @Override
-    public MediaType getMediaType() {
-        return MediaType.PERSON;
-    }
 }

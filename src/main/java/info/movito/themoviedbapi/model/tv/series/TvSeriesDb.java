@@ -3,15 +3,14 @@ package info.movito.themoviedbapi.model.tv.series;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.model.Genre;
-import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.ProductionCompany;
 import info.movito.themoviedbapi.model.ProductionCountry;
+import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.Language;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
 import info.movito.themoviedbapi.model.core.ReviewResultsPage;
 import info.movito.themoviedbapi.model.core.TvKeywords;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
-import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.tv.core.ChangeResults;
@@ -31,7 +30,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-public class TvSeriesDb extends NamedIdElement implements Multi {
+public class TvSeriesDb extends NamedIdElement {
     @JsonProperty("adult")
     private Boolean adult;
 
@@ -195,9 +194,4 @@ public class TvSeriesDb extends NamedIdElement implements Multi {
     /** Can be null if not appended to the request (append to response). */
     @JsonProperty("watch/providers")
     private ProviderResults watchProviders;
-
-    @Override
-    public MediaType getMediaType() {
-        return MediaType.TV_SERIES;
-    }
 }
