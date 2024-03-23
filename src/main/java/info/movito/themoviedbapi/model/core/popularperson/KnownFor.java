@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.peoplelists;
+package info.movito.themoviedbapi.model.core.popularperson;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.IdElement;

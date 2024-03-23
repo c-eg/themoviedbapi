@@ -1,6 +1,5 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.core.ResultsPage;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
 import info.movito.themoviedbapi.model.people.ExternalIds;
 import info.movito.themoviedbapi.model.people.PersonDb;
@@ -8,7 +7,6 @@ import info.movito.themoviedbapi.model.people.PersonImages;
 import info.movito.themoviedbapi.model.people.Translations;
 import info.movito.themoviedbapi.model.people.credits.CombinedPersonCredits;
 import info.movito.themoviedbapi.model.people.credits.MovieCredits;
-import info.movito.themoviedbapi.model.people.Person;
 import info.movito.themoviedbapi.model.people.credits.TvCredits;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -158,10 +156,5 @@ public class TmdbPeople extends AbstractTmdbApi {
     public Translations getTranslations(int personId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "translations");
         return mapJsonResult(apiUrl, Translations.class);
-    }
-
-    @SuppressWarnings("checkstyle:MissingJavadocType")
-    public static class PersonResultsPage extends ResultsPage<Person> {
-
     }
 }

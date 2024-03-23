@@ -1,0 +1,17 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/zuW6fOiusv4X9nnW3paHGfXcSll.jpg",
+            "id": 86311,
+            "name": "The Avengers Collection",
+            "original_language": "en",
+            "original_name": "The Avengers Collection",
+            "overview": "A superhero film series produced by Marvel Studios based on the Marvel Comics superhero team of the same name, and part of the Marvel Cinematic Universe (MCU).  The series features an ensemble cast from the Marvel Cinematic Universe series films, as they join forces for the peacekeeping organization S.H.I.E.L.D. led by Nick Fury.",
+            "poster_path": "/yFSIUVTCvgYrpalUktulvk3Gi5Y.jpg"
+        }
+    ],
+    "total_pages": 1,
+    "total_results": 1
+}

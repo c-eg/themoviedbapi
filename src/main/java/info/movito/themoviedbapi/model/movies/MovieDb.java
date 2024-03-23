@@ -3,17 +3,16 @@ package info.movito.themoviedbapi.model.movies;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.model.Genre;
-import info.movito.themoviedbapi.model.Multi;
 import info.movito.themoviedbapi.model.ProductionCompany;
 import info.movito.themoviedbapi.model.ProductionCountry;
+import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.Language;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ReviewResultsPage;
-import info.movito.themoviedbapi.model.core.AccountStates;
-import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
+import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
+import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -22,7 +21,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-public class MovieDb extends IdElement implements Multi {
+public class MovieDb extends IdElement {
     @JsonProperty("adult")
     private Boolean adult;
 
@@ -156,9 +155,4 @@ public class MovieDb extends IdElement implements Multi {
     /** Can be null if not appended to the request (append to response). */
     @JsonProperty("watch/providers")
     private ProviderResults watchProviders;
-
-    @Override
-    public MediaType getMediaType() {
-        return MediaType.MOVIE;
-    }
 }
