@@ -19,7 +19,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbCompanies}.
  */
-public class TmdbCompaniesTest extends AbstractTmdbApiTest {
+public class TmdbCompaniesTest extends AbstractTmdbApiTest<TmdbCompanies> {
+    @Override
+    public TmdbCompanies createApiToTest() {
+        return getTmdbApi().getCompanies();
+    }
+
     /**
      * Tests {@link TmdbCompanies#getDetails(Integer)}.
      */
@@ -31,8 +36,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
-        Company company = tmdbCompanies.getDetails(companyId);
+        Company company = getApiToTest().getDetails(companyId);
         assertNotNull(company);
         validateAbstractJsonMappingFields(company);
     }
@@ -48,8 +52,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId + "/alternative_names");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
-        TmdbCompanies.AlternativeNamesResultsPage alternativeNamesResultsPage = tmdbCompanies.getAlternativeNames(1);
+        TmdbCompanies.AlternativeNamesResultsPage alternativeNamesResultsPage = getApiToTest().getAlternativeNames(1);
         assertNotNull(alternativeNamesResultsPage);
         validateAbstractJsonMappingFields(alternativeNamesResultsPage);
     }
@@ -65,8 +68,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId + "/images");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCompanies tmdbCompanies = getTmdbApi().getCompanies();
-        ImageResults logoImageResults = tmdbCompanies.getImages(1);
+        ImageResults logoImageResults = getApiToTest().getImages(1);
         assertNotNull(logoImageResults);
         validateAbstractJsonMappingFields(logoImageResults);
     }

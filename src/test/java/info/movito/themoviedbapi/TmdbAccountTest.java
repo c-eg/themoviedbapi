@@ -30,7 +30,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbAccount}.
  */
-public class TmdbAccountTest extends AbstractTmdbApiTest {
+public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
+    @Override
+    public TmdbAccount createApiToTest() {
+        return getTmdbApi().getAccount();
+    }
+
     /**
      * Test {@link TmdbAccount#getDetails(Integer, String)} with an expected result.
      */
@@ -40,8 +45,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234?session_id=testSessionId");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        Account account = tmdbAccount.getDetails(1234, "testSessionId");
+        Account account = getApiToTest().getDetails(1234, "testSessionId");
         assertNotNull(account);
         validateAbstractJsonMappingFields(account);
     }
@@ -66,8 +70,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/add_favourite.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        ResponseStatus responseStatus = tmdbAccount.addFavorite(accountId, sessionId, mediaId, mediaType);
+        ResponseStatus responseStatus = getApiToTest().addFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
@@ -94,8 +97,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/add_favourite.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        ResponseStatus responseStatus = tmdbAccount.removeFavorite(accountId, sessionId, mediaId, mediaType);
+        ResponseStatus responseStatus = getApiToTest().removeFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
@@ -122,8 +124,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/add_to_watchlist.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        ResponseStatus responseStatus = tmdbAccount.addToWatchList(accountId, sessionId, mediaId, mediaType);
+        ResponseStatus responseStatus = getApiToTest().addToWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
@@ -150,8 +151,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/add_to_watchlist.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        ResponseStatus responseStatus = tmdbAccount.removeFromWatchList(accountId, sessionId, mediaId, mediaType);
+        ResponseStatus responseStatus = getApiToTest().removeFromWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
@@ -174,8 +174,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/favourite_movies.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        MovieResultsPage movieResultsPage = tmdbAccount.getFavoriteMovies(accountId, sessionId, language, page, sortBy);
+        MovieResultsPage movieResultsPage = getApiToTest().getFavoriteMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
         validateAbstractJsonMappingFields(movieResultsPage);
     }
@@ -196,8 +195,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/favourite_tv.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getFavoriteTv(accountId, sessionId, language, page, sortBy);
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getFavoriteTv(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
         validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
@@ -215,8 +213,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/lists.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        MovieListResultsPage movieListResultsPage = tmdbAccount.getLists(accountId, sessionId, page);
+        MovieListResultsPage movieListResultsPage = getApiToTest().getLists(accountId, sessionId, page);
         assertNotNull(movieListResultsPage);
         validateAbstractJsonMappingFields(movieListResultsPage);
     }
@@ -237,8 +234,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/rated_movies.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        RatedMovieResultsPage ratedMovieResultsPage = tmdbAccount.getRatedMovies(accountId, sessionId, language, page, sortBy);
+        RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedMovieResultsPage);
         validateAbstractJsonMappingFields(ratedMovieResultsPage);
     }
@@ -259,8 +255,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/rated_tv.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        RatedTvSeriesResultsPage ratedTvSeriesResultsPage = tmdbAccount.getRatedTvSeries(accountId, sessionId, language, page, sortBy);
+        RatedTvSeriesResultsPage ratedTvSeriesResultsPage = getApiToTest().getRatedTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvSeriesResultsPage);
         validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
     }
@@ -281,9 +276,8 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/rated_tv_episodes.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage =
-            tmdbAccount.getRatedTvEpisodes(accountId, sessionId, language, page, sortBy);
+            getApiToTest().getRatedTvEpisodes(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvEpisodesResultsPage);
         validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);
     }
@@ -304,8 +298,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/watchlist_movies.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        MovieResultsPage movieResultsPage = tmdbAccount.getWatchListMovies(accountId, sessionId, language, page, sortBy);
+        MovieResultsPage movieResultsPage = getApiToTest().getWatchListMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
         validateAbstractJsonMappingFields(movieResultsPage);
     }
@@ -326,8 +319,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/account/watchlist_tv.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAccount tmdbAccount = getTmdbApi().getAccount();
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbAccount.getWatchListTvSeries(accountId, sessionId, language, page, sortBy);
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getWatchListTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
         validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }

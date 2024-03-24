@@ -20,7 +20,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbNetworks}.
  */
-public class TmdbNetworksTest extends AbstractTmdbApiTest {
+public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
+    @Override
+    public TmdbNetworks createApiToTest() {
+        return getTmdbApi().getNetworks();
+    }
+
     /**
      * Tests the {@link TmdbNetworks#getDetails(int)} with an expected result.
      */
@@ -30,8 +35,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
-        Network network = tmdbNetworks.getDetails(1);
+        Network network = getApiToTest().getDetails(1);
         assertNotNull(network);
         validateAbstractJsonMappingFields(network);
     }
@@ -45,8 +49,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1/alternative_names");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
-        AlternativeNamesResults alternativeNamesResults = tmdbNetworks.getAlternativeNames(1);
+        AlternativeNamesResults alternativeNamesResults = getApiToTest().getAlternativeNames(1);
         assertNotNull(alternativeNamesResults);
         validateAbstractJsonMappingFields(alternativeNamesResults);
     }
@@ -60,8 +63,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1/images");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbNetworks tmdbNetworks = getTmdbApi().getNetworks();
-        ImageResults imageResults = tmdbNetworks.getImages(1);
+        ImageResults imageResults = getApiToTest().getImages(1);
         assertNotNull(imageResults);
         validateAbstractJsonMappingFields(imageResults);
     }

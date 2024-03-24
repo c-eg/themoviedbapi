@@ -21,7 +21,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbChanges}.
  */
-public class TmdbChangesTest extends AbstractTmdbApiTest {
+public class TmdbChangesTest extends AbstractTmdbApiTest<TmdbChanges> {
+    @Override
+    public TmdbChanges createApiToTest() {
+        return getTmdbApi().getChanges();
+    }
+
     /**
      * Tests the {@link TmdbChanges#getMovieChangesList(String, String, Integer)} with an expected result.
      */
@@ -36,8 +41,7 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
             "?start_date=" + startDate + "&end_date=" + endDate + "&page=" + page);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbChanges tmdbChanges = getTmdbApi().getChanges();
-        ChangesResultsPage changesResultsPage = tmdbChanges.getMovieChangesList(startDate, endDate, page);
+        ChangesResultsPage changesResultsPage = getApiToTest().getMovieChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
         validateAbstractJsonMappingFields(changesResultsPage);
     }
@@ -56,8 +60,7 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
             "?start_date=" + startDate + "&end_date=" + endDate + "&page=" + page);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbChanges tmdbChanges = getTmdbApi().getChanges();
-        ChangesResultsPage changesResultsPage = tmdbChanges.getPeopleChangesList(startDate, endDate, page);
+        ChangesResultsPage changesResultsPage = getApiToTest().getPeopleChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
         validateAbstractJsonMappingFields(changesResultsPage);
     }
@@ -76,8 +79,7 @@ public class TmdbChangesTest extends AbstractTmdbApiTest {
             "?start_date=" + startDate + "&end_date=" + endDate + "&page=" + page);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbChanges tmdbChanges = getTmdbApi().getChanges();
-        ChangesResultsPage changesResultsPage = tmdbChanges.getTvChangesList(startDate, endDate, page);
+        ChangesResultsPage changesResultsPage = getApiToTest().getTvChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
         validateAbstractJsonMappingFields(changesResultsPage);
     }

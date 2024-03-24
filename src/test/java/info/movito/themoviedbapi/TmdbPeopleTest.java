@@ -38,7 +38,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbPeople}.
  */
-public class TmdbPeopleTest extends AbstractTmdbApiTest {
+public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
+    @Override
+    public TmdbPeople createApiToTest() {
+        return getTmdbApi().getPeople();
+    }
+
     /**
      * Tests {@link TmdbPeople#getDetails(int, String, PersonAppendToResponse...)} with an expected result.
      */
@@ -48,8 +53,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        PersonDb details = tmdbPeople.getDetails(123, "en-US");
+        PersonDb details = getApiToTest().getDetails(123, "en-US");
         assertNotNull(details);
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(details);
@@ -81,8 +85,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
             "append_to_response=changes%2Ccombined_credits%2Cexternal_ids%2Cimages%2Clatest%2Cmovie_credits%2Ctv_credits%2Ctranslations");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        PersonDb details = tmdbPeople.getDetails(123, "en-US", PersonAppendToResponse.values());
+        PersonDb details = getApiToTest().getDetails(123, "en-US", PersonAppendToResponse.values());
         assertNotNull(details);
         validateAbstractJsonMappingFields(details);
     }
@@ -101,8 +104,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
             "/123/changes?start_date=" + startDate + "&end_date=" + endDate + "&page=" + page);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        ChangeResults changes = tmdbPeople.getChanges(123, startDate, endDate, page);
+        ChangeResults changes = getApiToTest().getChanges(123, startDate, endDate, page);
         assertNotNull(changes);
         validateAbstractJsonMappingFields(changes);
     }
@@ -116,8 +118,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/combined_credits?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        CombinedPersonCredits personCredits = tmdbPeople.getCombinedCredits(123, "en-US");
+        CombinedPersonCredits personCredits = getApiToTest().getCombinedCredits(123, "en-US");
         assertNotNull(personCredits);
         validateAbstractJsonMappingFields(personCredits);
 
@@ -152,8 +153,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/external_ids");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        ExternalIds externalIds = tmdbPeople.getExternalIds(123);
+        ExternalIds externalIds = getApiToTest().getExternalIds(123);
         assertNotNull(externalIds);
         validateAbstractJsonMappingFields(externalIds);
     }
@@ -167,8 +167,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/images");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        PersonImages images = tmdbPeople.getImages(123);
+        PersonImages images = getApiToTest().getImages(123);
         assertNotNull(images);
         validateAbstractJsonMappingFields(images);
     }
@@ -182,8 +181,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/latest");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        PersonDb latest = tmdbPeople.getLatest();
+        PersonDb latest = getApiToTest().getLatest();
         assertNotNull(latest);
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(latest);
@@ -214,8 +212,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/movie_credits?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        MovieCredits movieCredits = tmdbPeople.getMovieCredits(123, "en-US");
+        MovieCredits movieCredits = getApiToTest().getMovieCredits(123, "en-US");
         assertNotNull(movieCredits);
         validateAbstractJsonMappingFields(movieCredits);
 
@@ -248,8 +245,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/tv_credits?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        TvCredits tvCredits = tmdbPeople.getTvCredits(123, "en-US");
+        TvCredits tvCredits = getApiToTest().getTvCredits(123, "en-US");
         assertNotNull(tvCredits);
         validateAbstractJsonMappingFields(tvCredits);
 
@@ -282,8 +278,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/translations");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeople tmdbPeople = getTmdbApi().getPeople();
-        Translations translations = tmdbPeople.getTranslations(123);
+        Translations translations = getApiToTest().getTranslations(123);
         assertNotNull(translations);
         validateAbstractJsonMappingFields(translations);
     }

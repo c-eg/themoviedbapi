@@ -19,7 +19,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbMovieLists}.
  */
-public class TmdbMovieListsTest extends AbstractTmdbApiTest {
+public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
+    @Override
+    public TmdbMovieLists createApiToTest() {
+        return getTmdbApi().getMovieLists();
+    }
+
     /**
      * Test {@link TmdbMovieLists#getNowPlaying(String, Integer, String)} with an expected result.
      */
@@ -29,8 +34,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/now_playing?language=en-US&page=1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
-        MovieResultsPageWithDates movieResultsPageWithDates = tmdbMovieLists.getNowPlaying("en-US", 1, null);
+        MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getNowPlaying("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
         validateAbstractJsonMappingFields(movieResultsPageWithDates);
     }
@@ -44,8 +48,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/popular?language=en-US&page=1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
-        MovieResultsPage movieResultsPage = tmdbMovieLists.getPopular("en-US", 1, null);
+        MovieResultsPage movieResultsPage = getApiToTest().getPopular("en-US", 1, null);
         assertNotNull(movieResultsPage);
         validateAbstractJsonMappingFields(movieResultsPage);
     }
@@ -59,8 +62,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/top_rated?language=en-US&page=1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
-        MovieResultsPage movieResultsPage = tmdbMovieLists.getTopRated("en-US", 1, null);
+        MovieResultsPage movieResultsPage = getApiToTest().getTopRated("en-US", 1, null);
         assertNotNull(movieResultsPage);
         validateAbstractJsonMappingFields(movieResultsPage);
     }
@@ -74,8 +76,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/upcoming?language=en-US&page=1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovieLists tmdbMovieLists = getTmdbApi().getMovieLists();
-        MovieResultsPageWithDates movieResultsPageWithDates = tmdbMovieLists.getUpcoming("en-US", 1, null);
+        MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getUpcoming("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
         validateAbstractJsonMappingFields(movieResultsPageWithDates);
     }

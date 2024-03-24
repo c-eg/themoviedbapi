@@ -7,14 +7,13 @@ import info.movito.themoviedbapi.model.search.CollectionResultsPage;
 import info.movito.themoviedbapi.model.search.CompanyResultsPage;
 import info.movito.themoviedbapi.model.search.KeywordResultsPage;
 import info.movito.themoviedbapi.model.search.Multi;
-import info.movito.themoviedbapi.model.search.MultiResultsPage;
 import info.movito.themoviedbapi.model.search.MultiMovie;
 import info.movito.themoviedbapi.model.search.MultiPerson;
+import info.movito.themoviedbapi.model.search.MultiResultsPage;
 import info.movito.themoviedbapi.model.search.MultiTvSeries;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -30,17 +29,10 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbSearch}.
  */
-public class TmdbTvSearchTest extends AbstractTmdbApiTest {
-    private TmdbSearch tmdbSearch;
-
-    /**
-     * Sets up TmdbTvSearchTest class.
-     */
-    @BeforeEach
+public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
     @Override
-    public void setUp() {
-        super.setUp();
-        tmdbSearch = getTmdbApi().getSearch();
+    public TmdbSearch createApiToTest() {
+        return getTmdbApi().getSearch();
     }
 
     /**
@@ -52,7 +44,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + "search/collection?query=batman&language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        CollectionResultsPage collectionResultsPage = tmdbSearch.searchCollection("batman", "en-US", null, null, null);
+        CollectionResultsPage collectionResultsPage = getApiToTest().searchCollection("batman", "en-US", null, null, null);
         assertNotNull(collectionResultsPage);
         validateAbstractJsonMappingFields(collectionResultsPage);
     }
@@ -66,7 +58,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + "search/company?query=amici+films");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        CompanyResultsPage companyResultsPage = tmdbSearch.searchCompany("amici films", null);
+        CompanyResultsPage companyResultsPage = getApiToTest().searchCompany("amici films", null);
         assertNotNull(companyResultsPage);
         validateAbstractJsonMappingFields(companyResultsPage);
     }
@@ -80,7 +72,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + "search/keyword?query=autograph");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        KeywordResultsPage keywordResultsPage = tmdbSearch.searchKeyword("autograph", null);
+        KeywordResultsPage keywordResultsPage = getApiToTest().searchKeyword("autograph", null);
         assertNotNull(keywordResultsPage);
         validateAbstractJsonMappingFields(keywordResultsPage);
     }
@@ -94,7 +86,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + "search/movie?query=batman&language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        MovieResultsPage movieResultsPage = tmdbSearch.searchMovie("batman", null, "en-US", null, null, null, null);
+        MovieResultsPage movieResultsPage = getApiToTest().searchMovie("batman", null, "en-US", null, null, null, null);
         assertNotNull(movieResultsPage);
         validateAbstractJsonMappingFields(movieResultsPage);
     }
@@ -108,7 +100,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + "search/multi?query=batman&language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        MultiResultsPage multiResultsPage = tmdbSearch.searchMulti("batman", null, "en-US", null);
+        MultiResultsPage multiResultsPage = getApiToTest().searchMulti("batman", null, "en-US", null);
         assertNotNull(multiResultsPage);
         validateAbstractJsonMappingFields(multiResultsPage);
 
@@ -138,7 +130,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + "search/person?query=vin&language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        PopularPersonResultsPage personResultsPage = tmdbSearch.searchPerson("vin", null, "en-US", null);
+        PopularPersonResultsPage personResultsPage = getApiToTest().searchPerson("vin", null, "en-US", null);
         assertNotNull(personResultsPage);
         validateAbstractJsonMappingFields(personResultsPage);
     }
@@ -152,7 +144,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + "search/tv?query=batman&language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbSearch.searchTv("batman", null, null, "en-US", null, null);
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().searchTv("batman", null, null, "en-US", null, null);
         assertNotNull(tvSeriesResultsPage);
         validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }

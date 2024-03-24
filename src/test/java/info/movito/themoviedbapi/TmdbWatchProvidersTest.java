@@ -21,7 +21,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbWatchProviders}.
  */
-public class TmdbWatchProvidersTest extends AbstractTmdbApiTest {
+public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProviders> {
+    @Override
+    public TmdbWatchProviders createApiToTest() {
+        return getTmdbApi().getWatchProviders();
+    }
+
     /**
      * Test {@link TmdbWatchProviders#getAvailableRegions(String)} with an expected result.
      */
@@ -31,8 +36,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbWatchProviders tmdbWatchProviders = getTmdbApi().getWatchProviders();
-        AvailableRegionResults availableRegionResults = tmdbWatchProviders.getAvailableRegions("en-US");
+        AvailableRegionResults availableRegionResults = getApiToTest().getAvailableRegions("en-US");
         assertNotNull(availableRegionResults);
         validateAbstractJsonMappingFields(availableRegionResults);
     }
@@ -46,8 +50,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "/movie?language=en-US&watch_region=US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbWatchProviders tmdbWatchProviders = getTmdbApi().getWatchProviders();
-        ProviderResults providerResults = tmdbWatchProviders.getMovieProviders("en-US", "US");
+        ProviderResults providerResults = getApiToTest().getMovieProviders("en-US", "US");
         assertNotNull(providerResults);
         validateAbstractJsonMappingFields(providerResults);
 
@@ -69,8 +72,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "/tv?language=en-US&watch_region=US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbWatchProviders tmdbWatchProviders = getTmdbApi().getWatchProviders();
-        ProviderResults providerResults = tmdbWatchProviders.getTvProviders("en-US", "US");
+        ProviderResults providerResults = getApiToTest().getTvProviders("en-US", "US");
         assertNotNull(providerResults);
         validateAbstractJsonMappingFields(providerResults);
 

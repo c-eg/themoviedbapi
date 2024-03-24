@@ -5,7 +5,6 @@ import info.movito.themoviedbapi.model.tv.episodegroups.TvEpisodeGroups;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -21,17 +20,10 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbTvEpisodeGroups}.
  */
-public class TmdbTvEpisodeGroupsTest extends AbstractTmdbApiTest {
-    private TmdbTvEpisodeGroups tmdbTvEpisodeGroups;
-
-    /**
-     * Sets up TmdbTvEpisodeGroups class.
-     */
-    @BeforeEach
+public class TmdbTvEpisodeGroupsTest extends AbstractTmdbApiTest<TmdbTvEpisodeGroups> {
     @Override
-    public void setUp() {
-        super.setUp();
-        tmdbTvEpisodeGroups = getTmdbApi().getTvEpisodeGroups();
+    public TmdbTvEpisodeGroups createApiToTest() {
+        return getTmdbApi().getTvEpisodeGroups();
     }
 
     /**
@@ -43,7 +35,7 @@ public class TmdbTvEpisodeGroupsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV_EPISODE_GROUPS + "/5acfef37c3a36842e400333f");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TvEpisodeGroups tvEpisodeGroups = tmdbTvEpisodeGroups.getDetails("5acfef37c3a36842e400333f");
+        TvEpisodeGroups tvEpisodeGroups = getApiToTest().getDetails("5acfef37c3a36842e400333f");
         assertNotNull(tvEpisodeGroups);
         validateAbstractJsonMappingFields(tvEpisodeGroups);
     }
@@ -57,7 +49,7 @@ public class TmdbTvEpisodeGroupsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV_EPISODE_GROUPS + "/5acfef37c3a36842e400333f");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TvEpisodeGroups tvEpisodeGroups = tmdbTvEpisodeGroups.getDetails("5acfef37c3a36842e400333f");
+        TvEpisodeGroups tvEpisodeGroups = getApiToTest().getDetails("5acfef37c3a36842e400333f");
         assertEquals(EpisodeGroupType.DIGITAL, tvEpisodeGroups.getType());
     }
 }
