@@ -21,7 +21,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbGuestSessions}.
  */
-public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
+public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions> {
+    @Override
+    public TmdbGuestSessions createApiToTest() {
+        return getTmdbApi().getGuestSessions();
+    }
+
     /**
      * Tests the {@link TmdbGuestSessions#getRatedMovies(int, String, Integer, AccountSortBy)} with an expected result.
      */
@@ -31,8 +36,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/movies?language=en&page=1&sort_by=created_at.desc");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbGuestSessions guestSessions = new TmdbGuestSessions(getTmdbApi());
-        RatedMovieResultsPage ratedMovieResultsPage = guestSessions.getRatedMovies(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
+        RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedMovieResultsPage);
         validateAbstractJsonMappingFields(ratedMovieResultsPage);
     }
@@ -46,8 +50,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/tv?language=en&page=1&sort_by=created_at.desc");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbGuestSessions guestSessions = new TmdbGuestSessions(getTmdbApi());
-        RatedTvSeriesResultsPage ratedTvSeriesResultsPage = guestSessions.getRatedTvSeries(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
+        RatedTvSeriesResultsPage ratedTvSeriesResultsPage = getApiToTest().getRatedTvSeries(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvSeriesResultsPage);
         validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
     }
@@ -62,8 +65,8 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest {
             "/1/rated/tv/episodes?language=en&page=1&sort_by=created_at.desc");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbGuestSessions guestSessions = new TmdbGuestSessions(getTmdbApi());
-        RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = guestSessions.getRatedTvEpisodes(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
+        RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = getApiToTest().getRatedTvEpisodes(1, "en", 1,
+            AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvEpisodesResultsPage);
         validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);
     }

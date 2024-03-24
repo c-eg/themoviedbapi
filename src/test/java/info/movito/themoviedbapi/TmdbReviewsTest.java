@@ -18,7 +18,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests {@link TmdbReviews}.
  */
-public class TmdbReviewsTest extends AbstractTmdbApiTest {
+public class TmdbReviewsTest extends AbstractTmdbApiTest<TmdbReviews> {
+    @Override
+    public TmdbReviews createApiToTest() {
+        return getTmdbApi().getReviews();
+    }
+
     /**
      * Test {@link TmdbReviews#getDetails(int)} with an expected result.
      */
@@ -30,8 +35,7 @@ public class TmdbReviewsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_REVIEW + "/" + reviewId);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbReviews tmdbReviews = getTmdbApi().getReviews();
-        Review review = tmdbReviews.getDetails(reviewId);
+        Review review = getApiToTest().getDetails(reviewId);
         assertNotNull(review);
         validateAbstractJsonMappingFields(review);
     }

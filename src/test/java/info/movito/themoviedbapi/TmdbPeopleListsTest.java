@@ -18,7 +18,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbPeopleLists}.
  */
-public class TmdbPeopleListsTest extends AbstractTmdbApiTest {
+public class TmdbPeopleListsTest extends AbstractTmdbApiTest<TmdbPeopleLists> {
+    @Override
+    public TmdbPeopleLists createApiToTest() {
+        return getTmdbApi().getPeopleLists();
+    }
+
     /**
      * Test {@link TmdbPeopleLists#getPopular(String, Integer)} with an expected result.
      */
@@ -28,8 +33,7 @@ public class TmdbPeopleListsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PEOPLE_LISTS + "?language=en-US&page=1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbPeopleLists tmdbPeopleLists = getTmdbApi().getPeopleLists();
-        PopularPersonResultsPage popularPersonResultsPage = tmdbPeopleLists.getPopular("en-US", 1);
+        PopularPersonResultsPage popularPersonResultsPage = getApiToTest().getPopular("en-US", 1);
         assertNotNull(popularPersonResultsPage);
         validateAbstractJsonMappingFields(popularPersonResultsPage);
     }

@@ -31,7 +31,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbAuthentication}.
  */
-public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
+public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthentication> {
+    @Override
+    public TmdbAuthentication createApiToTest() {
+        return getTmdbApi().getAuthentication();
+    }
+
     /**
      * Tests {@link TmdbAuthentication#createGuestSession()} with an expected result.
      */
@@ -41,8 +46,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/guest_session/new");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        GuestSession guestSession = tmdbAuthentication.createGuestSession();
+        GuestSession guestSession = getApiToTest().createGuestSession();
         assertNotNull(guestSession);
         validateAbstractJsonMappingFields(guestSession);
     }
@@ -56,8 +60,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/new");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        RequestToken requestToken = tmdbAuthentication.createRequestToken();
+        RequestToken requestToken = getApiToTest().createRequestToken();
         assertNotNull(requestToken);
         validateAbstractJsonMappingFields(requestToken);
     }
@@ -71,8 +74,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/new");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        RequestToken requestToken = tmdbAuthentication.createRequestToken();
+        RequestToken requestToken = getApiToTest().createRequestToken();
         String authUrl = TmdbAuthentication.getTmdbAuthenticationUrlForRequestToken(requestToken, "redirectUrl");
         assertEquals("https://www.themoviedb.org/authenticate/ff5c7eeb5a8870efe3cd7fc5c282cffd26800ecd?redirect_to=redirectUrl", authUrl);
     }
@@ -87,8 +89,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/new");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        RequestToken requestToken = tmdbAuthentication.createRequestToken();
+        RequestToken requestToken = getApiToTest().createRequestToken();
         requestToken.setSuccess(false);
 
         assertThrows(TmdbException.class, () ->
@@ -110,11 +111,10 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/authentication/create_session.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         RequestToken requestToken = new RequestToken();
         requestToken.setSuccess(true);
         requestToken.setRequestToken(requestTokenStr);
-        Session session = tmdbAuthentication.createSession(requestToken);
+        Session session = getApiToTest().createSession(requestToken);
         assertNotNull(session);
         validateAbstractJsonMappingFields(session);
     }
@@ -124,10 +124,9 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testCreateSessionUnsuccessfulRequestToken() {
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         RequestToken requestToken = new RequestToken();
         requestToken.setSuccess(false);
-        assertThrows(TmdbException.class, () -> tmdbAuthentication.createSession(requestToken));
+        assertThrows(TmdbException.class, () -> getApiToTest().createSession(requestToken));
     }
 
     /**
@@ -135,7 +134,6 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testCreateAuthenticatedRequestToken() throws TmdbException, IOException {
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         RequestToken requestToken = new RequestToken();
         requestToken.setSuccess(true);
         requestToken.setRequestToken("requestToken");
@@ -150,7 +148,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/authentication/create_session_with_login.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
-        RequestToken authenticatedRequestToken = tmdbAuthentication.createAuthenticatedRequestToken(requestToken, "username", "password");
+        RequestToken authenticatedRequestToken = getApiToTest().createAuthenticatedRequestToken(requestToken, "username", "password");
         assertNotNull(authenticatedRequestToken);
         validateAbstractJsonMappingFields(authenticatedRequestToken);
     }
@@ -161,11 +159,10 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testCreateSessionWithLoginUnsuccessfulRequestToken() {
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
         RequestToken requestToken = new RequestToken();
         requestToken.setSuccess(false);
         assertThrows(TmdbException.class, () ->
-            tmdbAuthentication.createAuthenticatedRequestToken(requestToken, "username", "password"));
+            getApiToTest().createAuthenticatedRequestToken(requestToken, "username", "password"));
     }
 
     /**
@@ -173,18 +170,15 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testDeleteSession() throws TmdbException, IOException {
-        String sessionId = "sessionId";
-
         HashMap<String, Object> requestBody = new HashMap<>();
-        requestBody.put("session_id", sessionId);
+        requestBody.put("session_id", "sessionId");
         String jsonBody = Utils.convertToJson(getObjectMapper(), requestBody);
 
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/session");
         String body = TestUtils.readTestFile("api_responses/authentication/delete_session.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.DELETE)).thenReturn(body);
 
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        ResponseStatusDelete responseStatusDelete = tmdbAuthentication.deleteSession("sessionId");
+        ResponseStatusDelete responseStatusDelete = getApiToTest().deleteSession("sessionId");
         assertNotNull(responseStatusDelete);
         validateAbstractJsonMappingFields(responseStatusDelete);
 
@@ -196,8 +190,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
      */
     @Test
     public void testDeleteSessionNullSession() {
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        assertThrows(TmdbException.class, () -> tmdbAuthentication.deleteSession(null));
+        assertThrows(TmdbException.class, () -> getApiToTest().deleteSession(null));
     }
 
     /**
@@ -209,8 +202,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/authentication/validate_key.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        ResponseStatusAuthentication responseStatusAuthentication = tmdbAuthentication.validateKey();
+        ResponseStatusAuthentication responseStatusAuthentication = getApiToTest().validateKey();
         assertNotNull(responseStatusAuthentication);
         validateAbstractJsonMappingFields(responseStatusAuthentication);
 
@@ -226,8 +218,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/authentication/validate_key_unsuccessful.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbAuthentication tmdbAuthentication = getTmdbApi().getAuthentication();
-        TmdbResponseException exception = assertThrowsExactly(TmdbResponseException.class, tmdbAuthentication::validateKey);
+        TmdbResponseException exception = assertThrowsExactly(TmdbResponseException.class, getApiToTest()::validateKey);
         assertEquals(INVALID_API_KEY, exception.getResponseCode());
     }
 }

@@ -20,7 +20,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbCertifications}.
  */
-public class TmdbCertificationsTest extends AbstractTmdbApiTest {
+public class TmdbCertificationsTest extends AbstractTmdbApiTest<TmdbCertifications> {
+    @Override
+    public TmdbCertifications createApiToTest() {
+        return getTmdbApi().getCertifications();
+    }
+
     /**
      * Test {@link TmdbCertifications#getMovieCertifications()} with an expected result.
      */
@@ -30,8 +35,7 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CERTIFICATIONS + "/" + TMDB_METHOD_MOVIE_CERTIFICATIONS);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCertifications tmdbCertifications = getTmdbApi().getCertifications();
-        CertificationResults movieCertifications = tmdbCertifications.getMovieCertifications();
+        CertificationResults movieCertifications = getApiToTest().getMovieCertifications();
         assertNotNull(movieCertifications);
         validateAbstractJsonMappingFields(movieCertifications);
     }
@@ -45,8 +49,7 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CERTIFICATIONS + "/" + TMDB_METHOD_TV_CERTIFICATIONS);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCertifications tmdbCertifications = getTmdbApi().getCertifications();
-        CertificationResults tvCertifications = tmdbCertifications.getTvCertifications();
+        CertificationResults tvCertifications = getApiToTest().getTvCertifications();
         assertNotNull(tvCertifications);
         validateAbstractJsonMappingFields(tvCertifications);
     }

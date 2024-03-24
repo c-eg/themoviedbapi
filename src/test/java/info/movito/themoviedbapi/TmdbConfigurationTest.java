@@ -3,8 +3,8 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.configuration.Configuration;
 import info.movito.themoviedbapi.model.configuration.Country;
 import info.movito.themoviedbapi.model.configuration.Job;
-import info.movito.themoviedbapi.model.core.Language;
 import info.movito.themoviedbapi.model.configuration.Timezone;
+import info.movito.themoviedbapi.model.core.Language;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
@@ -24,7 +24,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbConfiguration}.
  */
-public class TmdbConfigurationTest extends AbstractTmdbApiTest {
+public class TmdbConfigurationTest extends AbstractTmdbApiTest<TmdbConfiguration> {
+    @Override
+    public TmdbConfiguration createApiToTest() {
+        return getTmdbApi().getConfiguration();
+    }
+
     /**
      * Test for {@link TmdbConfiguration#getDetails()} with an expected result.
      */
@@ -34,8 +39,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CONFIGURATION);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbConfiguration tmdbConfiguration = getTmdbApi().getConfiguration();
-        Configuration configuration = tmdbConfiguration.getDetails();
+        Configuration configuration = getApiToTest().getDetails();
         assertNotNull(configuration);
         validateAbstractJsonMappingFields(configuration);
     }
@@ -49,8 +53,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CONFIGURATION + "/countries");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbConfiguration tmdbConfiguration = getTmdbApi().getConfiguration();
-        List<Country> countries = tmdbConfiguration.getCountries(null);
+        List<Country> countries = getApiToTest().getCountries(null);
         assertNotNull(countries);
         assertFalse(countries.isEmpty());
 
@@ -68,8 +71,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CONFIGURATION + "/jobs");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbConfiguration tmdbConfiguration = getTmdbApi().getConfiguration();
-        List<Job> jobs = tmdbConfiguration.getJobs();
+        List<Job> jobs = getApiToTest().getJobs();
         assertNotNull(jobs);
         assertFalse(jobs.isEmpty());
 
@@ -87,8 +89,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CONFIGURATION + "/languages");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbConfiguration tmdbConfiguration = getTmdbApi().getConfiguration();
-        List<Language> languages = tmdbConfiguration.getLanguages();
+        List<Language> languages = getApiToTest().getLanguages();
         assertNotNull(languages);
         assertFalse(languages.isEmpty());
 
@@ -106,8 +107,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CONFIGURATION + "/primary_translations");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbConfiguration tmdbConfiguration = getTmdbApi().getConfiguration();
-        List<String> primaryTranslations = tmdbConfiguration.getPrimaryTranslations();
+        List<String> primaryTranslations = getApiToTest().getPrimaryTranslations();
         assertNotNull(primaryTranslations);
         assertFalse(primaryTranslations.isEmpty());
 
@@ -124,8 +124,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_CONFIGURATION + "/timezones");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbConfiguration tmdbConfiguration = getTmdbApi().getConfiguration();
-        List<Timezone> timezones = tmdbConfiguration.getTimezones();
+        List<Timezone> timezones = getApiToTest().getTimezones();
         assertNotNull(timezones);
         assertFalse(timezones.isEmpty());
 

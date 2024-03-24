@@ -1,8 +1,8 @@
 package info.movito.themoviedbapi;
 
+import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.ReviewResultsPage;
-import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
@@ -41,7 +41,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbMovies}.
  */
-public class TmdbMoviesTest extends AbstractTmdbApiTest {
+public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
+    @Override
+    public TmdbMovies createApiToTest() {
+        return getTmdbApi().getMovies();
+    }
+
     /**
      * Tests {@link TmdbMovies#getDetails(int, String, MovieAppendToResponse...)} with an expected result.
      */
@@ -51,8 +56,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        MovieDb movie = tmdbMovies.getDetails(123, "en-US");
+        MovieDb movie = getApiToTest().getDetails(123, "en-US");
         assertNotNull(movie);
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(movie);
@@ -92,8 +96,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
             "reviews%2Csimilar%2Ctranslations%2Cvideos%2Cwatch%2Fproviders");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        MovieDb movie = tmdbMovies.getDetails(123, "en-US", MovieAppendToResponse.values());
+        MovieDb movie = getApiToTest().getDetails(123, "en-US", MovieAppendToResponse.values());
         assertNotNull(movie);
         validateAbstractJsonMappingFields(movie);
     }
@@ -107,8 +110,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/account_states?session_id=123");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        AccountStates accountStates = tmdbMovies.getAccountStates(123, "123", null);
+        AccountStates accountStates = getApiToTest().getAccountStates(123, "123", null);
         assertNotNull(accountStates);
         validateAbstractJsonMappingFields(accountStates);
     }
@@ -122,8 +124,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/alternative_titles?country=US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        AlternativeTitles alternativeTitles = tmdbMovies.getAlternativeTitles(123, "US");
+        AlternativeTitles alternativeTitles = getApiToTest().getAlternativeTitles(123, "US");
         assertNotNull(alternativeTitles);
         validateAbstractJsonMappingFields(alternativeTitles);
     }
@@ -137,8 +138,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/changes");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        ChangeResults changeResults = tmdbMovies.getChanges(123, null, null, null);
+        ChangeResults changeResults = getApiToTest().getChanges(123, null, null, null);
         assertNotNull(changeResults);
         validateAbstractJsonMappingFields(changeResults);
     }
@@ -152,8 +152,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/credits?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        Credits credits = tmdbMovies.getCredits(123, "en-US");
+        Credits credits = getApiToTest().getCredits(123, "en-US");
         assertNotNull(credits);
         validateAbstractJsonMappingFields(credits);
     }
@@ -167,8 +166,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/external_ids");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        ExternalIds externalIds = tmdbMovies.getExternalIds(123);
+        ExternalIds externalIds = getApiToTest().getExternalIds(123);
         assertNotNull(externalIds);
         validateAbstractJsonMappingFields(externalIds);
     }
@@ -182,8 +180,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/images?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        Images images = tmdbMovies.getImages(123, "en-US");
+        Images images = getApiToTest().getImages(123, "en-US");
         assertNotNull(images);
         validateAbstractJsonMappingFields(images);
     }
@@ -197,8 +194,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/keywords");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        KeywordResults keywords = tmdbMovies.getKeywords(123);
+        KeywordResults keywords = getApiToTest().getKeywords(123);
         assertNotNull(keywords);
         validateAbstractJsonMappingFields(keywords);
     }
@@ -212,8 +208,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/latest");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        MovieDb movie = tmdbMovies.getLatest();
+        MovieDb movie = getApiToTest().getLatest();
         assertNotNull(movie);
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(movie);
@@ -251,8 +246,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/lists?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        MovieListResultsPage lists = tmdbMovies.getLists(123, "en-US", null);
+        MovieListResultsPage lists = getApiToTest().getLists(123, "en-US", null);
         assertNotNull(lists);
         validateAbstractJsonMappingFields(lists);
     }
@@ -266,8 +260,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/recommendations?language=en-US&page=1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        MovieResultsPage recommendations = tmdbMovies.getRecommendations(123, "en-US", 1);
+        MovieResultsPage recommendations = getApiToTest().getRecommendations(123, "en-US", 1);
         assertNotNull(recommendations);
         validateAbstractJsonMappingFields(recommendations);
     }
@@ -281,8 +274,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/release_dates");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        ReleaseDateResults releaseDates = tmdbMovies.getReleaseDates(123);
+        ReleaseDateResults releaseDates = getApiToTest().getReleaseDates(123);
         assertNotNull(releaseDates);
         validateAbstractJsonMappingFields(releaseDates);
     }
@@ -296,8 +288,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/reviews?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        ReviewResultsPage reviews = tmdbMovies.getReviews(123, "en-US", null);
+        ReviewResultsPage reviews = getApiToTest().getReviews(123, "en-US", null);
         assertNotNull(reviews);
         validateAbstractJsonMappingFields(reviews);
     }
@@ -311,8 +302,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/similar?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        MovieResultsPage similar = tmdbMovies.getSimilar(123, "en-US", null);
+        MovieResultsPage similar = getApiToTest().getSimilar(123, "en-US", null);
         assertNotNull(similar);
         validateAbstractJsonMappingFields(similar);
     }
@@ -326,8 +316,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/translations");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        Translations translations = tmdbMovies.getTranslations(123);
+        Translations translations = getApiToTest().getTranslations(123);
         assertNotNull(translations);
         validateAbstractJsonMappingFields(translations);
     }
@@ -341,8 +330,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/videos?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        VideoResults videos = tmdbMovies.getVideos(123, "en-US");
+        VideoResults videos = getApiToTest().getVideos(123, "en-US");
         assertNotNull(videos);
         validateAbstractJsonMappingFields(videos);
     }
@@ -356,8 +344,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/watch/providers");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        ProviderResults watchProviders = tmdbMovies.getWatchProviders(123);
+        ProviderResults watchProviders = getApiToTest().getWatchProviders(123);
         assertNotNull(watchProviders);
         validateAbstractJsonMappingFields(watchProviders);
     }
@@ -375,8 +362,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/movies/add_rating.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        ResponseStatus responseStatus = tmdbMovies.addRating(123, null, null, 2.1);
+        ResponseStatus responseStatus = getApiToTest().addRating(123, null, null, 2.1);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
         assertEquals(1, responseStatus.getStatusCode());
@@ -391,8 +377,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest {
         String body = TestUtils.readTestFile("api_responses/movies/delete_rating.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.DELETE)).thenReturn(body);
 
-        TmdbMovies tmdbMovies = getTmdbApi().getMovies();
-        ResponseStatus responseStatus = tmdbMovies.deleteRating(123, null, null);
+        ResponseStatus responseStatus = getApiToTest().deleteRating(123, null, null);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
         assertEquals(13, responseStatus.getStatusCode());

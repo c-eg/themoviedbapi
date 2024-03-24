@@ -22,7 +22,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbCollections}.
  */
-public class TmdbCollectionsTest extends AbstractTmdbApiTest {
+public class TmdbCollectionsTest extends AbstractTmdbApiTest<TmdbCollections> {
+    @Override
+    public TmdbCollections createApiToTest() {
+        return getTmdbApi().getCollections();
+    }
+
     /**
      * Tests the {@link TmdbCollections#getDetails(Integer, String)} with an expected result.
      */
@@ -36,8 +41,7 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
             collectionId + "?" + "language=" + language);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCollections tmdbCollections = getTmdbApi().getCollections();
-        CollectionInfo collectionInfo = tmdbCollections.getDetails(collectionId, language);
+        CollectionInfo collectionInfo = getApiToTest().getDetails(collectionId, language);
         assertNotNull(collectionInfo);
         validateAbstractJsonMappingFields(collectionInfo);
     }
@@ -56,8 +60,7 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
             collectionId + "/images?language=" + language);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCollections tmdbCollections = getTmdbApi().getCollections();
-        Images images = tmdbCollections.getImages(collectionId, language);
+        Images images = getApiToTest().getImages(collectionId, language);
         assertNotNull(images);
         validateAbstractJsonMappingFields(images);
     }
@@ -76,8 +79,7 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
             collectionId + "/images?include_image_language=en%2Cit");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCollections tmdbCollections = getTmdbApi().getCollections();
-        Images images = tmdbCollections.getImages(collectionId, null, includeImageLanguage);
+        Images images = getApiToTest().getImages(collectionId, null, includeImageLanguage);
         assertNotNull(images);
         validateAbstractJsonMappingFields(images);
     }
@@ -93,8 +95,7 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" + collectionId + "/translations");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCollections tmdbCollections = getTmdbApi().getCollections();
-        List<Translation> translations = tmdbCollections.getTranslations(collectionId);
+        List<Translation> translations = getApiToTest().getTranslations(collectionId);
         assertFalse(translations.isEmpty());
     }
 }

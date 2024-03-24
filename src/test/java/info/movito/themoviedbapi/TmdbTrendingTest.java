@@ -8,7 +8,6 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.time.TimeWindow;
 import info.movito.themoviedbapi.util.TestUtils;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -23,17 +22,10 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbTrending}.
  */
-public class TmdbTrendingTest extends AbstractTmdbApiTest {
-    private TmdbTrending tmdbTrending;
-
-    /**
-     * Sets up TmdbTrending class.
-     */
-    @BeforeEach
+public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
     @Override
-    public void setUp() {
-        super.setUp();
-        tmdbTrending = getTmdbApi().getTrending();
+    public TmdbTrending createApiToTest() {
+        return getTmdbApi().getTrending();
     }
 
     /**
@@ -45,7 +37,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/all?time_window=week&language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        MultiResultsPage allResults = tmdbTrending.getAll(TimeWindow.WEEK, "en-US");
+        MultiResultsPage allResults = getApiToTest().getAll(TimeWindow.WEEK, "en-US");
         assertNotNull(allResults);
         validateAbstractJsonMappingFields(allResults);
     }
@@ -59,7 +51,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/movie?time_window=week&language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        MovieResultsPage movieResults = tmdbTrending.getMovies(TimeWindow.WEEK, "en-US");
+        MovieResultsPage movieResults = getApiToTest().getMovies(TimeWindow.WEEK, "en-US");
         assertNotNull(movieResults);
         validateAbstractJsonMappingFields(movieResults);
     }
@@ -73,7 +65,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/person?time_window=week&language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        PopularPersonResultsPage peopleResults = tmdbTrending.getPeople(TimeWindow.WEEK, "en-US");
+        PopularPersonResultsPage peopleResults = getApiToTest().getPeople(TimeWindow.WEEK, "en-US");
         assertNotNull(peopleResults);
         validateAbstractJsonMappingFields(peopleResults);
     }
@@ -87,7 +79,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/tv?time_window=week&language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TvSeriesResultsPage tvResults = tmdbTrending.getTv(TimeWindow.WEEK, "en-US");
+        TvSeriesResultsPage tvResults = getApiToTest().getTv(TimeWindow.WEEK, "en-US");
         assertNotNull(tvResults);
         validateAbstractJsonMappingFields(tvResults);
     }

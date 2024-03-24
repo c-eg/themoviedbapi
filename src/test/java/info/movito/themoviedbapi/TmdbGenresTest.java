@@ -20,7 +20,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbGenre}.
  */
-public class TmdbGenresTest extends AbstractTmdbApiTest {
+public class TmdbGenresTest extends AbstractTmdbApiTest<TmdbGenre> {
+    @Override
+    public TmdbGenre createApiToTest() {
+        return getTmdbApi().getGenre();
+    }
+
     /**
      * Tests {@link TmdbGenre#getMovieList(String)} with an expected result.
      */
@@ -30,8 +35,7 @@ public class TmdbGenresTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/movie/list?language=en");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbGenre tmdbGenre = new TmdbGenre(getTmdbApi());
-        List<Genre> genres = tmdbGenre.getMovieList("en");
+        List<Genre> genres = getApiToTest().getMovieList("en");
         assertNotNull(genres);
         assertFalse(genres.isEmpty());
 
@@ -49,8 +53,7 @@ public class TmdbGenresTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/tv/list?language=en");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbGenre tmdbGenre = new TmdbGenre(getTmdbApi());
-        List<Genre> genres = tmdbGenre.getTvList("en");
+        List<Genre> genres = getApiToTest().getTvList("en");
         assertNotNull(genres);
         assertFalse(genres.isEmpty());
 

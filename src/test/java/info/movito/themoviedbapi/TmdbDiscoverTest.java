@@ -23,7 +23,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbDiscover}.
  */
-public class TmdbDiscoverTest extends AbstractTmdbApiTest {
+public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
+    @Override
+    public TmdbDiscover createApiToTest() {
+        return getTmdbApi().getDiscover();
+    }
+
     /**
      * Test for {@link TmdbDiscover#getMovie(DiscoverMovieParamBuilder)} with an expected result & search params from the builder.
      */
@@ -33,11 +38,10 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_MOVIE + "?page=1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
         DiscoverMovieParamBuilder discoverMovieParamBuilder = new DiscoverMovieParamBuilder()
             .page(1);
 
-        MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(discoverMovieParamBuilder);
+        MovieResultsPage movieResultsPage = getApiToTest().getMovie(discoverMovieParamBuilder);
         assertNotNull(movieResultsPage);
         validateAbstractJsonMappingFields(movieResultsPage);
     }
@@ -51,8 +55,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_MOVIE);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
-        MovieResultsPage movieResultsPage = tmdbDiscover.getMovie(null);
+        MovieResultsPage movieResultsPage = getApiToTest().getMovie(null);
         assertNotNull(movieResultsPage);
         validateAbstractJsonMappingFields(movieResultsPage);
     }
@@ -66,11 +69,10 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_TV + "?page=1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
         DiscoverTvParamBuilder discoverTvParamBuilder = new DiscoverTvParamBuilder()
             .page(1);
 
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(discoverTvParamBuilder);
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getTv(discoverTvParamBuilder);
         assertNotNull(tvSeriesResultsPage);
         validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
@@ -84,8 +86,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_TV);
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbDiscover tmdbDiscover = getTmdbApi().getDiscover();
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbDiscover.getTv(null);
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getTv(null);
         assertNotNull(tvSeriesResultsPage);
         validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }

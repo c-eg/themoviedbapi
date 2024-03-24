@@ -4,7 +4,6 @@ import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -19,17 +18,10 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbTvSeriesLists}.
  */
-public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest {
-    private TmdbTvSeriesLists tmdbTvSeriesLists;
-
-    /**
-     * Sets up TmdbTvSeriesLists class.
-     */
-    @BeforeEach
+public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest<TmdbTvSeriesLists> {
     @Override
-    public void setUp() {
-        super.setUp();
-        tmdbTvSeriesLists = getTmdbApi().getTvSeriesLists();
+    public TmdbTvSeriesLists createApiToTest() {
+        return getTmdbApi().getTvSeriesLists();
     }
 
     /**
@@ -41,7 +33,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/airing_today?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbTvSeriesLists.getAiringToday("en-US", null, null);
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getAiringToday("en-US", null, null);
         assertNotNull(tvSeriesResultsPage);
         validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
@@ -55,7 +47,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/on_the_air?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbTvSeriesLists.getOnTheAir("en-US", null, null);
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getOnTheAir("en-US", null, null);
         assertNotNull(tvSeriesResultsPage);
         validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
@@ -69,7 +61,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/popular?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbTvSeriesLists.getPopular("en-US", null);
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getPopular("en-US", null);
         assertNotNull(tvSeriesResultsPage);
         validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
@@ -83,7 +75,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/top_rated?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TvSeriesResultsPage tvSeriesResultsPage = tmdbTvSeriesLists.getTopRated("en-US", null);
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getTopRated("en-US", null);
         assertNotNull(tvSeriesResultsPage);
         validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }

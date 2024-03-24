@@ -18,7 +18,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbKeywords}.
  */
-public class TmdbKeywordsTest extends AbstractTmdbApiTest {
+public class TmdbKeywordsTest extends AbstractTmdbApiTest<TmdbKeywords> {
+    @Override
+    public TmdbKeywords createApiToTest() {
+        return getTmdbApi().getKeywords();
+    }
+
     /**
      * Tests {@link TmdbKeywords#getDetails(int)} with an expected result.
      */
@@ -28,8 +33,7 @@ public class TmdbKeywordsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_KEYWORD + "/1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbKeywords tmdbKeywords = getTmdbApi().getKeywords();
-        Keyword keyword = tmdbKeywords.getDetails(1);
+        Keyword keyword = getApiToTest().getDetails(1);
         assertNotNull(keyword);
         validateAbstractJsonMappingFields(keyword);
     }

@@ -2,14 +2,14 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
+import info.movito.themoviedbapi.model.tv.core.Translations;
+import info.movito.themoviedbapi.model.tv.core.credits.AggregateCredits;
+import info.movito.themoviedbapi.model.tv.core.credits.Credits;
 import info.movito.themoviedbapi.model.tv.season.AccountStateResults;
 import info.movito.themoviedbapi.model.tv.season.ChangeResults;
 import info.movito.themoviedbapi.model.tv.season.ExternalIds;
 import info.movito.themoviedbapi.model.tv.season.Images;
-import info.movito.themoviedbapi.model.tv.core.Translations;
 import info.movito.themoviedbapi.model.tv.season.TvSeasonDb;
-import info.movito.themoviedbapi.model.tv.core.credits.AggregateCredits;
-import info.movito.themoviedbapi.model.tv.core.credits.Credits;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvSeasonsAppendToResponse;
@@ -32,7 +32,12 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbTvSeasons}.
  */
-public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
+public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
+    @Override
+    public TmdbTvSeasons createApiToTest() {
+        return getTmdbApi().getTvSeasons();
+    }
+
     /**
      * Tests the method {@link TmdbTvSeasons#getDetails(int, int, String, TvSeasonsAppendToResponse...)} with an expected result.
      */
@@ -42,8 +47,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        TvSeasonDb tvSeason = tmdbTvSeasons.getDetails(123, 1, "en-US");
+        TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US");
         assertNotNull(tvSeason);
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(tvSeason);
@@ -78,8 +82,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
             "videos%2Cwatch%2Fproviders");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        TvSeasonDb tvSeason = tmdbTvSeasons.getDetails(123, 1, "en-US", TvSeasonsAppendToResponse.values());
+        TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US", TvSeasonsAppendToResponse.values());
         assertNotNull(tvSeason);
         validateAbstractJsonMappingFields(tvSeason);
     }
@@ -93,8 +96,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/account_states?session_id=123");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        AccountStateResults accountStates = tmdbTvSeasons.getAccountStates(123, 1, "123", null);
+        AccountStateResults accountStates = getApiToTest().getAccountStates(123, 1, "123", null);
         assertNotNull(accountStates);
         validateAbstractJsonMappingFields(accountStates);
     }
@@ -108,8 +110,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/aggregate_credits?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        AggregateCredits aggregateCredits = tmdbTvSeasons.getAggregateCredits(123, 1, "en-US");
+        AggregateCredits aggregateCredits = getApiToTest().getAggregateCredits(123, 1, "en-US");
         assertNotNull(aggregateCredits);
         validateAbstractJsonMappingFields(aggregateCredits);
     }
@@ -123,8 +124,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/" + TMDB_METHOD_TV_SEASON + "/123/changes?page=1");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        ChangeResults changes = tmdbTvSeasons.getChanges(123, null, null, 1);
+        ChangeResults changes = getApiToTest().getChanges(123, null, null, 1);
         assertNotNull(changes);
         validateAbstractJsonMappingFields(changes);
     }
@@ -138,8 +138,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/credits?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        Credits credits = tmdbTvSeasons.getCredits(123, 1, "en-US");
+        Credits credits = getApiToTest().getCredits(123, 1, "en-US");
         assertNotNull(credits);
         validateAbstractJsonMappingFields(credits);
     }
@@ -153,8 +152,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/external_ids");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        ExternalIds externalIds = tmdbTvSeasons.getExternalIds(123, 1);
+        ExternalIds externalIds = getApiToTest().getExternalIds(123, 1);
         assertNotNull(externalIds);
         validateAbstractJsonMappingFields(externalIds);
     }
@@ -168,8 +166,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/images?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        Images images = tmdbTvSeasons.getImages(123, 1, "en-US");
+        Images images = getApiToTest().getImages(123, 1, "en-US");
         assertNotNull(images);
         validateAbstractJsonMappingFields(images);
     }
@@ -183,8 +180,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/translations");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        Translations translations = tmdbTvSeasons.getTranslations(123, 1);
+        Translations translations = getApiToTest().getTranslations(123, 1);
         assertNotNull(translations);
         validateAbstractJsonMappingFields(translations);
     }
@@ -198,8 +194,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/videos?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        VideoResults videos = tmdbTvSeasons.getVideos(123, 1, "en-US");
+        VideoResults videos = getApiToTest().getVideos(123, 1, "en-US");
         assertNotNull(videos);
         validateAbstractJsonMappingFields(videos);
     }
@@ -213,8 +208,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/watch/providers?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbTvSeasons tmdbTvSeasons = getTmdbApi().getTvSeasons();
-        ProviderResults watchProviders = tmdbTvSeasons.getWatchProviders(123, 1, "en-US");
+        ProviderResults watchProviders = getApiToTest().getWatchProviders(123, 1, "en-US");
         assertNotNull(watchProviders);
         validateAbstractJsonMappingFields(watchProviders);
     }
