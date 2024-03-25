@@ -6,11 +6,11 @@ import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPa
 import info.movito.themoviedbapi.model.search.CollectionResultsPage;
 import info.movito.themoviedbapi.model.search.CompanyResultsPage;
 import info.movito.themoviedbapi.model.search.KeywordResultsPage;
-import info.movito.themoviedbapi.model.search.Multi;
-import info.movito.themoviedbapi.model.search.MultiMovie;
-import info.movito.themoviedbapi.model.search.MultiPerson;
-import info.movito.themoviedbapi.model.search.MultiResultsPage;
-import info.movito.themoviedbapi.model.search.MultiTvSeries;
+import info.movito.themoviedbapi.model.core.multi.Multi;
+import info.movito.themoviedbapi.model.core.multi.MultiMovie;
+import info.movito.themoviedbapi.model.core.multi.MultiPerson;
+import info.movito.themoviedbapi.model.core.multi.MultiResultsPage;
+import info.movito.themoviedbapi.model.core.multi.MultiTvSeries;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;

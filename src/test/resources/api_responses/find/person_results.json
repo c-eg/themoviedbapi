@@ -1,0 +1,84 @@
+{
+    "movie_results": [],
+    "person_results": [
+        {
+            "adult": false,
+            "id": 2710,
+            "name": "James Cameron",
+            "original_name": "James Cameron",
+            "media_type": "person",
+            "popularity": 18.767,
+            "gender": 2,
+            "known_for_department": "Directing",
+            "profile_path": "/9NAZnTjBQ9WcXAQEzZpKy4vdQto.jpg",
+            "known_for": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/vL5LR6WdxWPjLPFRLe133jXWsh5.jpg",
+                    "id": 19995,
+                    "title": "Avatar",
+                    "original_language": "en",
+                    "original_title": "Avatar",
+                    "overview": "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.",
+                    "poster_path": "/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        12,
+                        14,
+                        878
+                    ],
+                    "popularity": 111.058,
+                    "release_date": "2009-12-15",
+                    "video": false,
+                    "vote_average": 7.578,
+                    "vote_count": 30433
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/xnHVX37XZEp33hhCbYlQFq7ux1J.jpg",
+                    "id": 597,
+                    "title": "Titanic",
+                    "original_language": "en",
+                    "original_title": "Titanic",
+                    "overview": "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later. A young Rose boards the ship with her mother and fiancé. Meanwhile, Jack Dawson and Fabrizio De Rossi win third-class tickets aboard the ship. Rose tells the whole story from Titanic's departure through to its death—on its first and last voyage—on April 15, 1912.",
+                    "poster_path": "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        18,
+                        10749
+                    ],
+                    "popularity": 107.045,
+                    "release_date": "1997-11-18",
+                    "video": false,
+                    "vote_average": 7.903,
+                    "vote_count": 24234
+                },
+                {
+                    "adult": false,
+                    "backdrop_path": "/6dpnthrofbqWmvapUyvqCrkdHG.jpg",
+                    "id": 218,
+                    "title": "The Terminator",
+                    "original_language": "en",
+                    "original_title": "The Terminator",
+                    "overview": "In the post-apocalyptic future, reigning tyrannical supercomputers teleport a cyborg assassin known as the \"Terminator\" back to 1984 to kill Sarah Connor, whose unborn son is destined to lead insurgents against 21st century mechanical hegemony. Meanwhile, the human-resistance movement dispatches a lone warrior to safeguard Sarah. Can he stop the virtually indestructible killing machine?",
+                    "poster_path": "/qvktm0BHcnmDpul4Hz01GIazWPr.jpg",
+                    "media_type": "movie",
+                    "genre_ids": [
+                        28,
+                        53,
+                        878
+                    ],
+                    "popularity": 50.286,
+                    "release_date": "1984-10-26",
+                    "video": false,
+                    "vote_average": 7.654,
+                    "vote_count": 12227
+                }
+            ]
+        }
+    ],
+    "tv_results": [],
+    "tv_episode_results": [],
+    "tv_season_results": []
+}
