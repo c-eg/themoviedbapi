@@ -20,10 +20,12 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.configuration to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.image to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.core.multi to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.popularperson to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.responses to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.video to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.watchproviders to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.find to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.keywords to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.movielists to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.movies to com.fasterxml.jackson.databind;
@@ -54,10 +56,12 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.model.configuration;
     exports info.movito.themoviedbapi.model.core;
     exports info.movito.themoviedbapi.model.core.image;
+    exports info.movito.themoviedbapi.model.core.multi;
     exports info.movito.themoviedbapi.model.core.popularperson;
     exports info.movito.themoviedbapi.model.core.responses;
     exports info.movito.themoviedbapi.model.core.video;
     exports info.movito.themoviedbapi.model.core.watchproviders;
+    exports info.movito.themoviedbapi.model.find;
     exports info.movito.themoviedbapi.model.keywords;
     exports info.movito.themoviedbapi.model.movielists;
     exports info.movito.themoviedbapi.model.movies;
@@ -80,6 +84,6 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.tools.builders;
     exports info.movito.themoviedbapi.tools.builders.discover;
     exports info.movito.themoviedbapi.tools.sortby;
-    exports info.movito.themoviedbapi.tools.time;
+    exports info.movito.themoviedbapi.tools.model.time;
     exports info.movito.themoviedbapi.util;
 }

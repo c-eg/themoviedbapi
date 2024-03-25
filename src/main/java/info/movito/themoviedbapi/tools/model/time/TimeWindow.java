@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.tools.time;
+package info.movito.themoviedbapi.tools.model.time;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
