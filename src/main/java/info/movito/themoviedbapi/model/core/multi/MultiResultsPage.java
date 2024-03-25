@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.search;
+package info.movito.themoviedbapi.model.core.multi;
 
 import info.movito.themoviedbapi.model.core.ResultsPage;
 

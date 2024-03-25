@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model.search;
+package info.movito.themoviedbapi.model.core.multi;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

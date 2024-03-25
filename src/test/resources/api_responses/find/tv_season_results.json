@@ -1,0 +1,20 @@
+{
+    "movie_results": [],
+    "person_results": [],
+    "tv_results": [],
+    "tv_episode_results": [],
+    "tv_season_results": [
+        {
+            "id": 3572,
+            "name": "Season 1",
+            "overview": "High school chemistry teacher Walter White's life is suddenly transformed by a dire medical diagnosis. Street-savvy former student Jesse Pinkman \"teaches\" Walter a new trade.",
+            "poster_path": "/1BP4xYv9ZG4ZVHkL7ocOziBbSYH.jpg",
+            "media_type": "tv_season",
+            "vote_average": 8.3,
+            "air_date": "2008-01-20",
+            "season_number": 1,
+            "show_id": 1396,
+            "episode_count": 7
+        }
+    ]
+}

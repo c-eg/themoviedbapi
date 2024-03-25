@@ -3,10 +3,10 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
-import info.movito.themoviedbapi.model.search.MultiResultsPage;
+import info.movito.themoviedbapi.model.core.multi.MultiResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
-import info.movito.themoviedbapi.tools.time.TimeWindow;
+import info.movito.themoviedbapi.tools.model.time.TimeWindow;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
 

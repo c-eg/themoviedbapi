@@ -6,7 +6,7 @@ import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPa
 import info.movito.themoviedbapi.model.search.CollectionResultsPage;
 import info.movito.themoviedbapi.model.search.CompanyResultsPage;
 import info.movito.themoviedbapi.model.search.KeywordResultsPage;
-import info.movito.themoviedbapi.model.search.MultiResultsPage;
+import info.movito.themoviedbapi.model.core.multi.MultiResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
