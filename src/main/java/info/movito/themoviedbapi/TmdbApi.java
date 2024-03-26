@@ -120,11 +120,6 @@ public class TmdbApi {
         return new TmdbTrending(this);
     }
 
-    @SuppressWarnings("checkstyle:MissingJavadocMethod")
-    public TmdbTimezones getTimezones() {
-        return new TmdbTimezones(this);
-    }
-
     public TmdbTvEpisodes getTvEpisodes() {
         return new TmdbTvEpisodes(this);
     }
