@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Results<T> extends IdElement implements Iterable<T> {
+public abstract class Results<T> extends IdElement implements Iterable<T> {
     @JsonProperty("results")
     private List<T> results;
 

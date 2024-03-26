@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ResultsPage<T> extends Results<T> {
+public abstract class ResultsPage<T> extends Results<T> {
     @JsonProperty("page")
     private Integer page;
 
