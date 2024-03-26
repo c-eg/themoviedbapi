@@ -2,7 +2,7 @@ package info.movito.themoviedbapi;
 
 import java.util.List;
 
-import info.movito.themoviedbapi.model.CollectionInfo;
+import info.movito.themoviedbapi.model.collections.CollectionInfo;
 import info.movito.themoviedbapi.model.collections.Images;
 import info.movito.themoviedbapi.model.collections.Translation;
 import info.movito.themoviedbapi.model.collections.Translations;

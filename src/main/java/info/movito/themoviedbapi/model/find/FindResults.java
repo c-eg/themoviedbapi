@@ -1,14 +1,9 @@
-package info.movito.themoviedbapi.model;
+package info.movito.themoviedbapi.model.find;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
-import info.movito.themoviedbapi.model.find.FindMovie;
-import info.movito.themoviedbapi.model.find.FindPerson;
-import info.movito.themoviedbapi.model.find.FindTvEpisode;
-import info.movito.themoviedbapi.model.find.FindTvSeason;
-import info.movito.themoviedbapi.model.find.FindTvSeries;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

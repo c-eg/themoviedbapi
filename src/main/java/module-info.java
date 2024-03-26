@@ -9,12 +9,12 @@ module info.movito.themoviedbapi {
     requires okhttp3;
 
     opens info.movito.themoviedbapi to com.fasterxml.jackson.databind;
-    opens info.movito.themoviedbapi.model to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.account to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.authentication to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.certifications to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.changes to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.collections to com.fasterxml.jackson.databind;
+    opens info.movito.themoviedbapi.model.companies to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.configuration to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.core.image to com.fasterxml.jackson.databind;
@@ -45,12 +45,12 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.util to com.fasterxml.jackson.databind;
 
     exports info.movito.themoviedbapi;
-    exports info.movito.themoviedbapi.model;
     exports info.movito.themoviedbapi.model.account;
     exports info.movito.themoviedbapi.model.authentication;
     exports info.movito.themoviedbapi.model.certifications;
     exports info.movito.themoviedbapi.model.changes;
     exports info.movito.themoviedbapi.model.collections;
+    exports info.movito.themoviedbapi.model.companies;
     exports info.movito.themoviedbapi.model.configuration;
     exports info.movito.themoviedbapi.model.core;
     exports info.movito.themoviedbapi.model.core.image;

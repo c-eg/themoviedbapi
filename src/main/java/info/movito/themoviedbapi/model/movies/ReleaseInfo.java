@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model;
+package info.movito.themoviedbapi.model.movies;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class JobDepartment extends AbstractJsonMapping {
-    @JsonProperty("department")
-    private String department;
+public class ReleaseInfo extends AbstractJsonMapping {
+    @JsonProperty("iso_3166_1")
+    private String iso31661;
 
-    @JsonProperty("jobs")
-    private List<String> jobs;
+    @JsonProperty("release_dates")
+    private List<ReleaseDate> releaseDates;
 }

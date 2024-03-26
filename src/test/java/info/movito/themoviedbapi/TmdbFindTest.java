@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.movito.themoviedbapi.model.FindResults;
+import info.movito.themoviedbapi.model.find.FindResults;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.model.time.ExternalSource;
@@ -42,10 +42,10 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(findResults);
         List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.personResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvSeriesResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvSeasonResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvEpisodeResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.personResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvSeriesResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvSeasonResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvEpisodeResults");
 
         abstractJsonMappingValidator.validateNullFields();
         abstractJsonMappingValidator.validateEmptyCollections(filteredModel);
@@ -70,10 +70,10 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(findResults);
         List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.movieResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvSeriesResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvSeasonResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvEpisodeResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.movieResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvSeriesResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvSeasonResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvEpisodeResults");
 
         abstractJsonMappingValidator.validateNullFields();
         abstractJsonMappingValidator.validateEmptyCollections(filteredModel);
@@ -98,10 +98,10 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(findResults);
         List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.movieResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.personResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvSeasonResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvEpisodeResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.movieResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.personResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvSeasonResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvEpisodeResults");
 
         abstractJsonMappingValidator.validateNullFields();
         abstractJsonMappingValidator.validateEmptyCollections(filteredModel);
@@ -126,10 +126,10 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(findResults);
         List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.movieResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.personResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvSeriesResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvEpisodeResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.movieResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.personResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvSeriesResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvEpisodeResults");
 
         abstractJsonMappingValidator.validateNullFields();
         abstractJsonMappingValidator.validateEmptyCollections(filteredModel);
@@ -154,10 +154,10 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
 
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(findResults);
         List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.movieResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.personResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvSeriesResults");
-        filteredModel.add("info.movito.themoviedbapi.model.FindResults.tvSeasonResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.movieResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.personResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvSeriesResults");
+        filteredModel.add("info.movito.themoviedbapi.model.find.FindResults.tvSeasonResults");
 
         abstractJsonMappingValidator.validateNullFields();
         abstractJsonMappingValidator.validateEmptyCollections(filteredModel);
