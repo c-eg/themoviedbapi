@@ -14,7 +14,7 @@ public class ContentRating extends AbstractJsonMapping {
     private List<Object> descriptors;
 
     @JsonProperty("iso_3166_1")
-    private String locale;
+    private String iso31661;
 
     @JsonProperty("rating")
     private String rating;

@@ -8,10 +8,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Translation extends AbstractJsonMapping {
     @JsonProperty("iso_3166_1")
-    private String countryCode;
+    private String iso31661;
 
     @JsonProperty("iso_639_1")
-    private String languageCode;
+    private String iso6391;
 
     @JsonProperty("name")
     private String name;

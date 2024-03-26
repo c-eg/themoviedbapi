@@ -18,7 +18,7 @@ public class MovieList extends NamedIdElement {
     private Integer itemCount;
 
     @JsonProperty("iso_639_1")
-    private String iso639;
+    private String iso6391;
 
     @JsonProperty("list_type")
     private String listType;
