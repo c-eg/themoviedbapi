@@ -1,5 +1,7 @@
 package info.movito.themoviedbapi.model.tv.series;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.model.Genre;
@@ -21,8 +23,6 @@ import info.movito.themoviedbapi.model.tv.core.credits.AggregateCredits;
 import info.movito.themoviedbapi.model.tv.core.credits.Credits;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 /**
  * @author Holger Brandl, c-eg

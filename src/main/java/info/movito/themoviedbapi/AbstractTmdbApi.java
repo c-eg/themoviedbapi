@@ -54,8 +54,8 @@ public abstract class AbstractTmdbApi {
      * Maps a json result to a class.
      *
      * @param apiUrl the api url to map
-     * @param clazz the class to map to
-     * @param <T> the type of class to map to
+     * @param clazz  the class to map to
+     * @param <T>    the type of class to map to
      * @return the mapped class
      */
     protected <T> T mapJsonResult(ApiUrl apiUrl, Class<T> clazz) throws TmdbException {
@@ -65,9 +65,9 @@ public abstract class AbstractTmdbApi {
     /**
      * Maps a json result to a class.
      *
-     * @param apiUrl the api url to map
+     * @param apiUrl      the api url to map
      * @param resultClass the class to map to
-     * @param <T> the type of class to map to
+     * @param <T>         the type of class to map to
      * @return the mapped class
      */
     protected <T> T mapJsonResult(ApiUrl apiUrl, TypeReference<T> resultClass) throws TmdbException {
@@ -77,10 +77,10 @@ public abstract class AbstractTmdbApi {
     /**
      * Maps a json result to a class.
      *
-     * @param apiUrl the api url to map
+     * @param apiUrl   the api url to map
      * @param jsonBody the json body
-     * @param clazz the class to map to
-     * @param <T> the type of class to map to
+     * @param clazz    the class to map to
+     * @param <T>      the type of class to map to
      * @return the mapped class.
      */
     protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, Class<T> clazz) throws TmdbException {
@@ -90,10 +90,10 @@ public abstract class AbstractTmdbApi {
     /**
      * Maps a json result to a class.
      *
-     * @param apiUrl the api url to map
-     * @param jsonBody the json body
+     * @param apiUrl      the api url to map
+     * @param jsonBody    the json body
      * @param resultClass the class to map to
-     * @param <T> the type of class to map to
+     * @param <T>         the type of class to map to
      * @return the mapped class
      */
     protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, TypeReference<T> resultClass) throws TmdbException {
@@ -103,11 +103,11 @@ public abstract class AbstractTmdbApi {
     /**
      * Maps a json result to a class.
      *
-     * @param apiUrl the api url to map
-     * @param jsonBody the json body
+     * @param apiUrl      the api url to map
+     * @param jsonBody    the json body
      * @param requestType the type of request
-     * @param clazz the class to map to
-     * @param <T> the type of class to map to
+     * @param clazz       the class to map to
+     * @param <T>         the type of class to map to
      * @return the mapped class.
      */
     protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, Class<T> clazz) throws TmdbException {
@@ -117,11 +117,11 @@ public abstract class AbstractTmdbApi {
     /**
      * Maps a json result to a class.
      *
-     * @param apiUrl the api url to map
-     * @param jsonBody the json body
+     * @param apiUrl      the api url to map
+     * @param jsonBody    the json body
      * @param requestType the type of request
      * @param resultClass the class to map to
-     * @param <T> the type of class to map to
+     * @param <T>         the type of class to map to
      * @return the mapped class.
      */
     protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, TypeReference<T> resultClass)
@@ -132,11 +132,11 @@ public abstract class AbstractTmdbApi {
     /**
      * Maps a json result to a class.
      *
-     * @param apiUrl the api url to map
-     * @param jsonBody the json body
-     * @param requestType the type of request
+     * @param apiUrl       the api url to map
+     * @param jsonBody     the json body
+     * @param requestType  the type of request
      * @param objectReader the object reader
-     * @param <T> the type of class to map to
+     * @param <T>          the type of class to map to
      * @return the mapped class.
      */
     private <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, ObjectReader objectReader) throws TmdbException {

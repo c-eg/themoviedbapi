@@ -1,11 +1,11 @@
 package info.movito.themoviedbapi.model.account;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.Map;
 
 @Data
 @EqualsAndHashCode(callSuper = false)

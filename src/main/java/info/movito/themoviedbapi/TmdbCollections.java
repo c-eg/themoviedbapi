@@ -1,13 +1,13 @@
 package info.movito.themoviedbapi;
 
+import java.util.List;
+
 import info.movito.themoviedbapi.model.CollectionInfo;
 import info.movito.themoviedbapi.model.collections.Images;
 import info.movito.themoviedbapi.model.collections.Translation;
 import info.movito.themoviedbapi.model.collections.Translations;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
-
-import java.util.List;
 
 /**
  * The movie database api for collections. See the
@@ -28,7 +28,7 @@ public class TmdbCollections extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/collection-details">documentation</a> for more info.</p>
      *
      * @param collectionId The collection id.
-     * @param language optional - The language.
+     * @param language     optional - The language.
      * @return The collection info.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -42,8 +42,8 @@ public class TmdbCollections extends AbstractTmdbApi {
      * <p>Get the images that belong to a collection.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/collection-images">documentation</a> for more info.</p>
      *
-     * @param collectionId The collection id.
-     * @param language optional - The language.
+     * @param collectionId         The collection id.
+     * @param language             optional - The language.
      * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The images.
      * @throws TmdbException If there was an error making the request or mapping the response.

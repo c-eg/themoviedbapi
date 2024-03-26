@@ -37,7 +37,7 @@ public class TmdbWatchProviders extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/watch-providers-movie-list">documentation</a>
      * for more info.</p>
      *
-     * @param language optional - The language, e.g. "en-US".
+     * @param language    optional - The language, e.g. "en-US".
      * @param watchRegion optional - The watch region, e.g. "AD"
      */
     public ProviderResults getMovieProviders(String language, String watchRegion) throws TmdbException {
@@ -54,7 +54,7 @@ public class TmdbWatchProviders extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/watch-provider-tv-list">documentation</a>
      * for more info.</p>
      *
-     * @param language optional - The language, e.g. "en-US".
+     * @param language    optional - The language, e.g. "en-US".
      * @param watchRegion optional - The watch region, e.g. "AD".
      */
     public ProviderResults getTvProviders(String language, String watchRegion) throws TmdbException {

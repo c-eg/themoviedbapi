@@ -1,8 +1,13 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
+import java.util.HashMap;
+
 import info.movito.themoviedbapi.model.core.AccountStates;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.ReviewResultsPage;
+import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
+import info.movito.themoviedbapi.model.core.video.VideoResults;
+import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.movies.AlternativeTitles;
 import info.movito.themoviedbapi.model.movies.Credits;
 import info.movito.themoviedbapi.model.movies.ExternalIds;
@@ -11,18 +16,13 @@ import info.movito.themoviedbapi.model.movies.KeywordResults;
 import info.movito.themoviedbapi.model.movies.MovieDb;
 import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.movies.ReleaseDateResults;
-import info.movito.themoviedbapi.model.core.ReviewResultsPage;
 import info.movito.themoviedbapi.model.movies.Translations;
-import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.MovieAppendToResponse;
 import info.movito.themoviedbapi.util.Utils;
-
-import java.util.HashMap;
 
 /**
  * The movie database api for movies. See the
@@ -42,8 +42,8 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the top level details of a movie by ID.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-details">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param movieId          The TMDb id of the movie.
+     * @param language         optional - The language to query the results in. Default: en-US.
      * @param appendToResponse optional - additional namespaces to append to the result (20 max).
      * @return The movie details.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -59,8 +59,8 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the rating, watchlist and favourite status of an account.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-account-states">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
-     * @param sessionId optional - The session id of the user.
+     * @param movieId        The TMDb id of the movie.
+     * @param sessionId      optional - The session id of the user.
      * @param guestSessionId optional - The guest session id of the user.
      * @return The account states of the movie.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -91,10 +91,10 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the recent changes for a movie.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-changes">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
+     * @param movieId   The TMDb id of the movie.
      * @param startDate optional - The start date, in format: YYYY-MM-DD.
-     * @param endDate optional - The end date, in format: YYYY-MM-DD.
-     * @param page optional - The page of results to return. Default: 1.
+     * @param endDate   optional - The end date, in format: YYYY-MM-DD.
+     * @param page      optional - The page of results to return. Default: 1.
      * @return The movie changes.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -110,7 +110,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the credits for a movie.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-credits">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
+     * @param movieId  The TMDb id of the movie.
      * @param language optional - The language to query the results in. Default: en-US.
      * @return The movie credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -138,8 +138,8 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the images that belong to a movie.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-images">documentation</a> for more info.</p>
      *
-     * @param movieId The movie id.
-     * @param language optional - The language.
+     * @param movieId              The movie id.
+     * @param language             optional - The language.
      * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The images.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -180,9 +180,9 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the lists that a movie has been added to.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-lists">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
+     * @param movieId  The TMDb id of the movie.
      * @param language optional - The language to query the results in. Default: en-US.
-     * @param page optional - The page of results to return. Default: 1.
+     * @param page     optional - The page of results to return. Default: 1.
      * @return The movie lists.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -197,9 +197,9 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the recommendations for a movie.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-recommendations">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
+     * @param movieId  The TMDb id of the movie.
      * @param language optional - The language to query the results in. Default: en-US.
-     * @param page optional - The page of results to return. Default: 1.
+     * @param page     optional - The page of results to return. Default: 1.
      * @return The recommended movies.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -227,9 +227,9 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the user reviews for a movie.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-reviews">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
+     * @param movieId  The TMDb id of the movie.
      * @param language optional - The language to query the results in. Default: en-US.
-     * @param page optional - The page of results to return. Default: 1.
+     * @param page     optional - The page of results to return. Default: 1.
      * @return The movie reviews.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -244,9 +244,9 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the similar movies based on genres and keywords.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-similar">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
+     * @param movieId  The TMDb id of the movie.
      * @param language optional - The language to query the results in. Default: en-US.
-     * @param page optional - The page of results to return. Default: 1.
+     * @param page     optional - The page of results to return. Default: 1.
      * @return The similar movies.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -274,7 +274,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>Get the videos that have been added to a movie.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-videos">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
+     * @param movieId  The TMDb id of the movie.
      * @param language optional - The language to query the results in. Default: en-US.
      * @return The videos.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -306,10 +306,10 @@ public class TmdbMovies extends AbstractTmdbApi {
      * holder's account.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-add-rating">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
+     * @param movieId        The TMDb id of the movie.
      * @param guestSessionId optional - The guest session id of the user.
-     * @param sessionId optional - The session id of the user.
-     * @param rating The rating of the movie. Must be: 0 &lt; rating &le; 10.
+     * @param sessionId      optional - The session id of the user.
+     * @param rating         The rating of the movie. Must be: 0 &lt; rating &le; 10.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -335,9 +335,9 @@ public class TmdbMovies extends AbstractTmdbApi {
      * holder's account.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-delete-rating">documentation</a> for more info.</p>
      *
-     * @param movieId The TMDb id of the movie.
+     * @param movieId        The TMDb id of the movie.
      * @param guestSessionId optional - The guest session id of the user.
-     * @param sessionId optional - The session id of the user.
+     * @param sessionId      optional - The session id of the user.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

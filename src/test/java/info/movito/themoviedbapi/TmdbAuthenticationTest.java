@@ -1,5 +1,9 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
+
 import info.movito.themoviedbapi.model.authentication.GuestSession;
 import info.movito.themoviedbapi.model.authentication.RequestToken;
 import info.movito.themoviedbapi.model.authentication.Session;
@@ -11,10 +15,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.util.Utils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
 
 import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbAuthentication.TMDB_METHOD_AUTH;

@@ -1,9 +1,9 @@
 package info.movito.themoviedbapi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
 @Data
 @EqualsAndHashCode(callSuper = false)

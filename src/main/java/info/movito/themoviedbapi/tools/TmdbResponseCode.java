@@ -1,11 +1,11 @@
 package info.movito.themoviedbapi.tools;
 
+import java.util.Arrays;
+import java.util.Set;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-
-import java.util.Arrays;
-import java.util.Set;
 
 /**
  * TMDb-API related response codes. See the
@@ -62,7 +62,7 @@ public enum TmdbResponseCode {
     USER_SUSPENDED(45, 403, false, "This user has been suspended."),
     API_UNDERGOING_MAINTENANCE(46, 503, false, "The API is undergoing maintenance. Try again later."),
     INVALID_INPUT(47, 400, false, "The input is not valid.");
-    
+
     private final int tmdbCode;
 
     private final int httpStatus;

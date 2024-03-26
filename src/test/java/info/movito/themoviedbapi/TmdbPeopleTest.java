@@ -1,5 +1,10 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
 import info.movito.themoviedbapi.model.people.ExternalIds;
 import info.movito.themoviedbapi.model.people.PersonDb;
@@ -21,11 +26,6 @@ import info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse;
 import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbPeople.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;

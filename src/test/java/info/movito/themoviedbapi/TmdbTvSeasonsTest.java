@@ -1,5 +1,10 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.tv.core.Translations;
@@ -16,11 +21,6 @@ import info.movito.themoviedbapi.tools.appendtoresponse.TvSeasonsAppendToRespons
 import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;

@@ -1,5 +1,8 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+
 import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
@@ -8,9 +11,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbGuestSessions.TMDB_METHOD_GUEST_SESSIONS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;

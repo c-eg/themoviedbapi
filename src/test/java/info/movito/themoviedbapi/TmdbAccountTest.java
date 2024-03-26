@@ -1,5 +1,9 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
+
 import info.movito.themoviedbapi.model.account.Account;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
@@ -14,10 +18,6 @@ import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.util.Utils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
 
 import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbAccount.TMDB_METHOD_ACCOUNT;

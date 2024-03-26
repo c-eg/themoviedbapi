@@ -34,9 +34,9 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>Query the details of the TV season.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-details">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the TV series.
-     * @param seasonNumber The season number.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param seriesId         The TMDb id of the TV series.
+     * @param seasonNumber     The season number.
+     * @param language         optional - The language to query the results in. Default: en-US.
      * @param appendToResponse optional - additional namespaces to append to the result (20 max).
      * @return The TV season details.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -53,9 +53,9 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>Get the rating, watchlist and favourite status.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-account-states">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the TV series.
-     * @param seasonNumber The season number.
-     * @param sessionId optional - The session id of the user.
+     * @param seriesId       The TMDb id of the TV series.
+     * @param seasonNumber   The season number.
+     * @param sessionId      optional - The session id of the user.
      * @param guestSessionId optional - The guest session id of the user.
      * @return The account states.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -72,9 +72,9 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>Get the aggregate credits (cast and crew) that have been added to a TV season.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-aggregate-credits">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the TV series.
+     * @param seriesId     The TMDb id of the TV series.
      * @param seasonNumber The season number.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language     optional - The language to query the results in. Default: en-US.
      * @return The aggregate credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -88,10 +88,10 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>Get the recent changes for a TV season.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-changes-by-id">documentation</a> for more info.</p>
      *
-     * @param seasonId The TMDb id of the TV season.
+     * @param seasonId  The TMDb id of the TV season.
      * @param startDate optional - The start date, in format: YYYY-MM-DD.
-     * @param endDate optional - The end date, in format: YYYY-MM-DD.
-     * @param page optional - The page to query. Default: 1.
+     * @param endDate   optional - The end date, in format: YYYY-MM-DD.
+     * @param page      optional - The page to query. Default: 1.
      * @return The changes.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -107,9 +107,9 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>Get the latest tv season credits.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-credits">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the TV series.
+     * @param seriesId     The TMDb id of the TV series.
      * @param seasonNumber The season number.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language     optional - The language to query the results in. Default: en-US.
      * @return The credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -123,7 +123,7 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>Get a list of external IDs that have been added to a TV season.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-external-ids">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the TV series.
+     * @param seriesId     The TMDb id of the TV series.
      * @param seasonNumber The season number.
      * @return The external IDs.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -137,9 +137,9 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>Get the images that belong to a TV season.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-images">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the TV series.
-     * @param seasonNumber The season number.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param seriesId             The TMDb id of the TV series.
+     * @param seasonNumber         The season number.
+     * @param language             optional - The language to query the results in. Default: en-US.
      * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The images.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -155,7 +155,7 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>Get the translations for a TV season.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-translations">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the TV series.
+     * @param seriesId     The TMDb id of the TV series.
      * @param seasonNumber The season number.
      * @return The translations.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -169,9 +169,9 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>Get the videos that belong to a TV season.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-videos">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the TV series.
-     * @param seasonNumber The season number.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param seriesId             The TMDb id of the TV series.
+     * @param seasonNumber         The season number.
+     * @param language             optional - The language to query the results in. Default: en-US.
      * @param includeVideoLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The videos.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -189,9 +189,9 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * terms TMDb will revoke access to the API.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-watch-providers">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the TV series.
+     * @param seriesId     The TMDb id of the TV series.
      * @param seasonNumber The season number.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language     optional - The language to query the results in. Default: en-US.
      * @return The watch providers.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

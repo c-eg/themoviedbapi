@@ -1,5 +1,7 @@
 package info.movito.themoviedbapi;
 
+import java.util.HashMap;
+
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.lists.ListDetails;
 import info.movito.themoviedbapi.model.lists.ListItemStatus;
@@ -8,8 +10,6 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.Utils;
-
-import java.util.HashMap;
 
 /**
  * The movie database api for lists. See the
@@ -29,9 +29,9 @@ public class TmdbLists extends AbstractTmdbApi {
      * <p>Add a movie to a list.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/list-add-movie">documentation</a> for more info.</p>
      *
-     * @param listId The list id.
+     * @param listId    The list id.
      * @param sessionId The session id.
-     * @param movieId The movie id.
+     * @param movieId   The movie id.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -50,9 +50,9 @@ public class TmdbLists extends AbstractTmdbApi {
      * <p>Use this method to check if an item has already been added to the list.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/list-check-item-status">documentation</a> for more info.</p>
      *
-     * @param listId The list id.
+     * @param listId   The list id.
      * @param language optional - The language to query the results in. Default: en-US.
-     * @param movieId optional - The movie id.
+     * @param movieId  optional - The movie id.
      * @return The list item status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -67,9 +67,9 @@ public class TmdbLists extends AbstractTmdbApi {
      * <p>Clear all items from a list.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/list-clear">documentation</a> for more info.</p>
      *
-     * @param listId The list id.
+     * @param listId    The list id.
      * @param sessionId The session id.
-     * @param confirm Confirm the clear.
+     * @param confirm   Confirm the clear.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -84,10 +84,10 @@ public class TmdbLists extends AbstractTmdbApi {
      * <p>Create a new list.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/list-create">documentation</a> for more info.</p>
      *
-     * @param sessionId The session id.
-     * @param name The name of the list.
+     * @param sessionId   The session id.
+     * @param name        The name of the list.
      * @param description The description of the list.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language    optional - The language to query the results in. Default: en-US.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -108,7 +108,7 @@ public class TmdbLists extends AbstractTmdbApi {
      * <p>Delete a list.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/list-delete">documentation</a> for more info.</p>
      *
-     * @param listId The list id.
+     * @param listId    The list id.
      * @param sessionId The session id.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -123,9 +123,9 @@ public class TmdbLists extends AbstractTmdbApi {
      * <p>Get the details of a list.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/list-details">documentation</a> for more info.</p>
      *
-     * @param listId The list id.
+     * @param listId   The list id.
      * @param language optional - The language to query the results in. Default: en-US.
-     * @param page optional - The page of results to return.
+     * @param page     optional - The page of results to return.
      * @return The movie list.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -140,9 +140,9 @@ public class TmdbLists extends AbstractTmdbApi {
      * <p>Remove a movie from a list.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/list-remove-movie">documentation</a> for more info.</p>
      *
-     * @param listId The list id.
+     * @param listId    The list id.
      * @param sessionId The session id.
-     * @param movieId The movie id.
+     * @param movieId   The movie id.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

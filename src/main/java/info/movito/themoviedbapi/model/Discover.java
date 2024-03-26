@@ -1,5 +1,9 @@
 package info.movito.themoviedbapi.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
@@ -8,10 +12,6 @@ import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Generate a discover object for use in the MovieDbApi

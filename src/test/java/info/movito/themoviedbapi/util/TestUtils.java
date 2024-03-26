@@ -1,11 +1,11 @@
 package info.movito.themoviedbapi.util;
 
-import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
-import org.apache.commons.io.IOUtils;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+
+import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
+import org.apache.commons.io.IOUtils;
 
 /**
  * Test utilities.

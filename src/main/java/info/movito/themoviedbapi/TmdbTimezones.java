@@ -1,15 +1,15 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import com.google.common.collect.Lists;
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * The movie database api for configuration. See the

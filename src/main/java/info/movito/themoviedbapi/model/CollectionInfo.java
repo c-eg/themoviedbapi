@@ -1,12 +1,12 @@
 package info.movito.themoviedbapi.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.collections.Part;
+import info.movito.themoviedbapi.model.core.NamedIdElement;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import info.movito.themoviedbapi.model.core.NamedIdElement;
-
-import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

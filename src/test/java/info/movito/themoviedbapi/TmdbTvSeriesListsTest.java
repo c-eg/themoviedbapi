@@ -1,13 +1,13 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;

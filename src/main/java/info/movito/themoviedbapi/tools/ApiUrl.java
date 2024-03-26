@@ -1,11 +1,5 @@
 package info.movito.themoviedbapi.tools;
 
-import info.movito.themoviedbapi.AbstractTmdbApi;
-import info.movito.themoviedbapi.tools.appendtoresponse.AppendToResponse;
-import info.movito.themoviedbapi.tools.builders.ParamBuilder;
-import info.movito.themoviedbapi.tools.sortby.SortBy;
-import org.apache.commons.lang3.StringUtils;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -14,6 +8,12 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import info.movito.themoviedbapi.AbstractTmdbApi;
+import info.movito.themoviedbapi.tools.appendtoresponse.AppendToResponse;
+import info.movito.themoviedbapi.tools.builders.ParamBuilder;
+import info.movito.themoviedbapi.tools.sortby.SortBy;
+import org.apache.commons.lang3.StringUtils;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -65,7 +65,7 @@ public class ApiUrl {
         try {
             for (Map.Entry<String, String> entry : params.entrySet()) {
                 urlBuilder.append(urlBuilder.toString().contains("?") ? "&" : "?")
-                          .append(entry.getKey()).append("=").append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8));
+                    .append(entry.getKey()).append("=").append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8));
             }
 
             return new URL(urlBuilder.toString());
@@ -78,7 +78,7 @@ public class ApiUrl {
     /**
      * Adds a parameter to the API url.
      *
-     * @param name the key
+     * @param name  the key
      * @param value the value
      */
     public void addPathParam(String name, Object value) {
@@ -88,7 +88,7 @@ public class ApiUrl {
     /**
      * Adds a parameter to the API url.
      *
-     * @param name the key
+     * @param name  the key
      * @param value the value
      */
     public void addPathParam(String name, String value) {
@@ -113,7 +113,7 @@ public class ApiUrl {
      * Adds a parameter to the API url.
      * todo: remove this method
      *
-     * @param key the key
+     * @param key   the key
      * @param value the value
      */
     public void addPathParam(String key, int value) {
@@ -124,7 +124,7 @@ public class ApiUrl {
      * Adds a parameter to the API url.
      * todo: remove this method
      *
-     * @param key the key
+     * @param key   the key
      * @param value the value
      */
     public void addPathParam(String key, boolean value) {
@@ -149,7 +149,7 @@ public class ApiUrl {
     /**
      * Adds an optional parameter to the api endpoint.
      *
-     * @param key the key.
+     * @param key   the key.
      * @param value the value.
      */
     public void addQueryParam(String key, Object value) {
@@ -161,7 +161,7 @@ public class ApiUrl {
     /**
      * Adds an optional, comma separated, parameter to the api endpoint (e.g. "en,null").
      *
-     * @param key the key.
+     * @param key    the key.
      * @param values the values to comma separate.
      */
     public void addQueryParamCommandSeparated(String key, String... values) {

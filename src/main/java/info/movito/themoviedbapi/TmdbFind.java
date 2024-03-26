@@ -23,9 +23,9 @@ public class TmdbFind extends AbstractTmdbApi {
      * <p>Find data by external ID's.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/find-by-id">documentation</a> for more info.</p>
      *
-     * @param externalId The external id of the movie, TV show or people.
+     * @param externalId     The external id of the movie, TV show or people.
      * @param externalSource The external source of the id.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language       optional - The language to query the results in. Default: en-US.
      * @return The find results
      */
     public FindResults findById(String externalId, ExternalSource externalSource, String language) throws TmdbException {

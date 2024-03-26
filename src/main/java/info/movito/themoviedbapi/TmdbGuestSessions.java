@@ -26,9 +26,9 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/guest-session-rated-movies">documentation</a> for more info.</p>
      *
      * @param guestSessionId The guest session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language       optional - The language to use for the results.
+     * @param page           optional - The page to return.
+     * @param sortBy         optional - The sort order of the results.
      * @return The rated movies of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -47,9 +47,9 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/guest-session-rated-tv">documentation</a> for more info.</p>
      *
      * @param guestSessionId The guest session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language       optional - The language to use for the results.
+     * @param page           optional - The page to return.
+     * @param sortBy         optional - The sort order of the results.
      * @return The rated tv series of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -68,9 +68,9 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/guest-session-rated-tv-episodes">documentation</a> for more info.</p>
      *
      * @param guestSessionId The guest session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language       optional - The language to use for the results.
+     * @param page           optional - The page to return.
+     * @param sortBy         optional - The sort order of the results.
      * @return The rated tv episodes of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

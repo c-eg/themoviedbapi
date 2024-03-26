@@ -1,13 +1,13 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+
 import info.movito.themoviedbapi.model.changes.ChangesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_CHANGES;
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_MOVIE;
