@@ -9,7 +9,6 @@
     <!-- disable javadoc check in builders package. The api documentation might change so better to look there for the most up-to-date information -->
     <suppress files="info.movito.themoviedbapi.tools.builders.discover" checks="JavadocMethod"/>
 
-    <suppress files="info.movito.themoviedbapi.tools.MovieDbException" checks="JavadocMethod"/>
     <suppress files="info.movito.themoviedbapi.tools.TmdbException" checks="JavadocMethod"/>
     <suppress files="info.movito.themoviedbapi.tools.TmdbException" checks="MissingJavadocMethod"/>
 </suppressions>
