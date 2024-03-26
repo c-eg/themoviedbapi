@@ -36,8 +36,8 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      *
      * @param seriesId         The TMDb id of the TV series.
      * @param seasonNumber     The season number.
-     * @param language         optional - The language to query the results in. Default: en-US.
-     * @param appendToResponse optional - additional namespaces to append to the result (20 max).
+     * @param language         nullable - The language to query the results in. Default: en-US.
+     * @param appendToResponse nullable - additional namespaces to append to the result (20 max).
      * @return The TV season details.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -55,8 +55,8 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      *
      * @param seriesId       The TMDb id of the TV series.
      * @param seasonNumber   The season number.
-     * @param sessionId      optional - The session id of the user.
-     * @param guestSessionId optional - The guest session id of the user.
+     * @param sessionId      nullable - The session id of the user.
+     * @param guestSessionId nullable - The guest session id of the user.
      * @return The account states.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -74,7 +74,7 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      *
      * @param seriesId     The TMDb id of the TV series.
      * @param seasonNumber The season number.
-     * @param language     optional - The language to query the results in. Default: en-US.
+     * @param language     nullable - The language to query the results in. Default: en-US.
      * @return The aggregate credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -89,9 +89,9 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-season-changes-by-id">documentation</a> for more info.</p>
      *
      * @param seasonId  The TMDb id of the TV season.
-     * @param startDate optional - The start date, in format: YYYY-MM-DD.
-     * @param endDate   optional - The end date, in format: YYYY-MM-DD.
-     * @param page      optional - The page to query. Default: 1.
+     * @param startDate nullable - The start date, in format: YYYY-MM-DD.
+     * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @return The changes.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -109,7 +109,7 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      *
      * @param seriesId     The TMDb id of the TV series.
      * @param seasonNumber The season number.
-     * @param language     optional - The language to query the results in. Default: en-US.
+     * @param language     nullable - The language to query the results in. Default: en-US.
      * @return The credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -139,8 +139,8 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      *
      * @param seriesId             The TMDb id of the TV series.
      * @param seasonNumber         The season number.
-     * @param language             optional - The language to query the results in. Default: en-US.
-     * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
+     * @param language             nullable - The language to query the results in. Default: en-US.
+     * @param includeImageLanguage nullable - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The images.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -171,8 +171,8 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      *
      * @param seriesId             The TMDb id of the TV series.
      * @param seasonNumber         The season number.
-     * @param language             optional - The language to query the results in. Default: en-US.
-     * @param includeVideoLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
+     * @param language             nullable - The language to query the results in. Default: en-US.
+     * @param includeVideoLanguage nullable - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The videos.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -191,7 +191,7 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      *
      * @param seriesId     The TMDb id of the TV series.
      * @param seasonNumber The season number.
-     * @param language     optional - The language to query the results in. Default: en-US.
+     * @param language     nullable - The language to query the results in. Default: en-US.
      * @return The watch providers.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

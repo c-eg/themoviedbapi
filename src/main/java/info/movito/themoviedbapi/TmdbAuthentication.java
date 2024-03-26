@@ -62,7 +62,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      * for more info.</p>
      *
      * @param token The request token.
-     * @param redirectUrl optional - The url to redirect the user to after authentication.
+     * @param redirectUrl nullable - The url to redirect the user to after authentication.
      * @return The url to redirect the user to.
      * @throws TmdbException If the request token is null or not successful.
      */

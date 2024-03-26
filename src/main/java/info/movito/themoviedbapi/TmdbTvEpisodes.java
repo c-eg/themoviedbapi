@@ -41,8 +41,8 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * @param seriesId         The TMDb id of the tv series.
      * @param seasonNumber     The season number of the tv series.
      * @param episodeNumber    The episode number of the tv series.
-     * @param language         optional - The language to query the results in. Default: en-US.
-     * @param appendToResponse optional - additional namespaces to append to the result (20 max).
+     * @param language         nullable - The language to query the results in. Default: en-US.
+     * @param appendToResponse nullable - additional namespaces to append to the result (20 max).
      * @return The tv episode details.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -61,8 +61,8 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * @param seriesId       The TMDb id of the tv series.
      * @param seasonNumber   The season number of the tv series.
      * @param episodeNumber  The episode number of the tv series.
-     * @param sessionId      optional - The session id of the user.
-     * @param guestSessionId optional - The guest session id of the user.
+     * @param sessionId      nullable - The session id of the user.
+     * @param guestSessionId nullable - The guest session id of the user.
      * @return The account states.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -96,7 +96,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * @param seriesId      The TMDb id of the tv series.
      * @param seasonNumber  The season number of the tv series.
      * @param episodeNumber The episode number of the tv series.
-     * @param language      optional - The language to query the results in. Default: en-US.
+     * @param language      nullable - The language to query the results in. Default: en-US.
      * @return The credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -132,8 +132,8 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * @param seriesId             The TMDb id of the tv series.
      * @param seasonNumber         The season number of the tv series.
      * @param episodeNumber        The episode number of the tv series.
-     * @param language             optional - The language to query the results in. Default: en-US.
-     * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
+     * @param language             nullable - The language to query the results in. Default: en-US.
+     * @param includeImageLanguage nullable - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The images.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -170,8 +170,8 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * @param seriesId             The TMDb id of the tv series.
      * @param seasonNumber         The season number of the tv series.
      * @param episodeNumber        The episode number of the tv series.
-     * @param language             optional - The language to query the results in. Default: en-US.
-     * @param includeVideoLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
+     * @param language             nullable - The language to query the results in. Default: en-US.
+     * @param includeVideoLanguage nullable - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The videos.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -193,8 +193,8 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * @param seriesId       The TMDb id of the tv series.
      * @param seasonNumber   The season number of the tv series.
      * @param episodeNumber  The episode number of the tv series.
-     * @param guestSessionId optional - The guest session id of the user.
-     * @param sessionId      optional - The session id of the user.
+     * @param guestSessionId nullable - The guest session id of the user.
+     * @param sessionId      nullable - The session id of the user.
      * @param rating         The rating of the tv episode. Must be: 0 &lt; rating &le; 10.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -226,8 +226,8 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * @param seriesId       The TMDb id of the tv series.
      * @param seasonNumber   The season number of the tv series.
      * @param episodeNumber  The episode number of the tv series.
-     * @param guestSessionId optional - The guest session id of the user.
-     * @param sessionId      optional - The session id of the user.
+     * @param guestSessionId nullable - The guest session id of the user.
+     * @param sessionId      nullable - The session id of the user.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

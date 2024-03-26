@@ -31,8 +31,8 @@ public class TmdbPeople extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/person-details">documentation</a> for more info.</p>
      *
      * @param personId         The TMDb id of the person.
-     * @param language         optional - The language to query the results in. Default: en-US.
-     * @param appendToResponse optional - additional namespaces to append to the result (20 max).
+     * @param language         nullable - The language to query the results in. Default: en-US.
+     * @param appendToResponse nullable - additional namespaces to append to the result (20 max).
      * @return The person details.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -48,9 +48,9 @@ public class TmdbPeople extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/person-changes">documentation</a> for more info.</p>
      *
      * @param personId  The TMDb id of the person.
-     * @param startDate optional - The start date, in format: YYYY-MM-DD.
-     * @param endDate   optional - The end date, in format: YYYY-MM-DD.
-     * @param page      optional - The page of results to return. Default: 1.
+     * @param startDate nullable - The start date, in format: YYYY-MM-DD.
+     * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @return The person changes.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -67,7 +67,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/person-combined-credits">documentation</a> for more info.</p>
      *
      * @param personId The TMDb id of the person.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language nullable - The language to query the results in. Default: en-US.
      * @return The combined person credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -120,7 +120,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/person-movie-credits">documentation</a> for more info.</p>
      *
      * @param personId The TMDb id of the person.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language nullable - The language to query the results in. Default: en-US.
      * @return The movie credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -135,7 +135,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/person-tv-credits">documentation</a> for more info.</p>
      *
      * @param personId The TMDb id of the person.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language nullable - The language to query the results in. Default: en-US.
      * @return The TV credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

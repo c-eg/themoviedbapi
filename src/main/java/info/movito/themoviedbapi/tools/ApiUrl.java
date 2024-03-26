@@ -134,7 +134,7 @@ public class ApiUrl {
     /**
      * Adds all parameters from the given builder to the API url.
      *
-     * @param paramBuilder optional - the parameter builder.
+     * @param paramBuilder nullable - the parameter builder.
      */
     public void addPathParams(ParamBuilder paramBuilder) {
         if (paramBuilder == null) {
@@ -173,7 +173,7 @@ public class ApiUrl {
     /**
      * Adds the page parameter to the API url.
      *
-     * @param page the page number
+     * @param page nullable - The page of results to return. Default: 1.
      */
     public void addPage(Integer page) {
         if (page != null && page > 0) {
@@ -184,7 +184,7 @@ public class ApiUrl {
     /**
      * Adds the language to the API url.
      *
-     * @param language the language.
+     * @param language nullable - The language to query the results in. Default: en-US.
      */
     public void addLanguage(String language) {
         if (isNotBlank(language)) {

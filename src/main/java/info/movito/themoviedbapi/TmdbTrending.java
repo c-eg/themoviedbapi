@@ -29,7 +29,7 @@ public class TmdbTrending extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/trending-all">documentation</a> for more info.</p>
      *
      * @param timeWindow The time window for the trending media.
-     * @param language   optional - The language to query the results in. Default: en-US.
+     * @param language   nullable - The language to query the results in. Default: en-US.
      * @return The trending media.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -45,7 +45,7 @@ public class TmdbTrending extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/trending-movies">documentation</a> for more info.</p>
      *
      * @param timeWindow The time window for the trending movie.
-     * @param language   optional - The language to query the results in. Default: en-US.
+     * @param language   nullable - The language to query the results in. Default: en-US.
      * @return The trending movies.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -61,7 +61,7 @@ public class TmdbTrending extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/trending-people">documentation</a> for more info.</p>
      *
      * @param timeWindow The time window for the trending people.
-     * @param language   optional - The language to query the results in. Default: en-US.
+     * @param language   nullable - The language to query the results in. Default: en-US.
      * @return The trending people.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -77,7 +77,7 @@ public class TmdbTrending extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/trending-tv">documentation</a> for more info.</p>
      *
      * @param timeWindow The time window for the trending tv.
-     * @param language   optional - The language to query the results in. Default: en-US.
+     * @param language   nullable - The language to query the results in. Default: en-US.
      * @return The trending tv.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
