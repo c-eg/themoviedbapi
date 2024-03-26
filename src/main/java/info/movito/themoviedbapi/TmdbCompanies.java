@@ -1,8 +1,7 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.AlternativeName;
-import info.movito.themoviedbapi.model.Company;
-import info.movito.themoviedbapi.model.core.Results;
+import info.movito.themoviedbapi.model.companies.AlternativeNamesResultsPage;
+import info.movito.themoviedbapi.model.companies.Company;
 import info.movito.themoviedbapi.model.core.image.ImageResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -58,9 +57,5 @@ public class TmdbCompanies extends AbstractTmdbApi {
     public ImageResults getImages(Integer companyId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COMPANY, companyId, "images");
         return mapJsonResult(apiUrl, ImageResults.class);
-    }
-
-    @SuppressWarnings("checkstyle:MissingJavadocType")
-    public static class AlternativeNamesResultsPage extends Results<AlternativeName> {
     }
 }

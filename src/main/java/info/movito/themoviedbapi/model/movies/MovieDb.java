@@ -4,13 +4,13 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import info.movito.themoviedbapi.model.Genre;
-import info.movito.themoviedbapi.model.ProductionCompany;
-import info.movito.themoviedbapi.model.ProductionCountry;
 import info.movito.themoviedbapi.model.core.AccountStates;
+import info.movito.themoviedbapi.model.core.Genre;
 import info.movito.themoviedbapi.model.core.IdElement;
 import info.movito.themoviedbapi.model.core.Language;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.ProductionCompany;
+import info.movito.themoviedbapi.model.core.ProductionCountry;
 import info.movito.themoviedbapi.model.core.ReviewResultsPage;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;

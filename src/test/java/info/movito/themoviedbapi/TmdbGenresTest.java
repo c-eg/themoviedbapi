@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import info.movito.themoviedbapi.model.Genre;
+import info.movito.themoviedbapi.model.core.Genre;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;

@@ -1,6 +1,6 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.FindResults;
+import info.movito.themoviedbapi.model.find.FindResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.model.time.ExternalSource;

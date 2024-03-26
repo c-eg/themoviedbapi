@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.model;
+package info.movito.themoviedbapi.model.movies;
 
 import java.util.List;
 

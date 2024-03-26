@@ -1,7 +1,6 @@
-package info.movito.themoviedbapi.model;
+package info.movito.themoviedbapi.model.core;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
-import info.movito.themoviedbapi.model.core.NamedIdElement;
 
 @JsonRootName("genre")
 public class Genre extends NamedIdElement {

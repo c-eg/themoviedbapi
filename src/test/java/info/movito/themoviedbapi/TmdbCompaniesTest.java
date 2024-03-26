@@ -3,7 +3,8 @@ package info.movito.themoviedbapi;
 import java.io.IOException;
 import java.net.URL;
 
-import info.movito.themoviedbapi.model.Company;
+import info.movito.themoviedbapi.model.companies.AlternativeNamesResultsPage;
+import info.movito.themoviedbapi.model.companies.Company;
 import info.movito.themoviedbapi.model.core.image.ImageResults;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
@@ -52,7 +53,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest<TmdbCompanies> {
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId + "/alternative_names");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
-        TmdbCompanies.AlternativeNamesResultsPage alternativeNamesResultsPage = getApiToTest().getAlternativeNames(1);
+        AlternativeNamesResultsPage alternativeNamesResultsPage = getApiToTest().getAlternativeNames(1);
         assertNotNull(alternativeNamesResultsPage);
         validateAbstractJsonMappingFields(alternativeNamesResultsPage);
     }

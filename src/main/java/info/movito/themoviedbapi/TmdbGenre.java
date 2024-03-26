@@ -3,8 +3,8 @@ package info.movito.themoviedbapi;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
+import info.movito.themoviedbapi.model.core.Genre;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
