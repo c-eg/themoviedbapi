@@ -1,14 +1,14 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
 import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbGenre.TMDB_METHOD_GENRE;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;

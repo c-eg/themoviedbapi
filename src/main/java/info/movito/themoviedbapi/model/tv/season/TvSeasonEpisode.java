@@ -1,13 +1,13 @@
 package info.movito.themoviedbapi.model.tv.season;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
 import info.movito.themoviedbapi.model.tv.core.credits.Crew;
 import info.movito.themoviedbapi.model.tv.episode.GuestStar;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

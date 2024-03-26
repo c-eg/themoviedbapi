@@ -1,5 +1,7 @@
 package info.movito.themoviedbapi.model.people;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.model.core.NamedIdElement;
@@ -9,8 +11,6 @@ import info.movito.themoviedbapi.model.people.credits.MovieCredits;
 import info.movito.themoviedbapi.model.people.credits.TvCredits;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

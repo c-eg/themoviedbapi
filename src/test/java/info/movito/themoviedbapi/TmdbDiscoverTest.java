@@ -1,5 +1,8 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
@@ -8,9 +11,6 @@ import info.movito.themoviedbapi.tools.builders.discover.DiscoverMovieParamBuild
 import info.movito.themoviedbapi.tools.builders.discover.DiscoverTvParamBuilder;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
 
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_DISCOVER;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_MOVIE;

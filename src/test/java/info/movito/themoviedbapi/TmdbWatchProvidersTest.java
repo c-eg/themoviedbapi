@@ -1,5 +1,9 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Map;
+
 import info.movito.themoviedbapi.model.watchproviders.AvailableRegionResults;
 import info.movito.themoviedbapi.model.watchproviders.Provider;
 import info.movito.themoviedbapi.model.watchproviders.ProviderResults;
@@ -7,10 +11,6 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
 
 import static info.movito.themoviedbapi.TmdbWatchProviders.TMDB_METHOD_WATCH_PROVIDERS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;

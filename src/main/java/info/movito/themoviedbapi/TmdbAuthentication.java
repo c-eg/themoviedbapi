@@ -1,5 +1,7 @@
 package info.movito.themoviedbapi;
 
+import java.util.HashMap;
+
 import info.movito.themoviedbapi.model.authentication.GuestSession;
 import info.movito.themoviedbapi.model.authentication.RequestToken;
 import info.movito.themoviedbapi.model.authentication.Session;
@@ -9,8 +11,6 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.Utils;
-
-import java.util.HashMap;
 
 /**
  * The movie database api for authentication. See the
@@ -87,12 +87,12 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-create-session-from-login">documentation</a>
      * for more info.</p>
      *
-     * @param token The unauthenticated request token.
+     * @param token    The unauthenticated request token.
      * @param username The TMDB account username.
      * @param password The TMDB account password.
      * @return The authenticated request token.
      * @throws TmdbException If the request token is null or not successful. Or, if there was an error making the request or mapping the
-     * response.
+     *                       response.
      */
     public RequestToken createAuthenticatedRequestToken(RequestToken token, String username, String password) throws TmdbException {
         if (token == null || !token.getSuccess()) {

@@ -1,10 +1,10 @@
 package info.movito.themoviedbapi.tools.builders.discover;
 
+import java.util.List;
+
 import com.google.common.base.Joiner;
 import info.movito.themoviedbapi.tools.sortby.DiscoverTvSortBy;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.List;
 
 /**
  * Builder for parameters to build a 'discover tv' parameter map.

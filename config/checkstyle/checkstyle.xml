@@ -101,6 +101,13 @@ https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_c
 
         <!-- Imports -->
         <module name="AvoidStarImport"/>
+        <module name="ImportOrder">
+            <property name="groups" value="java"/>
+            <property name="option" value="bottom"/>
+            <property name="separated" value="true"/>
+            <property name="separatedStaticGroups" value="true"/>
+            <property name="sortStaticImportsAlphabetically" value="true"/>
+        </module>
         <module name="RedundantImport"/>
         <module name="UnusedImports"/>
 

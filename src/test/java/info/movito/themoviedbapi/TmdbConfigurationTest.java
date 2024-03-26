@@ -1,5 +1,9 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
 import info.movito.themoviedbapi.model.configuration.Configuration;
 import info.movito.themoviedbapi.model.configuration.Country;
 import info.movito.themoviedbapi.model.configuration.Job;
@@ -9,10 +13,6 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbConfiguration.TMDB_METHOD_CONFIGURATION;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;

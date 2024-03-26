@@ -1,15 +1,15 @@
 package info.movito.themoviedbapi.tools.builders.discover;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.google.common.base.Joiner;
 import info.movito.themoviedbapi.AbstractTmdbApi;
 import info.movito.themoviedbapi.tools.builders.ParamBuilder;
 import lombok.AccessLevel;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static info.movito.themoviedbapi.AbstractTmdbApi.PARAM_ADULT;
 
@@ -23,6 +23,7 @@ import static info.movito.themoviedbapi.AbstractTmdbApi.PARAM_ADULT;
  * @param <T> The type of the builder
  */
 public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> implements ParamBuilder {
+    protected static final String PARAM_SORT_BY = "sort_by";
     private static final String PARAM_VOTE_AVERAGE_GTE = "vote_average.gte";
     private static final String PARAM_VOTE_AVERAGE_LTE = "vote_average.lte";
     private static final String PARAM_VOTE_COUNT_GTE = "vote_count.gte";
@@ -41,8 +42,6 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
     private static final String PARAM_WITH_RUNTIME_GTE = "with_runtime.gte";
     private static final String PARAM_WITH_RUNTIME_LTE = "with_runtime.lte";
     private static final String PARAM_WITH_WATCH_PROVIDERS = "with_watch_providers";
-    protected static final String PARAM_SORT_BY = "sort_by";
-
     @Getter(AccessLevel.PROTECTED)
     private final Map<String, String> params = new HashMap<>();
 

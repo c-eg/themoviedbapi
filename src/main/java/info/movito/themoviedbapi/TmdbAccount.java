@@ -1,10 +1,12 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
+import java.util.HashMap;
+
 import info.movito.themoviedbapi.model.account.Account;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
+import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
@@ -14,16 +16,13 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 import info.movito.themoviedbapi.util.Utils;
 
-import java.util.HashMap;
-
 /**
  * The movie database api for accounts. See the
  * <a href="https://developer.themoviedb.org/reference/account-details">documentation</a> for more info.
  */
 public class TmdbAccount extends AbstractTmdbApi {
-    protected static final String TMDB_METHOD_ACCOUNT = "account";
-
     public static final String PARAM_SESSION = "session_id";
+    protected static final String TMDB_METHOD_ACCOUNT = "account";
 
     /**
      * Create a new TmdbAccount instance to call the account related TMDb API methods.
@@ -54,7 +53,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param mediaId the id of the media to add to the favorites list.
+     * @param mediaId   the id of the media to add to the favorites list.
      * @param mediaType the type of media to add to the favorites list.
      * @return The status of the request.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -70,7 +69,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param mediaId the id of the media to remove from the favorites list.
+     * @param mediaId   the id of the media to remove from the favorites list.
      * @param mediaType the type of media to remove from the favorites list.
      * @return The status of the request.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -100,7 +99,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param mediaId the id of the media to add to the watch list.
+     * @param mediaId   the id of the media to add to the watch list.
      * @param mediaType the type of media to add to the watch list.
      * @return The status of the request.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -116,7 +115,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param mediaId the id of the media to remove from the watch list.
+     * @param mediaId   the id of the media to remove from the watch list.
      * @param mediaType the type of media to remove from the watch list.
      * @return The status of the request.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -146,9 +145,9 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language  optional - The language to use for the results.
+     * @param page      optional - The page to return.
+     * @param sortBy    optional - The sort order of the results.
      * @return The favorite movies of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -169,9 +168,9 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language  optional - The language to use for the results.
+     * @param page      optional - The page to return.
+     * @param sortBy    optional - The sort order of the results.
      * @return The favorite tv series of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -192,7 +191,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param page optional - The page to return.
+     * @param page      optional - The page to return.
      * @return The lists of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -210,9 +209,9 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language  optional - The language to use for the results.
+     * @param page      optional - The page to return.
+     * @param sortBy    optional - The sort order of the results.
      * @return The rated movies of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -233,9 +232,9 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language  optional - The language to use for the results.
+     * @param page      optional - The page to return.
+     * @param sortBy    optional - The sort order of the results.
      * @return The rated tv series of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -256,9 +255,9 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language  optional - The language to use for the results.
+     * @param page      optional - The page to return.
+     * @param sortBy    optional - The sort order of the results.
      * @return The rated tv episodes of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -279,9 +278,9 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language  optional - The language to use for the results.
+     * @param page      optional - The page to return.
+     * @param sortBy    optional - The sort order of the results.
      * @return The movies in the account's watchlist
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -302,9 +301,9 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId optional - The session id of the user.
-     * @param language optional - The language to use for the results.
-     * @param page optional - The page to return.
-     * @param sortBy optional - The sort order of the results.
+     * @param language  optional - The language to use for the results.
+     * @param page      optional - The page to return.
+     * @param sortBy    optional - The sort order of the results.
      * @return The tv series in the account's watchlist
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

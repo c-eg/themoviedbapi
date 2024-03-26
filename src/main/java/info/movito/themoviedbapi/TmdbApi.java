@@ -1,13 +1,13 @@
 package info.movito.themoviedbapi;
 
+import java.util.List;
+
 import info.movito.themoviedbapi.model.config.Timezone;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbHttpClient;
 import info.movito.themoviedbapi.tools.TmdbUrlReader;
 import lombok.AccessLevel;
 import lombok.Getter;
-
-import java.util.List;
 
 /**
  * The movie db api for getting started. See the

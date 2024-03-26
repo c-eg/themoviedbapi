@@ -1,10 +1,10 @@
 package info.movito.themoviedbapi.model.core;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Small utility to get all pages.
@@ -29,9 +29,9 @@ public final class ResultPageHelper {
     /**
      * Get all pages.
      *
-     * @param rrp result page provider
+     * @param rrp      result page provider
      * @param maxPages maximum number of pages to fetch
-     * @param <K> type of result
+     * @param <K>      type of result
      * @return all results
      */
     public static <K> List<K> getAll(ResultPageProvider<K> rrp, int maxPages) {

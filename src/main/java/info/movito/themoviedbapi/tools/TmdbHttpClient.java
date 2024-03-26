@@ -1,14 +1,14 @@
 package info.movito.themoviedbapi.tools;
 
+import java.io.IOException;
+import java.net.URL;
+
 import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import lombok.AllArgsConstructor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-
-import java.io.IOException;
-import java.net.URL;
 
 /**
  * Class to make requests to the movie database api.

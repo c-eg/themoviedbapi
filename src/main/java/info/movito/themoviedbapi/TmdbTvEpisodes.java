@@ -1,5 +1,7 @@
 package info.movito.themoviedbapi;
 
+import java.util.HashMap;
+
 import info.movito.themoviedbapi.model.core.AccountStates;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
@@ -14,8 +16,6 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvEpisodesAppendToResponse;
 import info.movito.themoviedbapi.util.Utils;
-
-import java.util.HashMap;
 
 import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
@@ -38,10 +38,10 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * <p>Query the details of a TV episode.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-episode-details">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the tv series.
-     * @param seasonNumber The season number of the tv series.
-     * @param episodeNumber The episode number of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param seriesId         The TMDb id of the tv series.
+     * @param seasonNumber     The season number of the tv series.
+     * @param episodeNumber    The episode number of the tv series.
+     * @param language         optional - The language to query the results in. Default: en-US.
      * @param appendToResponse optional - additional namespaces to append to the result (20 max).
      * @return The tv episode details.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -58,10 +58,10 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * <p>Get the rating, watchlist and favourite status.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-episode-account-states">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the tv series.
-     * @param seasonNumber The season number of the tv series.
-     * @param episodeNumber The episode number of the tv series.
-     * @param sessionId optional - The session id of the user.
+     * @param seriesId       The TMDb id of the tv series.
+     * @param seasonNumber   The season number of the tv series.
+     * @param episodeNumber  The episode number of the tv series.
+     * @param sessionId      optional - The session id of the user.
      * @param guestSessionId optional - The guest session id of the user.
      * @return The account states.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -93,10 +93,10 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * <p>Get the credits for a TV episode.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-episode-credits">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the tv series.
-     * @param seasonNumber The season number of the tv series.
+     * @param seriesId      The TMDb id of the tv series.
+     * @param seasonNumber  The season number of the tv series.
      * @param episodeNumber The episode number of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language      optional - The language to query the results in. Default: en-US.
      * @return The credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -112,8 +112,8 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * <p>Get a list of external IDs that have been added to a TV episode.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-episode-external-ids">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the tv series.
-     * @param seasonNumber The season number of the tv series.
+     * @param seriesId      The TMDb id of the tv series.
+     * @param seasonNumber  The season number of the tv series.
      * @param episodeNumber The episode number of the tv series.
      * @return The external IDs.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -129,10 +129,10 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * <p>Get the images that belong to a TV episode.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-episode-images">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the tv series.
-     * @param seasonNumber The season number of the tv series.
-     * @param episodeNumber The episode number of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param seriesId             The TMDb id of the tv series.
+     * @param seasonNumber         The season number of the tv series.
+     * @param episodeNumber        The episode number of the tv series.
+     * @param language             optional - The language to query the results in. Default: en-US.
      * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The images.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -150,8 +150,8 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * <p>Get the translations that have been added to a TV episode.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-episode-translations">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the tv series.
-     * @param seasonNumber The season number of the tv series.
+     * @param seriesId      The TMDb id of the tv series.
+     * @param seasonNumber  The season number of the tv series.
      * @param episodeNumber The episode number of the tv series.
      * @return The translations.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -167,10 +167,10 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * <p>Get the videos that belong to a TV episode.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-episode-videos">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the tv series.
-     * @param seasonNumber The season number of the tv series.
-     * @param episodeNumber The episode number of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param seriesId             The TMDb id of the tv series.
+     * @param seasonNumber         The season number of the tv series.
+     * @param episodeNumber        The episode number of the tv series.
+     * @param language             optional - The language to query the results in. Default: en-US.
      * @param includeVideoLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The videos.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -190,12 +190,12 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * holder's account.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-episode-add-rating">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the tv series.
-     * @param seasonNumber The season number of the tv series.
-     * @param episodeNumber The episode number of the tv series.
+     * @param seriesId       The TMDb id of the tv series.
+     * @param seasonNumber   The season number of the tv series.
+     * @param episodeNumber  The episode number of the tv series.
      * @param guestSessionId optional - The guest session id of the user.
-     * @param sessionId optional - The session id of the user.
-     * @param rating The rating of the tv episode. Must be: 0 &lt; rating &le; 10.
+     * @param sessionId      optional - The session id of the user.
+     * @param rating         The rating of the tv episode. Must be: 0 &lt; rating &le; 10.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -223,11 +223,11 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
      * holder's account.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-episode-delete-rating">documentation</a> for more info.</p>
      *
-     * @param seriesId The TMDb id of the tv series.
-     * @param seasonNumber The season number of the tv series.
-     * @param episodeNumber The episode number of the tv series.
+     * @param seriesId       The TMDb id of the tv series.
+     * @param seasonNumber   The season number of the tv series.
+     * @param episodeNumber  The episode number of the tv series.
      * @param guestSessionId optional - The guest session id of the user.
-     * @param sessionId optional - The session id of the user.
+     * @param sessionId      optional - The session id of the user.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

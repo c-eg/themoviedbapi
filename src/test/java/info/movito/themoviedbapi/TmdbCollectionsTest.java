@@ -1,5 +1,9 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
 import info.movito.themoviedbapi.model.CollectionInfo;
 import info.movito.themoviedbapi.model.collections.Images;
 import info.movito.themoviedbapi.model.collections.Translation;
@@ -7,10 +11,6 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 
 import static info.movito.themoviedbapi.TmdbCollections.TMDB_METHOD_COLLECTION;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
@@ -72,7 +72,7 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest<TmdbCollections> {
     @Test
     public void testGetImagesMultipleLanguages() throws IOException, TmdbException {
         int collectionId = 1;
-        String[] includeImageLanguage = new String[]{"en", "it"};
+        String[] includeImageLanguage = new String[] {"en", "it"};
 
         String body = TestUtils.readTestFile("api_responses/collections/images.json");
         URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" +

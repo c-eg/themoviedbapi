@@ -1,5 +1,9 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
+
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.lists.ListDetails;
 import info.movito.themoviedbapi.model.lists.ListItemStatus;
@@ -9,10 +13,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.util.Utils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
 
 import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbLists.TMDB_METHOD_LIST;

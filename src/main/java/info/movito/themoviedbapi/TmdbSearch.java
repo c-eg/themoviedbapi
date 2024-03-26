@@ -2,11 +2,11 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
+import info.movito.themoviedbapi.model.core.multi.MultiResultsPage;
 import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
 import info.movito.themoviedbapi.model.search.CollectionResultsPage;
 import info.movito.themoviedbapi.model.search.CompanyResultsPage;
 import info.movito.themoviedbapi.model.search.KeywordResultsPage;
-import info.movito.themoviedbapi.model.core.multi.MultiResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
@@ -36,11 +36,11 @@ public class TmdbSearch extends AbstractTmdbApi {
      * <p>Search for collections by their original, translated and alternative names.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/search-collection">documentation</a> for more info.</p>
      *
-     * @param query The query to search for.
-     * @param language optional - The language to display the results in. e.g. "en-US".
+     * @param query        The query to search for.
+     * @param language     optional - The language to display the results in. e.g. "en-US".
      * @param includeAdult optional - Whether to include adult results in the search.
-     * @param page optional - The page of results to return.
-     * @param region optional - The region (ISO-3166-1 code) to display the results for. e.g. "US".
+     * @param page         optional - The page of results to return.
+     * @param region       optional - The region (ISO-3166-1 code) to display the results for. e.g. "US".
      * @return The collection results.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -60,7 +60,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/search-company">documentation</a> for more info.</p>
      *
      * @param query The query to search for.
-     * @param page optional - The page of results to return.
+     * @param page  optional - The page of results to return.
      * @return The company results.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -76,7 +76,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/search-keyword">documentation</a> for more info.</p>
      *
      * @param query The query to search for.
-     * @param page optional - The page of results to return.
+     * @param page  optional - The page of results to return.
      * @return The keyword results.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -91,13 +91,13 @@ public class TmdbSearch extends AbstractTmdbApi {
      * <p>Search for movies by their original, translated and alternative titles.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/search-movie">documentation</a> for more info.</p>
      *
-     * @param query The query to search for.
-     * @param includeAdult optional - Whether to include adult results in the search.
-     * @param language optional - The language to display the results in. e.g. "en-US".
+     * @param query              The query to search for.
+     * @param includeAdult       optional - Whether to include adult results in the search.
+     * @param language           optional - The language to display the results in. e.g. "en-US".
      * @param primaryReleaseYear optional - Filter the results so that only the primary release year matches this value.
-     * @param page optional - The page of results to return.
-     * @param region optional - The region (ISO-3166-1 code) to display the results for. e.g. "US".
-     * @param year optional - Filter the results so that only the release year matches this value.
+     * @param page               optional - The page of results to return.
+     * @param region             optional - The region (ISO-3166-1 code) to display the results for. e.g. "US".
+     * @param year               optional - Filter the results so that only the release year matches this value.
      * @return The movie results.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -118,10 +118,10 @@ public class TmdbSearch extends AbstractTmdbApi {
      * <p>Use multi search when you want to search for movies, TV shows and people in a single request.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/search-multi">documentation</a> for more info.</p>
      *
-     * @param query The query to search for.
+     * @param query        The query to search for.
      * @param includeAdult optional - Whether to include adult results in the search.
-     * @param language optional - The language to display the results in. e.g. "en-US".
-     * @param page optional - The page of results to return.
+     * @param language     optional - The language to display the results in. e.g. "en-US".
+     * @param page         optional - The page of results to return.
      * @return The multi results.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -138,10 +138,10 @@ public class TmdbSearch extends AbstractTmdbApi {
      * <p>Search for people by their name and also known as names.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/search-person">documentation</a> for more info.</p>
      *
-     * @param query The query to search for.
+     * @param query        The query to search for.
      * @param includeAdult optional - Whether to include adult results in the search.
-     * @param language optional - The language to display the results in. e.g. "en-US".
-     * @param page optional - The page of results to return.
+     * @param language     optional - The language to display the results in. e.g. "en-US".
+     * @param page         optional - The page of results to return.
      * @return The person results.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -158,17 +158,17 @@ public class TmdbSearch extends AbstractTmdbApi {
      * <p>Search for TV shows by their original, translated and also known as names.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/search-tv">documentation</a> for more info.</p>
      *
-     * @param query The query to search for.
+     * @param query            The query to search for.
      * @param firstAirDateYear optional - Filter the results so that only the first air date year matches this value.
-     * @param includeAdult optional - Whether to include adult results in the search.
-     * @param language optional - The language to display the results in. e.g. "en-US".
-     * @param page optional - The page of results to return.
-     * @param year optional - Filter the results so that only the release year matches this value.
+     * @param includeAdult     optional - Whether to include adult results in the search.
+     * @param language         optional - The language to display the results in. e.g. "en-US".
+     * @param page             optional - The page of results to return.
+     * @param year             optional - Filter the results so that only the release year matches this value.
      * @return The TV series results.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage searchTv(String query, Integer firstAirDateYear, Boolean includeAdult, String language, Integer page,
-                                          Integer year) throws TmdbException {
+                                        Integer year) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV);
         apiUrl.addPathParam(PARAM_QUERY, query);
         apiUrl.addQueryParam("first_air_date_year", firstAirDateYear);

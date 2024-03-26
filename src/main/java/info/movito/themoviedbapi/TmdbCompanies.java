@@ -61,5 +61,6 @@ public class TmdbCompanies extends AbstractTmdbApi {
     }
 
     @SuppressWarnings("checkstyle:MissingJavadocType")
-    public static class AlternativeNamesResultsPage extends Results<AlternativeName> { }
+    public static class AlternativeNamesResultsPage extends Results<AlternativeName> {
+    }
 }

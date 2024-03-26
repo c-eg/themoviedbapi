@@ -1,24 +1,24 @@
 package info.movito.themoviedbapi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
-import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
-import info.movito.themoviedbapi.model.search.CollectionResultsPage;
-import info.movito.themoviedbapi.model.search.CompanyResultsPage;
-import info.movito.themoviedbapi.model.search.KeywordResultsPage;
 import info.movito.themoviedbapi.model.core.multi.Multi;
 import info.movito.themoviedbapi.model.core.multi.MultiMovie;
 import info.movito.themoviedbapi.model.core.multi.MultiPerson;
 import info.movito.themoviedbapi.model.core.multi.MultiResultsPage;
 import info.movito.themoviedbapi.model.core.multi.MultiTvSeries;
+import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
+import info.movito.themoviedbapi.model.search.CollectionResultsPage;
+import info.movito.themoviedbapi.model.search.CompanyResultsPage;
+import info.movito.themoviedbapi.model.search.KeywordResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;

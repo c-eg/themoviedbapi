@@ -1,5 +1,7 @@
 package info.movito.themoviedbapi.model.movies;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import info.movito.themoviedbapi.model.Genre;
@@ -15,8 +17,6 @@ import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
