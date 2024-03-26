@@ -20,7 +20,7 @@ public class TmdbPeopleLists extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/person-popular-list">documentation</a> for more info.</p>
      *
      * @param language nullable - The language to query the results in. Default: en-US.
-     * @param page     nullable - The page of results to return.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @return The popular people.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

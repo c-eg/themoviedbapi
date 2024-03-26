@@ -23,7 +23,7 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-airing-today-list">documentation</a> for more info.</p>
      *
      * @param language nullable - The language to query the results in. Default: en-US.
-     * @param page     nullable - The page of results to query. Default: 1.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @param timezone nullable - The timezone to use when querying the air dates.
      * @return a list of TV shows airing today.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -41,7 +41,7 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-on-the-air-list">documentation</a> for more info.</p>
      *
      * @param language nullable - The language to query the results in. Default: en-US.
-     * @param page     nullable - The page of results to query. Default: 1.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @param timezone nullable - The timezone to use when querying the air dates.
      * @return a list of TV shows that air in the next 7 days.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -59,7 +59,7 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-popular-list">documentation</a> for more info.</p>
      *
      * @param language nullable - The language to query the results in. Default: en-US.
-     * @param page     nullable - The page of results to query. Default: 1.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @return a list of TV shows ordered by popularity.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -75,7 +75,7 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-top-rated-list">documentation</a> for more info.</p>
      *
      * @param language nullable - The language to query the results in. Default: en-US.
-     * @param page     nullable - The page of results to query. Default: 1.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @return a list of TV shows ordered by rating.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

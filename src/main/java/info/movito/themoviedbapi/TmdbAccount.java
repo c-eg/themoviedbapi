@@ -146,7 +146,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
      * @param language  nullable - The language to query the results in. Default: en-US.
-     * @param page      nullable - The page to return.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @param sortBy    nullable - The sort order of the results.
      * @return The favorite movies of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -169,7 +169,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
      * @param language  nullable - The language to query the results in. Default: en-US.
-     * @param page      nullable - The page to return.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @param sortBy    nullable - The sort order of the results.
      * @return The favorite tv series of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -191,7 +191,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
-     * @param page      nullable - The page to return.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @return The lists of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -210,7 +210,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
      * @param language  nullable - The language to query the results in. Default: en-US.
-     * @param page      nullable - The page to return.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @param sortBy    nullable - The sort order of the results.
      * @return The rated movies of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -233,7 +233,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
      * @param language  nullable - The language to query the results in. Default: en-US.
-     * @param page      nullable - The page to return.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @param sortBy    nullable - The sort order of the results.
      * @return The rated tv series of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -256,7 +256,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
      * @param language  nullable - The language to query the results in. Default: en-US.
-     * @param page      nullable - The page to return.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @param sortBy    nullable - The sort order of the results.
      * @return The rated tv episodes of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -279,7 +279,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
      * @param language  nullable - The language to query the results in. Default: en-US.
-     * @param page      nullable - The page to return.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @param sortBy    nullable - The sort order of the results.
      * @return The movies in the account's watchlist
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -302,7 +302,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
      * @param language  nullable - The language to query the results in. Default: en-US.
-     * @param page      nullable - The page to return.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @param sortBy    nullable - The sort order of the results.
      * @return The tv series in the account's watchlist
      * @throws TmdbException If there was an error making the request or mapping the response.

@@ -173,7 +173,7 @@ public class ApiUrl {
     /**
      * Adds the page parameter to the API url.
      *
-     * @param page the page number
+     * @param page nullable - The page of results to return. Default: 1.
      */
     public void addPage(Integer page) {
         if (page != null && page > 0) {

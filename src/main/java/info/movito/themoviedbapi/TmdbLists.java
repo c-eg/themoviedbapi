@@ -125,7 +125,7 @@ public class TmdbLists extends AbstractTmdbApi {
      *
      * @param listId   The list id.
      * @param language nullable - The language to query the results in. Default: en-US.
-     * @param page     nullable - The page of results to return.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @return The movie list.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

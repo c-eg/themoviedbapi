@@ -32,7 +32,7 @@ public class TmdbChanges extends AbstractTmdbApi {
      *
      * @param startDate nullable - The start date, in format: YYYY-MM-DD.
      * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
-     * @param page      nullable - The page.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @return The changes results page.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -55,7 +55,7 @@ public class TmdbChanges extends AbstractTmdbApi {
      *
      * @param startDate nullable - The start date, in format: YYYY-MM-DD.
      * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
-     * @param page      nullable - The page.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @return The changes results page.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -78,7 +78,7 @@ public class TmdbChanges extends AbstractTmdbApi {
      *
      * @param startDate nullable - The start date, in format: YYYY-MM-DD.
      * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
-     * @param page      nullable - The page.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @return nullable - The changes results page.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

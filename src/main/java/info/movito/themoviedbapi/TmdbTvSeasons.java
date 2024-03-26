@@ -91,7 +91,7 @@ public class TmdbTvSeasons extends AbstractTmdbApi {
      * @param seasonId  The TMDb id of the TV season.
      * @param startDate nullable - The start date, in format: YYYY-MM-DD.
      * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
-     * @param page      nullable - The page to query. Default: 1.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @return The changes.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
