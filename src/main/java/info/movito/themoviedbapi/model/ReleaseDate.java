@@ -18,7 +18,7 @@ public class ReleaseDate extends AbstractJsonMapping {
     private List<Object> descriptors;
 
     @JsonProperty("iso_639_1")
-    private String language;
+    private String iso6391;
 
     @JsonProperty("release_date")
     private String releaseDate;

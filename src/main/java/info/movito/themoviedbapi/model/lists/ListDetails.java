@@ -27,7 +27,7 @@ public class ListDetails extends NamedIdElement {
     private Integer itemCount;
 
     @JsonProperty("iso_639_1")
-    private String iso639;
+    private String iso6391;
 
     @JsonProperty("poster_path")
     private String posterPath;

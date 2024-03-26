@@ -18,7 +18,7 @@ public class TvSeriesList extends NamedIdElement {
     private Integer itemCount;
 
     @JsonProperty("iso_639_1")
-    private String iso639;
+    private String iso6391;
 
     @JsonProperty("iso_3166_1")
     private String iso31661;

@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class ReleaseInfo extends AbstractJsonMapping {
     @JsonProperty("iso_3166_1")
-    private String country;
+    private String iso31661;
 
     @JsonProperty("release_dates")
     private List<ReleaseDate> releaseDates;

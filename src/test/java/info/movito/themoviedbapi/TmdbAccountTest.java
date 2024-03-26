@@ -14,6 +14,7 @@ import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.util.Utils;
@@ -73,8 +74,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         ResponseStatus responseStatus = getApiToTest().addFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
-        assertEquals(1, responseStatus.getStatusCode());
-        assertEquals("Success.", responseStatus.getStatusMessage());
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
     /**
@@ -100,8 +100,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         ResponseStatus responseStatus = getApiToTest().removeFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
-        assertEquals(1, responseStatus.getStatusCode());
-        assertEquals("Success.", responseStatus.getStatusMessage());
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
     /**
@@ -127,8 +126,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         ResponseStatus responseStatus = getApiToTest().addToWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
-        assertEquals(1, responseStatus.getStatusCode());
-        assertEquals("Success.", responseStatus.getStatusMessage());
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
     /**
@@ -154,8 +152,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         ResponseStatus responseStatus = getApiToTest().removeFromWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
-        assertEquals(1, responseStatus.getStatusCode());
-        assertEquals("Success.", responseStatus.getStatusMessage());
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
     /**

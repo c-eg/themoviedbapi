@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class AlternativeTitle extends AbstractJsonMapping {
     @JsonProperty("iso_3166_1")
-    private String country;
+    private String iso31661;
 
     @JsonProperty("title")
     private String title;

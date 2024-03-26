@@ -17,6 +17,7 @@ import info.movito.themoviedbapi.model.tv.episode.Images;
 import info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvEpisodesAppendToResponse;
 import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.util.TestUtils;
@@ -210,7 +211,7 @@ public class TmdbTvEpisodesTest extends AbstractTmdbApiTest<TmdbTvEpisodes> {
         ResponseStatus responseStatus = getApiToTest().addRating(123, 1, 1, null, null, 2.1);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
-        assertEquals(1, responseStatus.getStatusCode());
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
     /**
@@ -226,6 +227,6 @@ public class TmdbTvEpisodesTest extends AbstractTmdbApiTest<TmdbTvEpisodes> {
         ResponseStatus responseStatus = getApiToTest().deleteRating(123, 1, 1, null, null);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
-        assertEquals(13, responseStatus.getStatusCode());
+        assertEquals(TmdbResponseCode.ITEM_DELETED, responseStatus.getStatusCode());
     }
 }

@@ -142,19 +142,15 @@ public abstract class AbstractTmdbApi {
             // check if the response was successful. tmdb have their own codes for successful and unsuccessful responses.
             // some 2xx codes are not successful. See: https://developer.themoviedb.org/docs/errors for more info.
             ResponseStatus responseStatus = responseStatusReader.readValue(jsonResponse);
-            Integer statusCode = responseStatus.getStatusCode();
+            TmdbResponseCode tmdbResponseCode = responseStatus.getStatusCode();
 
-            if (statusCode != null) {
-                TmdbResponseCode tmdbResponseCode = TmdbResponseCode.fromCode(statusCode);
-
-                if (tmdbResponseCode != null) {
-                    if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
-                        Thread.sleep(1000);
-                        return mapJsonResult(apiUrl, jsonBody, requestType, objectReader);
-                    }
-                    else if (!tmdbResponseCode.isSuccess()) {
-                        throw new TmdbResponseException(tmdbResponseCode);
-                    }
+            if (tmdbResponseCode != null) {
+                if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
+                    Thread.sleep(1000);
+                    return mapJsonResult(apiUrl, jsonBody, requestType, objectReader);
+                }
+                else if (!tmdbResponseCode.isSuccess()) {
+                    throw new TmdbResponseException(tmdbResponseCode);
                 }
             }
         }
