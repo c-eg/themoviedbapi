@@ -28,11 +28,7 @@ public abstract class AbstractTmdbApi {
 
     public static final String PARAM_LANGUAGE = "language";
 
-    public static final String PARAM_ID = "id";
-
     public static final String PARAM_ADULT = "include_adult";
-
-    public static final String PARAM_API_KEY = "api_key";
 
     public static final String PARAM_SORT_BY = "sort_by";
 

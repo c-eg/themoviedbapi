@@ -110,28 +110,6 @@ public class ApiUrl {
     }
 
     /**
-     * Adds a parameter to the API url.
-     * todo: remove this method
-     *
-     * @param key   the key
-     * @param value the value
-     */
-    public void addPathParam(String key, int value) {
-        addPathParam(key, Integer.toString(value));
-    }
-
-    /**
-     * Adds a parameter to the API url.
-     * todo: remove this method
-     *
-     * @param key   the key
-     * @param value the value
-     */
-    public void addPathParam(String key, boolean value) {
-        addPathParam(key, Boolean.toString(value));
-    }
-
-    /**
      * Adds all parameters from the given builder to the API url.
      *
      * @param paramBuilder nullable - the parameter builder.

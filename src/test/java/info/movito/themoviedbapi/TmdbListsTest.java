@@ -64,7 +64,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     }
 
     /**
-     * Tests {@link TmdbLists#clear(Integer, String, boolean)} with an expected result.
+     * Tests {@link TmdbLists#clear(Integer, String, Boolean)} with an expected result.
      */
     @Test
     public void testClear() throws IOException, TmdbException {

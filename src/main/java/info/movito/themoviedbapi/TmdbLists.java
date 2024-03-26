@@ -73,7 +73,7 @@ public class TmdbLists extends AbstractTmdbApi {
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public ResponseStatus clear(Integer listId, String sessionId, boolean confirm) throws TmdbException {
+    public ResponseStatus clear(Integer listId, String sessionId, Boolean confirm) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "clear");
         apiUrl.addPathParam("session_id", sessionId);
         apiUrl.addPathParam("confirm", confirm);
