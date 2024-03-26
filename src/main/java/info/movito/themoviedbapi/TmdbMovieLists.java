@@ -23,7 +23,7 @@ public class TmdbMovieLists extends AbstractTmdbApi {
      * <p>Get a list of movies that are currently in theatres.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-now-playing-list">documentation</a> for more info.</p>
      *
-     * @param language nullable - The language to display the results in. e.g. "en-US".
+     * @param language nullable - The language to query the results in. Default: en-US.
      * @param page     nullable - The page of results to return.
      * @param region   nullable - The region (ISO-3166-1 code) to display the results for. e.g. "US".
      * @return The now playing movies.
@@ -41,7 +41,7 @@ public class TmdbMovieLists extends AbstractTmdbApi {
      * <p>Get a list of movies ordered by popularity.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-popular-list">documentation</a> for more info.</p>
      *
-     * @param language nullable - The language to display the results in. e.g. "en-US".
+     * @param language nullable - The language to query the results in. Default: en-US.
      * @param page     nullable - The page of results to return.
      * @param region   nullable - The region (ISO-3166-1 code) to display the results for. e.g. "US".
      * @return The popular movies.
@@ -59,7 +59,7 @@ public class TmdbMovieLists extends AbstractTmdbApi {
      * <p>Get a list of movies ordered by rating.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-top-rated-list">documentation</a> for more info.</p>
      *
-     * @param language nullable - The language to display the results in. e.g. "en-US".
+     * @param language nullable - The language to query the results in. Default: en-US.
      * @param page     nullable - The page of results to return.
      * @param region   nullable - The region (ISO-3166-1 code) to display the results for. e.g. "US".
      * @return The top-rated movies.
@@ -77,7 +77,7 @@ public class TmdbMovieLists extends AbstractTmdbApi {
      * <p>Get a list of movies that are being released soon.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-upcoming-list">documentation</a> for more info.</p>
      *
-     * @param language nullable - The language to display the results in. e.g. "en-US".
+     * @param language nullable - The language to query the results in. Default: en-US.
      * @param page     nullable - The page of results to return.
      * @param region   nullable - The region (ISO-3166-1 code) to display the results for. e.g. "US".
      * @return The upcoming movies.

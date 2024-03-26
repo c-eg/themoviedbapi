@@ -37,7 +37,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/search-collection">documentation</a> for more info.</p>
      *
      * @param query        The query to search for.
-     * @param language     nullable - The language to display the results in. e.g. "en-US".
+     * @param language     nullable - The language to query the results in. Default: en-US.
      * @param includeAdult nullable - Whether to include adult results in the search.
      * @param page         nullable - The page of results to return.
      * @param region       nullable - The region (ISO-3166-1 code) to display the results for. e.g. "US".
@@ -93,7 +93,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      *
      * @param query              The query to search for.
      * @param includeAdult       nullable - Whether to include adult results in the search.
-     * @param language           nullable - The language to display the results in. e.g. "en-US".
+     * @param language           nullable - The language to query the results in. Default: en-US.
      * @param primaryReleaseYear nullable - Filter the results so that only the primary release year matches this value.
      * @param page               nullable - The page of results to return.
      * @param region             nullable - The region (ISO-3166-1 code) to display the results for. e.g. "US".
@@ -120,7 +120,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      *
      * @param query        The query to search for.
      * @param includeAdult nullable - Whether to include adult results in the search.
-     * @param language     nullable - The language to display the results in. e.g. "en-US".
+     * @param language     nullable - The language to query the results in. Default: en-US.
      * @param page         nullable - The page of results to return.
      * @return The multi results.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -140,7 +140,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      *
      * @param query        The query to search for.
      * @param includeAdult nullable - Whether to include adult results in the search.
-     * @param language     nullable - The language to display the results in. e.g. "en-US".
+     * @param language     nullable - The language to query the results in. Default: en-US.
      * @param page         nullable - The page of results to return.
      * @return The person results.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -161,7 +161,7 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @param query            The query to search for.
      * @param firstAirDateYear nullable - Filter the results so that only the first air date year matches this value.
      * @param includeAdult     nullable - Whether to include adult results in the search.
-     * @param language         nullable - The language to display the results in. e.g. "en-US".
+     * @param language         nullable - The language to query the results in. Default: en-US.
      * @param page             nullable - The page of results to return.
      * @param year             nullable - Filter the results so that only the release year matches this value.
      * @return The TV series results.

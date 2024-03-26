@@ -19,8 +19,8 @@ import static info.movito.themoviedbapi.AbstractTmdbApi.PARAM_ADULT;
  * <p>For more information, see: <a href="https://developer.themoviedb.org/reference/discover-movie">Discover movie docs</a> and
  * <a href="https://developer.themoviedb.org/reference/discover-tv">Discover tv docs</a>.</p>
  *
- * @author stuart.boston & c-eg
  * @param <T> The type of the builder
+ * @author stuart.boston & c-eg
  */
 public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> implements ParamBuilder {
     protected static final String PARAM_SORT_BY = "sort_by";

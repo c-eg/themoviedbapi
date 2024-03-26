@@ -139,7 +139,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/movie-images">documentation</a> for more info.</p>
      *
      * @param movieId              The movie id.
-     * @param language             nullable - The language.
+     * @param language             nullable - The language to query the results in. Default: en-US.
      * @param includeImageLanguage nullable - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The images.
      * @throws TmdbException If there was an error making the request or mapping the response.

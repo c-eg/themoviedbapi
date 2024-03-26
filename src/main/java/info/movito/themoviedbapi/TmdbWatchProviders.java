@@ -24,7 +24,7 @@ public class TmdbWatchProviders extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/watch-providers-available-regions">documentation</a>
      * for more info.</p>
      *
-     * @param language nullable - The language, e.g. "en-US".
+     * @param language nullable - The language to query the results in. Default: en-US.
      */
     public AvailableRegionResults getAvailableRegions(String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_WATCH_PROVIDERS);
@@ -37,7 +37,7 @@ public class TmdbWatchProviders extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/watch-providers-movie-list">documentation</a>
      * for more info.</p>
      *
-     * @param language    nullable - The language, e.g. "en-US".
+     * @param language    nullable - The language to query the results in. Default: en-US.
      * @param watchRegion nullable - The watch region, e.g. "AD"
      */
     public ProviderResults getMovieProviders(String language, String watchRegion) throws TmdbException {
@@ -54,7 +54,7 @@ public class TmdbWatchProviders extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/watch-provider-tv-list">documentation</a>
      * for more info.</p>
      *
-     * @param language    nullable - The language, e.g. "en-US".
+     * @param language    nullable - The language to query the results in. Default: en-US.
      * @param watchRegion nullable - The watch region, e.g. "AD".
      */
     public ProviderResults getTvProviders(String language, String watchRegion) throws TmdbException {

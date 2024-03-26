@@ -26,7 +26,7 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/guest-session-rated-movies">documentation</a> for more info.</p>
      *
      * @param guestSessionId The guest session id of the user.
-     * @param language       nullable - The language to use for the results.
+     * @param language       nullable - The language to query the results in. Default: en-US.
      * @param page           nullable - The page to return.
      * @param sortBy         nullable - The sort order of the results.
      * @return The rated movies of the user.
@@ -47,7 +47,7 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/guest-session-rated-tv">documentation</a> for more info.</p>
      *
      * @param guestSessionId The guest session id of the user.
-     * @param language       nullable - The language to use for the results.
+     * @param language       nullable - The language to query the results in. Default: en-US.
      * @param page           nullable - The page to return.
      * @param sortBy         nullable - The sort order of the results.
      * @return The rated tv series of the user.
@@ -68,7 +68,7 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/guest-session-rated-tv-episodes">documentation</a> for more info.</p>
      *
      * @param guestSessionId The guest session id of the user.
-     * @param language       nullable - The language to use for the results.
+     * @param language       nullable - The language to query the results in. Default: en-US.
      * @param page           nullable - The page to return.
      * @param sortBy         nullable - The sort order of the results.
      * @return The rated tv episodes of the user.

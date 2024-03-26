@@ -184,7 +184,7 @@ public class ApiUrl {
     /**
      * Adds the language to the API url.
      *
-     * @param language the language.
+     * @param language nullable - The language to query the results in. Default: en-US.
      */
     public void addLanguage(String language) {
         if (isNotBlank(language)) {

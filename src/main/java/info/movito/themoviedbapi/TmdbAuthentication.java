@@ -29,6 +29,31 @@ public class TmdbAuthentication extends AbstractTmdbApi {
     }
 
     /**
+     * <p>Creates the url to redirect the user to in order to authenticate their request token.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-how-do-i-generate-a-session-id">documentation</a>
+     * for more info.</p>
+     *
+     * @param token       The request token.
+     * @param redirectUrl nullable - The url to redirect the user to after authentication.
+     * @return The url to redirect the user to.
+     * @throws TmdbException If the request token is null or not successful.
+     */
+    public static String getTmdbAuthenticationUrlForRequestToken(RequestToken token, String redirectUrl) throws TmdbException {
+        if (token == null || !token.getSuccess()) {
+            throw new TmdbException("Invalid request token! The request token must not be null and must be successful!");
+        }
+
+        StringBuilder sb = new StringBuilder("https://www.themoviedb.org/authenticate/");
+        sb.append(token.getRequestToken());
+
+        if (redirectUrl != null && !redirectUrl.trim().isEmpty()) {
+            sb.append("?redirect_to=").append(redirectUrl);
+        }
+
+        return sb.toString();
+    }
+
+    /**
      * <p>Creates a guest session.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-create-guest-session">documentation</a>
      * for more info.</p>
@@ -54,31 +79,6 @@ public class TmdbAuthentication extends AbstractTmdbApi {
     public RequestToken createRequestToken() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "token/new");
         return mapJsonResult(apiUrl, RequestToken.class);
-    }
-
-    /**
-     * <p>Creates the url to redirect the user to in order to authenticate their request token.</p>
-     * <p>See the <a href="https://developer.themoviedb.org/reference/authentication-how-do-i-generate-a-session-id">documentation</a>
-     * for more info.</p>
-     *
-     * @param token The request token.
-     * @param redirectUrl nullable - The url to redirect the user to after authentication.
-     * @return The url to redirect the user to.
-     * @throws TmdbException If the request token is null or not successful.
-     */
-    public static String getTmdbAuthenticationUrlForRequestToken(RequestToken token, String redirectUrl) throws TmdbException {
-        if (token == null || !token.getSuccess()) {
-            throw new TmdbException("Invalid request token! The request token must not be null and must be successful!");
-        }
-
-        StringBuilder sb = new StringBuilder("https://www.themoviedb.org/authenticate/");
-        sb.append(token.getRequestToken());
-
-        if (redirectUrl != null && !redirectUrl.trim().isEmpty()) {
-            sb.append("?redirect_to=").append(redirectUrl);
-        }
-
-        return sb.toString();
     }
 
     /**

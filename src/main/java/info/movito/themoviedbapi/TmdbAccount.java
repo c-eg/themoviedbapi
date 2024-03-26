@@ -145,7 +145,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
-     * @param language  nullable - The language to use for the results.
+     * @param language  nullable - The language to query the results in. Default: en-US.
      * @param page      nullable - The page to return.
      * @param sortBy    nullable - The sort order of the results.
      * @return The favorite movies of the user.
@@ -168,7 +168,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
-     * @param language  nullable - The language to use for the results.
+     * @param language  nullable - The language to query the results in. Default: en-US.
      * @param page      nullable - The page to return.
      * @param sortBy    nullable - The sort order of the results.
      * @return The favorite tv series of the user.
@@ -209,7 +209,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
-     * @param language  nullable - The language to use for the results.
+     * @param language  nullable - The language to query the results in. Default: en-US.
      * @param page      nullable - The page to return.
      * @param sortBy    nullable - The sort order of the results.
      * @return The rated movies of the user.
@@ -232,7 +232,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
-     * @param language  nullable - The language to use for the results.
+     * @param language  nullable - The language to query the results in. Default: en-US.
      * @param page      nullable - The page to return.
      * @param sortBy    nullable - The sort order of the results.
      * @return The rated tv series of the user.
@@ -255,7 +255,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
-     * @param language  nullable - The language to use for the results.
+     * @param language  nullable - The language to query the results in. Default: en-US.
      * @param page      nullable - The page to return.
      * @param sortBy    nullable - The sort order of the results.
      * @return The rated tv episodes of the user.
@@ -278,7 +278,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
-     * @param language  nullable - The language to use for the results.
+     * @param language  nullable - The language to query the results in. Default: en-US.
      * @param page      nullable - The page to return.
      * @param sortBy    nullable - The sort order of the results.
      * @return The movies in the account's watchlist
@@ -301,7 +301,7 @@ public class TmdbAccount extends AbstractTmdbApi {
      *
      * @param accountId The account id of the user.
      * @param sessionId nullable - The session id of the user.
-     * @param language  nullable - The language to use for the results.
+     * @param language  nullable - The language to query the results in. Default: en-US.
      * @param page      nullable - The page to return.
      * @param sortBy    nullable - The sort order of the results.
      * @return The tv series in the account's watchlist
