@@ -3,6 +3,7 @@ package info.movito.themoviedbapi.tools;
 import java.util.Arrays;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -76,6 +77,7 @@ public enum TmdbResponseCode {
      *
      * @param tmdbCode the 'status_code'.
      */
+    @JsonCreator
     public static TmdbResponseCode fromCode(int tmdbCode) {
         return Arrays.stream(TmdbResponseCode.values())
             .filter(responseCode -> responseCode.getTmdbCode() == tmdbCode)

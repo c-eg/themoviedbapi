@@ -24,6 +24,7 @@ import info.movito.themoviedbapi.model.movies.Translations;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import info.movito.themoviedbapi.tools.appendtoresponse.MovieAppendToResponse;
 import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.util.TestUtils;
@@ -365,7 +366,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
         ResponseStatus responseStatus = getApiToTest().addRating(123, null, null, 2.1);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
-        assertEquals(1, responseStatus.getStatusCode());
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
     /**
@@ -380,6 +381,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
         ResponseStatus responseStatus = getApiToTest().deleteRating(123, null, null);
         assertNotNull(responseStatus);
         validateAbstractJsonMappingFields(responseStatus);
-        assertEquals(13, responseStatus.getStatusCode());
+        assertEquals(TmdbResponseCode.ITEM_DELETED, responseStatus.getStatusCode());
     }
 }
