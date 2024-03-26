@@ -46,8 +46,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-details">documentation</a> for more info.</p>
      *
      * @param seriesId         The TMDb id of the tv series.
-     * @param language         optional - The language to query the results in. Default: en-US.
-     * @param appendToResponse optional - additional namespaces to append to the result (20 max).
+     * @param language         nullable - The language to query the results in. Default: en-US.
+     * @param appendToResponse nullable - additional namespaces to append to the result (20 max).
      * @return The tv series details.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -63,8 +63,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-account-states">documentation</a> for more info.</p>
      *
      * @param seriesId       The TMDb id of the tv series.
-     * @param sessionId      optional - The session id of the user.
-     * @param guestSessionId optional - The guest session id of the user.
+     * @param sessionId      nullable - The session id of the user.
+     * @param guestSessionId nullable - The guest session id of the user.
      * @return The account states of the tv series.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -80,7 +80,7 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-aggregate-credits">documentation</a> for more info.</p>
      *
      * @param seriesId The TMDb id of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language nullable - The language to query the results in. Default: en-US.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public AggregateCredits getAggregateCredits(int seriesId, String language) throws TmdbException {
@@ -107,9 +107,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-changes">documentation</a> for more info.</p>
      *
      * @param seriesId  The TMDb id of the tv series.
-     * @param startDate optional - The start date, in format: YYYY-MM-DD.
-     * @param endDate   optional - The end date, in format: YYYY-MM-DD.
-     * @param page      optional - The page of results to return. Default: 1.
+     * @param startDate nullable - The start date, in format: YYYY-MM-DD.
+     * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
+     * @param page      nullable - The page of results to return. Default: 1.
      * @return The tv series changes.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -139,7 +139,7 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-credits">documentation</a> for more info.</p>
      *
      * @param seriesId The TMDb id of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
+     * @param language nullable - The language to query the results in. Default: en-US.
      * @return The tv series credits.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -180,8 +180,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-images">documentation</a> for more info.</p>
      *
      * @param seriesId             The TMDb id of the tv series.
-     * @param language             optional - The language to query the results in. Default: en-US.
-     * @param includeImageLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
+     * @param language             nullable - The language to query the results in. Default: en-US.
+     * @param includeImageLanguage nullable - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The tv series images.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -222,8 +222,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/lists-copy">documentation</a> for more info.</p>
      *
      * @param seriesId The TMDb id of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
-     * @param page     optional - The page of results to return. Default: 1.
+     * @param language nullable - The language to query the results in. Default: en-US.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @return The tv series lists.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -239,8 +239,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-recommendations">documentation</a> for more info.</p>
      *
      * @param seriesId The TMDb id of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
-     * @param page     optional - The page of results to return. Default: 1.
+     * @param language nullable - The language to query the results in. Default: en-US.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @return The tv series lists.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -256,8 +256,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-reviews">documentation</a> for more info.</p>
      *
      * @param seriesId The TMDb id of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
-     * @param page     optional - The page of results to return. Default: 1.
+     * @param language nullable - The language to query the results in. Default: en-US.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @return The tv series reviews.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -286,8 +286,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-similar">documentation</a> for more info.</p>
      *
      * @param seriesId The TMDb id of the tv series.
-     * @param language optional - The language to query the results in. Default: en-US.
-     * @param page     optional - The page of results to return. Default: 1.
+     * @param language nullable - The language to query the results in. Default: en-US.
+     * @param page     nullable - The page of results to return. Default: 1.
      * @return The similar tv series.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -316,8 +316,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-videos">documentation</a> for more info.</p>
      *
      * @param seriesId             The TMDb id of the tv series.
-     * @param language             optional - The language to query the results in. Default: en-US.
-     * @param includeVideoLanguage optional - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
+     * @param language             nullable - The language to query the results in. Default: en-US.
+     * @param includeVideoLanguage nullable - Specify a comma separated list of ISO-639-1 values to query, for example: en,it
      * @return The videos.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -350,8 +350,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-add-rating">documentation</a> for more info.</p>
      *
      * @param seriesId       The TMDb id of the tv series.
-     * @param guestSessionId optional - The guest session id of the user.
-     * @param sessionId      optional - The session id of the user.
+     * @param guestSessionId nullable - The guest session id of the user.
+     * @param sessionId      nullable - The session id of the user.
      * @param rating         The rating of the tv series. Must be: 0 &lt; rating &le; 10.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
@@ -379,8 +379,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/tv-series-delete-rating">documentation</a> for more info.</p>
      *
      * @param seriesId       The TMDb id of the tv series.
-     * @param guestSessionId optional - The guest session id of the user.
-     * @param sessionId      optional - The session id of the user.
+     * @param guestSessionId nullable - The guest session id of the user.
+     * @param sessionId      nullable - The session id of the user.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

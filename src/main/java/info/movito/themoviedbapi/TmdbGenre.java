@@ -26,7 +26,7 @@ public class TmdbGenre extends AbstractTmdbApi {
      * <p>Get the list of official genres for movies.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/genre-movie-list">documentation</a> for more info.</p>
      *
-     * @param language optional - The language, e.g. "en".
+     * @param language nullable - The language, e.g. "en".
      * @return The list of official genres for movies.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -40,7 +40,7 @@ public class TmdbGenre extends AbstractTmdbApi {
      * <p>Get the list of official genres for TV shows.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/genre-tv-list">documentation</a> for more info.</p>
      *
-     * @param language optional - The language, e.g. "en".
+     * @param language nullable - The language, e.g. "en".
      * @return The list of official genres for movies.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

@@ -134,7 +134,7 @@ public class ApiUrl {
     /**
      * Adds all parameters from the given builder to the API url.
      *
-     * @param paramBuilder optional - the parameter builder.
+     * @param paramBuilder nullable - the parameter builder.
      */
     public void addPathParams(ParamBuilder paramBuilder) {
         if (paramBuilder == null) {

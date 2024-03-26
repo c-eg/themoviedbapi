@@ -30,9 +30,9 @@ public class TmdbChanges extends AbstractTmdbApi {
      * <p>Get a list of all the movie ids that have been changed in the past 24 hours.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/changes-movie-list">documentation</a> for more info.</p>
      *
-     * @param startDate optional - The start date, in format: YYYY-MM-DD.
-     * @param endDate   optional - The end date, in format: YYYY-MM-DD.
-     * @param page      optional - The page.
+     * @param startDate nullable - The start date, in format: YYYY-MM-DD.
+     * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
+     * @param page      nullable - The page.
      * @return The changes results page.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -53,9 +53,9 @@ public class TmdbChanges extends AbstractTmdbApi {
      * <p>Get a list of all the people ids that have been changed in the past 24 hours.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/changes-people-list">documentation</a> for more info.</p>
      *
-     * @param startDate optional - The start date, in format: YYYY-MM-DD.
-     * @param endDate   optional - The end date, in format: YYYY-MM-DD.
-     * @param page      optional - The page.
+     * @param startDate nullable - The start date, in format: YYYY-MM-DD.
+     * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
+     * @param page      nullable - The page.
      * @return The changes results page.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -76,10 +76,10 @@ public class TmdbChanges extends AbstractTmdbApi {
      * <p>Get a list of all the tv ids that have been changed in the past 24 hours.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/changes-tv-list">documentation</a> for more info.</p>
      *
-     * @param startDate optional - The start date, in format: YYYY-MM-DD.
-     * @param endDate   optional - The end date, in format: YYYY-MM-DD.
-     * @param page      optional - The page.
-     * @return optional - The changes results page.
+     * @param startDate nullable - The start date, in format: YYYY-MM-DD.
+     * @param endDate   nullable - The end date, in format: YYYY-MM-DD.
+     * @param page      nullable - The page.
+     * @return nullable - The changes results page.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangesResultsPage getTvChangesList(String startDate, String endDate, Integer page) throws TmdbException {

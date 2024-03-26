@@ -51,8 +51,8 @@ public class TmdbLists extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/list-check-item-status">documentation</a> for more info.</p>
      *
      * @param listId   The list id.
-     * @param language optional - The language to query the results in. Default: en-US.
-     * @param movieId  optional - The movie id.
+     * @param language nullable - The language to query the results in. Default: en-US.
+     * @param movieId  nullable - The movie id.
      * @return The list item status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -87,7 +87,7 @@ public class TmdbLists extends AbstractTmdbApi {
      * @param sessionId   The session id.
      * @param name        The name of the list.
      * @param description The description of the list.
-     * @param language    optional - The language to query the results in. Default: en-US.
+     * @param language    nullable - The language to query the results in. Default: en-US.
      * @return The response status.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
@@ -124,8 +124,8 @@ public class TmdbLists extends AbstractTmdbApi {
      * <p>See the <a href="https://developer.themoviedb.org/reference/list-details">documentation</a> for more info.</p>
      *
      * @param listId   The list id.
-     * @param language optional - The language to query the results in. Default: en-US.
-     * @param page     optional - The page of results to return.
+     * @param language nullable - The language to query the results in. Default: en-US.
+     * @param page     nullable - The page of results to return.
      * @return The movie list.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */

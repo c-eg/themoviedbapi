@@ -41,7 +41,7 @@ public class TmdbConfiguration extends AbstractTmdbApi {
      * <p>Get the list of countries (ISO 3166-1 tags) used throughout TMDB.</p>
      * <p>See the <a href="https://developer.themoviedb.org/reference/configuration-countries">documentation</a> for more info.</p>
      *
-     * @param language optional - The language to return the results in.
+     * @param language nullable - The language to return the results in.
      * @return The configuration details
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
