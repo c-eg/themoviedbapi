@@ -57,8 +57,8 @@ MovieDb movie = tmdbMovies.getDetails(5353, "en-US");
 Some of the API methods support appending additional requests to the response. This concept is part of the underlying 
 [TMdB API - Append To Response](https://developer.themoviedb.org/docs/append-to-response), our wrapper just mimics the scheme.
 
-If you try to call the getter for a model that is part of the appendable response, without passing it to the function, it will return 
-`null`.
+If you try to call the getter for a model that has fields for appendable responses, without providing the append to response parameter to 
+the function, it will return  `null`.
 
 ```java
 TmdbMovies tmdbMovies = tmdbApi.getMovies();
@@ -70,7 +70,7 @@ MovieDb movie = tmdbMovies.getDetails(5353, "en-US", MovieAppendToResponse.IMAGE
 Images images = movie.getImages();  // this will NOT be null
 ```
 
-You can also append multiple responses to the same request by passing multiple append to response values.
+You can also append multiple responses to the same request by providing multiple append to response values.
 
 ```java
 TmdbMovies tmdbMovies = tmdbApi.getMovies();
@@ -87,7 +87,7 @@ Every API method can throw a `info.movito.themoviedbapi.tools.TmdbException` if 
 exception and handle it appropriately.
 
 Some exceptions are caused because the response status provided by the TMdB API is not successful. To see more details, see the 
-`info.movito.themoviedbapi.tools.TmdbResponseCode` enum and [TMdB Errors](https://developer.themoviedb.org/docs/errors).
+`info.movito.themoviedbapi.tools.TmdbResponseCode` and [TMdB Errors](https://developer.themoviedb.org/docs/errors).
 
 In the example below, the response was successful, but response code returned by TMdB API was not successful due to an authentication
 failure. 
@@ -108,7 +108,7 @@ catch (TmdbException exception) {
 ```
 
 We chose to throw exceptions rather than returning `null`, so you have more control over what you do with each failure case. E.g. with the
-example above, you may want to display an error message to the user about failing authorization.
+example above, you may want to display an error message to the user about failing authentication.
 
 ## Project Logging
 
