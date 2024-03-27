@@ -2,7 +2,24 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.0.0
+-----
 
+This update is a major update to the library, with many breaking changes. 
+* added checkstyle configuration for code style consistency
+* removed deprecated apis
+* updated existing apis
+* added new tmdb apis
+* added lombok
+* replaced "WebBrowser" for okhttp3
+* added unit tests for all tmdb api classes
+* added github action for checking dependencies
+* made each tmdb api method throw a TmdbException if an error occurs
+* removed unused models & tools
+* added javadocs for all tmdb api methods
+* refactored many packages
+* added logging
+* plus many more small changes
 
 v1.15.1
 -----
