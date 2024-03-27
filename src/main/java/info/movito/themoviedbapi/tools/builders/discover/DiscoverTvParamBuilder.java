@@ -1,8 +1,8 @@
 package info.movito.themoviedbapi.tools.builders.discover;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-import com.google.common.base.Joiner;
 import info.movito.themoviedbapi.tools.sortby.DiscoverTvSortBy;
 import org.apache.commons.lang3.StringUtils;
 
@@ -107,7 +107,7 @@ public class DiscoverTvParamBuilder extends DiscoverParamBuilder<DiscoverTvParam
             throw new IllegalArgumentException("statusIds must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(statusIds);
+        String query = statusIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         getParams().put(PARAM_WITH_STATUS, query);
         return me();
     }
@@ -117,7 +117,7 @@ public class DiscoverTvParamBuilder extends DiscoverParamBuilder<DiscoverTvParam
             throw new IllegalArgumentException("typeIds must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(typeIds);
+        String query = typeIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         getParams().put(PARAM_WITH_TYPE, query);
         return me();
     }

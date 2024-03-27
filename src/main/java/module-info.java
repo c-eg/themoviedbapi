@@ -2,13 +2,11 @@ module info.movito.themoviedbapi {
     requires lombok;
     requires org.slf4j;
     requires org.apache.commons.lang3;
-    requires com.google.common;
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires okhttp3;
 
-    opens info.movito.themoviedbapi to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.account to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.authentication to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.certifications to com.fasterxml.jackson.databind;
@@ -42,7 +40,6 @@ module info.movito.themoviedbapi {
     opens info.movito.themoviedbapi.model.tv.series to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.tv.core.credits to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.watchproviders to com.fasterxml.jackson.databind;
-    opens info.movito.themoviedbapi.util to com.fasterxml.jackson.databind;
 
     exports info.movito.themoviedbapi;
     exports info.movito.themoviedbapi.model.account;
@@ -84,5 +81,4 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.tools.builders.discover;
     exports info.movito.themoviedbapi.tools.sortby;
     exports info.movito.themoviedbapi.tools.model.time;
-    exports info.movito.themoviedbapi.util;
 }

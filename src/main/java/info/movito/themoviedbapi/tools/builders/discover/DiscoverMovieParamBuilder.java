@@ -1,8 +1,8 @@
 package info.movito.themoviedbapi.tools.builders.discover;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-import com.google.common.base.Joiner;
 import info.movito.themoviedbapi.tools.sortby.DiscoverMovieSortBy;
 import org.apache.commons.lang3.StringUtils;
 
@@ -134,7 +134,7 @@ public class DiscoverMovieParamBuilder extends DiscoverParamBuilder<DiscoverMovi
             throw new IllegalArgumentException("Cast must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(castIds);
+        String query = castIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         getParams().put(PARAM_WITH_CAST, query);
         return me();
     }
@@ -144,7 +144,7 @@ public class DiscoverMovieParamBuilder extends DiscoverParamBuilder<DiscoverMovi
             throw new IllegalArgumentException("crewIds must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(crewIds);
+        String query = crewIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         getParams().put(PARAM_WITH_CREW, query);
         return me();
     }
@@ -154,7 +154,7 @@ public class DiscoverMovieParamBuilder extends DiscoverParamBuilder<DiscoverMovi
             throw new IllegalArgumentException("peopleIds must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(peopleIds);
+        String query = peopleIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         getParams().put(PARAM_WITH_PEOPLE, query);
         return me();
     }
@@ -164,7 +164,7 @@ public class DiscoverMovieParamBuilder extends DiscoverParamBuilder<DiscoverMovi
             throw new IllegalArgumentException("releaseTypeIds must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(releaseTypeIds);
+        String query = releaseTypeIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         getParams().put(PARAM_WITH_RELEASE_TYPE, query);
         return me();
     }
