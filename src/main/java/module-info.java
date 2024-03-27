@@ -1,5 +1,5 @@
 module info.movito.themoviedbapi {
-    requires lombok;
+    requires static lombok;
     requires org.slf4j;
     requires org.apache.commons.lang3;
     requires com.fasterxml.jackson.annotation;
