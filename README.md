@@ -3,7 +3,7 @@
 [![BSD 2 License](http://img.shields.io/badge/license-BSD_2_Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
 This library provides a Java-wrapper around the [JSON API](https://developer.themoviedb.org/docs/getting-started) provided by
-[TMdB](http://themoviedb.org), which is an open database for movie and tv content.
+[TMdB](https://www.themoviedb.org/), which is an open database for movie and tv content.
 
 The wrapper implements most, if not all, of the JSON API. However, because the API is subject to constantly change, new functionality may 
 not be implemented, or current functionality may break. Please point this out by submitting an issue, or even better, just send us a pull 
