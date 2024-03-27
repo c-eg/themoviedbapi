@@ -13,8 +13,6 @@ repositories {
 dependencies {
     // logging
     implementation 'org.slf4j:slf4j-api:2.0.12'
-    implementation 'org.slf4j:jcl-over-slf4j:2.0.12'
-    testImplementation 'org.slf4j:slf4j-simple:2.0.12'
 
     // testing
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
