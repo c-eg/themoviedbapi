@@ -2,6 +2,12 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.0.1
+-----
+
+* fix for lombok in module info - requires static
+* update readme
+
 v2.0.0
 -----
 
