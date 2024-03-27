@@ -38,9 +38,9 @@ public abstract class AbstractTmdbApi {
 
     private static final ObjectReader responseStatusReader = objectMapper.readerFor(ResponseStatus.class);
 
-    protected final TmdbApi tmdbApi;
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractTmdbApi.class);
 
-    protected Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final TmdbApi tmdbApi;
 
     AbstractTmdbApi(TmdbApi tmdbApi) {
         this.tmdbApi = tmdbApi;
@@ -146,6 +146,7 @@ public abstract class AbstractTmdbApi {
 
             if (tmdbResponseCode != null) {
                 if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
+                    LOGGER.info("TMDB API: Request limit exceeded. Waiting 1 second before retrying.");
                     Thread.sleep(1000);
                     return mapJsonResult(apiUrl, jsonBody, requestType, objectReader);
                 }
@@ -155,7 +156,8 @@ public abstract class AbstractTmdbApi {
             }
         }
         catch (JsonProcessingException exception) {
-            // ignore, not an error
+            // ignore, not an error - caused by responseStatusReader.readValue(jsonResponse);
+            // this is necessary because if some requests fail (including 2xx responses), the response is a json object
         }
         catch (InterruptedException exception) {
             throw new TmdbException(exception);
