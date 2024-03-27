@@ -2,7 +2,6 @@ module info.movito.themoviedbapi {
     requires lombok;
     requires org.slf4j;
     requires org.apache.commons.lang3;
-    requires com.google.common;
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;

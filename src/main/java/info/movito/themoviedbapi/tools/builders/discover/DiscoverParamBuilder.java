@@ -3,8 +3,8 @@ package info.movito.themoviedbapi.tools.builders.discover;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import com.google.common.base.Joiner;
 import info.movito.themoviedbapi.AbstractTmdbApi;
 import info.movito.themoviedbapi.tools.builders.ParamBuilder;
 import lombok.AccessLevel;
@@ -130,7 +130,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("Watch monetization types must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(withWatchMonetizationTypes);
+        String query = String.join(orQuery ? "|" : ",", withWatchMonetizationTypes);
         params.put(PARAM_WATCH_MONETIZATION_TYPES, query);
         return me();
     }
@@ -149,7 +149,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("Without companies must be set");
         }
 
-        String query = Joiner.on(",").join(companies);
+        String query = companies.stream().map(Object::toString).collect(Collectors.joining(","));
         params.put(PARAM_WITHOUT_COMPANIES, query);
         return me();
     }
@@ -159,7 +159,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("Without genres must be set");
         }
 
-        String query = Joiner.on(",").join(genres);
+        String query = genres.stream().map(Object::toString).collect(Collectors.joining(","));
         params.put(PARAM_WITHOUT_GENRES, query);
         return me();
     }
@@ -169,7 +169,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("Without keywords must be set");
         }
 
-        String query = Joiner.on(",").join(keywords);
+        String query = String.join(",", keywords);
         params.put(PARAM_WITHOUT_KEYWORDS, query);
         return me();
     }
@@ -179,7 +179,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("Without watch providers must be set");
         }
 
-        String query = Joiner.on(",").join(watchProviders);
+        String query = watchProviders.stream().map(Object::toString).collect(Collectors.joining(","));
         params.put(PARAM_WITHOUT_WATCH_PROVIDERS, query);
         return me();
     }
@@ -189,7 +189,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("With companies must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(companyIds);
+        String query = companyIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         params.put(PARAM_WITH_COMPANIES, query);
         return me();
     }
@@ -199,7 +199,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("With genres must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(genreIds);
+        String query = genreIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         params.put(PARAM_WITH_GENRES, query);
         return me();
     }
@@ -209,7 +209,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("With keywords must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(keywordIds);
+        String query = keywordIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         params.put(PARAM_WITH_KEYWORDS, query);
         return me();
     }
@@ -246,7 +246,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("With watch providers must be set");
         }
 
-        String query = Joiner.on(orQuery ? "|" : ",").join(watchProviderIds);
+        String query = watchProviderIds.stream().map(Object::toString).collect(Collectors.joining(orQuery ? "|" : ","));
         params.put(PARAM_WITH_WATCH_PROVIDERS, query);
         return me();
     }
