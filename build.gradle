@@ -38,7 +38,7 @@ dependencies {
 
 // https://stackoverflow.com/questions/34377367/why-is-gradle-install-replacing-my-version-with-unspecified
 group 'uk.co.conoregan'
-version '2.0.1'
+version '2.0.2'
 
 java {
     withJavadocJar()
@@ -73,7 +73,7 @@ publishing {
 
             pom {
                 name = "themoviedbapi"
-                description = 'A java-wrapper around the JSON API provided by TMdB, which is an open database for movie and film content.'
+                description = 'A Java-wrapper around the JSON API provided by TMdB, which is an open database for movie and tv content.'
                 url = 'https://github.com/c-eg/themoviedbapi'
 
                 licenses {

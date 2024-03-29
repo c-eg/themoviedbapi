@@ -2,6 +2,11 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.0.2
+-----
+
+* fix module info for okhttp3 - import kotlin.stdlib
+
 v2.0.1
 -----
 
