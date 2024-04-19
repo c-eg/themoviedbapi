@@ -2,6 +2,12 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.0.3
+-----
+
+* fix "belongs_to_collection" property mapping incorrectly
+* fix trending api path params
+
 v2.0.2
 -----
 
