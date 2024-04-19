@@ -29,7 +29,7 @@ public class MovieDb extends IdElement {
     private String backdropPath;
 
     @JsonProperty("belongs_to_collection")
-    private String belongsToCollection;
+    private BelongsToCollection belongsToCollection;
 
     @JsonProperty("budget")
     private Integer budget;
