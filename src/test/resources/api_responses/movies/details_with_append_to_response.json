@@ -1,7 +1,12 @@
 {
     "adult": false,
     "backdrop_path": "/bzsrNO2PGP8eJeccFJd7893L8AY.jpg",
-    "belongs_to_collection": "belongs to collection",
+    "belongs_to_collection": {
+        "id": 77816,
+        "name": "Kung Fu Panda Collection",
+        "poster_path": "/xoYc0RYKSc3xC4S9OpPZxKocKtj.jpg",
+        "backdrop_path": "/uDosHOFFWtF5YteBRygHALFqLw2.jpg"
+    },
     "budget": 0,
     "genres": [
         {
