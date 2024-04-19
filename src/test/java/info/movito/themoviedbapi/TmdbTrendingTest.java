@@ -34,7 +34,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
     @Test
     public void testGetAll() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/trending/all.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/all?time_window=week&language=en-US");
+        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/all/week?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MultiResultsPage allResults = getApiToTest().getAll(TimeWindow.WEEK, "en-US");
@@ -48,7 +48,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
     @Test
     public void testGetMovies() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/trending/movies.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/movie?time_window=week&language=en-US");
+        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/movie/week?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieResultsPage movieResults = getApiToTest().getMovies(TimeWindow.WEEK, "en-US");
@@ -62,7 +62,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
     @Test
     public void testGetPeople() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/trending/people.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/person?time_window=week&language=en-US");
+        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/person/week?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         PopularPersonResultsPage peopleResults = getApiToTest().getPeople(TimeWindow.WEEK, "en-US");
@@ -76,7 +76,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
     @Test
     public void testGetTv() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/trending/tv.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/tv?time_window=week&language=en-US");
+        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TRENDING + "/tv/week?language=en-US");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TvSeriesResultsPage tvResults = getApiToTest().getTv(TimeWindow.WEEK, "en-US");

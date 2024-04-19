@@ -15,8 +15,6 @@ import info.movito.themoviedbapi.tools.model.time.TimeWindow;
 public class TmdbTrending extends AbstractTmdbApi {
     protected static final String TMDB_METHOD_TRENDING = "trending";
 
-    private static final String TMDB_PARAM_TIME_WINDOW = "time_window";
-
     /**
      * Create a new TmdbTrending instance to call the rending TMDb API methods.
      */
@@ -34,8 +32,7 @@ public class TmdbTrending extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MultiResultsPage getAll(TimeWindow timeWindow, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "all");
-        apiUrl.addPathParam(TMDB_PARAM_TIME_WINDOW, timeWindow.getValue());
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "all", timeWindow.getValue());
         apiUrl.addLanguage(language);
         return mapJsonResult(apiUrl, MultiResultsPage.class);
     }
@@ -50,8 +47,7 @@ public class TmdbTrending extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieResultsPage getMovies(TimeWindow timeWindow, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "movie");
-        apiUrl.addPathParam(TMDB_PARAM_TIME_WINDOW, timeWindow.getValue());
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "movie", timeWindow.getValue());
         apiUrl.addLanguage(language);
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
@@ -66,8 +62,7 @@ public class TmdbTrending extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public PopularPersonResultsPage getPeople(TimeWindow timeWindow, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "person");
-        apiUrl.addPathParam(TMDB_PARAM_TIME_WINDOW, timeWindow.getValue());
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "person", timeWindow.getValue());
         apiUrl.addLanguage(language);
         return mapJsonResult(apiUrl, PopularPersonResultsPage.class);
     }
@@ -82,8 +77,7 @@ public class TmdbTrending extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage getTv(TimeWindow timeWindow, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "tv");
-        apiUrl.addPathParam(TMDB_PARAM_TIME_WINDOW, timeWindow.getValue());
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "tv", timeWindow.getValue());
         apiUrl.addLanguage(language);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
