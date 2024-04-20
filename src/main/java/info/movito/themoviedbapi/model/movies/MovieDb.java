@@ -68,7 +68,7 @@ public class MovieDb extends IdElement {
     private String releaseDate;
 
     @JsonProperty("revenue")
-    private Integer revenue;
+    private Long revenue;
 
     @JsonProperty("runtime")
     private Integer runtime;
