@@ -2,6 +2,11 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.0.4
+-----
+
+* fix revenue property - int -> long
+
 v2.0.3
 -----
 
