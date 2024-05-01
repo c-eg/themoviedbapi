@@ -33,7 +33,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
 
     implementation 'org.apache.commons:commons-lang3:3.14.0'
-    testImplementation 'commons-io:commons-io:2.16.0'
+    testImplementation 'commons-io:commons-io:2.16.1'
 }
 
 // https://stackoverflow.com/questions/34377367/why-is-gradle-install-replacing-my-version-with-unspecified
