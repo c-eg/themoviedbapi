@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 
 import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
@@ -30,7 +29,7 @@ public class TmdbPeopleListsTest extends AbstractTmdbApiTest<TmdbPeopleLists> {
     @Test
     public void testGetPopular() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people_lists/popular.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PEOPLE_LISTS + "?language=en-US&page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PEOPLE_LISTS + "?language=en-US&page=1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         PopularPersonResultsPage popularPersonResultsPage = getApiToTest().getPopular("en-US", 1);

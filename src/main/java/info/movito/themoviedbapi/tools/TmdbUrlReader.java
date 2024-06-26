@@ -1,7 +1,5 @@
 package info.movito.themoviedbapi.tools;
 
-import java.net.URL;
-
 import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 
 /**
@@ -17,5 +15,5 @@ public interface TmdbUrlReader {
      * @return the response from the movie database api
      * @throws TmdbResponseException if the response was not successful
      */
-    String readUrl(URL url, String jsonBody, RequestType requestType) throws TmdbResponseException;
+    String readUrl(String url, String jsonBody, RequestType requestType) throws TmdbResponseException;
 }

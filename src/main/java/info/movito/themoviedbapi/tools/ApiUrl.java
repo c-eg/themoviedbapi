@@ -1,7 +1,5 @@
 package info.movito.themoviedbapi.tools;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -59,20 +57,15 @@ public class ApiUrl {
      *
      * @return the URL.
      */
-    public URL buildUrl() {
+    public String buildUrl() {
         StringBuilder urlBuilder = new StringBuilder(baseUrl);
 
-        try {
-            for (Map.Entry<String, String> entry : params.entrySet()) {
-                urlBuilder.append(urlBuilder.toString().contains("?") ? "&" : "?")
-                    .append(entry.getKey()).append("=").append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8));
-            }
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            urlBuilder.append(urlBuilder.toString().contains("?") ? "&" : "?")
+                .append(entry.getKey()).append("=").append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8));
+        }
 
-            return new URL(urlBuilder.toString());
-        }
-        catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+        return urlBuilder.toString();
     }
 
     /**
@@ -93,7 +86,7 @@ public class ApiUrl {
      */
     public void addPathParam(String name, String value) {
         if (params.containsKey(name)) {
-            throw new RuntimeException("paramater '" + name + "' already defined");
+            throw new RuntimeException("parameter '" + name + "' already defined");
         }
 
         name = StringUtils.trimToEmpty(name);

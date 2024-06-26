@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US");
@@ -77,9 +76,9 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetDetailsWithAppendToResponse() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/details_with_append_to_response.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1?language=en-US&" +
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1?language=en-US&" +
             "append_to_response=account_states%2Caggregate_credits%2Ccredits%2Cexternal_ids%2Cimages%2Ctranslations%2C" +
-            "videos%2Cwatch%2Fproviders");
+            "videos%2Cwatch%2Fproviders";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US", TvSeasonsAppendToResponse.values());
@@ -93,7 +92,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetAccountStates() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/account_states.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/account_states?session_id=123");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/account_states?session_id=123";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         AccountStateResults accountStates = getApiToTest().getAccountStates(123, 1, "123", null);
@@ -107,7 +106,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetAggregateCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/aggregate_credits.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/aggregate_credits?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/aggregate_credits?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         AggregateCredits aggregateCredits = getApiToTest().getAggregateCredits(123, 1, "en-US");
@@ -121,7 +120,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetChanges() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/changes.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/" + TMDB_METHOD_TV_SEASON + "/123/changes?page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/" + TMDB_METHOD_TV_SEASON + "/123/changes?page=1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ChangeResults changes = getApiToTest().getChanges(123, null, null, 1);
@@ -135,7 +134,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/credits.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/credits?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/credits?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Credits credits = getApiToTest().getCredits(123, 1, "en-US");
@@ -149,7 +148,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetExternalIds() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/external_ids.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/external_ids");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/external_ids";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ExternalIds externalIds = getApiToTest().getExternalIds(123, 1);
@@ -163,7 +162,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetImages() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/images.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/images?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/images?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Images images = getApiToTest().getImages(123, 1, "en-US");
@@ -177,7 +176,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetTranslations() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/translations.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/translations");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/translations";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Translations translations = getApiToTest().getTranslations(123, 1);
@@ -191,7 +190,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetVideos() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/videos.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/videos?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/videos?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         VideoResults videos = getApiToTest().getVideos(123, 1, "en-US");
@@ -205,7 +204,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     @Test
     public void testGetWatchProviders() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/watch_providers.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/watch/providers?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/watch/providers?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123, 1, "en-US");

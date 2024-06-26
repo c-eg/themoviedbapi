@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 
 import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
@@ -33,7 +32,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
     @Test
     public void testGetRatedMovies() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/guest_sessions/rated_movies.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/movies?language=en&page=1&sort_by=created_at.desc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/movies?language=en&page=1&sort_by=created_at.desc";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
@@ -47,7 +46,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
     @Test
     public void testGetRatedTvSeries() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/guest_sessions/rated_tv.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/tv?language=en&page=1&sort_by=created_at.desc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/tv?language=en&page=1&sort_by=created_at.desc";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         RatedTvSeriesResultsPage ratedTvSeriesResultsPage = getApiToTest().getRatedTvSeries(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
@@ -61,8 +60,8 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
     @Test
     public void testGetRatedTvEpisodes() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/guest_sessions/rated_tv_episodes.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS +
-            "/1/rated/tv/episodes?language=en&page=1&sort_by=created_at.desc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS +
+            "/1/rated/tv/episodes?language=en&page=1&sort_by=created_at.desc";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = getApiToTest().getRatedTvEpisodes(1, "en", 1,

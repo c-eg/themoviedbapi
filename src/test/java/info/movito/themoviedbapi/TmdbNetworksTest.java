@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 
 import info.movito.themoviedbapi.model.core.image.ImageResults;
 import info.movito.themoviedbapi.model.networks.AlternativeNamesResults;
@@ -32,7 +31,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
     @Test
     public void testGetMovieChangesList() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/networks/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Network network = getApiToTest().getDetails(1);
@@ -46,7 +45,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
     @Test
     public void testGetAlternativeNames() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/networks/alternative_names.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1/alternative_names");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1/alternative_names";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         AlternativeNamesResults alternativeNamesResults = getApiToTest().getAlternativeNames(1);
@@ -60,7 +59,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
     @Test
     public void testGetImages() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/networks/images.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1/images");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1/images";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ImageResults imageResults = getApiToTest().getImages(1);

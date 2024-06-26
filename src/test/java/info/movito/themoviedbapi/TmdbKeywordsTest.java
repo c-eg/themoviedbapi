@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.RequestType;
@@ -30,7 +29,7 @@ public class TmdbKeywordsTest extends AbstractTmdbApiTest<TmdbKeywords> {
     @Test
     public void testGetDetails() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/keywords/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_KEYWORD + "/1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_KEYWORD + "/1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Keyword keyword = getApiToTest().getDetails(1);

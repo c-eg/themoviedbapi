@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     @Test
     public void testFindByIdMovieResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/movie_results.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbFind tmdbFind = new TmdbFind(getTmdbApi());
@@ -61,7 +60,7 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     @Test
     public void testFindByIdPersonResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/person_results.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbFind tmdbFind = new TmdbFind(getTmdbApi());
@@ -89,7 +88,7 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     @Test
     public void testFindByIdTvResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/tv_results.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbFind tmdbFind = new TmdbFind(getTmdbApi());
@@ -117,7 +116,7 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     @Test
     public void testFindByIdTvSeasonResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/tv_season_results.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbFind tmdbFind = new TmdbFind(getTmdbApi());
@@ -145,7 +144,7 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     @Test
     public void testFindByIdTvEpisodeResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/tv_episode_results.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TmdbFind tmdbFind = new TmdbFind(getTmdbApi());

@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +49,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
     @Test
     public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         PersonDb details = getApiToTest().getDetails(123, "en-US");
@@ -81,8 +80,8 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
     @Test
     public void testGetDetailsWithAppendToResponse() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people/details_with_append_to_response.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123?language=en-US&" +
-            "append_to_response=changes%2Ccombined_credits%2Cexternal_ids%2Cimages%2Clatest%2Cmovie_credits%2Ctv_credits%2Ctranslations");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123?language=en-US&" +
+            "append_to_response=changes%2Ccombined_credits%2Cexternal_ids%2Cimages%2Clatest%2Cmovie_credits%2Ctv_credits%2Ctranslations";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         PersonDb details = getApiToTest().getDetails(123, "en-US", PersonAppendToResponse.values());
@@ -100,8 +99,8 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
         int page = 1;
 
         String body = TestUtils.readTestFile("api_responses/people/changes.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON +
-            "/123/changes?start_date=" + startDate + "&end_date=" + endDate + "&page=" + page);
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON +
+            "/123/changes?start_date=" + startDate + "&end_date=" + endDate + "&page=" + page;
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ChangeResults changes = getApiToTest().getChanges(123, startDate, endDate, page);
@@ -115,7 +114,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
     @Test
     public void testGetCombinedCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people/combined_credits.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/combined_credits?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/combined_credits?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         CombinedPersonCredits personCredits = getApiToTest().getCombinedCredits(123, "en-US");
@@ -150,7 +149,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
     @Test
     public void testExternalIds() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people/external_ids.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/external_ids");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/external_ids";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ExternalIds externalIds = getApiToTest().getExternalIds(123);
@@ -164,7 +163,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
     @Test
     public void testGetImages() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people/images.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/images");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/images";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         PersonImages images = getApiToTest().getImages(123);
@@ -178,7 +177,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
     @Test
     public void testGetLatest() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people/latest.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/latest");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/latest";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         PersonDb latest = getApiToTest().getLatest();
@@ -209,7 +208,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
     @Test
     public void testGetMovieCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people/movie_credits.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/movie_credits?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/movie_credits?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieCredits movieCredits = getApiToTest().getMovieCredits(123, "en-US");
@@ -242,7 +241,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
     @Test
     public void testGetTvCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people/tv_credits.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/tv_credits?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/tv_credits?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TvCredits tvCredits = getApiToTest().getTvCredits(123, "en-US");
@@ -275,7 +274,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
     @Test
     public void testGetTranslations() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people/translations.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/translations");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/123/translations";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Translations translations = getApiToTest().getTranslations(123);

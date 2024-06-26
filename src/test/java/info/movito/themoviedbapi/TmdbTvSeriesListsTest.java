@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.RequestType;
@@ -30,7 +29,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest<TmdbTvSeriesLists
     @Test
     public void testGetAiringToday() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series_lists/airing_today.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/airing_today?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/airing_today?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getAiringToday("en-US", null, null);
@@ -44,7 +43,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest<TmdbTvSeriesLists
     @Test
     public void testGetOnTheAir() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series_lists/on_the_air.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/on_the_air?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/on_the_air?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getOnTheAir("en-US", null, null);
@@ -58,7 +57,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest<TmdbTvSeriesLists
     @Test
     public void testGetPopular() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series_lists/popular.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/popular?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/popular?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getPopular("en-US", null);
@@ -72,7 +71,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest<TmdbTvSeriesLists
     @Test
     public void testGetTopRated() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series_lists/top_rated.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_TV + "/top_rated?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/top_rated?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getTopRated("en-US", null);

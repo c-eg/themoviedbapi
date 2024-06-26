@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 
 import info.movito.themoviedbapi.model.authentication.GuestSession;
@@ -16,7 +15,6 @@ import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.util.Utils;
 import org.junit.jupiter.api.Test;
 
-import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbAuthentication.TMDB_METHOD_AUTH;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.tools.TmdbResponseCode.INVALID_API_KEY;
@@ -43,7 +41,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
     @Test
     public void testCreateGuestSession() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/authentication/create_guest_session.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/guest_session/new");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/guest_session/new";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         GuestSession guestSession = getApiToTest().createGuestSession();
@@ -57,7 +55,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
     @Test
     public void testCreateRequestToken() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/new");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/new";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         RequestToken requestToken = getApiToTest().createRequestToken();
@@ -71,7 +69,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
     @Test
     public void testGetTmdbAuthenticationUrlForRequestToken() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/new");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/new";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         RequestToken requestToken = getApiToTest().createRequestToken();
@@ -86,7 +84,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
     @Test
     public void testGetTmdbAuthenticationUrlForRequestTokenUnccessfulRequestToken() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/authentication/create_request_token.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/new");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/new";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         RequestToken requestToken = getApiToTest().createRequestToken();
@@ -105,9 +103,9 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
 
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("request_token", requestTokenStr);
-        String jsonBody = Utils.convertToJson(getObjectMapper(), requestBody);
+        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/session/new");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/session/new";
         String body = TestUtils.readTestFile("api_responses/authentication/create_session.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
@@ -142,9 +140,9 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
         requestBody.put("username", "username");
         requestBody.put("password", "password");
         requestBody.put("request_token", requestToken.getRequestToken());
-        String jsonBody = Utils.convertToJson(getObjectMapper(), requestBody);
+        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/validate_with_login");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/validate_with_login";
         String body = TestUtils.readTestFile("api_responses/authentication/create_session_with_login.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
@@ -172,9 +170,9 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
     public void testDeleteSession() throws TmdbException, IOException {
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("session_id", "sessionId");
-        String jsonBody = Utils.convertToJson(getObjectMapper(), requestBody);
+        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/session");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/session";
         String body = TestUtils.readTestFile("api_responses/authentication/delete_session.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.DELETE)).thenReturn(body);
 
@@ -198,7 +196,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
      */
     @Test
     public void testValidateKey() throws TmdbException, IOException {
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH);
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH;
         String body = TestUtils.readTestFile("api_responses/authentication/validate_key.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
@@ -214,7 +212,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
      */
     @Test
     public void testValidateKeyUnsuccessful() throws IOException, TmdbException {
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_AUTH);
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH;
         String body = TestUtils.readTestFile("api_responses/authentication/validate_key_unsuccessful.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
