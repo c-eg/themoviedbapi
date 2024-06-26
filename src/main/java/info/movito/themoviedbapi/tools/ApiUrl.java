@@ -93,7 +93,7 @@ public class ApiUrl {
      */
     public void addPathParam(String name, String value) {
         if (params.containsKey(name)) {
-            throw new RuntimeException("paramater '" + name + "' already defined");
+            throw new RuntimeException("parameter '" + name + "' already defined");
         }
 
         name = StringUtils.trimToEmpty(name);
