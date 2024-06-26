@@ -33,7 +33,6 @@ import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.util.Utils;
 import org.junit.jupiter.api.Test;
 
-import static info.movito.themoviedbapi.AbstractTmdbApi.getObjectMapper;
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
@@ -407,7 +406,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testAddRating() throws IOException, TmdbException {
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("value", 2.1);
-        String jsonBody = Utils.convertToJson(getObjectMapper(), requestBody);
+        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
 
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/rating";
         String body = TestUtils.readTestFile("api_responses/tv_series/add_rating.json");
