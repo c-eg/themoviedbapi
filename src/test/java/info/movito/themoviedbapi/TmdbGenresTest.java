@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 import info.movito.themoviedbapi.model.core.Genre;
@@ -32,7 +31,7 @@ public class TmdbGenresTest extends AbstractTmdbApiTest<TmdbGenre> {
     @Test
     public void testGetMovieList() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/genres/movie_list.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/movie/list?language=en");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/movie/list?language=en";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         List<Genre> genres = getApiToTest().getMovieList("en");
@@ -50,7 +49,7 @@ public class TmdbGenresTest extends AbstractTmdbApiTest<TmdbGenre> {
     @Test
     public void testGetTvList() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/genres/tv_list.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/tv/list?language=en");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/tv/list?language=en";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         List<Genre> genres = getApiToTest().getTvList("en");

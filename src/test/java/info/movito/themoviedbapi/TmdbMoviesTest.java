@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +53,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieDb movie = getApiToTest().getDetails(123, "en-US");
@@ -92,9 +91,9 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetDetailsWithAppendToResponse() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/details_with_append_to_response.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123?language=en-US&append_to_response=account_states%2C" +
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123?language=en-US&append_to_response=account_states%2C" +
             "alternative_titles%2Ccredits%2Cchanges%2Cexternal_ids%2Cimages%2Ckeywords%2Clists%2Crecommendations%2Crelease_dates%2C" +
-            "reviews%2Csimilar%2Ctranslations%2Cvideos%2Cwatch%2Fproviders");
+            "reviews%2Csimilar%2Ctranslations%2Cvideos%2Cwatch%2Fproviders";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieDb movie = getApiToTest().getDetails(123, "en-US", MovieAppendToResponse.values());
@@ -108,7 +107,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetAccountStates() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/account_states.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/account_states?session_id=123");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/account_states?session_id=123";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         AccountStates accountStates = getApiToTest().getAccountStates(123, "123", null);
@@ -122,7 +121,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetAlternativeTitles() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/alternative_titles.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/alternative_titles?country=US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/alternative_titles?country=US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         AlternativeTitles alternativeTitles = getApiToTest().getAlternativeTitles(123, "US");
@@ -136,7 +135,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetChanges() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/changes.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/changes");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/changes";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ChangeResults changeResults = getApiToTest().getChanges(123, null, null, null);
@@ -150,7 +149,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/credits.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/credits?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/credits?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Credits credits = getApiToTest().getCredits(123, "en-US");
@@ -164,7 +163,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetExternalIds() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/external_ids.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/external_ids");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/external_ids";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ExternalIds externalIds = getApiToTest().getExternalIds(123);
@@ -178,7 +177,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetImages() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/images.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/images?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/images?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Images images = getApiToTest().getImages(123, "en-US");
@@ -192,7 +191,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetKeywords() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/keywords.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/keywords");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/keywords";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         KeywordResults keywords = getApiToTest().getKeywords(123);
@@ -206,7 +205,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetLatest() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/latest.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/latest");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/latest";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieDb movie = getApiToTest().getLatest();
@@ -244,7 +243,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetLists() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/lists.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/lists?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/lists?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieListResultsPage lists = getApiToTest().getLists(123, "en-US", null);
@@ -258,7 +257,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetRecommendations() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/recommendations.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/recommendations?language=en-US&page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/recommendations?language=en-US&page=1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieResultsPage recommendations = getApiToTest().getRecommendations(123, "en-US", 1);
@@ -272,7 +271,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetReleaseDates() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/release_dates.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/release_dates");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/release_dates";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ReleaseDateResults releaseDates = getApiToTest().getReleaseDates(123);
@@ -286,7 +285,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetReviews() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/reviews.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/reviews?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/reviews?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ReviewResultsPage reviews = getApiToTest().getReviews(123, "en-US", null);
@@ -300,7 +299,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetSimilar() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/similar.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/similar?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/similar?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieResultsPage similar = getApiToTest().getSimilar(123, "en-US", null);
@@ -314,7 +313,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetTranslations() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/translations.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/translations");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/translations";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Translations translations = getApiToTest().getTranslations(123);
@@ -328,7 +327,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetVideos() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/videos.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/videos?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/videos?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         VideoResults videos = getApiToTest().getVideos(123, "en-US");
@@ -342,7 +341,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     @Test
     public void testGetWatchProviders() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movies/watch_providers.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/watch/providers");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/watch/providers";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123);
@@ -359,7 +358,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
         requestBody.put("value", 2.1);
         String jsonBody = Utils.convertToJson(getObjectMapper(), requestBody);
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/rating");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/rating";
         String body = TestUtils.readTestFile("api_responses/movies/add_rating.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
@@ -374,7 +373,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
      */
     @Test
     public void testDeleteRating() throws IOException, TmdbException {
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/rating");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/rating";
         String body = TestUtils.readTestFile("api_responses/movies/delete_rating.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.DELETE)).thenReturn(body);
 

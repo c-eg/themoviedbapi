@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates;
@@ -31,7 +30,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
     @Test
     public void testGetNowPlaying() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movie_lists/now_playing.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/now_playing?language=en-US&page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/now_playing?language=en-US&page=1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getNowPlaying("en-US", 1, null);
@@ -45,7 +44,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
     @Test
     public void testGetPopular() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movie_lists/popular.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/popular?language=en-US&page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/popular?language=en-US&page=1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieResultsPage movieResultsPage = getApiToTest().getPopular("en-US", 1, null);
@@ -59,7 +58,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
     @Test
     public void testGetTopRated() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movie_lists/top_rated.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/top_rated?language=en-US&page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/top_rated?language=en-US&page=1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieResultsPage movieResultsPage = getApiToTest().getTopRated("en-US", 1, null);
@@ -73,7 +72,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
     @Test
     public void testGetUpcoming() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/movie_lists/upcoming.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/upcoming?language=en-US&page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/upcoming?language=en-US&page=1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getUpcoming("en-US", 1, null);

@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
@@ -38,7 +37,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     @Test
     public void testAddMovie() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/add_movie.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/add_item?session_id=testSessionId");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/add_item?session_id=testSessionId";
 
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("media_id", 456);
@@ -58,7 +57,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     @Test
     public void testCheckItemStatus() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/check_item_status.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/item_status?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/item_status?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ListItemStatus listItemStatus = getApiToTest().checkItemStatus(123, "en-US", null);
@@ -72,7 +71,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     @Test
     public void testClear() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/clear.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/clear?session_id=testSessionId&confirm=true");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/clear?session_id=testSessionId&confirm=true";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.POST)).thenReturn(body);
 
         ResponseStatus responseStatus = getApiToTest().clear(123, "testSessionId", true);
@@ -87,7 +86,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     @Test
     public void testCreate() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/create.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_LIST + "?session_id=testSessionId");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "?session_id=testSessionId";
 
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("name", "testName");
@@ -108,7 +107,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     @Test
     public void testDelete() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/delete.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123?session_id=testSessionId");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123?session_id=testSessionId";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.DELETE)).thenReturn(body);
 
         ResponseStatus responseStatus = getApiToTest().delete(123, "testSessionId");
@@ -123,7 +122,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     @Test
     public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ListDetails listDetails = getApiToTest().getDetails(123, "en-US", null);
@@ -137,7 +136,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     @Test
     public void testRemoveMovie() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/remove_movie.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/remove_item?session_id=testSessionId");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/remove_item?session_id=testSessionId";
 
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("media_id", 456);

@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 import info.movito.themoviedbapi.model.collections.CollectionInfo;
@@ -37,8 +36,8 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest<TmdbCollections> {
         String language = "en";
 
         String body = TestUtils.readTestFile("api_responses/collections/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" +
-            collectionId + "?" + "language=" + language);
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" +
+            collectionId + "?" + "language=" + language;
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         CollectionInfo collectionInfo = getApiToTest().getDetails(collectionId, language);
@@ -56,8 +55,8 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest<TmdbCollections> {
         String language = "en";
 
         String body = TestUtils.readTestFile("api_responses/collections/images.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" +
-            collectionId + "/images?language=" + language);
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" +
+            collectionId + "/images?language=" + language;
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Images images = getApiToTest().getImages(collectionId, language);
@@ -75,8 +74,8 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest<TmdbCollections> {
         String[] includeImageLanguage = new String[] {"en", "it"};
 
         String body = TestUtils.readTestFile("api_responses/collections/images.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" +
-            collectionId + "/images?include_image_language=en%2Cit");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" +
+            collectionId + "/images?include_image_language=en%2Cit";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Images images = getApiToTest().getImages(collectionId, null, includeImageLanguage);
@@ -92,7 +91,7 @@ public class TmdbCollectionsTest extends AbstractTmdbApiTest<TmdbCollections> {
         int collectionId = 1;
 
         String body = TestUtils.readTestFile("api_responses/collections/translations.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" + collectionId + "/translations");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_COLLECTION + "/" + collectionId + "/translations";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         List<Translation> translations = getApiToTest().getTranslations(collectionId);

@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 
 import info.movito.themoviedbapi.model.account.Account;
@@ -43,7 +42,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
     @Test
     public void testGetAccount() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/account/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234?session_id=testSessionId");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234?session_id=testSessionId";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Account account = getApiToTest().getDetails(1234, "testSessionId");
@@ -61,7 +60,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/favorite?session_id=testSessionId");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/favorite?session_id=testSessionId";
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("media_type", mediaType.toString());
         requestBody.put("media_id", mediaId);
@@ -87,7 +86,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/favorite?session_id=testSessionId");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/favorite?session_id=testSessionId";
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("media_type", mediaType.toString());
         requestBody.put("media_id", mediaId);
@@ -113,7 +112,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/watchlist?session_id=testSessionId");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/watchlist?session_id=testSessionId";
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("media_type", mediaType.toString());
         requestBody.put("media_id", mediaId);
@@ -139,7 +138,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer mediaId = 1234;
         TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/watchlist?session_id=testSessionId");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/watchlist?session_id=testSessionId";
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("media_type", mediaType.toString());
         requestBody.put("media_id", mediaId);
@@ -166,8 +165,8 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer page = 1;
         AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
-            "/1234/favorite/movies?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/favorite/movies?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
         String body = TestUtils.readTestFile("api_responses/account/favourite_movies.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
@@ -187,8 +186,8 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer page = 1;
         AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
-            "/1234/favorite/tv?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/favorite/tv?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
         String body = TestUtils.readTestFile("api_responses/account/favourite_tv.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
@@ -206,7 +205,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         String sessionId = "testSessionId";
         Integer page = 1;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/lists?session_id=testSessionId&page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/lists?session_id=testSessionId&page=1";
         String body = TestUtils.readTestFile("api_responses/account/lists.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
@@ -226,8 +225,8 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer page = 1;
         AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
-            "/1234/rated/movies?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/rated/movies?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
         String body = TestUtils.readTestFile("api_responses/account/rated_movies.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
@@ -247,8 +246,8 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer page = 1;
         AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
-            "/1234/rated/tv?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/rated/tv?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
         String body = TestUtils.readTestFile("api_responses/account/rated_tv.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
@@ -268,8 +267,8 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer page = 1;
         AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
-            "/1234/rated/tv/episodes?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/rated/tv/episodes?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
         String body = TestUtils.readTestFile("api_responses/account/rated_tv_episodes.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
@@ -290,8 +289,8 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer page = 1;
         AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
-            "/1234/watchlist/movies?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/watchlist/movies?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
         String body = TestUtils.readTestFile("api_responses/account/watchlist_movies.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
@@ -311,8 +310,8 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         Integer page = 1;
         AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
 
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
-            "/1234/watchlist/tv?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/watchlist/tv?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
         String body = TestUtils.readTestFile("api_responses/account/watchlist_tv.json");
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 

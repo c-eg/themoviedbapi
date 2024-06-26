@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 
 import info.movito.themoviedbapi.model.companies.AlternativeNamesResultsPage;
 import info.movito.themoviedbapi.model.companies.Company;
@@ -34,7 +33,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest<TmdbCompanies> {
         int companyId = 1;
 
         String body = TestUtils.readTestFile("api_responses/companies/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId);
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId;
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Company company = getApiToTest().getDetails(companyId);
@@ -50,7 +49,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest<TmdbCompanies> {
         int companyId = 1;
 
         String body = TestUtils.readTestFile("api_responses/companies/alternative_names.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId + "/alternative_names");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId + "/alternative_names";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         AlternativeNamesResultsPage alternativeNamesResultsPage = getApiToTest().getAlternativeNames(1);
@@ -66,7 +65,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest<TmdbCompanies> {
         int companyId = 1;
 
         String body = TestUtils.readTestFile("api_responses/companies/images.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId + "/images");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId + "/images";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ImageResults logoImageResults = getApiToTest().getImages(1);

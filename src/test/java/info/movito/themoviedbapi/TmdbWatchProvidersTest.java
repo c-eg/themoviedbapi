@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Map;
 
 import info.movito.themoviedbapi.model.watchproviders.AvailableRegionResults;
@@ -33,7 +32,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
     @Test
     public void testGetAvailableRegions() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/watch_providers/available_regions.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "?language=en-US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "?language=en-US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         AvailableRegionResults availableRegionResults = getApiToTest().getAvailableRegions("en-US");
@@ -47,7 +46,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
     @Test
     public void testGetMovieProviders() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/watch_providers/movie_providers.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "/movie?language=en-US&watch_region=US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "/movie?language=en-US&watch_region=US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ProviderResults providerResults = getApiToTest().getMovieProviders("en-US", "US");
@@ -69,7 +68,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
     @Test
     public void testGetTvProviders() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/watch_providers/tv_providers.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "/tv?language=en-US&watch_region=US");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "/tv?language=en-US&watch_region=US";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         ProviderResults providerResults = getApiToTest().getTvProviders("en-US", "US");

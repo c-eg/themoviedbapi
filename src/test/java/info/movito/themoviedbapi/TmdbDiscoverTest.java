@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
@@ -35,7 +34,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
     @Test
     public void testGetMovie() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/discover/movies.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_MOVIE + "?page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_MOVIE + "?page=1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         DiscoverMovieParamBuilder discoverMovieParamBuilder = new DiscoverMovieParamBuilder()
@@ -52,7 +51,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
     @Test
     public void testGetMovieNullBuilder() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/discover/movies.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_MOVIE);
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_MOVIE;
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         MovieResultsPage movieResultsPage = getApiToTest().getMovie(null);
@@ -66,7 +65,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
     @Test
     public void testGetTv() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/discover/tv.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_TV + "?page=1");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_TV + "?page=1";
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         DiscoverTvParamBuilder discoverTvParamBuilder = new DiscoverTvParamBuilder()
@@ -83,7 +82,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
     @Test
     public void testGetTvNullBuilder() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/discover/tv.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_TV);
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_DISCOVER + "/" + TMDB_METHOD_TV;
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getTv(null);

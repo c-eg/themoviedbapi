@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.net.URL;
 
 import info.movito.themoviedbapi.model.reviews.Review;
 import info.movito.themoviedbapi.tools.RequestType;
@@ -32,7 +31,7 @@ public class TmdbReviewsTest extends AbstractTmdbApiTest<TmdbReviews> {
         int reviewId = 1;
 
         String body = TestUtils.readTestFile("api_responses/reviews/details.json");
-        URL url = new URL(TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_REVIEW + "/" + reviewId);
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_REVIEW + "/" + reviewId;
         when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
 
         Review review = getApiToTest().getDetails(reviewId);
