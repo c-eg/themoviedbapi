@@ -2,6 +2,13 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.1.0
+-----
+
+* replaces okhttp3 with the java standard library http client 
+* fix a spelling mistake
+* expand static imports for lombok generated methods (tests) - they don't work with javac
+
 v2.0.4
 -----
 
