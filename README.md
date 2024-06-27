@@ -23,7 +23,7 @@ project.
 <dependency>
     <groupId>uk.co.conoregan</groupId>
     <artifactId>themoviedbapi</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
 </dependency>
 ```
 </details>
@@ -33,7 +33,7 @@ project.
 
 ```groovy
 dependencies {
-    implementation 'uk.co.conoregan:themoviedbapi:2.1.0'
+    implementation 'uk.co.conoregan:themoviedbapi:2.1.1'
 }
 ```
 </details>

@@ -2,6 +2,12 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.1.1
+-----
+
+* add crypto module in module-info - needed for images created with jlink 
+because it is not included by default and will fail the SSL handshake without it
+
 v2.1.0
 -----
 

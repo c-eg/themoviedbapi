@@ -36,7 +36,7 @@ dependencies {
 
 // https://stackoverflow.com/questions/34377367/why-is-gradle-install-replacing-my-version-with-unspecified
 group 'uk.co.conoregan'
-version '2.1.0'
+version '2.1.1'
 
 java {
     withJavadocJar()
