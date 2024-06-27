@@ -6,6 +6,7 @@ module info.movito.themoviedbapi {
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires java.net.http;
+    requires jdk.crypto.cryptoki;
 
     opens info.movito.themoviedbapi.model.account to com.fasterxml.jackson.databind;
     opens info.movito.themoviedbapi.model.authentication to com.fasterxml.jackson.databind;
