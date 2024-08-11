@@ -1,7 +1,7 @@
 # Developer Notes
 ## How to do a release?
 
-1. Make sure to increase version number in [build.gradle](build.gradle)
+1. Make sure to increase version number in [build.gradle.kts](build.gradle.kts)
 
 2. Document updates in [NEWS.md](NEWS.md)
 
