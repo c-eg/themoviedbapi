@@ -29,11 +29,11 @@ project.
 </details>
 
 <details>
-<summary>Gradle (Groovy)</summary>
+<summary>Gradle (Kotlin)</summary>
 
-```groovy
+```kotlin
 dependencies {
-    implementation 'uk.co.conoregan:themoviedbapi:2.1.1'
+    implementation("uk.co.conoregan:themoviedbapi:2.1.1")
 }
 ```
 </details>
