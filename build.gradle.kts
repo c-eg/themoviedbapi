@@ -15,13 +15,15 @@ repositories {
 
 dependencies {
     // logging
-    implementation("org.slf4j:slf4j-api:2.0.13")
+    implementation(platform("org.slf4j:slf4j-bom:2.0.16"))
+    implementation("org.slf4j:slf4j-api")
 
     // testing
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.3")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.3")
+    testImplementation(platform("org.junit:junit-bom:5.10.3"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 
-    testImplementation("org.mockito:mockito-core:5.12.0")
+    testImplementation(platform("org.mockito:mockito-bom:5.12.0"))
+    testImplementation("org.mockito:mockito-core")
 
     // util
     compileOnly("org.projectlombok:lombok:1.18.34")
@@ -29,9 +31,10 @@ dependencies {
     testCompileOnly("org.projectlombok:lombok:1.18.34")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.34")
 
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.17.2")
-    implementation("com.fasterxml.jackson.core:jackson-core:2.17.2")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
+    implementation(platform("com.fasterxml.jackson:jackson-bom:2.17.2"))
+    implementation("com.fasterxml.jackson.core:jackson-annotations")
+    implementation("com.fasterxml.jackson.core:jackson-core")
+    implementation("com.fasterxml.jackson.core:jackson-databind")
 
     implementation("org.apache.commons:commons-lang3:3.15.0")
     testImplementation("commons-io:commons-io:2.16.1")
