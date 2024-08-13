@@ -2,6 +2,15 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.1.2
+-----
+
+* migrate gradle build configuration from Groovy to Kotlin
+* update gradle wrapper to version 8.9
+* change dependencies to use BOMs
+* add serialVersionUID to Serializable implementation
+* update many dependencies
+
 v2.1.1
 -----
 

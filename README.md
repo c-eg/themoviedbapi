@@ -9,10 +9,6 @@ The wrapper implements most, if not all, of the JSON API. However, because the A
 not be implemented, or current functionality may break. Please point this out by submitting an issue, or even better, just send us a pull 
 request!
 
-## Setup
-> **Starting with v1.15.1 the library has changed ownership. This required a change of the group-id from com.github.holgerbrandl to 
-> uk.co.conoregan**
-
 It's available via [Maven Central](https://central.sonatype.com/artifact/uk.co.conoregan/themoviedbapi). Just add it as dependency to your 
 project.
 
@@ -23,7 +19,7 @@ project.
 <dependency>
     <groupId>uk.co.conoregan</groupId>
     <artifactId>themoviedbapi</artifactId>
-    <version>2.1.1</version>
+    <version>{version}</version>
 </dependency>
 ```
 </details>
@@ -33,7 +29,7 @@ project.
 
 ```kotlin
 dependencies {
-    implementation("uk.co.conoregan:themoviedbapi:2.1.1")
+    implementation("uk.co.conoregan:themoviedbapi:{version}")
 }
 ```
 </details>
