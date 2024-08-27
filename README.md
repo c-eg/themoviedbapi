@@ -35,7 +35,7 @@ dependencies {
 </details>
 
 ## Usage
-To register for a TMdB API key, click the [API link](https://www.themoviedb.org/settings/api) from within your account settings page. 
+To register for a TMdB API key, click the [API link](https://www.themoviedb.org/settings/api) from within your account settings page. There are two types of API keys currently provided by TMdB, please ensure you are using the `API Read Access Token` key.
 
 With this you can instantiate `info.movito.themoviedbapi.TmdbApi`, which has getters for all subcategories of the API, e.g.
 ```java
