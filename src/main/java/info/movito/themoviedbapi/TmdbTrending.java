@@ -48,7 +48,7 @@ public class TmdbTrending extends AbstractTmdbApi {
     public MultiResultsPage getAll(TimeWindow timeWindow, String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "all", timeWindow.getValue());
         apiUrl.addLanguage(language);
-        apiUrl.addPage(page == null ? 1 : page);
+        apiUrl.addPage(page);
         return mapJsonResult(apiUrl, MultiResultsPage.class);
     }
 
@@ -78,7 +78,7 @@ public class TmdbTrending extends AbstractTmdbApi {
     public MovieResultsPage getMovies(TimeWindow timeWindow, String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "movie", timeWindow.getValue());
         apiUrl.addLanguage(language);
-        apiUrl.addPage(page == null ? 1 : page);
+        apiUrl.addPage(page);
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
@@ -108,7 +108,7 @@ public class TmdbTrending extends AbstractTmdbApi {
     public PopularPersonResultsPage getPeople(TimeWindow timeWindow, String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "person", timeWindow.getValue());
         apiUrl.addLanguage(language);
-        apiUrl.addPage(page == null ? 1 : page);
+        apiUrl.addPage(page);
         return mapJsonResult(apiUrl, PopularPersonResultsPage.class);
     }
 
@@ -138,7 +138,7 @@ public class TmdbTrending extends AbstractTmdbApi {
     public TvSeriesResultsPage getTv(TimeWindow timeWindow, String language, Integer page) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "tv", timeWindow.getValue());
         apiUrl.addLanguage(language);
-        apiUrl.addPage(page == null ? 1 : page);
+        apiUrl.addPage(page);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 }
