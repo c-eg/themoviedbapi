@@ -2,6 +2,12 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.2.0
+-----
+
+* update readme to clarify which TMdB API key to use
+* add pagination support for Trending API
+
 v2.1.2
 -----
 
