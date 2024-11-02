@@ -19,7 +19,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api")
 
     // testing
-    testImplementation(platform("org.junit:junit-bom:5.11.1"))
+    testImplementation(platform("org.junit:junit-bom:5.11.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
     testImplementation(platform("org.mockito:mockito-bom:5.14.2"))
