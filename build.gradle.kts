@@ -22,7 +22,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.11.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
-    testImplementation(platform("org.mockito:mockito-bom:5.14.1"))
+    testImplementation(platform("org.mockito:mockito-bom:5.14.2"))
     testImplementation("org.mockito:mockito-core")
 
     // util
