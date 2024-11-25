@@ -11,7 +11,7 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import info.movito.themoviedbapi.util.TestUtils;
-import info.movito.themoviedbapi.util.Utils;
+import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbLists.TMDB_METHOD_LIST;
@@ -40,7 +40,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("media_id", 456);
-        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
 
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
@@ -91,7 +91,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
         requestBody.put("name", "testName");
         requestBody.put("description", "testDescription");
         requestBody.put("language", "en-US");
-        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
 
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 
@@ -139,7 +139,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("media_id", 456);
-        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
 
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
 

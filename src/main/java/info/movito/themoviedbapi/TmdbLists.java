@@ -9,7 +9,7 @@ import info.movito.themoviedbapi.model.lists.MovieListCreationStatus;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
-import info.movito.themoviedbapi.util.Utils;
+import info.movito.themoviedbapi.util.JsonUtil;
 
 /**
  * The movie database api for lists. See the
@@ -42,7 +42,7 @@ public class TmdbLists extends AbstractTmdbApi {
         HashMap<String, Object> body = new HashMap<>();
         body.put("media_id", movieId);
 
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
@@ -100,7 +100,7 @@ public class TmdbLists extends AbstractTmdbApi {
         body.put("description", description);
         body.put("language", language);
 
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, MovieListCreationStatus.class);
     }
 
@@ -153,7 +153,7 @@ public class TmdbLists extends AbstractTmdbApi {
         HashMap<String, Object> body = new HashMap<>();
         body.put("media_id", movieId);
 
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 }

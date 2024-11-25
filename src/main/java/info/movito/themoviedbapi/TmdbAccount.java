@@ -14,7 +14,7 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
-import info.movito.themoviedbapi.util.Utils;
+import info.movito.themoviedbapi.util.JsonUtil;
 
 /**
  * The movie database api for accounts. See the
@@ -89,7 +89,7 @@ public class TmdbAccount extends AbstractTmdbApi {
         body.put("media_id", mediaId);
         body.put("favorite", isFavorite);
 
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
@@ -135,7 +135,7 @@ public class TmdbAccount extends AbstractTmdbApi {
         body.put("media_id", mediaId);
         body.put("watchlist", isWatchList);
 
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
