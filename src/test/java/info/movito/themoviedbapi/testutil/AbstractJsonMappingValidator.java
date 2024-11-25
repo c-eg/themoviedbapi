@@ -1,4 +1,4 @@
-package info.movito.themoviedbapi.util;
+package info.movito.themoviedbapi.testutil;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

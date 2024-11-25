@@ -9,16 +9,16 @@ import info.movito.themoviedbapi.model.authentication.Session;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatusAuthentication;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatusDelete;
 import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
+import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.JsonUtil;
-import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbAuthentication.TMDB_METHOD_AUTH;
+import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.tools.TmdbResponseCode.INVALID_API_KEY;
-import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
