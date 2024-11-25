@@ -355,7 +355,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
     public void testAddRating() throws IOException, TmdbException {
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("value", 2.1);
-        String jsonBody = JsonUtil.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.toJson(requestBody);
 
         String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/123/rating";
         String body = TestUtils.readTestFile("api_responses/movies/add_rating.json");

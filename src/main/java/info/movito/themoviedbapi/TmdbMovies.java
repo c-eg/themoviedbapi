@@ -325,7 +325,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         HashMap<String, Object> body = new HashMap<>();
         body.put("value", rating);
 
-        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 

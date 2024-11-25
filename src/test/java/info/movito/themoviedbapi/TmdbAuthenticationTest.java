@@ -11,8 +11,8 @@ import info.movito.themoviedbapi.model.core.responses.ResponseStatusDelete;
 import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
-import info.movito.themoviedbapi.util.TestUtils;
 import info.movito.themoviedbapi.util.JsonUtil;
+import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbAuthentication.TMDB_METHOD_AUTH;
@@ -103,7 +103,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
 
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("request_token", requestTokenStr);
-        String jsonBody = JsonUtil.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.toJson(requestBody);
 
         String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/session/new";
         String body = TestUtils.readTestFile("api_responses/authentication/create_session.json");
@@ -140,7 +140,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
         requestBody.put("username", "username");
         requestBody.put("password", "password");
         requestBody.put("request_token", requestToken.getRequestToken());
-        String jsonBody = JsonUtil.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.toJson(requestBody);
 
         String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/token/validate_with_login";
         String body = TestUtils.readTestFile("api_responses/authentication/create_session_with_login.json");
@@ -170,7 +170,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
     public void testDeleteSession() throws TmdbException, IOException {
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("session_id", "sessionId");
-        String jsonBody = JsonUtil.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.toJson(requestBody);
 
         String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH + "/session";
         String body = TestUtils.readTestFile("api_responses/authentication/delete_session.json");

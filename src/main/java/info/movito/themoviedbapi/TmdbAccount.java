@@ -89,7 +89,7 @@ public class TmdbAccount extends AbstractTmdbApi {
         body.put("media_id", mediaId);
         body.put("favorite", isFavorite);
 
-        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
@@ -135,7 +135,7 @@ public class TmdbAccount extends AbstractTmdbApi {
         body.put("media_id", mediaId);
         body.put("watchlist", isWatchList);
 
-        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 

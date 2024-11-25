@@ -2,8 +2,6 @@ package info.movito.themoviedbapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
@@ -11,8 +9,7 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
-import lombok.AccessLevel;
-import lombok.Getter;
+import info.movito.themoviedbapi.util.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,11 +29,7 @@ public abstract class AbstractTmdbApi {
 
     public static final String PARAM_SORT_BY = "sort_by";
 
-    @Getter(AccessLevel.PROTECTED)
-    private static final ObjectMapper objectMapper = new ObjectMapper()
-        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
-    private static final ObjectReader responseStatusReader = objectMapper.readerFor(ResponseStatus.class);
+    private static final ObjectReader RESPONSE_STATUS_READER = JsonUtil.OBJECT_MAPPER.readerFor(ResponseStatus.class);
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractTmdbApi.class);
 
@@ -107,7 +100,7 @@ public abstract class AbstractTmdbApi {
      * @return the mapped class.
      */
     protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, Class<T> clazz) throws TmdbException {
-        return mapJsonResult(apiUrl, jsonBody, requestType, objectMapper.readerFor(clazz));
+        return mapJsonResult(apiUrl, jsonBody, requestType, JsonUtil.OBJECT_MAPPER.readerFor(clazz));
     }
 
     /**
@@ -122,7 +115,7 @@ public abstract class AbstractTmdbApi {
      */
     protected <T> T mapJsonResult(ApiUrl apiUrl, String jsonBody, RequestType requestType, TypeReference<T> resultClass)
         throws TmdbException {
-        return mapJsonResult(apiUrl, jsonBody, requestType, objectMapper.readerFor(resultClass));
+        return mapJsonResult(apiUrl, jsonBody, requestType, JsonUtil.OBJECT_MAPPER.readerFor(resultClass));
     }
 
     /**
@@ -141,7 +134,7 @@ public abstract class AbstractTmdbApi {
         try {
             // check if the response was successful. tmdb have their own codes for successful and unsuccessful responses.
             // some 2xx codes are not successful. See: https://developer.themoviedb.org/docs/errors for more info.
-            ResponseStatus responseStatus = responseStatusReader.readValue(jsonResponse);
+            ResponseStatus responseStatus = RESPONSE_STATUS_READER.readValue(jsonResponse);
             TmdbResponseCode tmdbResponseCode = responseStatus.getStatusCode();
 
             if (tmdbResponseCode != null) {
@@ -156,7 +149,7 @@ public abstract class AbstractTmdbApi {
             }
         }
         catch (JsonProcessingException exception) {
-            // ignore, not an error - caused by responseStatusReader.readValue(jsonResponse);
+            // ignore, not an error - caused by RESPONSE_STATUS_READER.readValue(jsonResponse);
             // this is necessary because if some requests fail (including 2xx responses), the response is a json object
         }
         catch (InterruptedException exception) {

@@ -42,7 +42,7 @@ public class TmdbLists extends AbstractTmdbApi {
         HashMap<String, Object> body = new HashMap<>();
         body.put("media_id", movieId);
 
-        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
@@ -100,7 +100,7 @@ public class TmdbLists extends AbstractTmdbApi {
         body.put("description", description);
         body.put("language", language);
 
-        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, MovieListCreationStatus.class);
     }
 
@@ -153,7 +153,7 @@ public class TmdbLists extends AbstractTmdbApi {
         HashMap<String, Object> body = new HashMap<>();
         body.put("media_id", movieId);
 
-        String jsonBody = JsonUtil.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 }
