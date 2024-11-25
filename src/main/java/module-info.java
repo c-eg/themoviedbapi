@@ -82,4 +82,5 @@ module info.movito.themoviedbapi {
     exports info.movito.themoviedbapi.tools.builders.discover;
     exports info.movito.themoviedbapi.tools.sortby;
     exports info.movito.themoviedbapi.tools.model.time;
+    exports info.movito.themoviedbapi.util;
 }
