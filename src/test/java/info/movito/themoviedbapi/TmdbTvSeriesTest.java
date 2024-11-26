@@ -24,18 +24,18 @@ import info.movito.themoviedbapi.model.tv.series.ScreenedTheatricallyResults;
 import info.movito.themoviedbapi.model.tv.series.Translations;
 import info.movito.themoviedbapi.model.tv.series.TvSeriesDb;
 import info.movito.themoviedbapi.model.tv.series.TvSeriesListResultsPage;
+import info.movito.themoviedbapi.testutil.AbstractJsonMappingValidator;
+import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvSeriesAppendToResponse;
-import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
-import info.movito.themoviedbapi.util.TestUtils;
-import info.movito.themoviedbapi.util.Utils;
+import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
+import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -406,7 +406,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testAddRating() throws IOException, TmdbException {
         HashMap<String, Object> requestBody = new HashMap<>();
         requestBody.put("value", 2.1);
-        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.toJson(requestBody);
 
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/rating";
         String body = TestUtils.readTestFile("api_responses/tv_series/add_rating.json");

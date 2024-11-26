@@ -10,7 +10,7 @@ import info.movito.themoviedbapi.model.core.responses.ResponseStatusDelete;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
-import info.movito.themoviedbapi.util.Utils;
+import info.movito.themoviedbapi.util.JsonUtil;
 
 /**
  * The movie database api for authentication. See the
@@ -105,7 +105,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
         body.put("username", username);
         body.put("password", password);
         body.put(PARAM_REQUEST_TOKEN, token.getRequestToken());
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
 
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, RequestToken.class);
     }
@@ -128,7 +128,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
 
         HashMap<String, Object> body = new HashMap<>();
         body.put(PARAM_REQUEST_TOKEN, token.getRequestToken());
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
 
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, Session.class);
     }
@@ -151,7 +151,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
 
         HashMap<String, Object> body = new HashMap<>();
         body.put("session_id", sessionId);
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
 
         return mapJsonResult(apiUrl, jsonBody, RequestType.DELETE, ResponseStatusDelete.class);
     }

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import info.movito.themoviedbapi.model.find.FindResults;
+import info.movito.themoviedbapi.testutil.AbstractJsonMappingValidator;
+import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.model.time.ExternalSource;
-import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
-import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbFind.TMDB_METHOD_FIND;

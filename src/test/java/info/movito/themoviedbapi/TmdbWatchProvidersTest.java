@@ -6,14 +6,14 @@ import java.util.Map;
 import info.movito.themoviedbapi.model.watchproviders.AvailableRegionResults;
 import info.movito.themoviedbapi.model.watchproviders.Provider;
 import info.movito.themoviedbapi.model.watchproviders.ProviderResults;
+import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
-import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbWatchProviders.TMDB_METHOD_WATCH_PROVIDERS;
+import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 

@@ -14,17 +14,17 @@ import info.movito.themoviedbapi.model.tv.season.ChangeResults;
 import info.movito.themoviedbapi.model.tv.season.ExternalIds;
 import info.movito.themoviedbapi.model.tv.season.Images;
 import info.movito.themoviedbapi.model.tv.season.TvSeasonDb;
+import info.movito.themoviedbapi.testutil.AbstractJsonMappingValidator;
+import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvSeasonsAppendToResponse;
-import info.movito.themoviedbapi.util.AbstractJsonMappingValidator;
-import info.movito.themoviedbapi.util.TestUtils;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
+import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 

@@ -15,7 +15,7 @@ import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvEpisodesAppendToResponse;
-import info.movito.themoviedbapi.util.Utils;
+import info.movito.themoviedbapi.util.JsonUtil;
 
 import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
@@ -213,7 +213,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
         HashMap<String, Object> body = new HashMap<>();
         body.put("value", rating);
 
-        String jsonBody = Utils.convertToJson(getObjectMapper(), body);
+        String jsonBody = JsonUtil.toJson(body);
         return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 

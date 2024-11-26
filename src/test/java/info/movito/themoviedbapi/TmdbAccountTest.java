@@ -11,17 +11,17 @@ import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
+import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
-import info.movito.themoviedbapi.util.TestUtils;
-import info.movito.themoviedbapi.util.Utils;
+import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbAccount.TMDB_METHOD_ACCOUNT;
+import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
-import static info.movito.themoviedbapi.util.TestUtils.validateAbstractJsonMappingFields;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -64,7 +64,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         requestBody.put("media_type", mediaType.toString());
         requestBody.put("media_id", mediaId);
         requestBody.put("favorite", true);
-        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.toJson(requestBody);
 
         String body = TestUtils.readTestFile("api_responses/account/add_favourite.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
@@ -90,7 +90,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         requestBody.put("media_type", mediaType.toString());
         requestBody.put("media_id", mediaId);
         requestBody.put("favorite", false);
-        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.toJson(requestBody);
 
         String body = TestUtils.readTestFile("api_responses/account/add_favourite.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
@@ -116,7 +116,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         requestBody.put("media_type", mediaType.toString());
         requestBody.put("media_id", mediaId);
         requestBody.put("watchlist", true);
-        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.toJson(requestBody);
 
         String body = TestUtils.readTestFile("api_responses/account/add_to_watchlist.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
@@ -142,7 +142,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         requestBody.put("media_type", mediaType.toString());
         requestBody.put("media_id", mediaId);
         requestBody.put("watchlist", false);
-        String jsonBody = Utils.convertToJson(AbstractTmdbApi.getObjectMapper(), requestBody);
+        String jsonBody = JsonUtil.toJson(requestBody);
 
         String body = TestUtils.readTestFile("api_responses/account/add_to_watchlist.json");
         when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);

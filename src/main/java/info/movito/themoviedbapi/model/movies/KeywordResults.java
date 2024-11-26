@@ -12,5 +12,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class KeywordResults extends IdElement {
     @JsonProperty("keywords")
-    List<Keyword> keywords;
+    private List<Keyword> keywords;
 }
