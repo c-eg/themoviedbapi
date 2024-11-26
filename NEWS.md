@@ -2,6 +2,12 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.3.0
+-----
+
+* refactor util package with helper functions, and export it in module info
+* dependency updates
+
 v2.2.0
 -----
 
