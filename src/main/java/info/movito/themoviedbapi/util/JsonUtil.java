@@ -25,7 +25,7 @@ public final class JsonUtil {
      * @param map the map to convert.
      * @return the json.
      */
-    public static String toJson(Map<?, ?> map) {
+    public static String toJson(Map<String, ?> map) {
         try {
             return MAP_WRITER.writeValueAsString(map);
         }
