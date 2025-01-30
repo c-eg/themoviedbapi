@@ -2,6 +2,11 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.3.1
+-----
+
+* move static classes for models which were inside the api classes, into the model package
+
 v2.3.0
 -----
 
