@@ -2,9 +2,8 @@ package info.movito.themoviedbapi;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import info.movito.themoviedbapi.model.core.Genre;
+import info.movito.themoviedbapi.model.core.Genres;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.TmdbException;
 
@@ -33,7 +32,7 @@ public class TmdbGenre extends AbstractTmdbApi {
     public List<Genre> getMovieList(String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "movie/list");
         apiUrl.addLanguage(language);
-        return mapJsonResult(apiUrl, Genres.class).genres;
+        return mapJsonResult(apiUrl, Genres.class).getGenres();
     }
 
     /**
@@ -47,11 +46,6 @@ public class TmdbGenre extends AbstractTmdbApi {
     public List<Genre> getTvList(String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "tv/list");
         apiUrl.addLanguage(language);
-        return mapJsonResult(apiUrl, Genres.class).genres;
-    }
-
-    private static class Genres extends AbstractJsonMapping {
-        @JsonProperty("genres")
-        private List<Genre> genres;
+        return mapJsonResult(apiUrl, Genres.class).getGenres();
     }
 }
