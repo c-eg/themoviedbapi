@@ -23,7 +23,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")  // gradle bundled version is incompatible with 5.12
 
-    testImplementation(platform("org.mockito:mockito-bom:5.16.1"))
+    testImplementation(platform("org.mockito:mockito-bom:5.17.0"))
     testImplementation("org.mockito:mockito-core")
 
     // util
