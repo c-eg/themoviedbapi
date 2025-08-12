@@ -37,9 +37,9 @@ public class TmdbPeople extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public PersonDb getDetails(int personId, String language, PersonAppendToResponse... appendToResponse) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId);
-        apiUrl.addLanguage(language);
-        apiUrl.addAppendToResponses(appendToResponse);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId)
+            .addLanguage(language)
+            .addAppendToResponses(appendToResponse);
         return mapJsonResult(apiUrl, PersonDb.class);
     }
 
@@ -55,10 +55,10 @@ public class TmdbPeople extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangeResults getChanges(int personId, String startDate, String endDate, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "changes");
-        apiUrl.addQueryParam("start_date", startDate);
-        apiUrl.addQueryParam("end_date", endDate);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "changes")
+            .addQueryParam("start_date", startDate)
+            .addQueryParam("end_date", endDate)
+            .addPage(page);
         return mapJsonResult(apiUrl, ChangeResults.class);
     }
 
@@ -72,8 +72,8 @@ public class TmdbPeople extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public CombinedPersonCredits getCombinedCredits(int personId, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "combined_credits");
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "combined_credits")
+            .addLanguage(language);
         return mapJsonResult(apiUrl, CombinedPersonCredits.class);
     }
 
@@ -125,8 +125,8 @@ public class TmdbPeople extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieCredits getMovieCredits(int personId, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "movie_credits");
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "movie_credits")
+            .addLanguage(language);
         return mapJsonResult(apiUrl, MovieCredits.class);
     }
 
@@ -140,8 +140,8 @@ public class TmdbPeople extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvCredits getTvCredits(int personId, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "tv_credits");
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "tv_credits")
+            .addLanguage(language);
         return mapJsonResult(apiUrl, TvCredits.class);
     }
 

@@ -30,10 +30,10 @@ public class TmdbMovieLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieResultsPageWithDates getNowPlaying(String language, Integer page, String region) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_LISTS, "now_playing");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addQueryParam("region", region);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_LISTS, "now_playing")
+            .addLanguage(language)
+            .addPage(page)
+            .addQueryParam("region", region);
         return mapJsonResult(apiUrl, MovieResultsPageWithDates.class);
     }
 
@@ -48,10 +48,10 @@ public class TmdbMovieLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieResultsPage getPopular(String language, Integer page, String region) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_LISTS, "popular");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addQueryParam("region", region);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_LISTS, "popular")
+            .addLanguage(language)
+            .addPage(page)
+            .addQueryParam("region", region);
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
@@ -66,10 +66,10 @@ public class TmdbMovieLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieResultsPage getTopRated(String language, Integer page, String region) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_LISTS, "top_rated");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addQueryParam("region", region);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_LISTS, "top_rated")
+            .addLanguage(language)
+            .addPage(page)
+            .addQueryParam("region", region);
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
@@ -84,10 +84,10 @@ public class TmdbMovieLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieResultsPageWithDates getUpcoming(String language, Integer page, String region) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_LISTS, "upcoming");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addQueryParam("region", region);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_LISTS, "upcoming")
+            .addLanguage(language)
+            .addPage(page)
+            .addQueryParam("region", region);
         return mapJsonResult(apiUrl, MovieResultsPageWithDates.class);
     }
 }

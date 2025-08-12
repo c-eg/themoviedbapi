@@ -36,8 +36,8 @@ public class TmdbLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatus addMovie(Integer listId, String sessionId, Integer movieId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "add_item");
-        apiUrl.addPathParam("session_id", sessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "add_item")
+            .addPathParam("session_id", sessionId);
 
         HashMap<String, Object> body = new HashMap<>();
         body.put("media_id", movieId);
@@ -57,9 +57,9 @@ public class TmdbLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ListItemStatus checkItemStatus(Integer listId, String language, Integer movieId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "item_status");
-        apiUrl.addLanguage(language);
-        apiUrl.addQueryParam("movie_id", movieId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "item_status")
+            .addLanguage(language)
+            .addQueryParam("movie_id", movieId);
         return mapJsonResult(apiUrl, ListItemStatus.class);
     }
 
@@ -74,9 +74,9 @@ public class TmdbLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatus clear(Integer listId, String sessionId, Boolean confirm) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "clear");
-        apiUrl.addPathParam("session_id", sessionId);
-        apiUrl.addPathParam("confirm", confirm);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "clear")
+            .addPathParam("session_id", sessionId)
+            .addPathParam("confirm", confirm);
         return mapJsonResult(apiUrl, null, RequestType.POST, ResponseStatus.class);
     }
 
@@ -92,8 +92,8 @@ public class TmdbLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieListCreationStatus create(String sessionId, String name, String description, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST);
-        apiUrl.addPathParam("session_id", sessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST)
+            .addPathParam("session_id", sessionId);
 
         HashMap<String, Object> body = new HashMap<>();
         body.put("name", name);
@@ -114,8 +114,8 @@ public class TmdbLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatus delete(Integer listId, String sessionId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId);
-        apiUrl.addPathParam("session_id", sessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId)
+            .addPathParam("session_id", sessionId);
         return mapJsonResult(apiUrl, null, RequestType.DELETE, ResponseStatus.class);
     }
 
@@ -130,9 +130,9 @@ public class TmdbLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ListDetails getDetails(Integer listId, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId)
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, ListDetails.class);
     }
 
@@ -147,8 +147,8 @@ public class TmdbLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatus removeMovie(Integer listId, String sessionId, Integer movieId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "remove_item");
-        apiUrl.addPathParam("session_id", sessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "remove_item")
+            .addPathParam("session_id", sessionId);
 
         HashMap<String, Object> body = new HashMap<>();
         body.put("media_id", movieId);

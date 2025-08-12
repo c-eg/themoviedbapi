@@ -34,10 +34,10 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
      */
     public RatedMovieResultsPage getRatedMovies(int guestSessionId, String language, Integer page,
                                                 AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GUEST_SESSIONS, guestSessionId, "rated/movies");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GUEST_SESSIONS, guestSessionId, "rated/movies")
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, RatedMovieResultsPage.class);
     }
@@ -55,10 +55,10 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
      */
     public RatedTvSeriesResultsPage getRatedTvSeries(int guestSessionId, String language, Integer page,
                                                      AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GUEST_SESSIONS, guestSessionId, "rated/tv");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GUEST_SESSIONS, guestSessionId, "rated/tv")
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, RatedTvSeriesResultsPage.class);
     }
@@ -76,10 +76,10 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
      */
     public RatedTvEpisodeResultsPage getRatedTvEpisodes(int guestSessionId, String language, Integer page,
                                                         AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GUEST_SESSIONS, guestSessionId, "rated/tv/episodes");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GUEST_SESSIONS, guestSessionId, "rated/tv/episodes")
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, RatedTvEpisodeResultsPage.class);
     }

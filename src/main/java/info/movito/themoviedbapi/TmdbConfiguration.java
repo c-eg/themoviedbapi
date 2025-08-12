@@ -46,8 +46,8 @@ public class TmdbConfiguration extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public List<Country> getCountries(String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "countries");
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "countries")
+            .addLanguage(language);
         return mapJsonResult(apiUrl, new TypeReference<>() {
         });
     }

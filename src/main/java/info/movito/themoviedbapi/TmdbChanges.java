@@ -43,10 +43,10 @@ public class TmdbChanges extends AbstractTmdbApi {
             throw new IllegalArgumentException("The date range must be less than or equal to 14 days.");
         }
 
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, TMDB_METHOD_CHANGES);
-        apiUrl.addQueryParam("start_date", startDate);
-        apiUrl.addQueryParam("end_date", endDate);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, TMDB_METHOD_CHANGES)
+            .addQueryParam("start_date", startDate)
+            .addQueryParam("end_date", endDate)
+            .addPage(page);
 
         return mapJsonResult(apiUrl, ChangesResultsPage.class);
     }
@@ -66,10 +66,10 @@ public class TmdbChanges extends AbstractTmdbApi {
             throw new IllegalArgumentException("The date range must be less than or equal to 14 days.");
         }
 
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, TMDB_METHOD_CHANGES);
-        apiUrl.addQueryParam("start_date", startDate);
-        apiUrl.addQueryParam("end_date", endDate);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, TMDB_METHOD_CHANGES)
+            .addQueryParam("start_date", startDate)
+            .addQueryParam("end_date", endDate)
+            .addPage(page);
 
         return mapJsonResult(apiUrl, ChangesResultsPage.class);
     }
@@ -89,10 +89,10 @@ public class TmdbChanges extends AbstractTmdbApi {
             throw new IllegalArgumentException("The date range must be less than or equal to 14 days.");
         }
 
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_CHANGES);
-        apiUrl.addQueryParam("start_date", startDate);
-        apiUrl.addQueryParam("end_date", endDate);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_CHANGES)
+            .addQueryParam("start_date", startDate)
+            .addQueryParam("end_date", endDate)
+            .addPage(page);
 
         return mapJsonResult(apiUrl, ChangesResultsPage.class);
     }
