@@ -74,8 +74,9 @@ public class ApiUrl {
      * @param name  the key
      * @param value the value
      */
-    public void addPathParam(String name, Object value) {
+    public ApiUrl addPathParam(String name, Object value) {
         addPathParam(name, value.toString());
+        return this;
     }
 
     /**
@@ -84,7 +85,7 @@ public class ApiUrl {
      * @param name  the key
      * @param value the value
      */
-    public void addPathParam(String name, String value) {
+    public ApiUrl addPathParam(String name, String value) {
         if (params.containsKey(name)) {
             throw new RuntimeException("parameter '" + name + "' already defined");
         }
@@ -100,6 +101,7 @@ public class ApiUrl {
         }
 
         params.put(name, value);
+        return this;
     }
 
     /**
@@ -107,14 +109,16 @@ public class ApiUrl {
      *
      * @param paramBuilder nullable - the parameter builder.
      */
-    public void addPathParams(ParamBuilder paramBuilder) {
+    public ApiUrl addPathParams(ParamBuilder paramBuilder) {
         if (paramBuilder == null) {
-            return;
+            return this;
         }
 
         for (Map.Entry<String, String> entry : paramBuilder.getParameterMap().entrySet()) {
             addPathParam(entry.getKey(), entry.getValue());
         }
+
+        return this;
     }
 
     /**
@@ -123,10 +127,12 @@ public class ApiUrl {
      * @param key   the key.
      * @param value the value.
      */
-    public void addQueryParam(String key, Object value) {
+    public ApiUrl addQueryParam(String key, Object value) {
         if (value != null) {
             addPathParam(key, value);
         }
+
+        return this;
     }
 
     /**
@@ -135,10 +141,12 @@ public class ApiUrl {
      * @param key    the key.
      * @param values the values to comma separate.
      */
-    public void addQueryParamCommandSeparated(String key, String... values) {
+    public ApiUrl addQueryParamCommandSeparated(String key, String... values) {
         if (values != null && values.length > 0) {
             addPathParam(key, String.join(",", values));
         }
+
+        return this;
     }
 
     /**
@@ -146,10 +154,12 @@ public class ApiUrl {
      *
      * @param page nullable - The page of results to return. Default: 1.
      */
-    public void addPage(Integer page) {
+    public ApiUrl addPage(Integer page) {
         if (page != null && page > 0) {
             addPathParam(AbstractTmdbApi.PARAM_PAGE, page);
         }
+
+        return this;
     }
 
     /**
@@ -157,10 +167,12 @@ public class ApiUrl {
      *
      * @param language nullable - The language to query the results in. Default: en-US.
      */
-    public void addLanguage(String language) {
+    public ApiUrl addLanguage(String language) {
         if (isNotBlank(language)) {
             addPathParam(AbstractTmdbApi.PARAM_LANGUAGE, language);
         }
+
+        return this;
     }
 
     /**
@@ -168,13 +180,15 @@ public class ApiUrl {
      *
      * @param appendToResponse the responses to append.
      */
-    public void addAppendToResponses(AppendToResponse... appendToResponse) {
+    public ApiUrl addAppendToResponses(AppendToResponse... appendToResponse) {
         if (appendToResponse == null || appendToResponse.length == 0) {
-            return;
+            return this;
         }
 
         String appendToResponseQuery = Arrays.stream(appendToResponse).map(AppendToResponse::getValue).collect(Collectors.joining(","));
         addQueryParam(APPEND_TO_RESPONSE, appendToResponseQuery);
+
+        return this;
     }
 
     /**
@@ -182,9 +196,11 @@ public class ApiUrl {
      *
      * @param sortBy the order to sort.
      */
-    public void addSortBy(SortBy sortBy) {
+    public ApiUrl addSortBy(SortBy sortBy) {
         if (sortBy != null) {
             addQueryParam(AbstractTmdbApi.PARAM_SORT_BY, sortBy.getValue());
         }
+
+        return this;
     }
 }

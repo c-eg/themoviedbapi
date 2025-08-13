@@ -27,8 +27,8 @@ public class TmdbWatchProviders extends AbstractTmdbApi {
      * @param language nullable - The language to query the results in. Default: en-US.
      */
     public AvailableRegionResults getAvailableRegions(String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_WATCH_PROVIDERS);
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_WATCH_PROVIDERS)
+            .addLanguage(language);
         return mapJsonResult(apiUrl, AvailableRegionResults.class);
     }
 
@@ -41,9 +41,9 @@ public class TmdbWatchProviders extends AbstractTmdbApi {
      * @param watchRegion nullable - The watch region, e.g. "AD"
      */
     public ProviderResults getMovieProviders(String language, String watchRegion) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_WATCH_PROVIDERS, "movie");
-        apiUrl.addLanguage(language);
-        apiUrl.addQueryParam("watch_region", watchRegion);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_WATCH_PROVIDERS, "movie")
+            .addLanguage(language)
+            .addQueryParam("watch_region", watchRegion);
         return mapJsonResult(apiUrl, ProviderResults.class);
     }
 
@@ -58,9 +58,9 @@ public class TmdbWatchProviders extends AbstractTmdbApi {
      * @param watchRegion nullable - The watch region, e.g. "AD".
      */
     public ProviderResults getTvProviders(String language, String watchRegion) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_WATCH_PROVIDERS, "tv");
-        apiUrl.addLanguage(language);
-        apiUrl.addQueryParam("watch_region", watchRegion);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_WATCH_PROVIDERS, "tv")
+            .addLanguage(language)
+            .addQueryParam("watch_region", watchRegion);
         return mapJsonResult(apiUrl, ProviderResults.class);
     }
 }

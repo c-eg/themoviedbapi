@@ -25,9 +25,9 @@ public class TmdbPeopleLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public PopularPersonResultsPage getPopular(String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PEOPLE_LISTS);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PEOPLE_LISTS)
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, PopularPersonResultsPage.class);
     }
 }

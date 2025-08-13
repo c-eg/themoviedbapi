@@ -30,8 +30,8 @@ public class TmdbGenre extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public List<Genre> getMovieList(String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "movie/list");
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "movie/list")
+            .addLanguage(language);
         return mapJsonResult(apiUrl, Genres.class).getGenres();
     }
 
@@ -44,8 +44,8 @@ public class TmdbGenre extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public List<Genre> getTvList(String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "tv/list");
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "tv/list")
+            .addLanguage(language);
         return mapJsonResult(apiUrl, Genres.class).getGenres();
     }
 }

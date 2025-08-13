@@ -41,8 +41,8 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public Account getDetails(Integer accountId, String sessionId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId);
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId)
+            .addQueryParam(PARAM_SESSION, sessionId);
 
         return mapJsonResult(apiUrl, Account.class);
     }
@@ -81,8 +81,8 @@ public class TmdbAccount extends AbstractTmdbApi {
 
     private ResponseStatus changeFavoriteStatus(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType,
                                                 boolean isFavorite) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite")
+            .addQueryParam(PARAM_SESSION, sessionId);
 
         HashMap<String, Object> body = new HashMap<>();
         body.put("media_type", mediaType.toString());
@@ -127,8 +127,8 @@ public class TmdbAccount extends AbstractTmdbApi {
 
     private ResponseStatus changeWatchListStatus(Integer accountId, String sessionId, Integer mediaId, MediaType mediaType,
                                                  boolean isWatchList) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist")
+            .addQueryParam(PARAM_SESSION, sessionId);
 
         HashMap<String, Object> body = new HashMap<>();
         body.put("media_type", mediaType.toString());
@@ -153,11 +153,11 @@ public class TmdbAccount extends AbstractTmdbApi {
      */
     public MovieResultsPage getFavoriteMovies(Integer accountId, String sessionId, String language, Integer page,
                                               AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/movies")
+            .addQueryParam(PARAM_SESSION, sessionId)
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
@@ -176,11 +176,11 @@ public class TmdbAccount extends AbstractTmdbApi {
      */
     public TvSeriesResultsPage getFavoriteTv(Integer accountId, String sessionId, String language, Integer page,
                                              AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "favorite/tv")
+            .addQueryParam(PARAM_SESSION, sessionId)
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
@@ -196,9 +196,9 @@ public class TmdbAccount extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MovieListResultsPage getLists(Integer accountId, String sessionId, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "lists");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "lists")
+            .addQueryParam(PARAM_SESSION, sessionId)
+            .addPage(page);
 
         return mapJsonResult(apiUrl, MovieListResultsPage.class);
     }
@@ -217,11 +217,11 @@ public class TmdbAccount extends AbstractTmdbApi {
      */
     public RatedMovieResultsPage getRatedMovies(int accountId, String sessionId, String language, Integer page,
                                                 AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/movies");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/movies")
+            .addQueryParam(PARAM_SESSION, sessionId)
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, RatedMovieResultsPage.class);
     }
@@ -240,11 +240,11 @@ public class TmdbAccount extends AbstractTmdbApi {
      */
     public RatedTvSeriesResultsPage getRatedTvSeries(int accountId, String sessionId, String language, Integer page,
                                                      AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv")
+            .addQueryParam(PARAM_SESSION, sessionId)
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, RatedTvSeriesResultsPage.class);
     }
@@ -263,11 +263,11 @@ public class TmdbAccount extends AbstractTmdbApi {
      */
     public RatedTvEpisodeResultsPage getRatedTvEpisodes(int accountId, String sessionId, String language, Integer page,
                                                         AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv/episodes");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "rated/tv/episodes")
+            .addQueryParam(PARAM_SESSION, sessionId)
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, RatedTvEpisodeResultsPage.class);
     }
@@ -286,11 +286,11 @@ public class TmdbAccount extends AbstractTmdbApi {
      */
     public MovieResultsPage getWatchListMovies(Integer accountId, String sessionId, String language, Integer page,
                                                AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/movies");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/movies")
+            .addQueryParam(PARAM_SESSION, sessionId)
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
@@ -309,11 +309,11 @@ public class TmdbAccount extends AbstractTmdbApi {
      */
     public TvSeriesResultsPage getWatchListTvSeries(Integer accountId, String sessionId, String language, Integer page,
                                                     AccountSortBy sortBy) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/tv");
-        apiUrl.addQueryParam(PARAM_SESSION, sessionId);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addSortBy(sortBy);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId, "watchlist/tv")
+            .addQueryParam(PARAM_SESSION, sessionId)
+            .addLanguage(language)
+            .addPage(page)
+            .addSortBy(sortBy);
 
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }

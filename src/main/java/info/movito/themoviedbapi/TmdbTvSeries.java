@@ -52,9 +52,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesDb getDetails(int seriesId, String language, TvSeriesAppendToResponse... appendToResponse) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId);
-        apiUrl.addLanguage(language);
-        apiUrl.addAppendToResponses(appendToResponse);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId)
+            .addLanguage(language)
+            .addAppendToResponses(appendToResponse);
         return mapJsonResult(apiUrl, TvSeriesDb.class);
     }
 
@@ -69,9 +69,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public AccountStates getAccountStates(int seriesId, String sessionId, String guestSessionId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "account_states");
-        apiUrl.addQueryParam("session_id", sessionId);
-        apiUrl.addQueryParam("guest_session_id", guestSessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "account_states")
+            .addQueryParam("session_id", sessionId)
+            .addQueryParam("guest_session_id", guestSessionId);
         return mapJsonResult(apiUrl, AccountStates.class);
     }
 
@@ -84,8 +84,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public AggregateCredits getAggregateCredits(int seriesId, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "aggregate_credits");
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "aggregate_credits")
+            .addLanguage(language);
         return mapJsonResult(apiUrl, AggregateCredits.class);
     }
 
@@ -114,10 +114,10 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangeResults getChanges(int seriesId, String startDate, String endDate, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "changes");
-        apiUrl.addQueryParam("start_date", startDate);
-        apiUrl.addQueryParam("end_date", endDate);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "changes")
+            .addQueryParam("start_date", startDate)
+            .addQueryParam("end_date", endDate)
+            .addPage(page);
         return mapJsonResult(apiUrl, ChangeResults.class);
     }
 
@@ -144,8 +144,8 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public Credits getCredits(int seriesId, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "credits");
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "credits")
+            .addLanguage(language);
         return mapJsonResult(apiUrl, Credits.class);
     }
 
@@ -186,9 +186,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public Images getImages(int seriesId, String language, String... includeImageLanguage) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "images");
-        apiUrl.addLanguage(language);
-        apiUrl.addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "images")
+            .addLanguage(language)
+            .addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
         return mapJsonResult(apiUrl, Images.class);
     }
 
@@ -228,9 +228,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesListResultsPage getLists(int seriesId, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "lists");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "lists")
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, TvSeriesListResultsPage.class);
     }
 
@@ -245,9 +245,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage getRecommendations(int seriesId, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "recommendations");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "recommendations")
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 
@@ -262,9 +262,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ReviewResultsPage getReviews(int seriesId, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "reviews");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "reviews")
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, ReviewResultsPage.class);
     }
 
@@ -292,9 +292,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage getSimilar(int seriesId, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "similar");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "similar")
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 
@@ -322,9 +322,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public VideoResults getVideos(int seriesId, String language, String... includeVideoLanguage) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "videos");
-        apiUrl.addLanguage(language);
-        apiUrl.addQueryParamCommandSeparated("include_image_language", includeVideoLanguage);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "videos")
+            .addLanguage(language)
+            .addQueryParamCommandSeparated("include_image_language", includeVideoLanguage);
         return mapJsonResult(apiUrl, VideoResults.class);
     }
 
@@ -361,9 +361,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
             throw new IllegalArgumentException("Rating must be: 0 < rating <= 10");
         }
 
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "rating");
-        apiUrl.addQueryParam("session_id", sessionId);
-        apiUrl.addQueryParam("guest_session_id", guestSessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "rating")
+            .addQueryParam("session_id", sessionId)
+            .addQueryParam("guest_session_id", guestSessionId);
 
         HashMap<String, Object> body = new HashMap<>();
         body.put("value", rating);
@@ -385,9 +385,9 @@ public class TmdbTvSeries extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ResponseStatus deleteRating(int seriesId, String guestSessionId, String sessionId) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "rating");
-        apiUrl.addQueryParam("session_id", sessionId);
-        apiUrl.addQueryParam("guest_session_id", guestSessionId);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, "rating")
+            .addQueryParam("session_id", sessionId)
+            .addQueryParam("guest_session_id", guestSessionId);
         return mapJsonResult(apiUrl, null, RequestType.DELETE, ResponseStatus.class);
     }
 }

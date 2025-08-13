@@ -33,8 +33,8 @@ public class TmdbCollections extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public CollectionInfo getDetails(Integer collectionId, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId);
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId)
+            .addLanguage(language);
         return mapJsonResult(apiUrl, CollectionInfo.class);
     }
 
@@ -49,9 +49,9 @@ public class TmdbCollections extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public Images getImages(Integer collectionId, String language, String... includeImageLanguage) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId, "images");
-        apiUrl.addLanguage(language);
-        apiUrl.addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId, "images")
+            .addLanguage(language)
+            .addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
         return mapJsonResult(apiUrl, Images.class);
     }
 

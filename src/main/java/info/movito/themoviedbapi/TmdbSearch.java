@@ -46,12 +46,12 @@ public class TmdbSearch extends AbstractTmdbApi {
      */
     public CollectionResultsPage searchCollection(String query, String language, Boolean includeAdult, Integer page, String region)
         throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_COLLECTION);
-        apiUrl.addPathParam(PARAM_QUERY, query);
-        apiUrl.addQueryParam("include_adult", includeAdult);
-        apiUrl.addQueryParam("region", region);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_COLLECTION)
+            .addPathParam(PARAM_QUERY, query)
+            .addQueryParam("include_adult", includeAdult)
+            .addQueryParam("region", region)
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, CollectionResultsPage.class);
     }
 
@@ -65,9 +65,9 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public CompanyResultsPage searchCompany(String query, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company");
-        apiUrl.addPathParam(PARAM_QUERY, query);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company")
+            .addPathParam(PARAM_QUERY, query)
+            .addPage(page);
         return mapJsonResult(apiUrl, CompanyResultsPage.class);
     }
 
@@ -81,9 +81,9 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public KeywordResultsPage searchKeyword(String query, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword");
-        apiUrl.addPathParam(PARAM_QUERY, query);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword")
+            .addPathParam(PARAM_QUERY, query)
+            .addPage(page);
         return mapJsonResult(apiUrl, KeywordResultsPage.class);
     }
 
@@ -103,14 +103,14 @@ public class TmdbSearch extends AbstractTmdbApi {
      */
     public MovieResultsPage searchMovie(String query, Boolean includeAdult, String language, String primaryReleaseYear, Integer page,
                                         String region, String year) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MOVIE);
-        apiUrl.addPathParam(PARAM_QUERY, query);
-        apiUrl.addQueryParam("include_adult", includeAdult);
-        apiUrl.addQueryParam("primary_release_year", primaryReleaseYear);
-        apiUrl.addQueryParam("region", region);
-        apiUrl.addQueryParam("year", year);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MOVIE)
+            .addPathParam(PARAM_QUERY, query)
+            .addQueryParam("include_adult", includeAdult)
+            .addQueryParam("primary_release_year", primaryReleaseYear)
+            .addQueryParam("region", region)
+            .addQueryParam("year", year)
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, MovieResultsPage.class);
     }
 
@@ -126,11 +126,11 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public MultiResultsPage searchMulti(String query, Boolean includeAdult, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MULTI);
-        apiUrl.addPathParam(PARAM_QUERY, query);
-        apiUrl.addQueryParam("include_adult", includeAdult);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_MULTI)
+            .addPathParam(PARAM_QUERY, query)
+            .addQueryParam("include_adult", includeAdult)
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, MultiResultsPage.class);
     }
 
@@ -146,11 +146,11 @@ public class TmdbSearch extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public PopularPersonResultsPage searchPerson(String query, Boolean includeAdult, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_PERSON);
-        apiUrl.addPathParam(PARAM_QUERY, query);
-        apiUrl.addQueryParam("include_adult", includeAdult);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_PERSON)
+            .addPathParam(PARAM_QUERY, query)
+            .addQueryParam("include_adult", includeAdult)
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, PopularPersonResultsPage.class);
     }
 
@@ -169,13 +169,13 @@ public class TmdbSearch extends AbstractTmdbApi {
      */
     public TvSeriesResultsPage searchTv(String query, Integer firstAirDateYear, Boolean includeAdult, String language, Integer page,
                                         Integer year) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV);
-        apiUrl.addPathParam(PARAM_QUERY, query);
-        apiUrl.addQueryParam("first_air_date_year", firstAirDateYear);
-        apiUrl.addQueryParam("include_adult", includeAdult);
-        apiUrl.addQueryParam("year", year);
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, TMDB_METHOD_TV)
+            .addPathParam(PARAM_QUERY, query)
+            .addQueryParam("first_air_date_year", firstAirDateYear)
+            .addQueryParam("include_adult", includeAdult)
+            .addQueryParam("year", year)
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 }

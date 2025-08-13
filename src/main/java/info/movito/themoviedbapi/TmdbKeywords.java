@@ -40,9 +40,10 @@ public class TmdbKeywords extends AbstractTmdbApi {
      */
     @Deprecated
     public MovieDbResultsPage getKeywordMovies(String keywordId, String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_KEYWORD, keywordId, "movies");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_KEYWORD, keywordId, "movies")
+            .addLanguage(language)
+            .addPage(page);
+
         return mapJsonResult(apiUrl, MovieDbResultsPage.class);
     }
 }

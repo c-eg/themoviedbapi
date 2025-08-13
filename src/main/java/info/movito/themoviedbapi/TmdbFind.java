@@ -29,9 +29,9 @@ public class TmdbFind extends AbstractTmdbApi {
      * @return The find results
      */
     public FindResults findById(String externalId, ExternalSource externalSource, String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_FIND, externalId);
-        apiUrl.addPathParam("external_source", externalSource.getValue());
-        apiUrl.addLanguage(language);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_FIND, externalId)
+            .addPathParam("external_source", externalSource.getValue())
+            .addLanguage(language);
         return mapJsonResult(apiUrl, FindResults.class);
     }
 }

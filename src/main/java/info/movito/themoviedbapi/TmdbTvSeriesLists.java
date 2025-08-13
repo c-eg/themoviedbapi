@@ -29,10 +29,10 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage getAiringToday(String language, Integer page, String timezone) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "airing_today");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addQueryParam("timezone", timezone);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "airing_today")
+            .addLanguage(language)
+            .addPage(page)
+            .addQueryParam("timezone", timezone);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 
@@ -47,10 +47,10 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage getOnTheAir(String language, Integer page, String timezone) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "on_the_air");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
-        apiUrl.addQueryParam("timezone", timezone);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "on_the_air")
+            .addLanguage(language)
+            .addPage(page)
+            .addQueryParam("timezone", timezone);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 
@@ -64,9 +64,9 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage getPopular(String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "popular");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "popular")
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 
@@ -80,9 +80,9 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public TvSeriesResultsPage getTopRated(String language, Integer page) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "top_rated");
-        apiUrl.addLanguage(language);
-        apiUrl.addPage(page);
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "top_rated")
+            .addLanguage(language)
+            .addPage(page);
         return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
     }
 }
