@@ -112,6 +112,29 @@ publishing {
     }
 }
 
+jreleaser {
+    signing {
+        pgp {
+            active = org.jreleaser.model.Active.ALWAYS
+            armored = true
+            mode = org.jreleaser.model.Signing.Mode.FILE
+            publicKey = "C:/gpg/public.pgp"
+            secretKey = "C:/gpg/private.pgp"
+        }
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                create("sonatype") {
+                    active = org.jreleaser.model.Active.ALWAYS
+                    url.set("https://central.sonatype.com/api/v1/publisher")
+                    stagingRepository("build/staging-deploy")
+                }
+            }
+        }
+    }
+}
+
 if (project.hasProperty("signing.keyId") && project.hasProperty("signing.password") && project.hasProperty("signing.secretKeyRingFile")) signing {
     sign(publishing.publications["mavenJava"])
 }
