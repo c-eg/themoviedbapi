@@ -4,6 +4,7 @@ plugins {
     `maven-publish`
     signing
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
+    id("org.jreleaser") version "1.22.0"
 }
 
 group = "uk.co.conoregan"
@@ -106,11 +107,29 @@ publishing {
     }
     repositories {
         maven {
-            name = "OSSRH"
-            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
+            url = uri(layout.buildDirectory.dir("staging-deploy"))
+        }
+    }
+}
+
+jreleaser {
+    signing {
+        pgp {
+            active = org.jreleaser.model.Active.ALWAYS
+            armored = true
+            mode = org.jreleaser.model.Signing.Mode.FILE
+            publicKey = "C:/gpg/public.pgp"
+            secretKey = "C:/gpg/private.pgp"
+        }
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                create("sonatype") {
+                    active = org.jreleaser.model.Active.ALWAYS
+                    url.set("https://central.sonatype.com/api/v1/publisher")
+                    stagingRepository("build/staging-deploy")
+                }
             }
         }
     }
