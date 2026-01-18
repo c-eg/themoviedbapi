@@ -2,6 +2,13 @@ See
 [releases](https://github.com/c-eg/themoviedbapi/releases)
 for downloads and details
 
+v2.4.0
+-----
+
+* refactor ApiUrl to use the builder pattern
+* add jreleaser to release to maven central
+* many dependency updates
+
 v2.3.1
 -----
 
