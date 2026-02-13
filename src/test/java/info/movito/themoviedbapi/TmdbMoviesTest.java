@@ -2,6 +2,7 @@ package info.movito.themoviedbapi;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -97,7 +98,13 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         MovieDb movie = getApiToTest().getDetails(123, "en-US", MovieAppendToResponse.values());
         assertNotNull(movie);
-        validateAbstractJsonMappingFields(movie);
+        
+        // origin_country is only returned by the details endpoint, not in nested results or other endpoints
+        validateAbstractJsonMappingFields(movie, Arrays.asList(
+            "info.movito.themoviedbapi.model.movies.MovieDb.originCountry",
+            "info.movito.themoviedbapi.model.movies.MovieDb.recommendations.results.originCountry",
+            "info.movito.themoviedbapi.model.movies.MovieDb.similar.results.originCountry"
+        ));
     }
 
     /**
@@ -213,6 +220,10 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(movie);
         List<String> filteredModel = new ArrayList<>();
         filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.accountStates");
+
+        // origin_country is NOT returned by the 'latest' movie endpoint
+        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.originCountry");
+
         filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.alternativeTitles");
         filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.credits");
         filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.changes");
@@ -261,7 +272,11 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         MovieResultsPage recommendations = getApiToTest().getRecommendations(123, "en-US", 1);
         assertNotNull(recommendations);
-        validateAbstractJsonMappingFields(recommendations);
+
+        // origin_country is NOT returned for movie recommendations
+        validateAbstractJsonMappingFields(recommendations, List.of(
+                "info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"
+        ));
     }
 
     /**
@@ -303,7 +318,11 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         MovieResultsPage similar = getApiToTest().getSimilar(123, "en-US", null);
         assertNotNull(similar);
-        validateAbstractJsonMappingFields(similar);
+
+        // origin_country is NOT returned for similar movies
+        validateAbstractJsonMappingFields(similar, List.of(
+                "info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"
+        ));
     }
 
     /**

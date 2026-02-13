@@ -3,6 +3,8 @@ package info.movito.themoviedbapi.testutil;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
+import java.util.List;
 
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import org.apache.commons.io.IOUtils;
@@ -35,7 +37,22 @@ public final class TestUtils {
      * Tests the given object for null fields and new items.
      */
     public static void validateAbstractJsonMappingFields(AbstractJsonMapping objectToCheck) {
+        validateAbstractJsonMappingFields(objectToCheck, Collections.emptyList());
+    }
+
+    /**
+     * Tests the given object for null fields and new items.
+     *
+     * @param objectToCheck the object to check.
+     * @param fieldsToIgnore the fields to ignore (useful for endpoint-specific optional fields).
+     */
+    public static void validateAbstractJsonMappingFields(AbstractJsonMapping objectToCheck, List<String> fieldsToIgnore) {
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(objectToCheck);
-        abstractJsonMappingValidator.validateAll();
+        abstractJsonMappingValidator.validateNullFields(fieldsToIgnore);
+        abstractJsonMappingValidator.validateEmptyCollections();
+        abstractJsonMappingValidator.validateNullContainingCollection();
+        abstractJsonMappingValidator.validateEmptyMaps();
+        abstractJsonMappingValidator.validateNullContainingMaps();
+        abstractJsonMappingValidator.validateNewItems();
     }
 }
