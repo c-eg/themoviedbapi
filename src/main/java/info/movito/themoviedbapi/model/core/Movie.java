@@ -20,6 +20,9 @@ public class Movie extends IdElement {
     @JsonProperty("genre_ids")
     private List<Integer> genreIds;
 
+    @JsonProperty("origin_country")
+    private List<String> originCountry;
+
     @JsonProperty("original_language")
     private String originalLanguage;
 
