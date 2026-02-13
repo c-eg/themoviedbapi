@@ -25,6 +25,9 @@
     "homepage": "http://www.foxmovies.com/movies/fight-club",
     "id": 550,
     "imdb_id": "tt0137523",
+    "origin_country": [
+        "US"
+    ],
     "original_language": "en",
     "original_title": "Fight Club",
     "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
@@ -75,6 +78,10 @@
         }
     ],
     "production_countries": [
+        {
+            "iso_3166_1": "DE",
+            "name": "Germany"
+        },
         {
             "iso_3166_1": "US",
             "name": "United States of America"
