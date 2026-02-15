@@ -10,7 +10,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbTvEpisodeGroups.TMDB_METHOD_TV_EPISODE_GROUPS;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -36,7 +35,7 @@ public class TmdbTvEpisodeGroupsTest extends AbstractTmdbApiTest<TmdbTvEpisodeGr
 
         TvEpisodeGroups tvEpisodeGroups = getApiToTest().getDetails("5acfef37c3a36842e400333f");
         assertNotNull(tvEpisodeGroups);
-        validateAbstractJsonMappingFields(tvEpisodeGroups);
+        TestUtils.validateAbstractJsonMappingFields(tvEpisodeGroups);
     }
 
     /**

@@ -12,7 +12,6 @@ import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbGuestSessions.TMDB_METHOD_GUEST_SESSIONS;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -37,7 +36,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
 
         RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedMovieResultsPage);
-        validateAbstractJsonMappingFields(ratedMovieResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(ratedMovieResultsPage);
     }
 
     /**
@@ -51,7 +50,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
 
         RatedTvSeriesResultsPage ratedTvSeriesResultsPage = getApiToTest().getRatedTvSeries(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvSeriesResultsPage);
-        validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
     }
 
     /**
@@ -67,6 +66,6 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = getApiToTest().getRatedTvEpisodes(1, "en", 1,
             AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvEpisodesResultsPage);
-        validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);
     }
 }

@@ -9,7 +9,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbPeopleLists.TMDB_METHOD_PEOPLE_LISTS;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -34,6 +33,6 @@ public class TmdbPeopleListsTest extends AbstractTmdbApiTest<TmdbPeopleLists> {
 
         PopularPersonResultsPage popularPersonResultsPage = getApiToTest().getPopular("en-US", 1);
         assertNotNull(popularPersonResultsPage);
-        validateAbstractJsonMappingFields(popularPersonResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(popularPersonResultsPage);
     }
 }

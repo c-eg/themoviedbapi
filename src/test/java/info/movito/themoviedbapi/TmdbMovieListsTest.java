@@ -10,7 +10,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbMovieLists.TMDB_METHOD_MOVIE_LISTS;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -35,7 +34,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
 
         MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getNowPlaying("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
-        validateAbstractJsonMappingFields(movieResultsPageWithDates);
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates);
     }
 
     /**
@@ -49,7 +48,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getPopular("en-US", 1, null);
         assertNotNull(movieResultsPage);
-        validateAbstractJsonMappingFields(movieResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -63,7 +62,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getTopRated("en-US", 1, null);
         assertNotNull(movieResultsPage);
-        validateAbstractJsonMappingFields(movieResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -77,6 +76,6 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
 
         MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getUpcoming("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
-        validateAbstractJsonMappingFields(movieResultsPageWithDates);
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates);
     }
 }

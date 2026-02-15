@@ -38,4 +38,12 @@ public final class TestUtils {
         AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(objectToCheck);
         abstractJsonMappingValidator.validateAll();
     }
+
+    /**
+     * Tests the given object for null fields and new items.
+     */
+    public static void validateAbstractJsonMappingFields(AbstractJsonMapping objectToCheck, ValidatorConfig validatorConfig) {
+        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(objectToCheck, validatorConfig);
+        abstractJsonMappingValidator.validateAll();
+    }
 }

@@ -9,7 +9,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbKeywords.TMDB_METHOD_KEYWORD;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -34,6 +33,6 @@ public class TmdbKeywordsTest extends AbstractTmdbApiTest<TmdbKeywords> {
 
         Keyword keyword = getApiToTest().getDetails(1);
         assertNotNull(keyword);
-        validateAbstractJsonMappingFields(keyword);
+        TestUtils.validateAbstractJsonMappingFields(keyword);
     }
 }

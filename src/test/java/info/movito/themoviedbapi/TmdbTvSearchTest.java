@@ -19,7 +19,6 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -45,7 +44,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
 
         CollectionResultsPage collectionResultsPage = getApiToTest().searchCollection("batman", "en-US", null, null, null);
         assertNotNull(collectionResultsPage);
-        validateAbstractJsonMappingFields(collectionResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(collectionResultsPage);
     }
 
     /**
@@ -59,7 +58,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
 
         CompanyResultsPage companyResultsPage = getApiToTest().searchCompany("amici films", null);
         assertNotNull(companyResultsPage);
-        validateAbstractJsonMappingFields(companyResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(companyResultsPage);
     }
 
     /**
@@ -73,7 +72,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
 
         KeywordResultsPage keywordResultsPage = getApiToTest().searchKeyword("autograph", null);
         assertNotNull(keywordResultsPage);
-        validateAbstractJsonMappingFields(keywordResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(keywordResultsPage);
     }
 
     /**
@@ -87,7 +86,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
 
         MovieResultsPage movieResultsPage = getApiToTest().searchMovie("batman", null, "en-US", null, null, null, null);
         assertNotNull(movieResultsPage);
-        validateAbstractJsonMappingFields(movieResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -101,23 +100,23 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
 
         MultiResultsPage multiResultsPage = getApiToTest().searchMulti("batman", null, "en-US", null);
         assertNotNull(multiResultsPage);
-        validateAbstractJsonMappingFields(multiResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(multiResultsPage);
 
         List<Multi> results = multiResultsPage.getResults();
         Multi multiMovie = results.get(0);
         assertNotNull(multiMovie);
         assertEquals(Multi.MediaType.MOVIE, multiMovie.getMediaType());
-        validateAbstractJsonMappingFields((MultiMovie) multiMovie);
+        TestUtils.validateAbstractJsonMappingFields((MultiMovie) multiMovie);
 
         Multi multiTv = results.get(1);
         assertNotNull(multiTv);
         assertEquals(Multi.MediaType.TV_SERIES, multiTv.getMediaType());
-        validateAbstractJsonMappingFields((MultiTvSeries) multiTv);
+        TestUtils.validateAbstractJsonMappingFields((MultiTvSeries) multiTv);
 
         Multi multiPerson = results.get(2);
         assertNotNull(multiPerson);
         assertEquals(Multi.MediaType.PERSON, multiPerson.getMediaType());
-        validateAbstractJsonMappingFields((MultiPerson) multiPerson);
+        TestUtils.validateAbstractJsonMappingFields((MultiPerson) multiPerson);
     }
 
     /**
@@ -131,7 +130,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
 
         PopularPersonResultsPage personResultsPage = getApiToTest().searchPerson("vin", null, "en-US", null);
         assertNotNull(personResultsPage);
-        validateAbstractJsonMappingFields(personResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(personResultsPage);
     }
 
     /**
@@ -145,6 +144,6 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().searchTv("batman", null, null, "en-US", null, null);
         assertNotNull(tvSeriesResultsPage);
-        validateAbstractJsonMappingFields(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 }

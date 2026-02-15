@@ -20,7 +20,6 @@ import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbAccount.TMDB_METHOD_ACCOUNT;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -46,7 +45,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         Account account = getApiToTest().getDetails(1234, "testSessionId");
         assertNotNull(account);
-        validateAbstractJsonMappingFields(account);
+        TestUtils.validateAbstractJsonMappingFields(account);
     }
 
     /**
@@ -71,7 +70,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         ResponseStatus responseStatus = getApiToTest().addFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
@@ -97,7 +96,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         ResponseStatus responseStatus = getApiToTest().removeFavorite(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
@@ -123,7 +122,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         ResponseStatus responseStatus = getApiToTest().addToWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
@@ -149,7 +148,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         ResponseStatus responseStatus = getApiToTest().removeFromWatchList(accountId, sessionId, mediaId, mediaType);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
@@ -171,7 +170,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getFavoriteMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
-        validateAbstractJsonMappingFields(movieResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -192,7 +191,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getFavoriteTv(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
-        validateAbstractJsonMappingFields(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 
     /**
@@ -210,7 +209,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         MovieListResultsPage movieListResultsPage = getApiToTest().getLists(accountId, sessionId, page);
         assertNotNull(movieListResultsPage);
-        validateAbstractJsonMappingFields(movieListResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(movieListResultsPage);
     }
 
     /**
@@ -231,7 +230,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedMovieResultsPage);
-        validateAbstractJsonMappingFields(ratedMovieResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(ratedMovieResultsPage);
     }
 
     /**
@@ -252,7 +251,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         RatedTvSeriesResultsPage ratedTvSeriesResultsPage = getApiToTest().getRatedTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvSeriesResultsPage);
-        validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
     }
 
     /**
@@ -274,7 +273,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage =
             getApiToTest().getRatedTvEpisodes(accountId, sessionId, language, page, sortBy);
         assertNotNull(ratedTvEpisodesResultsPage);
-        validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);
     }
 
     /**
@@ -295,7 +294,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getWatchListMovies(accountId, sessionId, language, page, sortBy);
         assertNotNull(movieResultsPage);
-        validateAbstractJsonMappingFields(movieResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -316,6 +315,6 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getWatchListTvSeries(accountId, sessionId, language, page, sortBy);
         assertNotNull(tvSeriesResultsPage);
-        validateAbstractJsonMappingFields(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 }

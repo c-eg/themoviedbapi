@@ -9,7 +9,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -34,7 +33,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest<TmdbTvSeriesLists
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getAiringToday("en-US", null, null);
         assertNotNull(tvSeriesResultsPage);
-        validateAbstractJsonMappingFields(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 
     /**
@@ -48,7 +47,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest<TmdbTvSeriesLists
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getOnTheAir("en-US", null, null);
         assertNotNull(tvSeriesResultsPage);
-        validateAbstractJsonMappingFields(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 
     /**
@@ -62,7 +61,7 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest<TmdbTvSeriesLists
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getPopular("en-US", null);
         assertNotNull(tvSeriesResultsPage);
-        validateAbstractJsonMappingFields(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 
     /**
@@ -76,6 +75,6 @@ public class TmdbTvSeriesListsTest extends AbstractTmdbApiTest<TmdbTvSeriesLists
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getTopRated("en-US", null);
         assertNotNull(tvSeriesResultsPage);
-        validateAbstractJsonMappingFields(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 }
