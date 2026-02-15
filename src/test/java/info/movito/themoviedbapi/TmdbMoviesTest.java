@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,8 +20,8 @@ import info.movito.themoviedbapi.model.movies.MovieListResultsPage;
 import info.movito.themoviedbapi.model.movies.ReleaseDateResults;
 import info.movito.themoviedbapi.model.movies.Translations;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
-import info.movito.themoviedbapi.testutil.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
@@ -58,30 +57,26 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
         MovieDb movie = getApiToTest().getDetails(123, "en-US");
         assertNotNull(movie);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(movie);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.accountStates");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.alternativeTitles");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.credits");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.changes");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.keywords");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.recommendations");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.releaseDates");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.lists");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.reviews");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.similar");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.translations");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.videos");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.watchProviders");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.movies.MovieDb.accountStates",
+                "info.movito.themoviedbapi.model.movies.MovieDb.alternativeTitles",
+                "info.movito.themoviedbapi.model.movies.MovieDb.credits",
+                "info.movito.themoviedbapi.model.movies.MovieDb.changes",
+                "info.movito.themoviedbapi.model.movies.MovieDb.externalIds",
+                "info.movito.themoviedbapi.model.movies.MovieDb.images",
+                "info.movito.themoviedbapi.model.movies.MovieDb.keywords",
+                "info.movito.themoviedbapi.model.movies.MovieDb.recommendations",
+                "info.movito.themoviedbapi.model.movies.MovieDb.releaseDates",
+                "info.movito.themoviedbapi.model.movies.MovieDb.lists",
+                "info.movito.themoviedbapi.model.movies.MovieDb.reviews",
+                "info.movito.themoviedbapi.model.movies.MovieDb.similar",
+                "info.movito.themoviedbapi.model.movies.MovieDb.translations",
+                "info.movito.themoviedbapi.model.movies.MovieDb.videos",
+                "info.movito.themoviedbapi.model.movies.MovieDb.watchProviders"
+            ))
+            .build();
+        validateAbstractJsonMappingFields(movie, validatorConfig);
     }
 
     /**
@@ -210,30 +205,26 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
         MovieDb movie = getApiToTest().getLatest();
         assertNotNull(movie);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(movie);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.accountStates");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.alternativeTitles");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.credits");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.changes");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.keywords");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.recommendations");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.releaseDates");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.lists");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.reviews");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.similar");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.translations");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.videos");
-        filteredModel.add("info.movito.themoviedbapi.model.movies.MovieDb.watchProviders");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.movies.MovieDb.accountStates",
+                "info.movito.themoviedbapi.model.movies.MovieDb.alternativeTitles",
+                "info.movito.themoviedbapi.model.movies.MovieDb.credits",
+                "info.movito.themoviedbapi.model.movies.MovieDb.changes",
+                "info.movito.themoviedbapi.model.movies.MovieDb.externalIds",
+                "info.movito.themoviedbapi.model.movies.MovieDb.images",
+                "info.movito.themoviedbapi.model.movies.MovieDb.keywords",
+                "info.movito.themoviedbapi.model.movies.MovieDb.recommendations",
+                "info.movito.themoviedbapi.model.movies.MovieDb.releaseDates",
+                "info.movito.themoviedbapi.model.movies.MovieDb.lists",
+                "info.movito.themoviedbapi.model.movies.MovieDb.reviews",
+                "info.movito.themoviedbapi.model.movies.MovieDb.similar",
+                "info.movito.themoviedbapi.model.movies.MovieDb.translations",
+                "info.movito.themoviedbapi.model.movies.MovieDb.videos",
+                "info.movito.themoviedbapi.model.movies.MovieDb.watchProviders"
+            ))
+            .build();
+        validateAbstractJsonMappingFields(movie, validatorConfig);
     }
 
     /**

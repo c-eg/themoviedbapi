@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import info.movito.themoviedbapi.model.core.video.VideoResults;
@@ -14,8 +13,8 @@ import info.movito.themoviedbapi.model.tv.season.ChangeResults;
 import info.movito.themoviedbapi.model.tv.season.ExternalIds;
 import info.movito.themoviedbapi.model.tv.season.Images;
 import info.movito.themoviedbapi.model.tv.season.TvSeasonDb;
-import info.movito.themoviedbapi.testutil.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvSeasonsAppendToResponse;
@@ -49,24 +48,20 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
         TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US");
         assertNotNull(tvSeason);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(tvSeason);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.tv.season.TvSeasonDb.accountStates");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.season.TvSeasonDb.aggregateCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.season.TvSeasonDb.changes");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.season.TvSeasonDb.credits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.season.TvSeasonDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.season.TvSeasonDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.season.TvSeasonDb.translations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.season.TvSeasonDb.videos");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.season.TvSeasonDb.watchProviders");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.accountStates",
+                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.aggregateCredits",
+                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.changes",
+                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.credits",
+                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.externalIds",
+                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.images",
+                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.translations",
+                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.videos",
+                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.watchProviders"
+            ))
+            .build();
+        validateAbstractJsonMappingFields(tvSeason, validatorConfig);
     }
 
     /**

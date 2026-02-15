@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,8 +13,8 @@ import info.movito.themoviedbapi.model.tv.episode.EpisodeCredits;
 import info.movito.themoviedbapi.model.tv.episode.ExternalIds;
 import info.movito.themoviedbapi.model.tv.episode.Images;
 import info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb;
-import info.movito.themoviedbapi.testutil.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
@@ -54,21 +53,17 @@ public class TmdbTvEpisodesTest extends AbstractTmdbApiTest<TmdbTvEpisodes> {
         TvEpisodeDb tvEpisode = getApiToTest().getDetails(123, 1, 1, "en-US");
         assertNotNull(tvEpisode);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(tvEpisode);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.accountStates");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.credits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.translations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.videos");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.accountStates",
+                "info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.credits",
+                "info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.externalIds",
+                "info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.images",
+                "info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.translations",
+                "info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb.videos"
+            ))
+            .build();
+        validateAbstractJsonMappingFields(tvEpisode, validatorConfig);
     }
 
     /**

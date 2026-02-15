@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,8 +23,8 @@ import info.movito.themoviedbapi.model.tv.series.ScreenedTheatricallyResults;
 import info.movito.themoviedbapi.model.tv.series.Translations;
 import info.movito.themoviedbapi.model.tv.series.TvSeriesDb;
 import info.movito.themoviedbapi.model.tv.series.TvSeriesListResultsPage;
-import info.movito.themoviedbapi.testutil.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
@@ -61,33 +60,29 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
         TvSeriesDb tvSeries = getApiToTest().getDetails(123, "en-US");
         assertNotNull(tvSeries);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(tvSeries);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.accountStates");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.aggregateCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.alternativeTitles");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.changes");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.contentRatings");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.credits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.episodeGroups");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.keywords");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.lists");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.recommendations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.reviews");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.screenedTheatrically");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.similar");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.translations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.videos");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.accountStates",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.aggregateCredits",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.alternativeTitles",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.changes",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.contentRatings",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.credits",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.episodeGroups",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.externalIds",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.images",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.keywords",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.lists",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.recommendations",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.reviews",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.screenedTheatrically",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.similar",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.translations",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.videos",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders"
+            ))
+            .build();
+        validateAbstractJsonMappingFields(tvSeries, validatorConfig);
     }
 
     /**
@@ -258,33 +253,29 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
         TvSeriesDb latest = getApiToTest().getLatest();
         assertNotNull(latest);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(latest);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.accountStates");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.aggregateCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.alternativeTitles");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.changes");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.contentRatings");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.credits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.episodeGroups");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.keywords");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.lists");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.recommendations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.reviews");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.screenedTheatrically");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.similar");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.translations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.videos");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.accountStates",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.aggregateCredits",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.alternativeTitles",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.changes",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.contentRatings",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.credits",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.episodeGroups",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.externalIds",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.images",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.keywords",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.lists",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.recommendations",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.reviews",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.screenedTheatrically",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.similar",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.translations",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.videos",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders"
+            ))
+            .build();
+        validateAbstractJsonMappingFields(latest, validatorConfig);
     }
 
     /**
