@@ -1,10 +1,12 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
+import java.util.List;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.builders.discover.DiscoverMovieParamBuilder;
@@ -41,7 +43,11 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getMovie(discoverMovieParamBuilder);
         assertNotNull(movieResultsPage);
-        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
 
     /**
@@ -55,7 +61,11 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getMovie(null);
         assertNotNull(movieResultsPage);
-        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
 
     /**

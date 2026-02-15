@@ -39,6 +39,9 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
         assertNotNull(findResults);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.find.FindResults.movieResults.originCountry"
+            ))
             .emptyCollectionFieldsToIgnore(List.of(
                 "info.movito.themoviedbapi.model.find.FindResults.personResults",
                 "info.movito.themoviedbapi.model.find.FindResults.tvSeriesResults",

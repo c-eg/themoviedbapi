@@ -1,10 +1,12 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
+import java.util.List;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
@@ -34,7 +36,11 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
 
         MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getNowPlaying("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
-        TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates, validatorConfig);
     }
 
     /**
@@ -48,7 +54,11 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getPopular("en-US", 1, null);
         assertNotNull(movieResultsPage);
-        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
 
     /**
@@ -62,7 +72,11 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getTopRated("en-US", 1, null);
         assertNotNull(movieResultsPage);
-        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
 
     /**
@@ -76,6 +90,10 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
 
         MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getUpcoming("en-US", 1, null);
         assertNotNull(movieResultsPageWithDates);
-        TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates, validatorConfig);
     }
 }

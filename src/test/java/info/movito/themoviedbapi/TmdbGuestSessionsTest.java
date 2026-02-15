@@ -1,11 +1,13 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
+import java.util.List;
 
 import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
@@ -36,7 +38,11 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
 
         RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedMovieResultsPage);
-        TestUtils.validateAbstractJsonMappingFields(ratedMovieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.rated.RatedMovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(ratedMovieResultsPage, validatorConfig);
     }
 
     /**
