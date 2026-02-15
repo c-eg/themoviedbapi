@@ -22,7 +22,6 @@ import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -61,7 +60,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
                 "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.watchProviders"
             ))
             .build();
-        validateAbstractJsonMappingFields(tvSeason, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(tvSeason, validatorConfig);
     }
 
     /**
@@ -78,7 +77,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US", TvSeasonsAppendToResponse.values());
         assertNotNull(tvSeason);
-        validateAbstractJsonMappingFields(tvSeason);
+        TestUtils.validateAbstractJsonMappingFields(tvSeason);
     }
 
     /**
@@ -92,7 +91,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         AccountStateResults accountStates = getApiToTest().getAccountStates(123, 1, "123", null);
         assertNotNull(accountStates);
-        validateAbstractJsonMappingFields(accountStates);
+        TestUtils.validateAbstractJsonMappingFields(accountStates);
     }
 
     /**
@@ -106,7 +105,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         AggregateCredits aggregateCredits = getApiToTest().getAggregateCredits(123, 1, "en-US");
         assertNotNull(aggregateCredits);
-        validateAbstractJsonMappingFields(aggregateCredits);
+        TestUtils.validateAbstractJsonMappingFields(aggregateCredits);
     }
 
     /**
@@ -120,7 +119,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         ChangeResults changes = getApiToTest().getChanges(123, null, null, 1);
         assertNotNull(changes);
-        validateAbstractJsonMappingFields(changes);
+        TestUtils.validateAbstractJsonMappingFields(changes);
     }
 
     /**
@@ -134,7 +133,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         Credits credits = getApiToTest().getCredits(123, 1, "en-US");
         assertNotNull(credits);
-        validateAbstractJsonMappingFields(credits);
+        TestUtils.validateAbstractJsonMappingFields(credits);
     }
 
     /**
@@ -148,7 +147,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         ExternalIds externalIds = getApiToTest().getExternalIds(123, 1);
         assertNotNull(externalIds);
-        validateAbstractJsonMappingFields(externalIds);
+        TestUtils.validateAbstractJsonMappingFields(externalIds);
     }
 
     /**
@@ -162,7 +161,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         Images images = getApiToTest().getImages(123, 1, "en-US");
         assertNotNull(images);
-        validateAbstractJsonMappingFields(images);
+        TestUtils.validateAbstractJsonMappingFields(images);
     }
 
     /**
@@ -176,7 +175,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         Translations translations = getApiToTest().getTranslations(123, 1);
         assertNotNull(translations);
-        validateAbstractJsonMappingFields(translations);
+        TestUtils.validateAbstractJsonMappingFields(translations);
     }
 
     /**
@@ -190,7 +189,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         VideoResults videos = getApiToTest().getVideos(123, 1, "en-US");
         assertNotNull(videos);
-        validateAbstractJsonMappingFields(videos);
+        TestUtils.validateAbstractJsonMappingFields(videos);
     }
 
     /**
@@ -204,6 +203,6 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123, 1, "en-US");
         assertNotNull(watchProviders);
-        validateAbstractJsonMappingFields(watchProviders);
+        TestUtils.validateAbstractJsonMappingFields(watchProviders);
     }
 }

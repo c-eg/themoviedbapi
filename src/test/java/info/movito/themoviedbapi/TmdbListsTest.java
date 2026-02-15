@@ -15,7 +15,6 @@ import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbLists.TMDB_METHOD_LIST;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -46,7 +45,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         ResponseStatus responseStatus = getApiToTest().addMovie(123, "testSessionId", 456);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.ITEM_UPDATED, responseStatus.getStatusCode());
     }
 
@@ -61,7 +60,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         ListItemStatus listItemStatus = getApiToTest().checkItemStatus(123, "en-US", null);
         assertNotNull(listItemStatus);
-        validateAbstractJsonMappingFields(listItemStatus);
+        TestUtils.validateAbstractJsonMappingFields(listItemStatus);
     }
 
     /**
@@ -75,7 +74,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         ResponseStatus responseStatus = getApiToTest().clear(123, "testSessionId", true);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.ITEM_UPDATED, responseStatus.getStatusCode());
     }
 
@@ -97,7 +96,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         MovieListCreationStatus responseStatus = getApiToTest().create("testSessionId", "testName", "testDescription", "en-US");
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
     }
 
     /**
@@ -111,7 +110,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         ResponseStatus responseStatus = getApiToTest().delete(123, "testSessionId");
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.ITEM_UPDATED, responseStatus.getStatusCode());
     }
 
@@ -126,7 +125,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         ListDetails listDetails = getApiToTest().getDetails(123, "en-US", null);
         assertNotNull(listDetails);
-        validateAbstractJsonMappingFields(listDetails);
+        TestUtils.validateAbstractJsonMappingFields(listDetails);
     }
 
     /**
@@ -145,7 +144,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         ResponseStatus responseStatus = getApiToTest().removeMovie(123, "testSessionId", 456);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.ITEM_DELETED, responseStatus.getStatusCode());
     }
 }

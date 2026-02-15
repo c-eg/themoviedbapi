@@ -12,7 +12,6 @@ import info.movito.themoviedbapi.tools.model.time.ExternalSource;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbFind.TMDB_METHOD_FIND;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -47,7 +46,7 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
                 "info.movito.themoviedbapi.model.find.FindResults.tvEpisodeResults"
             ))
             .build();
-        validateAbstractJsonMappingFields(findResults, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(findResults, validatorConfig);
     }
 
     /**
@@ -71,7 +70,7 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
                 "info.movito.themoviedbapi.model.find.FindResults.tvEpisodeResults"
             ))
             .build();
-        validateAbstractJsonMappingFields(findResults, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(findResults, validatorConfig);
     }
 
     /**
@@ -95,7 +94,7 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
                 "info.movito.themoviedbapi.model.find.FindResults.tvEpisodeResults"
             ))
             .build();
-        validateAbstractJsonMappingFields(findResults, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(findResults, validatorConfig);
     }
 
     /**
@@ -119,7 +118,7 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
                 "info.movito.themoviedbapi.model.find.FindResults.tvEpisodeResults"
             ))
             .build();
-        validateAbstractJsonMappingFields(findResults, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(findResults, validatorConfig);
     }
 
     /**
@@ -143,6 +142,6 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
                 "info.movito.themoviedbapi.model.find.FindResults.tvSeasonResults"
             ))
             .build();
-        validateAbstractJsonMappingFields(findResults, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(findResults, validatorConfig);
     }
 }

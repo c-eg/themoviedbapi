@@ -13,7 +13,6 @@ import info.movito.themoviedbapi.tools.model.time.TimeWindow;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbTrending.TMDB_METHOD_TRENDING;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -38,7 +37,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
 
         MultiResultsPage allResults = getApiToTest().getAll(TimeWindow.WEEK, "en-US");
         assertNotNull(allResults);
-        validateAbstractJsonMappingFields(allResults);
+        TestUtils.validateAbstractJsonMappingFields(allResults);
     }
 
     /**
@@ -52,7 +51,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
 
         MovieResultsPage movieResults = getApiToTest().getMovies(TimeWindow.WEEK, "en-US");
         assertNotNull(movieResults);
-        validateAbstractJsonMappingFields(movieResults);
+        TestUtils.validateAbstractJsonMappingFields(movieResults);
     }
 
     /**
@@ -66,7 +65,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
 
         PopularPersonResultsPage peopleResults = getApiToTest().getPeople(TimeWindow.WEEK, "en-US");
         assertNotNull(peopleResults);
-        validateAbstractJsonMappingFields(peopleResults);
+        TestUtils.validateAbstractJsonMappingFields(peopleResults);
     }
 
     /**
@@ -80,6 +79,6 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
 
         TvSeriesResultsPage tvResults = getApiToTest().getTv(TimeWindow.WEEK, "en-US");
         assertNotNull(tvResults);
-        validateAbstractJsonMappingFields(tvResults);
+        TestUtils.validateAbstractJsonMappingFields(tvResults);
     }
 }

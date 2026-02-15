@@ -14,7 +14,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbConfiguration.TMDB_METHOD_CONFIGURATION;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -40,7 +39,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest<TmdbConfiguration
 
         Configuration configuration = getApiToTest().getDetails();
         assertNotNull(configuration);
-        validateAbstractJsonMappingFields(configuration);
+        TestUtils.validateAbstractJsonMappingFields(configuration);
     }
 
     /**
@@ -58,7 +57,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest<TmdbConfiguration
 
         Country country = countries.get(0);
         assertNotNull(country);
-        validateAbstractJsonMappingFields(country);
+        TestUtils.validateAbstractJsonMappingFields(country);
     }
 
     /**
@@ -76,7 +75,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest<TmdbConfiguration
 
         Job job = jobs.get(0);
         assertNotNull(job);
-        validateAbstractJsonMappingFields(job);
+        TestUtils.validateAbstractJsonMappingFields(job);
     }
 
     /**
@@ -94,7 +93,7 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest<TmdbConfiguration
 
         Language language = languages.get(0);
         assertNotNull(language);
-        validateAbstractJsonMappingFields(language);
+        TestUtils.validateAbstractJsonMappingFields(language);
     }
 
     /**
@@ -129,6 +128,6 @@ public class TmdbConfigurationTest extends AbstractTmdbApiTest<TmdbConfiguration
 
         Timezone timezone = timezones.get(0);
         assertNotNull(timezone);
-        validateAbstractJsonMappingFields(timezone);
+        TestUtils.validateAbstractJsonMappingFields(timezone);
     }
 }

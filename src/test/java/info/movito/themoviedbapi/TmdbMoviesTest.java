@@ -30,7 +30,6 @@ import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbMovies.TMDB_METHOD_MOVIE;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -76,7 +75,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
                 "info.movito.themoviedbapi.model.movies.MovieDb.watchProviders"
             ))
             .build();
-        validateAbstractJsonMappingFields(movie, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(movie, validatorConfig);
     }
 
     /**
@@ -92,7 +91,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         MovieDb movie = getApiToTest().getDetails(123, "en-US", MovieAppendToResponse.values());
         assertNotNull(movie);
-        validateAbstractJsonMappingFields(movie);
+        TestUtils.validateAbstractJsonMappingFields(movie);
     }
 
     /**
@@ -106,7 +105,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         AccountStates accountStates = getApiToTest().getAccountStates(123, "123", null);
         assertNotNull(accountStates);
-        validateAbstractJsonMappingFields(accountStates);
+        TestUtils.validateAbstractJsonMappingFields(accountStates);
     }
 
     /**
@@ -120,7 +119,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         AlternativeTitles alternativeTitles = getApiToTest().getAlternativeTitles(123, "US");
         assertNotNull(alternativeTitles);
-        validateAbstractJsonMappingFields(alternativeTitles);
+        TestUtils.validateAbstractJsonMappingFields(alternativeTitles);
     }
 
     /**
@@ -134,7 +133,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         ChangeResults changeResults = getApiToTest().getChanges(123, null, null, null);
         assertNotNull(changeResults);
-        validateAbstractJsonMappingFields(changeResults);
+        TestUtils.validateAbstractJsonMappingFields(changeResults);
     }
 
     /**
@@ -148,7 +147,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         Credits credits = getApiToTest().getCredits(123, "en-US");
         assertNotNull(credits);
-        validateAbstractJsonMappingFields(credits);
+        TestUtils.validateAbstractJsonMappingFields(credits);
     }
 
     /**
@@ -162,7 +161,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         ExternalIds externalIds = getApiToTest().getExternalIds(123);
         assertNotNull(externalIds);
-        validateAbstractJsonMappingFields(externalIds);
+        TestUtils.validateAbstractJsonMappingFields(externalIds);
     }
 
     /**
@@ -176,7 +175,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         Images images = getApiToTest().getImages(123, "en-US");
         assertNotNull(images);
-        validateAbstractJsonMappingFields(images);
+        TestUtils.validateAbstractJsonMappingFields(images);
     }
 
     /**
@@ -190,7 +189,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         KeywordResults keywords = getApiToTest().getKeywords(123);
         assertNotNull(keywords);
-        validateAbstractJsonMappingFields(keywords);
+        TestUtils.validateAbstractJsonMappingFields(keywords);
     }
 
     /**
@@ -224,7 +223,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
                 "info.movito.themoviedbapi.model.movies.MovieDb.watchProviders"
             ))
             .build();
-        validateAbstractJsonMappingFields(movie, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(movie, validatorConfig);
     }
 
     /**
@@ -238,7 +237,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         MovieListResultsPage lists = getApiToTest().getLists(123, "en-US", null);
         assertNotNull(lists);
-        validateAbstractJsonMappingFields(lists);
+        TestUtils.validateAbstractJsonMappingFields(lists);
     }
 
     /**
@@ -252,7 +251,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         MovieResultsPage recommendations = getApiToTest().getRecommendations(123, "en-US", 1);
         assertNotNull(recommendations);
-        validateAbstractJsonMappingFields(recommendations);
+        TestUtils.validateAbstractJsonMappingFields(recommendations);
     }
 
     /**
@@ -266,7 +265,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         ReleaseDateResults releaseDates = getApiToTest().getReleaseDates(123);
         assertNotNull(releaseDates);
-        validateAbstractJsonMappingFields(releaseDates);
+        TestUtils.validateAbstractJsonMappingFields(releaseDates);
     }
 
     /**
@@ -280,7 +279,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         ReviewResultsPage reviews = getApiToTest().getReviews(123, "en-US", null);
         assertNotNull(reviews);
-        validateAbstractJsonMappingFields(reviews);
+        TestUtils.validateAbstractJsonMappingFields(reviews);
     }
 
     /**
@@ -294,7 +293,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         MovieResultsPage similar = getApiToTest().getSimilar(123, "en-US", null);
         assertNotNull(similar);
-        validateAbstractJsonMappingFields(similar);
+        TestUtils.validateAbstractJsonMappingFields(similar);
     }
 
     /**
@@ -308,7 +307,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         Translations translations = getApiToTest().getTranslations(123);
         assertNotNull(translations);
-        validateAbstractJsonMappingFields(translations);
+        TestUtils.validateAbstractJsonMappingFields(translations);
     }
 
     /**
@@ -322,7 +321,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         VideoResults videos = getApiToTest().getVideos(123, "en-US");
         assertNotNull(videos);
-        validateAbstractJsonMappingFields(videos);
+        TestUtils.validateAbstractJsonMappingFields(videos);
     }
 
     /**
@@ -336,7 +335,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123);
         assertNotNull(watchProviders);
-        validateAbstractJsonMappingFields(watchProviders);
+        TestUtils.validateAbstractJsonMappingFields(watchProviders);
     }
 
     /**
@@ -354,7 +353,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         ResponseStatus responseStatus = getApiToTest().addRating(123, null, null, 2.1);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
@@ -369,7 +368,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         ResponseStatus responseStatus = getApiToTest().deleteRating(123, null, null);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.ITEM_DELETED, responseStatus.getStatusCode());
     }
 }

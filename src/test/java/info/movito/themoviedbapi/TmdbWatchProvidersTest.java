@@ -12,7 +12,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbWatchProviders.TMDB_METHOD_WATCH_PROVIDERS;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -37,7 +36,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
 
         AvailableRegionResults availableRegionResults = getApiToTest().getAvailableRegions("en-US");
         assertNotNull(availableRegionResults);
-        validateAbstractJsonMappingFields(availableRegionResults);
+        TestUtils.validateAbstractJsonMappingFields(availableRegionResults);
     }
 
     /**
@@ -51,7 +50,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
 
         ProviderResults providerResults = getApiToTest().getMovieProviders("en-US", "US");
         assertNotNull(providerResults);
-        validateAbstractJsonMappingFields(providerResults);
+        TestUtils.validateAbstractJsonMappingFields(providerResults);
 
         Provider provider = providerResults.getResults().get(0);
         assertNotNull(provider);
@@ -73,7 +72,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
 
         ProviderResults providerResults = getApiToTest().getTvProviders("en-US", "US");
         assertNotNull(providerResults);
-        validateAbstractJsonMappingFields(providerResults);
+        TestUtils.validateAbstractJsonMappingFields(providerResults);
 
         Provider provider = providerResults.getResults().get(0);
         assertNotNull(provider);

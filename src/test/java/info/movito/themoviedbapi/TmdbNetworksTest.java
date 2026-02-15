@@ -11,7 +11,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbNetworks.TMDB_METHOD_NETWORK;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -36,7 +35,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
 
         Network network = getApiToTest().getDetails(1);
         assertNotNull(network);
-        validateAbstractJsonMappingFields(network);
+        TestUtils.validateAbstractJsonMappingFields(network);
     }
 
     /**
@@ -50,7 +49,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
 
         AlternativeNamesResults alternativeNamesResults = getApiToTest().getAlternativeNames(1);
         assertNotNull(alternativeNamesResults);
-        validateAbstractJsonMappingFields(alternativeNamesResults);
+        TestUtils.validateAbstractJsonMappingFields(alternativeNamesResults);
     }
 
     /**
@@ -64,6 +63,6 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
 
         ImageResults imageResults = getApiToTest().getImages(1);
         assertNotNull(imageResults);
-        validateAbstractJsonMappingFields(imageResults);
+        TestUtils.validateAbstractJsonMappingFields(imageResults);
     }
 }

@@ -12,7 +12,6 @@ import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_CHANGES;
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_PERSON;
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_TV;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -42,7 +41,7 @@ public class TmdbChangesTest extends AbstractTmdbApiTest<TmdbChanges> {
 
         ChangesResultsPage changesResultsPage = getApiToTest().getMovieChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
-        validateAbstractJsonMappingFields(changesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(changesResultsPage);
     }
 
     /**
@@ -61,7 +60,7 @@ public class TmdbChangesTest extends AbstractTmdbApiTest<TmdbChanges> {
 
         ChangesResultsPage changesResultsPage = getApiToTest().getPeopleChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
-        validateAbstractJsonMappingFields(changesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(changesResultsPage);
     }
 
     /**
@@ -80,6 +79,6 @@ public class TmdbChangesTest extends AbstractTmdbApiTest<TmdbChanges> {
 
         ChangesResultsPage changesResultsPage = getApiToTest().getTvChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
-        validateAbstractJsonMappingFields(changesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(changesResultsPage);
     }
 }
