@@ -47,13 +47,10 @@ public final class TestUtils {
      * @param fieldsToIgnore the fields to ignore (useful for endpoint-specific optional fields).
      */
     public static void validateAbstractJsonMappingFields(AbstractJsonMapping objectToCheck, List<String> fieldsToIgnore) {
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(objectToCheck);
-        abstractJsonMappingValidator.validateNullFields(fieldsToIgnore);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig config = ValidatorConfig.builder()
+            .nullFieldsToIgnore(fieldsToIgnore)
+            .build();
+        validateAbstractJsonMappingFields(objectToCheck, config);
     }
 
     /**
