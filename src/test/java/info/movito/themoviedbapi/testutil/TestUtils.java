@@ -37,20 +37,7 @@ public final class TestUtils {
      * Tests the given object for null fields and new items.
      */
     public static void validateAbstractJsonMappingFields(AbstractJsonMapping objectToCheck) {
-        validateAbstractJsonMappingFields(objectToCheck, Collections.emptyList());
-    }
-
-    /**
-     * Tests the given object for null fields and new items.
-     *
-     * @param objectToCheck the object to check.
-     * @param fieldsToIgnore the fields to ignore (useful for endpoint-specific optional fields).
-     */
-    public static void validateAbstractJsonMappingFields(AbstractJsonMapping objectToCheck, List<String> fieldsToIgnore) {
-        ValidatorConfig config = ValidatorConfig.builder()
-            .nullFieldsToIgnore(fieldsToIgnore)
-            .build();
-        validateAbstractJsonMappingFields(objectToCheck, config);
+        validateAbstractJsonMappingFields(objectToCheck, ValidatorConfig.builder().build());
     }
 
     /**
