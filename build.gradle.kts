@@ -33,7 +33,7 @@ dependencies {
     testCompileOnly("org.projectlombok:lombok:1.18.42")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
 
-    implementation(platform("com.fasterxml.jackson:jackson-bom:2.20.1"))
+    implementation(platform("com.fasterxml.jackson:jackson-bom:2.21.0"))
     implementation("com.fasterxml.jackson.core:jackson-annotations")
     implementation("com.fasterxml.jackson.core:jackson-core")
     implementation("com.fasterxml.jackson.core:jackson-databind")
