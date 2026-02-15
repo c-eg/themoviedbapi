@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 
@@ -58,59 +57,62 @@ public class AbstractJsonMappingValidator {
     public void validateAll() {
         validateNullFields();
         validateEmptyCollections();
-        validateNullContainingCollection();
+        validateNullContainingCollections();
         validateEmptyMaps();
         validateNullContainingMaps();
         validateNewItems();
     }
 
-    private static Predicate<String> filterFieldsToIgnore(List<String> list) {
-        return value -> !list.contains(value);
+    private void validateFields(List<String> fields, List<String> fieldsToIgnore, String errorMessage) {
+        List<String> offendingFields = fields.stream()
+            .filter(value -> !fields.contains(value))
+            .toList();
+        assertTrue(offendingFields.isEmpty(), errorMessage.formatted(offendingFields, fieldsToIgnore));
     }
 
     private void validateNullFields() {
-        List<String> fieldsToProcess = nullFields.stream()
-            .filter(filterFieldsToIgnore(validatorConfig.getNullFieldsToIgnore()))
-            .toList();
-        assertTrue(fieldsToProcess.isEmpty(), "Null fields found: %s. Fields ignored: %s"
-            .formatted(fieldsToProcess, validatorConfig.getNullFieldsToIgnore()));
+        validateFields(
+            nullFields,
+            validatorConfig.getNullFieldsToIgnore(),
+            "Null fields found: %s. Fields ignored: %s"
+        );
     }
 
     private void validateEmptyCollections() {
-        List<String> fieldsToProcess = emptyCollections.stream()
-            .filter(filterFieldsToIgnore(validatorConfig.getEmptyCollectionFieldsToIgnore()))
-            .toList();
-        assertTrue(fieldsToProcess.isEmpty(), "Empty collections found in: %s. Fields ignored: %s"
-            .formatted(fieldsToProcess, validatorConfig.getEmptyCollectionFieldsToIgnore()));
+        validateFields(
+            emptyCollections,
+            validatorConfig.getEmptyCollectionFieldsToIgnore(),
+            "Empty collections found in: %s. Fields ignored: %s"
+        );
     }
 
-    private void validateNullContainingCollection() {
-        List<String> fieldsToProcess = nullContainingCollection.stream()
-            .filter(filterFieldsToIgnore(validatorConfig.getNullContainingCollectionFieldsToIgnore()))
-            .toList();
-        assertTrue(fieldsToProcess.isEmpty(), "Collections containing null found: %s. Fields ignored: %s"
-            .formatted(fieldsToProcess, validatorConfig.getNullContainingCollectionFieldsToIgnore()));
+    private void validateNullContainingCollections() {
+        validateFields(
+            nullContainingCollection,
+            validatorConfig.getNullContainingCollectionFieldsToIgnore(),
+            "Collections containing null found: %s. Fields ignored: %s"
+        );
     }
 
     private void validateEmptyMaps() {
-        List<String> fieldsToProcess = emptyMaps.stream()
-            .filter(filterFieldsToIgnore(validatorConfig.getEmptyMapFieldsToIgnore()))
-            .toList();
-        assertTrue(fieldsToProcess.isEmpty(), "Empty maps found: %s. Fields ignored: %s"
-            .formatted(fieldsToProcess, validatorConfig.getEmptyMapFieldsToIgnore()));
+        validateFields(
+            emptyMaps,
+            validatorConfig.getEmptyMapFieldsToIgnore(),
+            "Empty maps found: %s. Fields ignored: %s"
+        );
     }
 
     private void validateNullContainingMaps() {
-        List<String> fieldsToProcess = nullContainingMaps.stream()
-            .filter(filterFieldsToIgnore(validatorConfig.getNullContainingMapFieldsToIgnore()))
-            .toList();
-        assertTrue(fieldsToProcess.isEmpty(), "Maps containing null found: %s. Fields ignored: %s"
-            .formatted(fieldsToProcess, validatorConfig.getNullContainingMapFieldsToIgnore()));
+        validateFields(
+            nullContainingMaps,
+            validatorConfig.getNullContainingMapFieldsToIgnore(),
+            "Maps containing null found: %s. Fields ignored: %s"
+        );
     }
 
     private void validateNewItems() {
         List<String> newItemsList = newItems.entrySet().stream()
-            .map(entry -> entry.getKey() + ": " + entry.getValue())
+            .map(entry -> "%s: %s".formatted(entry.getKey(), entry.getValue()))
             .toList();
         assertTrue(newItemsList.isEmpty(), "New items found: %s".formatted(newItemsList));
     }
