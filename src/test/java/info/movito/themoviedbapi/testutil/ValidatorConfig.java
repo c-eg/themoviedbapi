@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 /**
- * Builder for the validator config.
+ * Validation configuration to customise how {@link AbstractJsonMappingValidator} validates.
  */
 @Builder
 @Getter
