@@ -63,9 +63,9 @@ public class AbstractJsonMappingValidator {
         validateNewItems();
     }
 
-    private void validateFields(List<String> fields, List<String> fieldsToIgnore, String errorMessage) {
-        List<String> offendingFields = fields.stream()
-            .filter(value -> !fields.contains(value))
+    private void validateFields(List<String> fieldsToValidate, List<String> fieldsToIgnore, String errorMessage) {
+        List<String> offendingFields = fieldsToValidate.stream()
+            .filter(field -> !fieldsToIgnore.contains(field))
             .toList();
         assertTrue(offendingFields.isEmpty(), errorMessage.formatted(offendingFields, fieldsToIgnore));
     }
