@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import static info.movito.themoviedbapi.TmdbCertifications.TMDB_METHOD_CERTIFICATIONS;
 import static info.movito.themoviedbapi.TmdbCertifications.TMDB_METHOD_MOVIE_CERTIFICATIONS;
 import static info.movito.themoviedbapi.TmdbCertifications.TMDB_METHOD_TV_CERTIFICATIONS;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -36,7 +35,7 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest<TmdbCertificatio
 
         CertificationResults movieCertifications = getApiToTest().getMovieCertifications();
         assertNotNull(movieCertifications);
-        validateAbstractJsonMappingFields(movieCertifications);
+        TestUtils.validateAbstractJsonMappingFields(movieCertifications);
     }
 
     /**
@@ -50,6 +49,6 @@ public class TmdbCertificationsTest extends AbstractTmdbApiTest<TmdbCertificatio
 
         CertificationResults tvCertifications = getApiToTest().getTvCertifications();
         assertNotNull(tvCertifications);
-        validateAbstractJsonMappingFields(tvCertifications);
+        TestUtils.validateAbstractJsonMappingFields(tvCertifications);
     }
 }

@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_DISCOVER;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_MOVIE;
 import static info.movito.themoviedbapi.TmdbDiscover.TMDB_METHOD_TV;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -42,7 +41,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getMovie(discoverMovieParamBuilder);
         assertNotNull(movieResultsPage);
-        validateAbstractJsonMappingFields(movieResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -56,7 +55,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
 
         MovieResultsPage movieResultsPage = getApiToTest().getMovie(null);
         assertNotNull(movieResultsPage);
-        validateAbstractJsonMappingFields(movieResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
     }
 
     /**
@@ -73,7 +72,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getTv(discoverTvParamBuilder);
         assertNotNull(tvSeriesResultsPage);
-        validateAbstractJsonMappingFields(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 
     /**
@@ -87,6 +86,6 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getTv(null);
         assertNotNull(tvSeriesResultsPage);
-        validateAbstractJsonMappingFields(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
     }
 }

@@ -16,7 +16,6 @@ import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbAuthentication.TMDB_METHOD_AUTH;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static info.movito.themoviedbapi.tools.TmdbResponseCode.INVALID_API_KEY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,7 +45,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
 
         GuestSession guestSession = getApiToTest().createGuestSession();
         assertNotNull(guestSession);
-        validateAbstractJsonMappingFields(guestSession);
+        TestUtils.validateAbstractJsonMappingFields(guestSession);
     }
 
     /**
@@ -60,7 +59,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
 
         RequestToken requestToken = getApiToTest().createRequestToken();
         assertNotNull(requestToken);
-        validateAbstractJsonMappingFields(requestToken);
+        TestUtils.validateAbstractJsonMappingFields(requestToken);
     }
 
     /**
@@ -114,7 +113,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
         requestToken.setRequestToken(requestTokenStr);
         Session session = getApiToTest().createSession(requestToken);
         assertNotNull(session);
-        validateAbstractJsonMappingFields(session);
+        TestUtils.validateAbstractJsonMappingFields(session);
     }
 
     /**
@@ -148,7 +147,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
 
         RequestToken authenticatedRequestToken = getApiToTest().createAuthenticatedRequestToken(requestToken, "username", "password");
         assertNotNull(authenticatedRequestToken);
-        validateAbstractJsonMappingFields(authenticatedRequestToken);
+        TestUtils.validateAbstractJsonMappingFields(authenticatedRequestToken);
     }
 
     /**
@@ -178,7 +177,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
 
         ResponseStatusDelete responseStatusDelete = getApiToTest().deleteSession("sessionId");
         assertNotNull(responseStatusDelete);
-        validateAbstractJsonMappingFields(responseStatusDelete);
+        TestUtils.validateAbstractJsonMappingFields(responseStatusDelete);
 
         assertTrue(responseStatusDelete.getSuccess());
     }
@@ -202,7 +201,7 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
 
         ResponseStatusAuthentication responseStatusAuthentication = getApiToTest().validateKey();
         assertNotNull(responseStatusAuthentication);
-        validateAbstractJsonMappingFields(responseStatusAuthentication);
+        TestUtils.validateAbstractJsonMappingFields(responseStatusAuthentication);
 
         assertTrue(responseStatusAuthentication.getSuccess());
     }

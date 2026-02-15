@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,8 +23,8 @@ import info.movito.themoviedbapi.model.tv.series.ScreenedTheatricallyResults;
 import info.movito.themoviedbapi.model.tv.series.Translations;
 import info.movito.themoviedbapi.model.tv.series.TvSeriesDb;
 import info.movito.themoviedbapi.model.tv.series.TvSeriesListResultsPage;
-import info.movito.themoviedbapi.testutil.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
@@ -34,7 +33,6 @@ import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -61,33 +59,29 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
         TvSeriesDb tvSeries = getApiToTest().getDetails(123, "en-US");
         assertNotNull(tvSeries);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(tvSeries);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.accountStates");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.aggregateCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.alternativeTitles");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.changes");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.contentRatings");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.credits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.episodeGroups");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.keywords");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.lists");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.recommendations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.reviews");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.screenedTheatrically");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.similar");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.translations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.videos");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.accountStates",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.aggregateCredits",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.alternativeTitles",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.changes",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.contentRatings",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.credits",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.episodeGroups",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.externalIds",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.images",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.keywords",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.lists",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.recommendations",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.reviews",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.screenedTheatrically",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.similar",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.translations",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.videos",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(tvSeries, validatorConfig);
     }
 
     /**
@@ -103,7 +97,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         TvSeriesDb tvSeries = getApiToTest().getDetails(123, "en-US", TvSeriesAppendToResponse.values());
         assertNotNull(tvSeries);
-        validateAbstractJsonMappingFields(tvSeries);
+        TestUtils.validateAbstractJsonMappingFields(tvSeries);
     }
 
     /**
@@ -117,7 +111,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         AccountStates accountStates = getApiToTest().getAccountStates(123, "123", null);
         assertNotNull(accountStates);
-        validateAbstractJsonMappingFields(accountStates);
+        TestUtils.validateAbstractJsonMappingFields(accountStates);
     }
 
     /**
@@ -131,7 +125,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         AggregateCredits aggregateCredits = getApiToTest().getAggregateCredits(123, "en-US");
         assertNotNull(aggregateCredits);
-        validateAbstractJsonMappingFields(aggregateCredits);
+        TestUtils.validateAbstractJsonMappingFields(aggregateCredits);
     }
 
     /**
@@ -145,7 +139,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         AlternativeTitleResults alternativeTitles = getApiToTest().getAlternativeTitles(123);
         assertNotNull(alternativeTitles);
-        validateAbstractJsonMappingFields(alternativeTitles);
+        TestUtils.validateAbstractJsonMappingFields(alternativeTitles);
     }
 
     /**
@@ -159,7 +153,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         ChangeResults changes = getApiToTest().getChanges(123, null, null, 1);
         assertNotNull(changes);
-        validateAbstractJsonMappingFields(changes);
+        TestUtils.validateAbstractJsonMappingFields(changes);
     }
 
     /**
@@ -173,7 +167,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         ContentRatingResults contentRatings = getApiToTest().getContentRatings(123);
         assertNotNull(contentRatings);
-        validateAbstractJsonMappingFields(contentRatings);
+        TestUtils.validateAbstractJsonMappingFields(contentRatings);
     }
 
     /**
@@ -187,7 +181,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         Credits credits = getApiToTest().getCredits(123, "en-US");
         assertNotNull(credits);
-        validateAbstractJsonMappingFields(credits);
+        TestUtils.validateAbstractJsonMappingFields(credits);
     }
 
     /**
@@ -201,7 +195,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         EpisodeGroupResults episodeGroups = getApiToTest().getEpisodeGroups(123);
         assertNotNull(episodeGroups);
-        validateAbstractJsonMappingFields(episodeGroups);
+        TestUtils.validateAbstractJsonMappingFields(episodeGroups);
     }
 
     /**
@@ -215,7 +209,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         ExternalIds externalIds = getApiToTest().getExternalIds(123);
         assertNotNull(externalIds);
-        validateAbstractJsonMappingFields(externalIds);
+        TestUtils.validateAbstractJsonMappingFields(externalIds);
     }
 
     /**
@@ -229,7 +223,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         Images images = getApiToTest().getImages(123, null);
         assertNotNull(images);
-        validateAbstractJsonMappingFields(images);
+        TestUtils.validateAbstractJsonMappingFields(images);
     }
 
     /**
@@ -243,7 +237,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         TvKeywords keywords = getApiToTest().getKeywords(123);
         assertNotNull(keywords);
-        validateAbstractJsonMappingFields(keywords);
+        TestUtils.validateAbstractJsonMappingFields(keywords);
     }
 
     /**
@@ -258,33 +252,29 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
         TvSeriesDb latest = getApiToTest().getLatest();
         assertNotNull(latest);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(latest);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.accountStates");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.aggregateCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.alternativeTitles");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.changes");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.contentRatings");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.credits");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.episodeGroups");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.keywords");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.lists");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.recommendations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.reviews");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.screenedTheatrically");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.similar");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.translations");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.videos");
-        filteredModel.add("info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.accountStates",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.aggregateCredits",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.alternativeTitles",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.changes",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.contentRatings",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.credits",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.episodeGroups",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.externalIds",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.images",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.keywords",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.lists",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.recommendations",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.reviews",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.screenedTheatrically",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.similar",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.translations",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.videos",
+                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(latest, validatorConfig);
     }
 
     /**
@@ -298,7 +288,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         TvSeriesListResultsPage lists = getApiToTest().getLists(123, null, null);
         assertNotNull(lists);
-        validateAbstractJsonMappingFields(lists);
+        TestUtils.validateAbstractJsonMappingFields(lists);
     }
 
     /**
@@ -312,7 +302,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         TvSeriesResultsPage recommendations = getApiToTest().getRecommendations(123, null, null);
         assertNotNull(recommendations);
-        validateAbstractJsonMappingFields(recommendations);
+        TestUtils.validateAbstractJsonMappingFields(recommendations);
     }
 
     /**
@@ -326,7 +316,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         ReviewResultsPage reviews = getApiToTest().getReviews(123, null, null);
         assertNotNull(reviews);
-        validateAbstractJsonMappingFields(reviews);
+        TestUtils.validateAbstractJsonMappingFields(reviews);
     }
 
     /**
@@ -340,7 +330,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         ScreenedTheatricallyResults screenedTheatrically = getApiToTest().getScreenedTheatrically(123);
         assertNotNull(screenedTheatrically);
-        validateAbstractJsonMappingFields(screenedTheatrically);
+        TestUtils.validateAbstractJsonMappingFields(screenedTheatrically);
     }
 
     /**
@@ -354,7 +344,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         TvSeriesResultsPage similar = getApiToTest().getSimilar(123, null, null);
         assertNotNull(similar);
-        validateAbstractJsonMappingFields(similar);
+        TestUtils.validateAbstractJsonMappingFields(similar);
     }
 
     /**
@@ -368,7 +358,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         Translations translations = getApiToTest().getTranslations(123);
         assertNotNull(translations);
-        validateAbstractJsonMappingFields(translations);
+        TestUtils.validateAbstractJsonMappingFields(translations);
     }
 
     /**
@@ -382,7 +372,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         VideoResults videos = getApiToTest().getVideos(123, null);
         assertNotNull(videos);
-        validateAbstractJsonMappingFields(videos);
+        TestUtils.validateAbstractJsonMappingFields(videos);
     }
 
     /**
@@ -396,7 +386,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123);
         assertNotNull(watchProviders);
-        validateAbstractJsonMappingFields(watchProviders);
+        TestUtils.validateAbstractJsonMappingFields(watchProviders);
     }
 
     /**
@@ -414,7 +404,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         ResponseStatus responseStatus = getApiToTest().addRating(123, null, null, 2.1);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
     }
 
@@ -429,7 +419,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         ResponseStatus responseStatus = getApiToTest().deleteRating(123, null, null);
         assertNotNull(responseStatus);
-        validateAbstractJsonMappingFields(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
         assertEquals(TmdbResponseCode.ITEM_DELETED, responseStatus.getStatusCode());
     }
 }

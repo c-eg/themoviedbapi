@@ -1,7 +1,6 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
@@ -19,15 +18,14 @@ import info.movito.themoviedbapi.model.people.credits.MovieCrew;
 import info.movito.themoviedbapi.model.people.credits.TvCast;
 import info.movito.themoviedbapi.model.people.credits.TvCredits;
 import info.movito.themoviedbapi.model.people.credits.TvCrew;
-import info.movito.themoviedbapi.testutil.AbstractJsonMappingValidator;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbPeople.TMDB_METHOD_PERSON;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -55,23 +53,19 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
         PersonDb details = getApiToTest().getDetails(123, "en-US");
         assertNotNull(details);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(details);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.changes");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.combinedCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.latest");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.movieCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.tvCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.translations");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.people.PersonDb.changes",
+                "info.movito.themoviedbapi.model.people.PersonDb.combinedCredits",
+                "info.movito.themoviedbapi.model.people.PersonDb.externalIds",
+                "info.movito.themoviedbapi.model.people.PersonDb.images",
+                "info.movito.themoviedbapi.model.people.PersonDb.latest",
+                "info.movito.themoviedbapi.model.people.PersonDb.movieCredits",
+                "info.movito.themoviedbapi.model.people.PersonDb.tvCredits",
+                "info.movito.themoviedbapi.model.people.PersonDb.translations"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(details, validatorConfig);
     }
 
     /**
@@ -86,7 +80,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
 
         PersonDb details = getApiToTest().getDetails(123, "en-US", PersonAppendToResponse.values());
         assertNotNull(details);
-        validateAbstractJsonMappingFields(details);
+        TestUtils.validateAbstractJsonMappingFields(details);
     }
 
     /**
@@ -105,7 +99,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
 
         ChangeResults changes = getApiToTest().getChanges(123, startDate, endDate, page);
         assertNotNull(changes);
-        validateAbstractJsonMappingFields(changes);
+        TestUtils.validateAbstractJsonMappingFields(changes);
     }
 
     /**
@@ -119,7 +113,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
 
         CombinedPersonCredits personCredits = getApiToTest().getCombinedCredits(123, "en-US");
         assertNotNull(personCredits);
-        validateAbstractJsonMappingFields(personCredits);
+        TestUtils.validateAbstractJsonMappingFields(personCredits);
 
         // this is not done in generic util way to make sure that the cast and crew are of the correct type
         List<Cast> cast = personCredits.getCast();
@@ -127,20 +121,20 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
         assertFalse(cast.isEmpty());
         MovieCast movieCast = (MovieCast) cast.get(0);
         assertNotNull(movieCast);
-        validateAbstractJsonMappingFields(movieCast);
+        TestUtils.validateAbstractJsonMappingFields(movieCast);
         TvCast tvCast = (TvCast) cast.get(1);
         assertNotNull(tvCast);
-        validateAbstractJsonMappingFields(tvCast);
+        TestUtils.validateAbstractJsonMappingFields(tvCast);
 
         List<Crew> crew = personCredits.getCrew();
         assertNotNull(crew);
         assertFalse(crew.isEmpty());
         MovieCrew movieCrew = (MovieCrew) crew.get(0);
         assertNotNull(movieCrew);
-        validateAbstractJsonMappingFields(movieCrew);
+        TestUtils.validateAbstractJsonMappingFields(movieCrew);
         TvCrew tvCrew = (TvCrew) crew.get(1);
         assertNotNull(tvCrew);
-        validateAbstractJsonMappingFields(tvCrew);
+        TestUtils.validateAbstractJsonMappingFields(tvCrew);
     }
 
     /**
@@ -154,7 +148,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
 
         ExternalIds externalIds = getApiToTest().getExternalIds(123);
         assertNotNull(externalIds);
-        validateAbstractJsonMappingFields(externalIds);
+        TestUtils.validateAbstractJsonMappingFields(externalIds);
     }
 
     /**
@@ -168,7 +162,7 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
 
         PersonImages images = getApiToTest().getImages(123);
         assertNotNull(images);
-        validateAbstractJsonMappingFields(images);
+        TestUtils.validateAbstractJsonMappingFields(images);
     }
 
     /**
@@ -183,23 +177,19 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
         PersonDb latest = getApiToTest().getLatest();
         assertNotNull(latest);
 
-        AbstractJsonMappingValidator abstractJsonMappingValidator = new AbstractJsonMappingValidator(latest);
-        List<String> filteredModel = new ArrayList<>();
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.changes");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.combinedCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.externalIds");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.images");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.latest");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.movieCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.tvCredits");
-        filteredModel.add("info.movito.themoviedbapi.model.people.PersonDb.translations");
-
-        abstractJsonMappingValidator.validateNullFields(filteredModel);
-        abstractJsonMappingValidator.validateEmptyCollections();
-        abstractJsonMappingValidator.validateNullContainingCollection();
-        abstractJsonMappingValidator.validateEmptyMaps();
-        abstractJsonMappingValidator.validateNullContainingMaps();
-        abstractJsonMappingValidator.validateNewItems();
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.people.PersonDb.changes",
+                "info.movito.themoviedbapi.model.people.PersonDb.combinedCredits",
+                "info.movito.themoviedbapi.model.people.PersonDb.externalIds",
+                "info.movito.themoviedbapi.model.people.PersonDb.images",
+                "info.movito.themoviedbapi.model.people.PersonDb.latest",
+                "info.movito.themoviedbapi.model.people.PersonDb.movieCredits",
+                "info.movito.themoviedbapi.model.people.PersonDb.tvCredits",
+                "info.movito.themoviedbapi.model.people.PersonDb.translations"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(latest, validatorConfig);
     }
 
     /**
@@ -213,26 +203,26 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
 
         MovieCredits movieCredits = getApiToTest().getMovieCredits(123, "en-US");
         assertNotNull(movieCredits);
-        validateAbstractJsonMappingFields(movieCredits);
+        TestUtils.validateAbstractJsonMappingFields(movieCredits);
 
         // this is not done in generic util way to make sure that the cast and crew are of the correct type
         List<MovieCast> cast = movieCredits.getCast();
         assertNotNull(cast);
         assertFalse(cast.isEmpty());
-        cast.forEach(c -> assertEquals(c.getMediaType(), MediaType.MOVIE));
+        cast.forEach(c -> assertEquals(MediaType.MOVIE, c.getMediaType()));
 
         MovieCast movieCast = cast.get(0);
         assertNotNull(movieCast);
-        validateAbstractJsonMappingFields(movieCast);
+        TestUtils.validateAbstractJsonMappingFields(movieCast);
 
         List<MovieCrew> crew = movieCredits.getCrew();
         assertNotNull(crew);
         assertFalse(crew.isEmpty());
-        crew.forEach(c -> assertEquals(c.getMediaType(), MediaType.MOVIE));
+        crew.forEach(c -> assertEquals(MediaType.MOVIE, c.getMediaType()));
 
         MovieCrew movieCrew = crew.get(0);
         assertNotNull(movieCrew);
-        validateAbstractJsonMappingFields(movieCrew);
+        TestUtils.validateAbstractJsonMappingFields(movieCrew);
     }
 
     /**
@@ -246,26 +236,26 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
 
         TvCredits tvCredits = getApiToTest().getTvCredits(123, "en-US");
         assertNotNull(tvCredits);
-        validateAbstractJsonMappingFields(tvCredits);
+        TestUtils.validateAbstractJsonMappingFields(tvCredits);
 
         // this is not done in generic util way to make sure that the cast and crew are of the correct type
         List<TvCast> cast = tvCredits.getCast();
         assertNotNull(cast);
         assertFalse(cast.isEmpty());
-        cast.forEach(c -> assertEquals(c.getMediaType(), MediaType.TV));
+        cast.forEach(c -> assertEquals(MediaType.TV, c.getMediaType()));
 
         TvCast tvCast = cast.get(0);
         assertNotNull(tvCast);
-        validateAbstractJsonMappingFields(tvCast);
+        TestUtils.validateAbstractJsonMappingFields(tvCast);
 
         List<TvCrew> crew = tvCredits.getCrew();
         assertNotNull(crew);
         assertFalse(crew.isEmpty());
-        crew.forEach(c -> assertEquals(c.getMediaType(), MediaType.TV));
+        crew.forEach(c -> assertEquals(MediaType.TV, c.getMediaType()));
 
         TvCrew tvCrew = crew.get(0);
         assertNotNull(tvCrew);
-        validateAbstractJsonMappingFields(tvCrew);
+        TestUtils.validateAbstractJsonMappingFields(tvCrew);
     }
 
     /**
@@ -279,6 +269,6 @@ public class TmdbPeopleTest extends AbstractTmdbApiTest<TmdbPeople> {
 
         Translations translations = getApiToTest().getTranslations(123);
         assertNotNull(translations);
-        validateAbstractJsonMappingFields(translations);
+        TestUtils.validateAbstractJsonMappingFields(translations);
     }
 }

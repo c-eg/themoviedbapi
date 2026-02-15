@@ -10,7 +10,6 @@ import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbGenre.TMDB_METHOD_GENRE;
-import static info.movito.themoviedbapi.testutil.TestUtils.validateAbstractJsonMappingFields;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -40,7 +39,7 @@ public class TmdbGenresTest extends AbstractTmdbApiTest<TmdbGenre> {
 
         Genre genre = genres.get(0);
         assertNotNull(genre);
-        validateAbstractJsonMappingFields(genre);
+        TestUtils.validateAbstractJsonMappingFields(genre);
     }
 
     /**
@@ -58,6 +57,6 @@ public class TmdbGenresTest extends AbstractTmdbApiTest<TmdbGenre> {
 
         Genre genre = genres.get(0);
         assertNotNull(genre);
-        validateAbstractJsonMappingFields(genre);
+        TestUtils.validateAbstractJsonMappingFields(genre);
     }
 }
