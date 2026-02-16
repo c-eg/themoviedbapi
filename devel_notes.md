@@ -3,18 +3,16 @@
 
 1. Make sure to increase version number in [build.gradle.kts](build.gradle.kts), commit and push the version to the `master` branch
 
-2. Document updates in [NEWS.md](NEWS.md)
+2. Do the release on GitHub
 
-3. Do the release on GitHub
+3. Make sure the prerequisites are met that are listed below
 
-4. Make sure the prerequisites are met that are listed below
-
-5. Clean, publish and deploy
+4. Clean, publish and deploy
 ```bash
 ./gradlew clean && ./gradlew publish && ./gradlew jreleaserDeploy
 ```
 
-6. Go to [Maven Central Repository](https://central.sonatype.com/publishing/deployments) and verify the deployment was successful
+5. Go to [Maven Central Repository](https://central.sonatype.com/publishing/deployments) and verify the deployment was successful
 
 
 ## Prerequisites
