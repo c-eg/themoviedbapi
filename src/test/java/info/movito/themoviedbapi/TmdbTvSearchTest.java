@@ -15,6 +15,7 @@ import info.movito.themoviedbapi.model.search.CollectionResultsPage;
 import info.movito.themoviedbapi.model.search.CompanyResultsPage;
 import info.movito.themoviedbapi.model.search.KeywordResultsPage;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import org.junit.jupiter.api.Test;
@@ -86,7 +87,11 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
 
         MovieResultsPage movieResultsPage = getApiToTest().searchMovie("batman", null, "en-US", null, null, null, null);
         assertNotNull(movieResultsPage);
-        TestUtils.validateAbstractJsonMappingFields(movieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
 
     /**
@@ -100,13 +105,21 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
 
         MultiResultsPage multiResultsPage = getApiToTest().searchMulti("batman", null, "en-US", null);
         assertNotNull(multiResultsPage);
-        TestUtils.validateAbstractJsonMappingFields(multiResultsPage);
+
+        ValidatorConfig multiValidatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.multi.MultiResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(multiResultsPage, multiValidatorConfig);
 
         List<Multi> results = multiResultsPage.getResults();
         Multi multiMovie = results.get(0);
         assertNotNull(multiMovie);
         assertEquals(Multi.MediaType.MOVIE, multiMovie.getMediaType());
-        TestUtils.validateAbstractJsonMappingFields((MultiMovie) multiMovie);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.multi.MultiMovie.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields((MultiMovie) multiMovie, validatorConfig);
 
         Multi multiTv = results.get(1);
         assertNotNull(multiTv);

@@ -46,6 +46,9 @@ public class MovieDb extends IdElement {
     @JsonProperty("original_language")
     private String originalLanguage;
 
+    @JsonProperty("origin_country")
+    private List<String> originCountry;
+
     @JsonProperty("original_title")
     private String originalTitle;
 

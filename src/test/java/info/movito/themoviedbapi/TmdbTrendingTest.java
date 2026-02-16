@@ -1,12 +1,14 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
+import java.util.List;
 
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.multi.MultiResultsPage;
 import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.model.time.TimeWindow;
@@ -37,7 +39,13 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
 
         MultiResultsPage allResults = getApiToTest().getAll(TimeWindow.WEEK, "en-US");
         assertNotNull(allResults);
-        TestUtils.validateAbstractJsonMappingFields(allResults);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.core.multi.MultiResultsPage.results.originCountry"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(allResults, validatorConfig);
     }
 
     /**
@@ -51,7 +59,11 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
 
         MovieResultsPage movieResults = getApiToTest().getMovies(TimeWindow.WEEK, "en-US");
         assertNotNull(movieResults);
-        TestUtils.validateAbstractJsonMappingFields(movieResults);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResults, validatorConfig);
     }
 
     /**

@@ -2,12 +2,14 @@ package info.movito.themoviedbapi;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 import info.movito.themoviedbapi.model.core.responses.ResponseStatus;
 import info.movito.themoviedbapi.model.lists.ListDetails;
 import info.movito.themoviedbapi.model.lists.ListItemStatus;
 import info.movito.themoviedbapi.model.lists.MovieListCreationStatus;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
@@ -125,7 +127,11 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
 
         ListDetails listDetails = getApiToTest().getDetails(123, "en-US", null);
         assertNotNull(listDetails);
-        TestUtils.validateAbstractJsonMappingFields(listDetails);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.lists.ListDetails.items.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(listDetails, validatorConfig);
     }
 
     /**

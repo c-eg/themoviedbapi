@@ -11,9 +11,14 @@ import lombok.Getter;
 @Builder
 @Getter
 public class ValidatorConfig {
-    private List<String> nullFieldsToIgnore;
-    private List<String> emptyCollectionFieldsToIgnore;
-    private List<String> nullContainingCollectionFieldsToIgnore;
-    private List<String> emptyMapFieldsToIgnore;
-    private List<String> nullContainingMapFieldsToIgnore;
+    @Builder.Default
+    private List<String> nullFieldsToIgnore = List.of();
+    @Builder.Default
+    private List<String> emptyCollectionFieldsToIgnore = List.of();
+    @Builder.Default
+    private List<String> nullContainingCollectionFieldsToIgnore = List.of();
+    @Builder.Default
+    private List<String> emptyMapFieldsToIgnore = List.of();
+    @Builder.Default
+    private List<String> nullContainingMapFieldsToIgnore = List.of();
 }
