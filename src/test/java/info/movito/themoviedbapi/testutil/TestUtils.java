@@ -3,8 +3,6 @@ package info.movito.themoviedbapi.testutil;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.List;
 
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
 import org.apache.commons.io.IOUtils;
