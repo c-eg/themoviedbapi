@@ -38,7 +38,9 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
         assertNotNull(movieResultsPageWithDates);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates.results.originCountry"
+            ))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates, validatorConfig);
     }
@@ -56,7 +58,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
         assertNotNull(movieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
@@ -74,7 +76,7 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
         assertNotNull(movieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
@@ -92,7 +94,9 @@ public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
         assertNotNull(movieResultsPageWithDates);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates.results.originCountry"
+            ))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates, validatorConfig);
     }

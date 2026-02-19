@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.movies;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +15,7 @@ public class ReleaseDate extends AbstractJsonMapping {
     private String certification;
 
     @JsonProperty("descriptors")
-    private List<Object> descriptors;
+    private List<Object> descriptors = new ArrayList<>();
 
     @JsonProperty("iso_639_1")
     private String iso6391;

@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.core.popularperson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +18,7 @@ public class KnownFor extends IdElement {
     private String backdropPath;
 
     @JsonProperty("genre_ids")
-    private List<Integer> genreIds;
+    private List<Integer> genreIds = new ArrayList<>();
 
     @JsonProperty("popularity")
     private Double popularity;

@@ -89,7 +89,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
         assertNotNull(movieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
@@ -107,7 +107,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
         assertNotNull(multiResultsPage);
 
         ValidatorConfig multiValidatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.multi.MultiResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.multi.MultiResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(multiResultsPage, multiValidatorConfig);
 
@@ -117,7 +117,7 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
         assertEquals(Multi.MediaType.MOVIE, multiMovie.getMediaType());
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.multi.MultiMovie.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.multi.MultiMovie.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields((MultiMovie) multiMovie, validatorConfig);
 

@@ -45,7 +45,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
         assertNotNull(movieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
@@ -63,7 +63,7 @@ public class TmdbDiscoverTest extends AbstractTmdbApiTest<TmdbDiscover> {
         assertNotNull(movieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }

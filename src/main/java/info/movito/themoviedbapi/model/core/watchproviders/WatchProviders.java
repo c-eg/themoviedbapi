@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.core.watchproviders;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,8 +18,8 @@ public class WatchProviders extends AbstractJsonMapping {
     private List<Provider> rentProviders;
 
     @JsonProperty("buy")
-    private List<Provider> buyProviders;
+    private List<Provider> buyProviders = new ArrayList<>();
 
     @JsonProperty("flatrate")
-    private List<Provider> flatrateProviders;
+    private List<Provider> flatrateProviders = new ArrayList<>();
 }

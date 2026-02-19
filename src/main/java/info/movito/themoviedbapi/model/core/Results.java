@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.core;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public abstract class Results<T> extends IdElement implements Iterable<T> {
     @JsonProperty("results")
-    private List<T> results;
+    private List<T> results = new ArrayList<>();
 
     @Override
     public Iterator<T> iterator() {

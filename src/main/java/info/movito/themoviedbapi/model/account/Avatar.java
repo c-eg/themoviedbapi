@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.account;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,10 +12,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Avatar extends AbstractJsonMapping {
     @JsonProperty("gravatar")
-    private Map<String, String> gravatar;
+    private Map<String, String> gravatar = new HashMap<>();
 
     @JsonProperty("tmdb")
-    private Map<String, String> tmdb;
+    private Map<String, String> tmdb = new HashMap<>();
 
     public String getGravatarHash() {
         return gravatar.get("hash");

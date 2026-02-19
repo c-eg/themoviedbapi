@@ -40,7 +40,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
         assertNotNull(ratedMovieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.rated.RatedMovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.rated.RatedMovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(ratedMovieResultsPage, validatorConfig);
     }

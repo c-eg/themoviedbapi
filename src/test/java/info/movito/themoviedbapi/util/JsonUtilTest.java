@@ -1,10 +1,16 @@
 package info.movito.themoviedbapi.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -15,7 +21,7 @@ public class JsonUtilTest {
      * Tests {@link JsonUtil#toJson(Map)}, with string keys and string values.
      */
     @Test
-    public void testToJsonStringString() {
+    public void testToJson() {
         Map<String, String> map = new HashMap<>();
         map.put("key1", "value1");
         map.put("key2", "value2");
@@ -25,28 +31,42 @@ public class JsonUtilTest {
     }
 
     /**
-     * Tests {@link JsonUtil#toJson(Map)}, with string keys and boolean values.
+     * Tests {@link JsonUtil#OBJECT_MAPPER} when there are unknown properties, does not throw an exception.
      */
     @Test
-    public void testToJsonStringBoolean() {
-        Map<String, Boolean> map = new HashMap<>();
-        map.put("key1", true);
-        map.put("key2", false);
-
-        String json = JsonUtil.toJson(map);
-        assertEquals("{\"key1\":true,\"key2\":false}", json);
+    public void testToJson_unknownProperties() {
+        String content = """
+            {
+              "present": "test1",
+              "stringList": [
+                "one",
+                "two"
+              ],
+              "unknown": "test2"
+            }
+            """;
+        assertDoesNotThrow(() -> JsonUtil.OBJECT_MAPPER.readValue(content, JsonTestClass.class));
     }
 
     /**
-     * Tests {@link JsonUtil#toJson(Map)}, with string keys and integer values.
+     * Tests {@link JsonUtil#OBJECT_MAPPER} when a list property is null, it is deserialised as an empty list.
      */
     @Test
-    public void testToJsonStringInteger() {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("key1", 1);
-        map.put("key2", 2);
+    public void testToJson_nullListPropertyDeserialisedAsEmpty() throws JsonProcessingException {
+        String content = """
+            {
+              "present": "test1",
+              "stringList": null
+            }
+            """;
+        JsonTestClass result = JsonUtil.OBJECT_MAPPER.readValue(content, JsonTestClass.class);
+        assertEquals(List.of(), result.getStringList());
+    }
 
-        String json = JsonUtil.toJson(map);
-        assertEquals("{\"key1\":1,\"key2\":2}", json);
+    @Data
+    @EqualsAndHashCode
+    private static class JsonTestClass {
+        private String present;
+        private List<String> stringList = new ArrayList<>();
     }
 }

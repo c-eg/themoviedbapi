@@ -94,7 +94,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         // origin_country is only returned by the details endpoint, not in nested results or other endpoints
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of(
+            .emptyCollectionFieldsToIgnore(List.of(
                 "info.movito.themoviedbapi.model.movies.MovieDb.recommendations.results.originCountry",
                 "info.movito.themoviedbapi.model.movies.MovieDb.similar.results.originCountry"
             ))
@@ -215,10 +215,6 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
             .nullFieldsToIgnore(List.of(
                 "info.movito.themoviedbapi.model.movies.MovieDb.accountStates",
-
-                // origin_country is NOT returned by the 'latest' movie endpoint
-                "info.movito.themoviedbapi.model.movies.MovieDb.originCountry",
-
                 "info.movito.themoviedbapi.model.movies.MovieDb.alternativeTitles",
                 "info.movito.themoviedbapi.model.movies.MovieDb.credits",
                 "info.movito.themoviedbapi.model.movies.MovieDb.changes",
@@ -233,6 +229,10 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
                 "info.movito.themoviedbapi.model.movies.MovieDb.translations",
                 "info.movito.themoviedbapi.model.movies.MovieDb.videos",
                 "info.movito.themoviedbapi.model.movies.MovieDb.watchProviders"
+            ))
+            .emptyCollectionFieldsToIgnore(List.of(
+                // origin_country is NOT returned by the 'latest' movie endpoint
+                "info.movito.themoviedbapi.model.movies.MovieDb.originCountry"
             ))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movie, validatorConfig);
@@ -266,7 +266,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         // origin_country is NOT returned for movie recommendations
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of(
+            .emptyCollectionFieldsToIgnore(List.of(
                 "info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"
             ))
             .build();
@@ -315,7 +315,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         // origin_country is NOT returned for similar movies
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of(
+            .emptyCollectionFieldsToIgnore(List.of(
                 "info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"
             ))
             .build();

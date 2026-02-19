@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.tv.episode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,10 +43,10 @@ public class TvEpisodeDb extends NamedIdElement {
     private Integer voteCount;
 
     @JsonProperty("crew")
-    private List<Crew> crew;
+    private List<Crew> crew = new ArrayList<>();
 
     @JsonProperty("guest_stars")
-    private List<GuestStar> guestStars;
+    private List<GuestStar> guestStars = new ArrayList<>();
 
     /* append to responses */
 

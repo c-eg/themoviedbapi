@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.tv.season;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,5 +12,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class ChangeResults extends AbstractJsonMapping {
     @JsonProperty("changes")
-    private List<Change> changedItems;
+    private List<Change> changedItems = new ArrayList<>();
 }

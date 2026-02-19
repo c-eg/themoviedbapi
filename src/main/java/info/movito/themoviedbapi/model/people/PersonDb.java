@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.people;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,7 +21,7 @@ public class PersonDb extends NamedIdElement {
     private Boolean adult;
 
     @JsonProperty("also_known_as")
-    private List<String> alsoKnownAs;
+    private List<String> alsoKnownAs = new ArrayList<>();
 
     @JsonProperty("biography")
     private String biography;

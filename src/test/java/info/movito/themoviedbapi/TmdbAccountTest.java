@@ -174,7 +174,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         assertNotNull(movieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }
@@ -238,7 +238,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         assertNotNull(ratedMovieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.rated.RatedMovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.rated.RatedMovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(ratedMovieResultsPage, validatorConfig);
     }
@@ -306,7 +306,7 @@ public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
         assertNotNull(movieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
     }

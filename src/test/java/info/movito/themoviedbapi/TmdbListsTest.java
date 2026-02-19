@@ -129,7 +129,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
         assertNotNull(listDetails);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.lists.ListDetails.items.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.lists.ListDetails.items.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(listDetails, validatorConfig);
     }
