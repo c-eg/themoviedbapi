@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,5 +15,5 @@ public class Job extends AbstractJsonMapping {
     private String department;
 
     @JsonProperty("jobs")
-    private List<String> jobs;
+    private List<String> jobs = new ArrayList<>();
 }

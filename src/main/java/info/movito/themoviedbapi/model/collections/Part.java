@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.collections;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,7 +36,7 @@ public class Part extends IdElement {
     private String mediaType;
 
     @JsonProperty("genre_ids")
-    private List<Integer> genreIds;
+    private List<Integer> genreIds = new ArrayList<>();
 
     @JsonProperty("popularity")
     private Double popularity;

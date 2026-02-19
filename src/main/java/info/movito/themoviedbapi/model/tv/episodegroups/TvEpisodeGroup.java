@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.tv.episodegroups;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +15,7 @@ public class TvEpisodeGroup extends NamedStringIdElement {
     private Integer order;
 
     @JsonProperty("episodes")
-    private List<OrderedTvEpisode> episodes;
+    private List<OrderedTvEpisode> episodes = new ArrayList<>();
 
     @JsonProperty("locked")
     private Boolean locked;

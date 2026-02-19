@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.tv.core.credits;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,7 +32,7 @@ public class AggregateCast extends NamedIdElement {
     private String profilePath;
 
     @JsonProperty("roles")
-    private List<Role> roles;
+    private List<Role> roles = new ArrayList<>();
 
     @JsonProperty("total_episode_count")
     private Integer totalEpisodeCount;

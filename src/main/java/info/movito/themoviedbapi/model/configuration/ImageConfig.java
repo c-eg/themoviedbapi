@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,17 +18,17 @@ public class ImageConfig extends AbstractJsonMapping {
     private String secureBaseUrl;
 
     @JsonProperty("poster_sizes")
-    private List<String> posterSizes;
+    private List<String> posterSizes = new ArrayList<>();
 
     @JsonProperty("backdrop_sizes")
-    private List<String> backdropSizes;
+    private List<String> backdropSizes = new ArrayList<>();
 
     @JsonProperty("profile_sizes")
-    private List<String> profileSizes;
+    private List<String> profileSizes = new ArrayList<>();
 
     @JsonProperty("logo_sizes")
-    private List<String> logoSizes;
+    private List<String> logoSizes = new ArrayList<>();
 
     @JsonProperty("still_sizes")
-    private List<String> stillSizes;
+    private List<String> stillSizes = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.people.credits;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,7 +26,7 @@ public class MovieCrew extends IdElement implements Crew {
     private String backdropPath;
 
     @JsonProperty("genre_ids")
-    private List<Integer> genreIds;
+    private List<Integer> genreIds = new ArrayList<>();
 
     @JsonProperty("original_language")
     private String originalLanguage;

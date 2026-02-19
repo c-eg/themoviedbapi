@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.tv.season;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,5 +15,5 @@ public class Change extends AbstractJsonMapping {
     private String key;
 
     @JsonProperty("items")
-    private List<ChangeItem> items;
+    private List<ChangeItem> items = new ArrayList<>();
 }

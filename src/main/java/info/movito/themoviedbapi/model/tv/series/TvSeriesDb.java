@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.tv.series;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,7 +42,7 @@ public class TvSeriesDb extends NamedIdElement {
     private List<CreatedBy> createdBy;
 
     @JsonProperty("episode_run_time")
-    private List<Integer> episodeRunTime;
+    private List<Integer> episodeRunTime = new ArrayList<>();
 
     @JsonProperty("first_air_date")
     private String firstAirDate;
@@ -56,7 +57,7 @@ public class TvSeriesDb extends NamedIdElement {
     private Boolean inProduction;
 
     @JsonProperty("languages")
-    private List<String> languages;
+    private List<String> languages = new ArrayList<>();
 
     @JsonProperty("last_air_date")
     private String lastAirDate;
@@ -68,7 +69,7 @@ public class TvSeriesDb extends NamedIdElement {
     private TvEpisode nextEpisodeToAir;
 
     @JsonProperty("networks")
-    private List<Network> networks;
+    private List<Network> networks = new ArrayList<>();
 
     @JsonProperty("number_of_episodes")
     private Integer numberOfEpisodes;
@@ -77,7 +78,7 @@ public class TvSeriesDb extends NamedIdElement {
     private Integer numberOfSeasons;
 
     @JsonProperty("origin_country")
-    private List<String> originCountry;
+    private List<String> originCountry = new ArrayList<>();
 
     @JsonProperty("original_language")
     private String originalLanguage;
@@ -95,16 +96,16 @@ public class TvSeriesDb extends NamedIdElement {
     private String posterPath;
 
     @JsonProperty("production_companies")
-    private List<ProductionCompany> productionCompanies;
+    private List<ProductionCompany> productionCompanies = new ArrayList<>();
 
     @JsonProperty("production_countries")
-    private List<ProductionCountry> productionCountries;
+    private List<ProductionCountry> productionCountries = new ArrayList<>();
 
     @JsonProperty("seasons")
-    private List<TvSeason> seasons;
+    private List<TvSeason> seasons = new ArrayList<>();
 
     @JsonProperty("spoken_languages")
-    private List<Language> spokenLanguages;
+    private List<Language> spokenLanguages = new ArrayList<>();
 
     @JsonProperty("status")
     private String status;

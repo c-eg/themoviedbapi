@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.movies;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,7 +36,7 @@ public class MovieDb extends IdElement {
     private Integer budget;
 
     @JsonProperty("genres")
-    private List<Genre> genres;
+    private List<Genre> genres = new ArrayList<>();
 
     @JsonProperty("homepage")
     private String homepage;
@@ -47,7 +48,7 @@ public class MovieDb extends IdElement {
     private String originalLanguage;
 
     @JsonProperty("origin_country")
-    private List<String> originCountry;
+    private List<String> originCountry = new ArrayList<>();
 
     @JsonProperty("original_title")
     private String originalTitle;
@@ -62,10 +63,10 @@ public class MovieDb extends IdElement {
     private String posterPath;
 
     @JsonProperty("production_companies")
-    private List<ProductionCompany> productionCompanies;
+    private List<ProductionCompany> productionCompanies = new ArrayList<>();
 
     @JsonProperty("production_countries")
-    private List<ProductionCountry> productionCountries;
+    private List<ProductionCountry> productionCountries = new ArrayList<>();
 
     @JsonProperty("release_date")
     private String releaseDate;
@@ -77,7 +78,7 @@ public class MovieDb extends IdElement {
     private Integer runtime;
 
     @JsonProperty("spoken_languages")
-    private List<Language> spokenLanguages;
+    private List<Language> spokenLanguages = new ArrayList<>();
 
     @JsonProperty("status")
     private String status;

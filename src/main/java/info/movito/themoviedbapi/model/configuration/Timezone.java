@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,5 +15,5 @@ public class Timezone extends AbstractJsonMapping {
     private String iso31661;
 
     @JsonProperty("zones")
-    private List<String> zones;
+    private List<String> zones = new ArrayList<>();
 }

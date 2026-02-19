@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,7 +22,7 @@ public class ListDetails extends NamedIdElement {
     private Integer favoriteCount;
 
     @JsonProperty("items")
-    private List<Movie> items;
+    private List<Movie> items = new ArrayList<>();
 
     @JsonProperty("item_count")
     private Integer itemCount;

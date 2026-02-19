@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.people.credits;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -19,10 +20,10 @@ public class TvCast extends NamedIdElement implements Cast {
     private String backdropPath;
 
     @JsonProperty("genre_ids")
-    private List<Integer> genreIds;
+    private List<Integer> genreIds = new ArrayList<>();
 
     @JsonProperty("origin_country")
-    private List<String> originCountry;
+    private List<String> originCountry = new ArrayList<>();
 
     @JsonProperty("original_language")
     private String originalLanguage;

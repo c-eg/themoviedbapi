@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.collections;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,5 +21,5 @@ public class CollectionInfo extends NamedIdElement {
     private String backdropPath;
 
     @JsonProperty("parts")
-    private List<Part> parts;
+    private List<Part> parts = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.movies;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,5 +13,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class AlternativeTitles extends IdElement {
     @JsonProperty("titles")
-    private List<AlternativeTitle> titles;
+    private List<AlternativeTitle> titles = new ArrayList<>();
 }

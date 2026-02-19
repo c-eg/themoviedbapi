@@ -41,7 +41,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
         assertNotNull(allResults);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of(
+            .emptyCollectionFieldsToIgnore(List.of(
                 "info.movito.themoviedbapi.model.core.multi.MultiResultsPage.results.originCountry"
             ))
             .build();
@@ -61,7 +61,7 @@ public class TmdbTrendingTest extends AbstractTmdbApiTest<TmdbTrending> {
         assertNotNull(movieResults);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .nullFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .emptyCollectionFieldsToIgnore(List.of("info.movito.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movieResults, validatorConfig);
     }

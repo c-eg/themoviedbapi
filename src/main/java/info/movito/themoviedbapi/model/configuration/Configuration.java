@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,5 +15,5 @@ public class Configuration extends AbstractJsonMapping {
     private ImageConfig imageConfig;
 
     @JsonProperty("change_keys")
-    private List<String> changeKeys;
+    private List<String> changeKeys = new ArrayList<>();
 }

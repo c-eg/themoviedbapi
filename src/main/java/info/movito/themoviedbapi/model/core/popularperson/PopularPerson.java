@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.core.popularperson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -19,7 +20,7 @@ public class PopularPerson extends NamedIdElement {
     private Integer gender;
 
     @JsonProperty("known_for")
-    private List<KnownFor> knownFor;
+    private List<KnownFor> knownFor = new ArrayList<>();
 
     @JsonProperty("known_for_department")
     private String knownForDepartment;

@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.tv.episodegroups;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,7 +22,7 @@ public class TvEpisodeGroups extends NamedStringIdElement {
     private Integer groupCount;
 
     @JsonProperty("groups")
-    private List<TvEpisodeGroup> groups;
+    private List<TvEpisodeGroup> groups = new ArrayList<>();
 
     @JsonProperty("network")
     private Network network;
