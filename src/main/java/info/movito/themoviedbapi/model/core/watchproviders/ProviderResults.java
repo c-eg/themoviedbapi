@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.core.watchproviders;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,5 +12,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class ProviderResults extends IdElement {
     @JsonProperty("results")
-    private Map<String, WatchProviders> results;
+    private Map<String, WatchProviders> results = new HashMap<>();
 }

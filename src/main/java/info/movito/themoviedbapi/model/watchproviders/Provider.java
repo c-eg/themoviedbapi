@@ -1,5 +1,6 @@
 package info.movito.themoviedbapi.model.watchproviders;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,7 +12,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Provider extends AbstractJsonMapping {
     @JsonProperty("display_priorities")
-    private Map<String, Integer> displayPriorities;
+    private Map<String, Integer> displayPriorities = new HashMap<>();
 
     @JsonProperty("display_priority")
     private Integer displayPriority;
