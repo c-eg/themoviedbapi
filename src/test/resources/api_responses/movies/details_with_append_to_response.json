@@ -1707,6 +1707,22 @@
                         "provider_name": "Videobuster",
                         "display_priority": 15
                     }
+                ],
+                "free": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
+                ],
+                "ads": [
+                    {
+                        "logo_path": "/bZvc9dXrXNly7cA0V4D9pR8yJwm.jpg",
+                        "provider_id": 35,
+                        "provider_name": "Rakuten TV",
+                        "display_priority": 8
+                    }
                 ]
             },
             "CH": {
