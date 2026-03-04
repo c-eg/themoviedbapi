@@ -39,7 +39,7 @@ public class TvSeriesDb extends NamedIdElement {
     private String backdropPath;
 
     @JsonProperty("created_by")
-    private List<CreatedBy> createdBy;
+    private List<CreatedBy> createdBy = new ArrayList<>();
 
     @JsonProperty("episode_run_time")
     private List<Integer> episodeRunTime = new ArrayList<>();
@@ -48,7 +48,7 @@ public class TvSeriesDb extends NamedIdElement {
     private String firstAirDate;
 
     @JsonProperty("genres")
-    private List<Genre> genres;
+    private List<Genre> genres = new ArrayList<>();
 
     @JsonProperty("homepage")
     private String homepage;
