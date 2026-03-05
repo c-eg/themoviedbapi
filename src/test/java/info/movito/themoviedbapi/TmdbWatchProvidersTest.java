@@ -87,6 +87,10 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
             assertNotNull(entry.getValue());
         }
     }
+
+    /**
+     * Test {@link WatchProviders} possible empty fields with an expected result.
+     */
     @Test
     public void testEmptyWatchProviders() throws IOException {
         String json = "{\"link\": \"https://example.com\"}";
