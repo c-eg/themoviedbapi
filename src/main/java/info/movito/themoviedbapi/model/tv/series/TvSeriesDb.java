@@ -14,7 +14,6 @@ import info.movito.themoviedbapi.model.core.ProductionCountry;
 import info.movito.themoviedbapi.model.core.ReviewResultsPage;
 import info.movito.themoviedbapi.model.core.TvKeywords;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
-import info.movito.themoviedbapi.model.core.annotation.Optional;
 import info.movito.themoviedbapi.model.core.video.VideoResults;
 import info.movito.themoviedbapi.model.core.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.model.tv.core.ChangeResults;
@@ -126,92 +125,74 @@ public class TvSeriesDb extends NamedIdElement {
     /* append to responses */
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("account_states")
     private AccountStates accountStates;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("aggregate_credits")
     private AggregateCredits aggregateCredits;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("alternative_titles")
     private AlternativeTitleResults alternativeTitles;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("changes")
     private ChangeResults changes;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("content_ratings")
     private ContentRatingResults contentRatings;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("credits")
     private Credits credits;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("episode_groups")
     private EpisodeGroupResults episodeGroups;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("external_ids")
     private ExternalIds externalIds;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("images")
     private Images images;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("keywords")
     private TvKeywords keywords;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("lists")
     private TvSeriesListResultsPage lists;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("recommendations")
     private TvSeriesResultsPage recommendations;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("reviews")
     private ReviewResultsPage reviews;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("screened_theatrically")
     private ScreenedTheatricallyResults screenedTheatrically;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("similar")
     private TvSeriesResultsPage similar;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("translations")
     private Translations translations;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("videos")
     private VideoResults videos;
 
     /** Can be null if not appended to the request (append to response). */
-    @Optional
     @JsonProperty("watch/providers")
     private ProviderResults watchProviders;
 }

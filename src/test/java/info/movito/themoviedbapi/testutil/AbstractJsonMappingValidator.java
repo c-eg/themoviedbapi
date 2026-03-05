@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import info.movito.themoviedbapi.model.core.AbstractJsonMapping;
-import info.movito.themoviedbapi.model.core.annotation.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -128,10 +127,6 @@ public class AbstractJsonMappingValidator {
         while (clazz != null && clazz != AbstractJsonMapping.class) {
             for (Field field : clazz.getDeclaredFields()) {
                 field.setAccessible(true);
-
-                if (field.isAnnotationPresent(Optional.class)) {
-                    continue;
-                }
 
                 String newFieldName = fieldName + "." + field.getName();
                 Object fieldValue = field.get(objectToCheck);
