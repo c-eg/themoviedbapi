@@ -1,19 +1,24 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import info.movito.themoviedbapi.model.core.watchproviders.WatchProviders;
 import info.movito.themoviedbapi.model.watchproviders.AvailableRegionResults;
 import info.movito.themoviedbapi.model.watchproviders.Provider;
 import info.movito.themoviedbapi.model.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbWatchProviders.TMDB_METHOD_WATCH_PROVIDERS;
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 /**
@@ -81,5 +86,33 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
             assertNotNull(entry.getKey());
             assertNotNull(entry.getValue());
         }
+    }
+    @Test
+    public void testEmptyWatchProviders() throws IOException {
+        String json = "{\"link\": \"https://example.com\"}";
+        WatchProviders watchProviders = JsonUtil.OBJECT_MAPPER.readValue(json, WatchProviders.class);
+
+        assertNotNull(watchProviders);
+        assertNotNull(watchProviders.getRentProviders());
+        assertTrue(watchProviders.getRentProviders().isEmpty());
+        assertNotNull(watchProviders.getBuyProviders());
+        assertTrue(watchProviders.getBuyProviders().isEmpty());
+        assertNotNull(watchProviders.getFlatrateProviders());
+        assertTrue(watchProviders.getFlatrateProviders().isEmpty());
+        assertNotNull(watchProviders.getFreeProviders());
+        assertTrue(watchProviders.getFreeProviders().isEmpty());
+        assertNotNull(watchProviders.getAdsProviders());
+        assertTrue(watchProviders.getAdsProviders().isEmpty());
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.rentProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.buyProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.flatrateProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.freeProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.adsProviders"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(watchProviders, validatorConfig);
     }
 }

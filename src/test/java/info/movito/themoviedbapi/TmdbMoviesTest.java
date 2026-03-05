@@ -96,7 +96,9 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
             .emptyCollectionFieldsToIgnore(List.of(
                 "info.movito.themoviedbapi.model.movies.MovieDb.recommendations.results.originCountry",
-                "info.movito.themoviedbapi.model.movies.MovieDb.similar.results.originCountry"
+                "info.movito.themoviedbapi.model.movies.MovieDb.similar.results.originCountry",
+                "info.movito.themoviedbapi.model.movies.MovieDb.watchProviders.results.freeProviders",
+                "info.movito.themoviedbapi.model.movies.MovieDb.watchProviders.results.adsProviders"
             ))
             .build();
         TestUtils.validateAbstractJsonMappingFields(movie, validatorConfig);
@@ -361,7 +363,17 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123);
         assertNotNull(watchProviders);
-        TestUtils.validateAbstractJsonMappingFields(watchProviders);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.rentProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.buyProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.flatrateProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.freeProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.adsProviders"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(watchProviders, validatorConfig);
     }
 
     /**
