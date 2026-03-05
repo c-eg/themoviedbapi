@@ -15,7 +15,7 @@ public class WatchProviders extends AbstractJsonMapping {
     private String link;
 
     @JsonProperty("rent")
-    private List<Provider> rentProviders;
+    private List<Provider> rentProviders = new ArrayList<>();
 
     @JsonProperty("buy")
     private List<Provider> buyProviders = new ArrayList<>();
