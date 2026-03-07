@@ -97,6 +97,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         TvSeriesDb tvSeries = getApiToTest().getDetails(123, "en-US", TvSeriesAppendToResponse.values());
         assertNotNull(tvSeries);
+
         TestUtils.validateAbstractJsonMappingFields(tvSeries);
     }
 
@@ -386,6 +387,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123);
         assertNotNull(watchProviders);
+
         TestUtils.validateAbstractJsonMappingFields(watchProviders);
     }
 

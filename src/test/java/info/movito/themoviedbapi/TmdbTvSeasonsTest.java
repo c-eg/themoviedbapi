@@ -77,6 +77,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US", TvSeasonsAppendToResponse.values());
         assertNotNull(tvSeason);
+
         TestUtils.validateAbstractJsonMappingFields(tvSeason);
     }
 
@@ -203,6 +204,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123, 1, "en-US");
         assertNotNull(watchProviders);
+
         TestUtils.validateAbstractJsonMappingFields(watchProviders);
     }
 }

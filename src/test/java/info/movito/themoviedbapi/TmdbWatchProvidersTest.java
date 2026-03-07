@@ -1,14 +1,18 @@
 package info.movito.themoviedbapi;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import info.movito.themoviedbapi.model.core.watchproviders.WatchProviders;
 import info.movito.themoviedbapi.model.watchproviders.AvailableRegionResults;
 import info.movito.themoviedbapi.model.watchproviders.Provider;
 import info.movito.themoviedbapi.model.watchproviders.ProviderResults;
 import info.movito.themoviedbapi.testutil.TestUtils;
+import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbWatchProviders.TMDB_METHOD_WATCH_PROVIDERS;
@@ -81,5 +85,27 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
             assertNotNull(entry.getKey());
             assertNotNull(entry.getValue());
         }
+    }
+
+    /**
+     * Test {@link WatchProviders} possible empty fields with an expected result.
+     */
+    @Test
+    public void testEmptyWatchProviders() throws IOException {
+        String body = TestUtils.readTestFile("api_responses/watch_providers/empty_watch_providers.json");
+        WatchProviders watchProviders = JsonUtil.OBJECT_MAPPER.readValue(body, WatchProviders.class);
+
+        assertNotNull(watchProviders);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of(
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.rentProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.buyProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.flatrateProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.freeProviders",
+                "info.movito.themoviedbapi.model.core.watchproviders.WatchProviders.adsProviders"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(watchProviders, validatorConfig);
     }
 }

@@ -1,84 +1,89 @@
 {
-    "id": 1399,
+    "id": 45016,
     "results": {
-        "AE": {
-            "link": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AE",
+        "US": {
+            "link": "https://www.themoviedb.org/tv/45016-bron-broen/watch?locale=US",
+            "free": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 125
+                }
+            ],
             "buy": [
                 {
-                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+                    "logo_path": "/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
                     "provider_id": 10,
                     "provider_name": "Amazon Video",
-                    "display_priority": 3
+                    "display_priority": 6
+                }
+            ],
+            "ads": [
+                {
+                    "logo_path": "/zLYr7OPvpskMA4S79E3vlCi71iC.jpg",
+                    "provider_id": 73,
+                    "provider_name": "Tubi TV",
+                    "display_priority": 356
                 }
             ],
             "flatrate": [
                 {
-                    "logo_path": "/xEPXbwbfABzPrUTWbgtDFH1NOa.jpg",
-                    "provider_id": 629,
-                    "provider_name": "OSN",
-                    "display_priority": 11
+                    "logo_path": "/hTAIgvUnmu1Yv0wFVJRu9KKAPtJ.jpg",
+                    "provider_id": 291,
+                    "provider_name": "MZ Choice Amazon Channel",
+                    "display_priority": 72
                 }
             ],
             "rent": [
                 {
-                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
-                    "provider_id": 10,
-                    "provider_name": "Amazon Video",
-                    "display_priority": 6
+                    "logo_path": "/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+                    "provider_id": 2,
+                    "provider_name": "Apple TV Store",
+                    "display_priority": 4
                 }
             ]
         },
-        "AR": {
-            "link": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AR",
+        "CA": {
+            "link": "https://www.themoviedb.org/tv/45016-bron-broen/watch?locale=CA",
+            "rent": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ],
             "buy": [
                 {
-                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
-                    "provider_id": 10,
-                    "provider_name": "Amazon Video",
-                    "display_priority": 3
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
                 }
             ],
             "flatrate": [
                 {
-                    "logo_path": "/xEPXbwbfABzPrUTWbgtDFH1NOa.jpg",
-                    "provider_id": 629,
-                    "provider_name": "OSN",
-                    "display_priority": 11
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
                 }
             ],
-            "rent": [
+            "free": [
                 {
-                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
-                    "provider_id": 10,
-                    "provider_name": "Amazon Video",
-                    "display_priority": 6
-                }
-            ]
-        },
-        "AT": {
-            "link": "https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AT",
-            "buy": [
-                {
-                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
-                    "provider_id": 10,
-                    "provider_name": "Amazon Video",
-                    "display_priority": 3
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
                 }
             ],
-            "flatrate": [
+            "ads": [
                 {
-                    "logo_path": "/xEPXbwbfABzPrUTWbgtDFH1NOa.jpg",
-                    "provider_id": 629,
-                    "provider_name": "OSN",
-                    "display_priority": 11
-                }
-            ],
-            "rent": [
-                {
-                    "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
-                    "provider_id": 10,
-                    "provider_name": "Amazon Video",
-                    "display_priority": 6
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
                 }
             ]
         }

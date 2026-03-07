@@ -6826,6 +6826,22 @@
                         "provider_name": "Google Play Movies",
                         "display_priority": 8
                     }
+                ],
+                "free": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
+                ],
+                "ads": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
                 ]
             },
             "AR": {
@@ -6865,6 +6881,22 @@
                         "provider_name": "Google Play Movies",
                         "display_priority": 8
                     }
+                ],
+                "free": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
+                ],
+                "ads": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
                 ]
             },
             "AT": {
@@ -6903,6 +6935,22 @@
                         "provider_id": 3,
                         "provider_name": "Google Play Movies",
                         "display_priority": 8
+                    }
+                ],
+                "free": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
+                ],
+                "ads": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
                     }
                 ]
             }

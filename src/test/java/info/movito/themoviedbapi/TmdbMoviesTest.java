@@ -361,6 +361,7 @@ public class TmdbMoviesTest extends AbstractTmdbApiTest<TmdbMovies> {
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123);
         assertNotNull(watchProviders);
+
         TestUtils.validateAbstractJsonMappingFields(watchProviders);
     }
 

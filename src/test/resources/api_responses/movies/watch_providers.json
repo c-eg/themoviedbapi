@@ -1,126 +1,89 @@
 {
     "id": 550,
     "results": {
-        "AE": {
-            "link": "https://www.themoviedb.org/movie/550-fight-club/watch?locale=AE",
-            "flatrate": [
+        "US": {
+            "link": "https://www.themoviedb.org/movie/550-fight-club/watch?locale=US",
+            "free": [
                 {
-                    "logo_path": "/emthp39XA2YScoYL1p0sdbAH2WA.jpg",
-                    "provider_id": 119,
-                    "provider_name": "Amazon Prime Video",
-                    "display_priority": 12
-                }
-            ],
-            "rent": [
-                {
-                    "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
-                    "provider_id": 2,
-                    "provider_name": "Apple TV",
-                    "display_priority": 1
-                },
-                {
-                    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
-                    "provider_id": 3,
-                    "provider_name": "Google Play Movies",
-                    "display_priority": 3
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 125
                 }
             ],
             "buy": [
                 {
-                    "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
-                    "provider_id": 2,
-                    "provider_name": "Apple TV",
-                    "display_priority": 1
-                },
-                {
-                    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
-                    "provider_id": 3,
-                    "provider_name": "Google Play Movies",
-                    "display_priority": 3
-                }
-            ]
-        },
-        "AL": {
-            "link": "https://www.themoviedb.org/movie/550-fight-club/watch?locale=AL",
-            "buy": [
-                {
-                    "logo_path": "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
-                    "provider_id": 35,
-                    "provider_name": "Rakuten TV",
-                    "display_priority": 9
-                },
-                {
-                    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
-                    "provider_id": 3,
-                    "provider_name": "Google Play Movies",
-                    "display_priority": 1000
-                }
-            ],
-            "flatrate": [
-                {
-                    "logo_path": "/emthp39XA2YScoYL1p0sdbAH2WA.jpg",
-                    "provider_id": 119,
-                    "provider_name": "Amazon Prime Video",
-                    "display_priority": 12
-                }
-            ],
-            "rent": [
-                {
-                    "logo_path": "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
-                    "provider_id": 2,
-                    "provider_name": "Apple TV",
-                    "display_priority": 1
-                },
-                {
-                    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
-                    "provider_id": 3,
-                    "provider_name": "Google Play Movies",
-                    "display_priority": 3
-                }
-            ]
-        },
-        "AR": {
-            "link": "https://www.themoviedb.org/movie/550-fight-club/watch?locale=AR",
-            "buy": [
-                {
-                    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
-                    "provider_id": 3,
-                    "provider_name": "Google Play Movies",
+                    "logo_path": "/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
+                    "provider_id": 10,
+                    "provider_name": "Amazon Video",
                     "display_priority": 6
                 }
             ],
+            "ads": [
+                {
+                    "logo_path": "/zLYr7OPvpskMA4S79E3vlCi71iC.jpg",
+                    "provider_id": 73,
+                    "provider_name": "Tubi TV",
+                    "display_priority": 356
+                }
+            ],
             "flatrate": [
                 {
-                    "logo_path": "/emthp39XA2YScoYL1p0sdbAH2WA.jpg",
-                    "provider_id": 119,
-                    "provider_name": "Amazon Prime Video",
-                    "display_priority": 2
-                },
+                    "logo_path": "/hTAIgvUnmu1Yv0wFVJRu9KKAPtJ.jpg",
+                    "provider_id": 291,
+                    "provider_name": "MZ Choice Amazon Channel",
+                    "display_priority": 72
+                }
+            ],
+            "rent": [
                 {
-                    "logo_path": "/hR9vWd8hWEVQKD6eOnBneKRFEW3.jpg",
-                    "provider_id": 619,
-                    "provider_name": "Star Plus",
+                    "logo_path": "/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+                    "provider_id": 2,
+                    "provider_name": "Apple TV Store",
                     "display_priority": 4
-                },
-                {
-                    "logo_path": "/Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg",
-                    "provider_id": 384,
-                    "provider_name": "HBO Max",
-                    "display_priority": 5
-                },
-                {
-                    "logo_path": "/cDzkhgvozSr4GW2aRdV22uDuFpw.jpg",
-                    "provider_id": 339,
-                    "provider_name": "Movistar Play",
-                    "display_priority": 9
                 }
-            ],
+            ]
+        },
+        "CA": {
+            "link": "https://www.themoviedb.org/movie/550-fight-club/watch?locale=CA",
             "rent": [
                 {
-                    "logo_path": "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
-                    "provider_id": 3,
-                    "provider_name": "Google Play Movies",
-                    "display_priority": 6
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ],
+            "buy": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ],
+            "flatrate": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ],
+            "free": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ],
+            "ads": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
                 }
             ]
         }
