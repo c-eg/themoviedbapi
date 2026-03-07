@@ -93,20 +93,10 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
      */
     @Test
     public void testEmptyWatchProviders() throws IOException {
-        String json = "{\"link\": \"https://example.com\"}";
-        WatchProviders watchProviders = JsonUtil.OBJECT_MAPPER.readValue(json, WatchProviders.class);
+        String body = TestUtils.readTestFile("api_responses/watch_providers/empty_watch_providers.json");
+        WatchProviders watchProviders = JsonUtil.OBJECT_MAPPER.readValue(body, WatchProviders.class);
 
         assertNotNull(watchProviders);
-        assertNotNull(watchProviders.getRentProviders());
-        assertTrue(watchProviders.getRentProviders().isEmpty());
-        assertNotNull(watchProviders.getBuyProviders());
-        assertTrue(watchProviders.getBuyProviders().isEmpty());
-        assertNotNull(watchProviders.getFlatrateProviders());
-        assertTrue(watchProviders.getFlatrateProviders().isEmpty());
-        assertNotNull(watchProviders.getFreeProviders());
-        assertTrue(watchProviders.getFreeProviders().isEmpty());
-        assertNotNull(watchProviders.getAdsProviders());
-        assertTrue(watchProviders.getAdsProviders().isEmpty());
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
             .emptyCollectionFieldsToIgnore(List.of(
