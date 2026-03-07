@@ -45,7 +45,47 @@
             ]
         },
         "CA": {
-            "link": "https://www.themoviedb.org/movie/550-fight-club/watch?locale=CA"
+            "link": "https://www.themoviedb.org/movie/550-fight-club/watch?locale=CA",
+            "rent": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ],
+            "buy": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ],
+            "flatrate": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ],
+            "free": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ],
+            "ads": [
+                {
+                    "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                    "provider_id": 538,
+                    "provider_name": "Plex",
+                    "display_priority": 23
+                }
+            ]
         }
     }
 }

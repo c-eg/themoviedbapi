@@ -98,13 +98,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
         TvSeriesDb tvSeries = getApiToTest().getDetails(123, "en-US", TvSeriesAppendToResponse.values());
         assertNotNull(tvSeries);
 
-        ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .emptyCollectionFieldsToIgnore(List.of(
-                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders.results.freeProviders",
-                "info.movito.themoviedbapi.model.tv.series.TvSeriesDb.watchProviders.results.adsProviders"
-            ))
-            .build();
-        TestUtils.validateAbstractJsonMappingFields(tvSeries, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(tvSeries);
     }
 
     /**
@@ -394,16 +388,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123);
         assertNotNull(watchProviders);
 
-        ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .emptyCollectionFieldsToIgnore(List.of(
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.rentProviders",
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.buyProviders",
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.flatrateProviders",
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.freeProviders",
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.adsProviders"
-            ))
-            .build();
-        TestUtils.validateAbstractJsonMappingFields(watchProviders, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(watchProviders);
     }
 
     /**

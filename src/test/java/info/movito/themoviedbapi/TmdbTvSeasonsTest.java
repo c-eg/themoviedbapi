@@ -78,16 +78,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
         TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US", TvSeasonsAppendToResponse.values());
         assertNotNull(tvSeason);
 
-        ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .emptyCollectionFieldsToIgnore(List.of(
-                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.watchProviders.results.rentProviders",
-                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.watchProviders.results.buyProviders",
-                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.watchProviders.results.flatrateProviders",
-                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.watchProviders.results.freeProviders",
-                "info.movito.themoviedbapi.model.tv.season.TvSeasonDb.watchProviders.results.adsProviders"
-            ))
-            .build();
-        TestUtils.validateAbstractJsonMappingFields(tvSeason, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(tvSeason);
     }
 
     /**
@@ -214,15 +205,6 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123, 1, "en-US");
         assertNotNull(watchProviders);
 
-        ValidatorConfig validatorConfig = ValidatorConfig.builder()
-            .emptyCollectionFieldsToIgnore(List.of(
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.rentProviders",
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.buyProviders",
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.flatrateProviders",
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.freeProviders",
-                "info.movito.themoviedbapi.model.core.watchproviders.ProviderResults.results.adsProviders"
-            ))
-            .build();
-        TestUtils.validateAbstractJsonMappingFields(watchProviders, validatorConfig);
+        TestUtils.validateAbstractJsonMappingFields(watchProviders);
     }
 }

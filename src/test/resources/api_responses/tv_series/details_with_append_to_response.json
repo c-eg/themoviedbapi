@@ -2158,6 +2158,22 @@
                         "provider_name": "Amazon Video",
                         "display_priority": 6
                     }
+                ],
+                "free": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
+                ],
+                "ads": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
                 ]
             },
             "AR": {
@@ -2185,6 +2201,22 @@
                         "provider_name": "Amazon Video",
                         "display_priority": 6
                     }
+                ],
+                "free": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
+                ],
+                "ads": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
                 ]
             },
             "AT": {
@@ -2211,6 +2243,22 @@
                         "provider_id": 10,
                         "provider_name": "Amazon Video",
                         "display_priority": 6
+                    }
+                ],
+                "free": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
+                    }
+                ],
+                "ads": [
+                    {
+                        "logo_path": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+                        "provider_id": 538,
+                        "provider_name": "Plex",
+                        "display_priority": 23
                     }
                 ]
             }
