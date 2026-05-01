@@ -28,10 +28,10 @@ dependencies {
     testImplementation("org.mockito:mockito-core")
 
     // util
-    compileOnly("org.projectlombok:lombok:1.18.42")
-    annotationProcessor("org.projectlombok:lombok:1.18.42")
-    testCompileOnly("org.projectlombok:lombok:1.18.42")
-    testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
+    compileOnly("org.projectlombok:lombok:1.18.46")
+    annotationProcessor("org.projectlombok:lombok:1.18.46")
+    testCompileOnly("org.projectlombok:lombok:1.18.46")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.46")
 
     implementation(platform("com.fasterxml.jackson:jackson-bom:2.21.1"))
     implementation("com.fasterxml.jackson.core:jackson-annotations")
