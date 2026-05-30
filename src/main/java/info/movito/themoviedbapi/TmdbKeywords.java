@@ -3,6 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.core.MovieDbResultsPage;
 import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.builders.discover.DiscoverMovieParamBuilder;
 
@@ -10,14 +11,16 @@ import info.movito.themoviedbapi.tools.builders.discover.DiscoverMovieParamBuild
  * The movie database api for keywords. See the
  * <a href="https://developer.themoviedb.org/reference/keyword-details">documentation</a> for more info.
  */
-public class TmdbKeywords extends AbstractTmdbApi {
+public class TmdbKeywords {
     protected static final String TMDB_METHOD_KEYWORD = "keyword";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbKeywords instance to call the keywords TMDb API methods.
      */
-    TmdbKeywords(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbKeywords(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -29,7 +32,7 @@ public class TmdbKeywords extends AbstractTmdbApi {
      */
     public Keyword getDetails(int keywordId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_KEYWORD, keywordId);
-        return mapJsonResult(apiUrl, Keyword.class);
+        return tmdbApiClient.get(apiUrl, Keyword.class);
     }
 
     /**
@@ -44,6 +47,6 @@ public class TmdbKeywords extends AbstractTmdbApi {
             .addLanguage(language)
             .addPage(page);
 
-        return mapJsonResult(apiUrl, MovieDbResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieDbResultsPage.class);
     }
 }

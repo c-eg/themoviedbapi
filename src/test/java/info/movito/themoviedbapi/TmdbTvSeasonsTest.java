@@ -17,6 +17,8 @@ import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvSeasonsAppendToResponse;
 import org.junit.jupiter.api.Test;
 
@@ -42,7 +44,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US");
         assertNotNull(tvSeason);
@@ -73,7 +75,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1?language=en-US&" +
             "append_to_response=account_states%2Caggregate_credits%2Ccredits%2Cexternal_ids%2Cimages%2Ctranslations%2C" +
             "videos%2Cwatch%2Fproviders";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US", TvSeasonsAppendToResponse.values());
         assertNotNull(tvSeason);
@@ -88,7 +90,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetAccountStates() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/account_states.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/account_states?session_id=123";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         AccountStateResults accountStates = getApiToTest().getAccountStates(123, 1, "123", null);
         assertNotNull(accountStates);
@@ -102,7 +104,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetAggregateCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/aggregate_credits.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/aggregate_credits?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         AggregateCredits aggregateCredits = getApiToTest().getAggregateCredits(123, 1, "en-US");
         assertNotNull(aggregateCredits);
@@ -116,7 +118,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetChanges() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/changes.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/" + TMDB_METHOD_TV_SEASON + "/123/changes?page=1";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ChangeResults changes = getApiToTest().getChanges(123, null, null, 1);
         assertNotNull(changes);
@@ -130,7 +132,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/credits.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/credits?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Credits credits = getApiToTest().getCredits(123, 1, "en-US");
         assertNotNull(credits);
@@ -144,7 +146,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetExternalIds() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/external_ids.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/external_ids";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ExternalIds externalIds = getApiToTest().getExternalIds(123, 1);
         assertNotNull(externalIds);
@@ -158,7 +160,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetImages() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/images.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/images?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Images images = getApiToTest().getImages(123, 1, "en-US");
         assertNotNull(images);
@@ -172,7 +174,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetTranslations() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/translations.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/translations";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Translations translations = getApiToTest().getTranslations(123, 1);
         assertNotNull(translations);
@@ -186,7 +188,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetVideos() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/videos.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/videos?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         VideoResults videos = getApiToTest().getVideos(123, 1, "en-US");
         assertNotNull(videos);
@@ -200,7 +202,7 @@ public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
     public void testGetWatchProviders() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_seasons/watch_providers.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/watch/providers?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123, 1, "en-US");
         assertNotNull(watchProviders);

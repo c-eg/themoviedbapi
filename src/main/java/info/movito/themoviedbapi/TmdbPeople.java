@@ -9,6 +9,7 @@ import info.movito.themoviedbapi.model.people.credits.CombinedPersonCredits;
 import info.movito.themoviedbapi.model.people.credits.MovieCredits;
 import info.movito.themoviedbapi.model.people.credits.TvCredits;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse;
 
@@ -16,14 +17,16 @@ import info.movito.themoviedbapi.tools.appendtoresponse.PersonAppendToResponse;
  * The movie database api for people. See the
  * <a href="https://developer.themoviedb.org/reference/person-details">documentation</a> for more info.
  */
-public class TmdbPeople extends AbstractTmdbApi {
+public class TmdbPeople {
     protected static final String TMDB_METHOD_PERSON = "person";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbPeople instance to call the people related TMDb API methods.
      */
-    TmdbPeople(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbPeople(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -40,7 +43,7 @@ public class TmdbPeople extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId)
             .addLanguage(language)
             .addAppendToResponses(appendToResponse);
-        return mapJsonResult(apiUrl, PersonDb.class);
+        return tmdbApiClient.get(apiUrl, PersonDb.class);
     }
 
     /**
@@ -59,7 +62,7 @@ public class TmdbPeople extends AbstractTmdbApi {
             .addQueryParam("start_date", startDate)
             .addQueryParam("end_date", endDate)
             .addPage(page);
-        return mapJsonResult(apiUrl, ChangeResults.class);
+        return tmdbApiClient.get(apiUrl, ChangeResults.class);
     }
 
     /**
@@ -74,7 +77,7 @@ public class TmdbPeople extends AbstractTmdbApi {
     public CombinedPersonCredits getCombinedCredits(int personId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "combined_credits")
             .addLanguage(language);
-        return mapJsonResult(apiUrl, CombinedPersonCredits.class);
+        return tmdbApiClient.get(apiUrl, CombinedPersonCredits.class);
     }
 
     /**
@@ -87,7 +90,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      */
     public ExternalIds getExternalIds(int personId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "external_ids");
-        return mapJsonResult(apiUrl, ExternalIds.class);
+        return tmdbApiClient.get(apiUrl, ExternalIds.class);
     }
 
     /**
@@ -100,7 +103,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      */
     public PersonImages getImages(int personId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "images");
-        return mapJsonResult(apiUrl, PersonImages.class);
+        return tmdbApiClient.get(apiUrl, PersonImages.class);
     }
 
     /**
@@ -112,7 +115,7 @@ public class TmdbPeople extends AbstractTmdbApi {
      */
     public PersonDb getLatest() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, "latest");
-        return mapJsonResult(apiUrl, PersonDb.class);
+        return tmdbApiClient.get(apiUrl, PersonDb.class);
     }
 
     /**
@@ -127,7 +130,7 @@ public class TmdbPeople extends AbstractTmdbApi {
     public MovieCredits getMovieCredits(int personId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "movie_credits")
             .addLanguage(language);
-        return mapJsonResult(apiUrl, MovieCredits.class);
+        return tmdbApiClient.get(apiUrl, MovieCredits.class);
     }
 
     /**
@@ -142,7 +145,7 @@ public class TmdbPeople extends AbstractTmdbApi {
     public TvCredits getTvCredits(int personId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "tv_credits")
             .addLanguage(language);
-        return mapJsonResult(apiUrl, TvCredits.class);
+        return tmdbApiClient.get(apiUrl, TvCredits.class);
     }
 
     /**
@@ -155,6 +158,6 @@ public class TmdbPeople extends AbstractTmdbApi {
      */
     public Translations getTranslations(int personId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PERSON, personId, "translations");
-        return mapJsonResult(apiUrl, Translations.class);
+        return tmdbApiClient.get(apiUrl, Translations.class);
     }
 }

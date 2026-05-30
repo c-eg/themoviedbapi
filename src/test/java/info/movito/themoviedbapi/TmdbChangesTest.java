@@ -6,6 +6,8 @@ import info.movito.themoviedbapi.model.changes.ChangesResultsPage;
 import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbChanges.TMDB_METHOD_CHANGES;
@@ -37,7 +39,7 @@ public class TmdbChangesTest extends AbstractTmdbApiTest<TmdbChanges> {
         String body = TestUtils.readTestFile("api_responses/changes/movie_list.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE + "/" + TMDB_METHOD_CHANGES +
             "?start_date=" + startDate + "&end_date=" + endDate + "&page=" + page;
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ChangesResultsPage changesResultsPage = getApiToTest().getMovieChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
@@ -56,7 +58,7 @@ public class TmdbChangesTest extends AbstractTmdbApiTest<TmdbChanges> {
         String body = TestUtils.readTestFile("api_responses/changes/people_list.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_PERSON + "/" + TMDB_METHOD_CHANGES +
             "?start_date=" + startDate + "&end_date=" + endDate + "&page=" + page;
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ChangesResultsPage changesResultsPage = getApiToTest().getPeopleChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
@@ -75,7 +77,7 @@ public class TmdbChangesTest extends AbstractTmdbApiTest<TmdbChanges> {
         String body = TestUtils.readTestFile("api_responses/changes/tv_list.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/" + TMDB_METHOD_CHANGES +
             "?start_date=" + startDate + "&end_date=" + endDate + "&page=" + page;
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ChangesResultsPage changesResultsPage = getApiToTest().getTvChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);

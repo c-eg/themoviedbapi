@@ -12,6 +12,8 @@ import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
@@ -43,7 +45,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
         requestBody.put("media_id", 456);
         String jsonBody = JsonUtil.toJson(requestBody);
 
-        when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.POST, jsonBody))).thenReturn(new TmdbResponse(200, body));
 
         ResponseStatus responseStatus = getApiToTest().addMovie(123, "testSessionId", 456);
         assertNotNull(responseStatus);
@@ -58,7 +60,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     public void testCheckItemStatus() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/check_item_status.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/item_status?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ListItemStatus listItemStatus = getApiToTest().checkItemStatus(123, "en-US", null);
         assertNotNull(listItemStatus);
@@ -72,7 +74,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     public void testClear() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/clear.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123/clear?session_id=testSessionId&confirm=true";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.POST)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.POST))).thenReturn(new TmdbResponse(200, body));
 
         ResponseStatus responseStatus = getApiToTest().clear(123, "testSessionId", true);
         assertNotNull(responseStatus);
@@ -94,7 +96,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
         requestBody.put("language", "en-US");
         String jsonBody = JsonUtil.toJson(requestBody);
 
-        when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.POST, jsonBody))).thenReturn(new TmdbResponse(200, body));
 
         MovieListCreationStatus responseStatus = getApiToTest().create("testSessionId", "testName", "testDescription", "en-US");
         assertNotNull(responseStatus);
@@ -108,7 +110,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     public void testDelete() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/delete.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123?session_id=testSessionId";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.DELETE)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.DELETE))).thenReturn(new TmdbResponse(200, body));
 
         ResponseStatus responseStatus = getApiToTest().delete(123, "testSessionId");
         assertNotNull(responseStatus);
@@ -123,7 +125,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
     public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/lists/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_LIST + "/123?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ListDetails listDetails = getApiToTest().getDetails(123, "en-US", null);
         assertNotNull(listDetails);
@@ -146,7 +148,7 @@ public class TmdbListsTest extends AbstractTmdbApiTest<TmdbLists> {
         requestBody.put("media_id", 456);
         String jsonBody = JsonUtil.toJson(requestBody);
 
-        when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.POST, jsonBody))).thenReturn(new TmdbResponse(200, body));
 
         ResponseStatus responseStatus = getApiToTest().removeMovie(123, "testSessionId", 456);
         assertNotNull(responseStatus);

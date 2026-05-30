@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @AllArgsConstructor
 @Slf4j
-public class TmdbHttpClient implements TmdbUrlReader {
+public class TmdbHttpClient implements TmdbRequestExecutor {
 
     private static final Duration CONNECT_TIMEOUT = Duration.ofSeconds(10);
     private static final Duration REQUEST_TIMEOUT = Duration.ofSeconds(30);
@@ -38,16 +38,17 @@ public class TmdbHttpClient implements TmdbUrlReader {
     }
 
     @Override
-    public String readUrl(String url, String jsonBody, RequestType requestType) throws TmdbResponseException {
-        log.debug("TMDB API: making request, of type: {}, to: {}", requestType, url);
+    public TmdbResponse execute(TmdbRequest request) throws TmdbException {
+        log.debug("TMDB API: making request, of type: {}, to: {}", request.requestType(), request.url());
 
         HttpRequest.Builder httpRequestBuilder = HttpRequest.newBuilder()
-            .uri(URI.create(url))
+            .uri(URI.create(request.url()))
             .timeout(REQUEST_TIMEOUT)
             .header("Authorization", "Bearer " + apiKey)
             .header("Accept", "application/json");
 
-        switch (requestType) {
+        String jsonBody = request.jsonBody();
+        switch (request.requestType()) {
             case GET -> httpRequestBuilder.GET();
             case POST -> {
                 if (Objects.isNull(jsonBody)) {
@@ -59,12 +60,12 @@ public class TmdbHttpClient implements TmdbUrlReader {
                 }
             }
             case DELETE -> httpRequestBuilder.DELETE();
-            default -> throw new IllegalStateException("Unsupported request type: " + requestType);
+            default -> throw new IllegalStateException("Unsupported request type: " + request.requestType());
         }
 
         try {
-            return httpClient.send(httpRequestBuilder.build(), HttpResponse.BodyHandlers.ofString())
-                .body();
+            HttpResponse<String> response = httpClient.send(httpRequestBuilder.build(), HttpResponse.BodyHandlers.ofString());
+            return new TmdbResponse(response.statusCode(), response.body());
         }
         catch (InterruptedException exception) {
             Thread.currentThread().interrupt();

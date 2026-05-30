@@ -2,17 +2,20 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for people lists. See the
  * <a href="https://developer.themoviedb.org/reference/person-popular-list">documentation</a> for more info.
  */
-public class TmdbPeopleLists extends AbstractTmdbApi {
+public class TmdbPeopleLists {
     protected static final String TMDB_METHOD_PEOPLE_LISTS = "person/popular";
 
-    TmdbPeopleLists(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    private final TmdbApiClient tmdbApiClient;
+
+    TmdbPeopleLists(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -28,6 +31,6 @@ public class TmdbPeopleLists extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_PEOPLE_LISTS)
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, PopularPersonResultsPage.class);
+        return tmdbApiClient.get(apiUrl, PopularPersonResultsPage.class);
     }
 }

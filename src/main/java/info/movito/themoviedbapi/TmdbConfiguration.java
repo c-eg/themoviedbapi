@@ -9,20 +9,23 @@ import info.movito.themoviedbapi.model.configuration.Job;
 import info.movito.themoviedbapi.model.configuration.Timezone;
 import info.movito.themoviedbapi.model.core.Language;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for configuration. See the
  * <a href="https://developer.themoviedb.org/reference/configuration-details">documentation</a> for more info.
  */
-public class TmdbConfiguration extends AbstractTmdbApi {
+public class TmdbConfiguration {
     protected static final String TMDB_METHOD_CONFIGURATION = "configuration";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbConfig instance to call the config related TMDb API methods.
      */
-    TmdbConfiguration(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbConfiguration(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -34,7 +37,7 @@ public class TmdbConfiguration extends AbstractTmdbApi {
      */
     public Configuration getDetails() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION);
-        return mapJsonResult(apiUrl, Configuration.class);
+        return tmdbApiClient.get(apiUrl, Configuration.class);
     }
 
     /**
@@ -48,7 +51,7 @@ public class TmdbConfiguration extends AbstractTmdbApi {
     public List<Country> getCountries(String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "countries")
             .addLanguage(language);
-        return mapJsonResult(apiUrl, new TypeReference<>() {
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
         });
     }
 
@@ -61,7 +64,7 @@ public class TmdbConfiguration extends AbstractTmdbApi {
      */
     public List<Job> getJobs() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "jobs");
-        return mapJsonResult(apiUrl, new TypeReference<>() {
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
         });
     }
 
@@ -74,7 +77,7 @@ public class TmdbConfiguration extends AbstractTmdbApi {
      */
     public List<Language> getLanguages() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "languages");
-        return mapJsonResult(apiUrl, new TypeReference<>() {
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
         });
     }
 
@@ -88,7 +91,7 @@ public class TmdbConfiguration extends AbstractTmdbApi {
      */
     public List<String> getPrimaryTranslations() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "primary_translations");
-        return mapJsonResult(apiUrl, new TypeReference<>() {
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
         });
     }
 
@@ -101,7 +104,7 @@ public class TmdbConfiguration extends AbstractTmdbApi {
      */
     public List<Timezone> getTimezones() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "timezones");
-        return mapJsonResult(apiUrl, new TypeReference<>() {
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
         });
     }
 }

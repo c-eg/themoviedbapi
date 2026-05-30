@@ -9,30 +9,7 @@ The wrapper implements most, if not all, of the JSON API. However, because the A
 not be implemented, or current functionality may break. Please point this out by submitting an issue, or even better, just send us a pull 
 request!
 
-It's available via [Maven Central](https://central.sonatype.com/artifact/uk.co.conoregan/themoviedbapi). Just add it as dependency to your 
-project.
-
-<details open>
-<summary>Maven</summary>
-
-```xml
-<dependency>
-    <groupId>uk.co.conoregan</groupId>
-    <artifactId>themoviedbapi</artifactId>
-    <version>{version}</version>
-</dependency>
-```
-</details>
-
-<details>
-<summary>Gradle (Kotlin)</summary>
-
-```kotlin
-dependencies {
-    implementation("uk.co.conoregan:themoviedbapi:{version}")
-}
-```
-</details>
+It's available via [Maven Central](https://central.sonatype.com/artifact/uk.co.conoregan/themoviedbapi). Just add it as dependency to your project.
 
 ## Usage
 To register for a TMdB API key, click the [API link](https://www.themoviedb.org/settings/api) from within your account settings page. There are two types of API keys currently provided by TMdB, please ensure you are using the `API Read Access Token` key.
@@ -41,6 +18,9 @@ With this you can instantiate `info.movito.themoviedbapi.TmdbApi`, which has get
 ```java
 TmdbApi tmdbApi = new TmdbApi("<apikey>");
 ```
+
+By default this uses the library's built-in HTTP client. If you would rather plug in your own, see
+[Using your own HTTP client](#using-your-own-http-client).
 
 ### Examples
 #### Get movie details
@@ -78,7 +58,7 @@ MovieDb movie = tmdbMovies.getDetails(5353, "en-US", MovieAppendToResponse.value
 To find all methods that use append to response, see the `info.movito.themoviedbapi.tools.appendtoresponse.AppendToResponse` interface 
 implementations.
 
-### Exception Handling
+### Exception handling
 Every API method can throw a `info.movito.themoviedbapi.tools.TmdbException` if the request fails for any reason. You should catch this 
 exception and handle it appropriately.
 
@@ -105,6 +85,22 @@ catch (TmdbException exception) {
 
 We chose to throw exceptions rather than returning `null`, so you have more control over what you do with each failure case. E.g. with the
 example above, you may want to display an error message to the user about failing authentication.
+
+### Using your own HTTP client
+By default, `TmdbApi` uses the built-in `info.movito.themoviedbapi.tools.TmdbHttpClient`, which is backed by the JDK's
+`java.net.http.HttpClient`. If you would rather use a different HTTP client, you can provide your own
+implementation of the `info.movito.themoviedbapi.tools.TmdbRequestExecutor` interface.
+
+Your implementation only has to make the call and hand back the raw response. If the request fails (e.g. an `IOException`), wrap it in a 
+`info.movito.themoviedbapi.tools.TmdbException`. 
+
+Interpreting TMdB status codes and retrying rate-limited requests is handled by the library on top of your executor, so you do not need to 
+deal with that (see `info.movito.themoviedbapi.tools.TmdbApiClient` for more information).
+
+Then pass your implementation to `TmdbApi` instead of the API key:
+```java
+TmdbApi tmdbApi = new TmdbApi(new CustomHttpClient());
+```
 
 ## Project Logging
 

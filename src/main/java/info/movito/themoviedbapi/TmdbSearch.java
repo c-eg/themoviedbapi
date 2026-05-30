@@ -8,6 +8,7 @@ import info.movito.themoviedbapi.model.search.CollectionResultsPage;
 import info.movito.themoviedbapi.model.search.CompanyResultsPage;
 import info.movito.themoviedbapi.model.search.KeywordResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 import static info.movito.themoviedbapi.TmdbCollections.TMDB_METHOD_COLLECTION;
@@ -19,17 +20,19 @@ import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
  * The movie database api for searching. See the
  * <a href="https://developer.themoviedb.org/reference/search-collection">documentation</a> for more info.
  */
-public class TmdbSearch extends AbstractTmdbApi {
+public class TmdbSearch {
     protected static final String TMDB_METHOD_SEARCH = "search";
     protected static final String TMDB_METHOD_MULTI = "multi";
 
     private static final String PARAM_QUERY = "query";
 
+    private final TmdbApiClient tmdbApiClient;
+
     /**
      * Create a new TmdbSearch instance to call the search TMDb API methods.
      */
-    public TmdbSearch(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbSearch(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -52,7 +55,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             .addQueryParam("region", region)
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, CollectionResultsPage.class);
+        return tmdbApiClient.get(apiUrl, CollectionResultsPage.class);
     }
 
     /**
@@ -68,7 +71,7 @@ public class TmdbSearch extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "company")
             .addPathParam(PARAM_QUERY, query)
             .addPage(page);
-        return mapJsonResult(apiUrl, CompanyResultsPage.class);
+        return tmdbApiClient.get(apiUrl, CompanyResultsPage.class);
     }
 
     /**
@@ -84,7 +87,7 @@ public class TmdbSearch extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_SEARCH, "keyword")
             .addPathParam(PARAM_QUERY, query)
             .addPage(page);
-        return mapJsonResult(apiUrl, KeywordResultsPage.class);
+        return tmdbApiClient.get(apiUrl, KeywordResultsPage.class);
     }
 
     /**
@@ -111,7 +114,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             .addQueryParam("year", year)
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPage.class);
     }
 
     /**
@@ -131,7 +134,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             .addQueryParam("include_adult", includeAdult)
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, MultiResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MultiResultsPage.class);
     }
 
     /**
@@ -151,7 +154,7 @@ public class TmdbSearch extends AbstractTmdbApi {
             .addQueryParam("include_adult", includeAdult)
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, PopularPersonResultsPage.class);
+        return tmdbApiClient.get(apiUrl, PopularPersonResultsPage.class);
     }
 
     /**
@@ -176,6 +179,6 @@ public class TmdbSearch extends AbstractTmdbApi {
             .addQueryParam("year", year)
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, TvSeriesResultsPage.class);
     }
 }
