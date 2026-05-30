@@ -10,17 +10,15 @@ import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import info.movito.themoviedbapi.util.JsonUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import static info.movito.themoviedbapi.tools.TmdbResponseCode.REQUEST_LIMIT_EXCEEDED;
 
 /**
  * Class to be inherited by a TmdbApi class.
  */
+@Slf4j
 public abstract class AbstractTmdbApi {
-    public static final String PARAM_YEAR = "year";
-
     public static final String PARAM_PAGE = "page";
 
     public static final String PARAM_LANGUAGE = "language";
@@ -30,8 +28,6 @@ public abstract class AbstractTmdbApi {
     public static final String PARAM_SORT_BY = "sort_by";
 
     private static final ObjectReader RESPONSE_STATUS_READER = JsonUtil.OBJECT_MAPPER.readerFor(ResponseStatus.class);
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractTmdbApi.class);
 
     private final TmdbApi tmdbApi;
 
@@ -139,7 +135,7 @@ public abstract class AbstractTmdbApi {
 
             if (tmdbResponseCode != null) {
                 if (REQUEST_LIMIT_EXCEEDED == tmdbResponseCode) {
-                    LOGGER.info("TMDB API: Request limit exceeded. Waiting 1 second before retrying.");
+                    log.info("TMDB API: Request limit exceeded. Waiting 1 second before retrying.");
                     Thread.sleep(1000);
                     return mapJsonResult(apiUrl, jsonBody, requestType, objectReader);
                 }
@@ -153,6 +149,7 @@ public abstract class AbstractTmdbApi {
             // this is necessary because if some requests fail (including 2xx responses), the response is a json object
         }
         catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
             throw new TmdbException(exception);
         }
 

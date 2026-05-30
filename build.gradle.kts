@@ -26,6 +26,7 @@ dependencies {
 
     testImplementation(platform("org.mockito:mockito-bom:5.23.0"))
     testImplementation("org.mockito:mockito-core")
+    testImplementation("org.mockito:mockito-junit-jupiter")
 
     // util
     compileOnly("org.projectlombok:lombok:1.18.46")
