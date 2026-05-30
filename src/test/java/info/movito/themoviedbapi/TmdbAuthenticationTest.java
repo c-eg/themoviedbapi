@@ -215,7 +215,8 @@ public class TmdbAuthenticationTest extends AbstractTmdbApiTest<TmdbAuthenticati
     public void testValidateKeyUnsuccessful() throws IOException, TmdbException {
         String url = TMDB_API_BASE_URL + TMDB_METHOD_AUTH;
         String body = TestUtils.readTestFile("api_responses/authentication/validate_key_unsuccessful.json");
-        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET)))
+            .thenReturn(new TmdbResponse(INVALID_API_KEY.getHttpStatus(), body));
 
         TmdbResponseException exception = assertThrowsExactly(TmdbResponseException.class, getApiToTest()::validateKey);
         assertEquals(INVALID_API_KEY, exception.getResponseCode());

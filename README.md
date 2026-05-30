@@ -92,12 +92,10 @@ By default, `TmdbApi` uses the built-in `info.movito.themoviedbapi.tools.TmdbHtt
 implementation of the `info.movito.themoviedbapi.tools.TmdbRequestExecutor` interface.
 
 Your implementation only has to make the call and hand back the raw response. If the request fails (e.g. an `IOException`), wrap it in a 
-`info.movito.themoviedbapi.tools.TmdbException`. 
+`info.movito.themoviedbapi.tools.TmdbException`. Interpreting TMdB status codes (e.g. mapping unsuccessful responses to exceptions) is handled by the library on top of your executor, so 
+you do not need to deal with that (see `info.movito.themoviedbapi.tools.TmdbApiClient` for more information).
 
-Interpreting TMdB status codes and retrying rate-limited requests is handled by the library on top of your executor, so you do not need to 
-deal with that (see `info.movito.themoviedbapi.tools.TmdbApiClient` for more information).
-
-Then pass your implementation to `TmdbApi` instead of the API key:
+Then, simply pass your implementation to `TmdbApi` instead of the API key:
 ```java
 TmdbApi tmdbApi = new TmdbApi(new CustomHttpClient());
 ```

@@ -3,9 +3,12 @@ package info.movito.themoviedbapi.tools;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
 
 import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -41,6 +45,9 @@ class TmdbHttpClientTest {
 
     @Mock
     private HttpResponse<String> httpResponse;
+
+    @Mock
+    private HttpResponse<String> rateLimitedResponse;
 
     @Captor
     private ArgumentCaptor<HttpRequest> requestCaptor;
@@ -157,6 +164,41 @@ class TmdbHttpClientTest {
         assertSame(interruptedException, exception.getCause());
         // Thread.interrupted() returns the flag and clears it so it does not leak to other tests.
         assertTrue(Thread.interrupted());
+    }
+
+    /**
+     * Test that a rate-limited (HTTP 429) response is retried, honoring the {@code Retry-After} header, until it succeeds.
+     */
+    @Test
+    void testExecute_retriesOnRateLimitThenSucceeds() throws IOException, InterruptedException, TmdbException {
+        when(rateLimitedResponse.statusCode()).thenReturn(429);
+        when(rateLimitedResponse.headers()).thenReturn(HttpHeaders.of(Map.of("Retry-After", List.of("0")), (name, value) -> true));
+        when(httpResponse.statusCode()).thenReturn(200);
+        when(httpResponse.body()).thenReturn("{\"id\":123}");
+        doReturn(rateLimitedResponse, httpResponse).when(httpClient).send(any(), any());
+
+        TmdbResponse result = tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET));
+
+        assertEquals(200, result.statusCode());
+        assertEquals("{\"id\":123}", result.body());
+        verify(httpClient, times(2)).send(any(), any());
+    }
+
+    /**
+     * Test that retries stop once the maximum is reached and the last rate-limited response is returned.
+     */
+    @Test
+    void testExecute_returnsLastResponseAfterExhaustingRetries() throws IOException, InterruptedException, TmdbException {
+        when(rateLimitedResponse.statusCode()).thenReturn(429);
+        when(rateLimitedResponse.body()).thenReturn("{\"status_code\":25}");
+        when(rateLimitedResponse.headers()).thenReturn(HttpHeaders.of(Map.of("Retry-After", List.of("0")), (name, value) -> true));
+        doReturn(rateLimitedResponse).when(httpClient).send(any(), any());
+
+        TmdbResponse result = tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET));
+
+        assertEquals(429, result.statusCode());
+        // initial attempt + 3 retries
+        verify(httpClient, times(4)).send(any(), any());
     }
 
     /**
