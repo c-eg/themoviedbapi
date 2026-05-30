@@ -6,6 +6,7 @@ import java.util.List;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.multi.Multi;
+import info.movito.themoviedbapi.model.core.multi.MultiCollection;
 import info.movito.themoviedbapi.model.core.multi.MultiMovie;
 import info.movito.themoviedbapi.model.core.multi.MultiPerson;
 import info.movito.themoviedbapi.model.core.multi.MultiResultsPage;
@@ -28,7 +29,7 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link TmdbSearch}.
  */
-public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
+public class TmdbSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
     @Override
     public TmdbSearch createApiToTest() {
         return getTmdbApi().getSearch();
@@ -112,7 +113,15 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
         TestUtils.validateAbstractJsonMappingFields(multiResultsPage, multiValidatorConfig);
 
         List<Multi> results = multiResultsPage.getResults();
-        Multi multiMovie = results.get(0);
+
+        // collection
+        Multi multiCollection = results.get(0);
+        assertNotNull(multiCollection);
+        assertEquals(Multi.MediaType.COLLECTION, multiCollection.getMediaType());
+        TestUtils.validateAbstractJsonMappingFields((MultiCollection) multiCollection);
+
+        // movie
+        Multi multiMovie = results.get(1);
         assertNotNull(multiMovie);
         assertEquals(Multi.MediaType.MOVIE, multiMovie.getMediaType());
 
@@ -121,12 +130,14 @@ public class TmdbTvSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
             .build();
         TestUtils.validateAbstractJsonMappingFields((MultiMovie) multiMovie, validatorConfig);
 
-        Multi multiTv = results.get(1);
+        // tv
+        Multi multiTv = results.get(2);
         assertNotNull(multiTv);
         assertEquals(Multi.MediaType.TV_SERIES, multiTv.getMediaType());
         TestUtils.validateAbstractJsonMappingFields((MultiTvSeries) multiTv);
 
-        Multi multiPerson = results.get(2);
+        // person
+        Multi multiPerson = results.get(3);
         assertNotNull(multiPerson);
         assertEquals(Multi.MediaType.PERSON, multiPerson.getMediaType());
         TestUtils.validateAbstractJsonMappingFields((MultiPerson) multiPerson);

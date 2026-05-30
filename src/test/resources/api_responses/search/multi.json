@@ -3,6 +3,17 @@
     "results": [
         {
             "adult": false,
+            "backdrop_path": null,
+            "id": 1703735,
+            "title": "Star Wars spin off collection",
+            "original_title": "Star Wars spin off collection",
+            "overview": "",
+            "poster_path": null,
+            "media_type": "collection",
+            "original_language": "en"
+        },
+        {
+            "adult": false,
             "backdrop_path": "/aDYSnJAK0BTVeE8osOy22Kz3SXY.jpg",
             "id": 11,
             "title": "Star Wars",
