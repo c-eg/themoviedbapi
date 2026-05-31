@@ -1,5 +1,7 @@
 package info.movito.themoviedbapi.tools;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -67,9 +69,9 @@ public class TmdbApiClient {
         String jsonResponse = response.body();
 
         if (!response.isSuccessfulHttpStatus()) {
-            TmdbResponseCode tmdbResponseCode = parseResponseCode(jsonResponse);
-            if (tmdbResponseCode != null) {
-                throw new TmdbResponseException(tmdbResponseCode);
+            Optional<TmdbResponseCode> tmdbResponseCode = parseResponseCode(jsonResponse);
+            if (tmdbResponseCode.isPresent()) {
+                throw new TmdbResponseException(tmdbResponseCode.get());
             }
 
             // An HTTP error with no recognisable TMDB status code (e.g. an HTML gateway error) cannot be mapped to the result type,
@@ -87,14 +89,14 @@ public class TmdbApiClient {
     /**
      * Parses the TMDB status code from a response body, returning {@code null} if the body is not a TMDB status object.
      */
-    private static TmdbResponseCode parseResponseCode(String jsonResponse) {
+    private static Optional<TmdbResponseCode> parseResponseCode(String jsonResponse) {
         try {
             ResponseStatus responseStatus = RESPONSE_STATUS_READER.readValue(jsonResponse);
-            return responseStatus.getStatusCode();
+            return Optional.of(responseStatus.getStatusCode());
         }
         catch (JsonProcessingException exception) {
             // not an error - a successful response body is usually not a TMDB status object
-            return null;
+            return Optional.empty();
         }
     }
 }
