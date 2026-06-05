@@ -95,7 +95,6 @@ public class TmdbApiClient {
             return Optional.of(responseStatus.getStatusCode());
         }
         catch (JsonProcessingException exception) {
-            // not an error - a successful response body is usually not a TMDB status object
             return Optional.empty();
         }
     }
