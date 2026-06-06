@@ -1,4 +1,4 @@
-name: build
+name: CI
 
 on:
   push:
@@ -8,6 +8,11 @@ on:
 
 permissions:
   contents: read
+
+# Cancel superseded runs on the same ref (e.g. rapid pushes or PR updates).
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -27,4 +32,4 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
 
       - name: Execute Gradle Build
-        run: ./gradlew clean build --scan
+        run: ./gradlew clean build
