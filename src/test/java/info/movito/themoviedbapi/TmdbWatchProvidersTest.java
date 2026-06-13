@@ -12,6 +12,8 @@ import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import info.movito.themoviedbapi.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +38,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
     public void testGetAvailableRegions() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/watch_providers/available_regions.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         AvailableRegionResults availableRegionResults = getApiToTest().getAvailableRegions("en-US");
         assertNotNull(availableRegionResults);
@@ -50,7 +52,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
     public void testGetMovieProviders() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/watch_providers/movie_providers.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "/movie?language=en-US&watch_region=US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ProviderResults providerResults = getApiToTest().getMovieProviders("en-US", "US");
         assertNotNull(providerResults);
@@ -72,7 +74,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
     public void testGetTvProviders() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/watch_providers/tv_providers.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "/tv?language=en-US&watch_region=US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ProviderResults providerResults = getApiToTest().getTvProviders("en-US", "US");
         assertNotNull(providerResults);

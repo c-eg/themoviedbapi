@@ -6,6 +6,8 @@ import info.movito.themoviedbapi.model.keywords.Keyword;
 import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbKeywords.TMDB_METHOD_KEYWORD;
@@ -29,7 +31,7 @@ public class TmdbKeywordsTest extends AbstractTmdbApiTest<TmdbKeywords> {
     public void testGetDetails() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/keywords/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_KEYWORD + "/1";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Keyword keyword = getApiToTest().getDetails(1);
         assertNotNull(keyword);

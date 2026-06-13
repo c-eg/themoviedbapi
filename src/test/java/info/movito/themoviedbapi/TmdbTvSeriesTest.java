@@ -27,6 +27,8 @@ import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import info.movito.themoviedbapi.tools.TmdbResponseCode;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvSeriesAppendToResponse;
 import info.movito.themoviedbapi.util.JsonUtil;
@@ -54,7 +56,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvSeriesDb tvSeries = getApiToTest().getDetails(123, "en-US");
         assertNotNull(tvSeries);
@@ -93,7 +95,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123?language=en-US&append_to_response=account_states%2Caggregate_credits" +
             "%2Calternative_titles%2Cchanges%2Ccontent_ratings%2Ccredits%2Cepisode_groups%2Cexternal_ids%2Cimages%2Ckeywords%2Clists" +
             "%2Crecommendations%2Creviews%2Cscreened_theatrically%2Csimilar%2Ctranslations%2Cvideos%2Cwatch%2Fproviders";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvSeriesDb tvSeries = getApiToTest().getDetails(123, "en-US", TvSeriesAppendToResponse.values());
         assertNotNull(tvSeries);
@@ -108,7 +110,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetAccountStates() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/account_states.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/account_states?session_id=123";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         AccountStates accountStates = getApiToTest().getAccountStates(123, "123", null);
         assertNotNull(accountStates);
@@ -122,7 +124,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetAggregateCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/aggregate_credits.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/aggregate_credits?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         AggregateCredits aggregateCredits = getApiToTest().getAggregateCredits(123, "en-US");
         assertNotNull(aggregateCredits);
@@ -136,7 +138,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetAlternativeTitles() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/alternative_titles.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/alternative_titles";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         AlternativeTitleResults alternativeTitles = getApiToTest().getAlternativeTitles(123);
         assertNotNull(alternativeTitles);
@@ -150,7 +152,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetChanges() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/changes.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/changes?page=1";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ChangeResults changes = getApiToTest().getChanges(123, null, null, 1);
         assertNotNull(changes);
@@ -164,7 +166,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetContentRatings() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/content_ratings.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/content_ratings";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ContentRatingResults contentRatings = getApiToTest().getContentRatings(123);
         assertNotNull(contentRatings);
@@ -178,7 +180,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetCredits() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/credits.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/credits?language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Credits credits = getApiToTest().getCredits(123, "en-US");
         assertNotNull(credits);
@@ -192,7 +194,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetEpisodeGroups() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/episode_groups.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/episode_groups";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         EpisodeGroupResults episodeGroups = getApiToTest().getEpisodeGroups(123);
         assertNotNull(episodeGroups);
@@ -206,7 +208,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetExternalIds() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/external_ids.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/external_ids";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ExternalIds externalIds = getApiToTest().getExternalIds(123);
         assertNotNull(externalIds);
@@ -220,7 +222,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetImages() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/images.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/images";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Images images = getApiToTest().getImages(123, null);
         assertNotNull(images);
@@ -234,7 +236,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetKeywords() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/keywords.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/keywords";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvKeywords keywords = getApiToTest().getKeywords(123);
         assertNotNull(keywords);
@@ -248,7 +250,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetLatest() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/latest.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/latest";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvSeriesDb latest = getApiToTest().getLatest();
         assertNotNull(latest);
@@ -285,7 +287,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetLists() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/lists.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/lists";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvSeriesListResultsPage lists = getApiToTest().getLists(123, null, null);
         assertNotNull(lists);
@@ -299,7 +301,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetRecommendations() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/recommendations.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/recommendations";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvSeriesResultsPage recommendations = getApiToTest().getRecommendations(123, null, null);
         assertNotNull(recommendations);
@@ -313,7 +315,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetReviews() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/reviews.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/reviews";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ReviewResultsPage reviews = getApiToTest().getReviews(123, null, null);
         assertNotNull(reviews);
@@ -327,7 +329,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetScreenedTheatrically() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/screened_theatrically.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/screened_theatrically";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ScreenedTheatricallyResults screenedTheatrically = getApiToTest().getScreenedTheatrically(123);
         assertNotNull(screenedTheatrically);
@@ -341,7 +343,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetSimilar() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/similar.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/similar";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvSeriesResultsPage similar = getApiToTest().getSimilar(123, null, null);
         assertNotNull(similar);
@@ -355,7 +357,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetTranslations() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/translations.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/translations";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Translations translations = getApiToTest().getTranslations(123);
         assertNotNull(translations);
@@ -369,7 +371,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetVideos() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/videos.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/videos";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         VideoResults videos = getApiToTest().getVideos(123, null);
         assertNotNull(videos);
@@ -383,7 +385,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testGetWatchProviders() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_series/watch_providers.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/watch/providers";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ProviderResults watchProviders = getApiToTest().getWatchProviders(123);
         assertNotNull(watchProviders);
@@ -402,7 +404,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
 
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/rating";
         String body = TestUtils.readTestFile("api_responses/tv_series/add_rating.json");
-        when(getTmdbUrlReader().readUrl(url, jsonBody, RequestType.POST)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.POST, jsonBody))).thenReturn(new TmdbResponse(200, body));
 
         ResponseStatus responseStatus = getApiToTest().addRating(123, null, null, 2.1);
         assertNotNull(responseStatus);
@@ -417,7 +419,7 @@ public class TmdbTvSeriesTest extends AbstractTmdbApiTest<TmdbTvSeries> {
     public void testDeleteRating() throws IOException, TmdbException {
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/rating";
         String body = TestUtils.readTestFile("api_responses/tv_series/delete_rating.json");
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.DELETE)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.DELETE))).thenReturn(new TmdbResponse(200, body));
 
         ResponseStatus responseStatus = getApiToTest().deleteRating(123, null, null);
         assertNotNull(responseStatus);
