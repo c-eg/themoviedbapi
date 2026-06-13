@@ -5,20 +5,23 @@ import java.util.List;
 import info.movito.themoviedbapi.model.core.Genre;
 import info.movito.themoviedbapi.model.core.Genres;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for genre. See the
  * <a href="https://developer.themoviedb.org/reference/genre-movie-list">documentation</a> for more info.
  */
-public class TmdbGenre extends AbstractTmdbApi {
+public class TmdbGenre {
     protected static final String TMDB_METHOD_GENRE = "genre";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbGenre instance to call the genre related TMDb API methods.
      */
-    public TmdbGenre(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbGenre(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -32,7 +35,7 @@ public class TmdbGenre extends AbstractTmdbApi {
     public List<Genre> getMovieList(String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "movie/list")
             .addLanguage(language);
-        return mapJsonResult(apiUrl, Genres.class).getGenres();
+        return tmdbApiClient.get(apiUrl, Genres.class).getGenres();
     }
 
     /**
@@ -46,6 +49,6 @@ public class TmdbGenre extends AbstractTmdbApi {
     public List<Genre> getTvList(String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GENRE, "tv/list")
             .addLanguage(language);
-        return mapJsonResult(apiUrl, Genres.class).getGenres();
+        return tmdbApiClient.get(apiUrl, Genres.class).getGenres();
     }
 }

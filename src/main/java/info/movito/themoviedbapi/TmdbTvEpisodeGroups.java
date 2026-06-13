@@ -2,20 +2,23 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.tv.episodegroups.TvEpisodeGroups;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for tv episode groups. See the
  * <a href="https://developer.themoviedb.org/reference/tv-episode-group-details">documentation</a> for more info.
  */
-public class TmdbTvEpisodeGroups extends AbstractTmdbApi {
+public class TmdbTvEpisodeGroups {
     protected static final String TMDB_METHOD_TV_EPISODE_GROUPS = "tv/episode_group";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbTvEpisodeGroups instance to call the tv episode groups TMDb API methods.
      */
-    TmdbTvEpisodeGroups(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbTvEpisodeGroups(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -28,6 +31,6 @@ public class TmdbTvEpisodeGroups extends AbstractTmdbApi {
      */
     public TvEpisodeGroups getDetails(String tvEpisodeGroupId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV_EPISODE_GROUPS, tvEpisodeGroupId);
-        return mapJsonResult(apiUrl, TvEpisodeGroups.class);
+        return tmdbApiClient.get(apiUrl, TvEpisodeGroups.class);
     }
 }

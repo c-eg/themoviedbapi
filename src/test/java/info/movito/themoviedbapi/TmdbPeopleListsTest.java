@@ -6,6 +6,8 @@ import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPa
 import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbPeopleLists.TMDB_METHOD_PEOPLE_LISTS;
@@ -29,7 +31,7 @@ public class TmdbPeopleListsTest extends AbstractTmdbApiTest<TmdbPeopleLists> {
     public void testGetPopular() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/people_lists/popular.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_PEOPLE_LISTS + "?language=en-US&page=1";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         PopularPersonResultsPage popularPersonResultsPage = getApiToTest().getPopular("en-US", 1);
         assertNotNull(popularPersonResultsPage);

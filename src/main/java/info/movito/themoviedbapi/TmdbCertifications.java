@@ -2,21 +2,24 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.certifications.CertificationResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for certifications. See the
  * <a href="https://developer.themoviedb.org/reference/certification-movie-list">documentation</a> for more info.
  */
-public class TmdbCertifications extends AbstractTmdbApi {
+public class TmdbCertifications {
     protected static final String TMDB_METHOD_CERTIFICATIONS = "certification";
 
     protected static final String TMDB_METHOD_MOVIE_CERTIFICATIONS = "movie/list";
 
     protected static final String TMDB_METHOD_TV_CERTIFICATIONS = "tv/list";
 
-    TmdbCertifications(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    private final TmdbApiClient tmdbApiClient;
+
+    TmdbCertifications(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -28,7 +31,7 @@ public class TmdbCertifications extends AbstractTmdbApi {
      */
     public CertificationResults getMovieCertifications() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CERTIFICATIONS, TMDB_METHOD_MOVIE_CERTIFICATIONS);
-        return mapJsonResult(apiUrl, CertificationResults.class);
+        return tmdbApiClient.get(apiUrl, CertificationResults.class);
     }
 
     /**
@@ -40,6 +43,6 @@ public class TmdbCertifications extends AbstractTmdbApi {
      */
     public CertificationResults getTvCertifications() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CERTIFICATIONS, TMDB_METHOD_TV_CERTIFICATIONS);
-        return mapJsonResult(apiUrl, CertificationResults.class);
+        return tmdbApiClient.get(apiUrl, CertificationResults.class);
     }
 }

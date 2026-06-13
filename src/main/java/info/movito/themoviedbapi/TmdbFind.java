@@ -2,6 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.find.FindResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.model.time.ExternalSource;
 
@@ -9,14 +10,16 @@ import info.movito.themoviedbapi.tools.model.time.ExternalSource;
  * The movie database api for find. See the
  * <a href="https://developer.themoviedb.org/reference/find-by-id">documentation</a> for more info.
  */
-public class TmdbFind extends AbstractTmdbApi {
+public class TmdbFind {
     protected static final String TMDB_METHOD_FIND = "find";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbFind instance to call the find related TMDb API methods.
      */
-    TmdbFind(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbFind(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -32,6 +35,6 @@ public class TmdbFind extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_FIND, externalId)
             .addPathParam("external_source", externalSource.getValue())
             .addLanguage(language);
-        return mapJsonResult(apiUrl, FindResults.class);
+        return tmdbApiClient.get(apiUrl, FindResults.class);
     }
 }

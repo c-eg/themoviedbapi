@@ -2,6 +2,7 @@ package info.movito.themoviedbapi;
 
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
@@ -10,12 +11,14 @@ import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
  * The movie database api for tv series lists. See the
  * <a href="https://developer.themoviedb.org/reference/tv-series-airing-today-list">documentation</a> for more info.
  */
-public class TmdbTvSeriesLists extends AbstractTmdbApi {
+public class TmdbTvSeriesLists {
+    private final TmdbApiClient tmdbApiClient;
+
     /**
      * Create a new TmdbTvSeriesLists instance to call the tv series lists TMDb API methods.
      */
-    TmdbTvSeriesLists(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbTvSeriesLists(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -33,7 +36,7 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
             .addLanguage(language)
             .addPage(page)
             .addQueryParam("timezone", timezone);
-        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, TvSeriesResultsPage.class);
     }
 
     /**
@@ -51,7 +54,7 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
             .addLanguage(language)
             .addPage(page)
             .addQueryParam("timezone", timezone);
-        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, TvSeriesResultsPage.class);
     }
 
     /**
@@ -67,7 +70,7 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "popular")
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, TvSeriesResultsPage.class);
     }
 
     /**
@@ -83,6 +86,6 @@ public class TmdbTvSeriesLists extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, "top_rated")
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, TvSeriesResultsPage.class);
     }
 }

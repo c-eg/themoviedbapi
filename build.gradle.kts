@@ -2,7 +2,6 @@ plugins {
     `java-library`
     checkstyle
     `maven-publish`
-    signing
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
     id("org.jreleaser") version "1.24.0"
 }
@@ -22,11 +21,13 @@ dependencies {
     // testing
     testImplementation(platform("org.junit:junit-bom:6.1.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")  // gradle bundled version is incompatible with 5.12
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")  // pin launcher to junit-bom; Gradle's bundled one lags the JUnit version
 
     testImplementation(platform("org.mockito:mockito-bom:5.23.0"))
     testImplementation("org.mockito:mockito-core")
     testImplementation("org.mockito:mockito-junit-jupiter")
+
+    testImplementation("org.wiremock:wiremock:3.13.2")
 
     // util
     compileOnly("org.projectlombok:lombok:1.18.46")
@@ -40,16 +41,37 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind")
 
     implementation("org.apache.commons:commons-lang3:3.20.0")
+
     testImplementation("commons-io:commons-io:2.22.0")
 }
 
 java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
     withJavadocJar()
     withSourcesJar()
 }
 
 tasks.test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags("integration")
+    }
+}
+
+tasks.register<Test>("integrationTest") {
+    description = "Runs integration tests (tagged with \"integration\")."
+    group = "verification"
+    useJUnitPlatform {
+        includeTags("integration")
+    }
+    testClassesDirs = sourceSets["test"].output.classesDirs
+    classpath = sourceSets["test"].runtimeClasspath
+    shouldRunAfter(tasks.test)
+}
+
+tasks.check {
+    dependsOn("integrationTest")
 }
 
 checkstyle {
@@ -80,14 +102,15 @@ publishing {
 
                 licenses {
                     license {
-                        name = "BSD"
+                        name = "BSD-2-Clause"
                         url = "https://github.com/c-eg/themoviedbapi/blob/master/LICENCE.txt"
                     }
                 }
 
                 scm {
-                    connection = "scm:git:github.com/c-eg/themoviedbapi.git"
-                    url = "https://github.com/c-eg/themoviedbapi.git"
+                    connection = "scm:git:https://github.com/c-eg/themoviedbapi.git"
+                    developerConnection = "scm:git:ssh://git@github.com/c-eg/themoviedbapi.git"
+                    url = "https://github.com/c-eg/themoviedbapi"
                 }
 
                 developers {
@@ -107,8 +130,20 @@ publishing {
         }
     }
     repositories {
+        // Local staging dir that JReleaser reads from for the signed release deploy.
         maven {
+            name = "staging"
             url = uri(layout.buildDirectory.dir("staging-deploy"))
+        }
+
+        // Central Portal snapshot repository.
+        maven {
+            name = "centralSnapshots"
+            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
+            credentials {
+                username = providers.environmentVariable("MAVENCENTRAL_USERNAME").orNull
+                password = providers.environmentVariable("MAVENCENTRAL_PASSWORD").orNull
+            }
         }
     }
 }
@@ -118,9 +153,7 @@ jreleaser {
         pgp {
             active = org.jreleaser.model.Active.ALWAYS
             armored = true
-            mode = org.jreleaser.model.Signing.Mode.FILE
-            publicKey = "C:/gpg/public.pgp"
-            secretKey = "C:/gpg/private.pgp"
+            mode = org.jreleaser.model.Signing.Mode.MEMORY
         }
     }
     deploy {
@@ -136,20 +169,11 @@ jreleaser {
     }
 }
 
-if (project.hasProperty("signing.keyId") && project.hasProperty("signing.password") && project.hasProperty("signing.secretKeyRingFile")) signing {
-    sign(publishing.publications["mavenJava"])
-}
-
 tasks.javadoc {
-    if (JavaVersion.current().isJava9Compatible) {
-        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
-    }
-}
-
-tasks {
-    javadoc {
-        options {
-            (this as CoreJavadocOptions).addBooleanOption("Xdoclint:none", true)
+    options {
+        (this as StandardJavadocDocletOptions).apply {
+            addBooleanOption("Xdoclint:none", true)
+            addBooleanOption("html5", true)
         }
     }
 }
