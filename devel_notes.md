@@ -1,52 +1,67 @@
 # Developer Notes
+
+Releases and snapshots are published automatically via GitHub Actions. The
+manual/local process is still possible and documented at the end as a fallback.
+
 ## How to do a release?
 
-1. Make sure to increase version number in [build.gradle.kts](build.gradle.kts), commit and push the version to the `master` branch
+Releases are handled by the [Release to Maven Central](.github/workflows/release.yml)
+workflow, triggered by pushing a version tag.
 
-2. Do the release on GitHub
+1. Bump the version in [build.gradle.kts](build.gradle.kts) to the release value
+   (e.g. `2.7.0`, **no** `-SNAPSHOT` suffix). Commit and push to `master`.
 
-3. Make sure the prerequisites are met that are listed below
+2. Create and push a matching `v<version>` tag:
+   ```bash
+   git tag v2.7.0
+   git push origin v2.7.0
+   ```
 
-4. Clean, publish and deploy
-```bash
-./gradlew clean && ./gradlew publish && ./gradlew jreleaserDeploy
-```
+3. The workflow then automatically:
+   - stages the artifacts,
+   - GPG-signs them and deploys to Maven Central via JReleaser,
+   - creates a GitHub release with auto-generated changelog notes.
 
-5. Go to [Maven Central Repository](https://central.sonatype.com/publishing/deployments) and verify the deployment was successful
+4. Verify the deployment at the
+   [Maven Central Repository](https://central.sonatype.com/publishing/deployments).
+
+> The git tag should match the version in `build.gradle.kts`. Snapshot-suffixed
+> tags (`v*-SNAPSHOT`) are ignored by this workflow and handled by the snapshot
+> workflow instead.
+
+## How to publish a snapshot?
+
+Snapshots are handled by the
+[Publish Snapshot to Maven Central](.github/workflows/snapshot.yml) workflow.
+They are deployed directly via `maven-publish` (no signing, no validation) to the
+[Central Portal snapshot repository](https://central.sonatype.com/repository/maven-snapshots/).
+
+1. Set the version in [build.gradle.kts](build.gradle.kts) to a `-SNAPSHOT` value
+   (e.g. `2.7.0-SNAPSHOT`). Commit and push to `master`.
+
+2. Trigger the workflow either by:
+   - pushing a `v*-SNAPSHOT` tag (e.g. `v2.7.0-SNAPSHOT`), or
+   - running it manually from the GitHub **Actions** tab (Run workflow).
 
 
-## Prerequisites
-### GPG & PGP Keys
-Make sure you have the following keys exist:
+## Required GitHub repository secrets
 
-- `C:/gpg/private.pgp`
-- `C:/gpg/public.pgp`
-- `C:/gpg/secring.gpg`
+The release and snapshot workflows read credentials from repository secrets
+(**Settings → Secrets and variables → Actions**):
 
-### Gradle Properties
-Make sure you have the following in your global gradle.properties file `C:\Users\<user>\.gradle\gradle.properties`:
+| Secret                  | Used by            | Description                                          |
+|-------------------------|--------------------|------------------------------------------------------|
+| `GPG_PUBLIC_KEY`        | release            | ASCII-armored public key **contents**                |
+| `GPG_SECRET_KEY`        | release            | ASCII-armored private key **contents**               |
+| `GPG_PASSPHRASE`        | release            | Passphrase for the private key                       |
+| `MAVENCENTRAL_USERNAME` | release + snapshot | Sonatype Central Portal token username               |
+| `MAVENCENTRAL_PASSWORD` | release + snapshot | Sonatype Central Portal token password               |
 
-```properties
-signing.keyId = <value>
-signing.password = <value>
-signing.secretKeyRingFile = C:/gpg/secring.gpg
-```
+`GITHUB_TOKEN` is provided automatically by GitHub Actions; no secret needed.
 
-### JReleaser Properties
-Make sure you have the following in your jreleaser.properties file `C:\Users\<user>\.jreleaser\config.properties`:
-
-```properties
-JRELEASER_GPG_PUBLIC_KEY = C:/gpg/public.pgp
-JRELEASER_GPG_SECRET_KEY = C:/gpg/private.pgp
-JRELEASER_GPG_PASSPHRASE = <value>
-JRELEASER_GITHUB_TOKEN = <value>
-JRELEASER_MAVENCENTRAL_SONATYPE_USERNAME = <value>
-JRELEASER_MAVENCENTRAL_SONATYPE_PASSWORD = <value>
-```
-
-Note: `JRELEASER_GITHUB_TOKEN` does not need a valid value, it just needs a non-empty value set.
-
-If you are setting this up for the first time, you can verify your config is configured correctly with:
-```bash
-./gradlew jreleaserConfig
-```
+> Signing uses JReleaser **MEMORY** mode, so `GPG_PUBLIC_KEY` / `GPG_SECRET_KEY`
+> hold the armored key *contents*, not file paths. Export them with:
+> ```bash
+> gpg --armor --export <key-id>            # -> GPG_PUBLIC_KEY
+> gpg --armor --export-secret-keys <key-id> # -> GPG_SECRET_KEY
+> ```
