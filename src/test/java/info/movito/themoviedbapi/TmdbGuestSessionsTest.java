@@ -10,6 +10,8 @@ import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +36,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
     public void testGetRatedMovies() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/guest_sessions/rated_movies.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/movies?language=en&page=1&sort_by=created_at.desc";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedMovieResultsPage);
@@ -52,7 +54,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
     public void testGetRatedTvSeries() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/guest_sessions/rated_tv.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/tv?language=en&page=1&sort_by=created_at.desc";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         RatedTvSeriesResultsPage ratedTvSeriesResultsPage = getApiToTest().getRatedTvSeries(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvSeriesResultsPage);
@@ -67,7 +69,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
         String body = TestUtils.readTestFile("api_responses/guest_sessions/rated_tv_episodes.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS +
             "/1/rated/tv/episodes?language=en&page=1&sort_by=created_at.desc";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = getApiToTest().getRatedTvEpisodes(1, "en", 1,
             AccountSortBy.CREATED_AT_DESC);

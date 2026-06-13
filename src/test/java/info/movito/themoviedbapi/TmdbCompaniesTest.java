@@ -8,6 +8,8 @@ import info.movito.themoviedbapi.model.core.image.ImageResults;
 import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbCompanies.TMDB_METHOD_COMPANY;
@@ -33,7 +35,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest<TmdbCompanies> {
 
         String body = TestUtils.readTestFile("api_responses/companies/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId;
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Company company = getApiToTest().getDetails(companyId);
         assertNotNull(company);
@@ -49,7 +51,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest<TmdbCompanies> {
 
         String body = TestUtils.readTestFile("api_responses/companies/alternative_names.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId + "/alternative_names";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         AlternativeNamesResultsPage alternativeNamesResultsPage = getApiToTest().getAlternativeNames(1);
         assertNotNull(alternativeNamesResultsPage);
@@ -65,7 +67,7 @@ public class TmdbCompaniesTest extends AbstractTmdbApiTest<TmdbCompanies> {
 
         String body = TestUtils.readTestFile("api_responses/companies/images.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_COMPANY + "/" + companyId + "/images";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ImageResults logoImageResults = getApiToTest().getImages(1);
         assertNotNull(logoImageResults);

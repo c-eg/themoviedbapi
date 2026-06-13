@@ -4,20 +4,23 @@ import info.movito.themoviedbapi.model.core.image.ImageResults;
 import info.movito.themoviedbapi.model.networks.AlternativeNamesResults;
 import info.movito.themoviedbapi.model.networks.Network;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for networks. See the
  * <a href="https://developer.themoviedb.org/reference/network-details">documentation</a> for more info.
  */
-public class TmdbNetworks extends AbstractTmdbApi {
+public class TmdbNetworks {
     protected static final String TMDB_METHOD_NETWORK = "network";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbNetworks instance to call the network related TMDb API methods.
      */
-    public TmdbNetworks(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbNetworks(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -30,7 +33,7 @@ public class TmdbNetworks extends AbstractTmdbApi {
      */
     public Network getDetails(int networkId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_NETWORK, networkId);
-        return mapJsonResult(apiUrl, Network.class);
+        return tmdbApiClient.get(apiUrl, Network.class);
     }
 
     /**
@@ -43,7 +46,7 @@ public class TmdbNetworks extends AbstractTmdbApi {
      */
     public AlternativeNamesResults getAlternativeNames(int networkId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_NETWORK, networkId, "alternative_names");
-        return mapJsonResult(apiUrl, AlternativeNamesResults.class);
+        return tmdbApiClient.get(apiUrl, AlternativeNamesResults.class);
     }
 
     /**
@@ -56,6 +59,6 @@ public class TmdbNetworks extends AbstractTmdbApi {
      */
     public ImageResults getImages(int networkId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_NETWORK, networkId, "images");
-        return mapJsonResult(apiUrl, ImageResults.class);
+        return tmdbApiClient.get(apiUrl, ImageResults.class);
     }
 }

@@ -7,20 +7,23 @@ import info.movito.themoviedbapi.model.collections.Images;
 import info.movito.themoviedbapi.model.collections.Translation;
 import info.movito.themoviedbapi.model.collections.Translations;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for collections. See the
  * <a href="https://developer.themoviedb.org/reference/collection-details">documentation</a> for more info.
  */
-public class TmdbCollections extends AbstractTmdbApi {
+public class TmdbCollections {
     protected static final String TMDB_METHOD_COLLECTION = "collection";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbCollections instance to call the collections related TMDb API methods.
      */
-    TmdbCollections(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbCollections(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -35,7 +38,7 @@ public class TmdbCollections extends AbstractTmdbApi {
     public CollectionInfo getDetails(Integer collectionId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId)
             .addLanguage(language);
-        return mapJsonResult(apiUrl, CollectionInfo.class);
+        return tmdbApiClient.get(apiUrl, CollectionInfo.class);
     }
 
     /**
@@ -52,7 +55,7 @@ public class TmdbCollections extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId, "images")
             .addLanguage(language)
             .addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
-        return mapJsonResult(apiUrl, Images.class);
+        return tmdbApiClient.get(apiUrl, Images.class);
     }
 
     /**
@@ -65,6 +68,6 @@ public class TmdbCollections extends AbstractTmdbApi {
      */
     public List<Translation> getTranslations(Integer collectionId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_COLLECTION, collectionId, "translations");
-        return mapJsonResult(apiUrl, Translations.class).getTranslations();
+        return tmdbApiClient.get(apiUrl, Translations.class).getTranslations();
     }
 }

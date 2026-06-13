@@ -6,6 +6,8 @@ import info.movito.themoviedbapi.model.reviews.Review;
 import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbReviews.TMDB_METHOD_MOVIE_REVIEW;
@@ -31,7 +33,7 @@ public class TmdbReviewsTest extends AbstractTmdbApiTest<TmdbReviews> {
 
         String body = TestUtils.readTestFile("api_responses/reviews/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_REVIEW + "/" + reviewId;
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Review review = getApiToTest().getDetails(reviewId);
         assertNotNull(review);

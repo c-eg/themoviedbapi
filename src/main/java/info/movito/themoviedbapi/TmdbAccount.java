@@ -12,6 +12,7 @@ import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 import info.movito.themoviedbapi.util.JsonUtil;
@@ -20,15 +21,17 @@ import info.movito.themoviedbapi.util.JsonUtil;
  * The movie database api for accounts. See the
  * <a href="https://developer.themoviedb.org/reference/account-details">documentation</a> for more info.
  */
-public class TmdbAccount extends AbstractTmdbApi {
+public class TmdbAccount {
     public static final String PARAM_SESSION = "session_id";
     protected static final String TMDB_METHOD_ACCOUNT = "account";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbAccount instance to call the account related TMDb API methods.
      */
-    TmdbAccount(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbAccount(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -44,7 +47,7 @@ public class TmdbAccount extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_ACCOUNT, accountId)
             .addQueryParam(PARAM_SESSION, sessionId);
 
-        return mapJsonResult(apiUrl, Account.class);
+        return tmdbApiClient.get(apiUrl, Account.class);
     }
 
     /**
@@ -90,7 +93,7 @@ public class TmdbAccount extends AbstractTmdbApi {
         body.put("favorite", isFavorite);
 
         String jsonBody = JsonUtil.toJson(body);
-        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
     /**
@@ -136,7 +139,7 @@ public class TmdbAccount extends AbstractTmdbApi {
         body.put("watchlist", isWatchList);
 
         String jsonBody = JsonUtil.toJson(body);
-        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
     /**
@@ -159,7 +162,7 @@ public class TmdbAccount extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPage.class);
     }
 
     /**
@@ -182,7 +185,7 @@ public class TmdbAccount extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, TvSeriesResultsPage.class);
     }
 
     /**
@@ -200,7 +203,7 @@ public class TmdbAccount extends AbstractTmdbApi {
             .addQueryParam(PARAM_SESSION, sessionId)
             .addPage(page);
 
-        return mapJsonResult(apiUrl, MovieListResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieListResultsPage.class);
     }
 
     /**
@@ -223,7 +226,7 @@ public class TmdbAccount extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, RatedMovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, RatedMovieResultsPage.class);
     }
 
     /**
@@ -246,7 +249,7 @@ public class TmdbAccount extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, RatedTvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, RatedTvSeriesResultsPage.class);
     }
 
     /**
@@ -269,7 +272,7 @@ public class TmdbAccount extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, RatedTvEpisodeResultsPage.class);
+        return tmdbApiClient.get(apiUrl, RatedTvEpisodeResultsPage.class);
     }
 
     /**
@@ -292,7 +295,7 @@ public class TmdbAccount extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPage.class);
     }
 
     /**
@@ -315,7 +318,7 @@ public class TmdbAccount extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, TvSeriesResultsPage.class);
     }
 
     /**

@@ -8,6 +8,8 @@ import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import info.movito.themoviedbapi.tools.model.time.ExternalSource;
 import org.junit.jupiter.api.Test;
 
@@ -32,10 +34,9 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     public void testFindByIdMovieResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/movie_results.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
-        TmdbFind tmdbFind = new TmdbFind(getTmdbApi());
-        FindResults findResults = tmdbFind.findById("nm0000158", ExternalSource.IMDB_ID, null);
+        FindResults findResults = getApiToTest().findById("nm0000158", ExternalSource.IMDB_ID, null);
         assertNotNull(findResults);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
@@ -57,10 +58,9 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     public void testFindByIdPersonResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/person_results.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
-        TmdbFind tmdbFind = new TmdbFind(getTmdbApi());
-        FindResults findResults = tmdbFind.findById("nm0000158", ExternalSource.IMDB_ID, null);
+        FindResults findResults = getApiToTest().findById("nm0000158", ExternalSource.IMDB_ID, null);
         assertNotNull(findResults);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
@@ -81,10 +81,9 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     public void testFindByIdTvResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/tv_results.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
-        TmdbFind tmdbFind = new TmdbFind(getTmdbApi());
-        FindResults findResults = tmdbFind.findById("nm0000158", ExternalSource.IMDB_ID, null);
+        FindResults findResults = getApiToTest().findById("nm0000158", ExternalSource.IMDB_ID, null);
         assertNotNull(findResults);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
@@ -105,10 +104,9 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     public void testFindByIdTvSeasonResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/tv_season_results.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
-        TmdbFind tmdbFind = new TmdbFind(getTmdbApi());
-        FindResults findResults = tmdbFind.findById("nm0000158", ExternalSource.IMDB_ID, null);
+        FindResults findResults = getApiToTest().findById("nm0000158", ExternalSource.IMDB_ID, null);
         assertNotNull(findResults);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
@@ -129,10 +127,9 @@ public class TmdbFindTest extends AbstractTmdbApiTest<TmdbFind> {
     public void testFindByIdTvEpisodeResults() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/find/tv_episode_results.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_FIND + "/nm0000158?external_source=imdb_id";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
-        TmdbFind tmdbFind = new TmdbFind(getTmdbApi());
-        FindResults findResults = tmdbFind.findById("nm0000158", ExternalSource.IMDB_ID, null);
+        FindResults findResults = getApiToTest().findById("nm0000158", ExternalSource.IMDB_ID, null);
         assertNotNull(findResults);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()

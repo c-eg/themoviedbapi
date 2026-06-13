@@ -7,7 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import info.movito.themoviedbapi.AbstractTmdbApi;
 import info.movito.themoviedbapi.tools.appendtoresponse.AppendToResponse;
 import info.movito.themoviedbapi.tools.builders.ParamBuilder;
 import info.movito.themoviedbapi.tools.sortby.SortBy;
@@ -18,10 +17,18 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 /**
  * Tmdb Api URL Builder.
  *
- * @author Holger Brandl
+ * @author Holger Brandl, c-eg
  */
 public class ApiUrl {
     public static final String TMDB_API_BASE_URL = "https://api.themoviedb.org/3/";
+
+    public static final String PARAM_PAGE = "page";
+
+    public static final String PARAM_LANGUAGE = "language";
+
+    public static final String PARAM_ADULT = "include_adult";
+
+    public static final String PARAM_SORT_BY = "sort_by";
 
     private static final String APPEND_TO_RESPONSE = "append_to_response";
 
@@ -156,7 +163,7 @@ public class ApiUrl {
      */
     public ApiUrl addPage(Integer page) {
         if (page != null && page > 0) {
-            addPathParam(AbstractTmdbApi.PARAM_PAGE, page);
+            addPathParam(PARAM_PAGE, page);
         }
 
         return this;
@@ -169,7 +176,7 @@ public class ApiUrl {
      */
     public ApiUrl addLanguage(String language) {
         if (isNotBlank(language)) {
-            addPathParam(AbstractTmdbApi.PARAM_LANGUAGE, language);
+            addPathParam(PARAM_LANGUAGE, language);
         }
 
         return this;
@@ -198,7 +205,7 @@ public class ApiUrl {
      */
     public ApiUrl addSortBy(SortBy sortBy) {
         if (sortBy != null) {
-            addQueryParam(AbstractTmdbApi.PARAM_SORT_BY, sortBy.getValue());
+            addQueryParam(PARAM_SORT_BY, sortBy.getValue());
         }
 
         return this;

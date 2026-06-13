@@ -19,6 +19,8 @@ import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.testutil.ValidatorConfig;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
@@ -42,7 +44,7 @@ public class TmdbSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
     public void testSearchCollection() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/search/collection.json");
         String url = TMDB_API_BASE_URL + "search/collection?query=batman&language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         CollectionResultsPage collectionResultsPage = getApiToTest().searchCollection("batman", "en-US", null, null, null);
         assertNotNull(collectionResultsPage);
@@ -56,7 +58,7 @@ public class TmdbSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
     public void testSearchCompany() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/search/company.json");
         String url = TMDB_API_BASE_URL + "search/company?query=amici+films";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         CompanyResultsPage companyResultsPage = getApiToTest().searchCompany("amici films", null);
         assertNotNull(companyResultsPage);
@@ -70,7 +72,7 @@ public class TmdbSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
     public void testSearchKeyword() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/search/keyword.json");
         String url = TMDB_API_BASE_URL + "search/keyword?query=autograph";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         KeywordResultsPage keywordResultsPage = getApiToTest().searchKeyword("autograph", null);
         assertNotNull(keywordResultsPage);
@@ -84,7 +86,7 @@ public class TmdbSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
     public void testSearchMovie() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/search/movie.json");
         String url = TMDB_API_BASE_URL + "search/movie?query=batman&language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         MovieResultsPage movieResultsPage = getApiToTest().searchMovie("batman", null, "en-US", null, null, null, null);
         assertNotNull(movieResultsPage);
@@ -102,7 +104,7 @@ public class TmdbSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
     public void testSearchMulti() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/search/multi.json");
         String url = TMDB_API_BASE_URL + "search/multi?query=batman&language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         MultiResultsPage multiResultsPage = getApiToTest().searchMulti("batman", null, "en-US", null);
         assertNotNull(multiResultsPage);
@@ -150,7 +152,7 @@ public class TmdbSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
     public void testSearchPerson() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/search/person.json");
         String url = TMDB_API_BASE_URL + "search/person?query=vin&language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         PopularPersonResultsPage personResultsPage = getApiToTest().searchPerson("vin", null, "en-US", null);
         assertNotNull(personResultsPage);
@@ -164,7 +166,7 @@ public class TmdbSearchTest extends AbstractTmdbApiTest<TmdbSearch> {
     public void testSearchTv() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/search/tv.json");
         String url = TMDB_API_BASE_URL + "search/tv?query=batman&language=en-US";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().searchTv("batman", null, null, "en-US", null, null);
         assertNotNull(tvSeriesResultsPage);

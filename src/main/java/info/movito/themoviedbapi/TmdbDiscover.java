@@ -3,6 +3,7 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.builders.discover.DiscoverMovieParamBuilder;
 import info.movito.themoviedbapi.tools.builders.discover.DiscoverTvParamBuilder;
@@ -11,16 +12,18 @@ import info.movito.themoviedbapi.tools.builders.discover.DiscoverTvParamBuilder;
  * The movie database api for discover. See the
  * <a href="https://developer.themoviedb.org/reference/discover-movie">documentation</a> for more info.
  */
-public class TmdbDiscover extends AbstractTmdbApi {
+public class TmdbDiscover {
     protected static final String TMDB_METHOD_DISCOVER = "discover";
     protected static final String TMDB_METHOD_MOVIE = "movie";
     protected static final String TMDB_METHOD_TV = "tv";
 
+    private final TmdbApiClient tmdbApiClient;
+
     /**
      * Create a new TmdbDiscover instance to call the discover related TMDb API methods.
      */
-    TmdbDiscover(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbDiscover(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -33,7 +36,7 @@ public class TmdbDiscover extends AbstractTmdbApi {
     public MovieResultsPage getMovie(DiscoverMovieParamBuilder builder) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, TMDB_METHOD_MOVIE)
             .addPathParams(builder);
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPage.class);
     }
 
     /**
@@ -46,6 +49,6 @@ public class TmdbDiscover extends AbstractTmdbApi {
     public TvSeriesResultsPage getTv(DiscoverTvParamBuilder builder) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_DISCOVER, TMDB_METHOD_TV)
             .addPathParams(builder);
-        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, TvSeriesResultsPage.class);
     }
 }

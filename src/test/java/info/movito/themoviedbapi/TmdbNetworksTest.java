@@ -8,6 +8,8 @@ import info.movito.themoviedbapi.model.networks.Network;
 import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbNetworks.TMDB_METHOD_NETWORK;
@@ -31,7 +33,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
     public void testGetMovieChangesList() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/networks/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         Network network = getApiToTest().getDetails(1);
         assertNotNull(network);
@@ -45,7 +47,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
     public void testGetAlternativeNames() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/networks/alternative_names.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1/alternative_names";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         AlternativeNamesResults alternativeNamesResults = getApiToTest().getAlternativeNames(1);
         assertNotNull(alternativeNamesResults);
@@ -59,7 +61,7 @@ public class TmdbNetworksTest extends AbstractTmdbApiTest<TmdbNetworks> {
     public void testGetImages() throws TmdbException, IOException {
         String body = TestUtils.readTestFile("api_responses/networks/images.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_NETWORK + "/1/images";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         ImageResults imageResults = getApiToTest().getImages(1);
         assertNotNull(imageResults);

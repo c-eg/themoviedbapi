@@ -5,13 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import info.movito.themoviedbapi.AbstractTmdbApi;
+import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.builders.ParamBuilder;
 import lombok.AccessLevel;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
-
-import static info.movito.themoviedbapi.AbstractTmdbApi.PARAM_ADULT;
 
 /**
  * <p>Abstract class for shared parameters to build a 'discover' parameter map.
@@ -62,7 +60,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("Page must be greater than 0");
         }
 
-        params.put(AbstractTmdbApi.PARAM_PAGE, String.valueOf(page));
+        params.put(ApiUrl.PARAM_PAGE, String.valueOf(page));
         return me();
     }
 
@@ -71,12 +69,12 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
             throw new IllegalArgumentException("Language must be set");
         }
 
-        params.put(AbstractTmdbApi.PARAM_LANGUAGE, language);
+        params.put(ApiUrl.PARAM_LANGUAGE, language);
         return me();
     }
 
     public T includeAdult(boolean includeAdult) {
-        params.put(PARAM_ADULT, String.valueOf(includeAdult));
+        params.put(ApiUrl.PARAM_ADULT, String.valueOf(includeAdult));
         return me();
     }
 

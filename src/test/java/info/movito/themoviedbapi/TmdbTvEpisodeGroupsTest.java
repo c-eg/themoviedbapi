@@ -7,6 +7,8 @@ import info.movito.themoviedbapi.model.tv.episodegroups.TvEpisodeGroups;
 import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbTvEpisodeGroups.TMDB_METHOD_TV_EPISODE_GROUPS;
@@ -31,7 +33,7 @@ public class TmdbTvEpisodeGroupsTest extends AbstractTmdbApiTest<TmdbTvEpisodeGr
     public void testGetDetails() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_episode_groups/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV_EPISODE_GROUPS + "/5acfef37c3a36842e400333f";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvEpisodeGroups tvEpisodeGroups = getApiToTest().getDetails("5acfef37c3a36842e400333f");
         assertNotNull(tvEpisodeGroups);
@@ -45,7 +47,7 @@ public class TmdbTvEpisodeGroupsTest extends AbstractTmdbApiTest<TmdbTvEpisodeGr
     public void testEpisodeGroupType() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/tv_episode_groups/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_TV_EPISODE_GROUPS + "/5acfef37c3a36842e400333f";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         TvEpisodeGroups tvEpisodeGroups = getApiToTest().getDetails("5acfef37c3a36842e400333f");
         assertEquals(EpisodeGroupType.DIGITAL, tvEpisodeGroups.getType());
