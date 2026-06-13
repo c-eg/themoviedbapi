@@ -40,7 +40,7 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind")
 
     implementation("org.apache.commons:commons-lang3:3.20.0")
-    testImplementation("commons-io:commons-io:2.21.0")
+    testImplementation("commons-io:commons-io:2.22.0")
 }
 
 java {
