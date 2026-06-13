@@ -20,6 +20,7 @@ import info.movito.themoviedbapi.model.movies.Translations;
 import info.movito.themoviedbapi.model.movies.changes.ChangeResults;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.MovieAppendToResponse;
 import info.movito.themoviedbapi.util.JsonUtil;
@@ -28,14 +29,16 @@ import info.movito.themoviedbapi.util.JsonUtil;
  * The movie database api for movies. See the
  * <a href="https://developer.themoviedb.org/reference/movie-details">documentation</a> for more info.
  */
-public class TmdbMovies extends AbstractTmdbApi {
+public class TmdbMovies {
     protected static final String TMDB_METHOD_MOVIE = "movie";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbMovies instance to call the movie related TMDb API methods.
      */
-    public TmdbMovies(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbMovies(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -52,7 +55,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId)
             .addLanguage(language)
             .addAppendToResponses(appendToResponse);
-        return mapJsonResult(apiUrl, MovieDb.class);
+        return tmdbApiClient.get(apiUrl, MovieDb.class);
     }
 
     /**
@@ -69,7 +72,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "account_states")
             .addQueryParam("session_id", sessionId)
             .addQueryParam("guest_session_id", guestSessionId);
-        return mapJsonResult(apiUrl, AccountStates.class);
+        return tmdbApiClient.get(apiUrl, AccountStates.class);
     }
 
     /**
@@ -84,7 +87,7 @@ public class TmdbMovies extends AbstractTmdbApi {
     public AlternativeTitles getAlternativeTitles(int movieId, String country) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "alternative_titles")
             .addQueryParam("country", country);
-        return mapJsonResult(apiUrl, AlternativeTitles.class);
+        return tmdbApiClient.get(apiUrl, AlternativeTitles.class);
     }
 
     /**
@@ -103,7 +106,7 @@ public class TmdbMovies extends AbstractTmdbApi {
             .addQueryParam("start_date", startDate)
             .addQueryParam("end_date", endDate)
             .addPage(page);
-        return mapJsonResult(apiUrl, ChangeResults.class);
+        return tmdbApiClient.get(apiUrl, ChangeResults.class);
     }
 
     /**
@@ -118,7 +121,7 @@ public class TmdbMovies extends AbstractTmdbApi {
     public Credits getCredits(int movieId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "credits")
             .addLanguage(language);
-        return mapJsonResult(apiUrl, Credits.class);
+        return tmdbApiClient.get(apiUrl, Credits.class);
     }
 
     /**
@@ -131,7 +134,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      */
     public ExternalIds getExternalIds(int movieId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "external_ids");
-        return mapJsonResult(apiUrl, ExternalIds.class);
+        return tmdbApiClient.get(apiUrl, ExternalIds.class);
     }
 
     /**
@@ -148,7 +151,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "images")
             .addLanguage(language)
             .addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
-        return mapJsonResult(apiUrl, Images.class);
+        return tmdbApiClient.get(apiUrl, Images.class);
     }
 
     /**
@@ -161,7 +164,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      */
     public KeywordResults getKeywords(int movieId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "keywords");
-        return mapJsonResult(apiUrl, KeywordResults.class);
+        return tmdbApiClient.get(apiUrl, KeywordResults.class);
     }
 
     /**
@@ -173,7 +176,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      */
     public MovieDb getLatest() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, "latest");
-        return mapJsonResult(apiUrl, MovieDb.class);
+        return tmdbApiClient.get(apiUrl, MovieDb.class);
     }
 
     /**
@@ -190,7 +193,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "lists")
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, MovieListResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieListResultsPage.class);
     }
 
     /**
@@ -207,7 +210,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "recommendations")
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPage.class);
     }
 
     /**
@@ -220,7 +223,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      */
     public ReleaseDateResults getReleaseDates(int movieId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "release_dates");
-        return mapJsonResult(apiUrl, ReleaseDateResults.class);
+        return tmdbApiClient.get(apiUrl, ReleaseDateResults.class);
     }
 
     /**
@@ -237,7 +240,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "reviews")
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, ReviewResultsPage.class);
+        return tmdbApiClient.get(apiUrl, ReviewResultsPage.class);
     }
 
     /**
@@ -254,7 +257,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "similar")
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPage.class);
     }
 
     /**
@@ -267,7 +270,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      */
     public Translations getTranslations(int movieId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "translations");
-        return mapJsonResult(apiUrl, Translations.class);
+        return tmdbApiClient.get(apiUrl, Translations.class);
     }
 
     /**
@@ -282,7 +285,7 @@ public class TmdbMovies extends AbstractTmdbApi {
     public VideoResults getVideos(int movieId, String language) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "videos")
             .addLanguage(language);
-        return mapJsonResult(apiUrl, VideoResults.class);
+        return tmdbApiClient.get(apiUrl, VideoResults.class);
     }
 
     /**
@@ -297,7 +300,7 @@ public class TmdbMovies extends AbstractTmdbApi {
      */
     public ProviderResults getWatchProviders(int movieId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "watch/providers");
-        return mapJsonResult(apiUrl, ProviderResults.class);
+        return tmdbApiClient.get(apiUrl, ProviderResults.class);
     }
 
     /**
@@ -326,7 +329,7 @@ public class TmdbMovies extends AbstractTmdbApi {
         body.put("value", rating);
 
         String jsonBody = JsonUtil.toJson(body);
-        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
     /**
@@ -345,6 +348,6 @@ public class TmdbMovies extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE, movieId, "rating")
             .addQueryParam("session_id", sessionId)
             .addQueryParam("guest_session_id", guestSessionId);
-        return mapJsonResult(apiUrl, null, RequestType.DELETE, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, null, RequestType.DELETE, ResponseStatus.class);
     }
 }

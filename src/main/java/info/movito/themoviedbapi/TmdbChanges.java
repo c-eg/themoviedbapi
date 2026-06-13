@@ -6,13 +6,14 @@ import java.time.temporal.ChronoUnit;
 
 import info.movito.themoviedbapi.model.changes.ChangesResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for changes. See the
  * <a href="https://developer.themoviedb.org/reference/changes-movie-list">documentation</a> for more info.
  */
-public class TmdbChanges extends AbstractTmdbApi {
+public class TmdbChanges {
     protected static final String TMDB_METHOD_CHANGES = "changes";
 
     protected static final String TMDB_METHOD_MOVIE = "movie";
@@ -21,11 +22,13 @@ public class TmdbChanges extends AbstractTmdbApi {
 
     protected static final String TMDB_METHOD_TV = "tv";
 
+    private final TmdbApiClient tmdbApiClient;
+
     /**
      * Create a new TmdbChanges instance to call the changes related TMDb API methods.
      */
-    TmdbChanges(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbChanges(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -48,7 +51,7 @@ public class TmdbChanges extends AbstractTmdbApi {
             .addQueryParam("end_date", endDate)
             .addPage(page);
 
-        return mapJsonResult(apiUrl, ChangesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, ChangesResultsPage.class);
     }
 
     /**
@@ -71,7 +74,7 @@ public class TmdbChanges extends AbstractTmdbApi {
             .addQueryParam("end_date", endDate)
             .addPage(page);
 
-        return mapJsonResult(apiUrl, ChangesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, ChangesResultsPage.class);
     }
 
     /**
@@ -94,7 +97,7 @@ public class TmdbChanges extends AbstractTmdbApi {
             .addQueryParam("end_date", endDate)
             .addPage(page);
 
-        return mapJsonResult(apiUrl, ChangesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, ChangesResultsPage.class);
     }
 
     /**

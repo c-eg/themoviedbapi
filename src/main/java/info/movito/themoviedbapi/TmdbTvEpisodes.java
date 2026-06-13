@@ -13,6 +13,7 @@ import info.movito.themoviedbapi.model.tv.episode.Images;
 import info.movito.themoviedbapi.model.tv.episode.TvEpisodeDb;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.appendtoresponse.TvEpisodesAppendToResponse;
 import info.movito.themoviedbapi.util.JsonUtil;
@@ -24,14 +25,16 @@ import static info.movito.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
  * The movie database api for tv episodes. See the
  * <a href="https://developer.themoviedb.org/reference/tv-episode-details">documentation</a> for more info.
  */
-public class TmdbTvEpisodes extends AbstractTmdbApi {
+public class TmdbTvEpisodes {
     public static final String TMDB_METHOD_TV_EPISODE = "episode";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbTvEpisodes instance to call the tv episodes TMDb API methods.
      */
-    TmdbTvEpisodes(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbTvEpisodes(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -51,7 +54,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber)
             .addLanguage(language)
             .addAppendToResponses(appendToResponse);
-        return mapJsonResult(apiUrl, TvEpisodeDb.class);
+        return tmdbApiClient.get(apiUrl, TvEpisodeDb.class);
     }
 
     /**
@@ -72,7 +75,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
             TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, "account_states")
             .addQueryParam("session_id", sessionId)
             .addQueryParam("guest_session_id", guestSessionId);
-        return mapJsonResult(apiUrl, AccountStates.class);
+        return tmdbApiClient.get(apiUrl, AccountStates.class);
     }
 
     /**
@@ -86,7 +89,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
     public ChangeResults getChanges(int episodeId)
         throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TV, TMDB_METHOD_TV_EPISODE, episodeId, "changes");
-        return mapJsonResult(apiUrl, ChangeResults.class);
+        return tmdbApiClient.get(apiUrl, ChangeResults.class);
     }
 
     /**
@@ -105,7 +108,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(
             TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, "credits")
             .addLanguage(language);
-        return mapJsonResult(apiUrl, EpisodeCredits.class);
+        return tmdbApiClient.get(apiUrl, EpisodeCredits.class);
     }
 
     /**
@@ -122,7 +125,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
         throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(
             TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, "external_ids");
-        return mapJsonResult(apiUrl, ExternalIds.class);
+        return tmdbApiClient.get(apiUrl, ExternalIds.class);
     }
 
     /**
@@ -143,7 +146,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
             TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, "images")
             .addLanguage(language)
             .addQueryParamCommandSeparated("include_image_language", includeImageLanguage);
-        return mapJsonResult(apiUrl, Images.class);
+        return tmdbApiClient.get(apiUrl, Images.class);
     }
 
     /**
@@ -160,7 +163,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
         throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(
             TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, "translations");
-        return mapJsonResult(apiUrl, Translations.class);
+        return tmdbApiClient.get(apiUrl, Translations.class);
     }
 
     /**
@@ -181,7 +184,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
             TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, "videos")
             .addLanguage(language)
             .addQueryParamCommandSeparated("include_video_language", includeVideoLanguage);
-        return mapJsonResult(apiUrl, VideoResults.class);
+        return tmdbApiClient.get(apiUrl, VideoResults.class);
     }
 
     /**
@@ -214,7 +217,7 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
         body.put("value", rating);
 
         String jsonBody = JsonUtil.toJson(body);
-        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
     /**
@@ -237,6 +240,6 @@ public class TmdbTvEpisodes extends AbstractTmdbApi {
             TMDB_METHOD_TV, seriesId, TMDB_METHOD_TV_SEASON, seasonNumber, TMDB_METHOD_TV_EPISODE, episodeNumber, "rating")
             .addQueryParam("session_id", sessionId)
             .addQueryParam("guest_session_id", guestSessionId);
-        return mapJsonResult(apiUrl, null, RequestType.DELETE, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, null, RequestType.DELETE, ResponseStatus.class);
     }
 }
