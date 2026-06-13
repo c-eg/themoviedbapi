@@ -87,7 +87,7 @@ public class TmdbApiClient {
     }
 
     /**
-     * Parses the TMDB status code from a response body, returning {@code null} if the body is not a TMDB status object.
+     * Tries to parse the TMDB status code from a response body.
      */
     private static Optional<TmdbResponseCode> parseResponseCode(String jsonResponse) {
         try {
