@@ -8,6 +8,7 @@ import info.movito.themoviedbapi.model.lists.ListItemStatus;
 import info.movito.themoviedbapi.model.lists.MovieListCreationStatus;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.JsonUtil;
 
@@ -15,14 +16,16 @@ import info.movito.themoviedbapi.util.JsonUtil;
  * The movie database api for lists. See the
  * <a href="https://developer.themoviedb.org/reference/list-add-movie">documentation</a> for more info.
  */
-public class TmdbLists extends AbstractTmdbApi {
+public class TmdbLists {
     protected static final String TMDB_METHOD_LIST = "list";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbLists instance to call the lists TMDb API methods.
      */
-    public TmdbLists(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbLists(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -43,7 +46,7 @@ public class TmdbLists extends AbstractTmdbApi {
         body.put("media_id", movieId);
 
         String jsonBody = JsonUtil.toJson(body);
-        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 
     /**
@@ -60,7 +63,7 @@ public class TmdbLists extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "item_status")
             .addLanguage(language)
             .addQueryParam("movie_id", movieId);
-        return mapJsonResult(apiUrl, ListItemStatus.class);
+        return tmdbApiClient.get(apiUrl, ListItemStatus.class);
     }
 
     /**
@@ -77,7 +80,7 @@ public class TmdbLists extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId, "clear")
             .addPathParam("session_id", sessionId)
             .addPathParam("confirm", confirm);
-        return mapJsonResult(apiUrl, null, RequestType.POST, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, null, RequestType.POST, ResponseStatus.class);
     }
 
     /**
@@ -101,7 +104,7 @@ public class TmdbLists extends AbstractTmdbApi {
         body.put("language", language);
 
         String jsonBody = JsonUtil.toJson(body);
-        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, MovieListCreationStatus.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.POST, MovieListCreationStatus.class);
     }
 
     /**
@@ -116,7 +119,7 @@ public class TmdbLists extends AbstractTmdbApi {
     public ResponseStatus delete(Integer listId, String sessionId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId)
             .addPathParam("session_id", sessionId);
-        return mapJsonResult(apiUrl, null, RequestType.DELETE, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, null, RequestType.DELETE, ResponseStatus.class);
     }
 
     /**
@@ -133,7 +136,7 @@ public class TmdbLists extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_LIST, listId)
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, ListDetails.class);
+        return tmdbApiClient.get(apiUrl, ListDetails.class);
     }
 
     /**
@@ -154,6 +157,6 @@ public class TmdbLists extends AbstractTmdbApi {
         body.put("media_id", movieId);
 
         String jsonBody = JsonUtil.toJson(body);
-        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.POST, ResponseStatus.class);
     }
 }

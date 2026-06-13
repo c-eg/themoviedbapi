@@ -3,9 +3,12 @@ package info.movito.themoviedbapi.tools;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
 
 import info.movito.themoviedbapi.model.core.responses.TmdbResponseException;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -42,6 +46,9 @@ class TmdbHttpClientTest {
     @Mock
     private HttpResponse<String> httpResponse;
 
+    @Mock
+    private HttpResponse<String> rateLimitedResponse;
+
     @Captor
     private ArgumentCaptor<HttpRequest> requestCaptor;
 
@@ -54,14 +61,16 @@ class TmdbHttpClientTest {
      * Test that a GET request returns the response body and is built with the correct uri, method and headers.
      */
     @Test
-    void testReadUrl_getRequest() throws IOException, InterruptedException, TmdbResponseException {
+    void testExecute_getRequest() throws IOException, InterruptedException, TmdbException {
         String body = "{\"id\":123}";
+        when(httpResponse.statusCode()).thenReturn(200);
         when(httpResponse.body()).thenReturn(body);
         doReturn(httpResponse).when(httpClient).send(any(), any());
 
-        String result = tmdbHttpClient.readUrl(URL, null, RequestType.GET);
+        TmdbResponse result = tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET));
 
-        assertEquals(body, result);
+        assertEquals(200, result.statusCode());
+        assertEquals(body, result.body());
 
         verify(httpClient).send(requestCaptor.capture(), any());
         HttpRequest request = requestCaptor.getValue();
@@ -77,11 +86,11 @@ class TmdbHttpClientTest {
      * Test that a POST request with a json body is built with the POST method and a body publisher containing the body.
      */
     @Test
-    void testReadUrl_postRequestWithBody() throws IOException, InterruptedException, TmdbResponseException {
+    void testExecute_postRequestWithBody() throws IOException, InterruptedException, TmdbException {
         String jsonBody = "{\"value\":true}";
         doReturn(httpResponse).when(httpClient).send(any(), any());
 
-        tmdbHttpClient.readUrl(URL, jsonBody, RequestType.POST);
+        tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.POST, jsonBody));
 
         verify(httpClient).send(requestCaptor.capture(), any());
         HttpRequest request = requestCaptor.getValue();
@@ -97,10 +106,10 @@ class TmdbHttpClientTest {
      * Test that a POST request with a null body is built with the POST method and an empty body publisher.
      */
     @Test
-    void testReadUrl_postRequestWithNullBody() throws IOException, InterruptedException, TmdbResponseException {
+    void testExecute_postRequestWithNullBody() throws IOException, InterruptedException, TmdbException {
         doReturn(httpResponse).when(httpClient).send(any(), any());
 
-        tmdbHttpClient.readUrl(URL, null, RequestType.POST);
+        tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.POST));
 
         verify(httpClient).send(requestCaptor.capture(), any());
         HttpRequest request = requestCaptor.getValue();
@@ -116,10 +125,10 @@ class TmdbHttpClientTest {
      * Test that a DELETE request is built with the DELETE method.
      */
     @Test
-    void testReadUrl_deleteRequest() throws IOException, InterruptedException, TmdbResponseException {
+    void testExecute_deleteRequest() throws IOException, InterruptedException, TmdbException {
         doReturn(httpResponse).when(httpClient).send(any(), any());
 
-        tmdbHttpClient.readUrl(URL, null, RequestType.DELETE);
+        tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.DELETE));
 
         verify(httpClient).send(requestCaptor.capture(), any());
         HttpRequest request = requestCaptor.getValue();
@@ -133,12 +142,12 @@ class TmdbHttpClientTest {
      * Test that an {@link IOException} thrown while sending is wrapped in a {@link TmdbResponseException}.
      */
     @Test
-    void testReadUrl_ioExceptionIsWrapped() throws IOException, InterruptedException {
+    void testExecute_ioExceptionIsWrapped() throws IOException, InterruptedException {
         IOException ioException = new IOException("boom");
         when(httpClient.send(any(), any())).thenThrow(ioException);
 
         TmdbResponseException exception = assertThrows(TmdbResponseException.class,
-            () -> tmdbHttpClient.readUrl(URL, null, RequestType.GET));
+            () -> tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET)));
         assertSame(ioException, exception.getCause());
     }
 
@@ -146,15 +155,50 @@ class TmdbHttpClientTest {
      * Test that an {@link InterruptedException} thrown while sending is wrapped and the thread interrupt flag is restored.
      */
     @Test
-    void testReadUrl_interruptedExceptionIsWrappedAndInterruptFlagRestored() throws IOException, InterruptedException {
+    void testExecute_interruptedExceptionIsWrappedAndInterruptFlagRestored() throws IOException, InterruptedException {
         InterruptedException interruptedException = new InterruptedException();
         when(httpClient.send(any(), any())).thenThrow(interruptedException);
 
         TmdbResponseException exception = assertThrows(TmdbResponseException.class,
-            () -> tmdbHttpClient.readUrl(URL, null, RequestType.GET));
+            () -> tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET)));
         assertSame(interruptedException, exception.getCause());
         // Thread.interrupted() returns the flag and clears it so it does not leak to other tests.
         assertTrue(Thread.interrupted());
+    }
+
+    /**
+     * Test that a rate-limited (HTTP 429) response is retried, honoring the {@code Retry-After} header, until it succeeds.
+     */
+    @Test
+    void testExecute_retriesOnRateLimitThenSucceeds() throws IOException, InterruptedException, TmdbException {
+        when(rateLimitedResponse.statusCode()).thenReturn(429);
+        when(rateLimitedResponse.headers()).thenReturn(HttpHeaders.of(Map.of("Retry-After", List.of("0")), (name, value) -> true));
+        when(httpResponse.statusCode()).thenReturn(200);
+        when(httpResponse.body()).thenReturn("{\"id\":123}");
+        doReturn(rateLimitedResponse, httpResponse).when(httpClient).send(any(), any());
+
+        TmdbResponse result = tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET));
+
+        assertEquals(200, result.statusCode());
+        assertEquals("{\"id\":123}", result.body());
+        verify(httpClient, times(2)).send(any(), any());
+    }
+
+    /**
+     * Test that retries stop once the maximum is reached and the last rate-limited response is returned.
+     */
+    @Test
+    void testExecute_returnsLastResponseAfterExhaustingRetries() throws IOException, InterruptedException, TmdbException {
+        when(rateLimitedResponse.statusCode()).thenReturn(429);
+        when(rateLimitedResponse.body()).thenReturn("{\"status_code\":25}");
+        when(rateLimitedResponse.headers()).thenReturn(HttpHeaders.of(Map.of("Retry-After", List.of("0")), (name, value) -> true));
+        doReturn(rateLimitedResponse).when(httpClient).send(any(), any());
+
+        TmdbResponse result = tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET));
+
+        assertEquals(429, result.statusCode());
+        // initial attempt + 3 retries
+        verify(httpClient, times(4)).send(any(), any());
     }
 
     /**

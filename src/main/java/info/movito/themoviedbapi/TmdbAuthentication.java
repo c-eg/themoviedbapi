@@ -9,6 +9,7 @@ import info.movito.themoviedbapi.model.core.responses.ResponseStatusAuthenticati
 import info.movito.themoviedbapi.model.core.responses.ResponseStatusDelete;
 import info.movito.themoviedbapi.tools.ApiUrl;
 import info.movito.themoviedbapi.tools.RequestType;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.util.JsonUtil;
 
@@ -16,16 +17,18 @@ import info.movito.themoviedbapi.util.JsonUtil;
  * The movie database api for authentication. See the
  * <a href="https://developer.themoviedb.org/reference/authentication-how-do-i-generate-a-session-id">documentation</a> for more info.
  */
-public class TmdbAuthentication extends AbstractTmdbApi {
+public class TmdbAuthentication {
     protected static final String TMDB_METHOD_AUTH = "authentication";
 
     private static final String PARAM_REQUEST_TOKEN = "request_token";
 
+    private final TmdbApiClient tmdbApiClient;
+
     /**
      * Create a new TmdbAuthentication instance to call the authentication related TMDb API methods.
      */
-    TmdbAuthentication(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbAuthentication(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -38,7 +41,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      */
     public GuestSession createGuestSession() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "guest_session/new");
-        return mapJsonResult(apiUrl, GuestSession.class);
+        return tmdbApiClient.get(apiUrl, GuestSession.class);
     }
 
     /**
@@ -53,7 +56,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      */
     public RequestToken createRequestToken() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH, "token/new");
-        return mapJsonResult(apiUrl, RequestToken.class);
+        return tmdbApiClient.get(apiUrl, RequestToken.class);
     }
 
     /**
@@ -107,7 +110,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
         body.put(PARAM_REQUEST_TOKEN, token.getRequestToken());
         String jsonBody = JsonUtil.toJson(body);
 
-        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, RequestToken.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.POST, RequestToken.class);
     }
 
     /**
@@ -130,7 +133,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
         body.put(PARAM_REQUEST_TOKEN, token.getRequestToken());
         String jsonBody = JsonUtil.toJson(body);
 
-        return mapJsonResult(apiUrl, jsonBody, RequestType.POST, Session.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.POST, Session.class);
     }
 
     /**
@@ -153,7 +156,7 @@ public class TmdbAuthentication extends AbstractTmdbApi {
         body.put("session_id", sessionId);
         String jsonBody = JsonUtil.toJson(body);
 
-        return mapJsonResult(apiUrl, jsonBody, RequestType.DELETE, ResponseStatusDelete.class);
+        return tmdbApiClient.request(apiUrl, jsonBody, RequestType.DELETE, ResponseStatusDelete.class);
     }
 
     /**
@@ -166,6 +169,6 @@ public class TmdbAuthentication extends AbstractTmdbApi {
      */
     public ResponseStatusAuthentication validateKey() throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_AUTH);
-        return mapJsonResult(apiUrl, ResponseStatusAuthentication.class);
+        return tmdbApiClient.get(apiUrl, ResponseStatusAuthentication.class);
     }
 }

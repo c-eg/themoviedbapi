@@ -4,6 +4,7 @@ import info.movito.themoviedbapi.model.rated.RatedMovieResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
 import info.movito.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
 
@@ -11,14 +12,16 @@ import info.movito.themoviedbapi.tools.sortby.AccountSortBy;
  * The movie database api for guest sessions. See the
  * <a href="https://developer.themoviedb.org/reference/guest-session-rated-movies">documentation</a> for more info.
  */
-public class TmdbGuestSessions extends AbstractTmdbApi {
+public class TmdbGuestSessions {
     protected static final String TMDB_METHOD_GUEST_SESSIONS = "guest_session";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbGuestSessions instance to call the guest sessions related TMDb API methods.
      */
-    public TmdbGuestSessions(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbGuestSessions(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -39,7 +42,7 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, RatedMovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, RatedMovieResultsPage.class);
     }
 
     /**
@@ -60,7 +63,7 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, RatedTvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, RatedTvSeriesResultsPage.class);
     }
 
     /**
@@ -81,6 +84,6 @@ public class TmdbGuestSessions extends AbstractTmdbApi {
             .addPage(page)
             .addSortBy(sortBy);
 
-        return mapJsonResult(apiUrl, RatedTvEpisodeResultsPage.class);
+        return tmdbApiClient.get(apiUrl, RatedTvEpisodeResultsPage.class);
     }
 }

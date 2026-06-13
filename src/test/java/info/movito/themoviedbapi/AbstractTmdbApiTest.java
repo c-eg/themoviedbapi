@@ -1,10 +1,11 @@
 package info.movito.themoviedbapi;
 
-import info.movito.themoviedbapi.tools.TmdbUrlReader;
+import info.movito.themoviedbapi.tools.TmdbRequestExecutor;
 import lombok.Getter;
 import org.junit.jupiter.api.BeforeEach;
-
-import static org.mockito.Mockito.mock;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * Abstract test class for TMDB API tests.
@@ -12,20 +13,21 @@ import static org.mockito.Mockito.mock;
  * @param <T> the type of TMDB API to test.
  */
 @Getter
-public abstract class AbstractTmdbApiTest<T extends AbstractTmdbApi> {
+@ExtendWith(MockitoExtension.class)
+public abstract class AbstractTmdbApiTest<T> {
     private TmdbApi tmdbApi;
 
-    private TmdbUrlReader tmdbUrlReader;
+    @Mock
+    private TmdbRequestExecutor requestExecutor;
 
     private T apiToTest;
 
     /**
-     * Sets up TmdbApi class with a mocked TmdbUrlReader.
+     * Sets up TmdbApi class with a mocked TmdbRequestExecutor.
      */
     @BeforeEach
     public void setUp() {
-        tmdbUrlReader = mock(TmdbUrlReader.class);
-        tmdbApi = new TmdbApi(tmdbUrlReader);
+        tmdbApi = new TmdbApi(requestExecutor);
         apiToTest = createApiToTest();
     }
 

@@ -1,22 +1,20 @@
 package info.movito.themoviedbapi;
 
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbHttpClient;
-import info.movito.themoviedbapi.tools.TmdbUrlReader;
-import lombok.AccessLevel;
-import lombok.Getter;
+import info.movito.themoviedbapi.tools.TmdbRequestExecutor;
 
 /**
  * The movie db api for getting started. See the
  * <a href="https://developer.themoviedb.org/docs/getting-started">documentation</a> for more info.
  *
- * @author Holger Brandl.
+ * @author Holger Brandl, c-eg.
  */
 public class TmdbApi {
     /**
-     * Http client to make requests to the movie database api.
+     * Client used by each api class to make and map requests to the movie database api.
      */
-    @Getter(AccessLevel.PROTECTED)
-    private final TmdbUrlReader tmdbUrlReader;
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Constructor.
@@ -30,117 +28,117 @@ public class TmdbApi {
     /**
      * Constructor.
      *
-     * @param tmdbUrlReader the url reader to use
+     * @param requestExecutor the request executor to use
      */
-    public TmdbApi(TmdbUrlReader tmdbUrlReader) {
-        this.tmdbUrlReader = tmdbUrlReader;
+    public TmdbApi(TmdbRequestExecutor requestExecutor) {
+        this.tmdbApiClient = new TmdbApiClient(requestExecutor);
     }
 
     public TmdbAccount getAccount() {
-        return new TmdbAccount(this);
+        return new TmdbAccount(tmdbApiClient);
     }
 
     public TmdbAuthentication getAuthentication() {
-        return new TmdbAuthentication(this);
+        return new TmdbAuthentication(tmdbApiClient);
     }
 
     public TmdbCertifications getCertifications() {
-        return new TmdbCertifications(this);
+        return new TmdbCertifications(tmdbApiClient);
     }
 
     public TmdbChanges getChanges() {
-        return new TmdbChanges(this);
+        return new TmdbChanges(tmdbApiClient);
     }
 
     public TmdbCollections getCollections() {
-        return new TmdbCollections(this);
+        return new TmdbCollections(tmdbApiClient);
     }
 
     public TmdbCompanies getCompanies() {
-        return new TmdbCompanies(this);
+        return new TmdbCompanies(tmdbApiClient);
     }
 
     public TmdbConfiguration getConfiguration() {
-        return new TmdbConfiguration(this);
+        return new TmdbConfiguration(tmdbApiClient);
     }
 
     public TmdbDiscover getDiscover() {
-        return new TmdbDiscover(this);
+        return new TmdbDiscover(tmdbApiClient);
     }
 
     public TmdbFind getFind() {
-        return new TmdbFind(this);
+        return new TmdbFind(tmdbApiClient);
     }
 
     public TmdbGenre getGenre() {
-        return new TmdbGenre(this);
+        return new TmdbGenre(tmdbApiClient);
     }
 
     public TmdbGuestSessions getGuestSessions() {
-        return new TmdbGuestSessions(this);
+        return new TmdbGuestSessions(tmdbApiClient);
     }
 
     public TmdbKeywords getKeywords() {
-        return new TmdbKeywords(this);
+        return new TmdbKeywords(tmdbApiClient);
     }
 
     public TmdbLists getLists() {
-        return new TmdbLists(this);
+        return new TmdbLists(tmdbApiClient);
     }
 
     public TmdbMovieLists getMovieLists() {
-        return new TmdbMovieLists(this);
+        return new TmdbMovieLists(tmdbApiClient);
     }
 
     public TmdbMovies getMovies() {
-        return new TmdbMovies(this);
+        return new TmdbMovies(tmdbApiClient);
     }
 
     public TmdbNetworks getNetworks() {
-        return new TmdbNetworks(this);
+        return new TmdbNetworks(tmdbApiClient);
     }
 
     public TmdbPeopleLists getPeopleLists() {
-        return new TmdbPeopleLists(this);
+        return new TmdbPeopleLists(tmdbApiClient);
     }
 
     public TmdbPeople getPeople() {
-        return new TmdbPeople(this);
+        return new TmdbPeople(tmdbApiClient);
     }
 
     public TmdbReviews getReviews() {
-        return new TmdbReviews(this);
+        return new TmdbReviews(tmdbApiClient);
     }
 
     public TmdbSearch getSearch() {
-        return new TmdbSearch(this);
+        return new TmdbSearch(tmdbApiClient);
     }
 
     public TmdbTrending getTrending() {
-        return new TmdbTrending(this);
+        return new TmdbTrending(tmdbApiClient);
     }
 
     public TmdbTvEpisodes getTvEpisodes() {
-        return new TmdbTvEpisodes(this);
+        return new TmdbTvEpisodes(tmdbApiClient);
     }
 
     public TmdbTvEpisodeGroups getTvEpisodeGroups() {
-        return new TmdbTvEpisodeGroups(this);
+        return new TmdbTvEpisodeGroups(tmdbApiClient);
     }
 
     public TmdbTvSeasons getTvSeasons() {
-        return new TmdbTvSeasons(this);
+        return new TmdbTvSeasons(tmdbApiClient);
     }
 
     public TmdbTvSeries getTvSeries() {
-        return new TmdbTvSeries(this);
+        return new TmdbTvSeries(tmdbApiClient);
     }
 
     public TmdbTvSeriesLists getTvSeriesLists() {
-        return new TmdbTvSeriesLists(this);
+        return new TmdbTvSeriesLists(tmdbApiClient);
     }
 
     public TmdbWatchProviders getWatchProviders() {
-        return new TmdbWatchProviders(this);
+        return new TmdbWatchProviders(tmdbApiClient);
     }
 }

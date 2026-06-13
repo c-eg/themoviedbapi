@@ -7,6 +7,8 @@ import info.movito.themoviedbapi.model.core.Genre;
 import info.movito.themoviedbapi.testutil.TestUtils;
 import info.movito.themoviedbapi.tools.RequestType;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.TmdbRequest;
+import info.movito.themoviedbapi.tools.TmdbResponse;
 import org.junit.jupiter.api.Test;
 
 import static info.movito.themoviedbapi.TmdbGenre.TMDB_METHOD_GENRE;
@@ -31,7 +33,7 @@ public class TmdbGenresTest extends AbstractTmdbApiTest<TmdbGenre> {
     public void testGetMovieList() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/genres/movie_list.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/movie/list?language=en";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         List<Genre> genres = getApiToTest().getMovieList("en");
         assertNotNull(genres);
@@ -49,7 +51,7 @@ public class TmdbGenresTest extends AbstractTmdbApiTest<TmdbGenre> {
     public void testGetTvList() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/genres/tv_list.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/tv/list?language=en";
-        when(getTmdbUrlReader().readUrl(url, null, RequestType.GET)).thenReturn(body);
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         List<Genre> genres = getApiToTest().getTvList("en");
         assertNotNull(genres);

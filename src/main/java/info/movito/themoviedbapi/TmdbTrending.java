@@ -5,6 +5,7 @@ import info.movito.themoviedbapi.model.core.TvSeriesResultsPage;
 import info.movito.themoviedbapi.model.core.multi.MultiResultsPage;
 import info.movito.themoviedbapi.model.core.popularperson.PopularPersonResultsPage;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 import info.movito.themoviedbapi.tools.model.time.TimeWindow;
 
@@ -12,14 +13,16 @@ import info.movito.themoviedbapi.tools.model.time.TimeWindow;
  * The movie database api for trending media. See the
  * <a href="https://developer.themoviedb.org/reference/trending-all">documentation</a> for more info.
  */
-public class TmdbTrending extends AbstractTmdbApi {
+public class TmdbTrending {
     protected static final String TMDB_METHOD_TRENDING = "trending";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbTrending instance to call the rending TMDb API methods.
      */
-    TmdbTrending(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbTrending(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -49,7 +52,7 @@ public class TmdbTrending extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "all", timeWindow.getValue())
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, MultiResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MultiResultsPage.class);
     }
 
     /**
@@ -79,7 +82,7 @@ public class TmdbTrending extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "movie", timeWindow.getValue())
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPage.class);
     }
 
     /**
@@ -109,7 +112,7 @@ public class TmdbTrending extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "person", timeWindow.getValue())
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, PopularPersonResultsPage.class);
+        return tmdbApiClient.get(apiUrl, PopularPersonResultsPage.class);
     }
 
     /**
@@ -139,6 +142,6 @@ public class TmdbTrending extends AbstractTmdbApi {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_TRENDING, "tv", timeWindow.getValue())
             .addLanguage(language)
             .addPage(page);
-        return mapJsonResult(apiUrl, TvSeriesResultsPage.class);
+        return tmdbApiClient.get(apiUrl, TvSeriesResultsPage.class);
     }
 }

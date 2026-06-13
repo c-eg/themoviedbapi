@@ -3,20 +3,23 @@ package info.movito.themoviedbapi;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates;
 import info.movito.themoviedbapi.tools.ApiUrl;
+import info.movito.themoviedbapi.tools.TmdbApiClient;
 import info.movito.themoviedbapi.tools.TmdbException;
 
 /**
  * The movie database api for movie lists. See the
  * <a href="https://developer.themoviedb.org/reference/movie-now-playing-list">documentation</a> for more info.
  */
-public class TmdbMovieLists extends AbstractTmdbApi {
+public class TmdbMovieLists {
     protected static final String TMDB_METHOD_MOVIE_LISTS = "movie";
+
+    private final TmdbApiClient tmdbApiClient;
 
     /**
      * Create a new TmdbMovieLists instance to call the movie lists related TMDb API methods.
      */
-    TmdbMovieLists(TmdbApi tmdbApi) {
-        super(tmdbApi);
+    TmdbMovieLists(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
     }
 
     /**
@@ -34,7 +37,7 @@ public class TmdbMovieLists extends AbstractTmdbApi {
             .addLanguage(language)
             .addPage(page)
             .addQueryParam("region", region);
-        return mapJsonResult(apiUrl, MovieResultsPageWithDates.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPageWithDates.class);
     }
 
     /**
@@ -52,7 +55,7 @@ public class TmdbMovieLists extends AbstractTmdbApi {
             .addLanguage(language)
             .addPage(page)
             .addQueryParam("region", region);
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPage.class);
     }
 
     /**
@@ -70,7 +73,7 @@ public class TmdbMovieLists extends AbstractTmdbApi {
             .addLanguage(language)
             .addPage(page)
             .addQueryParam("region", region);
-        return mapJsonResult(apiUrl, MovieResultsPage.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPage.class);
     }
 
     /**
@@ -88,6 +91,6 @@ public class TmdbMovieLists extends AbstractTmdbApi {
             .addLanguage(language)
             .addPage(page)
             .addQueryParam("region", region);
-        return mapJsonResult(apiUrl, MovieResultsPageWithDates.class);
+        return tmdbApiClient.get(apiUrl, MovieResultsPageWithDates.class);
     }
 }
