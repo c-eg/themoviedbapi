@@ -92,7 +92,7 @@ public class TmdbApiClient {
     private static Optional<TmdbResponseCode> parseResponseCode(String jsonResponse) {
         try {
             ResponseStatus responseStatus = RESPONSE_STATUS_READER.readValue(jsonResponse);
-            return Optional.of(responseStatus.getStatusCode());
+            return Optional.ofNullable(responseStatus.getStatusCode());
         }
         catch (JsonProcessingException exception) {
             return Optional.empty();

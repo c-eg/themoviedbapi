@@ -115,6 +115,32 @@ class TmdbApiClientTest {
     }
 
     /**
+     * Test that an unsuccessful HTTP status with a JSON body lacking a status code field throws with the http status surfaced.
+     */
+    @Test
+    void testRequest_unsuccessfulHttpStatusWithJsonBodyWithoutStatusCode_throws() throws TmdbException {
+        String body = "{\"some_field\":\"some_value\"}";
+        when(requestExecutor.execute(new TmdbRequest(URL, RequestType.GET))).thenReturn(new TmdbResponse(400, body));
+
+        TmdbResponseException exception = assertThrows(TmdbResponseException.class, () -> tmdbApiClient.get(API_URL, ResponseStatus.class));
+        assertNull(exception.getResponseCode());
+        assertTrue(exception.getMessage().contains("400"));
+    }
+
+    /**
+     * Test that an unsuccessful HTTP status with an unknown status code to {@link TmdbResponseCode} throws with the http status surfaced.
+     */
+    @Test
+    void testRequest_unsuccessfulHttpStatusWithUnknownStatusCode_throws() throws TmdbException {
+        String body = "{\"status_code\":999,\"status_message\":\"Some new error.\"}";
+        when(requestExecutor.execute(new TmdbRequest(URL, RequestType.GET))).thenReturn(new TmdbResponse(400, body));
+
+        TmdbResponseException exception = assertThrows(TmdbResponseException.class, () -> tmdbApiClient.get(API_URL, ResponseStatus.class));
+        assertNull(exception.getResponseCode());
+        assertTrue(exception.getMessage().contains("400"));
+    }
+
+    /**
      * Test that a successful (2xx) response is mapped even when the body carries a non-successful TMDB status code.
      */
     @Test

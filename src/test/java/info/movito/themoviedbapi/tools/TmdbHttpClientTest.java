@@ -20,6 +20,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -199,6 +200,62 @@ class TmdbHttpClientTest {
         assertEquals(429, result.statusCode());
         // initial attempt + 3 retries
         verify(httpClient, times(4)).send(any(), any());
+    }
+
+    /**
+     * Test that a rate-limited response without a {@code Retry-After} header is retried after the default delay.
+     */
+    @Test
+    void testExecute_retriesWithDefaultDelayWhenRetryAfterHeaderAbsent() throws IOException, InterruptedException, TmdbException {
+        when(rateLimitedResponse.statusCode()).thenReturn(429);
+        when(rateLimitedResponse.headers()).thenReturn(HttpHeaders.of(Map.of(), (name, value) -> true));
+        when(httpResponse.statusCode()).thenReturn(200);
+        when(httpResponse.body()).thenReturn("{\"id\":123}");
+        doReturn(rateLimitedResponse, httpResponse).when(httpClient).send(any(), any());
+
+        TmdbResponse result = tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET));
+
+        assertEquals(200, result.statusCode());
+        verify(httpClient, times(2)).send(any(), any());
+    }
+
+    /**
+     * Test that a {@code Retry-After} header that is not a plain number of seconds (e.g. the HTTP-date form) falls back to the
+     * default delay instead of failing.
+     */
+    @Test
+    void testExecute_retriesWithDefaultDelayWhenRetryAfterHeaderNotNumeric() throws IOException, InterruptedException, TmdbException {
+        when(rateLimitedResponse.statusCode()).thenReturn(429);
+        when(rateLimitedResponse.headers())
+            .thenReturn(HttpHeaders.of(Map.of("Retry-After", List.of("Wed, 21 Oct 2015 07:28:00 GMT")), (name, value) -> true));
+        when(httpResponse.statusCode()).thenReturn(200);
+        when(httpResponse.body()).thenReturn("{\"id\":123}");
+        doReturn(rateLimitedResponse, httpResponse).when(httpClient).send(any(), any());
+
+        TmdbResponse result = tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET));
+
+        assertEquals(200, result.statusCode());
+        verify(httpClient, times(2)).send(any(), any());
+    }
+
+    /**
+     * Test that an interruption during the rate-limit delay is wrapped and the thread interrupt flag is restored.
+     */
+    @Test
+    void testExecute_interruptedDuringRateLimitDelayIsWrappedAndInterruptFlagRestored() throws IOException, InterruptedException {
+        when(rateLimitedResponse.statusCode()).thenReturn(429);
+        when(rateLimitedResponse.headers()).thenReturn(HttpHeaders.of(Map.of("Retry-After", List.of("30")), (name, value) -> true));
+        doReturn(rateLimitedResponse).when(httpClient).send(any(), any());
+
+        // interrupt the current thread so the rate-limit sleep throws immediately instead of waiting
+        Thread.currentThread().interrupt();
+        TmdbResponseException exception = assertThrows(TmdbResponseException.class,
+            () -> tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.GET)));
+
+        assertInstanceOf(InterruptedException.class, exception.getCause());
+        // Thread.interrupted() returns the flag and clears it so it does not leak to other tests
+        assertTrue(Thread.interrupted());
+        verify(httpClient, times(1)).send(any(), any());
     }
 
     /**
