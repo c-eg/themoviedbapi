@@ -14,7 +14,7 @@ It's available via [Maven Central](https://central.sonatype.com/artifact/uk.co.c
 ## Usage
 To register for a TMdB API key, click the [API link](https://www.themoviedb.org/settings/api) from within your account settings page. There are two types of API keys currently provided by TMdB, please ensure you are using the `API Read Access Token` key.
 
-With this you can instantiate `info.movito.themoviedbapi.TmdbApi`, which has getters for all subcategories of the API, e.g.
+With this you can instantiate `uk.co.conoregan.themoviedbapi.TmdbApi`, which has getters for all subcategories of the API, e.g.
 ```java
 TmdbApi tmdbApi = new TmdbApi("<apikey>");
 ```
@@ -55,15 +55,15 @@ MovieDb movie = tmdbMovies.getDetails(5353, "en-US", MovieAppendToResponse.IMAGE
 MovieDb movie = tmdbMovies.getDetails(5353, "en-US", MovieAppendToResponse.values());
 ```
 
-To find all methods that use append to response, see the `info.movito.themoviedbapi.tools.appendtoresponse.AppendToResponse` interface 
+To find all methods that use append to response, see the `uk.co.conoregan.themoviedbapi.tools.appendtoresponse.AppendToResponse` interface 
 implementations.
 
 ### Exception handling
-Every API method can throw a `info.movito.themoviedbapi.tools.TmdbException` if the request fails for any reason. You should catch this 
+Every API method can throw a `uk.co.conoregan.themoviedbapi.tools.TmdbException` if the request fails for any reason. You should catch this 
 exception and handle it appropriately.
 
 Some exceptions are caused because the response status provided by the TMdB API is not successful. To see more details, see the 
-`info.movito.themoviedbapi.tools.TmdbResponseCode` and [TMdB Errors](https://developer.themoviedb.org/docs/errors).
+`uk.co.conoregan.themoviedbapi.tools.TmdbResponseCode` and [TMdB Errors](https://developer.themoviedb.org/docs/errors).
 
 In the example below, the response was successful, but response code returned by TMdB API was not successful due to an authentication
 failure. 
@@ -87,13 +87,13 @@ We chose to throw exceptions rather than returning `null`, so you have more cont
 example above, you may want to display an error message to the user about failing authentication.
 
 ### Using your own HTTP client
-By default, `TmdbApi` uses the built-in `info.movito.themoviedbapi.tools.TmdbHttpClient`, which is backed by the JDK's
+By default, `TmdbApi` uses the built-in `uk.co.conoregan.themoviedbapi.tools.TmdbHttpClient`, which is backed by the JDK's
 `java.net.http.HttpClient`. If you would rather use a different HTTP client, you can provide your own
-implementation of the `info.movito.themoviedbapi.tools.TmdbRequestExecutor` interface.
+implementation of the `uk.co.conoregan.themoviedbapi.tools.TmdbRequestExecutor` interface.
 
 Your implementation only has to make the call and hand back the raw response. If the request fails (e.g. an `IOException`), wrap it in a 
-`info.movito.themoviedbapi.tools.TmdbException`. Interpreting TMdB status codes (e.g. mapping unsuccessful responses to exceptions) is handled by the library on top of your executor, so 
-you do not need to deal with that (see `info.movito.themoviedbapi.tools.TmdbApiClient` for more information).
+`uk.co.conoregan.themoviedbapi.tools.TmdbException`. Interpreting TMdB status codes (e.g. mapping unsuccessful responses to exceptions) is handled by the library on top of your executor, so 
+you do not need to deal with that (see `uk.co.conoregan.themoviedbapi.tools.TmdbApiClient` for more information).
 
 Then, simply pass your implementation to `TmdbApi` instead of the API key:
 ```java
@@ -106,10 +106,10 @@ This project uses [SLF4J](http://www.slf4j.org) to abstract the logging in the p
 project you should add one of the provided [adapter bindings](http://www.slf4j.org/manual.html).
 
 ## Prooguard / R8 rules
-Model classes are placed under `info.movito.themoviedbapi.model` package. Add this to `proguard-rules.pro` so that, these classes can 
+Model classes are placed under `uk.co.conoregan.themoviedbapi.model` package. Add this to `proguard-rules.pro` so that, these classes can 
 survive minification.
 ```
--keep class info.movito.themoviedbapi.model.** { *; }
+-keep class uk.co.conoregan.themoviedbapi.model.** { *; }
 ```
 
 ## Notes & Acknowledgements
