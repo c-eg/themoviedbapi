@@ -19,7 +19,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api")
 
     // testing
-    testImplementation(platform("org.junit:junit-bom:6.1.1"))
+    testImplementation(platform("org.junit:junit-bom:6.1.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")  // pin launcher to junit-bom; Gradle's bundled one lags the JUnit version
 
