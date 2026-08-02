@@ -1,0 +1,64 @@
+package uk.co.conoregan.themoviedbapi;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import uk.co.conoregan.themoviedbapi.model.core.Genre;
+import uk.co.conoregan.themoviedbapi.testutil.TestUtils;
+import uk.co.conoregan.themoviedbapi.tools.RequestType;
+import uk.co.conoregan.themoviedbapi.tools.TmdbException;
+import uk.co.conoregan.themoviedbapi.tools.TmdbRequest;
+import uk.co.conoregan.themoviedbapi.tools.TmdbResponse;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
+import static uk.co.conoregan.themoviedbapi.TmdbGenre.TMDB_METHOD_GENRE;
+import static uk.co.conoregan.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
+
+/**
+ * Tests for {@link TmdbGenre}.
+ */
+public class TmdbGenresTest extends AbstractTmdbApiTest<TmdbGenre> {
+    @Override
+    public TmdbGenre createApiToTest() {
+        return getTmdbApi().getGenre();
+    }
+
+    /**
+     * Tests {@link TmdbGenre#getMovieList(String)} with an expected result.
+     */
+    @Test
+    public void testGetMovieList() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/genres/movie_list.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/movie/list?language=en";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        List<Genre> genres = getApiToTest().getMovieList("en");
+        assertNotNull(genres);
+        assertFalse(genres.isEmpty());
+
+        Genre genre = genres.get(0);
+        assertNotNull(genre);
+        TestUtils.validateAbstractJsonMappingFields(genre);
+    }
+
+    /**
+     * Tests {@link TmdbGenre#getTvList(String)} with an expected result.
+     */
+    @Test
+    public void testGetTvList() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/genres/tv_list.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_GENRE + "/tv/list?language=en";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        List<Genre> genres = getApiToTest().getTvList("en");
+        assertNotNull(genres);
+        assertFalse(genres.isEmpty());
+
+        Genre genre = genres.get(0);
+        assertNotNull(genre);
+        TestUtils.validateAbstractJsonMappingFields(genre);
+    }
+}

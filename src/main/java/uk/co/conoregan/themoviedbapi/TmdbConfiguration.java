@@ -1,0 +1,110 @@
+package uk.co.conoregan.themoviedbapi;
+
+import java.util.List;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import uk.co.conoregan.themoviedbapi.model.configuration.Configuration;
+import uk.co.conoregan.themoviedbapi.model.configuration.Country;
+import uk.co.conoregan.themoviedbapi.model.configuration.Job;
+import uk.co.conoregan.themoviedbapi.model.configuration.Timezone;
+import uk.co.conoregan.themoviedbapi.model.core.Language;
+import uk.co.conoregan.themoviedbapi.tools.ApiUrl;
+import uk.co.conoregan.themoviedbapi.tools.TmdbApiClient;
+import uk.co.conoregan.themoviedbapi.tools.TmdbException;
+
+/**
+ * The movie database api for configuration. See the
+ * <a href="https://developer.themoviedb.org/reference/configuration-details">documentation</a> for more info.
+ */
+public class TmdbConfiguration {
+    protected static final String TMDB_METHOD_CONFIGURATION = "configuration";
+
+    private final TmdbApiClient tmdbApiClient;
+
+    /**
+     * Create a new TmdbConfig instance to call the config related TMDb API methods.
+     */
+    TmdbConfiguration(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
+    }
+
+    /**
+     * <p>Query the API configuration details.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/configuration-details">documentation</a> for more info.</p>
+     *
+     * @return The configuration details
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public Configuration getDetails() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION);
+        return tmdbApiClient.get(apiUrl, Configuration.class);
+    }
+
+    /**
+     * <p>Get the list of countries (ISO 3166-1 tags) used throughout TMDB.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/configuration-countries">documentation</a> for more info.</p>
+     *
+     * @param language nullable - The language to query the results in. Default: en-US.
+     * @return The configuration details
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public List<Country> getCountries(String language) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "countries")
+            .addLanguage(language);
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
+        });
+    }
+
+    /**
+     * <p>Get the list of jobs and departments we use on TMDb.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/configuration-jobs">documentation</a> for more info.</p>
+     *
+     * @return The list of jobs and departments
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public List<Job> getJobs() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "jobs");
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
+        });
+    }
+
+    /**
+     * <p>Get the list of languages (ISO 639-1 tags) used throughout TMDB.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/configuration-languages">documentation</a> for more info.</p>
+     *
+     * @return The list of languages
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public List<Language> getLanguages() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "languages");
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
+        });
+    }
+
+    /**
+     * <p>Get the list of languages (ISO 639-1 tags) used throughout TMDB.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/configuration-primary-translations">documentation</a>
+     * for more info.</p>
+     *
+     * @return The list of languages
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public List<String> getPrimaryTranslations() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "primary_translations");
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
+        });
+    }
+
+    /**
+     * <p>Get the list of timezones used throughout TMDB.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/configuration-timezones">documentation</a> for more info.</p>
+     *
+     * @return The list of timezones
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public List<Timezone> getTimezones() throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_CONFIGURATION, "timezones");
+        return tmdbApiClient.get(apiUrl, new TypeReference<>() {
+        });
+    }
+}

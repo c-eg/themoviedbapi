@@ -1,0 +1,336 @@
+package uk.co.conoregan.themoviedbapi;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import uk.co.conoregan.themoviedbapi.model.account.Account;
+import uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage;
+import uk.co.conoregan.themoviedbapi.model.core.TvSeriesResultsPage;
+import uk.co.conoregan.themoviedbapi.model.core.responses.ResponseStatus;
+import uk.co.conoregan.themoviedbapi.model.movies.MovieListResultsPage;
+import uk.co.conoregan.themoviedbapi.model.rated.RatedMovieResultsPage;
+import uk.co.conoregan.themoviedbapi.model.rated.RatedTvEpisodeResultsPage;
+import uk.co.conoregan.themoviedbapi.model.rated.RatedTvSeriesResultsPage;
+import uk.co.conoregan.themoviedbapi.testutil.TestUtils;
+import uk.co.conoregan.themoviedbapi.testutil.ValidatorConfig;
+import uk.co.conoregan.themoviedbapi.tools.RequestType;
+import uk.co.conoregan.themoviedbapi.tools.TmdbException;
+import uk.co.conoregan.themoviedbapi.tools.TmdbRequest;
+import uk.co.conoregan.themoviedbapi.tools.TmdbResponse;
+import uk.co.conoregan.themoviedbapi.tools.TmdbResponseCode;
+import uk.co.conoregan.themoviedbapi.tools.sortby.AccountSortBy;
+import uk.co.conoregan.themoviedbapi.util.JsonUtil;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
+import static uk.co.conoregan.themoviedbapi.TmdbAccount.TMDB_METHOD_ACCOUNT;
+import static uk.co.conoregan.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
+
+/**
+ * Tests for {@link TmdbAccount}.
+ */
+public class TmdbAccountTest extends AbstractTmdbApiTest<TmdbAccount> {
+    @Override
+    public TmdbAccount createApiToTest() {
+        return getTmdbApi().getAccount();
+    }
+
+    /**
+     * Test {@link TmdbAccount#getDetails(Integer, String)} with an expected result.
+     */
+    @Test
+    public void testGetAccount() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/account/details.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234?session_id=testSessionId";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        Account account = getApiToTest().getDetails(1234, "testSessionId");
+        assertNotNull(account);
+        TestUtils.validateAbstractJsonMappingFields(account);
+    }
+
+    /**
+     * Test {@link TmdbAccount#addFavorite(Integer, String, Integer, TmdbAccount.MediaType)} with an expected result.
+     */
+    @Test
+    public void testAddFavourite() throws TmdbException, IOException {
+        Integer accountId = 1234;
+        String sessionId = "testSessionId";
+        Integer mediaId = 1234;
+        TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/favorite?session_id=testSessionId";
+        HashMap<String, Object> requestBody = new HashMap<>();
+        requestBody.put("media_type", mediaType.toString());
+        requestBody.put("media_id", mediaId);
+        requestBody.put("favorite", true);
+        String jsonBody = JsonUtil.toJson(requestBody);
+
+        String body = TestUtils.readTestFile("api_responses/account/add_favourite.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.POST, jsonBody))).thenReturn(new TmdbResponse(200, body));
+
+        ResponseStatus responseStatus = getApiToTest().addFavorite(accountId, sessionId, mediaId, mediaType);
+        assertNotNull(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
+    }
+
+    /**
+     * Test {@link TmdbAccount#removeFavorite(Integer, String, Integer, TmdbAccount.MediaType)} with an expected result.
+     */
+    @Test
+    public void testRemoveFavorite() throws TmdbException, IOException {
+        Integer accountId = 1234;
+        String sessionId = "testSessionId";
+        Integer mediaId = 1234;
+        TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/favorite?session_id=testSessionId";
+        HashMap<String, Object> requestBody = new HashMap<>();
+        requestBody.put("media_type", mediaType.toString());
+        requestBody.put("media_id", mediaId);
+        requestBody.put("favorite", false);
+        String jsonBody = JsonUtil.toJson(requestBody);
+
+        String body = TestUtils.readTestFile("api_responses/account/add_favourite.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.POST, jsonBody))).thenReturn(new TmdbResponse(200, body));
+
+        ResponseStatus responseStatus = getApiToTest().removeFavorite(accountId, sessionId, mediaId, mediaType);
+        assertNotNull(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
+    }
+
+    /**
+     * Test {@link TmdbAccount#addToWatchList(Integer, String, Integer, TmdbAccount.MediaType)} with an expected result.
+     */
+    @Test
+    public void testAddToWatchList() throws IOException, TmdbException {
+        Integer accountId = 1234;
+        String sessionId = "testSessionId";
+        Integer mediaId = 1234;
+        TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/watchlist?session_id=testSessionId";
+        HashMap<String, Object> requestBody = new HashMap<>();
+        requestBody.put("media_type", mediaType.toString());
+        requestBody.put("media_id", mediaId);
+        requestBody.put("watchlist", true);
+        String jsonBody = JsonUtil.toJson(requestBody);
+
+        String body = TestUtils.readTestFile("api_responses/account/add_to_watchlist.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.POST, jsonBody))).thenReturn(new TmdbResponse(200, body));
+
+        ResponseStatus responseStatus = getApiToTest().addToWatchList(accountId, sessionId, mediaId, mediaType);
+        assertNotNull(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
+    }
+
+    /**
+     * Test {@link TmdbAccount#removeFromWatchList(Integer, String, Integer, TmdbAccount.MediaType)} with an expected result.
+     */
+    @Test
+    public void testRemoveFromWatchList() throws IOException, TmdbException {
+        Integer accountId = 1234;
+        String sessionId = "testSessionId";
+        Integer mediaId = 1234;
+        TmdbAccount.MediaType mediaType = TmdbAccount.MediaType.MOVIE;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/watchlist?session_id=testSessionId";
+        HashMap<String, Object> requestBody = new HashMap<>();
+        requestBody.put("media_type", mediaType.toString());
+        requestBody.put("media_id", mediaId);
+        requestBody.put("watchlist", false);
+        String jsonBody = JsonUtil.toJson(requestBody);
+
+        String body = TestUtils.readTestFile("api_responses/account/add_to_watchlist.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.POST, jsonBody))).thenReturn(new TmdbResponse(200, body));
+
+        ResponseStatus responseStatus = getApiToTest().removeFromWatchList(accountId, sessionId, mediaId, mediaType);
+        assertNotNull(responseStatus);
+        TestUtils.validateAbstractJsonMappingFields(responseStatus);
+        assertEquals(TmdbResponseCode.SUCCESS, responseStatus.getStatusCode());
+    }
+
+    /**
+     * Test {@link TmdbAccount#getFavoriteMovies(Integer, String, String, Integer, AccountSortBy)} with an expected result.
+     */
+    @Test
+    public void testGetFavouriteMovies() throws TmdbException, IOException {
+        Integer accountId = 1234;
+        String sessionId = "testSessionId";
+        String language = "en";
+        Integer page = 1;
+        AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/favorite/movies?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
+        String body = TestUtils.readTestFile("api_responses/account/favourite_movies.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        MovieResultsPage movieResultsPage = getApiToTest().getFavoriteMovies(accountId, sessionId, language, page, sortBy);
+        assertNotNull(movieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of("uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
+    }
+
+    /**
+     * Test {@link TmdbAccount#getFavoriteTv(Integer, String, String, Integer, AccountSortBy)} with an expected result.
+     */
+    @Test
+    public void testGetFavouriteTv() throws IOException, TmdbException {
+        Integer accountId = 1234;
+        String sessionId = "testSessionId";
+        String language = "en";
+        Integer page = 1;
+        AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/favorite/tv?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
+        String body = TestUtils.readTestFile("api_responses/account/favourite_tv.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getFavoriteTv(accountId, sessionId, language, page, sortBy);
+        assertNotNull(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
+    }
+
+    /**
+     * Test {@link TmdbAccount#getLists(Integer, String, Integer)} with an expected result.
+     */
+    @Test
+    public void testGetLists() throws TmdbException, IOException {
+        Integer accountId = 1234;
+        String sessionId = "testSessionId";
+        Integer page = 1;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT + "/1234/lists?session_id=testSessionId&page=1";
+        String body = TestUtils.readTestFile("api_responses/account/lists.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        MovieListResultsPage movieListResultsPage = getApiToTest().getLists(accountId, sessionId, page);
+        assertNotNull(movieListResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(movieListResultsPage);
+    }
+
+    /**
+     * Test {@link TmdbAccount#getRatedMovies(int, String, String, Integer, AccountSortBy)} with an expected result.
+     */
+    @Test
+    public void testGetRatedMovies() throws TmdbException, IOException {
+        int accountId = 1234;
+        String sessionId = "testSessionId";
+        String language = "en";
+        Integer page = 1;
+        AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/rated/movies?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
+        String body = TestUtils.readTestFile("api_responses/account/rated_movies.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies(accountId, sessionId, language, page, sortBy);
+        assertNotNull(ratedMovieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of("uk.co.conoregan.themoviedbapi.model.rated.RatedMovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(ratedMovieResultsPage, validatorConfig);
+    }
+
+    /**
+     * Test {@link TmdbAccount#getRatedTvSeries(int, String, String, Integer, AccountSortBy)} with an expected result.
+     */
+    @Test
+    public void testGetRatedTvSeries() throws TmdbException, IOException {
+        int accountId = 1234;
+        String sessionId = "testSessionId";
+        String language = "en";
+        Integer page = 1;
+        AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/rated/tv?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
+        String body = TestUtils.readTestFile("api_responses/account/rated_tv.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        RatedTvSeriesResultsPage ratedTvSeriesResultsPage = getApiToTest().getRatedTvSeries(accountId, sessionId, language, page, sortBy);
+        assertNotNull(ratedTvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
+    }
+
+    /**
+     * Test {@link TmdbAccount#getRatedTvEpisodes(int, String, String, Integer, AccountSortBy)} with an expected result.
+     */
+    @Test
+    public void testGetRatedTvEpisodes() throws TmdbException, IOException {
+        int accountId = 1234;
+        String sessionId = "testSessionId";
+        String language = "en";
+        Integer page = 1;
+        AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/rated/tv/episodes?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
+        String body = TestUtils.readTestFile("api_responses/account/rated_tv_episodes.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage =
+            getApiToTest().getRatedTvEpisodes(accountId, sessionId, language, page, sortBy);
+        assertNotNull(ratedTvEpisodesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);
+    }
+
+    /**
+     * Test {@link TmdbAccount#getWatchListMovies(Integer, String, String, Integer, AccountSortBy)} with an expected result.
+     */
+    @Test
+    public void testGetWatchListMovies() throws TmdbException, IOException {
+        Integer accountId = 1234;
+        String sessionId = "testSessionId";
+        String language = "en";
+        Integer page = 1;
+        AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/watchlist/movies?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
+        String body = TestUtils.readTestFile("api_responses/account/watchlist_movies.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        MovieResultsPage movieResultsPage = getApiToTest().getWatchListMovies(accountId, sessionId, language, page, sortBy);
+        assertNotNull(movieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of("uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
+    }
+
+    /**
+     * Test {@link TmdbAccount#getWatchListTvSeries(Integer, String, String, Integer, AccountSortBy)} with an expected result.
+     */
+    @Test
+    public void testGetWatchListTvSeries() throws TmdbException, IOException {
+        Integer accountId = 1234;
+        String sessionId = "testSessionId";
+        String language = "en";
+        Integer page = 1;
+        AccountSortBy sortBy = AccountSortBy.CREATED_AT_ASC;
+
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_ACCOUNT +
+            "/1234/watchlist/tv?session_id=testSessionId&language=en&page=1&sort_by=created_at.asc";
+        String body = TestUtils.readTestFile("api_responses/account/watchlist_tv.json");
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        TvSeriesResultsPage tvSeriesResultsPage = getApiToTest().getWatchListTvSeries(accountId, sessionId, language, page, sortBy);
+        assertNotNull(tvSeriesResultsPage);
+        TestUtils.validateAbstractJsonMappingFields(tvSeriesResultsPage);
+    }
+}

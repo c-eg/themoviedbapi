@@ -1,0 +1,212 @@
+package uk.co.conoregan.themoviedbapi;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import uk.co.conoregan.themoviedbapi.model.core.video.VideoResults;
+import uk.co.conoregan.themoviedbapi.model.core.watchproviders.ProviderResults;
+import uk.co.conoregan.themoviedbapi.model.tv.core.Translations;
+import uk.co.conoregan.themoviedbapi.model.tv.core.credits.AggregateCredits;
+import uk.co.conoregan.themoviedbapi.model.tv.core.credits.Credits;
+import uk.co.conoregan.themoviedbapi.model.tv.season.AccountStateResults;
+import uk.co.conoregan.themoviedbapi.model.tv.season.ChangeResults;
+import uk.co.conoregan.themoviedbapi.model.tv.season.ExternalIds;
+import uk.co.conoregan.themoviedbapi.model.tv.season.Images;
+import uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb;
+import uk.co.conoregan.themoviedbapi.testutil.TestUtils;
+import uk.co.conoregan.themoviedbapi.testutil.ValidatorConfig;
+import uk.co.conoregan.themoviedbapi.tools.RequestType;
+import uk.co.conoregan.themoviedbapi.tools.TmdbException;
+import uk.co.conoregan.themoviedbapi.tools.TmdbRequest;
+import uk.co.conoregan.themoviedbapi.tools.TmdbResponse;
+import uk.co.conoregan.themoviedbapi.tools.appendtoresponse.TvSeasonsAppendToResponse;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
+import static uk.co.conoregan.themoviedbapi.TmdbTvSeasons.TMDB_METHOD_TV_SEASON;
+import static uk.co.conoregan.themoviedbapi.TmdbTvSeries.TMDB_METHOD_TV;
+import static uk.co.conoregan.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
+
+/**
+ * Tests for {@link TmdbTvSeasons}.
+ */
+public class TmdbTvSeasonsTest extends AbstractTmdbApiTest<TmdbTvSeasons> {
+    @Override
+    public TmdbTvSeasons createApiToTest() {
+        return getTmdbApi().getTvSeasons();
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getDetails(int, int, String, TvSeasonsAppendToResponse...)} with an expected result.
+     */
+    @Test
+    public void testGetDetails() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/details.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1?language=en-US";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US");
+        assertNotNull(tvSeason);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .nullFieldsToIgnore(List.of(
+                "uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb.accountStates",
+                "uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb.aggregateCredits",
+                "uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb.changes",
+                "uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb.credits",
+                "uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb.externalIds",
+                "uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb.images",
+                "uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb.translations",
+                "uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb.videos",
+                "uk.co.conoregan.themoviedbapi.model.tv.season.TvSeasonDb.watchProviders"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(tvSeason, validatorConfig);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getDetails(int, int, String, TvSeasonsAppendToResponse...)} with an expected result,
+     * with append to response.
+     */
+    @Test
+    public void testGetDetailsWithAppendToResponse() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/details_with_append_to_response.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1?language=en-US&" +
+            "append_to_response=account_states%2Caggregate_credits%2Ccredits%2Cexternal_ids%2Cimages%2Ctranslations%2C" +
+            "videos%2Cwatch%2Fproviders";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        TvSeasonDb tvSeason = getApiToTest().getDetails(123, 1, "en-US", TvSeasonsAppendToResponse.values());
+        assertNotNull(tvSeason);
+
+        TestUtils.validateAbstractJsonMappingFields(tvSeason);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getAccountStates(int, int, String, String)} with an expected result.
+     */
+    @Test
+    public void testGetAccountStates() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/account_states.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/account_states?session_id=123";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        AccountStateResults accountStates = getApiToTest().getAccountStates(123, 1, "123", null);
+        assertNotNull(accountStates);
+        TestUtils.validateAbstractJsonMappingFields(accountStates);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getAggregateCredits(int, int, String)} with an expected result.
+     */
+    @Test
+    public void testGetAggregateCredits() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/aggregate_credits.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/aggregate_credits?language=en-US";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        AggregateCredits aggregateCredits = getApiToTest().getAggregateCredits(123, 1, "en-US");
+        assertNotNull(aggregateCredits);
+        TestUtils.validateAbstractJsonMappingFields(aggregateCredits);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getChanges(int, String, String, int)} with an expected result.
+     */
+    @Test
+    public void testGetChanges() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/changes.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/" + TMDB_METHOD_TV_SEASON + "/123/changes?page=1";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        ChangeResults changes = getApiToTest().getChanges(123, null, null, 1);
+        assertNotNull(changes);
+        TestUtils.validateAbstractJsonMappingFields(changes);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getCredits(int, int, String)} with an expected result.
+     */
+    @Test
+    public void testGetCredits() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/credits.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/credits?language=en-US";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        Credits credits = getApiToTest().getCredits(123, 1, "en-US");
+        assertNotNull(credits);
+        TestUtils.validateAbstractJsonMappingFields(credits);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getExternalIds(int, int)} with an expected result.
+     */
+    @Test
+    public void testGetExternalIds() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/external_ids.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/external_ids";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        ExternalIds externalIds = getApiToTest().getExternalIds(123, 1);
+        assertNotNull(externalIds);
+        TestUtils.validateAbstractJsonMappingFields(externalIds);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getImages(int, int, String, String...)} with an expected result.
+     */
+    @Test
+    public void testGetImages() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/images.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/images?language=en-US";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        Images images = getApiToTest().getImages(123, 1, "en-US");
+        assertNotNull(images);
+        TestUtils.validateAbstractJsonMappingFields(images);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getTranslations(int, int)} with an expected result.
+     */
+    @Test
+    public void testGetTranslations() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/translations.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/translations";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        Translations translations = getApiToTest().getTranslations(123, 1);
+        assertNotNull(translations);
+        TestUtils.validateAbstractJsonMappingFields(translations);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getVideos(int, int, String, String...)} with an expected result.
+     */
+    @Test
+    public void testGetVideos() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/videos.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/videos?language=en-US";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        VideoResults videos = getApiToTest().getVideos(123, 1, "en-US");
+        assertNotNull(videos);
+        TestUtils.validateAbstractJsonMappingFields(videos);
+    }
+
+    /**
+     * Tests the method {@link TmdbTvSeasons#getWatchProviders(int, int, String)} with an expected result.
+     */
+    @Test
+    public void testGetWatchProviders() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/tv_seasons/watch_providers.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_TV + "/123/" + TMDB_METHOD_TV_SEASON + "/1/watch/providers?language=en-US";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        ProviderResults watchProviders = getApiToTest().getWatchProviders(123, 1, "en-US");
+        assertNotNull(watchProviders);
+
+        TestUtils.validateAbstractJsonMappingFields(watchProviders);
+    }
+}

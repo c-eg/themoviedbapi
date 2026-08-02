@@ -1,0 +1,64 @@
+package uk.co.conoregan.themoviedbapi;
+
+import uk.co.conoregan.themoviedbapi.model.core.image.ImageResults;
+import uk.co.conoregan.themoviedbapi.model.networks.AlternativeNamesResults;
+import uk.co.conoregan.themoviedbapi.model.networks.Network;
+import uk.co.conoregan.themoviedbapi.tools.ApiUrl;
+import uk.co.conoregan.themoviedbapi.tools.TmdbApiClient;
+import uk.co.conoregan.themoviedbapi.tools.TmdbException;
+
+/**
+ * The movie database api for networks. See the
+ * <a href="https://developer.themoviedb.org/reference/network-details">documentation</a> for more info.
+ */
+public class TmdbNetworks {
+    protected static final String TMDB_METHOD_NETWORK = "network";
+
+    private final TmdbApiClient tmdbApiClient;
+
+    /**
+     * Create a new TmdbNetworks instance to call the network related TMDb API methods.
+     */
+    TmdbNetworks(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
+    }
+
+    /**
+     * <p>Get the details of a network.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/network-details">documentation</a> for more info.</p>
+     *
+     * @param networkId The network id.
+     * @return The network details.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public Network getDetails(int networkId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_NETWORK, networkId);
+        return tmdbApiClient.get(apiUrl, Network.class);
+    }
+
+    /**
+     * <p>Get the alternative names of a network.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/details-copy">documentation</a> for more info.</p>
+     *
+     * @param networkId The network id.
+     * @return The alternative names of the network.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public AlternativeNamesResults getAlternativeNames(int networkId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_NETWORK, networkId, "alternative_names");
+        return tmdbApiClient.get(apiUrl, AlternativeNamesResults.class);
+    }
+
+    /**
+     * <p>Get the images of a network.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/alternative-names-copy">documentation</a> for more info.</p>
+     *
+     * @param networkId The network id.
+     * @return The images of the network.
+     * @throws TmdbException If there was an error making the request or mapping the response.
+     */
+    public ImageResults getImages(int networkId) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_NETWORK, networkId, "images");
+        return tmdbApiClient.get(apiUrl, ImageResults.class);
+    }
+}

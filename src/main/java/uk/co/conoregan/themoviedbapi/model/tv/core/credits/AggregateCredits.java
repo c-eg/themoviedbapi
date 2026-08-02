@@ -1,0 +1,19 @@
+package uk.co.conoregan.themoviedbapi.model.tv.core.credits;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import uk.co.conoregan.themoviedbapi.model.core.IdElement;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class AggregateCredits extends IdElement {
+    @JsonProperty("cast")
+    private List<AggregateCast> cast = new ArrayList<>();
+
+    @JsonProperty("crew")
+    private List<AggregateCrew> crew = new ArrayList<>();
+}
