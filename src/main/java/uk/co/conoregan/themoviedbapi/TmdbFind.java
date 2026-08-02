@@ -1,0 +1,40 @@
+package uk.co.conoregan.themoviedbapi;
+
+import uk.co.conoregan.themoviedbapi.model.find.FindResults;
+import uk.co.conoregan.themoviedbapi.tools.ApiUrl;
+import uk.co.conoregan.themoviedbapi.tools.TmdbApiClient;
+import uk.co.conoregan.themoviedbapi.tools.TmdbException;
+import uk.co.conoregan.themoviedbapi.tools.model.time.ExternalSource;
+
+/**
+ * The movie database api for find. See the
+ * <a href="https://developer.themoviedb.org/reference/find-by-id">documentation</a> for more info.
+ */
+public class TmdbFind {
+    protected static final String TMDB_METHOD_FIND = "find";
+
+    private final TmdbApiClient tmdbApiClient;
+
+    /**
+     * Create a new TmdbFind instance to call the find related TMDb API methods.
+     */
+    TmdbFind(TmdbApiClient tmdbApiClient) {
+        this.tmdbApiClient = tmdbApiClient;
+    }
+
+    /**
+     * <p>Find data by external ID's.</p>
+     * <p>See the <a href="https://developer.themoviedb.org/reference/find-by-id">documentation</a> for more info.</p>
+     *
+     * @param externalId     The external id of the movie, TV show or people.
+     * @param externalSource The external source of the id.
+     * @param language       nullable - The language to query the results in. Default: en-US.
+     * @return The find results
+     */
+    public FindResults findById(String externalId, ExternalSource externalSource, String language) throws TmdbException {
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_FIND, externalId)
+            .addPathParam("external_source", externalSource.getValue())
+            .addLanguage(language);
+        return tmdbApiClient.get(apiUrl, FindResults.class);
+    }
+}

@@ -1,0 +1,105 @@
+package uk.co.conoregan.themoviedbapi;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage;
+import uk.co.conoregan.themoviedbapi.model.movielists.MovieResultsPageWithDates;
+import uk.co.conoregan.themoviedbapi.testutil.TestUtils;
+import uk.co.conoregan.themoviedbapi.testutil.ValidatorConfig;
+import uk.co.conoregan.themoviedbapi.tools.RequestType;
+import uk.co.conoregan.themoviedbapi.tools.TmdbException;
+import uk.co.conoregan.themoviedbapi.tools.TmdbRequest;
+import uk.co.conoregan.themoviedbapi.tools.TmdbResponse;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
+import static uk.co.conoregan.themoviedbapi.TmdbMovieLists.TMDB_METHOD_MOVIE_LISTS;
+import static uk.co.conoregan.themoviedbapi.tools.ApiUrl.TMDB_API_BASE_URL;
+
+/**
+ * Tests for {@link TmdbMovieLists}.
+ */
+public class TmdbMovieListsTest extends AbstractTmdbApiTest<TmdbMovieLists> {
+    @Override
+    public TmdbMovieLists createApiToTest() {
+        return getTmdbApi().getMovieLists();
+    }
+
+    /**
+     * Test {@link TmdbMovieLists#getNowPlaying(String, Integer, String)} with an expected result.
+     */
+    @Test
+    public void testGetNowPlaying() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/movie_lists/now_playing.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/now_playing?language=en-US&page=1";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getNowPlaying("en-US", 1, null);
+        assertNotNull(movieResultsPageWithDates);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of(
+                "uk.co.conoregan.themoviedbapi.model.movielists.MovieResultsPageWithDates.results.originCountry"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates, validatorConfig);
+    }
+
+    /**
+     * Test {@link TmdbMovieLists#getPopular(String, Integer, String)} with an expected result.
+     */
+    @Test
+    public void testGetPopular() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/movie_lists/popular.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/popular?language=en-US&page=1";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        MovieResultsPage movieResultsPage = getApiToTest().getPopular("en-US", 1, null);
+        assertNotNull(movieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of("uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
+    }
+
+    /**
+     * Test {@link TmdbMovieLists#getTopRated(String, Integer, String)} with an expected result.
+     */
+    @Test
+    public void testGetTopRated() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/movie_lists/top_rated.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/top_rated?language=en-US&page=1";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        MovieResultsPage movieResultsPage = getApiToTest().getTopRated("en-US", 1, null);
+        assertNotNull(movieResultsPage);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of("uk.co.conoregan.themoviedbapi.model.core.MovieResultsPage.results.originCountry"))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPage, validatorConfig);
+    }
+
+    /**
+     * Test {@link TmdbMovieLists#getUpcoming(String, Integer, String)} with an expected result.
+     */
+    @Test
+    public void testGetUpcoming() throws IOException, TmdbException {
+        String body = TestUtils.readTestFile("api_responses/movie_lists/upcoming.json");
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_LISTS + "/upcoming?language=en-US&page=1";
+        when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
+
+        MovieResultsPageWithDates movieResultsPageWithDates = getApiToTest().getUpcoming("en-US", 1, null);
+        assertNotNull(movieResultsPageWithDates);
+
+        ValidatorConfig validatorConfig = ValidatorConfig.builder()
+            .emptyCollectionFieldsToIgnore(List.of(
+                "uk.co.conoregan.themoviedbapi.model.movielists.MovieResultsPageWithDates.results.originCountry"
+            ))
+            .build();
+        TestUtils.validateAbstractJsonMappingFields(movieResultsPageWithDates, validatorConfig);
+    }
+}

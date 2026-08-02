@@ -1,0 +1,31 @@
+package uk.co.conoregan.themoviedbapi.model.core.watchproviders;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import uk.co.conoregan.themoviedbapi.model.core.AbstractJsonMapping;
+
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class WatchProviders extends AbstractJsonMapping {
+    @JsonProperty("link")
+    private String link;
+
+    @JsonProperty("rent")
+    private List<Provider> rentProviders = new ArrayList<>();
+
+    @JsonProperty("buy")
+    private List<Provider> buyProviders = new ArrayList<>();
+
+    @JsonProperty("flatrate")
+    private List<Provider> flatrateProviders = new ArrayList<>();
+
+    @JsonProperty("free")
+    private List<Provider> freeProviders = new ArrayList<>();
+
+    @JsonProperty("ads")
+    private List<Provider> adsProviders = new ArrayList<>();
+}
