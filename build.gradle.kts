@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "uk.co.conoregan"
-version = "3.0.0-SNAPSHOT"
+version = "3.0.0"
 
 repositories {
     mavenCentral()
