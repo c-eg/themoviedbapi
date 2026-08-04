@@ -22,6 +22,7 @@ module uk.co.conoregan.themoviedbapi {
     opens uk.co.conoregan.themoviedbapi.model.core.responses to com.fasterxml.jackson.databind;
     opens uk.co.conoregan.themoviedbapi.model.core.video to com.fasterxml.jackson.databind;
     opens uk.co.conoregan.themoviedbapi.model.core.watchproviders to com.fasterxml.jackson.databind;
+    opens uk.co.conoregan.themoviedbapi.model.credits to com.fasterxml.jackson.databind;
     opens uk.co.conoregan.themoviedbapi.model.find to com.fasterxml.jackson.databind;
     opens uk.co.conoregan.themoviedbapi.model.keywords to com.fasterxml.jackson.databind;
     opens uk.co.conoregan.themoviedbapi.model.lists to com.fasterxml.jackson.databind;
@@ -57,6 +58,7 @@ module uk.co.conoregan.themoviedbapi {
     exports uk.co.conoregan.themoviedbapi.model.core.responses;
     exports uk.co.conoregan.themoviedbapi.model.core.video;
     exports uk.co.conoregan.themoviedbapi.model.core.watchproviders;
+    exports uk.co.conoregan.themoviedbapi.model.credits;
     exports uk.co.conoregan.themoviedbapi.model.find;
     exports uk.co.conoregan.themoviedbapi.model.keywords;
     exports uk.co.conoregan.themoviedbapi.model.lists;
