@@ -10,7 +10,7 @@ import uk.co.conoregan.themoviedbapi.tools.TmdbException;
  * <a href="https://developer.themoviedb.org/reference/review-details">documentation</a> for more info.
  */
 public class TmdbReviews {
-    protected static final String TMDB_METHOD_MOVIE_REVIEW = "reviews";
+    protected static final String TMDB_METHOD_MOVIE_REVIEW = "review";
 
     private final TmdbApiClient tmdbApiClient;
 
