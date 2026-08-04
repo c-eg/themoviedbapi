@@ -1,0 +1,41 @@
+{
+  "credit_type": "cast",
+  "department": "Acting",
+  "job": "Actor",
+  "media": {
+    "adult": false,
+    "backdrop_path": "/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg",
+    "id": 969681,
+    "title": "Spider-Man: Brand New Day",
+    "original_title": "Spider-Man: Brand New Day",
+    "overview": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.",
+    "poster_path": "/iPOn6DinuVyLY17YM9mKuPofV08.jpg",
+    "media_type": "movie",
+    "original_language": "en",
+    "genre_ids": [
+      878,
+      28,
+      12
+    ],
+    "popularity": 2011.4042,
+    "release_date": "2026-07-28",
+    "softcore": false,
+    "video": false,
+    "vote_average": 7.975,
+    "vote_count": 856,
+    "character": "Peter Parker / Spider-Man"
+  },
+  "media_type": "movie",
+  "id": "630cbd43ede1b00083c3badf",
+  "person": {
+    "adult": false,
+    "id": 1136406,
+    "name": "Tom Holland",
+    "original_name": "Tom Holland",
+    "media_type": "person",
+    "popularity": 38.1558,
+    "gender": 2,
+    "known_for_department": "Acting",
+    "profile_path": "/xKBAaPIa1c7tzZD3Y0MhBLv4hPE.jpg"
+  }
+}

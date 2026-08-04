@@ -1,0 +1,75 @@
+{
+  "credit_type": "cast",
+  "department": "Acting",
+  "job": "Actor",
+  "media": {
+    "adult": false,
+    "backdrop_path": "/577eXC8wFQT0eUrJcgznSiFPRmk.jpg",
+    "id": 94997,
+    "name": "House of the Dragon",
+    "original_name": "House of the Dragon",
+    "overview": "The Targaryen dynasty is at the absolute apex of its power, with more than 15 dragons under their yoke. Most empires crumble from such heights. In the case of the Targaryens, their slow fall begins when King Viserys breaks with a century of tradition by naming his daughter Rhaenyra heir to the Iron Throne. But when Viserys later fathers a son, the court is shocked when Rhaenyra retains her status as his heir, and seeds of division sow friction across the realm.",
+    "poster_path": "/7V0Ebks0GgpKvQ7QbLAIdX5dos4.jpg",
+    "media_type": "tv",
+    "original_language": "en",
+    "genre_ids": [
+      10765,
+      18,
+      10759
+    ],
+    "popularity": 411.8868,
+    "first_air_date": "2022-08-21",
+    "softcore": false,
+    "vote_average": 8.384,
+    "vote_count": 6829,
+    "origin_country": [
+      "US"
+    ],
+    "character": "Princess Rhaenyra Targaryen",
+    "episodes": [
+      {
+        "id": 3846970,
+        "name": "The Princess and the Queen",
+        "overview": "Ten years later. Rhaenyra navigates Alicent's continued speculation about her children, while Daemon and Laena weigh an offer in Pentos.",
+        "media_type": "tv_episode",
+        "vote_average": 7,
+        "vote_count": 157,
+        "air_date": "2022-09-25",
+        "episode_number": 6,
+        "episode_type": "standard",
+        "production_code": "",
+        "runtime": 67,
+        "season_number": 1,
+        "show_id": 94997,
+        "still_path": "/lcBTDoCkBTJAdi8VagMQdzB6RYi.jpg"
+      }
+    ],
+    "seasons": [
+      {
+        "id": 368014,
+        "name": "Season 2",
+        "overview": "House Targaryen is divided in two. Civil war looms as both sides seek support from the great houses of Westeros, ultimately amassing armies — and dragons.",
+        "poster_path": "/lZwxqNWnT1dRl76ry6BM0FPqCUg.jpg",
+        "media_type": "tv_season",
+        "vote_average": 7,
+        "air_date": "2024-06-16",
+        "season_number": 2,
+        "show_id": 94997,
+        "episode_count": 8
+      }
+    ]
+  },
+  "media_type": "tv",
+  "id": "69827ff0d3302013da620d81",
+  "person": {
+    "adult": false,
+    "id": 2121005,
+    "name": "Emma D'Arcy",
+    "original_name": "Emma D'Arcy",
+    "media_type": "person",
+    "popularity": 7.3649,
+    "gender": 3,
+    "known_for_department": "Acting",
+    "profile_path": "/9Zlmb7VmtVCxkLq5yqFFRRxCaED.jpg"
+  }
+}
