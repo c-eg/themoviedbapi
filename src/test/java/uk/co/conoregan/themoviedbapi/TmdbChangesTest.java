@@ -11,6 +11,7 @@ import uk.co.conoregan.themoviedbapi.tools.TmdbRequest;
 import uk.co.conoregan.themoviedbapi.tools.TmdbResponse;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 import static uk.co.conoregan.themoviedbapi.TmdbChanges.TMDB_METHOD_CHANGES;
 import static uk.co.conoregan.themoviedbapi.TmdbChanges.TMDB_METHOD_MOVIE;
@@ -82,5 +83,20 @@ public class TmdbChangesTest extends AbstractTmdbApiTest<TmdbChanges> {
         ChangesResultsPage changesResultsPage = getApiToTest().getTvChangesList(startDate, endDate, page);
         assertNotNull(changesResultsPage);
         TestUtils.validateAbstractJsonMappingFields(changesResultsPage);
+    }
+
+    @Test
+    public void getMovieChangesList_dateRangeTooLong() {
+        assertThrows(IllegalArgumentException.class, () -> getApiToTest().getMovieChangesList("2023-01-01", "2023-01-16", null));
+    }
+
+    @Test
+    public void getPeopleChangesList_dateRangeTooLong() {
+        assertThrows(IllegalArgumentException.class, () -> getApiToTest().getPeopleChangesList("2023-01-01", "2023-01-16", null));
+    }
+
+    @Test
+    public void getTvChangesList_dateRangeTooLong() {
+        assertThrows(IllegalArgumentException.class, () -> getApiToTest().getTvChangesList("2023-01-01", "2023-01-16", null));
     }
 }
