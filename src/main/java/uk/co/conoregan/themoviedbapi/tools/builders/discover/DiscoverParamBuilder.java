@@ -115,7 +115,7 @@ public abstract class DiscoverParamBuilder<T extends DiscoverParamBuilder<T>> im
     }
 
     public T voteCountLte(double voteCountLte) {
-        if (voteCountLte > 0) {
+        if (voteCountLte < 0) {
             throw new IllegalArgumentException("Vote count must be >= 0");
         }
 
