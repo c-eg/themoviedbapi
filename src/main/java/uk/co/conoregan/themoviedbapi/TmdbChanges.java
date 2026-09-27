@@ -1,13 +1,10 @@
 package uk.co.conoregan.themoviedbapi;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-
 import uk.co.conoregan.themoviedbapi.model.changes.ChangesResultsPage;
 import uk.co.conoregan.themoviedbapi.tools.ApiUrl;
 import uk.co.conoregan.themoviedbapi.tools.TmdbApiClient;
 import uk.co.conoregan.themoviedbapi.tools.TmdbException;
+import uk.co.conoregan.themoviedbapi.util.DateUtil;
 
 /**
  * The movie database api for changes. See the
@@ -21,6 +18,8 @@ public class TmdbChanges {
     protected static final String TMDB_METHOD_PERSON = "person";
 
     protected static final String TMDB_METHOD_TV = "tv";
+
+    private static final int MAX_DATE_RANGE_DAYS = 14;
 
     private final TmdbApiClient tmdbApiClient;
 
@@ -42,7 +41,7 @@ public class TmdbChanges {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangesResultsPage getMovieChangesList(String startDate, String endDate, Integer page) throws TmdbException {
-        if (calculateDaysDifference(startDate, endDate) > 14) {
+        if (exceedsMaxDateRange(startDate, endDate)) {
             throw new IllegalArgumentException("The date range must be less than or equal to 14 days.");
         }
 
@@ -65,7 +64,7 @@ public class TmdbChanges {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangesResultsPage getPeopleChangesList(String startDate, String endDate, Integer page) throws TmdbException {
-        if (calculateDaysDifference(startDate, endDate) > 14) {
+        if (exceedsMaxDateRange(startDate, endDate)) {
             throw new IllegalArgumentException("The date range must be less than or equal to 14 days.");
         }
 
@@ -88,7 +87,7 @@ public class TmdbChanges {
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
     public ChangesResultsPage getTvChangesList(String startDate, String endDate, Integer page) throws TmdbException {
-        if (calculateDaysDifference(startDate, endDate) > 14) {
+        if (exceedsMaxDateRange(startDate, endDate)) {
             throw new IllegalArgumentException("The date range must be less than or equal to 14 days.");
         }
 
@@ -100,18 +99,11 @@ public class TmdbChanges {
         return tmdbApiClient.get(apiUrl, ChangesResultsPage.class);
     }
 
-    /**
-     * Calculate the difference in days between two date strings.
-     *
-     * @param startDateString the start date string, in format: YYYY-MM-DD.
-     * @param endDateString   the end date string, in format: YYYY-MM-DD.
-     * @return the difference in days.
-     */
-    private static long calculateDaysDifference(String startDateString, String endDateString) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate startDate = LocalDate.parse(startDateString, formatter);
-        LocalDate endDate = LocalDate.parse(endDateString, formatter);
+    private static boolean exceedsMaxDateRange(String startDate, String endDate) {
+        if (startDate == null || endDate == null) {
+            return false;
+        }
 
-        return ChronoUnit.DAYS.between(startDate, endDate);
+        return DateUtil.calculateDaysDifference(startDate, endDate) > MAX_DATE_RANGE_DAYS;
     }
 }
