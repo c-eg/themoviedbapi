@@ -30,7 +30,7 @@ public class TmdbWatchProviders {
      * @param language nullable - The language to query the results in. Default: en-US.
      */
     public AvailableRegionResults getAvailableRegions(String language) throws TmdbException {
-        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_WATCH_PROVIDERS)
+        ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_WATCH_PROVIDERS, "regions")
             .addLanguage(language);
         return tmdbApiClient.get(apiUrl, AvailableRegionResults.class);
     }

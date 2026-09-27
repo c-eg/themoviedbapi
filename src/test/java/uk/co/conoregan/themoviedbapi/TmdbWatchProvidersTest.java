@@ -37,7 +37,7 @@ public class TmdbWatchProvidersTest extends AbstractTmdbApiTest<TmdbWatchProvide
     @Test
     public void testGetAvailableRegions() throws IOException, TmdbException {
         String body = TestUtils.readTestFile("api_responses/watch_providers/available_regions.json");
-        String url = TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "?language=en-US";
+        String url = TMDB_API_BASE_URL + TMDB_METHOD_WATCH_PROVIDERS + "/regions?language=en-US";
         when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
         AvailableRegionResults availableRegionResults = getApiToTest().getAvailableRegions("en-US");
