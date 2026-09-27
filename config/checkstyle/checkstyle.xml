@@ -127,7 +127,7 @@ https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_c
         <module name="JavadocType"/>
         <module name="MissingJavadocMethod">
             <property name="allowMissingPropertyJavadoc" value="true"/>
-            <property name="scope" value="protected"/>
+            <property name="scope" value="public"/>
         </module>
         <module name="MissingJavadocType"/>
         <module name="NonEmptyAtclauseDescription"/>

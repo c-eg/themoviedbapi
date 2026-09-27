@@ -11,4 +11,7 @@
 
     <suppress files="uk.co.conoregan.themoviedbapi.tools.TmdbException" checks="JavadocMethod"/>
     <suppress files="uk.co.conoregan.themoviedbapi.tools.TmdbException" checks="MissingJavadocMethod"/>
+
+    <suppress files="[\\/]src[\\/]test[\\/]" checks="MissingJavadocType"/>
+    <suppress files="[\\/]src[\\/]test[\\/]" checks="MissingJavadocMethod"/>
 </suppressions>
