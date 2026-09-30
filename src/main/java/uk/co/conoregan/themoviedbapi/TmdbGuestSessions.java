@@ -35,7 +35,7 @@ public class TmdbGuestSessions {
      * @return The rated movies of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public RatedMovieResultsPage getRatedMovies(int guestSessionId, String language, Integer page,
+    public RatedMovieResultsPage getRatedMovies(String guestSessionId, String language, Integer page,
                                                 AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GUEST_SESSIONS, guestSessionId, "rated/movies")
             .addLanguage(language)
@@ -56,7 +56,7 @@ public class TmdbGuestSessions {
      * @return The rated tv series of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public RatedTvSeriesResultsPage getRatedTvSeries(int guestSessionId, String language, Integer page,
+    public RatedTvSeriesResultsPage getRatedTvSeries(String guestSessionId, String language, Integer page,
                                                      AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GUEST_SESSIONS, guestSessionId, "rated/tv")
             .addLanguage(language)
@@ -77,7 +77,7 @@ public class TmdbGuestSessions {
      * @return The rated tv episodes of the user.
      * @throws TmdbException If there was an error making the request or mapping the response.
      */
-    public RatedTvEpisodeResultsPage getRatedTvEpisodes(int guestSessionId, String language, Integer page,
+    public RatedTvEpisodeResultsPage getRatedTvEpisodes(String guestSessionId, String language, Integer page,
                                                         AccountSortBy sortBy) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_GUEST_SESSIONS, guestSessionId, "rated/tv/episodes")
             .addLanguage(language)

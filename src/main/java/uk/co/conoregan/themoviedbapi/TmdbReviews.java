@@ -28,7 +28,7 @@ public class TmdbReviews {
      * @param reviewId The review id.
      * @return the reviews
      */
-    public Review getDetails(int reviewId) throws TmdbException {
+    public Review getDetails(String reviewId) throws TmdbException {
         ApiUrl apiUrl = new ApiUrl(TMDB_METHOD_MOVIE_REVIEW, reviewId);
         return tmdbApiClient.get(apiUrl, Review.class);
     }
