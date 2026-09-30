@@ -30,7 +30,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
     }
 
     /**
-     * Tests the {@link TmdbGuestSessions#getRatedMovies(int, String, Integer, AccountSortBy)} with an expected result.
+     * Tests the {@link TmdbGuestSessions#getRatedMovies(String, String, Integer, AccountSortBy)} with an expected result.
      */
     @Test
     public void testGetRatedMovies() throws IOException, TmdbException {
@@ -38,7 +38,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
         String url = TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/movies?language=en&page=1&sort_by=created_at.desc";
         when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
-        RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
+        RatedMovieResultsPage ratedMovieResultsPage = getApiToTest().getRatedMovies("1", "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedMovieResultsPage);
 
         ValidatorConfig validatorConfig = ValidatorConfig.builder()
@@ -48,7 +48,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
     }
 
     /**
-     * Tests the {@link TmdbGuestSessions#getRatedTvSeries(int, String, Integer, AccountSortBy)} with an expected result.
+     * Tests the {@link TmdbGuestSessions#getRatedTvSeries(String, String, Integer, AccountSortBy)} with an expected result.
      */
     @Test
     public void testGetRatedTvSeries() throws IOException, TmdbException {
@@ -56,13 +56,13 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
         String url = TMDB_API_BASE_URL + TMDB_METHOD_GUEST_SESSIONS + "/1/rated/tv?language=en&page=1&sort_by=created_at.desc";
         when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
-        RatedTvSeriesResultsPage ratedTvSeriesResultsPage = getApiToTest().getRatedTvSeries(1, "en", 1, AccountSortBy.CREATED_AT_DESC);
+        RatedTvSeriesResultsPage ratedTvSeriesResultsPage = getApiToTest().getRatedTvSeries("1", "en", 1, AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvSeriesResultsPage);
         TestUtils.validateAbstractJsonMappingFields(ratedTvSeriesResultsPage);
     }
 
     /**
-     * Tests the {@link TmdbGuestSessions#getRatedTvEpisodes(int, String, Integer, AccountSortBy)} with an expected result.
+     * Tests the {@link TmdbGuestSessions#getRatedTvEpisodes(String, String, Integer, AccountSortBy)} with an expected result.
      */
     @Test
     public void testGetRatedTvEpisodes() throws IOException, TmdbException {
@@ -71,7 +71,7 @@ public class TmdbGuestSessionsTest extends AbstractTmdbApiTest<TmdbGuestSessions
             "/1/rated/tv/episodes?language=en&page=1&sort_by=created_at.desc";
         when(getRequestExecutor().execute(new TmdbRequest(url, RequestType.GET))).thenReturn(new TmdbResponse(200, body));
 
-        RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = getApiToTest().getRatedTvEpisodes(1, "en", 1,
+        RatedTvEpisodeResultsPage ratedTvEpisodesResultsPage = getApiToTest().getRatedTvEpisodes("1", "en", 1,
             AccountSortBy.CREATED_AT_DESC);
         assertNotNull(ratedTvEpisodesResultsPage);
         TestUtils.validateAbstractJsonMappingFields(ratedTvEpisodesResultsPage);

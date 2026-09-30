@@ -25,11 +25,11 @@ public class TmdbReviewsTest extends AbstractTmdbApiTest<TmdbReviews> {
     }
 
     /**
-     * Test {@link TmdbReviews#getDetails(int)} with an expected result.
+     * Test {@link TmdbReviews#getDetails(String)} with an expected result.
      */
     @Test
     public void testGetDetails() throws IOException, TmdbException {
-        int reviewId = 1;
+        String reviewId = "1";
 
         String body = TestUtils.readTestFile("api_responses/reviews/details.json");
         String url = TMDB_API_BASE_URL + TMDB_METHOD_MOVIE_REVIEW + "/" + reviewId;
