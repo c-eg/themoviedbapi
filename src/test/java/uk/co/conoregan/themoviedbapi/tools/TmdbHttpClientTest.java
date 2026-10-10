@@ -140,6 +140,25 @@ class TmdbHttpClientTest {
     }
 
     /**
+     * Test that a DELETE request with a json body is built with the DELETE method and a body publisher containing the body.
+     */
+    @Test
+    void testExecute_deleteRequestWithBody() throws IOException, InterruptedException, TmdbException {
+        String jsonBody = "{\"value\":true}";
+        doReturn(httpResponse).when(httpClient).send(any(), any());
+
+        tmdbHttpClient.execute(new TmdbRequest(URL, RequestType.DELETE, jsonBody));
+
+        verify(httpClient).send(requestCaptor.capture(), any());
+        HttpRequest request = requestCaptor.getValue();
+
+        assertCommonHeaders(request);
+        assertEquals("DELETE", request.method());
+        assertEquals("application/json", request.headers().firstValue("Content-Type").orElseThrow());
+        assertEquals(jsonBody.getBytes(StandardCharsets.UTF_8).length, request.bodyPublisher().orElseThrow().contentLength());
+    }
+
+    /**
      * Test that an {@link IOException} thrown while sending is wrapped in a {@link TmdbResponseException}.
      */
     @Test

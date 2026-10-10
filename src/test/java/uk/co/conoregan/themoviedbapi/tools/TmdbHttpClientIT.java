@@ -82,14 +82,30 @@ class TmdbHttpClientIT {
     }
 
     @Test
-    void testExecute_deleteRequest(WireMockRuntimeInfo wireMock) throws TmdbException {
+    void testExecute_deleteRequestWithNullBody(WireMockRuntimeInfo wireMock) throws TmdbException {
         stubFor(delete("/list/1")
             .willReturn(okJson("{}")));
 
         TmdbRequest request = new TmdbRequest(wireMock.getHttpBaseUrl() + "/list/1", RequestType.DELETE);
         tmdbHttpClient.execute(request);
 
-        verify(deleteRequestedFor(urlEqualTo("/list/1")));
+        verify(deleteRequestedFor(urlEqualTo("/list/1"))
+            .withHeader("Content-Type", absent())
+            .withRequestBody(absent()));
+    }
+
+    @Test
+    void testExecute_deleteRequestWithBody(WireMockRuntimeInfo wireMock) throws TmdbException {
+        String jsonBody = "{\"value\":true}";
+        stubFor(delete("/list/1")
+            .willReturn(okJson("{}")));
+
+        TmdbRequest request = new TmdbRequest(wireMock.getHttpBaseUrl() + "/list/1", RequestType.DELETE, jsonBody);
+        tmdbHttpClient.execute(request);
+
+        verify(deleteRequestedFor(urlEqualTo("/list/1"))
+            .withHeader("Content-Type", equalTo("application/json"))
+            .withRequestBody(equalToJson(jsonBody)));
     }
 
     @Test
