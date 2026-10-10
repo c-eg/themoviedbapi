@@ -70,23 +70,24 @@ public class TmdbHttpClient implements TmdbRequestExecutor {
             .header("Authorization", "Bearer " + apiKey)
             .header("Accept", "application/json");
 
-        String jsonBody = request.jsonBody();
         switch (request.requestType()) {
             case GET -> httpRequestBuilder.GET();
-            case POST -> {
-                if (Objects.isNull(jsonBody)) {
-                    httpRequestBuilder.POST(HttpRequest.BodyPublishers.noBody());
-                }
-                else {
-                    httpRequestBuilder.header("Content-Type", "application/json")
-                        .POST(HttpRequest.BodyPublishers.ofString(jsonBody));
-                }
-            }
-            case DELETE -> httpRequestBuilder.DELETE();
+            case POST, DELETE -> setMethodWithOptionalJsonBody(httpRequestBuilder, request.requestType(), request.jsonBody());
             default -> throw new IllegalStateException("Unsupported request type: " + request.requestType());
         }
 
         return httpRequestBuilder.build();
+    }
+
+    private static void setMethodWithOptionalJsonBody(HttpRequest.Builder httpRequestBuilder, RequestType requestType,
+                                                      String jsonBody) {
+        if (Objects.isNull(jsonBody)) {
+            httpRequestBuilder.method(requestType.name(), HttpRequest.BodyPublishers.noBody());
+        }
+        else {
+            httpRequestBuilder.header("Content-Type", "application/json")
+                .method(requestType.name(), HttpRequest.BodyPublishers.ofString(jsonBody));
+        }
     }
 
     private HttpResponse<String> sendRequest(HttpRequest httpRequest) throws TmdbException {
