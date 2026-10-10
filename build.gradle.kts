@@ -3,7 +3,7 @@ plugins {
     checkstyle
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
-    id("org.jreleaser") version "1.25.0"
+    id("org.jreleaser") version "1.26.0"
 }
 
 group = "uk.co.conoregan"
