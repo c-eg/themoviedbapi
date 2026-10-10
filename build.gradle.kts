@@ -23,7 +23,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")  // pin launcher to junit-bom; Gradle's bundled one lags the JUnit version
 
-    testImplementation(platform("org.mockito:mockito-bom:5.23.0"))
+    testImplementation(platform("org.mockito:mockito-bom:5.24.0"))
     testImplementation("org.mockito:mockito-core")
     testImplementation("org.mockito:mockito-junit-jupiter")
 
