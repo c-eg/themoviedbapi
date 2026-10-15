@@ -30,10 +30,10 @@ dependencies {
     testImplementation("org.wiremock:wiremock:3.13.2")
 
     // util
-    compileOnly("org.projectlombok:lombok:1.18.46")
-    annotationProcessor("org.projectlombok:lombok:1.18.46")
-    testCompileOnly("org.projectlombok:lombok:1.18.46")
-    testAnnotationProcessor("org.projectlombok:lombok:1.18.46")
+    compileOnly("org.projectlombok:lombok:1.18.48")
+    annotationProcessor("org.projectlombok:lombok:1.18.48")
+    testCompileOnly("org.projectlombok:lombok:1.18.48")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.48")
 
     implementation(platform("com.fasterxml.jackson:jackson-bom:2.22.2"))
     implementation("com.fasterxml.jackson.core:jackson-annotations")
