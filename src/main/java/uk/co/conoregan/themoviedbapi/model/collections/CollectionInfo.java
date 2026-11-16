@@ -11,6 +11,12 @@ import uk.co.conoregan.themoviedbapi.model.core.NamedIdElement;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class CollectionInfo extends NamedIdElement {
+    @JsonProperty("original_language")
+    private String originalLanguage;
+
+    @JsonProperty("original_name")
+    private String originalName;
+
     @JsonProperty("overview")
     private String overview;
 
